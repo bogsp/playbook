@@ -1,0 +1,14 @@
+{
+  "name": "create-playbook",
+  "version": "1.0.0",
+  "description": "Scaffold a Playbook project — the complete AI-assisted development pipeline",
+  "type": "module",
+  "bin": {
+    "create-playbook": "./bin/index.js"
+  },
+  "keywords": ["playbook", "dda", "document-driven", "scaffold", "ai", "architecture"],
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
