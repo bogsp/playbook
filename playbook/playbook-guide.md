@@ -46,12 +46,14 @@ You define what exists and why. AI handles how it is built.
 
 ## 2. The Full Pipeline
 
-Context Kit -> PRD / Specs -> DDA -> Code -> Rollout
+Context Kit -> PRD / Specs -> Flows -> Contracts ->DDA -> Code -> Rollout
 
 | Stage       | Owner      | AI Role                                      |
 | ----------- | ---------- | -------------------------------------------- |
 | Context Kit | Human      | Facilitates exploration and decisions        |
 | PRD / Specs | Human + AI | Drafts and refines on request                |
+| Flows       | Human + AI | Maps out user journeys and interactions      |
+| Contracts   | Human + AI | Defines interfaces and data contracts        |
 | DDA         | Human + AI | Generates scaffold, authors docs, flags gaps |
 | Code        | AI         | Generates against Playbook contracts         |
 | Rollout     | AI         | Compiles on demand from DDA                  |
