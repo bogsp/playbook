@@ -1,4 +1,5 @@
 # Playbook — Session Prompts
+# File: playbook/kit/00-prompts.md
 
 Quick reference for every session type. Copy and paste as needed.
 
@@ -56,7 +57,9 @@ Upload .playbook/00-playbook.md + docs/code-standards.md, then send:
 Before any work, read in this order:
 1. .playbook/00-playbook.md
 2. docs/code-standards.md
-3. .playbook/_index.md
+3. docs/flows/_index.md (if flows exist)
+4. docs/contracts/_index.md (if contracts exist)
+5. .playbook/_index.md
 
 [Attach relevant module and component docs]
 
@@ -75,27 +78,49 @@ Confirm your understanding of the project structure before we begin.
 
 ---
 
+## Playbook — Write Flows and Contracts
+
+Attach docs/PRD.md, then send:
+
+Given this PRD, define the flows and contracts for this project.
+
+Flows (docs/flows/):
+- Write docs/flows/_index.md as the entry point table
+- Write docs/contracts/global.md first — architecture, audit, error handling rules
+- Write one flow file per major runtime path (docs/flows/flow-N-name.md)
+- Include all failure paths, not just the happy path
+- Keep files small — one flow per file
+
+Contracts (docs/contracts/):
+- Write docs/contracts/_index.md as the entry point table
+- Write one contract file per flow (docs/contracts/flow-N-name.md)
+- Each contract answers: what rules must every implementation honour?
+
+Flag anything underspecified. Wait for review before writing any DDA docs.
+
+---
+
 ## Playbook — Bootstrap Scaffold from PRD
 
-Attach the PRD, then send:
+Attach the PRD + any approved flow/contract files, then send:
 
-Given this PRD, generate the initial Playbook scaffold.
-Produce _index.md for the project and each module.
+Given this PRD and the approved flows and contracts, generate the initial Playbook scaffold.
+Produce _index.md for the project and each app/module.
 Include a living folder tree in every _index.md with one-line descriptions.
-Create stub docs for all identifiable components, orchestrators,
+Create stub docs for all identifiable components, sequencers,
 concerns, and integrations. Mark all stubs as status: draft.
-For any orchestrators found, include a stub Flow section.
+For any sequencers found, include a stub Flow section referencing the relevant flow files.
 Flag anything underspecified.
 
 ---
 
 ## Playbook — Add New Component
 
-Attach the parent _index.md, then send:
+Attach the parent _index.md + relevant flow file, then send:
 
-Given this parent doc, create a Playbook [type] doc for [plain description].
+Given this parent doc and flow, create a Playbook [type] doc for [plain description].
 Follow Playbook conventions. Flag any missing relationships.
-If type is orchestrator, include a Flow section and a stub Mermaid diagram in Detail.
+If type is sequencer, include a Flow section referencing the flow file and a stub diagram in Detail.
 After creating the doc, provide the updated Structure section for the parent _index.md.
 
 ---
@@ -144,6 +169,7 @@ Run a structured audit against the Playbook pipeline:
 
 2. Audit
    - What exists in .playbook/ already?
+   - Do docs/flows/ and docs/contracts/ exist? Are they complete?
    - Which components have no Playbook doc?
    - Are there layer violations or direct module-to-module imports?
    - Does the code follow naming conventions in code-standards.md?
@@ -163,18 +189,23 @@ After approving the gap report, send:
 
 Proceed with scaffold and reconcile:
 
-1. Scaffold — generate .playbook/ structure around the existing code:
+1. Scaffold flows and contracts if missing:
+   - Create docs/flows/_index.md and docs/contracts/_index.md
+   - Draft stub flow files from what is found in the codebase
+   - Draft docs/contracts/global.md with architecture rules
+
+2. Scaffold .playbook/ structure around the existing code:
    - Create _index.md with living folder tree for the project and each module
    - Create stub Playbook docs (status: draft) for all unmapped components
    - Create stub docs for all concerns and integrations found
    - Do not modify any existing code
 
-2. Reconcile — for each stub, note:
+3. Reconcile — for each stub, note:
    - What the code currently does vs what the doc says
    - Any naming that needs to align with code-standards.md
    - Any structural changes recommended (not required yet)
 
-3. Update kit files — update Current State and append to Progress log.
+4. Update kit files — update Current State and append to Progress log.
 
 Generate all files as markdown code blocks for review.
 
@@ -216,6 +247,7 @@ Run a structured audit against the Playbook pipeline:
    - Note all third-party integrations
 
 2. Audit
+   - Do docs/flows/ and docs/contracts/ exist? Are they complete?
    - Which components have no Playbook doc?
    - Are there layer violations or direct module-to-module imports?
    - Does the code follow naming conventions in code-standards.md?
@@ -235,15 +267,20 @@ After approving the gap report, send:
 
 Proceed with full scaffold:
 
-1. Scaffold .playbook/:
+1. Scaffold flows and contracts:
+   - Draft docs/flows/_index.md and stub flow files from existing codebase
+   - Draft docs/contracts/_index.md and docs/contracts/global.md
+   - Note these are stubs for review — not final
+
+2. Scaffold .playbook/:
    - Create _index.md with living folder tree for the project and each module
    - Create stub Playbook docs (status: draft) for all unmapped components
    - Create stub docs for all concerns and integrations found
    - Do not modify any existing code
 
-2. Reconcile — for each stub, note current code behavior vs doc intention.
+3. Reconcile — for each stub, note current code behavior vs doc intention.
 
-3. Generate all six Context Kit files populated from what was found:
+4. Generate all six Context Kit files populated from what was found:
    - 01-process.md: Phase = Execution, Current focus = Playbook adoption
    - 02-exploration.md: Document any architectural decisions already made
    - 03-execution.md: Goals = full Playbook adoption; tasks = gap report items

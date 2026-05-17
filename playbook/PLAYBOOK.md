@@ -1,4 +1,5 @@
 # Playbook
+# File: playbook/PLAYBOOK.md
 
 The complete pipeline for this project — from idea to deployed code.
 
@@ -7,8 +8,8 @@ The complete pipeline for this project — from idea to deployed code.
 ## What Is Playbook?
 
 Playbook is a structured development pipeline that keeps humans and AI aligned
-at every stage of a project. It combines project management, architecture
-documentation, and code standards into a single coherent system.
+at every stage of a project. It combines project management, flows and contracts,
+architecture documentation, and code standards into a single coherent system.
 
 Everything is defined before it is built. Everything built is reflected in the docs.
 Nothing drifts silently.
@@ -18,13 +19,15 @@ Nothing drifts silently.
 ## The Pipeline
 
 ```
-Context Kit   →   PRD / Specs   →   DDA   →   Code   →   Rollout
+Context Kit -> PRD/Spec -> Flows (docs/flows/) -> Contracts (docs/contracts/) -> DDA -> Code -> Rollout
 ```
 
 | Stage | What It Is | Where It Lives |
 |---|---|---|
 | Context Kit | Thinking, decisions, project management | `kit/` |
 | PRD / Specs | What to build and why | `docs/` |
+| Flows | Runtime paths (split into small files) | `docs/flows/` |
+| Contracts | Implementation boundaries (split into small files) | `docs/contracts/` |
 | DDA | How it is structured and how parts relate | `.playbook/` |
 | Code | Implementation | `src/` |
 | Rollout | Generated snapshots for support and AI context | `docs/rollout/` |
@@ -34,7 +37,7 @@ Context Kit   →   PRD / Specs   →   DDA   →   Code   →   Rollout
 ## Where to Start
 
 ### New project
-1. Read `docs/playbook-guide.md` — Section 3: Starting a New Project
+1. Read `docs/playbook-guide.md`
 2. Upload `kit/01-process.md` + `kit/03-execution.md` to start your first Context Kit session
 3. Work through the pipeline stage by stage
 
@@ -56,6 +59,8 @@ Context Kit   →   PRD / Specs   →   DDA   →   Code   →   Rollout
 |---|---|
 | `.playbook/00-playbook.md` | Start of every AI dev session |
 | `docs/code-standards.md` | Always paired with `00-playbook.md` |
+| `docs/flows/_index.md` | Before writing any sequencer or flow-related DDA doc |
+| `docs/contracts/_index.md` | Alongside flows; before DDA and code changes |
 | `.playbook/_index.md` | Understanding project structure |
 | `kit/00-prompts.md` | Starting or resuming any session |
 | `docs/playbook-guide.md` | Learning the full pipeline |
@@ -65,10 +70,11 @@ Context Kit   →   PRD / Specs   →   DDA   →   Code   →   Rollout
 ## Rules
 
 - Nothing gets coded without a `.playbook/` doc
+- Flows and contracts must be approved before any DDA docs are written
 - Docs stay in sync with code — run sync before every PR
 - All code passes Biome check and format before commit
 - Kit files are updated at the end of every session
-- Progress log is append-only — never edit past entries
+- Progress log is append-only — never edit past dated entries
 
 ---
 

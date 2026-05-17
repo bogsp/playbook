@@ -1,9 +1,9 @@
 ---
-version: 1.0
+version: 1.1
 requires: docs/code-standards.md
 ---
-
 # Playbook — Architecture Reference
+# File: playbook/.playbook/00-playbook.md
 
 > Always load `docs/code-standards.md` alongside this file.
 > This file defines structure. Code standards defines implementation.
@@ -18,7 +18,7 @@ before code is written. The document is the contract. AI generates code from it,
 not ahead of it.
 
 ```
-Context Kit   →   PRD / Specs   →   DDA   →   Code   →   Rollout
+Context Kit -> PRD/Spec -> Flows (docs/flows/) -> Contracts (docs/contracts/) -> DDA -> Code -> Rollout
 ```
 
 ---
@@ -29,15 +29,24 @@ Context Kit   →   PRD / Specs   →   DDA   →   Code   →   Rollout
 .playbook/
   00-playbook.md         — this file; always read first
   _index.md              — project manifest and living folder tree
+  apps/                  — app-level DDA manifests and components
+  packages/              — package-level DDA manifests and components
   _concerns/             — cross-cutting capabilities
   _integrations/         — third-party services and libraries
-  _shared/               — components used across multiple modules
+  _shared/               — components used across multiple apps/modules
   [module]/
     _index.md            — module manifest and folder tree
     [component].md       — individual component docs
 docs/
   code-standards.md      — always loaded with this file
-  playbook-guide.md      — complete pipeline reference
+  flows/
+    _index.md            — flows entry point (read this first)
+    global.md            — rules that apply to every flow
+    flow-*.md            — one file per flow
+  contracts/
+    _index.md            — contracts entry point (read this first)
+    global.md            — rules that apply to every contract
+    flow-*.md            — one file per flow, companion to flows/
   rollout/               — generated snapshots; never edit directly
 kit/
   00-prompts.md          — session start prompts
@@ -51,11 +60,11 @@ PLAYBOOK.md              — pipeline starter; read first on any new machine
 ```
 
 Rules:
-- `_index.md` is the manifest at every level — project and module
+- `_index.md` is the manifest at every level — project, app, and module
 - `_concerns/`, `_integrations/`, `_shared/` always live at `.playbook/` root
-- Files: `kebab-case.md` — IDs must match filenames exactly
+- Files: `kebab-case.md` — IDs must match filenames exactly (except `_index.md`)
 - Folders: `kebab-case` — reserved folders use leading underscore
-- Max folder depth: 2 levels unless a module grows complex
+- Keep docs small: one responsibility per doc/file; max ~150 lines
 
 ---
 
@@ -66,8 +75,8 @@ Rules:
 All types share:
 
 ```
-id:      # kebab-case — must match filename
-type:    # component | orchestrator | structure | concern | integration
+id:      # kebab-case — must match filename (except _index.md)
+type:    # component | sequencer | structure | concern | integration
 status:  # draft | active | deprecated
 ```
 
@@ -75,142 +84,96 @@ status:  # draft | active | deprecated
 
 ### structure
 
-Project or module manifest. Defines scaffold, shape, and the living folder tree.
+Project/module/app manifest. Defines scaffold, shape, and the living folder tree.
+Always includes a `## Structure` section — linked annotated tree of everything in scope.
 
 ```
 ---
-id: billing-module
+id: orchestrator
 type: structure
-scope: module
+scope: app
 status: active
-entry: [billing-orchestrator]
-contains: [billing-orchestrator, invoice-validator, invoice-factory, invoice-repository]
-integrations: [stripe]
+entry: [orchestrator-flow]
+contains: [orchestrator-flow, task-claimer, task-scheduler]
+integrations: [convex]
 concerns: [logging, auth, error-handling]
 ---
-Owns all invoice lifecycle operations from creation to posting.
-Exposes functionality only through its orchestrators.
-Nothing outside this module imports directly from it.
+Orchestrator app for the AI stack. Owns task coordination and agent dispatch.
 
 ## Structure
-
-- [_index.md](./_index.md) — this file; billing module manifest
-- [billing-orchestrator.md](./billing-orchestrator.md) — coordinates invoice creation flow
-- [invoice-validator.md](./invoice-validator.md) — validates structure and business rules
-- [invoice-factory.md](./invoice-factory.md) — constructs invoice domain object
-- [invoice-repository.md](./invoice-repository.md) — persists and retrieves invoices
+- [_index.md](./_index.md) — this file; manifest
+- [orchestrator-flow.md](./orchestrator-flow.md) — sequencer doc
+- [task-claimer.md](./task-claimer.md) — atomic task claim transaction
+- [task-scheduler.md](./task-scheduler.md) — FIFO dispatch and resource gating
 ```
 
 ---
 
-### orchestrator
+### sequencer
 
-A runtime shell that sequences components. Owns flow, not logic.
-Always includes a Flow section and a Mermaid diagram in Detail.
+A runtime coordinator. Owns flow and sequencing, not business logic. Always references
+`docs/flows/` and `docs/contracts/` rather than restating them. Always includes a
+`## Flow` section and (optionally) a Mermaid diagram in `## Detail`.
 
 ```
 ---
-id: billing-orchestrator
-type: orchestrator
+id: orchestrator-flow
+type: sequencer
 status: active
-parent: billing-module
-triggers: [CreateInvoiceCommand]
-sequence: [invoice-validator, invoice-factory, invoice-repository]
-emits: [InvoiceCreated]
+parent: orchestrator
+triggers: [TaskSubmitted]
+sequence: [task-claimer, task-scheduler, role-resolver]
+emits: [TaskDispatched]
 concerns: [logging, auth]
 ---
-Coordinates the full invoice creation flow. Owns sequence, not logic.
+Coordinates the orchestrator-side portions of the task lifecycle.
+References docs/flows/flow-1-task.md and docs/contracts/flow-1-task.md
+as source of truth — does not restate them.
 
 ## Flow
-
-1. `CreateInvoiceCommand` — triggers this orchestrator
-2. [invoice-validator](./invoice-validator.md) — validates structure and rules → `InvoiceValidated` or fails
-3. [invoice-factory](./invoice-factory.md) — constructs domain object → `InvoiceDraft`
-4. [invoice-repository](./invoice-repository.md) — persists to DB → `InvoiceCreated`
-5. `InvoiceCreated` — emitted on success
-
-## Detail
-
-sequenceDiagram
-  Command->>BillingOrchestrator: CreateInvoiceCommand
-  BillingOrchestrator->>InvoiceValidator: validate()
-  InvoiceValidator-->>BillingOrchestrator: InvoiceValidated
-  BillingOrchestrator->>InvoiceFactory: create()
-  InvoiceFactory-->>BillingOrchestrator: InvoiceDraft
-  BillingOrchestrator->>InvoiceRepository: save()
-  InvoiceRepository-->>BillingOrchestrator: InvoiceCreated
+1. Load docs/flows/flow-1-task.md + docs/contracts/flow-1-task.md
+2. On TaskSubmitted:
+   a. [task-claimer](./task-claimer.md) — atomic claim
+   b. [task-scheduler](./task-scheduler.md) — resource-aware dispatch gate
+   c. [role-resolver](./role-resolver.md) — resolve role from task metadata
 ```
 
 ---
 
 ### component
 
-A single unit of logic — service, entity, handler, use case, repository.
+A single unit of logic — service, use case, handler, repository, adapter implementation.
 
 ```
 ---
-id: invoice-validator
+id: task-claimer
 type: component
 status: active
-parent: billing-orchestrator
-children: [line-item-checker, tax-calculator]
-connects: [invoice-repository]
-emits: [InvoiceValidated, InvoiceRejected]
+parent: orchestrator-flow
+connects: [task-scheduler]
+emits: [TaskClaimed]
 concerns: [logging, error-handling]
 ---
-Validates invoice structure and business rules before posting.
-Checks line item balances, tax calculations, and required fields.
-Returns a typed Result — never throws.
+Performs atomic Convex transaction to claim a queued task.
+First write wins — prevents duplicate execution on concurrent dispatch or restart.
 
 ## Detail
-<!-- Expanded spec, edge cases, clarifications -->
+- Atomic Convex transaction: claim + attempt increment in one write
+- Concurrent claim attempt: first write wins, second discarded
+- Follows docs/contracts/flow-1-task.md (CLAIMING section)
 ```
 
 ---
 
 ### concern
 
-A cross-cutting capability that multiple components depend on.
-
-```
----
-id: logging
-type: concern
-status: active
-affects: all
-provided-by: internal
----
-Structured logging available to all components.
-Writes JSON-formatted logs with trace IDs.
-Never called directly — injected via DI container.
-
-## Detail
-<!-- Configuration, log levels, output format -->
-```
+Cross-cutting capability that affects multiple modules/apps (logging, auth, error handling).
 
 ---
 
 ### integration
 
-A third-party service or external library contract.
-
-```
----
-id: stripe
-type: integration
-kind: external-service
-status: active
-used-by: [payment-orchestrator, invoice-repository]
-config: [STRIPE_SECRET_KEY, STRIPE_WEBHOOK_SECRET]
-docs: https://stripe.com/docs
----
-Handles payment processing and webhook events.
-All interactions go through PaymentOrchestrator only.
-No other component imports or calls Stripe directly.
-
-## Detail
-<!-- Webhook events handled, error codes, rate limits -->
-```
+External boundary contract (Convex, Postgres, WorkOS, Docker, llama.cpp).
 
 ---
 
@@ -218,43 +181,18 @@ No other component imports or calls Stripe directly.
 
 Planned path (preferred):
 ```
-Context Kit → PRD/Spec → Playbook doc → Code
+Context Kit -> PRD/Spec -> Flows/Contracts -> DDA -> Code
 ```
 
 Emergent path (acceptable):
 ```
-Playbook doc → Code   (document immediately, then code)
+DDA -> Code   (document immediately, then code)
 ```
 
 Prohibited:
 ```
-Code without a Playbook doc — never
-```
-
----
-
-## Generation Modes
-
-Bootstrap — generate full scaffold from PRD:
-```
-Given this PRD [attach], generate the Playbook scaffold.
-Produce _index.md for the project and each module.
-Create stub docs for all identifiable components, orchestrators,
-concerns, and integrations. Mark all stubs as status: draft.
-Flag anything underspecified.
-```
-
-Authoring — add a new component:
-```
-Given this parent doc [attach _index.md], create a Playbook [type] doc
-for [plain description]. Flag any missing relationships.
-```
-
-Sync — update a doc when code drifts:
-```
-This Playbook doc [attach] no longer reflects the implementation.
-Here is what changed: [description]. Update it.
-Note the change in the Detail section.
+DDA doc without an approved flow — never
+Code without a DDA doc — never
 ```
 
 ---
@@ -264,10 +202,12 @@ Note the change in the Detail section.
 ```
 1. .playbook/00-playbook.md          — this file
 2. docs/code-standards.md            — implementation rules
-3. .playbook/_index.md               — project shape
-4. .playbook/[module]/_index.md      — module shape
-5. Relevant component docs           — specific context
-6. _concerns/ + _integrations/       — dependencies
+3. docs/flows/_index.md              — flows entry point (as needed)
+4. docs/contracts/_index.md          — contracts entry point (as needed)
+5. .playbook/_index.md               — project shape
+6. .playbook/apps/*/_index.md        — app shapes (as needed)
+7. Relevant component/sequencer docs — task-scoped
+8. _concerns/ + _integrations/       — cross-cutting + boundaries
 ```
 
 Scoped packages — load only what the task needs:
@@ -275,8 +215,9 @@ Scoped packages — load only what the task needs:
 ```
 New component:   00-playbook.md + code-standards.md + module _index.md + parent doc + _concerns/
 Bug fix:         00-playbook.md + code-standards.md + component doc + its connects + concerns
-Rollout doc:     Full .playbook/ tree + 04-progress.md
+Rollout doc:     Full .playbook/ tree + kit/04-progress.md
 Write tests:     Component doc + code-standards.md (testing section)
+DDA doc:         Relevant flow file + contract file + parent _index.md
 ```
 
 ---
@@ -284,48 +225,20 @@ Write tests:     Component doc + code-standards.md (testing section)
 ## AI Behavioral Rules
 
 ```
-1.  Never write code for a component without its Playbook doc
-2.  Never add a dependency not declared in connects or integrations
-3.  Never create a component that duplicates an existing responsibility
-4.  Always implement against the declared interface in the doc
-5.  Flag any doc with status: draft before coding against it
-6.  Suggest _shared/ when a component is referenced across modules
-7.  Run sync mode before closing any task
-8.  Confirm all touched Playbook docs are current before every PR
-9.  Cross-check new components against _shared/ before creating module-level ones
-10. Flag missing connects, emits, or children as TODO during generation
-11. Update the living folder tree in _index.md when components are added or removed
+1.  Never write a DDA doc without first reading the relevant flow and contract files
+2.  Never write code for a component without its Playbook doc
+3.  Never add a dependency not declared in connects or integrations
+4.  Never create a component that duplicates an existing responsibility
+5.  Always implement against the declared interface in the doc
+6.  Flag any doc with status: draft before coding against it
+7.  Suggest _shared/ when a component appears in multiple modules
+8.  Run sync mode before closing any task
+9.  Confirm all touched Playbook docs are current before every PR
+10. Cross-check new components against _shared/ before creating module-level ones
+11. Flag missing connects, emits, or children as TODO during generation
+12. Update the living folder tree in _index.md when components change
+13. Flows and contracts are locked before any DDA docs are authored
 ```
-
----
-
-## Living Folder Tree
-
-Every `_index.md` maintains a Structure section — a linked, annotated tree
-of everything in that scope. Update it whenever components are added, removed,
-or renamed. AI updates this automatically in sync mode.
-
-Format:
-```
-## Structure
-
-- [_index.md](./_index.md) — [one line description]
-- [component.md](./component.md) — [one line description]
-- [sub-module/](./ sub-module/)
-  - [_index.md](./sub-module/_index.md) — [one line description]
-```
-
----
-
-## Orchestrator Flow
-
-Every orchestrator doc includes:
-
-1. A Flow section in the body — annotated numbered sequence with linked components.
-   This is the primary reference. Edit here; code follows via sync.
-
-2. A Mermaid sequence diagram in Detail — visual representation.
-   Keep it in sync with the Flow section above it.
 
 ---
 
@@ -336,36 +249,9 @@ Run at the end of every development phase:
 ```
 1. biome check        — zero errors
 2. biome format       — zero diffs
-3. vitest run         — all pass, coverage gates met
+3. tests              — all pass (where configured)
 4. Playbook sync      — all touched .playbook/ docs reflect current code
 5. Folder trees       — all _index.md Structure sections are current
-6. Git commits        — grouped by scope; all changes pushed
-7. Kit files          — 01-process.md, 03-execution.md, 04-progress.md updated
-8. Rollout doc        — generated if a milestone completed
-```
-
----
-
-## Error Mitigation
-
-Categories and responses:
-
-```
-Type errors          — fix immediately; do not suppress
-Biome failures       — fix before commit; never bypass
-Test failures        — fix before merging; no exceptions
-Playbook drift       — run sync mode; update doc then verify code
-Coverage drop        — add missing tests before PR
-Layer violation      — refactor immediately; do not defer
-Emergent component   — author Playbook doc first; then continue
-```
-
-Immediate response protocol:
-```
-1. Stop      — do not accumulate changes on a broken state
-2. Identify  — what category?
-3. Isolate   — code, doc, or both?
-4. Fix       — resolve at source; do not patch symptoms
-5. Verify    — re-run Phase Completion Checklist
-6. Log       — add Fixed entry to 04-progress.md
+6. Kit files          — 01-process.md, 03-execution.md, 04-progress.md updated
+7. Rollout doc        — generated if a milestone completed
 ```
