@@ -1,4 +1,5 @@
 # Playbook
+
 # File: playbook/PLAYBOOK.md
 
 The complete pipeline for this project — from idea to deployed code.
@@ -22,48 +23,51 @@ Nothing drifts silently.
 Context Kit -> PRD/Spec -> Flows (docs/flows/) -> Contracts (docs/contracts/) -> DDA -> Code -> Rollout
 ```
 
-| Stage | What It Is | Where It Lives |
-|---|---|---|
-| Context Kit | Thinking, decisions, project management | `kit/` |
-| PRD / Specs | What to build and why | `docs/` |
-| Flows | Runtime paths (split into small files) | `docs/flows/` |
-| Contracts | Implementation boundaries (split into small files) | `docs/contracts/` |
-| DDA | How it is structured and how parts relate | `.playbook/` |
-| Code | Implementation | `src/` |
-| Rollout | Generated snapshots for support and AI context | `docs/rollout/` |
+| Stage       | What It Is                                         | Where It Lives    |
+| ----------- | -------------------------------------------------- | ----------------- |
+| Context Kit | Thinking, decisions, project management            | `.kit/`           |
+| PRD / Specs | What to build and why                              | `docs/`           |
+| Flows       | Runtime paths (split into small files)             | `docs/flows/`     |
+| Contracts   | Implementation boundaries (split into small files) | `docs/contracts/` |
+| DDA         | How it is structured and how parts relate          | `.playbook/`      |
+| Code        | Implementation                                     | `src/`            |
+| Rollout     | Generated snapshots for support and AI context     | `docs/rollout/`   |
 
 ---
 
 ## Where to Start
 
 ### New project
+
 1. Read `docs/playbook-guide.md`
-2. Upload `kit/01-process.md` + `kit/03-execution.md` to start your first Context Kit session
+2. Upload `.kit/01-process.md` + `.kit/03-execution.md` to start your first Context Kit session
 3. Work through the pipeline stage by stage
 
 ### Existing project (adopting Playbook)
+
 1. Read `guides/adopt-with-kit.md` or `guides/adopt-without-kit.md`
 2. Run the structured audit prompt
 3. Scaffold `.playbook/` around existing code
 4. Adopt incrementally — nothing breaks
 
 ### Resuming work
+
 1. Upload your current kit files and relevant `.playbook/` docs
-2. Use the session prompts in `kit/00-prompts.md`
+2. Use the session prompts in `.kit/00-prompts.md`
 
 ---
 
 ## Key Files
 
-| File | Read When |
-|---|---|
-| `.playbook/00-playbook.md` | Start of every AI dev session |
-| `docs/code-standards.md` | Always paired with `00-playbook.md` |
-| `docs/flows/_index.md` | Before writing any sequencer or flow-related DDA doc |
-| `docs/contracts/_index.md` | Alongside flows; before DDA and code changes |
-| `.playbook/_index.md` | Understanding project structure |
-| `kit/00-prompts.md` | Starting or resuming any session |
-| `docs/playbook-guide.md` | Learning the full pipeline |
+| File                       | Read When                                            |
+| -------------------------- | ---------------------------------------------------- |
+| `.playbook/00-playbook.md` | Start of every AI dev session                        |
+| `docs/code-standards.md`   | Always paired with `00-playbook.md`                  |
+| `docs/flows/_index.md`     | Before writing any sequencer or flow-related DDA doc |
+| `docs/contracts/_index.md` | Alongside flows; before DDA and code changes         |
+| `.playbook/_index.md`      | Understanding project structure                      |
+| `.kit/00-prompts.md`       | Starting or resuming any session                     |
+| `docs/playbook-guide.md`   | Learning the full pipeline                           |
 
 ---
 
@@ -78,4 +82,4 @@ Context Kit -> PRD/Spec -> Flows (docs/flows/) -> Contracts (docs/contracts/) ->
 
 ---
 
-*The doc is the contract. The code follows.*
+_The doc is the contract. The code follows._

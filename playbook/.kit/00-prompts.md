@@ -1,5 +1,6 @@
 # Playbook — Session Prompts
-# File: playbook/kit/00-prompts.md
+
+# File: playbook/.kit/00-prompts.md
 
 Quick reference for every session type. Copy and paste as needed.
 
@@ -8,7 +9,8 @@ Quick reference for every session type. Copy and paste as needed.
 ## Context Kit — Fresh Project
 
 ### Message 1
-Upload kit/01-process.md + kit/03-execution.md, then send:
+
+Upload .kit/01-process.md + .kit/03-execution.md, then send:
 
 I'm starting a new project using the Playbook pipeline. I'll share files in two messages.
 
@@ -16,6 +18,7 @@ This message: Blank templates for Process and Execution
 Next message: Blank templates for Exploration and Progress
 
 Based on my project [1-2 sentence description], help me populate these files:
+
 - Draft initial Exploration questions
 - Suggest guidelines for Execution
 - Define my Current State and initial goals
@@ -23,7 +26,8 @@ Based on my project [1-2 sentence description], help me populate these files:
 Just provide a brief confirmation.
 
 ### Message 2
-Upload kit/02-exploration.md + kit/04-progress.md, then send:
+
+Upload .kit/02-exploration.md + .kit/04-progress.md, then send:
 
 Here are the remaining blank templates. Just provide a brief confirmation.
 
@@ -32,7 +36,8 @@ Here are the remaining blank templates. Just provide a brief confirmation.
 ## Context Kit — Resume Project
 
 ### Message 1
-Upload current kit/01-process.md + kit/03-execution.md, then send:
+
+Upload current .kit/01-process.md + .kit/03-execution.md, then send:
 
 I'm resuming a Playbook project. I'll share files in two messages.
 
@@ -43,7 +48,8 @@ Focus only on Current State. Do not reopen closed decisions unless I ask.
 Follow all guidelines and quality standards in Execution. Just provide a brief confirmation.
 
 ### Message 2
-Upload current kit/02-exploration.md + kit/04-progress.md, then send:
+
+Upload current .kit/02-exploration.md + .kit/04-progress.md, then send:
 
 Here is the context from earlier work. Just provide a brief confirmation.
 [Optionally describe what you want to work on this session.]
@@ -55,11 +61,12 @@ Here is the context from earlier work. Just provide a brief confirmation.
 Upload .playbook/00-playbook.md + docs/code-standards.md, then send:
 
 Before any work, read in this order:
+
 1. .playbook/00-playbook.md
 2. docs/code-standards.md
-3. docs/flows/_index.md (if flows exist)
-4. docs/contracts/_index.md (if contracts exist)
-5. .playbook/_index.md
+3. docs/flows/\_index.md (if flows exist)
+4. docs/contracts/\_index.md (if contracts exist)
+5. .playbook/\_index.md
 
 [Attach relevant module and component docs]
 
@@ -85,14 +92,16 @@ Attach docs/PRD.md, then send:
 Given this PRD, define the flows and contracts for this project.
 
 Flows (docs/flows/):
-- Write docs/flows/_index.md as the entry point table
+
+- Write docs/flows/\_index.md as the entry point table
 - Write docs/contracts/global.md first — architecture, audit, error handling rules
 - Write one flow file per major runtime path (docs/flows/flow-N-name.md)
 - Include all failure paths, not just the happy path
 - Keep files small — one flow per file
 
 Contracts (docs/contracts/):
-- Write docs/contracts/_index.md as the entry point table
+
+- Write docs/contracts/\_index.md as the entry point table
 - Write one contract file per flow (docs/contracts/flow-N-name.md)
 - Each contract answers: what rules must every implementation honour?
 
@@ -105,8 +114,8 @@ Flag anything underspecified. Wait for review before writing any DDA docs.
 Attach the PRD + any approved flow/contract files, then send:
 
 Given this PRD and the approved flows and contracts, generate the initial Playbook scaffold.
-Produce _index.md for the project and each app/module.
-Include a living folder tree in every _index.md with one-line descriptions.
+Produce \_index.md for the project and each app/module.
+Include a living folder tree in every \_index.md with one-line descriptions.
 Create stub docs for all identifiable components, sequencers,
 concerns, and integrations. Mark all stubs as status: draft.
 For any sequencers found, include a stub Flow section referencing the relevant flow files.
@@ -116,12 +125,12 @@ Flag anything underspecified.
 
 ## Playbook — Add New Component
 
-Attach the parent _index.md + relevant flow file, then send:
+Attach the parent \_index.md + relevant flow file, then send:
 
 Given this parent doc and flow, create a Playbook [type] doc for [plain description].
 Follow Playbook conventions. Flag any missing relationships.
 If type is sequencer, include a Flow section referencing the flow file and a stub diagram in Detail.
-After creating the doc, provide the updated Structure section for the parent _index.md.
+After creating the doc, provide the updated Structure section for the parent \_index.md.
 
 ---
 
@@ -132,13 +141,13 @@ Send before every PR:
 Run a Playbook sync check on all files touched this session.
 For each: does the code match the Playbook doc?
 List any mismatches. Update affected docs.
-Update the living folder tree in any _index.md where components were added or removed.
+Update the living folder tree in any \_index.md where components were added or removed.
 
 ---
 
 ## Playbook — Generate Rollout Doc
 
-Attach all .playbook/ docs + kit/04-progress.md, then send:
+Attach all .playbook/ docs + .kit/04-progress.md, then send:
 
 Generate a rollout doc for [milestone name].
 Read the full .playbook/ tree and 04-progress.md.
@@ -149,12 +158,14 @@ Output to docs/rollout/[milestone].md.
 ## Adopt Existing Project — With Context Kit
 
 ### Message 1
+
 Upload .playbook/00-playbook.md + docs/code-standards.md, then send:
 
 I am adopting the Playbook pipeline for an existing project that already uses Context Kit.
 Read these two files first. Just confirm you have read them. Do not begin any work yet.
 
 ### Message 2
+
 Upload all existing kit files + any available docs or specs, then send:
 
 Here is the existing project context. The Context Kit files are the current source of truth.
@@ -185,17 +196,18 @@ Run a structured audit against the Playbook pipeline:
 Wait for my review before proceeding to scaffold.
 
 ### Message 3
+
 After approving the gap report, send:
 
 Proceed with scaffold and reconcile:
 
 1. Scaffold flows and contracts if missing:
-   - Create docs/flows/_index.md and docs/contracts/_index.md
+   - Create docs/flows/\_index.md and docs/contracts/\_index.md
    - Draft stub flow files from what is found in the codebase
    - Draft docs/contracts/global.md with architecture rules
 
 2. Scaffold .playbook/ structure around the existing code:
-   - Create _index.md with living folder tree for the project and each module
+   - Create \_index.md with living folder tree for the project and each module
    - Create stub Playbook docs (status: draft) for all unmapped components
    - Create stub docs for all concerns and integrations found
    - Do not modify any existing code
@@ -210,11 +222,13 @@ Proceed with scaffold and reconcile:
 Generate all files as markdown code blocks for review.
 
 ### Message 4
+
 After reviewing scaffolded docs, send:
 
 Scaffolding approved. Begin incremental adoption:
 
 Work through the gap report in priority order. For each item:
+
 1. Author or update the Playbook doc to status: active
 2. Identify any code changes needed to comply
 3. Flag changes that could break existing behavior — do not make them yet
@@ -229,12 +243,14 @@ Run the Phase Completion Checklist after each item.
 ## Adopt Existing Project — Without Context Kit
 
 ### Message 1
+
 Upload .playbook/00-playbook.md + docs/code-standards.md, then send:
 
 I am adopting the Playbook pipeline for an existing project with no Context Kit files.
 Read these two files first. Just confirm you have read them. Do not begin any work yet.
 
 ### Message 2
+
 Upload any available docs (README, specs, architecture notes) + key source files, then send:
 
 Here is the existing project context. There are no Context Kit files yet.
@@ -263,17 +279,18 @@ Run a structured audit against the Playbook pipeline:
 Wait for my review before proceeding.
 
 ### Message 3
+
 After approving the gap report, send:
 
 Proceed with full scaffold:
 
 1. Scaffold flows and contracts:
-   - Draft docs/flows/_index.md and stub flow files from existing codebase
-   - Draft docs/contracts/_index.md and docs/contracts/global.md
+   - Draft docs/flows/\_index.md and stub flow files from existing codebase
+   - Draft docs/contracts/\_index.md and docs/contracts/global.md
    - Note these are stubs for review — not final
 
 2. Scaffold .playbook/:
-   - Create _index.md with living folder tree for the project and each module
+   - Create \_index.md with living folder tree for the project and each module
    - Create stub Playbook docs (status: draft) for all unmapped components
    - Create stub docs for all concerns and integrations found
    - Do not modify any existing code
@@ -291,11 +308,13 @@ Proceed with full scaffold:
 Generate all files as markdown code blocks for review.
 
 ### Message 4
+
 After reviewing, send:
 
 Scaffolding approved. Begin incremental adoption:
 
 Work through the gap report in priority order. For each item:
+
 1. Author or update the Playbook doc to status: active
 2. Identify any code changes needed to comply
 3. Flag changes that could break existing behavior — do not make them yet
@@ -312,11 +331,12 @@ Run the Phase Completion Checklist after each item.
 Send at the end of every development phase:
 
 Before we close this phase:
+
 1. Run biome check — confirm zero errors
 2. Run biome format --write — confirm zero diffs
 3. Confirm all tests pass and coverage gates are met
 4. Run Playbook sync check on all touched .playbook/ docs
-5. Update the living folder tree in any _index.md where components changed
+5. Update the living folder tree in any \_index.md where components changed
 6. Confirm all changes are committed and pushed (grouped by scope)
 7. Update 01-process.md, 03-execution.md, and 04-progress.md
 8. Generate a rollout doc if a milestone was completed
@@ -330,6 +350,7 @@ Generate updated markdown for all changed kit files.
 Send at the end of any session:
 
 Before we close:
+
 1. Run Playbook sync check on all docs touched this session
 2. Update 04-progress.md with completions, decisions, and fixes
 3. Update Current State in 01-process.md

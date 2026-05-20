@@ -74,12 +74,12 @@ Interface     → tRPC routers, WebSocket handlers, CLI; thin translation layer 
 
 ```json
 {
-  "compilerOptions": {
-    "strict": true,
-    "noUncheckedIndexedAccess": true,
-    "noImplicitOverride": true,
-    "exactOptionalPropertyTypes": true
-  }
+	"compilerOptions": {
+		"strict": true,
+		"noUncheckedIndexedAccess": true,
+		"noImplicitOverride": true,
+		"exactOptionalPropertyTypes": true
+	}
 }
 ```
 
@@ -124,14 +124,12 @@ All Domain and Application layer functions return `Result<T, E>`. No raw `throw`
 // packages/platform-core/src/types/result.ts
 
 export type Result<T, E> =
-  | { readonly ok: true; readonly value: T }
-  | { readonly ok: false; readonly error: E };
+	| { readonly ok: true; readonly value: T }
+	| { readonly ok: false; readonly error: E }
 
-export const ok = <T>(value: T): Result<T, never> =>
-  ({ ok: true, value });
+export const ok = <T>(value: T): Result<T, never> => ({ ok: true, value })
 
-export const err = <E>(error: E): Result<never, E> =>
-  ({ ok: false, error });
+export const err = <E>(error: E): Result<never, E> => ({ ok: false, error })
 ```
 
 ### Error Hierarchy
@@ -145,27 +143,30 @@ BizKitError (base)
 
 ```typescript
 export class BizKitError extends Error {
-  constructor(message: string, public readonly code: string) {
-    super(message);
-    this.name = this.constructor.name;
-  }
+	constructor(
+		message: string,
+		public readonly code: string,
+	) {
+		super(message)
+		this.name = this.constructor.name
+	}
 }
 
 export class InvoiceNotFoundError extends ApplicationError {
-  constructor(id: string) {
-    super(`Invoice not found: ${id}`, "INVOICE_NOT_FOUND");
-  }
+	constructor(id: string) {
+		super(`Invoice not found: ${id}`, 'INVOICE_NOT_FOUND')
+	}
 }
 ```
 
 ### Layer Responsibilities
 
-| Layer | Behavior |
-|---|---|
-| Domain | Returns `Result<T, DomainError>` — never throws |
-| Application | Returns `Result<T, ApplicationError>` — maps domain errors up |
-| Infrastructure | May throw — caught at boundary and wrapped in `InfrastructureError` |
-| Interface (tRPC) | Only layer that maps errors to transport codes |
+| Layer            | Behavior                                                            |
+| ---------------- | ------------------------------------------------------------------- |
+| Domain           | Returns `Result<T, DomainError>` — never throws                     |
+| Application      | Returns `Result<T, ApplicationError>` — maps domain errors up       |
+| Infrastructure   | May throw — caught at boundary and wrapped in `InfrastructureError` |
+| Interface (tRPC) | Only layer that maps errors to transport codes                      |
 
 ### tRPC Error Mapping
 
@@ -190,22 +191,22 @@ export class InvoiceNotFoundError extends ApplicationError {
 ```typescript
 // ❌ Wrong — nested, hard to follow
 function process(order: Order) {
-  if (order.status === "pending") {
-    if (order.items.length > 0) {
-      if (order.total > 0) {
-        // process...
-      }
-    }
-  }
+	if (order.status === 'pending') {
+		if (order.items.length > 0) {
+			if (order.total > 0) {
+				// process...
+			}
+		}
+	}
 }
 
 // ✅ Correct — guard clauses, flat structure
 function process(order: Order): Result<void, OrderError> {
-  if (order.status !== "pending") return err(new InvalidOrderStatusError());
-  if (order.items.length === 0) return err(new EmptyOrderError());
-  if (order.total <= 0) return err(new InvalidOrderTotalError());
-  // process...
-  return ok(undefined);
+	if (order.status !== 'pending') return err(new InvalidOrderStatusError())
+	if (order.items.length === 0) return err(new EmptyOrderError())
+	if (order.total <= 0) return err(new InvalidOrderTotalError())
+	// process...
+	return ok(undefined)
 }
 ```
 
@@ -235,13 +236,13 @@ import { createInvoice } from "./invoices/create-invoice";
 
 ```typescript
 const CreateInvoiceInput = z.object({
-  tenantId: z.string().uuid(),
-  customerId: z.string().uuid(),
-  lineItems: z.array(LineItemSchema).min(1),
-  dueDate: z.coerce.date(),
-});
+	tenantId: z.string().uuid(),
+	customerId: z.string().uuid(),
+	lineItems: z.array(LineItemSchema).min(1),
+	dueDate: z.coerce.date(),
+})
 
-type CreateInvoiceInput = z.infer<typeof CreateInvoiceInput>;
+type CreateInvoiceInput = z.infer<typeof CreateInvoiceInput>
 ```
 
 ### General
@@ -257,18 +258,18 @@ type CreateInvoiceInput = z.infer<typeof CreateInvoiceInput>;
 
 ### General
 
-| Thing | Convention | Example |
-|---|---|---|
-| Files | `kebab-case` | `create-invoice.ts` |
-| Directories | `kebab-case` | `use-cases/` |
-| Classes | `PascalCase` | `InvoiceRepository` |
-| Interfaces | `PascalCase` (`I` prefix) | `IInvoiceRepository` |
-| Types | `PascalCase` | `CreateInvoiceInput` |
-| Functions | `camelCase` | `createInvoice()` |
-| Variables | `camelCase` | `lineItemTotal` |
-| Constants | `SCREAMING_SNAKE_CASE` | `MAX_LINE_ITEMS` |
-| Enums | `PascalCase` members | `InvoiceStatus.POSTED` |
-| Booleans | Avoid for state modeling; prefer enums/dates/unions | `status: 'draft' \| 'posted'`, `postedAt?: string` |
+| Thing       | Convention                                          | Example                                            |
+| ----------- | --------------------------------------------------- | -------------------------------------------------- |
+| Files       | `kebab-case`                                        | `create-invoice.ts`                                |
+| Directories | `kebab-case`                                        | `use-cases/`                                       |
+| Classes     | `PascalCase`                                        | `InvoiceRepository`                                |
+| Interfaces  | `PascalCase` (`I` prefix)                           | `IInvoiceRepository`                               |
+| Types       | `PascalCase`                                        | `CreateInvoiceInput`                               |
+| Functions   | `camelCase`                                         | `createInvoice()`                                  |
+| Variables   | `camelCase`                                         | `lineItemTotal`                                    |
+| Constants   | `SCREAMING_SNAKE_CASE`                              | `MAX_LINE_ITEMS`                                   |
+| Enums       | `PascalCase` members                                | `InvoiceStatus.POSTED`                             |
+| Booleans    | Avoid for state modeling; prefer enums/dates/unions | `status: 'draft' \| 'posted'`, `postedAt?: string` |
 
 ### Domain and Events
 
@@ -280,14 +281,14 @@ type CreateInvoiceInput = z.infer<typeof CreateInvoiceInput>;
 
 ### Module-Scoped (replace `[module]` with actual module id)
 
-| Resource | Pattern | Example |
-|---|---|---|
-| tRPC routes | `module.resource.action` | `accounting.invoices.create` |
-| Events | `[Module][Entity][Action]` | `AccountingInvoicePosted` |
-| DB tables | `[module]_[table]` | `accounting_invoices` |
-| Permissions | `[module]:[action]` | `accounting:create-invoice` |
-| Settings | `[module].[setting]` | `accounting.default-currency` |
-| Routes | `/[module]/[resource]` | `/accounting/invoices` |
+| Resource    | Pattern                    | Example                       |
+| ----------- | -------------------------- | ----------------------------- |
+| tRPC routes | `module.resource.action`   | `accounting.invoices.create`  |
+| Events      | `[Module][Entity][Action]` | `AccountingInvoicePosted`     |
+| DB tables   | `[module]_[table]`         | `accounting_invoices`         |
+| Permissions | `[module]:[action]`        | `accounting:create-invoice`   |
+| Settings    | `[module].[setting]`       | `accounting.default-currency` |
+| Routes      | `/[module]/[resource]`     | `/accounting/invoices`        |
 
 ---
 
@@ -301,13 +302,13 @@ type CreateInvoiceInput = z.infer<typeof CreateInvoiceInput>;
 
 ### Coverage Gates (enforced in CI)
 
-| Layer | Target | Method |
-|---|---|---|
-| Domain | 100% | Unit tests — pure functions, no dependencies |
-| Application (use cases) | 90%+ | Integration tests with mocked adapters via MSW |
-| Infrastructure | Integration tests | Test against real DB/Redis in CI; no unit mocks |
-| Interface (tRPC) | Key paths + error mapping | Not exhaustive |
-| UI | Critical workflows | Playwright E2E |
+| Layer                   | Target                    | Method                                          |
+| ----------------------- | ------------------------- | ----------------------------------------------- |
+| Domain                  | 100%                      | Unit tests — pure functions, no dependencies    |
+| Application (use cases) | 90%+                      | Integration tests with mocked adapters via MSW  |
+| Infrastructure          | Integration tests         | Test against real DB/Redis in CI; no unit mocks |
+| Interface (tRPC)        | Key paths + error mapping | Not exhaustive                                  |
+| UI                      | Critical workflows        | Playwright E2E                                  |
 
 Build fails in CI if Domain < 100% or Application < 90%.
 
@@ -322,15 +323,15 @@ Build fails in CI if Domain < 100% or Application < 90%.
 
 ```typescript
 // ✅ Good — tests behavior, not internals
-describe("CreateInvoiceUseCase", () => {
-  describe("when line items are empty", () => {
-    it("returns EmptyOrderError", async () => {
-      const result = await useCase.execute({ ...validInput, lineItems: [] });
-      expect(result.ok).toBe(false);
-      expect(result.error).toBeInstanceOf(EmptyLineItemsError);
-    });
-  });
-});
+describe('CreateInvoiceUseCase', () => {
+	describe('when line items are empty', () => {
+		it('returns EmptyOrderError', async () => {
+			const result = await useCase.execute({ ...validInput, lineItems: [] })
+			expect(result.ok).toBe(false)
+			expect(result.error).toBeInstanceOf(EmptyLineItemsError)
+		})
+	})
+})
 ```
 
 ---
@@ -339,12 +340,12 @@ describe("CreateInvoiceUseCase", () => {
 
 ### Branches
 
-| Type | Pattern | Example |
-|---|---|---|
-| Feature | `feature/[scope]/[description]` | `feature/accounting/add-invoice-search` |
-| Fix | `fix/[scope]/[description]` | `fix/accounting/invoice-date-validation` |
-| Milestone | `milestone/[number]-[name]` | `milestone/1-platform-core` |
-| Chore | `chore/[description]` | `chore/update-dependencies` |
+| Type      | Pattern                         | Example                                  |
+| --------- | ------------------------------- | ---------------------------------------- |
+| Feature   | `feature/[scope]/[description]` | `feature/accounting/add-invoice-search`  |
+| Fix       | `fix/[scope]/[description]`     | `fix/accounting/invoice-date-validation` |
+| Milestone | `milestone/[number]-[name]`     | `milestone/1-platform-core`              |
+| Chore     | `chore/[description]`           | `chore/update-dependencies`              |
 
 - `main` is always deployable — no broken builds on main, ever
 - Branch from `main`; merge via PR only
@@ -364,7 +365,7 @@ chore: update Biome to 1.9
 - Imperative mood — "add", "fix", "implement", not "added", "fixes", "implementing"
 - Scope is the module or package name
 - Under 72 characters for the first line
-- Body (optional) explains *why*, not *what*
+- Body (optional) explains _why_, not _what_
 
 ### PR Rules
 
@@ -394,9 +395,9 @@ Single tool for linting and formatting. Replaces ESLint + Prettier.
 ```json
 // biome.json — minimum config
 {
-  "linter": { "enabled": true, "rules": { "recommended": true } },
-  "formatter": { "enabled": true, "indentStyle": "space", "indentWidth": 2 },
-  "organizeImports": { "enabled": true }
+	"linter": { "enabled": true, "rules": { "recommended": true } },
+	"formatter": { "enabled": true, "indentStyle": "space", "indentWidth": 2 },
+	"organizeImports": { "enabled": true }
 }
 ```
 
@@ -409,14 +410,14 @@ Single tool for linting and formatting. Replaces ESLint + Prettier.
 ```typescript
 // vitest.config.ts
 export default defineConfig({
-  test: {
-    coverage: {
-      provider: "v8",
-      thresholds: { lines: 90, functions: 90, branches: 90 },
-      include: ["src/domain/**", "src/application/**"],
-    },
-  },
-});
+	test: {
+		coverage: {
+			provider: 'v8',
+			thresholds: { lines: 90, functions: 90, branches: 90 },
+			include: ['src/domain/**', 'src/application/**'],
+		},
+	},
+})
 ```
 
 ### Playwright
@@ -424,13 +425,13 @@ export default defineConfig({
 ```typescript
 // playwright.config.ts
 export default defineConfig({
-  testDir: "./e2e",
-  use: { baseURL: "http://localhost:3000" },
-  projects: [
-    { name: "chromium", use: { ...devices["Desktop Chrome"] } },
-    // Add Electron project for desktop app tests
-  ],
-});
+	testDir: './e2e',
+	use: { baseURL: 'http://localhost:3000' },
+	projects: [
+		{ name: 'chromium', use: { ...devices['Desktop Chrome'] } },
+		// Add Electron project for desktop app tests
+	],
+})
 ```
 
 ### Zod
@@ -448,12 +449,12 @@ export default defineConfig({
 ```typescript
 // src/env.ts
 const EnvSchema = z.object({
-  DATABASE_URL: z.string().url(),
-  REDIS_URL: z.string().url(),
-  PORT: z.coerce.number().default(3000),
-});
+	DATABASE_URL: z.string().url(),
+	REDIS_URL: z.string().url(),
+	PORT: z.coerce.number().default(3000),
+})
 
-export const env = EnvSchema.parse(process.env);
+export const env = EnvSchema.parse(process.env)
 ```
 
 ---
@@ -487,7 +488,7 @@ this file defines implementation. Neither is complete without the other.
 
 - Minimal, explicit public interfaces — AI reads interfaces to understand module behavior
 - Rich internal implementation — complexity is hidden, not scattered
-- Document the *why* in JSDoc, not just the *what* — AI uses this as reasoning context
+- Document the _why_ in JSDoc, not just the _what_ — AI uses this as reasoning context
 
 ```typescript
 /**
@@ -581,10 +582,10 @@ No phase is complete until all applicable items are checked.
 - **Build failure** — fix Biome/type errors before any other work; do not stack changes on broken builds
 - **Test failure** — revert to last passing commit if cause is unclear; fix forward only if root cause is known
 - **DDA drift** — run sync mode immediately; update the doc before writing any new code on that component
-- **Context rot** — re-upload kit files and DDA docs; use the anchoring prompt in `kit/00-prompts.md`
+- **Context rot** — re-upload kit files and DDA docs; use the anchoring prompt in `.kit/00-prompts.md`
 - **Bad merge** — revert the merge commit; re-apply changes manually with proper review
 
 ---
 
-*This document is the source of truth for code standards. When in doubt, refer here first.*
-*Always load alongside `.context/00-dda.md`.*
+_This document is the source of truth for code standards. When in doubt, refer here first._
+_Always load alongside `.context/00-dda.md`._

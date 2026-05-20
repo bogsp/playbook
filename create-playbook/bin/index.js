@@ -1,56 +1,57 @@
 #!/usr/bin/env node
 // File: create-playbook/bin/index.js
 
-import { createInterface } from 'readline';
-import { mkdirSync, writeFileSync, existsSync } from 'fs';
-import { join } from 'path';
+import { createInterface } from 'readline'
+import { mkdirSync, writeFileSync, existsSync } from 'fs'
+import { join } from 'path'
 
 // ─── CLI Helpers ─────────────────────────────────────────────────────────────
 
-const rl = createInterface({ input: process.stdin, output: process.stdout });
+const rl = createInterface({ input: process.stdin, output: process.stdout })
 
 const ask = (question) =>
-  new Promise((resolve) => rl.question(question, (answer) => resolve(answer.trim())));
+	new Promise((resolve) =>
+		rl.question(question, (answer) => resolve(answer.trim())),
+	)
 
 const confirm = async (question) => {
-  const answer = await ask(`${question} (Y/n): `);
-  return answer.toLowerCase() !== 'n';
-};
+	const answer = await ask(`${question} (Y/n): `)
+	return answer.toLowerCase() !== 'n'
+}
 
 const choose = async (question, options) => {
-  console.log(`\n${question}`);
-  options.forEach((opt, i) => console.log(`  ${i + 1}) ${opt}`));
-  const answer = await ask('Enter number: ');
-  const index = parseInt(answer, 10) - 1;
-  return options[index] ?? options[0];
-};
+	console.log(`\n${question}`)
+	options.forEach((opt, i) => console.log(`  ${i + 1}) ${opt}`))
+	const answer = await ask('Enter number: ')
+	const index = parseInt(answer, 10) - 1
+	return options[index] ?? options[0]
+}
 
 const log = {
-  info:    (msg) => console.log(`\x1b[36m${msg}\x1b[0m`),
-  success: (msg) => console.log(`\x1b[32m✔ ${msg}\x1b[0m`),
-  warn:    (msg) => console.log(`\x1b[33m⚠ ${msg}\x1b[0m`),
-  error:   (msg) => console.log(`\x1b[31m✘ ${msg}\x1b[0m`),
-  blank:   ()    => console.log(''),
-};
+	info: (msg) => console.log(`\x1b[36m${msg}\x1b[0m`),
+	success: (msg) => console.log(`\x1b[32m✔ ${msg}\x1b[0m`),
+	warn: (msg) => console.log(`\x1b[33m⚠ ${msg}\x1b[0m`),
+	error: (msg) => console.log(`\x1b[31m✘ ${msg}\x1b[0m`),
+	blank: () => console.log(''),
+}
 
 const write = (filePath, content) => {
-  const dir = filePath.substring(0, filePath.lastIndexOf('/'));
-  if (dir) mkdirSync(dir, { recursive: true });
-  writeFileSync(filePath, content, 'utf8');
-  log.success(filePath.replace(process.cwd() + '/', ''));
-};
+	const dir = filePath.substring(0, filePath.lastIndexOf('/'))
+	if (dir) mkdirSync(dir, { recursive: true })
+	writeFileSync(filePath, content, 'utf8')
+	log.success(filePath.replace(process.cwd() + '/', ''))
+}
 
 const mkdir = (dirPath) => {
-  mkdirSync(dirPath, { recursive: true });
-  write(`${dirPath}/.gitkeep`, '');
-};
+	mkdirSync(dirPath, { recursive: true })
+	write(`${dirPath}/.gitkeep`, '')
+}
 
 // ─── Templates ───────────────────────────────────────────────────────────────
 
 const t = {
-
-  // PLAYBOOK.md — repo root pipeline starter
-  playbookRoot: (projectName) => `# Playbook
+	// PLAYBOOK.md — repo root pipeline starter
+	playbookRoot: (projectName) => `# Playbook
 
 The complete pipeline for this project — from idea to deployed code.
 
@@ -75,7 +76,7 @@ Context Kit -> PRD/Spec -> Flows (docs/flows/) -> Contracts (docs/contracts/) ->
 
 | Stage | What It Is | Where It Lives |
 |---|---|---|
-| Context Kit | Thinking, decisions, project management | \`kit/\` |
+| Context Kit | Thinking, decisions, project management | \`.kit/\` |
 | PRD / Specs | What to build and why | \`docs/\` |
 | Flows | Runtime paths (split into small files) | \`docs/flows/\` |
 | Contracts | Implementation boundaries (split into small files) | \`docs/contracts/\` |
@@ -89,7 +90,7 @@ Context Kit -> PRD/Spec -> Flows (docs/flows/) -> Contracts (docs/contracts/) ->
 
 ### New project
 1. Read \`docs/playbook-guide.md\`
-2. Upload \`kit/01-process.md\` + \`kit/03-execution.md\` to start your first Context Kit session
+2. Upload \`.kit/01-process.md\` + \`.kit/03-execution.md\` to start your first Context Kit session
 3. Work through the pipeline stage by stage
 
 ### Existing project (adopting Playbook)
@@ -99,7 +100,7 @@ Context Kit -> PRD/Spec -> Flows (docs/flows/) -> Contracts (docs/contracts/) ->
 
 ### Resuming work
 1. Upload your current kit files and relevant \`.playbook/\` docs
-2. Use the session prompts in \`kit/00-prompts.md\`
+2. Use the session prompts in \`.kit/00-prompts.md\`
 
 ---
 
@@ -112,7 +113,7 @@ Context Kit -> PRD/Spec -> Flows (docs/flows/) -> Contracts (docs/contracts/) ->
 | \`docs/flows/_index.md\` | Before writing any sequencer or flow-related DDA doc |
 | \`docs/contracts/_index.md\` | Alongside flows; before DDA and code changes |
 | \`.playbook/_index.md\` | Understanding project structure |
-| \`kit/00-prompts.md\` | Starting or resuming any session |
+| \`.kit/00-prompts.md\` | Starting or resuming any session |
 | \`docs/playbook-guide.md\` | Learning the full pipeline |
 
 ---
@@ -131,8 +132,8 @@ Context Kit -> PRD/Spec -> Flows (docs/flows/) -> Contracts (docs/contracts/) ->
 *The doc is the contract. The code follows.*
 `,
 
-  // .playbook/00-playbook.md — AI boot file
-  playbookAI: () => `---
+	// .playbook/00-playbook.md — AI boot file
+	playbookAI: () => `---
 version: 1.1
 requires: docs/code-standards.md
 ---
@@ -179,7 +180,7 @@ docs/
     flow-*.md            — companion contract to each flow file
   playbook-guide.md      — complete pipeline reference
   rollout/               — generated snapshots; never edit directly
-kit/
+.kit/
   00-prompts.md          — session start prompts
   01-process.md          — workflow rules and current state
   02-exploration.md      — open questions and decisions
@@ -418,8 +419,8 @@ Immediate response protocol:
   6. Log       — add Fixed entry to 04-progress.md
 `,
 
-  // .playbook/_index.md — project manifest with living tree
-  projectIndex: (projectName) => `---
+	// .playbook/_index.md — project manifest with living tree
+	projectIndex: (projectName) => `---
 id: ${projectName}
 type: structure
 scope: project
@@ -453,21 +454,21 @@ integrations: []
     - [_index.md](../docs/contracts/_index.md) — contracts entry point
     - [global.md](../docs/contracts/global.md) — architecture + audit rules; read first always
   - [rollout/](../docs/rollout/) — generated milestone snapshots; never edit directly
-- [kit/](../kit/)
-  - [00-prompts.md](../kit/00-prompts.md) — session start prompts
-  - [01-process.md](../kit/01-process.md) — workflow rules and current state
-  - [02-exploration.md](../kit/02-exploration.md) — open questions and closed decisions
-  - [03-execution.md](../kit/03-execution.md) — guidelines, plan, and tasks
-  - [04-progress.md](../kit/04-progress.md) — append-only progress log
-  - [05-kanban.md](../kit/05-kanban.md) — ticketed work breakdown (optional)
-  - [06-qa.md](../kit/06-qa.md) — test cases and sign-off (optional)
+- [.kit/](../.kit/)
+  - [00-prompts.md](../.kit/00-prompts.md) — session start prompts
+  - [01-process.md](../.kit/01-process.md) — workflow rules and current state
+  - [02-exploration.md](../.kit/02-exploration.md) — open questions and closed decisions
+  - [03-execution.md](../.kit/03-execution.md) — guidelines, plan, and tasks
+  - [04-progress.md](../.kit/04-progress.md) — append-only progress log
+  - [05-kanban.md](../.kit/05-kanban.md) — ticketed work breakdown (optional)
+  - [06-qa.md](../.kit/06-qa.md) — test cases and sign-off (optional)
 
 ## Detail
 <!-- Architecture decisions, constraints, known assumptions -->
 `,
 
-  // Concern template
-  concern: (id, narrative) => `---
+	// Concern template
+	concern: (id, narrative) => `---
 id: ${id}
 type: concern
 status: active
@@ -480,8 +481,8 @@ ${narrative}
 <!-- Configuration, usage notes, examples -->
 `,
 
-  // docs/flows/_index.md
-  flowsIndex: () => `# Flows Index
+	// docs/flows/_index.md
+	flowsIndex: () => `# Flows Index
 
 > All major runtime paths for this project.
 > Each flow is a separate file — read only what you need.
@@ -504,8 +505,8 @@ ${narrative}
 - Individual files kept small — one flow per file; max ~150 lines
 `,
 
-  // docs/contracts/_index.md
-  contractsIndex: () => `# Contracts Index
+	// docs/contracts/_index.md
+	contractsIndex: () => `# Contracts Index
 
 > Implementation contracts companion to flows.
 > Read alongside the relevant flow file.
@@ -527,8 +528,8 @@ Then read the flow file.
 Then write the DDA doc.
 `,
 
-  // docs/flows/global.md
-  flowsGlobal: () => `# Global Flow Rules
+	// docs/flows/global.md
+	flowsGlobal: () => `# Global Flow Rules
 
 > Applies to every flow in this project.
 > Read before any flow-specific file.
@@ -540,8 +541,8 @@ Then write the DDA doc.
      auth boundaries, retry policies, timeout behaviour -->
 `,
 
-  // docs/contracts/global.md
-  contractsGlobal: (language) => `# Global Contracts
+	// docs/contracts/global.md
+	contractsGlobal: (language) => `# Global Contracts
 
 > Applies to every flow, every component, every layer.
 > Read this before any flow-specific contract.
@@ -582,8 +583,8 @@ Structured logging — no console.log
 \`\`\`
 `,
 
-  // code-standards.md
-  codeStandards: (language) => `# Code Standards
+	// code-standards.md
+	codeStandards: (language) => `# Code Standards
 
 > Canonical reference for all projects.
 > Always load alongside \`.playbook/00-playbook.md\` — Playbook defines structure, this defines implementation.
@@ -789,8 +790,8 @@ Context rot recovery:
 *This document is the source of truth for code standards. When in doubt, refer here first.*
 `,
 
-  // kit/01-process.md
-  kitProcess: () => `# PROCESS
+	// .kit/01-process.md
+	kitProcess: () => `# PROCESS
 
 ## Workflow Stages
 1. **Exploration** — Exploring ideas and possibilities
@@ -853,8 +854,8 @@ If rot persists, start a fresh session with a rollout doc as context.
 **Active Modules:** [05-kanban | 06-qa | none]
 `,
 
-  // kit/02-exploration.md
-  kitExploration: () => `# EXPLORATION
+	// .kit/02-exploration.md
+	kitExploration: () => `# EXPLORATION
 
 ## Open Topics
 
@@ -880,8 +881,8 @@ If rot persists, start a fresh session with a rollout doc as context.
 <!-- Format: **YYYY-MM-DD Decision Name** -->
 `,
 
-  // kit/03-execution.md
-  kitExecution: () => `# EXECUTION
+	// .kit/03-execution.md
+	kitExecution: () => `# EXECUTION
 
 ## Guidelines
 
@@ -961,8 +962,8 @@ Define project goals and populate Exploration
 | — | — | — | — | — |
 `,
 
-  // kit/04-progress.md
-  kitProgress: () => `# PROGRESS LOG (APPEND-ONLY)
+	// .kit/04-progress.md
+	kitProgress: () => `# PROGRESS LOG (APPEND-ONLY)
 
 Rules:
 - Entries are never edited or deleted.
@@ -978,8 +979,8 @@ Rules:
 - **In Progress:** Define project goals and open questions
 `,
 
-  // kit/05-kanban.md
-  kitKanban: () => `# KANBAN
+	// .kit/05-kanban.md
+	kitKanban: () => `# KANBAN
 
 ## Rules
 - Tickets seeded from Acceptance Criteria in 03-execution.md
@@ -1015,8 +1016,8 @@ Rules:
 **Completed:** YYYY-MM-DD
 `,
 
-  // kit/06-qa.md
-  kitQA: () => `# QA PLAN
+	// .kit/06-qa.md
+	kitQA: () => `# QA PLAN
 
 ## Rules
 - Test cases seeded from Acceptance Criteria in 03-execution.md
@@ -1056,8 +1057,8 @@ Rules:
 **Notes:** [Exceptions, known issues, or deferred items]
 `,
 
-  // kit/00-prompts.md — brief version pointing to the full file
-  kitPrompts: () => `# Playbook — Session Prompts
+	// .kit/00-prompts.md — brief version pointing to the full file
+	kitPrompts: () => `# Playbook — Session Prompts
 
 Quick reference for every session type. Copy and paste as needed.
 Full prompt library: docs/playbook-guide.md
@@ -1066,7 +1067,7 @@ Full prompt library: docs/playbook-guide.md
 
 ## Context Kit — Fresh Project
 
-Message 1 — upload kit/01-process.md + kit/03-execution.md:
+Message 1 — upload .kit/01-process.md + .kit/03-execution.md:
 
   I'm starting a new project using the Playbook pipeline. I'll share files in two messages.
   This message: Blank templates for Process and Execution
@@ -1077,7 +1078,7 @@ Message 1 — upload kit/01-process.md + kit/03-execution.md:
   - Define my Current State and initial goals
   Just provide a brief confirmation.
 
-Message 2 — upload kit/02-exploration.md + kit/04-progress.md:
+Message 2 — upload .kit/02-exploration.md + .kit/04-progress.md:
 
   Here are the remaining blank templates. Just provide a brief confirmation.
 
@@ -1135,7 +1136,7 @@ Attach the PRD + approved flow/contract files:
 
 ## Playbook — Generate Rollout Doc
 
-Attach all .playbook/ docs + kit/04-progress.md:
+Attach all .playbook/ docs + .kit/04-progress.md:
 
   Generate a rollout doc for [milestone name].
   Output to docs/rollout/[milestone].md.
@@ -1173,114 +1174,139 @@ Attach all .playbook/ docs + kit/04-progress.md:
   Update all kit files and any changed Playbook docs now.
   Generate markdown for each so I can copy-paste and save before we continue.
 `,
-
-};
+}
 
 // ─── Scaffolding ─────────────────────────────────────────────────────────────
 
 const scaffold = (root, projectName, includeKit, language) => {
+	// Root
+	write(`${root}/PLAYBOOK.md`, t.playbookRoot(projectName))
 
-  // Root
-  write(`${root}/PLAYBOOK.md`, t.playbookRoot(projectName));
+	// .playbook/
+	write(`${root}/.playbook/00-playbook.md`, t.playbookAI())
+	write(`${root}/.playbook/_index.md`, t.projectIndex(projectName))
 
-  // .playbook/
-  write(`${root}/.playbook/00-playbook.md`, t.playbookAI());
-  write(`${root}/.playbook/_index.md`,      t.projectIndex(projectName));
+	// .playbook/_concerns/
+	write(
+		`${root}/.playbook/_concerns/logging.md`,
+		t.concern(
+			'logging',
+			'Structured logging available to all components.\n' +
+				'Writes JSON-formatted logs with trace IDs.\n' +
+				'Never called directly — injected via DI container.',
+		),
+	)
 
-  // .playbook/_concerns/
-  write(`${root}/.playbook/_concerns/logging.md`,
-    t.concern('logging',
-      'Structured logging available to all components.\n' +
-      'Writes JSON-formatted logs with trace IDs.\n' +
-      'Never called directly — injected via DI container.'));
+	write(
+		`${root}/.playbook/_concerns/error-handling.md`,
+		t.concern(
+			'error-handling',
+			'Typed Result pattern used across all Domain and Application layer components.\n' +
+				'Returns { ok: true, value } or { ok: false, error } — never throws in business logic.\n' +
+				'Errors are caught at Infrastructure and Interface boundaries only.',
+		),
+	)
 
-  write(`${root}/.playbook/_concerns/error-handling.md`,
-    t.concern('error-handling',
-      'Typed Result pattern used across all Domain and Application layer components.\n' +
-      'Returns { ok: true, value } or { ok: false, error } — never throws in business logic.\n' +
-      'Errors are caught at Infrastructure and Interface boundaries only.'));
+	write(
+		`${root}/.playbook/_concerns/auth.md`,
+		t.concern(
+			'auth',
+			'Permission checks applied at orchestrator boundaries.\n' +
+				'Components do not handle auth directly.\n' +
+				'All auth context flows from the request — never queried mid-flow.',
+		),
+	)
 
-  write(`${root}/.playbook/_concerns/auth.md`,
-    t.concern('auth',
-      'Permission checks applied at orchestrator boundaries.\n' +
-      'Components do not handle auth directly.\n' +
-      'All auth context flows from the request — never queried mid-flow.'));
+	// .playbook/_integrations/ + _shared/
+	mkdir(`${root}/.playbook/_integrations`)
+	mkdir(`${root}/.playbook/_shared`)
 
-  // .playbook/_integrations/ + _shared/
-  mkdir(`${root}/.playbook/_integrations`);
-  mkdir(`${root}/.playbook/_shared`);
+	// docs/
+	write(`${root}/docs/code-standards.md`, t.codeStandards(language))
 
-  // docs/
-  write(`${root}/docs/code-standards.md`, t.codeStandards(language));
+	// docs/flows/
+	write(`${root}/docs/flows/_index.md`, t.flowsIndex())
+	write(`${root}/docs/flows/global.md`, t.flowsGlobal())
 
-  // docs/flows/
-  write(`${root}/docs/flows/_index.md`,  t.flowsIndex());
-  write(`${root}/docs/flows/global.md`,  t.flowsGlobal());
+	// docs/contracts/
+	write(`${root}/docs/contracts/_index.md`, t.contractsIndex())
+	write(`${root}/docs/contracts/global.md`, t.contractsGlobal(language))
 
-  // docs/contracts/
-  write(`${root}/docs/contracts/_index.md`,  t.contractsIndex());
-  write(`${root}/docs/contracts/global.md`,  t.contractsGlobal(language));
+	mkdir(`${root}/docs/rollout`)
 
-  mkdir(`${root}/docs/rollout`);
+	// .kit/ (always included — Playbook requires kit)
+	write(`${root}/.kit/01-process.md`, t.kitProcess())
+	write(`${root}/.kit/02-exploration.md`, t.kitExploration())
+	write(`${root}/.kit/03-execution.md`, t.kitExecution())
+	write(`${root}/.kit/04-progress.md`, t.kitProgress())
+	write(`${root}/.kit/00-prompts.md`, t.kitPrompts())
 
-  // kit/ (always included — Playbook requires kit)
-  write(`${root}/kit/01-process.md`,    t.kitProcess());
-  write(`${root}/kit/02-exploration.md`, t.kitExploration());
-  write(`${root}/kit/03-execution.md`,  t.kitExecution());
-  write(`${root}/kit/04-progress.md`,   t.kitProgress());
-  write(`${root}/kit/00-prompts.md`,    t.kitPrompts());
-
-  if (includeKit) {
-    write(`${root}/kit/05-kanban.md`, t.kitKanban());
-    write(`${root}/kit/06-qa.md`,     t.kitQA());
-  } else {
-    write(`${root}/kit/05-kanban.md`, '# KANBAN\n\n<!-- Activate in 01-process.md when needed -->\n');
-    write(`${root}/kit/06-qa.md`,     '# QA PLAN\n\n<!-- Activate in 01-process.md when needed -->\n');
-  }
-};
+	if (includeKit) {
+		write(`${root}/.kit/05-kanban.md`, t.kitKanban())
+		write(`${root}/.kit/06-qa.md`, t.kitQA())
+	} else {
+		write(
+			`${root}/.kit/05-kanban.md`,
+			'# KANBAN\n\n<!-- Activate in 01-process.md when needed -->\n',
+		)
+		write(
+			`${root}/.kit/06-qa.md`,
+			'# QA PLAN\n\n<!-- Activate in 01-process.md when needed -->\n',
+		)
+	}
+}
 
 // ─── Main ────────────────────────────────────────────────────────────────────
 
 const main = async () => {
-  console.log('\n\x1b[1m create-playbook \x1b[0m — Playbook project scaffold\n');
+	console.log('\n\x1b[1m create-playbook \x1b[0m — Playbook project scaffold\n')
 
-  const rawName     = await ask('? Project name: ');
-  const projectName = rawName || 'my-project';
-  const includeKit  = await confirm('? Include optional kit modules (05-kanban, 06-qa)?');
-  const language    = await choose('? Primary language:', ['TypeScript', 'JavaScript', 'Python', 'Other']);
+	const rawName = await ask('? Project name: ')
+	const projectName = rawName || 'my-project'
+	const includeKit = await confirm(
+		'? Include optional kit modules (05-kanban, 06-qa)?',
+	)
+	const language = await choose('? Primary language:', [
+		'TypeScript',
+		'JavaScript',
+		'Python',
+		'Other',
+	])
 
-  rl.close();
+	rl.close()
 
-  const root = join(process.cwd(), projectName);
+	const root = join(process.cwd(), projectName)
 
-  if (existsSync(root)) {
-    log.error(`Directory "${projectName}" already exists.`);
-    process.exit(1);
-  }
+	if (existsSync(root)) {
+		log.error(`Directory "${projectName}" already exists.`)
+		process.exit(1)
+	}
 
-  log.blank();
-  log.info(`Scaffolding Playbook project in ./${projectName}...\n`);
+	log.blank()
+	log.info(`Scaffolding Playbook project in ./${projectName}...\n`)
 
-  try {
-    scaffold(root, projectName, includeKit, language);
-  } catch (err) {
-    log.error(`Failed: ${err.message}`);
-    process.exit(1);
-  }
+	try {
+		scaffold(root, projectName, includeKit, language)
+	} catch (err) {
+		log.error(`Failed: ${err.message}`)
+		process.exit(1)
+	}
 
-  log.blank();
-  log.info('Done!\n');
-  console.log('Next steps:');
-  console.log(`  cd ${projectName}`);
-  console.log('  Read PLAYBOOK.md to get started');
-  console.log('  Upload kit/ files to start your first Context Kit session');
-  console.log('  Use "Playbook — Write Flows and Contracts" prompt after PRD is approved');
-  log.blank();
-  console.log('Run with:');
-  console.log('  npx create-playbook');
-  console.log('  pnpm dlx create-playbook');
-  console.log('  yarn dlx create-playbook');
-  log.blank();
-};
+	log.blank()
+	log.info('Done!\n')
+	console.log('Next steps:')
+	console.log(`  cd ${projectName}`)
+	console.log('  Read PLAYBOOK.md to get started')
+	console.log('  Upload .kit/ files to start your first Context Kit session')
+	console.log(
+		'  Use "Playbook — Write Flows and Contracts" prompt after PRD is approved',
+	)
+	log.blank()
+	console.log('Run with:')
+	console.log('  npx create-playbook')
+	console.log('  pnpm dlx create-playbook')
+	console.log('  yarn dlx create-playbook')
+	log.blank()
+}
 
-main();
+main()

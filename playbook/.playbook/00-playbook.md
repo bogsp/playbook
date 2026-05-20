@@ -2,7 +2,9 @@
 version: 1.1
 requires: docs/code-standards.md
 ---
+
 # Playbook — Architecture Reference
+
 # File: playbook/.playbook/00-playbook.md
 
 > Always load `docs/code-standards.md` alongside this file.
@@ -48,7 +50,7 @@ docs/
     global.md            — rules that apply to every contract
     flow-*.md            — one file per flow, companion to flows/
   rollout/               — generated snapshots; never edit directly
-kit/
+.kit/
   00-prompts.md          — session start prompts
   01-process.md          — workflow rules and current state
   02-exploration.md      — open questions and decisions
@@ -60,6 +62,7 @@ PLAYBOOK.md              — pipeline starter; read first on any new machine
 ```
 
 Rules:
+
 - `_index.md` is the manifest at every level — project, app, and module
 - `_concerns/`, `_integrations/`, `_shared/` always live at `.playbook/` root
 - Files: `kebab-case.md` — IDs must match filenames exactly (except `_index.md`)
@@ -180,16 +183,19 @@ External boundary contract (Convex, Postgres, WorkOS, Docker, llama.cpp).
 ## Authoring Rules
 
 Planned path (preferred):
+
 ```
 Context Kit -> PRD/Spec -> Flows/Contracts -> DDA -> Code
 ```
 
 Emergent path (acceptable):
+
 ```
 DDA -> Code   (document immediately, then code)
 ```
 
 Prohibited:
+
 ```
 DDA doc without an approved flow — never
 Code without a DDA doc — never
@@ -215,7 +221,7 @@ Scoped packages — load only what the task needs:
 ```
 New component:   00-playbook.md + code-standards.md + module _index.md + parent doc + _concerns/
 Bug fix:         00-playbook.md + code-standards.md + component doc + its connects + concerns
-Rollout doc:     Full .playbook/ tree + kit/04-progress.md
+Rollout doc:     Full .playbook/ tree + .kit/04-progress.md
 Write tests:     Component doc + code-standards.md (testing section)
 DDA doc:         Relevant flow file + contract file + parent _index.md
 ```

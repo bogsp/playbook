@@ -3,12 +3,14 @@
 ## Guidelines
 
 **Style & Voice:**
+
 - Clear, concise, practical — no filler
 - Docs skimmable for humans, dense for AI
 - Narrative tone for guides; structured format for reference docs
 - Outputs elegant, functional, and unobtrusive
 
 **Rules & Constraints:**
+
 - Follow all conventions in closed decisions in 02-exploration.md
 - Playbook docs use YAML frontmatter + short narrative + optional Detail section
 - File and folder naming strictly follows kebab-case conventions
@@ -19,6 +21,7 @@
 - Files with nested code blocks delivered as downloadable artifacts
 
 **Quality Bar:**
+
 - Every document type has a complete working example
 - 00-playbook.md is self-contained enough for AI to operate without prior knowledge
 - create-playbook CLI generates a working scaffold in one command
@@ -30,10 +33,12 @@
 ## Plan
 
 **Goals:**
+
 - Define and document Playbook as a complete, usable pipeline
 - Produce all deliverables needed to bootstrap or adopt any project
 
 **Outcomes:**
+
 - As a developer, I can run create-playbook and get a working scaffold instantly
 - As a developer, I can read 00-playbook.md and operate correctly within Playbook
 - As an AI assistant, I can read 00-playbook.md and operate without prior knowledge
@@ -41,24 +46,28 @@
 - As an existing project owner, I can adopt Playbook without breaking anything
 
 **Structure:**
+
 1. Context Kit templates and prompts
-2. Playbook core files (00-playbook.md, _index.md, concerns)
+2. Playbook core files (00-playbook.md, \_index.md, concerns)
 3. Documentation (playbook-guide.md, 00-summary.md)
 4. Adoption guides (new-project, adopt-with-kit, adopt-without-kit)
 5. CLI (create-playbook)
 6. Kit files
 
 **Out of Scope:**
+
 - Specific framework integrations (Next.js, NestJS, etc.)
 - PRD or spec templates (separate concern)
 - CI/CD pipeline tooling
 
 **Delivery Notes:**
+
 - code-standards.md is canonical — reference only; do not modify outside this project
 - Playbook must remain architecture-agnostic — no Clean Architecture assumptions baked in
 - CLI supports TypeScript as default but not exclusively
 
 **Acceptance Criteria:**
+
 - [x] 00-playbook.md authored and validated
 - [x] Complete template zip generated with all files
 - [x] Adoption guides cover both with-kit and without-kit paths
@@ -82,7 +91,7 @@ Project complete — all deliverables generated
   - [x] Create PLAYBOOK.md pipeline starter
   - [x] Update 00-summary.md
   - [x] Author playbook-guide.md
-  - [x] Update kit/00-prompts.md
+  - [x] Update .kit/00-prompts.md
 
 - [x] Tooling
   - [x] Rename create-dda -> create-playbook
@@ -90,7 +99,7 @@ Project complete — all deliverables generated
   - [x] Update CLI init flow and output messages
 
 - [x] Templates and examples
-  - [x] Living folder tree in _index.md
+  - [x] Living folder tree in \_index.md
   - [x] Orchestrator Flow + Mermaid format defined
   - [x] All kit files updated
   - [x] All three adoption guides authored
@@ -99,6 +108,6 @@ Project complete — all deliverables generated
 
 ## Known Issues
 
-| # | Issue | Category | Status | Resolution |
-|---|---|---|---|---|
-| 1 | Nested code blocks break markdown rendering | Formatting | Resolved | Deliver as downloadable files |
+| #   | Issue                                       | Category   | Status   | Resolution                    |
+| --- | ------------------------------------------- | ---------- | -------- | ----------------------------- |
+| 1   | Nested code blocks break markdown rendering | Formatting | Resolved | Deliver as downloadable files |
