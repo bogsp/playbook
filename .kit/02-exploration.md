@@ -300,3 +300,43 @@
 
 **2026-05-06 — pnpm Compatibility**
 - CLI has zero external dependencies — works with npx, pnpm dlx, and yarn dlx
+
+**2026-05-23 -- Reverse Engineer as Pipeline Expansion**
+- Defined as a first-class optional expansion -- not a guide, not a separate pipeline
+- Plugs in before Context Kit for existing and legacy projects
+- New projects skip it entirely
+- Expansion pattern established -- other expansions can follow same model
+- Active Expansions field in 01-process.md declares active expansions
+- Multi-phase expansions show current phase inline
+
+**2026-05-23 -- RE Expansion Phases**
+- Six sequential phases: inventory, audit, classify, risk-map, gap-report, handoff
+- Each phase requires human review before advancing -- no autonomous advancement
+- DDA docs cannot be authored during inventory, audit, or classify phases
+- Handoff feeds system-map into open topics, decision-record into closed decisions, risk-register into known issues
+
+**2026-05-23 -- Classification System**
+- Locked: Keep | Align | Extract | Rewrite | Replace | Discard | Defer | Evaluate
+- Flagged for potential reopening -- may need additional states for edge cases
+- Aligns with strangler fig and greenfield rewrite strategies
+- Flow: docs/rewrite/decision-record.md
+
+**2026-05-23 -- RE Document Structure**
+- Three documents: system-map.md, decision-record.md, risk-register.md
+- Live in docs/rewrite/ -- belong to the project, not to Playbook
+- Can split into sub-folders for large projects using same rules as flows and contracts
+- Feed directly into kit files on handoff
+
+**2026-05-23 -- Adoption Guide Consolidation**
+- adopt-with-kit.md, adopt-without-kit.md, legacy-code.md retired
+- Replaced by single adopt.md with decision-tree routing
+- Four diagnostic questions route to the right process
+- No rigid tiers -- diagnostic-driven, covers all combinations
+- RE expansion activated from adopt.md when codebase cannot be mapped without it
+
+**2026-05-23 -- Video Insights as Future Expansion**
+- Acknowledged as a planned expansion
+- Plugs in during Context Kit exploration phase
+- Feeds .kit/_refs/video-insights/ and .kit/02-exploration.md
+- Guide to be authored as .playbook/.guides/expansions/video-insights.md
+- Status: Coming soon -- not yet defined

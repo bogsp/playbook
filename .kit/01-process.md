@@ -4,6 +4,7 @@
 ---
 
 **Phase:** Execution
-**Last Completed:** Defined complete .kit/ file responsibilities, folder structure, and archiving strategy
-**Next:** Draft updated Playbook pipeline files — `.playbook/README.md`, `.playbook/pipeline.md`, `.playbook/00-rules.md`, updated `.kit/` templates
+**Last Completed:** Generated all Playbook pipeline files, templates, and RE expansion docs
+**Next:** Update create-playbook CLI to reflect new structure
 **Active Modules:** none
+**Active Expansions:** none

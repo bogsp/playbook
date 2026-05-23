@@ -92,3 +92,29 @@ Rules:
 - **Completed:** All .kit/ file responsibilities defined and locked
 - **Completed:** .kit/ folder structure defined and locked
 - **In Progress:** Drafting updated Playbook pipeline files — .playbook/README.md next
+
+## 2026-05-23 (continued)
+- **Decided:** Reverse Engineer is a first-class expansion -- plugs in before Context Kit for existing projects
+- **Decided:** Expansions are optional pipeline stages that extend Playbook without changing core pipeline
+- **Decided:** Active Expansions field added to 01-process.md -- simple list, expands to phase tracking when needed
+- **Decided:** RE expansion has six phases -- inventory, audit, classify, risk-map, gap-report, handoff
+- **Decided:** RE expansion produces three documents in docs/rewrite/ -- system-map, decision-record, risk-register
+- **Decided:** Classification system locked -- Keep, Align, Extract, Rewrite, Replace, Discard, Defer, Evaluate
+- **Decided:** Classification system flagged for potential reopening in future
+- **Decided:** Adoption guides consolidated into single adopt.md with decision-tree routing
+- **Decided:** adopt-with-kit.md, adopt-without-kit.md, legacy-code.md retired -- absorbed into adopt.md
+- **Decided:** Adoption routing is diagnostic-driven -- four questions, not tiered categories
+- **Decided:** RE expansion phases require human review before advancing -- no autonomous phase advancement
+- **Decided:** Video Insights expansion acknowledged as future expansion -- Coming soon
+- **Completed:** Updated .playbook/README.md with expansions section
+- **Completed:** Updated .playbook/pipeline.md with Stage 0 and expansions
+- **Completed:** Updated .playbook/00-rules.md with expansion rules and RE document formats
+- **Completed:** Generated .playbook/.guides/adopt.md -- decision-tree adoption guide
+- **Completed:** Generated .playbook/.guides/expansions/reverse-engineer.md -- full expansion guide
+- **Completed:** Generated docs/rewrite/system-map.md template
+- **Completed:** Generated docs/rewrite/decision-record.md template
+- **Completed:** Generated docs/rewrite/risk-register.md template
+- **Completed:** Updated .kit/01-process.md template with Active Expansions field
+- **Completed:** Updated .kit/00-prompts.md with RE expansion prompts
+- **Completed:** Generated Raket.PH platform analysis document for team sharing
+- **In Progress:** Update create-playbook CLI to reflect new structure
