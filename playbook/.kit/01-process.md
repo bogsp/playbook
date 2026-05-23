@@ -7,3 +7,4 @@
 **Last Completed:** [Most recent milestone]
 **Next:** [Active goal]
 **Active Modules:** [05-kanban | 06-qa | none]
+**Active Expansions:** [none]

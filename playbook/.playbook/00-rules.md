@@ -6,61 +6,67 @@ version: 2.0
 requires: docs/code-standards.md
 ---
 
-> Always load `docs/code-standards.md` alongside this file.
-> This file defines how to implement. `pipeline.md` defines what and why.
+> Always load docs/code-standards.md alongside this file.
+> This file defines how to implement. pipeline.md defines what and why.
 > Neither is complete without the other.
 
 ---
 
 ## Core Principle
 
-**Progressive Disclosure + Tiering** is the default for every structural decision:
+Progressive Disclosure + Tiering is the default for every structural decision:
 - Lead with plain language. Add technical depth below.
 - Define a required core. Add sections only when scope or type demands them.
 - Never burden simple cases with complex requirements.
 - Never let complex cases skip required coverage.
 
-When any format, template, or structure decision needs to be made — apply this first.
+When any format, template, or structure decision needs to be made -- apply this first.
 
 ---
 
 ## Folder Structure
 
-```
 .playbook/
-  README.md              → orientation and journey matrix
-  pipeline.md            → complete pipeline reference
-  00-rules.md            → this file; AI execution layer
-  _index.md              → project manifest and living folder tree
-  _concerns/             → cross-cutting capabilities
-  _integrations/         → third-party services and libraries
-  _shared/               → components used across multiple modules
-  .guides/               → adoption and setup guides
+  README.md              -> orientation and journey matrix
+  pipeline.md            -> complete pipeline reference
+  00-rules.md            -> this file; AI execution layer
+  _index.md              -> project manifest and living folder tree
+  _concerns/             -> cross-cutting capabilities
+  _integrations/         -> third-party services and libraries
+  _shared/               -> components used across multiple modules
+  .guides/               -> adoption and setup guides
+    adopt.md             -> all adoption paths, decision-tree routed
+    new-project.md       -> new project guide
+    expansions/          -> expansion-specific guides
+      reverse-engineer.md
   [module]/
-    _index.md            → module manifest
-    [component].md       → component docs
+    _index.md            -> module manifest
+    [component].md       -> component docs
 docs/
-  code-standards.md      → always loaded with this file
+  code-standards.md      -> always loaded with this file
   flows/
-    _index.md            → entry point and dependency map
-    global.md            → rules spanning every flow
-    flow-N-name.md       → one file per flow
+    _index.md            -> entry point and dependency map
+    global.md            -> rules spanning every flow
+    flow-N-name.md       -> one file per flow
   contracts/
-    _index.md            → entry point
-    global.md            → system-wide rules; read first always
-    flow-N-name.md       → companion to flows/flow-N-name.md
-  rollout/               → generated snapshots; never edit directly
+    _index.md            -> entry point
+    global.md            -> system-wide rules; read first always
+    flow-N-name.md       -> companion to flows/flow-N-name.md
+  rewrite/               -> reverse engineer expansion outputs
+    system-map.md
+    decision-record.md
+    risk-register.md
+  rollout/               -> generated snapshots; never edit directly
 .kit/
-  01-process.md          → session spark
-  02-exploration.md      → active decisions
-  03-execution.md        → guidelines, plan, tasks
-  04-progress.md         → append-only progress log
-  05-kanban.md           → ticketed work breakdown (optional)
-  06-qa.md               → test registry and sign-off (optional)
-  _refs/                 → supporting material
-  _tests/                → one file per QA test case
-  _archives/             → lean history
-```
+  01-process.md          -> session spark
+  02-exploration.md      -> active decisions
+  03-execution.md        -> guidelines, plan, tasks
+  04-progress.md         -> append-only progress log
+  05-kanban.md           -> ticketed work breakdown (optional)
+  06-qa.md               -> test registry and sign-off (optional)
+  _refs/                 -> supporting material
+  _tests/                -> one file per QA test case
+  _archives/             -> lean history
 
 ---
 
@@ -68,26 +74,57 @@ docs/
 
 Every dev session loads in this order:
 
-```
-1. .playbook/00-rules.md          → this file
-2. docs/code-standards.md         → implementation rules
-3. docs/flows/_index.md           → flows entry point
-4. docs/contracts/_index.md       → contracts entry point
-5. .playbook/_index.md            → project shape
-6. .playbook/[module]/_index.md   → module shape (as needed)
-7. Component and sequencer docs   → task-scoped
-8. _concerns/ + _integrations/    → cross-cutting + boundaries
-```
+1. .playbook/00-rules.md
+2. docs/code-standards.md
+3. docs/flows/_index.md
+4. docs/contracts/_index.md
+5. .playbook/_index.md
+6. .playbook/[module]/_index.md   (as needed)
+7. Component and sequencer docs   (task-scoped)
+8. _concerns/ + _integrations/    (cross-cutting + boundaries)
 
-**Scoped packages — load only what the task needs:**
+When Reverse Engineer expansion is active, also load:
+  docs/rewrite/system-map.md
+  docs/rewrite/decision-record.md
+  docs/rewrite/risk-register.md
+
+Scoped packages -- load only what the task needs:
 
 | Task | Load |
 |---|---|
-| New component | `00-rules.md` + `code-standards.md` + module `_index.md` + parent doc + flow + contract + `_concerns/` |
-| Bug fix | `00-rules.md` + `code-standards.md` + component doc + its connects + concerns |
-| Write tests | Component doc + `code-standards.md` testing section |
-| New DDA doc | Relevant flow + contract + parent `_index.md` |
-| Rollout doc | Full `.playbook/` tree + `.kit/04-progress.md` |
+| New component | 00-rules.md + code-standards.md + module _index.md + parent doc + flow + contract + _concerns/ |
+| Bug fix | 00-rules.md + code-standards.md + component doc + its connects + concerns |
+| Write tests | Component doc + code-standards.md testing section |
+| New DDA doc | Relevant flow + contract + parent _index.md |
+| Rollout doc | Full .playbook/ tree + .kit/04-progress.md |
+| RE expansion | system-map.md + decision-record.md + risk-register.md |
+
+---
+
+## Expansions
+
+Expansions are optional pipeline stages declared in .kit/01-process.md.
+
+### Declaring an expansion
+
+Simple (single-phase):
+  Active Expansions: video-insights
+
+Multi-phase:
+  Active Expansions:
+    reverse-engineer: inventory
+
+### Reverse Engineer expansion phases
+  inventory | audit | classify | risk-map | gap-report | handoff
+
+Phase advances when its outputs are complete and reviewed.
+Expansion is complete when handoff feeds .kit/02-exploration.md and .kit/03-execution.md.
+
+### Expansion behavioral rules
+1. Never advance a phase without human review and approval
+2. Never begin DDA docs while RE expansion is in inventory, audit, or classify phase
+3. Classification must be assigned to every component before risk-map phase begins
+4. Handoff is not complete until rewrite docs are referenced in kit files
 
 ---
 
@@ -95,23 +132,19 @@ Every dev session loads in this order:
 
 ### Universal Frontmatter
 
-```yaml
-id:      # kebab-case — must match filename (except _index.md)
-export:  # exported name — component and sequencer only
-file:    # repo path — component and sequencer only
+id:      # kebab-case -- must match filename
+export:  # exported name -- component and sequencer only
+file:    # repo path -- component and sequencer only
 type:    # component | sequencer | structure | concern | integration
 status:  # draft | active | deprecated
-```
 
 ---
 
 ### structure
 
-Project, app, or module manifest. Always includes `## Structure` — a linked
-annotated tree of everything in scope. Updated whenever components change.
+Project, app, or module manifest. Always includes Structure section --
+a linked annotated tree of everything in scope.
 
-```yaml
----
 id: billing
 type: structure
 scope: module
@@ -120,30 +153,23 @@ entry: [billing-sequencer]
 contains: [billing-sequencer, invoice-validator, invoice-factory]
 integrations: [stripe]
 concerns: [logging, auth, error-handling]
----
-```
 
-```
 ## What It Does
 Plain language description of this module's purpose.
 
 ## Structure
-- [_index.md](./_index.md) — this file; billing module manifest
-- [billing-sequencer.md](./billing-sequencer.md) — coordinates invoice creation
-- [invoice-validator.md](./invoice-validator.md) — validates structure and rules
-- [invoice-factory.md](./invoice-factory.md) — constructs invoice domain object
-```
+- [_index.md](./_index.md) -- this file; billing module manifest
+- [billing-sequencer.md](./billing-sequencer.md) -- coordinates invoice creation
+- [invoice-validator.md](./invoice-validator.md) -- validates structure and rules
 
 ---
 
 ### sequencer
 
-Runtime coordinator. Owns flow and sequencing, not business logic. Always
-references `docs/flows/` and `docs/contracts/` — never restates them.
-Always includes `## Flow` with full call chain and all branches.
+Runtime coordinator. Owns flow and sequencing, not business logic.
+Always references docs/flows/ and docs/contracts/ -- never restates them.
+Always includes Flow section with full call chain and all branches.
 
-```yaml
----
 id: billing-sequencer
 export: BillingSequencer
 file: src/billing/billing-sequencer.ts
@@ -154,42 +180,31 @@ triggers: [CreateInvoiceCommand]
 sequence: [invoice-validator, invoice-factory, invoice-repository]
 emits: [InvoiceCreated, InvoiceFailed]
 concerns: [logging, auth]
----
-```
 
-```
 ## What It Does
-Coordinates the full invoice creation flow from command receipt to persistence.
-Owns sequence, not logic. Stops cleanly on any failure.
+Coordinates the full invoice creation flow. Owns sequence, not logic.
 
 ## Flow
 References: docs/flows/flow-1-billing.md + docs/contracts/flow-1-billing.md
 
 1. On CreateInvoiceCommand(input):
    a. invoiceValidator.validate(input)
-      → ok: InvoiceValidated     → continue to b
-      → err: ValidationError     → emit InvoiceRejected, halt
+      -> ok: InvoiceValidated     -> continue to b
+      -> err: ValidationError     -> emit InvoiceRejected, halt
    b. invoiceFactory.create(validated)
-      → ok: InvoiceDraft         → continue to c
-      → err: FactoryError        → emit InvoiceFailed, halt
+      -> ok: InvoiceDraft         -> continue to c
+      -> err: FactoryError        -> emit InvoiceFailed, halt
    c. invoiceRepository.save(draft)
-      → ok: InvoiceCreated       → emit InvoiceCreated
-      → err: PersistenceError    → compensate, emit InvoiceFailed
-
-## Detail
-[Only present when concurrency rules, timeouts, or constraints exist
-that cannot be inferred from the flow. Omit entirely if not needed.]
-```
+      -> ok: InvoiceCreated       -> emit InvoiceCreated
+      -> err: PersistenceError    -> compensate, emit InvoiceFailed
 
 ---
 
 ### component
 
-Single unit of logic. One responsibility. Never throws in business logic —
-returns typed Result. References contract for behavior definition.
+Single unit of logic. One responsibility. Returns typed Result.
+References contract for behavior definition.
 
-```yaml
----
 id: invoice-validator
 export: InvoiceValidator
 file: src/billing/invoice-validator.ts
@@ -200,14 +215,10 @@ children: [line-item-checker, tax-calculator]
 connects: [invoice-repository]
 emits: [InvoiceValidated, InvoiceRejected]
 concerns: [logging, error-handling]
----
-```
 
-```
 ## What It Does
 Checks whether an invoice is valid before it gets created.
-If anything is wrong — missing line items, bad totals — it stops
-the process and explains why.
+If anything is wrong it stops the process and explains why.
 
 ## Interface
 Contract: docs/contracts/flow-1-billing/validation.md#failure-modes
@@ -215,67 +226,44 @@ Contract: docs/contracts/flow-1-billing/validation.md#failure-modes
 input:  CreateInvoiceInput
 output: Result<InvoiceValidated, ValidationError>
 
-```[typescript]
-function validate(input: CreateInvoiceInput): Result<InvoiceValidated, ValidationError>
-```
-
 ## Detail
-[Edge cases, concurrency constraints, known quirks that would cause bugs
-if a developer missed them. Omit entirely if nothing fits.]
-```
+(Edge cases, concurrency constraints, known quirks only.
+Omit entirely if nothing fits.)
 
 ---
 
 ### concern
 
-Cross-cutting capability that multiple components depend on.
-
-```yaml
----
 id: logging
 type: concern
 status: active
 affects: all
 provided-by: internal
----
-```
 
-```
 ## What It Does
 Structured logging available to all components via DI container.
-Never called directly — always injected.
-```
+Never called directly -- always injected.
 
 ---
 
 ### integration
 
-External service or library contract.
-
-```yaml
----
 id: stripe
 type: integration
 kind: external-service
 status: active
-used-by: [billing-sequencer, invoice-repository]
+used-by: [billing-sequencer]
 config: [STRIPE_SECRET_KEY, STRIPE_WEBHOOK_SECRET]
 docs: https://stripe.com/docs
----
-```
 
-```
 ## What It Does
 Handles payment processing and webhook events.
 All interactions go through BillingSequencer only.
-```
 
 ---
 
 ## Flow Document Format
 
-```yaml
----
 id: flow-1-billing
 type: flow
 scope: sequence
@@ -285,70 +273,97 @@ triggers: [CreateInvoiceCommand]
 calls: []
 emits: [InvoiceCreated, InvoiceFailed]
 called-by: []
----
-```
 
-**Core sections — required for every flow:**
-- `## What It Does` — plain language
-- `## Pre-conditions` — what must be true before the flow starts
-- `## Post-conditions` — what is guaranteed on completion
-- `## Walkthrough` — narrative + technical call chain (separated by `---`)
+Core sections -- required for every flow:
+- What It Does
+- Pre-conditions
+- Post-conditions
+- Walkthrough (narrative + call chain separated by ---)
 
-**Additional sections by scope:**
+Additional sections by scope:
 
 | Scope | Add |
 |---|---|
-| Journey | `## Compensation`, `## Child Flows` |
-| Sequence | `## Compensation` |
-| Composite | `## Child Flows` |
+| Journey | Compensation, Child Flows |
+| Sequence | Compensation |
+| Composite | Child Flows |
 
-**Additional sections by trigger:**
+Additional sections by trigger:
 
 | Trigger | Add |
 |---|---|
-| Event-Driven | `## Event Contract` |
-| Background/Scheduled | `## Schedule`, `## Timeout Behavior` |
-| Reactive | `## Subscription Contract`, `## Disconnect Behavior` |
-| Webhook | `## Payload Contract`, `## Retry Behavior` |
-| Stream | `## Subscription Contract`, `## Disconnect Behavior`, `## Reconnect Behavior` |
+| Event-Driven | Event Contract |
+| Background/Scheduled | Schedule, Timeout Behavior |
+| Reactive | Subscription Contract, Disconnect Behavior |
+| Webhook | Payload Contract, Retry Behavior |
+| Stream | Subscription Contract, Disconnect Behavior, Reconnect Behavior |
 
-`## Detail` — always optional.
-`N/A` — considered, does not apply.
-`TODO` — not documented; **blocks `status: active`**.
+Detail -- always optional.
+N/A -- considered, does not apply.
+TODO -- not documented; blocks status: active.
 
 ---
 
 ## Contract Document Format
 
-**Flow contract — required sections:**
-- `## Happy Path`
-- `## Failure Modes`
-- `## Edge Cases`
-- `## Concurrency Rules`
-- `## Constraints`
+Flow contract -- required sections:
+- Happy Path
+- Failure Modes
+- Edge Cases
+- Concurrency Rules
+- Constraints
 
-**`global.md` — required sections:**
-- `## Architecture Rules`
-- `## Auth Boundaries`
-- `## Error Handling Rules`
-- `## Audit Requirements`
-- `## Cross-Cutting Constraints`
+global.md -- required sections:
+- Architecture Rules
+- Auth Boundaries
+- Error Handling Rules
+- Audit Requirements
+- Cross-Cutting Constraints
 
-Same `N/A` / `TODO` discipline. `TODO` blocks `status: active`.
-
-When a contract grows beyond ~150 lines, split by concern into a sub-folder
-with `_index.md` referencing all parts.
+Same N/A / TODO discipline. TODO blocks status: active.
 
 Component docs reference contracts with precision:
-```
-Contract: docs/contracts/flow-1-billing/validation.md#failure-modes
-```
+  Contract: docs/contracts/flow-1-billing/validation.md#failure-modes
+
+---
+
+## Reverse Engineer Document Format
+
+### system-map.md
+
+What the codebase currently does -- not what it was designed to do.
+
+Required sections:
+- Overview -- plain language summary
+- Applications -- what apps or services exist
+- Data Models -- what data exists and how it is structured
+- Integrations -- every external service and what it does
+- Dependency Map -- what depends on what
+- Entry Points -- how the system is accessed
+
+### decision-record.md
+
+Classification per component with reasoning.
+
+Required sections:
+- Summary -- counts per classification
+- Decisions -- one entry per component:
+  Component, Classification, Reasoning, Dependencies Affected, Risk
+
+### risk-register.md
+
+What breaks if X changes.
+
+Required sections:
+- Critical Risks -- things that break everything
+- High Risks -- things that break significant functionality
+- Medium Risks -- things that break specific features
+- Migration Constraints -- ordering rules for the rewrite
 
 ---
 
 ## Behavioral Rules
 
-```
 1.  Never write a DDA doc without first reading the relevant flow and contract
 2.  Never write code for a component without its Playbook doc
 3.  Never add a dependency not declared in connects or integrations
@@ -365,33 +380,13 @@ Contract: docs/contracts/flow-1-billing/validation.md#failure-modes
 14. Apply Progressive Disclosure + Tiering to every structural decision
 15. Prefer native implementations over external libraries
 16. External dependencies require explicit justification before adoption
-```
-
----
-
-## Authoring Order
-
-**Planned path (preferred):**
-```
-Context Kit → PRD → Flows → Contracts → DDA → Code
-```
-
-**Emergent path (acceptable — for components discovered during development):**
-```
-DDA → Code   (document immediately, then code)
-```
-
-**Prohibited:**
-```
-DDA doc without an approved flow and contract — never
-Code without a DDA doc — never
-```
+17. Never advance RE expansion phases without human review and approval
+18. Never begin DDA docs while RE expansion is in inventory, audit, or classify
 
 ---
 
 ## Session Start
 
-```
 Before any work, load in order:
 1. .playbook/00-rules.md
 2. docs/code-standards.md
@@ -399,38 +394,32 @@ Before any work, load in order:
 4. docs/contracts/_index.md
 5. .playbook/_index.md
 
+If RE expansion is active, also load rewrite docs.
 Confirm understanding. Then wait for instruction.
-```
 
 ---
 
 ## Session End
 
-```
 Before closing:
 1. Run Playbook sync check on all docs touched this session
-2. Update .kit/04-progress.md — completions, decisions, fixes
+2. Update .kit/04-progress.md -- completions, decisions, fixes
 3. Update Current State in .kit/01-process.md
 4. Update living folder tree if components changed
-```
 
 ---
 
 ## Error Recovery
 
-```
 Something broke. Stop all other work.
 
-1. Identify   — type error | test failure | Playbook drift | layer violation | other
-2. Isolate    — code, Playbook doc, or both?
-3. Fix        — resolve at source; do not patch symptoms
-4. Verify     — re-run checks before continuing
-5. Log        — Fixed entry in .kit/04-progress.md
-```
+1. Identify   -- type error | test failure | Playbook drift | layer violation | other
+2. Isolate    -- code, Playbook doc, or both?
+3. Fix        -- resolve at source; do not patch symptoms
+4. Verify     -- re-run checks before continuing
+5. Log        -- Fixed entry in .kit/04-progress.md
 
-**Context rot** — if AI ignores uploaded files mid-session:
-```
+Context rot -- if AI ignores uploaded files mid-session:
 Stop. Re-upload session files.
 Re-read .playbook/00-rules.md and docs/code-standards.md.
 If rot persists, start a fresh session with a rollout doc as context.
-```
