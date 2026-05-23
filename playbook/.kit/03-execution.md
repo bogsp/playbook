@@ -1,4 +1,5 @@
 # EXECUTION
+# File: .kit/03-execution.md
 
 ## Guidelines
 
@@ -8,15 +9,16 @@
 **Rules & Constraints:**
 - [Specific requirements]
 - [Things to avoid]
-- Follow Playbook conventions in `.playbook/00-playbook.md` (when Playbook is active)
-- Follow code standards in `docs/code-standards.md` (when Playbook is active)
-- No component is coded before its Playbook doc exists
-- All code must pass `biome check` and `biome format` before commit
-- All changes must be pushed with logically grouped commits
+- Prefer native implementations over external libraries
+- External dependencies require explicit justification before adoption
 
 **Quality Bar:**
 - [Standards for completion]
-- Phase not complete until Phase Completion Checklist in `01-process.md` fully passes
+
+**QA Tier:** [core | standard | full]
+
+**Custom Ticket Types:** _(if needed — declare before use in kanban)_
+- `[type]` — [description]
 
 ---
 
@@ -26,21 +28,14 @@
 - [What you're building]
 
 **Outcomes:**
-- As a [role], I can [action] so that [benefit].
-- [Or freeform if role-based framing doesn't fit]
-
-**Structure:**
-- [Outline or phases]
+- [What done looks like]
 
 **Out of Scope:**
 - [What's not included]
 
-**Delivery Notes:**
-- [Edge cases, dependencies, assumptions]
-
 **Acceptance Criteria:**
-- [ ] [Verifiable condition for done]
-- [ ] [Verifiable condition for done]
+- [ ] [Verifiable condition]
+- [ ] [Verifiable condition]
 
 ---
 
@@ -50,17 +45,17 @@
 [Current focus]
 
 **Tasks:**
-
-- [ ] Task category
-  - [ ] Subtask
-  - [ ] Subtask
+- [ ] [Task category]
+  - [ ] [Subtask]
+  - [ ] [Subtask]
 
 ---
 
 ## Known Issues
 
-Track blockers and bugs as they arise. Resolve before phase completion.
+| # | Issue | Type | Severity | Blocked By | Resolution |
+|---|---|---|---|---|---|
+| — | — | — | — | — | — |
 
-| # | Issue | Category | Status | Resolution |
-|---|---|---|---|---|
-| — | — | — | — | — |
+_Type: bug | dependency | design | performance | security_
+_Severity: critical | high | low_

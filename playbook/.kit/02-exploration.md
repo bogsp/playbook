@@ -1,11 +1,12 @@
 # EXPLORATION
+# File: .kit/02-exploration.md
 
 ## Open Topics
 
-**Topic Name:**
-- Discussion points
+**[Topic Name]**
 - Questions to resolve
 - Options being considered
+- Ref: `.kit/_refs/[type]/[filename]` _(if applicable)_
 
 ---
 
@@ -13,5 +14,7 @@
 
 **[YYYY-MM-DD] Decision Name**
 - What was decided
-- Why it was chosen
-- Relevant examples or notes
+- Why
+- Alternatives considered
+- Ref: `.kit/_refs/[type]/[filename]` _(if applicable)_
+- Flow: `docs/flows/flow-N-name.md` _(if applicable)_
