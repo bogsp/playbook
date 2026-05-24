@@ -1,14 +1,19 @@
 {
   "name": "create-playbook",
-  "version": "1.0.0",
-  "description": "Scaffold a Playbook project — the complete AI-assisted development pipeline",
+  "version": "2.0.0",
+  "description": "Scaffold the Playbook pipeline for any project",
   "type": "module",
   "bin": {
-    "create-playbook": "./bin/index.js"
+    "create-playbook": "./index.js"
   },
-  "keywords": ["playbook", "dda", "document-driven", "scaffold", "ai", "architecture"],
-  "license": "MIT",
   "engines": {
-    "node": ">=18.0.0"
-  }
+    "node": ">=18"
+  },
+  "keywords": [
+    "playbook",
+    "context-kit",
+    "ai-assisted-development",
+    "scaffold"
+  ],
+  "license": "MIT"
 }
