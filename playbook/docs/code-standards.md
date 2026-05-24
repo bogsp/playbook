@@ -16,6 +16,8 @@
 7. [Git Workflow](#7-git-workflow)
 8. [Tooling](#8-tooling)
 9. [AI-Assisted Development](#9-ai-assisted-development)
+10. [Phase Completion Checklist](#10-phase-completion-checklist)
+11. [Security](#11-security)
 
 ---
 
@@ -74,12 +76,12 @@ Interface     → tRPC routers, WebSocket handlers, CLI; thin translation layer 
 
 ```json
 {
-	"compilerOptions": {
-		"strict": true,
-		"noUncheckedIndexedAccess": true,
-		"noImplicitOverride": true,
-		"exactOptionalPropertyTypes": true
-	}
+  "compilerOptions": {
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+    "exactOptionalPropertyTypes": true
+  }
 }
 ```
 
@@ -112,6 +114,25 @@ function getUser(id: string): Result<User, UserNotFoundError> { ... }
 const data = response satisfies UserData;
 ```
 
+### Immutability
+
+- All arrays passed into or returned from Domain and Application functions must be typed as `readonly` — use `ReadonlyArray<T>` or `readonly T[]`
+- Never mutate input parameters — always return new objects
+- Domain objects must not expose mutable state — no public setters, no direct property mutation
+- Use spread for updates in the Application layer: `{ ...existing, status: newStatus }`
+
+```typescript
+// ❌ Wrong
+function addItem(items: Item[], item: Item): void {
+  items.push(item); // mutates input
+}
+
+// ✅ Correct
+function addItem(items: ReadonlyArray<Item>, item: Item): ReadonlyArray<Item> {
+  return [...items, item];
+}
+```
+
 ---
 
 ## 3. Error Handling
@@ -124,12 +145,14 @@ All Domain and Application layer functions return `Result<T, E>`. No raw `throw`
 // packages/platform-core/src/types/result.ts
 
 export type Result<T, E> =
-	| { readonly ok: true; readonly value: T }
-	| { readonly ok: false; readonly error: E }
+  | { readonly ok: true; readonly value: T }
+  | { readonly ok: false; readonly error: E };
 
-export const ok = <T>(value: T): Result<T, never> => ({ ok: true, value })
+export const ok = <T>(value: T): Result<T, never> =>
+  ({ ok: true, value });
 
-export const err = <E>(error: E): Result<never, E> => ({ ok: false, error })
+export const err = <E>(error: E): Result<never, E> =>
+  ({ ok: false, error });
 ```
 
 ### Error Hierarchy
@@ -143,30 +166,27 @@ BizKitError (base)
 
 ```typescript
 export class BizKitError extends Error {
-	constructor(
-		message: string,
-		public readonly code: string,
-	) {
-		super(message)
-		this.name = this.constructor.name
-	}
+  constructor(message: string, public readonly code: string) {
+    super(message);
+    this.name = this.constructor.name;
+  }
 }
 
 export class InvoiceNotFoundError extends ApplicationError {
-	constructor(id: string) {
-		super(`Invoice not found: ${id}`, 'INVOICE_NOT_FOUND')
-	}
+  constructor(id: string) {
+    super(`Invoice not found: ${id}`, "INVOICE_NOT_FOUND");
+  }
 }
 ```
 
 ### Layer Responsibilities
 
-| Layer            | Behavior                                                            |
-| ---------------- | ------------------------------------------------------------------- |
-| Domain           | Returns `Result<T, DomainError>` — never throws                     |
-| Application      | Returns `Result<T, ApplicationError>` — maps domain errors up       |
-| Infrastructure   | May throw — caught at boundary and wrapped in `InfrastructureError` |
-| Interface (tRPC) | Only layer that maps errors to transport codes                      |
+| Layer | Behavior |
+|---|---|
+| Domain | Returns `Result<T, DomainError>` — never throws |
+| Application | Returns `Result<T, ApplicationError>` — maps domain errors up |
+| Infrastructure | May throw — caught at boundary and wrapped in `InfrastructureError` |
+| Interface (tRPC) | Only layer that maps errors to transport codes |
 
 ### tRPC Error Mapping
 
@@ -191,22 +211,22 @@ export class InvoiceNotFoundError extends ApplicationError {
 ```typescript
 // ❌ Wrong — nested, hard to follow
 function process(order: Order) {
-	if (order.status === 'pending') {
-		if (order.items.length > 0) {
-			if (order.total > 0) {
-				// process...
-			}
-		}
-	}
+  if (order.status === "pending") {
+    if (order.items.length > 0) {
+      if (order.total > 0) {
+        // process...
+      }
+    }
+  }
 }
 
 // ✅ Correct — guard clauses, flat structure
 function process(order: Order): Result<void, OrderError> {
-	if (order.status !== 'pending') return err(new InvalidOrderStatusError())
-	if (order.items.length === 0) return err(new EmptyOrderError())
-	if (order.total <= 0) return err(new InvalidOrderTotalError())
-	// process...
-	return ok(undefined)
+  if (order.status !== "pending") return err(new InvalidOrderStatusError());
+  if (order.items.length === 0) return err(new EmptyOrderError());
+  if (order.total <= 0) return err(new InvalidOrderTotalError());
+  // process...
+  return ok(undefined);
 }
 ```
 
@@ -236,13 +256,13 @@ import { createInvoice } from "./invoices/create-invoice";
 
 ```typescript
 const CreateInvoiceInput = z.object({
-	tenantId: z.string().uuid(),
-	customerId: z.string().uuid(),
-	lineItems: z.array(LineItemSchema).min(1),
-	dueDate: z.coerce.date(),
-})
+  tenantId: z.string().uuid(),
+  customerId: z.string().uuid(),
+  lineItems: z.array(LineItemSchema).min(1),
+  dueDate: z.coerce.date(),
+});
 
-type CreateInvoiceInput = z.infer<typeof CreateInvoiceInput>
+type CreateInvoiceInput = z.infer<typeof CreateInvoiceInput>;
 ```
 
 ### General
@@ -252,24 +272,49 @@ type CreateInvoiceInput = z.infer<typeof CreateInvoiceInput>
 - Prefer `const` over `let`; never use `var`
 - Async/await over raw Promises — no `.then().catch()` chains
 
+### Date and Time
+
+- Always store and transmit dates in UTC — never store with a timezone offset
+- Never call `new Date()` directly in Domain or Application layer — inject a clock abstraction for testability
+- Use ISO 8601 for all date serialization; use `z.coerce.date()` at Zod boundaries only
+- Display formatting and timezone conversion happen at the Interface layer only — never in Domain or Application
+- Never compare dates as strings — always compare as `Date` objects or UTC timestamps
+
+```typescript
+// ❌ Wrong
+class CreateInvoiceUseCase {
+  execute(input: CreateInvoiceInput) {
+    const now = new Date(); // untestable, not injected
+  }
+}
+
+// ✅ Correct
+class CreateInvoiceUseCase {
+  constructor(private readonly clock: IClock) {}
+  execute(input: CreateInvoiceInput) {
+    const now = this.clock.now();
+  }
+}
+```
+
 ---
 
 ## 5. Naming Conventions
 
 ### General
 
-| Thing       | Convention                                          | Example                                            |
-| ----------- | --------------------------------------------------- | -------------------------------------------------- |
-| Files       | `kebab-case`                                        | `create-invoice.ts`                                |
-| Directories | `kebab-case`                                        | `use-cases/`                                       |
-| Classes     | `PascalCase`                                        | `InvoiceRepository`                                |
-| Interfaces  | `PascalCase` (`I` prefix)                           | `IInvoiceRepository`                               |
-| Types       | `PascalCase`                                        | `CreateInvoiceInput`                               |
-| Functions   | `camelCase`                                         | `createInvoice()`                                  |
-| Variables   | `camelCase`                                         | `lineItemTotal`                                    |
-| Constants   | `SCREAMING_SNAKE_CASE`                              | `MAX_LINE_ITEMS`                                   |
-| Enums       | `PascalCase` members                                | `InvoiceStatus.POSTED`                             |
-| Booleans    | Avoid for state modeling; prefer enums/dates/unions | `status: 'draft' \| 'posted'`, `postedAt?: string` |
+| Thing | Convention | Example |
+|---|---|---|
+| Files | `kebab-case` | `create-invoice.ts` |
+| Directories | `kebab-case` | `use-cases/` |
+| Classes | `PascalCase` | `InvoiceRepository` |
+| Interfaces | `PascalCase` (`I` prefix) | `IInvoiceRepository` |
+| Types | `PascalCase` | `CreateInvoiceInput` |
+| Functions | `camelCase` | `createInvoice()` |
+| Variables | `camelCase` | `lineItemTotal` |
+| Constants | `SCREAMING_SNAKE_CASE` | `MAX_LINE_ITEMS` |
+| Enums | `PascalCase` members | `InvoiceStatus.POSTED` |
+| Booleans | Avoid for state modeling; prefer enums/dates/unions | `status: 'draft' \| 'posted'`, `postedAt?: string` |
 
 ### Domain and Events
 
@@ -281,14 +326,14 @@ type CreateInvoiceInput = z.infer<typeof CreateInvoiceInput>
 
 ### Module-Scoped (replace `[module]` with actual module id)
 
-| Resource    | Pattern                    | Example                       |
-| ----------- | -------------------------- | ----------------------------- |
-| tRPC routes | `module.resource.action`   | `accounting.invoices.create`  |
-| Events      | `[Module][Entity][Action]` | `AccountingInvoicePosted`     |
-| DB tables   | `[module]_[table]`         | `accounting_invoices`         |
-| Permissions | `[module]:[action]`        | `accounting:create-invoice`   |
-| Settings    | `[module].[setting]`       | `accounting.default-currency` |
-| Routes      | `/[module]/[resource]`     | `/accounting/invoices`        |
+| Resource | Pattern | Example |
+|---|---|---|
+| tRPC routes | `module.resource.action` | `accounting.invoices.create` |
+| Events | `[Module][Entity][Action]` | `AccountingInvoicePosted` |
+| DB tables | `[module]_[table]` | `accounting_invoices` |
+| Permissions | `[module]:[action]` | `accounting:create-invoice` |
+| Settings | `[module].[setting]` | `accounting.default-currency` |
+| Routes | `/[module]/[resource]` | `/accounting/invoices` |
 
 ---
 
@@ -302,13 +347,13 @@ type CreateInvoiceInput = z.infer<typeof CreateInvoiceInput>
 
 ### Coverage Gates (enforced in CI)
 
-| Layer                   | Target                    | Method                                          |
-| ----------------------- | ------------------------- | ----------------------------------------------- |
-| Domain                  | 100%                      | Unit tests — pure functions, no dependencies    |
-| Application (use cases) | 90%+                      | Integration tests with mocked adapters via MSW  |
-| Infrastructure          | Integration tests         | Test against real DB/Redis in CI; no unit mocks |
-| Interface (tRPC)        | Key paths + error mapping | Not exhaustive                                  |
-| UI                      | Critical workflows        | Playwright E2E                                  |
+| Layer | Target | Method |
+|---|---|---|
+| Domain | 100% | Unit tests — pure functions, no dependencies |
+| Application (use cases) | 90%+ | Integration tests with mocked adapters via MSW |
+| Infrastructure | Integration tests | Test against real DB/Redis in CI; no unit mocks |
+| Interface (tRPC) | Key paths + error mapping | Not exhaustive |
+| UI | Critical workflows | Playwright E2E |
 
 Build fails in CI if Domain < 100% or Application < 90%.
 
@@ -323,15 +368,15 @@ Build fails in CI if Domain < 100% or Application < 90%.
 
 ```typescript
 // ✅ Good — tests behavior, not internals
-describe('CreateInvoiceUseCase', () => {
-	describe('when line items are empty', () => {
-		it('returns EmptyOrderError', async () => {
-			const result = await useCase.execute({ ...validInput, lineItems: [] })
-			expect(result.ok).toBe(false)
-			expect(result.error).toBeInstanceOf(EmptyLineItemsError)
-		})
-	})
-})
+describe("CreateInvoiceUseCase", () => {
+  describe("when line items are empty", () => {
+    it("returns EmptyOrderError", async () => {
+      const result = await useCase.execute({ ...validInput, lineItems: [] });
+      expect(result.ok).toBe(false);
+      expect(result.error).toBeInstanceOf(EmptyLineItemsError);
+    });
+  });
+});
 ```
 
 ---
@@ -340,12 +385,12 @@ describe('CreateInvoiceUseCase', () => {
 
 ### Branches
 
-| Type      | Pattern                         | Example                                  |
-| --------- | ------------------------------- | ---------------------------------------- |
-| Feature   | `feature/[scope]/[description]` | `feature/accounting/add-invoice-search`  |
-| Fix       | `fix/[scope]/[description]`     | `fix/accounting/invoice-date-validation` |
-| Milestone | `milestone/[number]-[name]`     | `milestone/1-platform-core`              |
-| Chore     | `chore/[description]`           | `chore/update-dependencies`              |
+| Type | Pattern | Example |
+|---|---|---|
+| Feature | `feature/[scope]/[description]` | `feature/accounting/add-invoice-search` |
+| Fix | `fix/[scope]/[description]` | `fix/accounting/invoice-date-validation` |
+| Milestone | `milestone/[number]-[name]` | `milestone/1-platform-core` |
+| Chore | `chore/[description]` | `chore/update-dependencies` |
 
 - `main` is always deployable — no broken builds on main, ever
 - Branch from `main`; merge via PR only
@@ -365,7 +410,7 @@ chore: update Biome to 1.9
 - Imperative mood — "add", "fix", "implement", not "added", "fixes", "implementing"
 - Scope is the module or package name
 - Under 72 characters for the first line
-- Body (optional) explains _why_, not _what_
+- Body (optional) explains *why*, not *what*
 
 ### PR Rules
 
@@ -395,9 +440,9 @@ Single tool for linting and formatting. Replaces ESLint + Prettier.
 ```json
 // biome.json — minimum config
 {
-	"linter": { "enabled": true, "rules": { "recommended": true } },
-	"formatter": { "enabled": true, "indentStyle": "space", "indentWidth": 2 },
-	"organizeImports": { "enabled": true }
+  "linter": { "enabled": true, "rules": { "recommended": true } },
+  "formatter": { "enabled": true, "indentStyle": "space", "indentWidth": 2 },
+  "organizeImports": { "enabled": true }
 }
 ```
 
@@ -410,14 +455,14 @@ Single tool for linting and formatting. Replaces ESLint + Prettier.
 ```typescript
 // vitest.config.ts
 export default defineConfig({
-	test: {
-		coverage: {
-			provider: 'v8',
-			thresholds: { lines: 90, functions: 90, branches: 90 },
-			include: ['src/domain/**', 'src/application/**'],
-		},
-	},
-})
+  test: {
+    coverage: {
+      provider: "v8",
+      thresholds: { lines: 90, functions: 90, branches: 90 },
+      include: ["src/domain/**", "src/application/**"],
+    },
+  },
+});
 ```
 
 ### Playwright
@@ -425,13 +470,13 @@ export default defineConfig({
 ```typescript
 // playwright.config.ts
 export default defineConfig({
-	testDir: './e2e',
-	use: { baseURL: 'http://localhost:3000' },
-	projects: [
-		{ name: 'chromium', use: { ...devices['Desktop Chrome'] } },
-		// Add Electron project for desktop app tests
-	],
-})
+  testDir: "./e2e",
+  use: { baseURL: "http://localhost:3000" },
+  projects: [
+    { name: "chromium", use: { ...devices["Desktop Chrome"] } },
+    // Add Electron project for desktop app tests
+  ],
+});
 ```
 
 ### Zod
@@ -439,6 +484,19 @@ export default defineConfig({
 - All schemas use `z.object().strict()` — rejects unknown fields by default at external boundaries
 - Coerce only where explicitly needed (`z.coerce.date()`) — never `z.any()`
 - Infer types from schemas: `type Input = z.infer<typeof InputSchema>`
+
+### Logging
+
+- All logs must be structured JSON with a trace ID — no plain string logs
+- Trace ID originates at the Interface layer and flows through all downstream calls via DI
+- Log levels:
+  - `error` — unrecoverable failures; always include full context and original cause
+  - `warn` — recoverable issues or degraded behavior
+  - `info` — significant state transitions (`InvoicePosted`, `PaymentReceived`)
+  - `debug` — development only; must not appear in production builds
+- Always log: request entry and exit, unhandled errors, external service calls, significant state changes
+- Never log: passwords, tokens, secrets, raw PII, full request bodies at `info` level or above
+- Infrastructure errors must be logged before being wrapped — log the original cause, not just the wrapper class
 
 ### Environment Variables
 
@@ -449,46 +507,48 @@ export default defineConfig({
 ```typescript
 // src/env.ts
 const EnvSchema = z.object({
-	DATABASE_URL: z.string().url(),
-	REDIS_URL: z.string().url(),
-	PORT: z.coerce.number().default(3000),
-})
+  DATABASE_URL: z.string().url(),
+  REDIS_URL: z.string().url(),
+  PORT: z.coerce.number().default(3000),
+});
 
-export const env = EnvSchema.parse(process.env)
+export const env = EnvSchema.parse(process.env);
 ```
 
 ---
 
 ## 9. AI-Assisted Development
 
-This project uses Document-Driven Architecture (DDA). Always load `.context/00-dda.md`
+This project uses Document-Driven Architecture (DDA). Always load `.playbook/00-rules.md`
 alongside this file at the start of every AI session. DDA defines structure;
 this file defines implementation. Neither is complete without the other.
 
 ### DDA Integration
 
-- All components are defined in `.context/` before any code is written
+- All components are defined in `.playbook/` before any code is written
 - AI generates code against DDA component docs — not ahead of them
-- Every module has a `_index.md` in `.context/[module]/` describing: purpose,
+- Every module has a `_index.md` in `.playbook/[module]/` describing: purpose,
   entry points, contained components, integrations, and concerns
 - Keep DDA docs updated when implementations change — run sync mode before every PR
 
 ### AI Session Boot Order
 
 ```
-1. .context/00-dda.md
+1. .playbook/00-rules.md
 2. docs/code-standards.md        ← this file
-3. .context/_index.md
-4. .context/[module]/_index.md
-5. Relevant component docs
-6. _concerns/ + _integrations/
+3. docs/flows/_index.md
+4. docs/contracts/_index.md
+5. .playbook/_index.md
+6. .playbook/[module]/_index.md
+7. Relevant component and sequencer docs
+8. _concerns/ + _integrations/
 ```
 
 ### Deep Modules for AI Clarity
 
 - Minimal, explicit public interfaces — AI reads interfaces to understand module behavior
 - Rich internal implementation — complexity is hidden, not scattered
-- Document the _why_ in JSDoc, not just the _what_ — AI uses this as reasoning context
+- Document the *why* in JSDoc, not just the *what* — AI uses this as reasoning context
 
 ```typescript
 /**
@@ -504,6 +564,9 @@ export class PostInvoiceUseCase { ... }
 - Always provide: the relevant DDA component doc, the interface the code must implement,
   and the error types it must handle
 - Never accept AI-generated code that uses `any`, raw throws, or skips Zod validation
+- Never accept stub implementations — no hardcoded return values, no artificial delays or intervals standing in for real logic, no placeholder function bodies
+- Never accept partial implementations — every code path must be fully handled: happy path, all error branches, and all edge cases; silent skips are not acceptable
+- All branches must be explicit and transparent — if a path is not handled, it must surface as a typed error, not disappear silently
 - AI-generated code must pass Biome check before commit — no exceptions
 - Flag any AI output that adds undeclared dependencies or duplicates existing responsibilities
 
@@ -512,6 +575,66 @@ export class PostInvoiceUseCase { ... }
 - Always implement against official documentation, not AI assumptions
 - For any third-party SDK: verify method signatures against current docs before using AI-generated calls
 - Flag any AI output that uses deprecated APIs or patterns inconsistent with current library versions
+
+### Behavioral Constraints
+
+- Never add functionality, files, or components beyond the current task scope
+- Never introduce a dependency not declared in the component's `connects` or `integrations` fields
+- Never make architectural decisions unilaterally — flag and wait for instruction
+- Never rename, move, restructure, or refactor anything outside the current task scope
+- Never resolve ambiguity silently — stop and flag before writing any code
+
+### Uncertainty Protocol
+
+When any of the following occur, stop all work and flag before writing any code:
+
+- A requirement is unclear or underspecified
+- A flow path is not defined in the DDA doc or contract
+- A dependency is needed but not declared in the component doc
+- A decision would affect more than the current component
+- The correct behavior cannot be inferred without making assumptions
+
+Flag format:
+```
+[FLAG] Category: description
+       Options: (if applicable)
+       Blocking: what cannot proceed until this is resolved
+```
+
+Categories: `underspecified` | `missing-contract` | `undeclared-dependency` | `architectural-decision` | `ambiguous-behavior`
+
+### Anti-Patterns (Quick Reference)
+
+Never do any of the following:
+
+**Architecture**
+- Cross-layer imports — Application → Interface, Domain → Infrastructure
+- Direct module-to-module imports — use `ModuleServiceGateway`
+- Business logic in sequencers or the Interface layer
+- Anemic domain models — behavior belongs on the domain object, not in a service
+
+**TypeScript**
+- `any` type anywhere in the codebase
+- Non-null assertions (`!`)
+- Type assertions (`as`) outside adapter boundaries
+- Inferred return types on public APIs
+- Boolean domain or application state — use enums, dates, or discriminated unions
+
+**Implementation**
+- Stub implementations — hardcoded returns, artificial delays, placeholder bodies
+- Partial implementations — all paths must be handled explicitly
+- Raw `throw` in Domain or Application layer — use `Result<T, E>`
+- Magic strings or numbers — use named constants
+- Commented-out code — delete it; version control preserves history
+- `new Date()` in Domain or Application — inject a clock abstraction
+- Mutating input parameters — return new objects
+
+**AI-Specific**
+- Generating code ahead of a DDA doc
+- Adding undeclared dependencies or components
+- Silently resolving ambiguity with assumptions
+- Duplicating an existing component's responsibilities
+- Leaving any code path unhandled or silently ignored
 
 ---
 
@@ -527,6 +650,8 @@ No phase is complete until all applicable items are checked.
 - [ ] Type check passes — `tsc --noEmit` exits clean
 - [ ] All tests pass — `vitest run` exits clean
 - [ ] Coverage gates met — Domain 100%, Application 90%+
+- [ ] No stub implementations — no hardcoded returns, artificial delays, or placeholder bodies
+- [ ] No partial implementations — all branches handled: happy path, errors, and edge cases
 
 ### DDA Sync
 
@@ -561,6 +686,33 @@ No phase is complete until all applicable items are checked.
 
 ---
 
+## 11. Security
+
+### Secrets and Configuration
+
+- All secrets via environment variables validated at startup — never hardcoded anywhere in the codebase
+- Never log secrets, tokens, API keys, or credentials at any log level
+- Never expose secrets in URLs, query strings, or client-facing responses
+
+### Input Trust
+
+- Never trust client-supplied IDs for authorization — always verify against session context
+- All external input passes through Zod validation before entering the Application layer — no exceptions
+- Use parameterized queries only — never interpolate values directly into query strings
+
+### Error Exposure
+
+- Never expose internal error details, stack traces, or infrastructure messages to clients
+- Map all errors to safe transport codes at the Interface layer — internal detail stays server-side
+- `InfrastructureError` messages are never forwarded to the client
+
+### Transport
+
+- All inter-service communication over HTTPS — no plaintext internal calls in production
+- Sensitive data is never placed in URLs or query strings — use request body or headers
+
+---
+
 ## Error Mitigation
 
 ### Prevention
@@ -587,5 +739,5 @@ No phase is complete until all applicable items are checked.
 
 ---
 
-_This document is the source of truth for code standards. When in doubt, refer here first._
-_Always load alongside `.context/00-dda.md`._
+*This document is the source of truth for code standards. When in doubt, refer here first.*
+*Always load alongside `.playbook/00-rules.md`.*
