@@ -118,3 +118,20 @@ Rules:
 - **Completed:** Updated .kit/00-prompts.md with RE expansion prompts
 - **Completed:** Generated Raket.PH platform analysis document for team sharing
 - **In Progress:** Update create-playbook CLI to reflect new structure
+
+## 2026-05-23 (continued)
+- **Decided:** Context Kit is the persistent layer beneath every pipeline stage -- not Stage 1
+- **Decided:** Context Kit stays standalone -- works beyond Playbook, any project type
+- **Decided:** Inside Playbook the two are inseparable -- fully ingrained, single system
+- **Decided:** 00-prompts.md restructured into two sections -- standalone kit and Playbook pipeline
+- **Decided:** Non-software Playbook expansion deferred -- validate on software projects first
+- **Completed:** Authored .playbook/.guides/context-kit.md -- full integration guide
+- **Completed:** Updated README.md, pipeline.md, 00-rules.md with context-kit references
+- **Completed:** Updated 00-prompts.md template with two-section structure
+- **In Progress:** Update create-playbook CLI to reflect new structure
+
+## 2026-05-23 (continued)
+- **Completed:** Built create-playbook CLI v2.0 -- zero dependencies, verified scaffold
+- **Completed:** CLI scaffolds 29 files across .playbook/, .kit/, and docs/
+- **Completed:** CLI verified -- runs with npx, pnpm dlx, yarn dlx
+- **In Progress:** Review full file set; address any gaps before packaging
