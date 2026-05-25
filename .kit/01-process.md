@@ -4,7 +4,7 @@
 ---
 
 **Phase:** Execution
-**Last Completed:** create-playbook CLI v2.0 complete -- all gaps closed, 40 files verified
-**Next:** Final review of complete file set; package for distribution
+**Last Completed:** pipeline.md embedded in CLI -- 44 files, fully self-contained
+**Next:** Package create-playbook for distribution
 **Active Modules:** none
 **Active Expansions:** none

@@ -142,3 +142,24 @@ Rules:
 - **Fixed:** Flow and contract templates missing from CLI -- flow-template.md and contract-template.md now scaffolded
 - **Completed:** create-playbook CLI v2.0 final -- 40 files, all gaps closed, verified
 - **In Progress:** Final review and packaging for distribution
+
+## 2026-05-23 (continued)
+- **Decided:** Video Insights expansion uses Gemini for extraction -- free, accessible, native YouTube support
+- **Decided:** Gemini extracts, Playbook connects -- discussion step is mandatory before integration
+- **Decided:** One base template + five content-type variants -- progressive disclosure + tiering
+- **Decided:** Expansion fires at any stage -- not tied to a specific pipeline stage
+- **Decided:** Three integration outcomes -- Integrate, Discard, Defer -- all traceable
+- **Decided:** Discarded insights stay in _refs/ -- never deleted
+- **Completed:** Authored .playbook/.guides/expansions/video-insights.md
+- **Completed:** Generated video-insight-base.md template
+- **Completed:** Generated video-insight-variants.md reference
+- **Completed:** Added video insights prompts to 00-prompts.md template
+- **Completed:** Updated README.md and pipeline.md -- Video Insights no longer Coming soon
+- **Completed:** CLI updated -- 43 files, video insights embedded and verified
+- **In Progress:** Final review and packaging
+
+## 2026-05-23 (continued)
+- **Decided:** Embed pipeline.md in CLI -- size is not a deal breaker, fully self-contained is the right call
+- **Completed:** pipeline.md embedded in create-playbook CLI
+- **Completed:** CLI final -- 44 files, fully self-contained, verified
+- **In Progress:** Package create-playbook for distribution

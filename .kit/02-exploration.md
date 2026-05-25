@@ -340,3 +340,27 @@
 - Feeds .kit/_refs/video-insights/ and .kit/02-exploration.md
 - Guide to be authored as .playbook/.guides/expansions/video-insights.md
 - Status: Coming soon -- not yet defined
+
+**2026-05-23 -- Context Kit as Integral Part of Playbook**
+- Context Kit is not Stage 1 -- it is the persistent layer running beneath every stage
+- Pipeline diagram updated to reflect this -- Context Kit sits above the pipeline, always active
+- Context Kit remains standalone -- works with any AI tool, any project type
+- Inside Playbook, the two are inseparable -- sword within a sword
+- Dedicated guide authored: .playbook/.guides/context-kit.md
+- Guide covers: four files, supporting folders, two-message pattern, session rhythm,
+  pipeline touchpoints, expansion declarations, archiving, context rot
+- Referenced by README.md, pipeline.md, 00-rules.md, and 00-prompts.md
+- 00-prompts.md restructured -- two clear sections: standalone kit prompts and Playbook pipeline prompts
+- The book (The Context Kit by Bogs) remains the deep reference for standalone use
+- Non-software Playbook expansion deferred -- validate pipeline on software first
+
+**2026-05-23 -- Video Insights Expansion**
+- Gemini handles extraction -- free, native YouTube integration, accessible to anyone with Google account
+- Gemini extracts, Playbook connects -- mandatory discussion step before any integration
+- Base template + five content-type variants: Tutorial, Case Study, Framework, Opinion, Research
+- Expansion fires at any stage -- not tied to a specific pipeline stage
+- Three outcomes: Integrate (promotes to kit), Discard (stays in _refs/), Defer (stays Pending)
+- All integrated insights traceable via Ref: in 02-exploration.md
+- Every decision logged in 04-progress.md
+- Files live in .kit/_refs/video-insights/
+- Prompts in .kit/00-prompts.md -- Video Insights section
