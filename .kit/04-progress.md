@@ -135,3 +135,10 @@ Rules:
 - **Completed:** CLI scaffolds 29 files across .playbook/, .kit/, and docs/
 - **Completed:** CLI verified -- runs with npx, pnpm dlx, yarn dlx
 - **In Progress:** Review full file set; address any gaps before packaging
+
+## 2026-05-23 (continued)
+- **Fixed:** DDA templates missing from CLI -- all five now embedded
+- **Fixed:** Guide files missing from CLI -- context-kit, adopt, new-project, reverse-engineer now embedded
+- **Fixed:** Flow and contract templates missing from CLI -- flow-template.md and contract-template.md now scaffolded
+- **Completed:** create-playbook CLI v2.0 final -- 40 files, all gaps closed, verified
+- **In Progress:** Final review and packaging for distribution

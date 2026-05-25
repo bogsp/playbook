@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// create-playbook
+// create-playbook v2.0.0
 // File: create-playbook/index.js
 // Usage: npx create-playbook [project-name]
 //        pnpm dlx create-playbook [project-name]
@@ -22,9 +22,9 @@ await scaffold(root, projectName);
 
 console.log(`\nDone. Your Playbook pipeline is ready.\n`);
 console.log(`Next steps:`);
-console.log(`  1. Read .playbook/README.md — find your starting point`);
-console.log(`  2. Read .playbook/.guides/context-kit.md — understand the session layer`);
-console.log(`  3. Open .kit/00-prompts.md — copy your first session prompt\n`);
+console.log(`  1. Read .playbook/README.md -- find your starting point`);
+console.log(`  2. Read .playbook/.guides/context-kit.md -- understand the session layer`);
+console.log(`  3. Open .kit/00-prompts.md -- copy your first session prompt\n`);
 
 // ---------------------------------------------------------------------------
 // Scaffold
@@ -37,13 +37,11 @@ async function scaffold(root, projectName) {
 
 async function createDirectories(root) {
   const dirs = [
-    // Playbook core
     ".playbook/_concerns",
     ".playbook/_integrations",
     ".playbook/_shared",
     ".playbook/.guides/expansions",
     ".playbook/templates",
-    // Kit
     ".kit/_refs/video-insights",
     ".kit/_refs/templates",
     ".kit/_refs/examples",
@@ -53,13 +51,11 @@ async function createDirectories(root) {
     ".kit/_archives/exploration",
     ".kit/_archives/progress",
     ".kit/_archives/kanban",
-    // Docs
     "docs/flows",
     "docs/contracts",
     "docs/rewrite",
     "docs/rollout",
   ];
-
   for (const dir of dirs) {
     await mkdir(join(root, dir), { recursive: true });
   }
@@ -74,17 +70,20 @@ async function createFiles(root, projectName) {
 }
 
 // ---------------------------------------------------------------------------
-// File contents
+// Files
 // ---------------------------------------------------------------------------
 
 function getFiles(projectName) {
+  const today = new Date().toISOString().split("T")[0];
+
   return {
 
-    // -------------------------------------------------------------------------
+    // -----------------------------------------------------------------------
     // Playbook core
-    // -------------------------------------------------------------------------
+    // -----------------------------------------------------------------------
 
-    ".playbook/README.md": `# Playbook
+    ".playbook/README.md":
+`# Playbook
 # File: .playbook/README.md
 
 Playbook is a structured development pipeline that keeps humans and AI aligned
@@ -99,81 +98,77 @@ Playbook is a dev-dependency -- present during development, invisible in product
 
 | If you are... | Start here |
 |---|---|
-| New to Playbook | You're in the right place -- read on |
-| Starting a new project | \`.playbook/.guides/new-project.md\` |
-| Adopting an existing project | \`.playbook/.guides/adopt.md\` |
-| Resuming a project | \`.kit/00-prompts.md\` |
-| Starting an AI dev session | \`.playbook/00-rules.md\` |
-| Resuming from a rollout doc | \`docs/rollout/[milestone].md\` then \`.playbook/00-rules.md\` |
-| Learning how the Context Kit works | \`.playbook/.guides/context-kit.md\` |
-| Looking up pipeline reference | \`.playbook/pipeline.md\` |
-| Looking up session prompts | \`.kit/00-prompts.md\` |
+| New to Playbook | You are in the right place -- read on |
+| Starting a new project | .playbook/.guides/new-project.md |
+| Adopting an existing project | .playbook/.guides/adopt.md |
+| Resuming a project | .kit/00-prompts.md |
+| Starting an AI dev session | .playbook/00-rules.md |
+| Resuming from a rollout doc | docs/rollout/[milestone].md then .playbook/00-rules.md |
+| Learning how the Context Kit works | .playbook/.guides/context-kit.md |
+| Looking up pipeline reference | .playbook/pipeline.md |
+| Looking up session prompts | .kit/00-prompts.md |
 
 ---
 
 ## The Pipeline
 
-\`\`\`
                     Context Kit (always active)
                            |
 [RE] -> PRD -> Flows -> Contracts -> DDA -> Code -> Rollout
-\`\`\`
 
 [RE] is the Reverse Engineer expansion -- conditional, existing projects only.
 
 | Stage | What It Is | Where It Lives | Conditional |
 |---|---|---|---|
-| Reverse Engineer | Maps what exists before building what should | \`docs/rewrite/\` | Existing projects only |
-| Context Kit | Session and decision layer -- always active | \`.kit/\` | Always |
-| PRD | What to build and why | \`docs/\` | Always |
-| Flows | Runtime paths | \`docs/flows/\` | Always |
-| Contracts | Implementation boundaries | \`docs/contracts/\` | Always |
-| DDA | Component structure and relationships | \`.playbook/\` | Always |
-| Code | Implementation | \`src/\` | Always |
-| Rollout | Generated snapshots | \`docs/rollout/\` | Always |
+| Reverse Engineer | Maps what exists before building what should | docs/rewrite/ | Existing projects only |
+| Context Kit | Session and decision layer -- always active | .kit/ | Always |
+| PRD | What to build and why | docs/ | Always |
+| Flows | Runtime paths | docs/flows/ | Always |
+| Contracts | Implementation boundaries | docs/contracts/ | Always |
+| DDA | Component structure and relationships | .playbook/ | Always |
+| Code | Implementation | src/ | Always |
+| Rollout | Generated snapshots | docs/rollout/ | Always |
 
 ---
 
 ## Expansions
 
 Expansions are optional stages that extend Playbook for specific needs.
-Activate in \`.kit/01-process.md\` under \`Active Expansions\`.
+Activate in .kit/01-process.md under Active Expansions.
 
 | Expansion | When to Use | Guide |
 |---|---|---|
-| Reverse Engineer | Existing or legacy projects | \`.playbook/.guides/expansions/reverse-engineer.md\` |
+| Reverse Engineer | Existing or legacy projects | .playbook/.guides/expansions/reverse-engineer.md |
 | Video Insights | Research-driven ideation | Coming soon |
 
 ---
 
 ## Key Rules
 
-- Nothing gets coded without a \`.playbook/\` doc
+- Nothing gets coded without a .playbook/ doc
 - Flows and contracts are approved before any DDA docs are written
 - Docs stay in sync with code -- run sync before every PR
 - Kit files are updated at the end of every session
 - Progress log is append-only -- never edit past entries
-- Expansions are declared in \`01-process.md\` before use
+- Expansions are declared in 01-process.md before use
 
 ---
 
 The doc is the contract. The code follows.
 
-For the full pipeline reference: \`.playbook/pipeline.md\`
-For the Context Kit guide: \`.playbook/.guides/context-kit.md\`
+For the full pipeline reference: .playbook/pipeline.md
+For the Context Kit guide: .playbook/.guides/context-kit.md
 `,
 
-    ".playbook/00-rules.md": `# Playbook Rules
+    ".playbook/00-rules.md":
+`# Playbook Rules
 # File: .playbook/00-rules.md
+# version: 2.0
+# requires: docs/code-standards.md
 
----
-version: 2.0
-requires: docs/code-standards.md
----
-
-> Always load docs/code-standards.md alongside this file.
-> This file defines how to implement. pipeline.md defines what and why.
-> Neither is complete without the other.
+Always load docs/code-standards.md alongside this file.
+This file defines how to implement. pipeline.md defines what and why.
+Neither is complete without the other.
 
 ---
 
@@ -220,236 +215,49 @@ Before closing:
 
 ---
 
-## Folder Structure
-
-.playbook/
-  README.md              -> orientation and journey matrix
-  pipeline.md            -> complete pipeline reference
-  00-rules.md            -> this file; AI execution layer
-  _index.md              -> project manifest and living folder tree
-  _concerns/             -> cross-cutting capabilities
-  _integrations/         -> third-party services and libraries
-  _shared/               -> components used across multiple modules
-  .guides/               -> guides
-    README.md            -> orientation
-    context-kit.md       -> Context Kit integration guide
-    new-project.md       -> new project guide
-    adopt.md             -> adoption guide -- decision-tree routed
-    expansions/
-      reverse-engineer.md
-  templates/             -> doc type templates
-docs/
-  code-standards.md
-  flows/
-    _index.md
-    global.md
-    flow-N-name.md
-  contracts/
-    _index.md
-    global.md
-    flow-N-name.md
-  rewrite/               -> RE expansion outputs
-    system-map.md
-    decision-record.md
-    risk-register.md
-  rollout/
-.kit/
-  00-prompts.md
-  01-process.md
-  02-exploration.md
-  03-execution.md
-  04-progress.md
-  05-kanban.md           -> optional
-  06-qa.md               -> optional
-  _refs/
-  _tests/
-  _archives/
-
----
-
 ## Document Types
 
-### Universal Frontmatter
+Universal frontmatter fields (all types):
+  id:      kebab-case -- must match filename
+  export:  exported name -- component and sequencer only
+  file:    repo path -- component and sequencer only
+  type:    component | sequencer | structure | concern | integration
+  status:  draft | active | deprecated
 
-id:      # kebab-case -- must match filename
-export:  # exported name -- component and sequencer only
-file:    # repo path -- component and sequencer only
-type:    # component | sequencer | structure | concern | integration
-status:  # draft | active | deprecated
-
----
-
-### structure
-
-Manifest with living folder tree. Always has ## Structure section.
-
----
-id: [module]
-type: structure
-scope: project | app | module
-status: draft
-entry: []
-contains: []
-integrations: []
-concerns: []
----
-
-## What It Does
-[Plain language purpose]
-
-## Structure
-- [_index.md](./_index.md) -- this file
-
----
-
-### sequencer
-
-Runtime coordinator. Full call chain with all branches in ## Flow.
-
----
-id: [name]
-export: [Name]
-file: [src/path.ts]
-type: sequencer
-status: draft
-parent: [module]
-triggers: []
-sequence: []
-emits: []
-concerns: []
----
-
-## What It Does
-[Plain language -- owns sequence, not logic]
-
-## Flow
-References: docs/flows/[flow].md + docs/contracts/[contract].md
-
-1. On [Trigger](input):
-   a. component.method(input)
-      -> ok: ResultType  -> continue
-      -> err: ErrorType  -> halt
-
----
-
-### component
-
-Single unit of logic. Returns typed Result. References contract.
-
----
-id: [name]
-export: [Name]
-file: [src/path.ts]
-type: component
-status: draft
-parent: [sequencer]
-children: []
-connects: []
-emits: []
-concerns: []
----
-
-## What It Does
-[Plain language -- single responsibility]
-
-## Interface
-Contract: docs/contracts/[flow]/[file].md#[section]
-
-input:  [InputType]
-output: Result<[Success], [Error]>
-
-## Detail
-[Edge cases only -- omit if nothing fits]
-
----
-
-### concern
-
----
-id: [name]
-type: concern
-status: draft
-affects: all
-provided-by: internal
----
-
-## What It Does
-[What it provides and how it is consumed]
-
----
-
-### integration
-
----
-id: [name]
-type: integration
-kind: external-service | external-library | internal-service
-status: draft
-used-by: []
-config: []
-docs: [url]
----
-
-## What It Does
-[What it provides and how it is used]
-
-## Interface
-[What this integration exposes -- methods, events, or data]
+Document structure (all types follow progressive disclosure):
+  ## What It Does   -- plain language, any audience
+  ## Interface      -- contract reference + signature (component, sequencer, integration)
+  ## Flow           -- full call chain with all branches (sequencer only)
+  ## Structure      -- living folder tree (structure only)
+  ## Detail         -- edge cases, constraints -- omit if nothing fits
 
 ---
 
 ## Flow Document Format
 
----
-id: flow-N-name
-type: flow
-scope: journey | sequence | operation | composite | compensation
-trigger: request-response | event-driven | background | reactive | webhook | stream
-status: draft
-triggers: []
-calls: []
-emits: []
-called-by: []
----
+Required frontmatter: id, type, scope, trigger, status, triggers, calls, emits, called-by
 
-Core sections (required for every flow):
-- ## What It Does
-- ## Pre-conditions
-- ## Post-conditions
-- ## Walkthrough (narrative --- call chain)
-
-Tier additions by scope:
-  Journey, Sequence -> ## Compensation
-  Journey, Composite -> ## Child Flows
-
-Tier additions by trigger:
-  Event-Driven        -> ## Event Contract
-  Background          -> ## Schedule, ## Timeout Behavior
-  Reactive            -> ## Subscription Contract, ## Disconnect Behavior
-  Webhook             -> ## Payload Contract, ## Retry Behavior
-  Stream              -> ## Subscription Contract, ## Disconnect Behavior, ## Reconnect Behavior
-
-## Detail -- optional
-N/A -- considered, does not apply
-TODO -- blocks status: active
+Core sections (every flow): What It Does, Pre-conditions, Post-conditions, Walkthrough
+Scope additions -- Journey/Sequence: Compensation | Journey/Composite: Child Flows
+Trigger additions:
+  Event-Driven: Event Contract
+  Background: Schedule, Timeout Behavior
+  Reactive: Subscription Contract, Disconnect Behavior
+  Webhook: Payload Contract, Retry Behavior
+  Stream: Subscription Contract, Disconnect Behavior, Reconnect Behavior
+Detail: optional
+N/A: considered, does not apply
+TODO: not documented; blocks status: active
 
 ---
 
 ## Contract Document Format
 
 Flow contract required sections:
-  ## Happy Path
-  ## Failure Modes
-  ## Edge Cases
-  ## Concurrency Rules
-  ## Constraints
+  Happy Path | Failure Modes | Edge Cases | Concurrency Rules | Constraints
 
 global.md required sections:
-  ## Architecture Rules
-  ## Auth Boundaries
-  ## Error Handling Rules
-  ## Audit Requirements
-  ## Cross-Cutting Constraints
+  Architecture Rules | Auth Boundaries | Error Handling Rules | Audit Requirements | Cross-Cutting Constraints
 
 N/A or TODO. TODO blocks status: active.
 Split at ~150 lines. Reference with precision: file.md#section-name
@@ -459,13 +267,9 @@ Split at ~150 lines. Reference with precision: file.md#section-name
 ## Expansions
 
 Declare in .kit/01-process.md:
-
-Simple:
-  Active Expansions: video-insights
-
-Multi-phase:
-  Active Expansions:
-    reverse-engineer: inventory
+  Simple:      Active Expansions: video-insights
+  Multi-phase: Active Expansions:
+                 reverse-engineer: inventory
 
 RE phases: inventory | audit | classify | risk-map | gap-report | handoff
 
@@ -502,7 +306,6 @@ Rules:
 ## Error Recovery
 
 Stop all other work.
-
 1. Identify   -- type error | test failure | Playbook drift | layer violation | other
 2. Isolate    -- code, Playbook doc, or both?
 3. Fix        -- resolve at source; do not patch symptoms
@@ -515,7 +318,8 @@ Context rot:
   If rot persists, start a fresh session with a rollout doc as context.
 `,
 
-    ".playbook/_index.md": `---
+    ".playbook/_index.md":
+`---
 id: ${projectName}
 type: structure
 scope: project
@@ -552,476 +356,869 @@ TODO: Describe the project purpose in one paragraph.
   - [04-progress.md](../.kit/04-progress.md) -- progress log
 `,
 
-    // -------------------------------------------------------------------------
-    // Kit files
-    // -------------------------------------------------------------------------
+    // -----------------------------------------------------------------------
+    // Guides
+    // -----------------------------------------------------------------------
 
-    ".kit/00-prompts.md": `# Playbook -- Session Prompts
-# File: .kit/00-prompts.md
+    ".playbook/.guides/context-kit.md":
+`# The Context Kit
+# File: .playbook/.guides/context-kit.md
 
-Quick reference for every session type. Copy and paste as needed.
+The Context Kit is the session and decision layer of the Playbook pipeline.
+It keeps humans and AI aligned across every session, every stage, and every
+decision from the first idea to deployed code.
 
-For how the Context Kit works within Playbook:
-.playbook/.guides/context-kit.md
+It is also a standalone system that works with any AI tool, for any kind of
+project. You do not need Playbook to use the Context Kit.
 
----
+But inside Playbook, the two are inseparable. The kit drives the pipeline.
+The pipeline gives the kit its full power.
 
-## Context Kit -- Standalone Prompts
-These work with any AI tool, any project type.
-
-### Fresh Project
-
-Message 1 -- upload .kit/01-process.md + .kit/03-execution.md, then send:
-
-I'm starting a new project using the Context Kit.
-I'll share files in two messages.
-
-This message: Process + Execution
-Next message: Exploration + Progress
-
-Based on my project [1-2 sentence description], help me populate these files:
-- Draft initial Exploration questions
-- Suggest Execution guidelines
-- Define Current State and initial goals
-
-Just provide a brief confirmation.
-
-Message 2 -- upload .kit/02-exploration.md + .kit/04-progress.md, then send:
-
-Here are the remaining blank templates. Just provide a brief confirmation.
+For the Context Kit as a standalone system beyond Playbook:
+The Context Kit by Bogs -- the complete reference.
 
 ---
 
-### Resume Project
+## What the Context Kit Is
 
-Message 1 -- upload current .kit/01-process.md + .kit/03-execution.md, then send:
+AI has no memory between sessions. Every new chat starts from zero.
+Without a system to carry context forward, every session wastes time
+re-explaining what was already decided, re-discovering what was already built,
+and re-correcting what the AI already got wrong.
 
-I'm resuming a project using the Context Kit.
-I'll share files in two messages.
+The Context Kit solves this with four files, each with one job:
 
-This message: Process + Execution
-Next message: Exploration + Progress
+| File | Job |
+|---|---|
+| 01-process.md | Session spark -- where you are, what comes next |
+| 02-exploration.md | Decision log -- what is open, what is closed |
+| 03-execution.md | Work definition -- guidelines, plan, tasks, issues |
+| 04-progress.md | Project history -- append-only record of everything done |
 
-Focus only on Current State. Do not reopen closed decisions unless I ask.
-Just provide a brief confirmation.
+Two optional modules activate when the work demands them:
 
-Message 2 -- upload current .kit/02-exploration.md + .kit/04-progress.md, then send:
-
-Here is the context from earlier work. Just provide a brief confirmation.
-
----
-
-### End of Session
-
-Based on this session, update my kit files:
-- Check off completed tasks in 03-execution.md
-- Move closed decisions to 02-exploration.md with dates and reasoning
-- Append to 04-progress.md -- Completed, Decided, Fixed, In Progress
-- Update Current State in 01-process.md
-
-Generate updated markdown for all changed files.
+| File | Job | When |
+|---|---|---|
+| 05-kanban.md | Ticket breakdown | Complex execution with discrete deliverables |
+| 06-qa.md | Test registry and sign-off | Any deliverable needing verification |
 
 ---
 
-### Context Rot Recovery
+## How It Fits in the Pipeline
 
-Stop. Your only source of truth is the files uploaded at session start.
-Ignore all prior conversation context.
-Re-read the uploaded files before continuing.
+The Context Kit is not a stage that completes and hands off.
+It is the persistent layer running beneath every stage.
 
----
+                    Context Kit (always active)
+                           |
+[RE] -> PRD -> Flows -> Contracts -> DDA -> Code -> Rollout
 
-## Playbook Pipeline Prompts
-These extend the kit for Playbook-specific work.
+Every stage has a kit touchpoint:
 
-### Start Dev Session
-
-Upload .playbook/00-rules.md + docs/code-standards.md, then send:
-
-Before any work, read in this order:
-1. .playbook/00-rules.md
-2. docs/code-standards.md
-3. docs/flows/_index.md
-4. docs/contracts/_index.md
-5. .playbook/_index.md
-
-[Attach relevant module and component docs]
-
-Confirm your understanding. Then wait for my instruction.
+| Stage | Kit Touchpoint |
+|---|---|
+| Reverse Engineer | RE findings feed 02-exploration.md and 03-execution.md on handoff |
+| PRD | Goals and acceptance criteria live in 03-execution.md |
+| Flows | Flow decisions close in 02-exploration.md with Flow: references |
+| Contracts | Contract decisions close in 02-exploration.md |
+| DDA | Component decisions close in 02-exploration.md |
+| Code | Progress logs in 04-progress.md; issues in 03-execution.md |
+| Rollout | Milestone logged in 04-progress.md; Current State updated |
 
 ---
 
-### Resume from Rollout Doc
+## The Four Files
 
-Upload docs/rollout/[milestone].md + .playbook/00-rules.md + docs/code-standards.md, then send:
+### 01-process.md -- Session Spark
 
-I'm resuming work on an existing project.
-Read the rollout doc first, then 00-rules.md and code-standards.md.
-Confirm your understanding before we begin.
+Four fields only. Updated every session without exception.
 
----
+  Phase:              Exploration | Execution | Progress
+  Last Completed:     Most recent milestone
+  Next:               Active goal
+  Active Modules:     05-kanban | 06-qa | none
+  Active Expansions:  reverse-engineer: [phase] | none
 
-### Write Flows and Contracts
-
-Attach docs/PRD.md, then send:
-
-Given this PRD, define the flows and contracts for this project.
-
-Flows (docs/flows/):
-- Write docs/flows/_index.md as the entry point and dependency map
-- Write docs/contracts/global.md first -- architecture, auth, error handling rules
-- Write one flow file per major runtime path
-- Declare scope and trigger type in frontmatter for each flow
-- Include all failure paths -- not just the happy path
-- Keep files small; split at ~150 lines
-
-Contracts (docs/contracts/):
-- Write docs/contracts/_index.md as the entry point
-- Write one contract file per flow
-- Required sections: Happy Path, Failure Modes, Edge Cases, Concurrency Rules, Constraints
-- N/A when a section doesn't apply; TODO blocks status: active
-
-Flag anything underspecified. Wait for review before writing any DDA docs.
+Rule: If it does not change session to session, it does not live here.
 
 ---
 
-### Bootstrap Scaffold from PRD
+### 02-exploration.md -- Decision Log
 
-Attach the PRD + approved flow and contract files, then send:
+Two states:
 
-Given this PRD and approved flows and contracts, generate the Playbook scaffold.
-- Produce _index.md for the project and each module with living folder trees
-- Create stub docs for all identifiable components, sequencers, concerns, integrations
-- Mark all stubs as status: draft
-- For sequencers, include a stub Flow section referencing the relevant flow files
-- Flag anything underspecified
+Open Topics -- questions still being explored. Gets resolved or dropped.
+Closed Decisions -- dated, reasoned, permanent. Never edited. Only reopened
+  explicitly with a new dated entry explaining why.
 
----
+Reference fields:
+  Ref:  -- points to supporting material in .kit/_refs/
+  Flow: -- points to the flow that resulted from this decision
 
-### Add New Component
-
-Attach the parent _index.md + relevant flow file, then send:
-
-Given this parent doc and flow, create a Playbook [type] doc for [description].
-Follow Playbook conventions. Flag any missing relationships.
-If sequencer, include a Flow section with full call chain and all branches.
-After creating the doc, provide the updated Structure section for the parent _index.md.
+Rule: If a decision produces a flow, it must reference it.
 
 ---
 
-### Sync Check
+### 03-execution.md -- Work Definition
 
-Run a Playbook sync check on all files touched this session.
-For each: does the code match the Playbook doc?
-List any mismatches. Update affected docs.
-Update the living folder tree in any _index.md where components changed.
+Three sections:
 
----
+Guidelines -- how the work is done. Style, constraints, quality bar.
+  Includes: native implementation preference, external dependency rules,
+  QA tier declaration, custom ticket types.
 
-### Generate Rollout Doc
+Plan -- what is being built. Goals, outcomes, scope, acceptance criteria.
 
-Attach all .playbook/ docs + .kit/04-progress.md, then send:
+Action -- current focus and task list.
 
-Generate a rollout doc for [milestone name].
-Read the full .playbook/ tree and 04-progress.md.
-Output to docs/rollout/[milestone].md.
+Known Issues table -- typed, severity-rated, dependency-aware:
+  Type: bug | dependency | design | performance | security
+  Severity: critical | high | low
 
----
-
-### Adopt Existing Project
-
-Upload .playbook/00-rules.md + docs/code-standards.md, then send:
-
-I am adopting the Playbook pipeline for an existing project.
-Read these two files first. Confirm. Do not begin work yet.
-Then follow .playbook/.guides/adopt.md.
+Rule: A known issue without type and severity cannot be assessed.
 
 ---
 
-### Reverse Engineer -- Start Inventory
+### 04-progress.md -- Project History
 
-Upload .playbook/00-rules.md + all available project context, then send:
+Append-only. Entries never edited or deleted. Ever.
 
-RE expansion active. Phase: inventory.
+Three entry types:
+  Completed -- a deliverable or task finished
+  Decided   -- a decision made and closed
+  Fixed     -- a known issue resolved
 
-Map and document:
-1. All applications or services and what they do
-2. All major modules, components, and services
-3. All external integrations and what they provide
-4. The data model -- what data exists and how it is structured
-5. Entry points -- how the system is accessed
-6. Dependency relationships -- what depends on what
-7. Tech stack -- frameworks, libraries, tools, versions
+One special entry:
+  In Progress -- always last, overwritten each session
 
-Produce a draft system-map.md. Use plain language.
-Flag anything unclear. Wait for review before proceeding.
+Rule: If it happened, it gets logged. Never add retroactively.
 
 ---
 
-### Reverse Engineer -- Advance Phase
+## Supporting Folders
 
-RE expansion current phase: [inventory | audit | classify | risk-map | gap-report | handoff]
-Previous phase reviewed and approved.
+.kit/_refs/      -- supporting material for 02-exploration.md
+  video-insights/
+  templates/
+  examples/
+  snippets/
+  research/
 
-Proceed to [next phase].
-[Attach relevant rewrite docs]
+.kit/_tests/     -- one file per QA test case; 06-qa.md points here
 
-Follow .playbook/.guides/expansions/reverse-engineer.md.
-Wait for review before advancing again.
+.kit/_archives/  -- lean history; nothing deleted, moved not removed
+  exploration/
+  progress/
+  kanban/
 
----
-
-### Reverse Engineer -- Handoff
-
-Attach all docs/rewrite/ files + current kit files, then send:
-
-RE expansion complete. Run handoff:
-1. Extract open topics from system-map.md -> .kit/02-exploration.md
-2. Extract closed decisions from decision-record.md -> .kit/02-exploration.md
-3. Extract known issues from risk-register.md -> .kit/03-execution.md
-4. Update .kit/01-process.md -- mark RE complete, update Current State
-
-Generate updated kit files as markdown code blocks for review.
+Archive rule: main files are current and actionable. Archives own history.
 
 ---
 
-### Playbook End of Session
+## The Two-Message Pattern
 
-Before we close:
-1. Run Playbook sync check on all docs touched this session
-2. Update .kit/04-progress.md -- completions, decisions, fixes
-3. Update Current State in .kit/01-process.md
-4. Update living folder tree if components changed
-Generate updated markdown for all changed kit files.
+Every session starts the same way. Two messages. Always.
 
----
+Message 1 -- upload 01-process.md + 03-execution.md
+  How to work and what is in focus right now.
 
-### Error Recovery
+Message 2 -- upload 02-exploration.md + 04-progress.md
+  What has been decided and what has been done.
 
-Something has gone wrong. Stop all other work.
+Add 05-kanban.md and 06-qa.md when active.
 
-1. What broke: [description]
-2. Category: type error | test failure | Playbook drift | layer violation | other
-3. Location: code | Playbook doc | both
-4. Fix at source -- do not patch symptoms
-5. After fixing: re-run checks and Playbook sync
-6. Log as Fixed entry in .kit/04-progress.md
+Why this order: orientation before context. Always.
 
 ---
 
-### Session Limit Warning
+## Session Rhythm
 
-We are approaching the session limit.
-Update all kit files and any changed Playbook docs now.
-Generate markdown for each so I can copy-paste and save.
+Start  -> upload kit files (2 messages)
+         AI confirms Current State and waits
+Work   -> focus only on Current State
+         log decisions and issues as they arise
+End    -> update 01-process.md
+         append to 04-progress.md
+         update 03-execution.md if tasks or issues changed
+
+Rule: Never close a session without updating 01-process.md and 04-progress.md.
+
+---
+
+## Declaring Expansions
+
+Simple:
+  Active Expansions: video-insights
+
+Multi-phase:
+  Active Expansions:
+    reverse-engineer: classify
+
+Mark complete:
+  Active Expansions: reverse-engineer: complete
+
+Clear next session:
+  Active Expansions: none
+
+---
+
+## Keeping Files Lean
+
+Archive when:
+  02-exploration.md -- closed decision no longer gates any active task or flow
+  04-progress.md    -- entries older than the current phase
+  05-kanban.md      -- Done tickets no longer referenced
+
+Every archived file gets a header:
+  Title, Date Range, Phase, Archived date, Reason
+
+---
+
+## Context Rot
+
+Signs: ignoring Current State, suggesting closed decisions, breaking formatting.
+
+Recovery:
+  Stop. Your only source of truth is the files uploaded at session start.
+  Ignore all prior conversation context.
+  Re-read .playbook/00-rules.md and docs/code-standards.md before continuing.
+
+Prevention: keep files lean, archive regularly, start fresh at major milestones.
+
+---
+
+## Quick Reference
+
+| File | Owns | Updated |
+|---|---|---|
+| 01-process.md | Session state | Every session |
+| 02-exploration.md | Active decisions | When decisions change |
+| 03-execution.md | Active work definition | When work changes |
+| 04-progress.md | Project history | Every session |
+| 05-kanban.md | Active tickets | When tickets change |
+| 06-qa.md | Test registry, sign-off | When tests change |
+
+The kit is the memory. The pipeline is the work. Together they are one system.
 `,
 
-    ".kit/01-process.md": `# PROCESS
-# File: .kit/01-process.md
+    ".playbook/.guides/new-project.md":
+`# Starting a New Project
+# File: .playbook/.guides/new-project.md
+
+This guide walks through every stage of the Playbook pipeline from scratch.
+Follow the stages in order. Do not skip ahead.
 
 ---
 
-**Phase:** Exploration
-**Last Completed:** Playbook scaffold generated
-**Next:** Populate Exploration with initial questions
-**Active Modules:** none
-**Active Expansions:** none
+## Stage 1 -- Context Kit
+
+Get your thinking straight before touching any tools.
+
+1. Copy blank kit templates from .kit/ into your project
+2. Upload .kit/01-process.md + .kit/03-execution.md to a new AI session
+3. Describe your project in 1-2 sentences and ask AI to populate the files
+4. Upload .kit/02-exploration.md + .kit/04-progress.md
+5. Work through open questions until key decisions are locked
+
+Use prompt: Context Kit -- Fresh Project from .kit/00-prompts.md
+
+Done when: project goals are clear, key decisions are in Closed Decisions.
+
+---
+
+## Stage 2 -- PRD and Specs
+
+Define what you are building and why.
+
+1. Use closed decisions from 02-exploration.md as input
+2. Ask AI to draft a PRD from your decisions
+3. Review and approve the PRD
+4. Store it in docs/ (e.g. docs/PRD.md)
+5. Log completion in 04-progress.md
+
+Done when: PRD is approved, acceptance criteria are clear and verifiable.
+
+---
+
+## Stage 3 -- Flows and Contracts
+
+Define runtime paths and lock implementation boundaries.
+
+1. Write flow files under docs/flows/ (entry: docs/flows/_index.md)
+2. Write docs/contracts/global.md first -- rules that apply everywhere
+3. Write a companion contract under docs/contracts/ for each flow
+4. Walk each flow including failure paths -- find gaps
+5. Lock flows and contracts before authoring any DDA doc
+
+Done when: every runtime path has a flow, every flow has a contract,
+all reviewed and locked.
+
+---
+
+## Stage 4 -- DDA
+
+Define every component before any code is written.
+
+1. Load Playbook context (prompt: Playbook -- Start Dev Session)
+2. Bootstrap scaffold from PRD (prompt: Bootstrap Scaffold from PRD)
+3. Review all generated stubs
+4. Author top-down: _index.md -> sequencers -> components -> concerns -> integrations
+5. Activate docs one by one: draft -> active
+
+Done when: all docs are status: active, living folder trees accurate.
+
+---
+
+## Stage 5 -- Code
+
+Generate code against Playbook contracts.
+
+1. Start every dev session with the Playbook boot prompt
+2. Load only docs needed for the current task
+3. Work ticket by ticket if using Kanban
+4. After each component: run Playbook sync check
+5. Before every PR: run Phase Completion Checklist
+
+Done when: all acceptance criteria met, all QA tests pass.
+
+---
+
+## Stage 6 -- Rollout
+
+Generate a snapshot for the completed milestone.
+
+1. Use prompt: Playbook -- Generate Rollout Doc
+2. Attach all .playbook/ docs + .kit/04-progress.md
+3. Review docs/rollout/[milestone].md
+4. Use as context for next session or new team member
+
+Done when: rollout doc generated, kit files updated, all changes pushed.
 `,
 
-    ".kit/02-exploration.md": `# EXPLORATION
-# File: .kit/02-exploration.md
+    ".playbook/.guides/adopt.md":
+`# Adopting Playbook
+# File: .playbook/.guides/adopt.md
 
-## Open Topics
-
-**[Topic Name]**
-- Questions to resolve
-- Options being considered
-- Ref: \`.kit/_refs/[type]/[filename]\` _(if applicable)_
+This guide covers all adoption paths. Answer four questions to find your starting point.
+No assumptions. No rigid categories. Just honest routing.
 
 ---
 
-## Closed Decisions
+## Where to Start
 
-**[YYYY-MM-DD] Decision Name**
-- What was decided
-- Why
-- Alternatives considered
-- Ref: \`.kit/_refs/[type]/[filename]\` _(if applicable)_
-- Flow: \`docs/flows/flow-N-name.md\` _(if applicable)_
+Answer these questions in order. Each answer points to your next step.
+
+---
+
+Question 1 -- Does the project have .kit/ files?
+
+  Yes -> skip to Question 2
+  No  -> generate kit files first
+         Upload .playbook/00-rules.md + docs/code-standards.md
+         Use prompt: Adopt Existing Project from .kit/00-prompts.md
+         Then continue to Question 2
+
+---
+
+Question 2 -- Is the codebase organized enough to map without reverse engineering?
+
+Can you describe what every major part does and how they connect
+without reading the code?
+
+  Yes -> skip to Question 3
+  No  -> activate the Reverse Engineer expansion first
+         Add to .kit/01-process.md:
+           Active Expansions:
+             reverse-engineer: inventory
+         Read .playbook/.guides/expansions/reverse-engineer.md
+         Complete all RE phases before continuing
+         Then return to Question 3
+
+---
+
+Question 3 -- Is there existing documentation, architecture notes, or specs?
+
+  Yes -> attach them to your audit prompt as additional context
+  No  -> audit from source files only; AI will surface what it finds
+
+---
+
+Question 4 -- Is this a partial update or a full rewrite?
+
+  Partial update  -> strangler fig -- adopt incrementally, keep platform live
+                     Priority: _concerns/ -> _integrations/ -> _shared/ -> sequencers -> components
+
+  Full rewrite    -> RE expansion must be complete before any new code is written
+                     New architecture defined in DDA before old code is touched
+
+---
+
+## Running the Audit
+
+Upload all available context, then send:
+
+  Run a structured audit against the Playbook pipeline.
+
+  1. Inventory -- map all modules, services, components, dependencies, tech stack
+  2. Audit -- what exists, what is missing, what drifts from Playbook conventions
+  3. Gap Report:
+     - Missing: what does not exist yet
+     - Drifting: what exists but does not match Playbook
+     - Compliant: what already follows Playbook
+
+  Wait for review before proceeding.
+
+---
+
+## Scaffolding
+
+After reviewing and approving the gap report:
+
+  Proceed with scaffold:
+
+  1. Scaffold flows and contracts if missing
+  2. Scaffold .playbook/ around existing code -- do not modify anything
+  3. Create stub docs (status: draft) for all unmapped components
+  4. Update kit files -- Current State and Progress log
+
+  Generate all files as markdown code blocks for review.
+
+---
+
+## Incremental Adoption
+
+After scaffolding is approved:
+
+  Work through the gap report in priority order:
+  1. _concerns/     -- cross-cutting capabilities first
+  2. _integrations/ -- external contracts next
+  3. _shared/       -- cross-module components
+  4. Sequencers     -- flows before component code
+  5. Components     -- one at a time, test after each
+
+  For each item:
+  1. Author or update the Playbook doc to status: active
+  2. Identify code changes -- flag but do not make yet
+  3. Once doc is approved, make code changes
+  4. Run Phase Completion Checklist after each item
+
+---
+
+## Adoption Rules
+
+- Nothing is deleted -- adoption is additive only
+- Existing code stays intact until its Playbook doc is active
+- Closed decisions in existing kit files stay closed
+- Flag risky structural changes -- defer them
+- Full rewrite: no new code until RE expansion handoff is complete
 `,
 
-    ".kit/03-execution.md": `# EXECUTION
-# File: .kit/03-execution.md
+    ".playbook/.guides/expansions/reverse-engineer.md":
+`# Reverse Engineer Expansion
+# File: .playbook/.guides/expansions/reverse-engineer.md
 
-## Guidelines
+Maps what an existing codebase actually does before any architectural
+decisions are made. Foundation for all adoption and rewrite work.
 
-**Style & Voice:**
-- [Tone and approach]
+Activate in .kit/01-process.md before starting:
 
-**Rules & Constraints:**
-- [Specific requirements]
-- Prefer native implementations over external libraries
-- External dependencies require explicit justification before adoption
-
-**Quality Bar:**
-- [Standards for completion]
-
-**QA Tier:** core | standard | full
-
-**Custom Ticket Types:** _(declare before use in kanban)_
-- \`[type]\` -- [description]
+  Active Expansions:
+    reverse-engineer: inventory
 
 ---
 
-## Plan
+## Why This Exists
 
-**Goals:**
-- [What you're building]
-
-**Outcomes:**
-- [What done looks like]
-
-**Out of Scope:**
-- [What's not included]
-
-**Acceptance Criteria:**
-- [ ] [Verifiable condition]
+You cannot design what should exist without understanding what does exist.
+Every assumption about existing code that turns out wrong costs time, money,
+and stability. This expansion eliminates assumptions before they become problems.
 
 ---
 
-## Action
+## What It Produces
 
-**Right Now:**
-[Current focus]
+Three documents in docs/rewrite/:
 
-**Tasks:**
-- [ ] [Task]
-  - [ ] [Subtask]
+  system-map.md       -- what exists, where it lives, what depends on what
+  decision-record.md  -- classification per component with reasoning
+  risk-register.md    -- what breaks if X changes, migration constraints
 
----
-
-## Known Issues
-
-| # | Issue | Type | Severity | Blocked By | Resolution |
-|---|---|---|---|---|---|
-| -- | -- | -- | -- | -- | -- |
-
-_Type: bug | dependency | design | performance | security_
-_Severity: critical | high | low_
-`,
-
-    ".kit/04-progress.md": `# PROGRESS LOG (APPEND-ONLY)
-# File: .kit/04-progress.md
-
-Rules:
-- Entries are never edited or deleted
-- New updates always added at the bottom
-- Three entry types: Completed, Decided, Fixed
-- In Progress is always the last entry, overwritten each session
-- Add timestamp per session: ## YYYY-MM-DD
+For large projects, any document splits into a sub-folder with _index.md.
 
 ---
 
-## ${new Date().toISOString().split("T")[0]}
-- **Completed:** Playbook scaffold generated by create-playbook
-- **In Progress:** Populating Context Kit for new project
-`,
+## Classification System
 
-    ".kit/05-kanban.md": `# KANBAN
-# File: .kit/05-kanban.md
+  Keep     -- works as-is, no changes needed
+  Align    -- works but needs to conform to new standards
+  Extract  -- good logic in the wrong place
+  Rewrite  -- wrong or too coupled, rebuild
+  Replace  -- responsibility stays, tool changes
+  Discard  -- no longer needed
+  Defer    -- decision not yet possible
+  Evaluate -- needs investigation before classifying
+
+---
+
+## Phases
+
+Each phase requires human review before advancing.
+
+### Phase 1 -- Inventory
+
+Goal: Map what exists.
+
+  Run an inventory of this codebase. Map and document:
+  1. All applications or services and what they do
+  2. All major modules, components, and services
+  3. All external integrations
+  4. The data model
+  5. Entry points
+  6. Dependency relationships
+  7. Tech stack -- frameworks, libraries, tools, versions
+
+  Produce draft docs/rewrite/system-map.md. Use plain language.
+  Flag anything unclear. Wait for review.
+
+Output: docs/rewrite/system-map.md (draft)
+Advance when: system map reviewed and approved.
+
+---
+
+### Phase 2 -- Audit
+
+Goal: Understand quality and structure.
+
+  Audit the codebase against the system map.
+  For each major component identify:
+  1. What it actually does vs what it appears designed to do
+  2. What depends on it
+  3. Whether it has clear boundaries
+  4. Known issues and tech debt
+
+  Flag: god components, mixed concerns, tight coupling, hidden dependencies.
+  Update system-map.md with findings. Wait for review.
+
+Output: Updated docs/rewrite/system-map.md
+Advance when: audit findings reviewed and approved.
+
+---
+
+### Phase 3 -- Classify
+
+Goal: Assign a classification to every major component.
+
+  Using the audited system map, classify every major component.
+  For each document: classification, reasoning, dependencies affected, risk level.
+  Produce draft docs/rewrite/decision-record.md.
+  Wait for review.
+
+Output: docs/rewrite/decision-record.md (draft)
+Advance when: every component classified, record reviewed and approved.
+
+---
+
+### Phase 4 -- Risk Map
+
+Goal: Understand what breaks if X changes.
+
+  For every Extract, Rewrite, Replace, or Discard component:
+  1. What depends on it?
+  2. What breaks if it changes?
+  3. What must change before it can be safely modified?
+  4. Are there circular dependencies?
+  5. What is the safe migration order?
+
+  Produce draft docs/rewrite/risk-register.md. Wait for review.
+
+Output: docs/rewrite/risk-register.md (draft)
+Advance when: risk register reviewed and approved.
+
+---
+
+### Phase 5 -- Gap Report
+
+Goal: Identify what is missing, broken, or undocumented.
+
+  Using all three rewrite docs, produce a gap report:
+  Missing | Broken | Undocumented | Security Concerns | Performance Concerns
+
+  Format as a prioritized list. Append to docs/rewrite/system-map.md.
+  Wait for review.
+
+Output: Gap report section in docs/rewrite/system-map.md
+Advance when: gap report reviewed and approved.
+
+---
+
+### Phase 6 -- Handoff
+
+Goal: Feed all findings into the Playbook pipeline.
+
+  From system-map.md    -> .kit/02-exploration.md open topics
+  From decision-record  -> .kit/02-exploration.md closed decisions
+  From risk-register    -> .kit/03-execution.md known issues
+  Update 01-process.md  -> mark RE complete, update Current State
+
+  Generate updated kit files for review.
+
+Output: Updated .kit/02-exploration.md, .kit/03-execution.md, .kit/01-process.md
+Complete when: all three kit files updated and reviewed.
+
+---
 
 ## Rules
-- Tickets seeded from Acceptance Criteria in 03-execution.md
-- One outcome per ticket -- no bundling
-- Priority within each column is top-down
-- Blocked tickets stay in their column -- blocking is explicit
-- When a ticket moves to Done, log it in 04-progress.md
 
-## Ticket Types
-Core (always available): feature | bug | task
-Pipeline (when .playbook/ exists): doc | sync
-Project (declare in 03-execution.md before use): [custom]
-
----
-
-## Backlog
-
-### [K-01] Ticket Title
-**Type:** feature | bug | task | doc | sync
-**Description:** What needs to happen and why.
-**Ref:** [optional]
-**Blocked by:** none
-
----
-
-## In Progress
-
-### [K-02] Ticket Title
-**Type:** feature | bug | task | doc | sync
-**Description:** What needs to happen and why.
-**Ref:** [optional]
-**Blocked by:** none
-
----
-
-## Done
-
-### [K-03] Ticket Title
-**Completed:** YYYY-MM-DD
+- Never advance a phase without human review and approval
+- Never begin DDA docs during inventory, audit, or classify phases
+- Every component must be classified before risk-map phase begins
+- Handoff not complete until rewrite docs are referenced in kit files
 `,
 
-    ".kit/06-qa.md": `# QA PLAN
-# File: .kit/06-qa.md
+    // -----------------------------------------------------------------------
+    // DDA templates
+    // -----------------------------------------------------------------------
 
-## Rules
-- Test cases live in .kit/_tests/ -- one file per test
-- Each test maps to one Acceptance Criterion in 03-execution.md
-- QA tier declared in 03-execution.md: core | standard | full
-- A criterion is not done until its test file passes
-- Failures must reference a contract and define a mitigation
-- All tests must pass before sign-off
-- Sign-off requires every Acceptance Criterion verified
-
+    ".playbook/templates/structure.md":
+`---
+id: [kebab-case]
+type: structure
+scope: project | app | module
+status: draft
+entry: []
+contains: []
+integrations: []
+concerns: []
 ---
 
-## Test Cases
+## What It Does
+Plain language description of this module or app's purpose.
 
-| ID | Title | Maps To | Executor | Status |
-|---|---|---|---|---|
-| QA-01 | [Test title] | K-01 | Agent | Pending |
+## Structure
+- [_index.md](./_index.md) -- this file; [scope] manifest
+- [component-name.md](./component-name.md) -- [one line description]
 
----
-
-## Failures Log
-
-| ID | Date | What Failed | Ref | Ticket | Mitigation | Status |
-|---|---|---|---|---|---|---|
-
----
-
-## Sign-off
-
-**QA Complete:** YYYY-MM-DD
-**Signed off by:** [Human | Agent]
-
-**Acceptance Criteria Verified:**
-- [ ] [Criterion] -- QA-01
-
-**Known Exceptions:**
-[Explicit reasoning -- never silently skipped]
-
-**Consequences of Sign-off:**
-[What this approval gates]
-
-**Notes:**
-[Anything the next phase needs to know]
+## Detail
+_(Optional -- omit if nothing fits)_
 `,
 
-    // -------------------------------------------------------------------------
+    ".playbook/templates/sequencer.md":
+`---
+id: [kebab-case]
+export: [ExportedName]
+file: [src/module/sequencer.ts]
+type: sequencer
+status: draft
+parent: [module]
+triggers: []
+sequence: []
+emits: []
+concerns: []
+---
+
+## What It Does
+Plain language -- owns sequence, not logic.
+
+## Flow
+References: docs/flows/[flow].md + docs/contracts/[contract].md
+
+1. On [TriggerEvent](input):
+   a. [component].[method](input)
+      -> ok: [ResultType]  -> continue to b
+      -> err: [ErrorType]  -> emit [FailureEvent], halt
+   b. [component].[method](result)
+      -> ok: [ResultType]  -> continue to c
+      -> err: [ErrorType]  -> compensate, emit [FailureEvent]
+   c. [component].[method](result)
+      -> ok: [ResultType]  -> emit [SuccessEvent]
+      -> err: [ErrorType]  -> compensate, emit [FailureEvent]
+
+## Detail
+_(Optional -- omit if nothing fits)_
+`,
+
+    ".playbook/templates/component.md":
+`---
+id: [kebab-case]
+export: [ExportedName]
+file: [src/module/component.ts]
+type: component
+status: draft
+parent: [parent-sequencer]
+children: []
+connects: []
+emits: []
+concerns: []
+---
+
+## What It Does
+Plain language -- single responsibility.
+
+## Interface
+Contract: docs/contracts/[flow]/[file].md#[section]
+
+input:  [InputType]
+output: Result<[SuccessType], [ErrorType]>
+
+## Detail
+_(Edge cases and constraints only -- omit if nothing fits)_
+`,
+
+    ".playbook/templates/concern.md":
+`---
+id: [kebab-case]
+type: concern
+status: draft
+affects: all
+provided-by: internal
+---
+
+## What It Does
+What it provides, how it is consumed, what depends on it.
+
+## Detail
+_(Optional -- omit if nothing fits)_
+`,
+
+    ".playbook/templates/integration.md":
+`---
+id: [kebab-case]
+type: integration
+kind: external-service | external-library | internal-service
+status: draft
+used-by: []
+config: []
+docs: [url]
+---
+
+## What It Does
+What this service or library provides and how it is used.
+
+## Interface
+Contract: docs/contracts/[flow]/[file].md#[section] _(if applicable)_
+
+What this integration exposes -- methods, events, or data.
+
+## Detail
+_(Auth method, rate limits, failure modes -- omit if nothing fits)_
+`,
+
+    // -----------------------------------------------------------------------
+    // Flow and contract templates
+    // -----------------------------------------------------------------------
+
+    "docs/flows/flow-template.md":
+`---
+id: flow-N-[kebab-name]
+type: flow
+scope: journey | sequence | operation | composite | compensation
+trigger: request-response | event-driven | background | reactive | webhook | stream
+status: draft
+triggers: []
+calls: []
+emits: []
+called-by: []
+---
+
+## What It Does
+Plain language -- any audience.
+
+## Pre-conditions
+What must be true before this flow can start.
+
+## Post-conditions
+What is guaranteed when this flow completes successfully.
+
+## Walkthrough
+
+Narrative -- what happens, what decisions are made, what can go wrong.
+
+---
+
+1. On [TriggerEvent](input):
+   a. [component].[method](input)
+      -> ok: [ResultType]  -> continue to b
+      -> err: [ErrorType]  -> emit [FailureEvent], halt
+   b. [component].[method](result)
+      -> ok: [ResultType]  -> continue
+      -> err: [ErrorType]  -> compensate, emit [FailureEvent]
+
+---
+Add sections below based on scope and trigger type.
+Remove sections that do not apply -- mark N/A if required by type.
+
+## Compensation
+_(Journey, Sequence -- required)_
+
+## Child Flows
+_(Journey, Composite -- required)_
+
+## Event Contract
+_(Event-Driven -- required)_
+
+## Schedule
+_(Background -- required)_
+
+## Timeout Behavior
+_(Background -- required)_
+
+## Subscription Contract
+_(Reactive, Stream -- required)_
+
+## Disconnect Behavior
+_(Reactive, Stream -- required)_
+
+## Reconnect Behavior
+_(Stream -- required)_
+
+## Payload Contract
+_(Webhook -- required)_
+
+## Retry Behavior
+_(Webhook -- required)_
+
+## Detail
+_(Optional)_
+
+---
+N/A -- considered and does not apply
+TODO -- not documented; blocks status: active
+`,
+
+    "docs/contracts/contract-template.md":
+`# [Flow Name] Contract
+# File: docs/contracts/flow-N-[name].md
+# Companion to: docs/flows/flow-N-[name].md
+# Read docs/contracts/global.md before this file.
+
+---
+
+## Happy Path
+The expected successful execution -- inputs, steps, guaranteed outputs.
+
+## Failure Modes
+Every way this flow can fail and what happens in each case.
+
+## Edge Cases
+Boundary conditions and non-obvious scenarios.
+
+## Concurrency Rules
+Atomicity requirements, race conditions, ordering constraints.
+
+## Constraints
+Rules every implementation must honour without exception.
+
+---
+N/A -- considered and does not apply
+TODO -- not documented; blocks status: active
+`,
+
+    // -----------------------------------------------------------------------
     // Docs
-    // -------------------------------------------------------------------------
+    // -----------------------------------------------------------------------
 
-    "docs/flows/_index.md": `# Flows
+    "docs/flows/_index.md":
+`# Flows
 # File: docs/flows/_index.md
 
 Entry point for all flow documents.
@@ -1040,12 +1237,12 @@ Always read docs/contracts/global.md alongside flows.
 ## Dependency Map
 
 _How flows relate to each other._
-
 _calls: flow calls another flow_
 _emits: flow emits an event that triggers another flow_
 `,
 
-    "docs/contracts/_index.md": `# Contracts
+    "docs/contracts/_index.md":
+`# Contracts
 # File: docs/contracts/_index.md
 
 Entry point for all contract documents.
@@ -1055,7 +1252,7 @@ Always read global.md before any flow-specific contract.
 
 ## Read Order
 
-1. global.md -- system-wide rules; read first always
+1. global.md -- system-wide rules; always first
 2. flow-N-name.md -- companion to the relevant flow
 
 ---
@@ -1067,11 +1264,12 @@ Always read global.md before any flow-specific contract.
 | global.md | all flows | draft |
 `,
 
-    "docs/contracts/global.md": `# Global Contract
+    "docs/contracts/global.md":
+`# Global Contract
 # File: docs/contracts/global.md
 
-> Read this file before any flow-specific contract.
-> Rules here apply to every component, every layer, every flow.
+Read this file before any flow-specific contract.
+Rules here apply to every component, every layer, every flow.
 
 ---
 
@@ -1091,15 +1289,18 @@ TODO
 TODO
 
 ---
-_N/A -- section considered and does not apply_
-_TODO -- section not yet documented; blocks status: active_
+N/A -- considered and does not apply
+TODO -- not documented; blocks status: active
 `,
 
-    "docs/rewrite/system-map.md": `# System Map
-# File: docs/rewrite/system-map.md
+    // -----------------------------------------------------------------------
+    // Rewrite docs (RE expansion)
+    // -----------------------------------------------------------------------
 
-> Output of the Reverse Engineer expansion -- Phase 1 and 2.
-> Only present when RE expansion is active.
+    "docs/rewrite/system-map.md":
+`# System Map
+# File: docs/rewrite/system-map.md
+# RE Expansion output -- Phases 1 and 2
 
 ---
 
@@ -1137,11 +1338,10 @@ _(Added during Phase 5)_
 ### Performance Concerns
 `,
 
-    "docs/rewrite/decision-record.md": `# Decision Record
+    "docs/rewrite/decision-record.md":
+`# Decision Record
 # File: docs/rewrite/decision-record.md
-
-> Output of the Reverse Engineer expansion -- Phase 3.
-> Only present when RE expansion is active.
+# RE Expansion output -- Phase 3
 
 ---
 
@@ -1172,11 +1372,10 @@ _(Added during Phase 5)_
 **Risk:** low | medium | high | critical
 `,
 
-    "docs/rewrite/risk-register.md": `# Risk Register
+    "docs/rewrite/risk-register.md":
+`# Risk Register
 # File: docs/rewrite/risk-register.md
-
-> Output of the Reverse Engineer expansion -- Phase 4.
-> Only present when RE expansion is active.
+# RE Expansion output -- Phase 4
 
 ---
 
@@ -1233,9 +1432,410 @@ _(Added during Phase 5)_
 |---|---|---|
 `,
 
-    // -------------------------------------------------------------------------
-    // Gitkeeps for empty folders
-    // -------------------------------------------------------------------------
+    // -----------------------------------------------------------------------
+    // Kit files
+    // -----------------------------------------------------------------------
+
+    ".kit/00-prompts.md":
+`# Playbook -- Session Prompts
+# File: .kit/00-prompts.md
+
+Quick reference for every session type. Copy and paste as needed.
+For how the Context Kit works within Playbook: .playbook/.guides/context-kit.md
+
+---
+
+## Context Kit -- Standalone Prompts
+
+### Fresh Project
+
+Message 1 -- upload .kit/01-process.md + .kit/03-execution.md:
+
+  I'm starting a new project using the Context Kit. I'll share files in two messages.
+  This message: Process + Execution. Next: Exploration + Progress.
+  Based on my project [1-2 sentence description], help me populate these files.
+  Just provide a brief confirmation.
+
+Message 2 -- upload .kit/02-exploration.md + .kit/04-progress.md:
+
+  Here are the remaining blank templates. Just provide a brief confirmation.
+
+---
+
+### Resume Project
+
+Message 1 -- upload current .kit/01-process.md + .kit/03-execution.md:
+
+  I'm resuming a project using the Context Kit. I'll share files in two messages.
+  This message: Process + Execution. Next: Exploration + Progress.
+  Focus only on Current State. Do not reopen closed decisions unless I ask.
+  Just provide a brief confirmation.
+
+Message 2 -- upload current .kit/02-exploration.md + .kit/04-progress.md:
+
+  Here is the context from earlier work. Just provide a brief confirmation.
+
+---
+
+### End of Session
+
+  Based on this session, update my kit files:
+  - Check off completed tasks in 03-execution.md
+  - Move closed decisions to 02-exploration.md with dates and reasoning
+  - Append to 04-progress.md -- Completed, Decided, Fixed, In Progress
+  - Update Current State in 01-process.md
+  Generate updated markdown for all changed files.
+
+---
+
+### Context Rot Recovery
+
+  Stop. Your only source of truth is the files uploaded at session start.
+  Ignore all prior conversation context.
+  Re-read the uploaded files before continuing.
+
+---
+
+## Playbook Pipeline Prompts
+
+### Start Dev Session
+
+  Before any work, read in this order:
+  1. .playbook/00-rules.md
+  2. docs/code-standards.md
+  3. docs/flows/_index.md
+  4. docs/contracts/_index.md
+  5. .playbook/_index.md
+  [Attach relevant module and component docs]
+  Confirm your understanding. Then wait for my instruction.
+
+---
+
+### Write Flows and Contracts
+
+  Given this PRD, define flows and contracts.
+  Flows: _index.md entry point, global.md first, one file per flow,
+    declare scope and trigger, include failure paths, split at ~150 lines.
+  Contracts: _index.md entry point, one per flow,
+    sections: Happy Path, Failure Modes, Edge Cases, Concurrency Rules, Constraints.
+    N/A if not applicable. TODO blocks status: active.
+  Flag anything underspecified. Wait for review before DDA docs.
+
+---
+
+### Bootstrap Scaffold from PRD
+
+  Given this PRD and approved flows and contracts, generate the Playbook scaffold.
+  Produce _index.md for project and each module with living folder trees.
+  Create stub docs for all components, sequencers, concerns, integrations (status: draft).
+  For sequencers, include stub Flow section referencing flow files.
+  Flag anything underspecified.
+
+---
+
+### Add New Component
+
+  Given this parent doc and flow, create a Playbook [type] doc for [description].
+  Flag any missing relationships.
+  If sequencer, include Flow section with full call chain and all branches.
+  After creating, provide updated Structure section for parent _index.md.
+
+---
+
+### Sync Check
+
+  Run a Playbook sync check on all files touched this session.
+  For each: does the code match the Playbook doc?
+  List mismatches. Update affected docs.
+  Update living folder tree in any _index.md where components changed.
+
+---
+
+### Generate Rollout Doc
+
+  Generate a rollout doc for [milestone name].
+  Read the full .playbook/ tree and 04-progress.md.
+  Output to docs/rollout/[milestone].md.
+
+---
+
+### Adopt Existing Project
+
+  I am adopting the Playbook pipeline for an existing project.
+  Read .playbook/00-rules.md and docs/code-standards.md first.
+  Confirm. Do not begin work yet.
+  Then follow .playbook/.guides/adopt.md.
+
+---
+
+### Reverse Engineer -- Start Inventory
+
+  RE expansion active. Phase: inventory.
+  Map and document: all apps, modules, integrations, data model,
+  entry points, dependency relationships, tech stack.
+  Produce draft docs/rewrite/system-map.md. Plain language.
+  Flag anything unclear. Wait for review.
+
+---
+
+### Reverse Engineer -- Advance Phase
+
+  RE expansion phase: [current phase]. Previous phase approved.
+  Proceed to [next phase].
+  Follow .playbook/.guides/expansions/reverse-engineer.md.
+  Wait for review before advancing again.
+
+---
+
+### Reverse Engineer -- Handoff
+
+  RE expansion complete. Run handoff:
+  1. Extract open topics from system-map.md -> .kit/02-exploration.md
+  2. Extract closed decisions from decision-record.md -> .kit/02-exploration.md
+  3. Extract known issues from risk-register.md -> .kit/03-execution.md
+  4. Update .kit/01-process.md -- mark RE complete, update Current State
+  Generate updated kit files for review.
+
+---
+
+### Playbook End of Session
+
+  Before we close:
+  1. Playbook sync check on all docs touched this session
+  2. Update .kit/04-progress.md -- completions, decisions, fixes
+  3. Update Current State in .kit/01-process.md
+  4. Update living folder tree if components changed
+  Generate updated markdown for all changed kit files.
+
+---
+
+### Error Recovery
+
+  Something broke. Stop all other work.
+  What broke: [description]
+  Category: type error | test failure | Playbook drift | layer violation | other
+  Location: code | Playbook doc | both
+  Fix at source. After fixing: re-run checks and Playbook sync.
+  Log as Fixed entry in .kit/04-progress.md.
+
+---
+
+### Session Limit Warning
+
+  We are approaching the session limit.
+  Update all kit files and any changed Playbook docs now.
+  Generate markdown for each so I can copy-paste and save.
+`,
+
+    ".kit/01-process.md":
+`# PROCESS
+# File: .kit/01-process.md
+
+---
+
+**Phase:** Exploration
+**Last Completed:** Playbook scaffold generated
+**Next:** Populate Exploration with initial project questions
+**Active Modules:** none
+**Active Expansions:** none
+`,
+
+    ".kit/02-exploration.md":
+`# EXPLORATION
+# File: .kit/02-exploration.md
+
+## Open Topics
+
+**[Topic Name]**
+- Questions to resolve
+- Options being considered
+- Ref: .kit/_refs/[type]/[filename] _(if applicable)_
+
+---
+
+## Closed Decisions
+
+**[YYYY-MM-DD] Decision Name**
+- What was decided
+- Why
+- Alternatives considered
+- Ref: .kit/_refs/[type]/[filename] _(if applicable)_
+- Flow: docs/flows/flow-N-name.md _(if applicable)_
+`,
+
+    ".kit/03-execution.md":
+`# EXECUTION
+# File: .kit/03-execution.md
+
+## Guidelines
+
+**Style & Voice:**
+- [Tone and approach]
+
+**Rules & Constraints:**
+- [Specific requirements]
+- Prefer native implementations over external libraries
+- External dependencies require explicit justification
+
+**Quality Bar:**
+- [Standards for completion]
+
+**QA Tier:** core | standard | full
+
+**Custom Ticket Types:**
+- [type] -- [description]
+
+---
+
+## Plan
+
+**Goals:**
+- [What you are building]
+
+**Outcomes:**
+- [What done looks like]
+
+**Out of Scope:**
+- [What is not included]
+
+**Acceptance Criteria:**
+- [ ] [Verifiable condition]
+
+---
+
+## Action
+
+**Right Now:**
+[Current focus]
+
+**Tasks:**
+- [ ] [Task]
+  - [ ] [Subtask]
+
+---
+
+## Known Issues
+
+| # | Issue | Type | Severity | Blocked By | Resolution |
+|---|---|---|---|---|---|
+| -- | -- | -- | -- | -- | -- |
+
+_Type: bug | dependency | design | performance | security_
+_Severity: critical | high | low_
+`,
+
+    ".kit/04-progress.md":
+`# PROGRESS LOG (APPEND-ONLY)
+# File: .kit/04-progress.md
+
+Rules:
+- Entries are never edited or deleted
+- New updates always added at the bottom
+- Three entry types: Completed, Decided, Fixed
+- In Progress is always the last entry, overwritten each session
+- Add timestamp per session: ## YYYY-MM-DD
+
+---
+
+## ${today}
+- **Completed:** Playbook scaffold generated by create-playbook
+- **In Progress:** Populating Context Kit for new project
+`,
+
+    ".kit/05-kanban.md":
+`# KANBAN
+# File: .kit/05-kanban.md
+
+## Rules
+- Tickets seeded from Acceptance Criteria in 03-execution.md
+- One outcome per ticket -- no bundling
+- Priority within each column is top-down
+- Blocked tickets stay in their column
+- When a ticket moves to Done, log it in 04-progress.md
+
+## Ticket Types
+Core (always): feature | bug | task
+Pipeline (when .playbook/ exists): doc | sync
+Project (declare in 03-execution.md): [custom]
+
+---
+
+## Backlog
+
+### [K-01] Ticket Title
+**Type:** feature | bug | task | doc | sync
+**Description:** What needs to happen and why.
+**Ref:** [optional]
+**Blocked by:** none
+
+---
+
+## In Progress
+
+### [K-02] Ticket Title
+**Type:** feature | bug | task | doc | sync
+**Description:** What needs to happen and why.
+**Blocked by:** none
+
+---
+
+## Done
+
+### [K-03] Ticket Title
+**Completed:** YYYY-MM-DD
+`,
+
+    ".kit/06-qa.md":
+`# QA PLAN
+# File: .kit/06-qa.md
+
+## Rules
+- Test cases live in .kit/_tests/ -- one file per test
+- Each test maps to one Acceptance Criterion in 03-execution.md
+- QA tier declared in 03-execution.md: core | standard | full
+- A criterion is not done until its test file passes
+- Failures must reference a contract and define a mitigation
+- All tests must pass before sign-off
+- Sign-off requires every Acceptance Criterion verified
+
+---
+
+## Test Cases
+
+| ID | Title | Maps To | Executor | Status |
+|---|---|---|---|---|
+| QA-01 | [Test title] | K-01 | Agent | Pending |
+
+---
+
+## Failures Log
+
+| ID | Date | What Failed | Ref | Ticket | Mitigation | Status |
+|---|---|---|---|---|---|---|
+
+---
+
+## Sign-off
+
+**QA Complete:** YYYY-MM-DD
+**Signed off by:** [Human | Agent]
+
+**Acceptance Criteria Verified:**
+- [ ] [Criterion] -- QA-01
+
+**Known Exceptions:**
+[Explicit reasoning -- never silently skipped]
+
+**Consequences of Sign-off:**
+[What this approval gates]
+
+**Notes:**
+[Anything the next phase needs to know]
+`,
+
+    // -----------------------------------------------------------------------
+    // Gitkeeps
+    // -----------------------------------------------------------------------
 
     ".playbook/_concerns/.gitkeep": "",
     ".playbook/_integrations/.gitkeep": "",
