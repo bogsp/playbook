@@ -6,352 +6,252 @@
   "fileMap": {
     "nonProjectFiles": [
       {
-        "file": ".agents/skills/link-workspace-packages/SKILL.md",
-        "hash": "15436383388001770446"
-      },
-      {
-        "file": ".agents/skills/monitor-ci/SKILL.md",
-        "hash": "8925268942706372174"
-      },
-      {
-        "file": ".agents/skills/monitor-ci/references/fix-flows.md",
-        "hash": "10043923144049437139"
-      },
-      {
-        "file": ".agents/skills/monitor-ci/scripts/ci-poll-decide.mjs",
-        "hash": "9697801980134089087"
-      },
-      {
-        "file": ".agents/skills/monitor-ci/scripts/ci-state-update.mjs",
-        "hash": "1300418153997961792"
-      },
-      {
-        "file": ".agents/skills/nx-generate/SKILL.md",
-        "hash": "17577193014563127179"
-      },
-      {
-        "file": ".agents/skills/nx-import/SKILL.md",
-        "hash": "5320545115991037698"
-      },
-      {
-        "file": ".agents/skills/nx-import/references/ESLINT.md",
-        "hash": "13530282936503679323"
-      },
-      {
-        "file": ".agents/skills/nx-import/references/GRADLE.md",
-        "hash": "3571850575232446918"
-      },
-      {
-        "file": ".agents/skills/nx-import/references/JEST.md",
-        "hash": "17388362190464741914"
-      },
-      {
-        "file": ".agents/skills/nx-import/references/NEXT.md",
-        "hash": "10590097548337933652"
-      },
-      {
-        "file": ".agents/skills/nx-import/references/TURBOREPO.md",
-        "hash": "16683618674426785182"
-      },
-      {
-        "file": ".agents/skills/nx-import/references/VITE.md",
-        "hash": "18159188461087437582"
-      },
-      {
-        "file": ".agents/skills/nx-plugins/SKILL.md",
-        "hash": "17761452540263218782"
-      },
-      {
-        "file": ".agents/skills/nx-run-tasks/SKILL.md",
-        "hash": "6310165843200780094"
-      },
-      {
-        "file": ".agents/skills/nx-workspace/SKILL.md",
-        "hash": "12877893594506374684"
-      },
-      {
-        "file": ".agents/skills/nx-workspace/references/AFFECTED.md",
-        "hash": "5689225252238354455"
-      },
-      {
-        "file": ".claude/settings.json",
-        "hash": "4174402289047638020"
-      },
-      {
-        "file": ".codex/agents/ci-monitor-subagent.toml",
-        "hash": "4961875514327907746"
-      },
-      {
-        "file": ".codex/config.toml",
-        "hash": "8836728713839715768"
-      },
-      {
-        "file": ".gemini/commands/monitor-ci.toml",
-        "hash": "4304691497468008862"
-      },
-      {
-        "file": ".gemini/settings.json",
-        "hash": "15685693115299283847"
-      },
-      {
-        "file": ".github/agents/ci-monitor-subagent.agent.md",
-        "hash": "9330328125511211617"
-      },
-      {
-        "file": ".github/prompts/monitor-ci.prompt.md",
-        "hash": "8137362928748981528"
-      },
-      {
-        "file": ".github/skills/link-workspace-packages/SKILL.md",
-        "hash": "15436383388001770446"
-      },
-      {
-        "file": ".github/skills/monitor-ci/SKILL.md",
-        "hash": "8925268942706372174"
-      },
-      {
-        "file": ".github/skills/monitor-ci/references/fix-flows.md",
-        "hash": "10043923144049437139"
-      },
-      {
-        "file": ".github/skills/monitor-ci/scripts/ci-poll-decide.mjs",
-        "hash": "9697801980134089087"
-      },
-      {
-        "file": ".github/skills/monitor-ci/scripts/ci-state-update.mjs",
-        "hash": "1300418153997961792"
-      },
-      {
-        "file": ".github/skills/nx-generate/SKILL.md",
-        "hash": "17577193014563127179"
-      },
-      {
-        "file": ".github/skills/nx-import/SKILL.md",
-        "hash": "5320545115991037698"
-      },
-      {
-        "file": ".github/skills/nx-import/references/ESLINT.md",
-        "hash": "13530282936503679323"
-      },
-      {
-        "file": ".github/skills/nx-import/references/GRADLE.md",
-        "hash": "3571850575232446918"
+        "file": "playbook/.kit/_archives/progress/.gitkeep",
+        "hash": "3244421341483603138"
       },
       {
         "file": ".github/skills/nx-import/references/JEST.md",
         "hash": "17388362190464741914"
       },
       {
-        "file": ".github/skills/nx-import/references/NEXT.md",
-        "hash": "10590097548337933652"
+        "file": ".github/skills/link-workspace-packages/SKILL.md",
+        "hash": "15436383388001770446"
       },
       {
-        "file": ".github/skills/nx-import/references/TURBOREPO.md",
-        "hash": "16683618674426785182"
+        "file": "playbook/.kit/03-execution.md",
+        "hash": "1998626516818488063"
       },
       {
-        "file": ".github/skills/nx-import/references/VITE.md",
-        "hash": "18159188461087437582"
+        "file": "playbook/.playbook/templates/integration.md",
+        "hash": "6744238290792780570"
       },
       {
-        "file": ".github/skills/nx-plugins/SKILL.md",
-        "hash": "17761452540263218782"
-      },
-      {
-        "file": ".github/skills/nx-run-tasks/SKILL.md",
-        "hash": "6310165843200780094"
-      },
-      {
-        "file": ".github/skills/nx-workspace/SKILL.md",
-        "hash": "12877893594506374684"
-      },
-      {
-        "file": ".github/skills/nx-workspace/references/AFFECTED.md",
-        "hash": "5689225252238354455"
-      },
-      {
-        "file": ".gitignore",
-        "hash": "4904287110034449851"
-      },
-      {
-        "file": ".kit/00-prompts.md",
-        "hash": "2391721935702933554"
-      },
-      {
-        "file": ".kit/00-summary.md",
-        "hash": "15794589578147355555"
-      },
-      {
-        "file": ".kit/01-process.md",
-        "hash": "16131922847742773562"
-      },
-      {
-        "file": ".kit/02-exploration.md",
-        "hash": "10979057574237115434"
-      },
-      {
-        "file": ".kit/03-execution.md",
-        "hash": "15683894525351623055"
-      },
-      {
-        "file": ".kit/04-progress.md",
-        "hash": "7940410523303102448"
+        "file": ".github/agents/ci-monitor-subagent.agent.md",
+        "hash": "9330328125511211617"
       },
       {
         "file": ".kit/05-kanban.md",
         "hash": "14600032240801521790"
       },
       {
-        "file": ".kit/06-qa.md",
-        "hash": "6659115054683087260"
+        "file": "playbook/.playbook/_concerns/auth.md",
+        "hash": "16198741364068387856"
       },
       {
-        "file": ".kit/_archives/.gitkeep",
+        "file": "playbook/.playbook/.guides/The Context Kit.pdf",
+        "hash": "4276940046417334062"
+      },
+      {
+        "file": "playbook/.kit/_refs/video-insights/video-insight-base.md",
+        "hash": "366012499740370239"
+      },
+      {
+        "file": "playbook/.kit/_archives/exploration/.gitkeep",
         "hash": "3244421341483603138"
       },
       {
-        "file": ".kit/_refs/.gitkeep",
-        "hash": "3244421341483603138"
+        "file": ".codex/config.toml",
+        "hash": "8836728713839715768"
       },
       {
-        "file": ".kit/_tests/.gitkeep",
-        "hash": "3244421341483603138"
-      },
-      {
-        "file": ".opencode/agents/ci-monitor-subagent.md",
-        "hash": "15590325861656077491"
-      },
-      {
-        "file": ".opencode/commands/monitor-ci.md",
-        "hash": "3630956545876491923"
-      },
-      {
-        "file": ".opencode/skills/link-workspace-packages/SKILL.md",
-        "hash": "15436383388001770446"
-      },
-      {
-        "file": ".opencode/skills/monitor-ci/SKILL.md",
-        "hash": "8925268942706372174"
-      },
-      {
-        "file": ".opencode/skills/monitor-ci/references/fix-flows.md",
-        "hash": "10043923144049437139"
+        "file": "playbook/docs/rewrite/system-map.md",
+        "hash": "10908931225831728407"
       },
       {
         "file": ".opencode/skills/monitor-ci/scripts/ci-poll-decide.mjs",
         "hash": "9697801980134089087"
       },
       {
-        "file": ".opencode/skills/monitor-ci/scripts/ci-state-update.mjs",
-        "hash": "1300418153997961792"
-      },
-      {
-        "file": ".opencode/skills/nx-generate/SKILL.md",
-        "hash": "17577193014563127179"
-      },
-      {
-        "file": ".opencode/skills/nx-import/SKILL.md",
-        "hash": "5320545115991037698"
-      },
-      {
-        "file": ".opencode/skills/nx-import/references/ESLINT.md",
-        "hash": "13530282936503679323"
-      },
-      {
-        "file": ".opencode/skills/nx-import/references/GRADLE.md",
-        "hash": "3571850575232446918"
-      },
-      {
-        "file": ".opencode/skills/nx-import/references/JEST.md",
-        "hash": "17388362190464741914"
-      },
-      {
-        "file": ".opencode/skills/nx-import/references/NEXT.md",
+        "file": ".agents/skills/nx-import/references/NEXT.md",
         "hash": "10590097548337933652"
       },
       {
-        "file": ".opencode/skills/nx-import/references/TURBOREPO.md",
-        "hash": "16683618674426785182"
-      },
-      {
-        "file": ".opencode/skills/nx-import/references/VITE.md",
+        "file": ".github/skills/nx-import/references/VITE.md",
         "hash": "18159188461087437582"
-      },
-      {
-        "file": ".opencode/skills/nx-plugins/SKILL.md",
-        "hash": "17761452540263218782"
       },
       {
         "file": ".opencode/skills/nx-run-tasks/SKILL.md",
         "hash": "6310165843200780094"
       },
       {
-        "file": ".opencode/skills/nx-workspace/SKILL.md",
-        "hash": "12877893594506374684"
+        "file": ".opencode/skills/nx-plugins/SKILL.md",
+        "hash": "17761452540263218782"
       },
       {
-        "file": ".opencode/skills/nx-workspace/references/AFFECTED.md",
-        "hash": "5689225252238354455"
+        "file": "packages/playbook-library/_integrations/cloudflare-r2.md",
+        "hash": "18097172141697540714"
       },
       {
-        "file": "AGENTS.md",
-        "hash": "3693179293707062853"
+        "file": "playbook/.playbook/_shared/.gitkeep",
+        "hash": "3244421341483603138"
       },
       {
-        "file": "CLAUDE.md",
-        "hash": "3693179293707062853"
+        "file": ".kit/00-summary.md",
+        "hash": "15794589578147355555"
       },
       {
-        "file": "Playbook - journey.pdf",
-        "hash": "17426256987322337878"
+        "file": "playbook/.playbook/.guides/new-project.md",
+        "hash": "17674063842956568253"
       },
       {
-        "file": "README.md",
-        "hash": "17084159633730169372"
-      },
-      {
-        "file": "biome.json",
-        "hash": "15876799709302106241"
-      },
-      {
-        "file": "gitignore",
-        "hash": "5340337805254346132"
+        "file": ".github/skills/nx-import/SKILL.md",
+        "hash": "5320545115991037698"
       },
       {
         "file": "journey.md",
         "hash": "7365773893014942289"
       },
       {
-        "file": "nx.json",
-        "hash": "11908029425187988017"
+        "file": ".agents/skills/nx-plugins/SKILL.md",
+        "hash": "17761452540263218782"
       },
       {
-        "file": "opencode.json",
-        "hash": "5877716226091408087"
+        "file": ".opencode/skills/nx-workspace/SKILL.md",
+        "hash": "12877893594506374684"
       },
       {
-        "file": "package.json",
-        "hash": "18293381380189853107"
-      },
-      {
-        "file": "packages/playbook-library/README.md",
-        "hash": "8431061702633832445"
+        "file": ".agents/skills/nx-run-tasks/SKILL.md",
+        "hash": "6310165843200780094"
       },
       {
         "file": "packages/playbook-library/_concerns/auth.md",
         "hash": "8986551524998701802"
       },
       {
+        "file": ".opencode/agents/ci-monitor-subagent.md",
+        "hash": "15590325861656077491"
+      },
+      {
+        "file": "playbook/.kit/_tests/QA-00-template.md",
+        "hash": "16938064051700816277"
+      },
+      {
+        "file": ".agents/skills/nx-import/references/TURBOREPO.md",
+        "hash": "16683618674426785182"
+      },
+      {
+        "file": ".github/skills/nx-import/references/ESLINT.md",
+        "hash": "13530282936503679323"
+      },
+      {
+        "file": "playbook/.kit/05-kanban.md",
+        "hash": "12845070477143761736"
+      },
+      {
+        "file": "playbook/.playbook/.guides/context-kit.md",
+        "hash": "13168548692433812959"
+      },
+      {
+        "file": ".github/skills/nx-workspace/references/AFFECTED.md",
+        "hash": "5689225252238354455"
+      },
+      {
+        "file": "playbook/docs/code-standards.md",
+        "hash": "9346546973853633687"
+      },
+      {
+        "file": "gitignore",
+        "hash": "5340337805254346132"
+      },
+      {
+        "file": "playbook/.playbook/README.md",
+        "hash": "64417054099074353"
+      },
+      {
+        "file": ".opencode/skills/nx-workspace/references/AFFECTED.md",
+        "hash": "5689225252238354455"
+      },
+      {
+        "file": ".github/skills/monitor-ci/scripts/ci-poll-decide.mjs",
+        "hash": "9697801980134089087"
+      },
+      {
+        "file": "playbook/.playbook/templates/structure.md",
+        "hash": "15073365443654936181"
+      },
+      {
+        "file": "playbook/docs/contracts/global.md",
+        "hash": "6191711900637707315"
+      },
+      {
+        "file": "playbook/.playbook/.guides/expansions/reverse-engineer.md",
+        "hash": "7724891495239223086"
+      },
+      {
+        "file": ".agents/skills/link-workspace-packages/SKILL.md",
+        "hash": "15436383388001770446"
+      },
+      {
+        "file": ".agents/skills/nx-import/references/VITE.md",
+        "hash": "18159188461087437582"
+      },
+      {
+        "file": ".github/skills/monitor-ci/scripts/ci-state-update.mjs",
+        "hash": "1300418153997961792"
+      },
+      {
+        "file": ".opencode/commands/monitor-ci.md",
+        "hash": "3630956545876491923"
+      },
+      {
+        "file": ".opencode/skills/monitor-ci/references/fix-flows.md",
+        "hash": "10043923144049437139"
+      },
+      {
         "file": "packages/playbook-library/_concerns/error-handling.md",
         "hash": "17611693924821237317"
       },
       {
-        "file": "packages/playbook-library/_concerns/logging.md",
-        "hash": "11495629445309171874"
+        "file": ".opencode/skills/monitor-ci/SKILL.md",
+        "hash": "8925268942706372174"
       },
       {
-        "file": "packages/playbook-library/_integrations/cloudflare-r2.md",
-        "hash": "18097172141697540714"
+        "file": "playbook/.playbook/templates/component.md",
+        "hash": "15618971477653701869"
+      },
+      {
+        "file": "package.json",
+        "hash": "18293381380189853107"
+      },
+      {
+        "file": "playbook/docs/flows/flow.md",
+        "hash": "6370431134893933471"
+      },
+      {
+        "file": "playbook/.playbook/templates/sequencer.md",
+        "hash": "7161578438299386522"
+      },
+      {
+        "file": ".github/skills/nx-import/references/TURBOREPO.md",
+        "hash": "16683618674426785182"
+      },
+      {
+        "file": "playbook/.playbook/_index.md",
+        "hash": "14850518333361332339"
+      },
+      {
+        "file": ".opencode/skills/nx-import/references/ESLINT.md",
+        "hash": "13530282936503679323"
+      },
+      {
+        "file": ".kit/04-progress.md",
+        "hash": "7940410523303102448"
+      },
+      {
+        "file": ".opencode/skills/nx-import/references/GRADLE.md",
+        "hash": "3571850575232446918"
+      },
+      {
+        "file": ".agents/skills/nx-import/references/GRADLE.md",
+        "hash": "3571850575232446918"
+      },
+      {
+        "file": ".github/skills/monitor-ci/references/fix-flows.md",
+        "hash": "10043923144049437139"
+      },
+      {
+        "file": ".agents/skills/nx-workspace/references/AFFECTED.md",
+        "hash": "5689225252238354455"
       },
       {
         "file": "packages/playbook-library/_solutions/signed-url-delivery.md",
@@ -362,123 +262,55 @@
         "hash": "10880135534191571783"
       },
       {
-        "file": "playbook/.kit/01-process.md",
-        "hash": "2532931534388397672"
-      },
-      {
-        "file": "playbook/.kit/02-exploration.md",
-        "hash": "1864899004165094406"
-      },
-      {
-        "file": "playbook/.kit/03-execution.md",
-        "hash": "1998626516818488063"
-      },
-      {
-        "file": "playbook/.kit/04-progress.md",
-        "hash": "15019201776141617091"
-      },
-      {
-        "file": "playbook/.kit/05-kanban.md",
-        "hash": "12845070477143761736"
-      },
-      {
-        "file": "playbook/.kit/06-qa.md",
-        "hash": "8541066440434121633"
-      },
-      {
-        "file": "playbook/.kit/_archives/exploration/.gitkeep",
-        "hash": "3244421341483603138"
-      },
-      {
-        "file": "playbook/.kit/_archives/kanban/.gitkeep",
-        "hash": "3244421341483603138"
-      },
-      {
-        "file": "playbook/.kit/_archives/progress/.gitkeep",
-        "hash": "3244421341483603138"
-      },
-      {
         "file": "playbook/.kit/_refs/examples/.gitkeep",
         "hash": "3244421341483603138"
       },
       {
-        "file": "playbook/.kit/_refs/snippets/.gitkeep",
-        "hash": "3244421341483603138"
+        "file": ".github/skills/nx-generate/SKILL.md",
+        "hash": "17577193014563127179"
       },
       {
-        "file": "playbook/.kit/_refs/templates/.gitkeep",
-        "hash": "3244421341483603138"
-      },
-      {
-        "file": "playbook/.kit/_refs/video-insights/video-insight-base.md",
-        "hash": "366012499740370239"
-      },
-      {
-        "file": "playbook/.kit/_refs/video-insights/video-insight-variants.md",
-        "hash": "6299740578535867048"
-      },
-      {
-        "file": "playbook/.kit/_tests/.gitkeep",
-        "hash": "3244421341483603138"
-      },
-      {
-        "file": "playbook/.kit/_tests/QA-00-template.md",
-        "hash": "16938064051700816277"
-      },
-      {
-        "file": "playbook/.playbook/.guides/The Context Kit.pdf",
-        "hash": "4276940046417334062"
-      },
-      {
-        "file": "playbook/.playbook/.guides/adopt.md",
-        "hash": "11857358519316775961"
-      },
-      {
-        "file": "playbook/.playbook/.guides/context-kit.md",
-        "hash": "13168548692433812959"
-      },
-      {
-        "file": "playbook/.playbook/.guides/expansions/reverse-engineer.md",
-        "hash": "7724891495239223086"
-      },
-      {
-        "file": "playbook/.playbook/.guides/expansions/video-insights.md",
-        "hash": "12244722905769016134"
-      },
-      {
-        "file": "playbook/.playbook/.guides/new-project.md",
-        "hash": "17674063842956568253"
+        "file": "packages/playbook-library/_concerns/logging.md",
+        "hash": "11495629445309171874"
       },
       {
         "file": "playbook/.playbook/00-rules.md",
         "hash": "3930082260749571279"
       },
       {
-        "file": "playbook/.playbook/README.md",
-        "hash": "64417054099074353"
+        "file": ".agents/skills/nx-workspace/SKILL.md",
+        "hash": "12877893594506374684"
       },
       {
-        "file": "playbook/.playbook/_concerns/auth.md",
-        "hash": "16198741364068387856"
+        "file": ".opencode/skills/nx-import/SKILL.md",
+        "hash": "5320545115991037698"
       },
       {
-        "file": "playbook/.playbook/_concerns/error-handling.md",
-        "hash": "15879003610161730308"
+        "file": ".opencode/skills/nx-import/references/NEXT.md",
+        "hash": "10590097548337933652"
       },
       {
-        "file": "playbook/.playbook/_concerns/logging.md",
-        "hash": "2983335123836091067"
+        "file": ".github/prompts/monitor-ci.prompt.md",
+        "hash": "8137362928748981528"
       },
       {
-        "file": "playbook/.playbook/_index.md",
-        "hash": "14850518333361332339"
+        "file": ".kit/00-prompts.md",
+        "hash": "2391721935702933554"
       },
       {
-        "file": "playbook/.playbook/_integrations/.gitkeep",
-        "hash": "3244421341483603138"
+        "file": "CLAUDE.md",
+        "hash": "3693179293707062853"
       },
       {
-        "file": "playbook/.playbook/_shared/.gitkeep",
+        "file": "playbook/.playbook/.guides/adopt.md",
+        "hash": "11857358519316775961"
+      },
+      {
+        "file": ".agents/skills/nx-import/references/JEST.md",
+        "hash": "17388362190464741914"
+      },
+      {
+        "file": "playbook/.kit/_tests/.gitkeep",
         "hash": "3244421341483603138"
       },
       {
@@ -486,68 +318,236 @@
         "hash": "7176530296452827597"
       },
       {
-        "file": "playbook/.playbook/templates/component.md",
-        "hash": "15618971477653701869"
+        "file": ".opencode/skills/nx-import/references/VITE.md",
+        "hash": "18159188461087437582"
       },
       {
-        "file": "playbook/.playbook/templates/concern.md",
-        "hash": "14410242337347017768"
+        "file": ".opencode/skills/link-workspace-packages/SKILL.md",
+        "hash": "15436383388001770446"
       },
       {
-        "file": "playbook/.playbook/templates/integration.md",
-        "hash": "6744238290792780570"
-      },
-      {
-        "file": "playbook/.playbook/templates/sequencer.md",
-        "hash": "7161578438299386522"
-      },
-      {
-        "file": "playbook/.playbook/templates/structure.md",
-        "hash": "15073365443654936181"
-      },
-      {
-        "file": "playbook/docs/code-standards.md",
-        "hash": "9346546973853633687"
-      },
-      {
-        "file": "playbook/docs/contracts/contract.md",
-        "hash": "4135604631743754581"
-      },
-      {
-        "file": "playbook/docs/contracts/global-contract.md",
-        "hash": "6191711900637707315"
-      },
-      {
-        "file": "playbook/docs/contracts/global.md",
-        "hash": "6191711900637707315"
-      },
-      {
-        "file": "playbook/docs/flows/flow.md",
-        "hash": "6370431134893933471"
-      },
-      {
-        "file": "playbook/docs/rewrite/decision-record.md",
-        "hash": "18192091239400388327"
-      },
-      {
-        "file": "playbook/docs/rewrite/risk-register.md",
-        "hash": "4303048026659566213"
-      },
-      {
-        "file": "playbook/docs/rewrite/system-map.md",
-        "hash": "10908931225831728407"
-      },
-      {
-        "file": "playbook/docs/rollout/.gitkeep",
+        "file": "playbook/.playbook/_integrations/.gitkeep",
         "hash": "3244421341483603138"
+      },
+      {
+        "file": ".github/skills/monitor-ci/SKILL.md",
+        "hash": "8925268942706372174"
+      },
+      {
+        "file": ".kit/02-exploration.md",
+        "hash": "10979057574237115434"
+      },
+      {
+        "file": ".github/skills/nx-import/references/GRADLE.md",
+        "hash": "3571850575232446918"
+      },
+      {
+        "file": "playbook/.playbook/_concerns/error-handling.md",
+        "hash": "15879003610161730308"
+      },
+      {
+        "file": ".agents/skills/nx-import/SKILL.md",
+        "hash": "5320545115991037698"
+      },
+      {
+        "file": "pnpm-workspace.yaml",
+        "hash": "414265049992887245"
       },
       {
         "file": "pnpm-lock.yaml",
         "hash": "17933933084892176439"
       },
       {
-        "file": "pnpm-workspace.yaml",
-        "hash": "414265049992887245"
+        "file": ".gitignore",
+        "hash": "4904287110034449851"
+      },
+      {
+        "file": ".gemini/settings.json",
+        "hash": "15685693115299283847"
+      },
+      {
+        "file": ".claude/settings.json",
+        "hash": "4174402289047638020"
+      },
+      {
+        "file": ".agents/skills/monitor-ci/references/fix-flows.md",
+        "hash": "10043923144049437139"
+      },
+      {
+        "file": ".github/skills/nx-plugins/SKILL.md",
+        "hash": "17761452540263218782"
+      },
+      {
+        "file": "AGENTS.md",
+        "hash": "3693179293707062853"
+      },
+      {
+        "file": ".gemini/commands/monitor-ci.toml",
+        "hash": "4304691497468008862"
+      },
+      {
+        "file": "README.md",
+        "hash": "17084159633730169372"
+      },
+      {
+        "file": ".kit/03-execution.md",
+        "hash": "15683894525351623055"
+      },
+      {
+        "file": "nx.json",
+        "hash": "11908029425187988017"
+      },
+      {
+        "file": "playbook/.kit/_archives/kanban/.gitkeep",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "playbook/docs/rewrite/decision-record.md",
+        "hash": "18192091239400388327"
+      },
+      {
+        "file": ".github/skills/nx-run-tasks/SKILL.md",
+        "hash": "6310165843200780094"
+      },
+      {
+        "file": ".github/skills/nx-workspace/SKILL.md",
+        "hash": "12877893594506374684"
+      },
+      {
+        "file": "Playbook - journey.pdf",
+        "hash": "17426256987322337878"
+      },
+      {
+        "file": "opencode.json",
+        "hash": "5877716226091408087"
+      },
+      {
+        "file": "playbook/.kit/_refs/snippets/.gitkeep",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "playbook/docs/rollout/.gitkeep",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "playbook/.kit/04-progress.md",
+        "hash": "15019201776141617091"
+      },
+      {
+        "file": "playbook/.kit/01-process.md",
+        "hash": "2532931534388397672"
+      },
+      {
+        "file": ".agents/skills/monitor-ci/SKILL.md",
+        "hash": "8925268942706372174"
+      },
+      {
+        "file": "playbook/.kit/06-qa.md",
+        "hash": "8541066440434121633"
+      },
+      {
+        "file": ".opencode/skills/nx-import/references/TURBOREPO.md",
+        "hash": "16683618674426785182"
+      },
+      {
+        "file": ".codex/agents/ci-monitor-subagent.toml",
+        "hash": "4961875514327907746"
+      },
+      {
+        "file": "playbook/.playbook/_concerns/logging.md",
+        "hash": "2983335123836091067"
+      },
+      {
+        "file": "playbook/.kit/02-exploration.md",
+        "hash": "1864899004165094406"
+      },
+      {
+        "file": "playbook/.kit/_refs/video-insights/video-insight-variants.md",
+        "hash": "6299740578535867048"
+      },
+      {
+        "file": ".opencode/skills/monitor-ci/scripts/ci-state-update.mjs",
+        "hash": "1300418153997961792"
+      },
+      {
+        "file": ".agents/skills/monitor-ci/scripts/ci-poll-decide.mjs",
+        "hash": "9697801980134089087"
+      },
+      {
+        "file": ".agents/skills/nx-import/references/ESLINT.md",
+        "hash": "13530282936503679323"
+      },
+      {
+        "file": ".opencode/skills/nx-import/references/JEST.md",
+        "hash": "17388362190464741914"
+      },
+      {
+        "file": "playbook/docs/contracts/global-contract.md",
+        "hash": "6191711900637707315"
+      },
+      {
+        "file": "playbook/.playbook/.guides/expansions/video-insights.md",
+        "hash": "12244722905769016134"
+      },
+      {
+        "file": ".kit/01-process.md",
+        "hash": "16131922847742773562"
+      },
+      {
+        "file": ".github/skills/nx-import/references/NEXT.md",
+        "hash": "10590097548337933652"
+      },
+      {
+        "file": "playbook/docs/rewrite/risk-register.md",
+        "hash": "4303048026659566213"
+      },
+      {
+        "file": ".agents/skills/monitor-ci/scripts/ci-state-update.mjs",
+        "hash": "1300418153997961792"
+      },
+      {
+        "file": ".kit/_tests/.gitkeep",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "packages/playbook-library/README.md",
+        "hash": "8431061702633832445"
+      },
+      {
+        "file": ".kit/_refs/.gitkeep",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "playbook/docs/contracts/contract.md",
+        "hash": "4135604631743754581"
+      },
+      {
+        "file": ".agents/skills/nx-generate/SKILL.md",
+        "hash": "17577193014563127179"
+      },
+      {
+        "file": ".kit/06-qa.md",
+        "hash": "6659115054683087260"
+      },
+      {
+        "file": ".opencode/skills/nx-generate/SKILL.md",
+        "hash": "17577193014563127179"
+      },
+      {
+        "file": "biome.json",
+        "hash": "15876799709302106241"
+      },
+      {
+        "file": ".kit/_archives/.gitkeep",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "playbook/.playbook/templates/concern.md",
+        "hash": "14410242337347017768"
+      },
+      {
+        "file": "playbook/.kit/_refs/templates/.gitkeep",
+        "hash": "3244421341483603138"
       }
     ],
     "projectFileMap": {
@@ -563,6 +563,182 @@
         {
           "file": "packages/create-playbook/package.json",
           "hash": "541906700447783778"
+        },
+        {
+          "file": "packages/create-playbook/test-project/.kit/00-prompts.md",
+          "hash": "13732690558279164020"
+        },
+        {
+          "file": "packages/create-playbook/test-project/.kit/01-process.md",
+          "hash": "2622683778747305244"
+        },
+        {
+          "file": "packages/create-playbook/test-project/.kit/02-exploration.md",
+          "hash": "4069683752127163392"
+        },
+        {
+          "file": "packages/create-playbook/test-project/.kit/03-execution.md",
+          "hash": "3744821121910182453"
+        },
+        {
+          "file": "packages/create-playbook/test-project/.kit/04-progress.md",
+          "hash": "12286385964539611363"
+        },
+        {
+          "file": "packages/create-playbook/test-project/.kit/05-kanban.md",
+          "hash": "173628882481634088"
+        },
+        {
+          "file": "packages/create-playbook/test-project/.kit/06-qa.md",
+          "hash": "749762847400559624"
+        },
+        {
+          "file": "packages/create-playbook/test-project/.kit/_archives/exploration/.gitkeep",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "packages/create-playbook/test-project/.kit/_archives/kanban/.gitkeep",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "packages/create-playbook/test-project/.kit/_archives/progress/.gitkeep",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "packages/create-playbook/test-project/.kit/_refs/examples/.gitkeep",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "packages/create-playbook/test-project/.kit/_refs/research/.gitkeep",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "packages/create-playbook/test-project/.kit/_refs/snippets/.gitkeep",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "packages/create-playbook/test-project/.kit/_refs/templates/.gitkeep",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "packages/create-playbook/test-project/.kit/_refs/video-insights/.gitkeep",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "packages/create-playbook/test-project/.kit/_refs/video-insights/video-insight-base.md",
+          "hash": "12777726105098540869"
+        },
+        {
+          "file": "packages/create-playbook/test-project/.kit/_refs/video-insights/video-insight-variants.md",
+          "hash": "61575947834709844"
+        },
+        {
+          "file": "packages/create-playbook/test-project/.kit/_tests/.gitkeep",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "packages/create-playbook/test-project/.playbook/.guides/adopt.md",
+          "hash": "16938455441028385421"
+        },
+        {
+          "file": "packages/create-playbook/test-project/.playbook/.guides/context-kit.md",
+          "hash": "16271386826717333124"
+        },
+        {
+          "file": "packages/create-playbook/test-project/.playbook/.guides/expansions/reverse-engineer.md",
+          "hash": "10305051734378621421"
+        },
+        {
+          "file": "packages/create-playbook/test-project/.playbook/.guides/expansions/video-insights.md",
+          "hash": "13081623339279205102"
+        },
+        {
+          "file": "packages/create-playbook/test-project/.playbook/.guides/new-project.md",
+          "hash": "10765645730744907540"
+        },
+        {
+          "file": "packages/create-playbook/test-project/.playbook/00-rules.md",
+          "hash": "12003978479786567157"
+        },
+        {
+          "file": "packages/create-playbook/test-project/.playbook/README.md",
+          "hash": "540088338692893955"
+        },
+        {
+          "file": "packages/create-playbook/test-project/.playbook/_concerns/.gitkeep",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "packages/create-playbook/test-project/.playbook/_index.md",
+          "hash": "8053834059190894568"
+        },
+        {
+          "file": "packages/create-playbook/test-project/.playbook/_integrations/.gitkeep",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "packages/create-playbook/test-project/.playbook/_shared/.gitkeep",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "packages/create-playbook/test-project/.playbook/pipeline.md",
+          "hash": "7176530296452827597"
+        },
+        {
+          "file": "packages/create-playbook/test-project/.playbook/templates/component.md",
+          "hash": "6586331687023137781"
+        },
+        {
+          "file": "packages/create-playbook/test-project/.playbook/templates/concern.md",
+          "hash": "10074445354701672240"
+        },
+        {
+          "file": "packages/create-playbook/test-project/.playbook/templates/integration.md",
+          "hash": "988353587914766565"
+        },
+        {
+          "file": "packages/create-playbook/test-project/.playbook/templates/sequencer.md",
+          "hash": "13834670744084194278"
+        },
+        {
+          "file": "packages/create-playbook/test-project/.playbook/templates/structure.md",
+          "hash": "4493857654277948849"
+        },
+        {
+          "file": "packages/create-playbook/test-project/docs/contracts/_index.md",
+          "hash": "10973803069745254381"
+        },
+        {
+          "file": "packages/create-playbook/test-project/docs/contracts/contract-template.md",
+          "hash": "17559663037999730679"
+        },
+        {
+          "file": "packages/create-playbook/test-project/docs/contracts/global.md",
+          "hash": "13036372881625334661"
+        },
+        {
+          "file": "packages/create-playbook/test-project/docs/flows/_index.md",
+          "hash": "4299282979672832890"
+        },
+        {
+          "file": "packages/create-playbook/test-project/docs/flows/flow-template.md",
+          "hash": "7857115494309231703"
+        },
+        {
+          "file": "packages/create-playbook/test-project/docs/rewrite/decision-record.md",
+          "hash": "10970836932688135742"
+        },
+        {
+          "file": "packages/create-playbook/test-project/docs/rewrite/risk-register.md",
+          "hash": "13193581118509229067"
+        },
+        {
+          "file": "packages/create-playbook/test-project/docs/rewrite/system-map.md",
+          "hash": "2384095888824194806"
+        },
+        {
+          "file": "packages/create-playbook/test-project/docs/rollout/.gitkeep",
+          "hash": "3244421341483603138"
         }
       ]
     }
