@@ -1,0 +1,82 @@
+[NX v21.6.11 Daemon Server] - 2026-05-26T10:37:41.332Z - Started listening on: \\.\pipe\nx\C:\Users\Laptop\AppData\Local\Temp\aed02b2d7c6979ebad2a\d.sock
+[NX v21.6.11 Daemon Server] - 2026-05-26T10:37:41.353Z - [WATCHER]: Subscribed to changes within: c:\Projects\sandbox\ndev (native)
+[NX v21.6.11 Daemon Server] - 2026-05-26T10:37:41.359Z - Established a connection. Number of open connections: 1
+[NX v21.6.11 Daemon Server] - 2026-05-26T10:37:41.371Z - Closed a connection. Number of open connections: 0
+[NX v21.6.11 Daemon Server] - 2026-05-26T10:37:41.547Z - Established a connection. Number of open connections: 1
+[NX v21.6.11 Daemon Server] - 2026-05-26T10:37:41.547Z - Established a connection. Number of open connections: 2
+[NX v21.6.11 Daemon Server] - 2026-05-26T10:37:41.549Z - Time taken for 'loadSpecifiedNxPlugins' 34.82899999999972ms
+[NX v21.6.11 Daemon Server] - 2026-05-26T10:37:41.549Z - Closed a connection. Number of open connections: 1
+[NX v21.6.11 Daemon Server] - 2026-05-26T10:37:41.557Z - [REQUEST]: Client Request for Project Graph Received
+Time for 'plugin worker 11204 code loading' 15.551699999999997
+Time for 'plugin worker 232 code loading' 22.92729999999999
+Time for 'plugin worker 9312 code loading' 24.097899999999996
+[NX v21.6.11 Daemon Server] - 2026-05-26T10:37:42.733Z - Time taken for 'Load Nx Plugin: C:\Projects\sandbox\ndev\node_modules\.pnpm\nx@21.6.11\node_modules\nx\src\plugins\package-json' 1237.0214ms
+[NX v21.6.11 Daemon Server] - 2026-05-26T10:37:42.769Z - Time taken for 'Load Nx Plugin: C:\Projects\sandbox\ndev\node_modules\.pnpm\nx@21.6.11\node_modules\nx\src\plugins\project-json\build-nodes\project-json' 1264.8606999999997ms
+[NX v21.6.11 Daemon Server] - 2026-05-26T10:37:43.039Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX v21.6.11 Daemon Server] - 2026-05-26T10:37:43.039Z - [REQUEST]: 
+[NX v21.6.11 Daemon Server] - 2026-05-26T10:37:43.039Z - [REQUEST]: 
+[NX v21.6.11 Daemon Server] - 2026-05-26T10:37:43.041Z - Reusing in-memory cached project graph because no files changed.
+[NX v21.6.11 Daemon Server] - 2026-05-26T10:37:43.052Z - Time taken for 'loadDefaultNxPlugins' 1559.8882000000003ms
+Time for 'nx/core/project-json:createNodes' 0.5041000000001077
+Time for 'nx/core/package-json:createNodes' 134.32510000000002
+Time for 'nx/js/dependencies-and-lockfile:createNodes' 150.69570000000022
+[NX v21.6.11 Daemon Server] - 2026-05-26T10:37:43.261Z - Time taken for 'build-project-configs' 164.08080000000018ms
+Time for 'build typescript dependencies' 2.6458999999999833
+[NX v21.6.11 Daemon Server] - 2026-05-26T10:37:43.278Z - [SYNC]: collect registered sync generators
+[NX v21.6.11 Daemon Server] - 2026-05-26T10:37:43.290Z - Wrote project graph cache to c:\Projects\sandbox\ndev\.nx\workspace-data\project-graph.json
+[NX v21.6.11 Daemon Server] - 2026-05-26T10:37:43.291Z - [REQUEST]: Responding to the client. project-graph
+[NX v21.6.11 Daemon Server] - 2026-05-26T10:37:43.291Z - Time taken for 'total for creating and serializing project graph' 1734.0133ms
+[NX v21.6.11 Daemon Server] - 2026-05-26T10:37:43.293Z - Done responding to the client project-graph
+[NX v21.6.11 Daemon Server] - 2026-05-26T10:37:43.294Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 1735. Response time: 3.
+[NX v21.6.11 Daemon Server] - 2026-05-26T10:37:43.298Z - [REQUEST]: Responding to the client. handleContextFileData
+[NX v21.6.11 Daemon Server] - 2026-05-26T10:37:43.299Z - Done responding to the client handleContextFileData
+[NX v21.6.11 Daemon Server] - 2026-05-26T10:37:43.299Z - Handled GET_CONTEXT_FILE_DATA. Handling time: 1. Response time: 1.
+[NX v21.6.11 Daemon Server] - 2026-05-26T10:41:38.610Z - [WATCHER]: Processing file changes in outputs
+[NX v21.6.11 Daemon Server] - 2026-05-26T10:41:38.622Z - [WATCHER]: 0 file(s) created or restored, 26 file(s) modified, 0 file(s) deleted
+[NX v21.6.11 Daemon Server] - 2026-05-26T10:41:38.660Z - [WATCHER]: Processing file changes in outputs
+[NX v21.6.11 Daemon Server] - 2026-05-26T10:41:38.683Z - [WATCHER]: 0 file(s) created or restored, 36 file(s) modified, 0 file(s) deleted
+[NX v21.6.11 Daemon Server] - 2026-05-26T10:41:38.721Z - [WATCHER]: Processing file changes in outputs
+[NX v21.6.11 Daemon Server] - 2026-05-26T10:41:38.730Z - [WATCHER]: 0 file(s) created or restored, 14 file(s) modified, 0 file(s) deleted
+[NX v21.6.11 Daemon Server] - 2026-05-26T10:41:38.736Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX v21.6.11 Daemon Server] - 2026-05-26T10:41:38.736Z - [REQUEST]: .agents/skills/nx-generate/SKILL.md,opencode.json,.agents/skills/monitor-ci/scripts/ci-state-update.mjs,.agents/skills/monitor-ci/SKILL.md,.agents/skills/nx-import/references/TURBOREPO.md,.agents/skills/nx-plugins/SKILL.md,.agents/skills/nx-workspace/SKILL.md,.opencode/skills/monitor-ci/references/fix-flows.md,.agents/skills/nx-run-tasks/SKILL.md,.claude/settings.json,.agents/skills/nx-import/references/VITE.md,AGENTS.md,.agents/skills/nx-import/references/ESLINT.md,.agents/skills/nx-import/SKILL.md,.agents/skills/nx-import/references/NEXT.md,.opencode/skills/monitor-ci/SKILL.md,.agents/skills/nx-import/references/JEST.md,.opencode/skills/monitor-ci/scripts/ci-poll-decide.mjs,.opencode/skills/monitor-ci/scripts/ci-state-update.mjs,.gemini/settings.json,.agents/skills/nx-import/references/GRADLE.md,CLAUDE.md,.agents/skills/nx-workspace/references/AFFECTED.md,.codex/config.toml,.agents/skills/monitor-ci/scripts/ci-poll-decide.mjs,.opencode/skills/link-workspace-packages/SKILL.md,.github/agents/ci-monitor-subagent.agent.md,.github/skills/monitor-ci/references/fix-flows.md,.github/prompts/monitor-ci.prompt.md,.opencode/skills/nx-import/references/ESLINT.md,.opencode/skills/nx-run-tasks/SKILL.md,.opencode/skills/nx-import/references/TURBOREPO.md,.opencode/skills/nx-import/references/NEXT.md,.github/skills/nx-import/references/NEXT.md,.github/skills/link-workspace-packages/SKILL.md,.github/skills/nx-import/references/TURBOREPO.md,.opencode/skills/nx-import/references/JEST.md,.github/skills/nx-import/references/GRADLE.md,.opencode/commands/monitor-ci.md,.github/skills/monitor-ci/scripts/ci-poll-decide.mjs,.opencode/skills/nx-import/references/GRADLE.md,.github/skills/nx-generate/SKILL.md,.github/skills/nx-import/SKILL.md,.opencode/skills/nx-import/references/VITE.md,.github/skills/nx-plugins/SKILL.md,.opencode/skills/nx-generate/SKILL.md,.opencode/skills/nx-import/SKILL.md,.github/skills/nx-import/references/JEST.md,.opencode/skills/nx-workspace/SKILL.md,.github/skills/nx-import/references/VITE.md,.opencode/skills/nx-plugins/SKILL.md,.github/skills/monitor-ci/SKILL.md,.github/skills/nx-run-tasks/SKILL.md,.github/skills/nx-import/references/ESLINT.md,.opencode/skills/nx-workspace/references/AFFECTED.md,.github/skills/nx-workspace/references/AFFECTED.md,.github/skills/monitor-ci/scripts/ci-state-update.mjs,.opencode/agents/ci-monitor-subagent.md,.github/skills/nx-workspace/SKILL.md,.agents/skills/link-workspace-packages/SKILL.md,.gemini/commands/monitor-ci.toml,.gitignore,.codex/agents/ci-monitor-subagent.toml,.agents/skills/monitor-ci/references/fix-flows.md
+[NX v21.6.11 Daemon Server] - 2026-05-26T10:41:38.736Z - [REQUEST]: 
+Time for 'nx/core/project-json:createNodes' 0.31850000002305023
+[NX v21.6.11 Daemon Server] - 2026-05-26T10:41:38.743Z - [WATCHER]: Stopping the watcher for c:\Projects\sandbox\ndev (sources)
+[NX v21.6.11 Daemon Server] - 2026-05-26T10:41:38.743Z - Time taken for 'hash changed files from watcher' 3.6572999999916647ms
+[NX v21.6.11 Daemon Server] - 2026-05-26T10:41:38.743Z - Closed a connection. Number of open connections: 0
+Time for 'nx/js/dependencies-and-lockfile:createNodes' 5.334399999992456
+[NX v21.6.11 Daemon Server] - 2026-05-26T10:41:38.747Z - [WATCHER]: Stopping the watcher for c:\Projects\sandbox\ndev (outputs)
+[NX v21.6.11 Daemon Server] - 2026-05-26T10:41:38.749Z - Server stopped because: "Stopping the daemon the set of ignored files changed (native)"
+[NX v21.6.11 Daemon Server] - 2026-05-26T10:41:52.366Z - Started listening on: \\.\pipe\nx\C:\Users\Laptop\AppData\Local\Temp\aed02b2d7c6979ebad2a\d.sock
+[NX v21.6.11 Daemon Server] - 2026-05-26T10:41:52.371Z - [WATCHER]: Subscribed to changes within: c:\Projects\sandbox\ndev (native)
+[NX v21.6.11 Daemon Server] - 2026-05-26T10:41:52.383Z - Established a connection. Number of open connections: 1
+[NX v21.6.11 Daemon Server] - 2026-05-26T10:41:52.388Z - Closed a connection. Number of open connections: 0
+[NX v21.6.11 Daemon Server] - 2026-05-26T10:41:52.430Z - Established a connection. Number of open connections: 1
+[NX v21.6.11 Daemon Server] - 2026-05-26T10:41:52.431Z - Closed a connection. Number of open connections: 0
+[NX v21.6.11 Daemon Server] - 2026-05-26T10:41:52.431Z - Established a connection. Number of open connections: 1
+[NX v21.6.11 Daemon Server] - 2026-05-26T10:41:52.434Z - [REQUEST]: Client Request for Project Graph Received
+[NX v21.6.11 Daemon Server] - 2026-05-26T10:41:52.470Z - Time taken for 'loadSpecifiedNxPlugins' 4.351599999999962ms
+Time for 'plugin worker 5040 code loading' 13.544200000000004
+Time for 'plugin worker 11784 code loading' 16.565000000000005
+Time for 'plugin worker 12844 code loading' 12.414200000000001
+[NX v21.6.11 Daemon Server] - 2026-05-26T10:41:53.176Z - Time taken for 'Load Nx Plugin: C:\Projects\sandbox\ndev\node_modules\.pnpm\nx@21.6.11\node_modules\nx\src\plugins\project-json\build-nodes\project-json' 737.1617000000001ms
+[NX v21.6.11 Daemon Server] - 2026-05-26T10:41:53.195Z - Time taken for 'Load Nx Plugin: C:\Projects\sandbox\ndev\node_modules\.pnpm\nx@21.6.11\node_modules\nx\src\plugins\package-json' 757.5598999999999ms
+[NX v21.6.11 Daemon Server] - 2026-05-26T10:41:53.279Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX v21.6.11 Daemon Server] - 2026-05-26T10:41:53.279Z - [REQUEST]: 
+[NX v21.6.11 Daemon Server] - 2026-05-26T10:41:53.279Z - [REQUEST]: 
+[NX v21.6.11 Daemon Server] - 2026-05-26T10:41:53.281Z - No files changed, but no in-memory cached project graph found. Recomputing it...
+[NX v21.6.11 Daemon Server] - 2026-05-26T10:41:53.286Z - Time taken for 'loadDefaultNxPlugins' 843.1348999999999ms
+Time for 'nx/core/project-json:createNodes' 0.411899999999946
+Time for 'nx/js/dependencies-and-lockfile:createNodes' 5.469499999999925
+Time for 'nx/core/package-json:createNodes' 51.84280000000001
+[NX v21.6.11 Daemon Server] - 2026-05-26T10:41:53.363Z - Time taken for 'build-project-configs' 59.57640000000015ms
+Time for 'build typescript dependencies' 0.20230000000003656
+[NX v21.6.11 Daemon Server] - 2026-05-26T10:41:53.369Z - [SYNC]: collect registered sync generators
+[NX v21.6.11 Daemon Server] - 2026-05-26T10:41:53.380Z - Wrote project graph cache to c:\Projects\sandbox\ndev\.nx\workspace-data\project-graph.json
+[NX v21.6.11 Daemon Server] - 2026-05-26T10:41:53.381Z - [REQUEST]: Responding to the client. project-graph
+[NX v21.6.11 Daemon Server] - 2026-05-26T10:41:53.381Z - Time taken for 'total for creating and serializing project graph' 946.8656000000001ms
+[NX v21.6.11 Daemon Server] - 2026-05-26T10:41:53.383Z - Done responding to the client project-graph
+[NX v21.6.11 Daemon Server] - 2026-05-26T10:41:53.383Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 947. Response time: 2.
+[NX v21.6.11 Daemon Server] - 2026-05-26T10:41:53.387Z - [REQUEST]: Responding to the client. handleContextFileData
+[NX v21.6.11 Daemon Server] - 2026-05-26T10:41:53.387Z - Done responding to the client handleContextFileData
+[NX v21.6.11 Daemon Server] - 2026-05-26T10:41:53.387Z - Handled GET_CONTEXT_FILE_DATA. Handling time: 1. Response time: 0.
