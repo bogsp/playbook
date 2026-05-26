@@ -1,0 +1,20 @@
+{
+  "name": "playbook",
+  "private": true,
+  "description": "Playbook pipeline — structured AI-assisted development",
+  "author": "Bogs",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bogsp/playbook.git"
+  },
+  "scripts": {
+    "lint": "biome check packages",
+    "lint:fix": "biome check --write packages",
+    "format": "biome format --write packages"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.4.4",
+    "nx": "^21.0.0"
+  }
+}
