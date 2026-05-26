@@ -163,3 +163,25 @@ Rules:
 - **Completed:** pipeline.md embedded in create-playbook CLI
 - **Completed:** CLI final -- 44 files, fully self-contained, verified
 - **In Progress:** Package create-playbook for distribution
+
+## 2026-05-23 (continued)
+- **Decided:** No code in any Playbook pipeline docs -- behavior defined precisely in plain language
+- **Decided:** Library docs meet a higher standard than project docs -- no interpretation gaps
+- **Decided:** Monorepo with Nx + pnpm workspaces -- one repo, two publishable packages
+- **Decided:** create-playbook at version 1.0.0 -- first public release
+- **Decided:** playbook-library as @bogsp/playbook-library -- scoped, always available
+- **Decided:** Library uses semantic versioning -- patch for improvements, minor for additions, major for breaking changes
+- **Decided:** Projects install library as dependency -- traceable, upgradeable
+- **Decided:** Library has _concerns/, _integrations/, _solutions/ folders
+- **Decided:** Biome adjusted to use spaces for JavaScript
+- **Completed:** biome.json updated -- spaces for JS
+- **Completed:** Root package.json created -- pnpm workspace root
+- **Completed:** pnpm-workspace.yaml created
+- **Completed:** nx.json created -- minimal Nx config
+- **Completed:** create-playbook package.json updated -- version 1.0.0, full npm metadata
+- **Completed:** playbook-library package.json created
+- **Completed:** playbook-library README.md created
+- **Completed:** Starter concern docs -- logging, error-handling, auth
+- **Completed:** Starter integration doc -- cloudflare-r2
+- **Completed:** Starter solution doc -- signed-url-delivery
+- **In Progress:** Restructure repo and publish to npm
