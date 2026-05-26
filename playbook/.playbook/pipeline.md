@@ -276,7 +276,25 @@ Detail          -- edge cases, constraints -- omit if nothing fits
 
 Code is generated against Playbook contracts. The doc is the source of truth.
 
-AI Boot Sequence:
+### What Compliant Code Means
+
+Code that passes the Phase Completion Checklist:
+
+- All Biome checks pass -- lint, format, imports
+- TypeScript strict mode clean -- no any, no !, no inferred public return types
+- All arrays in Domain and Application typed as readonly
+- No input parameters mutated -- new objects returned
+- No new Date() in Domain or Application -- clock abstraction injected
+- All dates stored and transmitted in UTC
+- No raw throw in Domain or Application -- Result<T, E> used throughout
+- No stub implementations -- no hardcoded returns, artificial delays, placeholders
+- No partial implementations -- every path handled: happy, error, and edge cases
+- No secrets hardcoded -- all via validated environment variables
+- No client-supplied IDs trusted for authorization without session verification
+- Domain coverage 100%, Application coverage 90%+
+
+### AI Boot Sequence
+
 1. .playbook/00-rules.md
 2. docs/code-standards.md
 3. docs/flows/_index.md
@@ -313,7 +331,15 @@ based on your project's actual state. No assumptions. No rigid tiers.
 
 - [ ] biome check -- zero errors
 - [ ] biome format --write -- zero diffs
-- [ ] vitest run -- all tests pass, coverage gates met
+- [ ] vitest run -- all tests pass, coverage gates met (Domain 100%, Application 90%+)
+- [ ] No stub implementations -- no hardcoded returns, artificial delays, or placeholder bodies
+- [ ] No partial implementations -- all branches handled: happy path, errors, and edge cases
+- [ ] All arrays in Domain and Application typed as readonly
+- [ ] No input parameters mutated -- new objects returned throughout
+- [ ] No new Date() in Domain or Application -- clock abstraction injected
+- [ ] All dates stored and transmitted in UTC
+- [ ] No raw throw in Domain or Application -- Result<T, E> used throughout
+- [ ] No secrets hardcoded -- all via validated environment variables
 - [ ] Playbook sync -- all touched .playbook/ docs reflect current code
 - [ ] Folder trees updated -- all _index.md Structure sections current
 - [ ] Git commits -- grouped by scope, all changes pushed
@@ -355,6 +381,17 @@ based on your project's actual state. No assumptions. No rigid tiers.
 | Discard | No longer needed -- remove |
 | Defer | Decision not yet possible |
 | Evaluate | Needs investigation before classifying |
+
+### Cross-Cutting Standards (always enforced)
+
+| Area | Rule |
+|---|---|
+| Immutability | ReadonlyArray in Domain/Application; no input mutation; no public setters |
+| Date and Time | UTC only; inject clock; no new Date() in Domain/Application; Interface layer formats |
+| Error Handling | Result<T, E> in Domain/Application; no raw throw; no silent swallowing |
+| Logging | Structured JSON; trace ID always present; no secrets or PII logged |
+| Security | No hardcoded secrets; parameterized queries; no client ID trust for auth |
+| Implementation | No stubs; no partial paths; all branches explicit |
 
 ---
 

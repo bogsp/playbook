@@ -1,6 +1,6 @@
 {
   "name": "create-playbook",
-  "version": "1.0.0",
+  "version": "2.1.0",
   "description": "Scaffold the Playbook pipeline for any project",
   "author": "Bogs",
   "license": "MIT",

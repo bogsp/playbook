@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// create-playbook v2.0.0
+// create-playbook v2.1.0
 // File: create-playbook/index.js
 // Usage: npx create-playbook [project-name]
 //        pnpm dlx create-playbook [project-name]
@@ -440,7 +440,25 @@ Detail          -- edge cases, constraints -- omit if nothing fits
 
 Code is generated against Playbook contracts. The doc is the source of truth.
 
-AI Boot Sequence:
+### What Compliant Code Means
+
+Code that passes the Phase Completion Checklist:
+
+- All Biome checks pass -- lint, format, imports
+- TypeScript strict mode clean -- no any, no !, no inferred public return types
+- All arrays in Domain and Application typed as readonly
+- No input parameters mutated -- new objects returned
+- No new Date() in Domain or Application -- clock abstraction injected
+- All dates stored and transmitted in UTC
+- No raw throw in Domain or Application -- Result<T, E> used throughout
+- No stub implementations -- no hardcoded returns, artificial delays, placeholders
+- No partial implementations -- every path handled: happy, error, and edge cases
+- No secrets hardcoded -- all via validated environment variables
+- No client-supplied IDs trusted for authorization without session verification
+- Domain coverage 100%, Application coverage 90%+
+
+### AI Boot Sequence
+
 1. .playbook/00-rules.md
 2. docs/code-standards.md
 3. docs/flows/_index.md
@@ -477,7 +495,15 @@ based on your project's actual state. No assumptions. No rigid tiers.
 
 - [ ] biome check -- zero errors
 - [ ] biome format --write -- zero diffs
-- [ ] vitest run -- all tests pass, coverage gates met
+- [ ] vitest run -- all tests pass, coverage gates met (Domain 100%, Application 90%+)
+- [ ] No stub implementations -- no hardcoded returns, artificial delays, or placeholder bodies
+- [ ] No partial implementations -- all branches handled: happy path, errors, and edge cases
+- [ ] All arrays in Domain and Application typed as readonly
+- [ ] No input parameters mutated -- new objects returned throughout
+- [ ] No new Date() in Domain or Application -- clock abstraction injected
+- [ ] All dates stored and transmitted in UTC
+- [ ] No raw throw in Domain or Application -- Result<T, E> used throughout
+- [ ] No secrets hardcoded -- all via validated environment variables
 - [ ] Playbook sync -- all touched .playbook/ docs reflect current code
 - [ ] Folder trees updated -- all _index.md Structure sections current
 - [ ] Git commits -- grouped by scope, all changes pushed
@@ -520,6 +546,17 @@ based on your project's actual state. No assumptions. No rigid tiers.
 | Defer | Decision not yet possible |
 | Evaluate | Needs investigation before classifying |
 
+### Cross-Cutting Standards (always enforced)
+
+| Area | Rule |
+|---|---|
+| Immutability | ReadonlyArray in Domain/Application; no input mutation; no public setters |
+| Date and Time | UTC only; inject clock; no new Date() in Domain/Application; Interface layer formats |
+| Error Handling | Result<T, E> in Domain/Application; no raw throw; no silent swallowing |
+| Logging | Structured JSON; trace ID always present; no secrets or PII logged |
+| Security | No hardcoded secrets; parameterized queries; no client ID trust for auth |
+| Implementation | No stubs; no partial paths; all branches explicit |
+
 ---
 
 The doc is the contract. The code follows.
@@ -528,7 +565,7 @@ The doc is the contract. The code follows.
     ".playbook/00-rules.md":
 `# Playbook Rules
 # File: .playbook/00-rules.md
-# version: 2.0
+# version: 2.1
 # requires: docs/code-standards.md
 
 Always load docs/code-standards.md alongside this file.
@@ -665,6 +702,93 @@ Rules:
 16. External dependencies require explicit justification
 17. Never advance RE phases without human review
 18. No DDA docs during RE inventory, audit, or classify phases
+19. All arrays in Domain and Application must be typed as readonly
+20. Never mutate input parameters -- always return new objects
+21. Never call new Date() in Domain or Application -- inject a clock abstraction
+22. Always store and transmit dates in UTC -- never with a timezone offset
+23. Never stub implementations -- no hardcoded returns, artificial delays, or placeholder bodies
+24. Never leave any code path unhandled -- all branches must be explicit: happy path, errors, edge cases
+25. Stop and flag before writing any code when a requirement is unclear, a path is undefined, or a decision is needed
+
+---
+
+## Uncertainty Protocol
+
+When any of the following occur, stop all work and flag before writing any code:
+
+- A requirement is unclear or underspecified
+- A flow path is not defined in the DDA doc or contract
+- A dependency is needed but not declared in the component doc
+- A decision would affect more than the current component
+- The correct behavior cannot be inferred without making assumptions
+
+Flag format:
+\`\`\`
+[FLAG] Category: description
+       Options: (if applicable)
+       Blocking: what cannot proceed until this is resolved
+\`\`\`
+
+Categories: underspecified | missing-contract | undeclared-dependency | architectural-decision | ambiguous-behavior
+
+---
+
+## Anti-Patterns (Never Do)
+
+**Architecture**
+- Cross-layer imports -- Application -> Interface, Domain -> Infrastructure
+- Direct module-to-module imports -- use ModuleServiceGateway
+- Business logic in sequencers or the Interface layer
+- Anemic domain models -- behavior belongs on the domain object
+
+**TypeScript**
+- any type anywhere in the codebase
+- Non-null assertions (!)
+- Type assertions (as) outside adapter boundaries
+- Inferred return types on public APIs
+- Boolean domain or application state -- use enums, dates, or discriminated unions
+
+**Immutability**
+- Mutating input parameters -- always return new objects
+- Mutable arrays in Domain or Application signatures -- use ReadonlyArray<T>
+- Public setters on domain objects -- no direct property mutation
+
+**Date and Time**
+- new Date() in Domain or Application -- inject a clock abstraction
+- Storing or transmitting dates with timezone offsets -- always UTC
+- Comparing dates as strings -- always compare as Date objects or UTC timestamps
+- Display formatting or timezone conversion below the Interface layer
+
+**Error Handling**
+- Raw throw in Domain or Application layer -- use Result<T, E>
+- Swallowing a caught error silently -- always log or return
+- Exposing stack traces or internal error details to clients
+
+**Logging**
+- Logging passwords, tokens, secrets, or raw PII at any level
+- Plain string logs in production -- always structured JSON
+- Missing trace ID on any log entry
+- Debug logs in production builds
+
+**Security**
+- Hardcoded secrets anywhere in the codebase
+- Trusting client-supplied IDs for authorization
+- String interpolation in query strings -- always parameterized queries
+- Sensitive data in URLs or query strings
+
+**Implementation**
+- Stub implementations -- hardcoded returns, artificial delays, placeholder bodies
+- Partial implementations -- all paths must be handled explicitly
+- Magic strings or numbers -- use named constants
+- Commented-out code -- delete it; version control preserves history
+
+**AI-Specific**
+- Generating code ahead of a DDA doc
+- Adding undeclared dependencies or components
+- Silently resolving ambiguity with assumptions
+- Duplicating an existing component's responsibilities
+- Leaving any code path unhandled or silently ignored
+- Making architectural decisions unilaterally -- flag and wait
 
 ---
 
@@ -1510,7 +1634,7 @@ Narrative -- what happens, what decisions are made, what can go wrong.
 
 ---
 Add sections below based on scope and trigger type.
-Remove sections that do not apply -- mark N/A if required by type.
+Mark N/A if required by type but does not apply.
 
 ## Compensation
 _(Journey, Sequence -- required)_
@@ -2272,7 +2396,6 @@ Project (declare in 03-execution.md): [custom]
 **Notes:**
 [Anything the next phase needs to know]
 `,
-
 
     // -----------------------------------------------------------------------
     // Video insight templates

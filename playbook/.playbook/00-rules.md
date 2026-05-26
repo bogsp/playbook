@@ -2,7 +2,7 @@
 # File: .playbook/00-rules.md
 
 ---
-version: 2.0
+version: 2.1
 requires: docs/code-standards.md
 ---
 
@@ -39,9 +39,6 @@ When any format, template, or structure decision needs to be made -- apply this 
     new-project.md       -> new project guide
     expansions/          -> expansion-specific guides
       reverse-engineer.md
-  [module]/
-    _index.md            -> module manifest
-    [component].md       -> component docs
 docs/
   code-standards.md      -> always loaded with this file
   flows/
@@ -382,6 +379,93 @@ Required sections:
 16. External dependencies require explicit justification before adoption
 17. Never advance RE expansion phases without human review and approval
 18. Never begin DDA docs while RE expansion is in inventory, audit, or classify
+19. All arrays passed into or returned from Domain and Application functions must be typed as readonly
+20. Never mutate input parameters -- always return new objects
+21. Never call new Date() in Domain or Application layer -- inject a clock abstraction
+22. Always store and transmit dates in UTC -- never with a timezone offset
+23. Never stub implementations -- no hardcoded returns, artificial delays, or placeholder bodies
+24. Never leave any code path unhandled -- all branches must be explicit: happy path, errors, edge cases
+25. Stop and flag before writing any code when a requirement is unclear, a path is undefined, or a decision is needed
+
+---
+
+## Uncertainty Protocol
+
+When any of the following occur, stop all work and flag before writing any code:
+
+- A requirement is unclear or underspecified
+- A flow path is not defined in the DDA doc or contract
+- A dependency is needed but not declared in the component doc
+- A decision would affect more than the current component
+- The correct behavior cannot be inferred without making assumptions
+
+Flag format:
+```
+[FLAG] Category: description
+       Options: (if applicable)
+       Blocking: what cannot proceed until this is resolved
+```
+
+Categories: underspecified | missing-contract | undeclared-dependency | architectural-decision | ambiguous-behavior
+
+---
+
+## Anti-Patterns (Never Do)
+
+**Architecture**
+- Cross-layer imports -- Application → Interface, Domain → Infrastructure
+- Direct module-to-module imports -- use ModuleServiceGateway
+- Business logic in sequencers or the Interface layer
+- Anemic domain models -- behavior belongs on the domain object, not in a service
+
+**TypeScript**
+- any type anywhere in the codebase
+- Non-null assertions (!)
+- Type assertions (as) outside adapter boundaries
+- Inferred return types on public APIs
+- Boolean domain or application state -- use enums, dates, or discriminated unions
+
+**Immutability**
+- Mutating input parameters -- always return new objects
+- Mutable arrays in Domain or Application signatures -- use ReadonlyArray<T>
+- Public setters on domain objects -- no direct property mutation
+
+**Date and Time**
+- new Date() in Domain or Application -- inject a clock abstraction
+- Storing or transmitting dates with timezone offsets -- always UTC
+- Comparing dates as strings -- always compare as Date objects or UTC timestamps
+- Display formatting or timezone conversion below the Interface layer
+
+**Error Handling**
+- Raw throw in Domain or Application layer -- use Result<T, E>
+- Swallowing a caught error silently -- always log or return
+- Exposing stack traces or internal error details to clients
+
+**Logging**
+- Logging passwords, tokens, secrets, or raw PII at any level
+- Plain string logs in production -- always structured JSON
+- Missing trace ID on any log entry
+- Debug logs in production builds
+
+**Security**
+- Hardcoded secrets anywhere in the codebase
+- Trusting client-supplied IDs for authorization
+- String interpolation in query strings -- always parameterized queries
+- Sensitive data in URLs or query strings
+
+**Implementation**
+- Stub implementations -- hardcoded returns, artificial delays, placeholder bodies
+- Partial implementations -- all paths must be handled explicitly
+- Magic strings or numbers -- use named constants
+- Commented-out code -- delete it; version control preserves history
+
+**AI-Specific**
+- Generating code ahead of a DDA doc
+- Adding undeclared dependencies or components
+- Silently resolving ambiguity with assumptions
+- Duplicating an existing component's responsibilities
+- Leaving any code path unhandled or silently ignored
+- Making architectural decisions unilaterally -- flag and wait
 
 ---
 
