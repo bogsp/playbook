@@ -1,0 +1,68 @@
+{
+  "packages/create-playbook": {
+    "root": [
+      "packages/create-playbook/package.json",
+      "nx/core/package-json"
+    ],
+    "name": [
+      "packages/create-playbook/package.json",
+      "nx/core/package-json"
+    ],
+    "tags": [
+      "packages/create-playbook/package.json",
+      "nx/core/package-json"
+    ],
+    "tags.npm:public": [
+      "packages/create-playbook/package.json",
+      "nx/core/package-json"
+    ],
+    "tags.npm:playbook": [
+      "packages/create-playbook/package.json",
+      "nx/core/package-json"
+    ],
+    "tags.npm:context-kit": [
+      "packages/create-playbook/package.json",
+      "nx/core/package-json"
+    ],
+    "tags.npm:ai-assisted-development": [
+      "packages/create-playbook/package.json",
+      "nx/core/package-json"
+    ],
+    "tags.npm:scaffold": [
+      "packages/create-playbook/package.json",
+      "nx/core/package-json"
+    ],
+    "tags.npm:dda": [
+      "packages/create-playbook/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups": [
+      "packages/create-playbook/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.description": [
+      "packages/create-playbook/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js": [
+      "packages/create-playbook/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageName": [
+      "packages/create-playbook/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageVersion": [
+      "packages/create-playbook/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.isInPackageManagerWorkspaces": [
+      "packages/create-playbook/package.json",
+      "nx/core/package-json"
+    ],
+    "targets": [
+      "packages/create-playbook/package.json",
+      "nx/core/package-json"
+    ]
+  }
+}

@@ -1,0 +1,319 @@
+{
+  "version": "6.0",
+  "nxVersion": "21.6.11",
+  "pathMappings": {},
+  "nxJsonPlugins": [],
+  "fileMap": {
+    "nonProjectFiles": [
+      {
+        "file": ".gitignore",
+        "hash": "13404745306227114823"
+      },
+      {
+        "file": ".kit/00-prompts.md",
+        "hash": "2391721935702933554"
+      },
+      {
+        "file": ".kit/00-summary.md",
+        "hash": "15794589578147355555"
+      },
+      {
+        "file": ".kit/01-process.md",
+        "hash": "16131922847742773562"
+      },
+      {
+        "file": ".kit/02-exploration.md",
+        "hash": "10979057574237115434"
+      },
+      {
+        "file": ".kit/03-execution.md",
+        "hash": "15683894525351623055"
+      },
+      {
+        "file": ".kit/04-progress.md",
+        "hash": "7940410523303102448"
+      },
+      {
+        "file": ".kit/05-kanban.md",
+        "hash": "14600032240801521790"
+      },
+      {
+        "file": ".kit/06-qa.md",
+        "hash": "6659115054683087260"
+      },
+      {
+        "file": ".kit/_archives/.gitkeep",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": ".kit/_refs/.gitkeep",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": ".kit/_tests/.gitkeep",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "Playbook - journey.pdf",
+        "hash": "17426256987322337878"
+      },
+      {
+        "file": "README.md",
+        "hash": "17084159633730169372"
+      },
+      {
+        "file": "biome.json",
+        "hash": "15876799709302106241"
+      },
+      {
+        "file": "gitignore",
+        "hash": "5340337805254346132"
+      },
+      {
+        "file": "journey.md",
+        "hash": "7365773893014942289"
+      },
+      {
+        "file": "nx.json",
+        "hash": "11908029425187988017"
+      },
+      {
+        "file": "package.json",
+        "hash": "18293381380189853107"
+      },
+      {
+        "file": "packages/playbook-library/README.md",
+        "hash": "8431061702633832445"
+      },
+      {
+        "file": "packages/playbook-library/_concerns/auth.md",
+        "hash": "8986551524998701802"
+      },
+      {
+        "file": "packages/playbook-library/_concerns/error-handling.md",
+        "hash": "17611693924821237317"
+      },
+      {
+        "file": "packages/playbook-library/_concerns/logging.md",
+        "hash": "11495629445309171874"
+      },
+      {
+        "file": "packages/playbook-library/_integrations/cloudflare-r2.md",
+        "hash": "18097172141697540714"
+      },
+      {
+        "file": "packages/playbook-library/_solutions/signed-url-delivery.md",
+        "hash": "4585622940127411130"
+      },
+      {
+        "file": "playbook/.kit/00-prompts.md",
+        "hash": "10880135534191571783"
+      },
+      {
+        "file": "playbook/.kit/01-process.md",
+        "hash": "2532931534388397672"
+      },
+      {
+        "file": "playbook/.kit/02-exploration.md",
+        "hash": "1864899004165094406"
+      },
+      {
+        "file": "playbook/.kit/03-execution.md",
+        "hash": "1998626516818488063"
+      },
+      {
+        "file": "playbook/.kit/04-progress.md",
+        "hash": "15019201776141617091"
+      },
+      {
+        "file": "playbook/.kit/05-kanban.md",
+        "hash": "12845070477143761736"
+      },
+      {
+        "file": "playbook/.kit/06-qa.md",
+        "hash": "8541066440434121633"
+      },
+      {
+        "file": "playbook/.kit/_archives/exploration/.gitkeep",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "playbook/.kit/_archives/kanban/.gitkeep",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "playbook/.kit/_archives/progress/.gitkeep",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "playbook/.kit/_refs/examples/.gitkeep",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "playbook/.kit/_refs/snippets/.gitkeep",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "playbook/.kit/_refs/templates/.gitkeep",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "playbook/.kit/_refs/video-insights/video-insight-base.md",
+        "hash": "366012499740370239"
+      },
+      {
+        "file": "playbook/.kit/_refs/video-insights/video-insight-variants.md",
+        "hash": "6299740578535867048"
+      },
+      {
+        "file": "playbook/.kit/_tests/.gitkeep",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "playbook/.kit/_tests/QA-00-template.md",
+        "hash": "16938064051700816277"
+      },
+      {
+        "file": "playbook/.playbook/.guides/The Context Kit.pdf",
+        "hash": "4276940046417334062"
+      },
+      {
+        "file": "playbook/.playbook/.guides/adopt.md",
+        "hash": "11857358519316775961"
+      },
+      {
+        "file": "playbook/.playbook/.guides/context-kit.md",
+        "hash": "13168548692433812959"
+      },
+      {
+        "file": "playbook/.playbook/.guides/expansions/reverse-engineer.md",
+        "hash": "7724891495239223086"
+      },
+      {
+        "file": "playbook/.playbook/.guides/expansions/video-insights.md",
+        "hash": "12244722905769016134"
+      },
+      {
+        "file": "playbook/.playbook/.guides/new-project.md",
+        "hash": "17674063842956568253"
+      },
+      {
+        "file": "playbook/.playbook/00-rules.md",
+        "hash": "3930082260749571279"
+      },
+      {
+        "file": "playbook/.playbook/README.md",
+        "hash": "64417054099074353"
+      },
+      {
+        "file": "playbook/.playbook/_concerns/auth.md",
+        "hash": "16198741364068387856"
+      },
+      {
+        "file": "playbook/.playbook/_concerns/error-handling.md",
+        "hash": "15879003610161730308"
+      },
+      {
+        "file": "playbook/.playbook/_concerns/logging.md",
+        "hash": "2983335123836091067"
+      },
+      {
+        "file": "playbook/.playbook/_index.md",
+        "hash": "14850518333361332339"
+      },
+      {
+        "file": "playbook/.playbook/_integrations/.gitkeep",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "playbook/.playbook/_shared/.gitkeep",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "playbook/.playbook/pipeline.md",
+        "hash": "7176530296452827597"
+      },
+      {
+        "file": "playbook/.playbook/templates/component.md",
+        "hash": "15618971477653701869"
+      },
+      {
+        "file": "playbook/.playbook/templates/concern.md",
+        "hash": "14410242337347017768"
+      },
+      {
+        "file": "playbook/.playbook/templates/integration.md",
+        "hash": "6744238290792780570"
+      },
+      {
+        "file": "playbook/.playbook/templates/sequencer.md",
+        "hash": "7161578438299386522"
+      },
+      {
+        "file": "playbook/.playbook/templates/structure.md",
+        "hash": "15073365443654936181"
+      },
+      {
+        "file": "playbook/docs/code-standards.md",
+        "hash": "9346546973853633687"
+      },
+      {
+        "file": "playbook/docs/contracts/contract.md",
+        "hash": "4135604631743754581"
+      },
+      {
+        "file": "playbook/docs/contracts/global-contract.md",
+        "hash": "6191711900637707315"
+      },
+      {
+        "file": "playbook/docs/contracts/global.md",
+        "hash": "6191711900637707315"
+      },
+      {
+        "file": "playbook/docs/flows/flow.md",
+        "hash": "6370431134893933471"
+      },
+      {
+        "file": "playbook/docs/rewrite/decision-record.md",
+        "hash": "18192091239400388327"
+      },
+      {
+        "file": "playbook/docs/rewrite/risk-register.md",
+        "hash": "4303048026659566213"
+      },
+      {
+        "file": "playbook/docs/rewrite/system-map.md",
+        "hash": "10908931225831728407"
+      },
+      {
+        "file": "playbook/docs/rollout/.gitkeep",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "pnpm-lock.yaml",
+        "hash": "17933933084892176439"
+      },
+      {
+        "file": "pnpm-workspace.yaml",
+        "hash": "414265049992887245"
+      }
+    ],
+    "projectFileMap": {
+      "create-playbook": [
+        {
+          "file": "packages/create-playbook/README.md",
+          "hash": "13408074674901207069"
+        },
+        {
+          "file": "packages/create-playbook/index.js",
+          "hash": "15951272824700058790"
+        },
+        {
+          "file": "packages/create-playbook/package.json",
+          "hash": "541906700447783778"
+        }
+      ]
+    }
+  },
+  "externalNodesHash": "3846203182305539626"
+}
