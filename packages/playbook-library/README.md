@@ -29,6 +29,38 @@ _solutions/      Patterns that span multiple components
 
 ---
 
+## Current Library
+
+### Concerns
+
+- `auth` -- authentication and authorization boundaries
+- `error-handling` -- Result pattern and typed error behavior
+- `logging` -- structured logs and trace propagation
+
+### Integrations
+
+- `cloudflare-r2` -- private object storage and signed URL support
+- `convex` -- reactive state and schema boundary
+- `docker-compose` -- service topology and health-gated boot
+- `llama-cpp` -- local model runtime process boundary
+- `postgres` -- durable relational storage
+- `tanstack-router` -- type-safe React routing
+- `trpc` -- type-safe TypeScript API boundary
+- `vite` -- frontend dev server and bundler
+- `workos` -- authentication provider boundary
+
+### Solutions
+
+- `clean-architecture-dda` -- DDA layer folder layout and validation rules
+- `convex-reactive-state` -- live state split between Convex and durable storage
+- `docker-compose-boot-groups` -- health-gated service startup pattern
+- `local-model-runtime` -- safe local model process orchestration
+- `missing-script-drift-check` -- package script reference validation
+- `platform-dda-coverage` -- repo-level DDA for config, Docker, schemas, and scripts
+- `signed-url-delivery` -- private file delivery through signed URLs
+
+---
+
 ## Using the Library
 
 ### In a Playbook project

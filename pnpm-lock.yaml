@@ -17,6 +17,8 @@ importers:
 
   packages/create-playbook: {}
 
+  packages/playbook-library: {}
+
 packages:
 
   '@biomejs/biome@2.4.15':
