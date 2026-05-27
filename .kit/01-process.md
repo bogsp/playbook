@@ -1,10 +1,11 @@
 # PROCESS
+
 # File: .kit/01-process.md
 
 ---
 
 **Phase:** Execution
-**Last Completed:** Workspace structure defined, playbook-library scaffolded with starter docs
-**Next:** Restructure repo on GitHub and publish create-playbook to npm
+**Last Completed:** create-playbook v1.0.0 published to npm
+**Next:** Publish playbook-library to npm
 **Active Modules:** none
 **Active Expansions:** none

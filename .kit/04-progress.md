@@ -1,7 +1,9 @@
 # PROGRESS LOG (APPEND-ONLY)
+
 # File: .kit/04-progress.md
 
 Rules:
+
 - Entries are never edited or deleted.
 - New updates are always added at the bottom.
 - Each entry is identified as Completed, Decided, or Fixed. NOT grouped.
@@ -11,19 +13,20 @@ Rules:
 ---
 
 ## 2026-05-06
+
 - **Decided:** Named and defined Document-Driven Architecture (DDA) — component-first, narrative-rich, relationship-aware, AI-optimized
 - **Decided:** Document format — YAML frontmatter + one-paragraph narrative + optional Detail section, single file per component
 - **Decided:** Five document types — component, orchestrator, structure, concern, integration
 - **Decided:** Universal fields for all types — id, type, status
-- **Decided:** Folder structure — .context/ at repo root with _concerns/, _integrations/, _shared/ reserved folders
-- **Decided:** Naming conventions — kebab-case files and folders, _index.md for structure docs, PascalCase events
+- **Decided:** Folder structure — .context/ at repo root with \_concerns/, \_integrations/, \_shared/ reserved folders
+- **Decided:** Naming conventions — kebab-case files and folders, \_index.md for structure docs, PascalCase events
 - **Decided:** Full pipeline — Context Kit -> PRD/Specs -> DDA -> Code -> Rollout Docs
 - **Decided:** DDA vs standard docs boundaries — PRDs upstream, rollout docs downstream generated outputs
-- **Decided:** AI boot sequence — 00-playbook.md -> code-standards.md -> _index.md -> module docs -> component docs
+- **Decided:** AI boot sequence — 00-playbook.md -> code-standards.md -> \_index.md -> module docs -> component docs
 - **Decided:** Code before doc rule — Playbook doc always exists before any code is written
 - **Decided:** Three generation modes — bootstrap, authoring, sync
 - **Decided:** Drift prevention strategy — active flagging, pre-PR sync, milestone audits
-- **Decided:** Reusability rules — _shared/ for cross-module components, concerns and integrations never duplicated
+- **Decided:** Reusability rules — \_shared/ for cross-module components, concerns and integrations never duplicated
 - **Decided:** DDA as wiki source — all generated docs compiled from .playbook/, never edited directly
 - **Completed:** Authored 00-dda.md (now 00-playbook.md)
 - **Completed:** Authored dda-guide.md (now playbook-guide.md)
@@ -33,11 +36,12 @@ Rules:
 - **Completed:** code-standards.md updated — Section 9 references Playbook, Section 10 Error Mitigation added
 
 ## 2026-05-07
+
 - **Decided:** Pipeline named Playbook — natural developer vocabulary, not forced
 - **Decided:** Folder renamed .playbook/ — replaces .context/ and .spec/
 - **Decided:** Pipeline starter is PLAYBOOK.md at repo root
 - **Decided:** AI boot file is .playbook/00-playbook.md
-- **Decided:** Living folder tree — every _index.md has a Structure section with linked annotated entries
+- **Decided:** Living folder tree — every \_index.md has a Structure section with linked annotated entries
 - **Decided:** Orchestrator flow — annotated numbered list in body + Mermaid diagram in Detail
 - **Decided:** Existing project adoption is additive — structured audit, nothing breaks
 - **Decided:** Two adoption paths — with Context Kit and without Context Kit
@@ -54,6 +58,7 @@ Rules:
 - **Completed:** All Playbook deliverables generated — project complete
 
 ## 2026-05-23
+
 - **Decided:** Progressive Disclosure + Tiering named as core principle — default method for all structural decisions
 - **Decided:** Playbook is a dev-dependency — present during development, invisible in production
 - **Decided:** Playbook file structure and boundaries locked — .playbook/ and .kit/ are Playbook's world
@@ -80,13 +85,13 @@ Rules:
 - **Decided:** .kit/04-progress.md — three entry types only: Completed, Decided, Fixed
 - **Decided:** Kanban ticket type tiering — core, pipeline, and project tiers
 - **Decided:** QA tiering — core, standard, full tiers declared in 03-execution.md
-- **Decided:** Each QA test case is a separate file in .kit/_tests/
-- **Decided:** 06-qa.md is registry and sign-off only — points to _tests/ files
+- **Decided:** Each QA test case is a separate file in .kit/\_tests/
+- **Decided:** 06-qa.md is registry and sign-off only — points to \_tests/ files
 - **Decided:** Failures Log requires Ref and Mitigation fields — neither optional
 - **Decided:** QA sign-off requires all Acceptance Criteria verified with QA-ID, explicit exceptions, consequences declared
-- **Decided:** .kit/_refs/ folder defined — supporting material for exploration, organized by type
-- **Decided:** .kit/_tests/ folder defined — one file per QA test case
-- **Decided:** .kit/_archives/ folder defined — exploration/, progress/, kanban/ sub-folders
+- **Decided:** .kit/\_refs/ folder defined — supporting material for exploration, organized by type
+- **Decided:** .kit/\_tests/ folder defined — one file per QA test case
+- **Decided:** .kit/\_archives/ folder defined — exploration/, progress/, kanban/ sub-folders
 - **Decided:** Archive rules defined — nothing deleted, moved not removed, every archive file gets a header
 - **Decided:** SESSION-SUMMARY.md deprecated — 01-process.md + 04-progress.md now perform the session handoff
 - **Completed:** All .kit/ file responsibilities defined and locked
@@ -94,6 +99,7 @@ Rules:
 - **In Progress:** Drafting updated Playbook pipeline files — .playbook/README.md next
 
 ## 2026-05-23 (continued)
+
 - **Decided:** Reverse Engineer is a first-class expansion -- plugs in before Context Kit for existing projects
 - **Decided:** Expansions are optional pipeline stages that extend Playbook without changing core pipeline
 - **Decided:** Active Expansions field added to 01-process.md -- simple list, expands to phase tracking when needed
@@ -120,6 +126,7 @@ Rules:
 - **In Progress:** Update create-playbook CLI to reflect new structure
 
 ## 2026-05-23 (continued)
+
 - **Decided:** Context Kit is the persistent layer beneath every pipeline stage -- not Stage 1
 - **Decided:** Context Kit stays standalone -- works beyond Playbook, any project type
 - **Decided:** Inside Playbook the two are inseparable -- fully ingrained, single system
@@ -131,12 +138,14 @@ Rules:
 - **In Progress:** Update create-playbook CLI to reflect new structure
 
 ## 2026-05-23 (continued)
+
 - **Completed:** Built create-playbook CLI v2.0 -- zero dependencies, verified scaffold
 - **Completed:** CLI scaffolds 29 files across .playbook/, .kit/, and docs/
 - **Completed:** CLI verified -- runs with npx, pnpm dlx, yarn dlx
 - **In Progress:** Review full file set; address any gaps before packaging
 
 ## 2026-05-23 (continued)
+
 - **Fixed:** DDA templates missing from CLI -- all five now embedded
 - **Fixed:** Guide files missing from CLI -- context-kit, adopt, new-project, reverse-engineer now embedded
 - **Fixed:** Flow and contract templates missing from CLI -- flow-template.md and contract-template.md now scaffolded
@@ -144,12 +153,13 @@ Rules:
 - **In Progress:** Final review and packaging for distribution
 
 ## 2026-05-23 (continued)
+
 - **Decided:** Video Insights expansion uses Gemini for extraction -- free, accessible, native YouTube support
 - **Decided:** Gemini extracts, Playbook connects -- discussion step is mandatory before integration
 - **Decided:** One base template + five content-type variants -- progressive disclosure + tiering
 - **Decided:** Expansion fires at any stage -- not tied to a specific pipeline stage
 - **Decided:** Three integration outcomes -- Integrate, Discard, Defer -- all traceable
-- **Decided:** Discarded insights stay in _refs/ -- never deleted
+- **Decided:** Discarded insights stay in \_refs/ -- never deleted
 - **Completed:** Authored .playbook/.guides/expansions/video-insights.md
 - **Completed:** Generated video-insight-base.md template
 - **Completed:** Generated video-insight-variants.md reference
@@ -159,12 +169,14 @@ Rules:
 - **In Progress:** Final review and packaging
 
 ## 2026-05-23 (continued)
+
 - **Decided:** Embed pipeline.md in CLI -- size is not a deal breaker, fully self-contained is the right call
 - **Completed:** pipeline.md embedded in create-playbook CLI
 - **Completed:** CLI final -- 44 files, fully self-contained, verified
 - **In Progress:** Package create-playbook for distribution
 
 ## 2026-05-23 (continued)
+
 - **Decided:** No code in any Playbook pipeline docs -- behavior defined precisely in plain language
 - **Decided:** Library docs meet a higher standard than project docs -- no interpretation gaps
 - **Decided:** Monorepo with Nx + pnpm workspaces -- one repo, two publishable packages
@@ -172,7 +184,7 @@ Rules:
 - **Decided:** playbook-library as @bogsp/playbook-library -- scoped, always available
 - **Decided:** Library uses semantic versioning -- patch for improvements, minor for additions, major for breaking changes
 - **Decided:** Projects install library as dependency -- traceable, upgradeable
-- **Decided:** Library has _concerns/, _integrations/, _solutions/ folders
+- **Decided:** Library has \_concerns/, \_integrations/, \_solutions/ folders
 - **Decided:** Biome adjusted to use spaces for JavaScript
 - **Completed:** biome.json updated -- spaces for JS
 - **Completed:** Root package.json created -- pnpm workspace root
@@ -184,4 +196,9 @@ Rules:
 - **Completed:** Starter concern docs -- logging, error-handling, auth
 - **Completed:** Starter integration doc -- cloudflare-r2
 - **Completed:** Starter solution doc -- signed-url-delivery
-- **In Progress:** Restructure repo and publish to npm
+
+## 2026-05-26
+
+- **Completed:** create-playbook v1.0.0 published to npm as public package
+- **Decided:** Package name is create-playbook (unscoped) -- enables npx create-playbook invocation
+- **In Progress:** playbook-library npm publish
