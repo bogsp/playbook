@@ -262,12 +262,33 @@ The document is the contract. Code follows it.
 | concern | Cross-cutting capability |
 | integration | External contract |
 
+Sequencer vs component rule:
+- Sequencer: receives a trigger, orders other units, routes work, or branches by outcome
+- Component: performs one bounded leaf responsibility
+- Sequencers own sequence, not leaf logic
+- Leaf work inside a sequencer must be extracted into a component with its own DDA doc and implementation file
+
+### Clean Architecture Layers
+
+Every component and sequencer DDA doc declares `layer`:
+
+| Layer | DDA Scope |
+|---|---|
+| domain | Pure business rules, entities, value objects |
+| application | Use cases, sequencers, orchestration, port definitions |
+| infrastructure | Adapter implementations and external I/O |
+| interface | HTTP, CLI, UI, route composition, framework entrypoints |
+
+The implementation file must match the declared layer. If it does not, the DDA
+stays draft until the code is extracted or the exception is explicitly approved.
+
 ### Document Structure
 
 Every DDA doc follows progressive disclosure:
 
 What It Does    -- plain language, any audience
-Interface       -- contract reference + signature
+Flow            -- required for sequencers; trigger, call chain, branches
+Interface       -- required for components; contract reference + signature
 Detail          -- edge cases, constraints -- omit if nothing fits
 
 ---
@@ -392,6 +413,8 @@ based on your project's actual state. No assumptions. No rigid tiers.
 | Logging | Structured JSON; trace ID always present; no secrets or PII logged |
 | Security | No hardcoded secrets; parameterized queries; no client ID trust for auth |
 | Implementation | No stubs; no partial paths; all branches explicit |
+| Sequencing | Coordinators are sequencers; leaf work is extracted to documented components |
+| Layers | Component/sequencer DDA declares layer; implementation path matches layer |
 
 ---
 

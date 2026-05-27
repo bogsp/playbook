@@ -132,8 +132,28 @@ Expansion is complete when handoff feeds .kit/02-exploration.md and .kit/03-exec
 id:      # kebab-case -- must match filename
 export:  # exported name -- component and sequencer only
 file:    # repo path -- component and sequencer only
+layer:   # domain | application | infrastructure | interface -- component and sequencer only
 type:    # component | sequencer | structure | concern | integration
 status:  # draft | active | deprecated
+
+---
+
+### Clean Architecture Layer
+
+Every component and sequencer DDA doc declares its layer. The declared layer
+must match the implementation file and import direction.
+
+| Layer | Owns | May Depend On | Must Not Depend On |
+|---|---|---|---|
+| domain | Entities, value objects, pure rules | nothing project-specific | application, infrastructure, interface |
+| application | Use cases, sequencers, ports, orchestration | domain, declared ports | infrastructure implementations, interface |
+| infrastructure | Adapter implementations, external I/O | application ports, domain types | interface |
+| interface | HTTP, CLI, UI, route composition, framework entrypoints | application APIs | infrastructure internals |
+
+Sequencers usually belong in the application layer. Interface-layer files may
+instantiate or call sequencers, but must not hide application sequencing or leaf
+component logic. If a sequencer currently points at an interface file, mark the
+DDA draft until the application sequencer is extracted or explicitly justified.
 
 ---
 
@@ -167,9 +187,18 @@ Runtime coordinator. Owns flow and sequencing, not business logic.
 Always references docs/flows/ and docs/contracts/ -- never restates them.
 Always includes Flow section with full call chain and all branches.
 
+Use a sequencer when a unit receives a trigger and orders other units,
+routes work to multiple handlers, or branches by outcome. Sequencers may
+validate sequencing preconditions and map outcomes, but they must not hide
+leaf responsibilities in their own code. Any meaningful leaf operation
+(calculation, validation, storage, rendering, adapter call, parsing, policy
+decision) gets its own component DDA doc and implementation file, then appears
+in the sequencer's sequence.
+
 id: billing-sequencer
 export: BillingSequencer
-file: src/billing/billing-sequencer.ts
+file: src/billing/application/billing-sequencer.ts
+layer: application
 type: sequencer
 status: active
 parent: billing
@@ -202,9 +231,16 @@ References: docs/flows/flow-1-billing.md + docs/contracts/flow-1-billing.md
 Single unit of logic. One responsibility. Returns typed Result.
 References contract for behavior definition.
 
+Use a component when a unit performs one bounded responsibility and does not
+own a multi-step runtime path. A component may call declared ports or child
+components, but it should not coordinate a flow. If it starts receiving
+triggers, routing between handlers, or sequencing multiple components, convert
+it to a sequencer and extract its leaf responsibilities into components.
+
 id: invoice-validator
 export: InvoiceValidator
-file: src/billing/invoice-validator.ts
+file: src/billing/domain/invoice-validator.ts
+layer: domain
 type: component
 status: active
 parent: billing-sequencer
@@ -386,6 +422,11 @@ Required sections:
 23. Never stub implementations -- no hardcoded returns, artificial delays, or placeholder bodies
 24. Never leave any code path unhandled -- all branches must be explicit: happy path, errors, edge cases
 25. Stop and flag before writing any code when a requirement is unclear, a path is undefined, or a decision is needed
+26. Classify trigger-driven coordinators as sequencers, not components
+27. Never hide leaf component responsibilities inside sequencer code -- extract each leaf into its own DDA doc and implementation file
+28. Every item in a sequencer sequence must resolve to an active component/sequencer DDA doc or be explicitly marked draft/TODO before coding
+29. Every component and sequencer DDA doc must declare a Clean Architecture layer
+30. Implementation file paths must match the declared layer; otherwise mark the doc draft and extract or justify before coding
 
 ---
 
@@ -415,7 +456,10 @@ Categories: underspecified | missing-contract | undeclared-dependency | architec
 **Architecture**
 - Cross-layer imports -- Application → Interface, Domain → Infrastructure
 - Direct module-to-module imports -- use ModuleServiceGateway
+- DDA docs without an explicit Clean Architecture layer for components/sequencers
+- Implementation paths that contradict the declared DDA layer
 - Business logic in sequencers or the Interface layer
+- Leaf component logic hidden inside sequencers instead of extracted to documented components
 - Anemic domain models -- behavior belongs on the domain object, not in a service
 
 **TypeScript**
