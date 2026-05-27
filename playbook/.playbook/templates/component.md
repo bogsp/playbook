@@ -16,7 +16,9 @@ concerns: []
 Plain language description of this component's single responsibility.
 Any reader understands this without technical knowledge.
 
-Clean Architecture: set `layer` to domain, application, infrastructure, or interface and keep the implementation file in that layer.
+Clean Architecture: set `layer` to domain, application, infrastructure, or
+interface. Store this DDA file under the matching layer folder and keep the
+implementation file in that layer.
 
 Use this doc type only for one bounded leaf responsibility: validation,
 calculation, persistence, rendering, parsing, policy decision, or adapter call.

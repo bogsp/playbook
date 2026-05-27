@@ -19,7 +19,10 @@ Owns sequence, not logic. Any reader understands this without technical knowledg
 Use this doc type when this unit receives a trigger, orders other units,
 routes work to multiple handlers, or branches by outcome.
 
-Clean Architecture: sequencers usually live in the application layer. If the implementation file is in interface/server/router code, keep the doc draft until the application sequencer is extracted or the exception is approved.
+Clean Architecture: sequencers usually live in the application layer. Store
+this DDA file under the matching layer folder. If the implementation file is in
+interface/server/router code, keep the doc draft until the application
+sequencer is extracted or the exception is approved.
 
 Rule: sequencer code must not contain leaf component logic. Extract each
 meaningful leaf operation into its own component DDA doc and implementation

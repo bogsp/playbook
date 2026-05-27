@@ -270,7 +270,8 @@ Sequencer vs component rule:
 
 ### Clean Architecture Layers
 
-Every component and sequencer DDA doc declares `layer`:
+Every component and sequencer DDA doc declares `layer` and lives under the
+matching layer folder:
 
 | Layer | DDA Scope |
 |---|---|
@@ -278,6 +279,11 @@ Every component and sequencer DDA doc declares `layer`:
 | application | Use cases, sequencers, orchestration, port definitions |
 | infrastructure | Adapter implementations and external I/O |
 | interface | HTTP, CLI, UI, route composition, framework entrypoints |
+
+```text
+.playbook/apps/<app>/<layer>/<component-or-sequencer>.md
+.playbook/packages/<package>/<layer>/<component-or-sequencer>.md
+```
 
 The implementation file must match the declared layer. If it does not, the DDA
 stays draft until the code is extracted or the exception is explicitly approved.
@@ -414,7 +420,7 @@ based on your project's actual state. No assumptions. No rigid tiers.
 | Security | No hardcoded secrets; parameterized queries; no client ID trust for auth |
 | Implementation | No stubs; no partial paths; all branches explicit |
 | Sequencing | Coordinators are sequencers; leaf work is extracted to documented components |
-| Layers | Component/sequencer DDA declares layer; implementation path matches layer |
+| Layers | Component/sequencer DDA declares layer; DDA path and implementation path match layer |
 
 ---
 

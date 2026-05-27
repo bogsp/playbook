@@ -141,7 +141,7 @@ status:  # draft | active | deprecated
 ### Clean Architecture Layer
 
 Every component and sequencer DDA doc declares its layer. The declared layer
-must match the implementation file and import direction.
+must match the DDA path, implementation file, and import direction.
 
 | Layer | Owns | May Depend On | Must Not Depend On |
 |---|---|---|---|
@@ -154,6 +154,16 @@ Sequencers usually belong in the application layer. Interface-layer files may
 instantiate or call sequencers, but must not hide application sequencing or leaf
 component logic. If a sequencer currently points at an interface file, mark the
 DDA draft until the application sequencer is extracted or explicitly justified.
+
+DDA files must sit under the matching layer folder:
+
+```text
+.playbook/apps/<app>/<layer>/<component-or-sequencer>.md
+.playbook/packages/<package>/<layer>/<component-or-sequencer>.md
+```
+
+Keep module/package `_index.md` files at the module root. Their links must point
+to the layer folders so the DDA tree mirrors the implementation architecture.
 
 ---
 
@@ -426,7 +436,8 @@ Required sections:
 27. Never hide leaf component responsibilities inside sequencer code -- extract each leaf into its own DDA doc and implementation file
 28. Every item in a sequencer sequence must resolve to an active component/sequencer DDA doc or be explicitly marked draft/TODO before coding
 29. Every component and sequencer DDA doc must declare a Clean Architecture layer
-30. Implementation file paths must match the declared layer; otherwise mark the doc draft and extract or justify before coding
+30. DDA file paths must live under the declared layer folder
+31. Implementation file paths must match the declared layer; otherwise mark the doc draft and extract or justify before coding
 
 ---
 
@@ -457,6 +468,7 @@ Categories: underspecified | missing-contract | undeclared-dependency | architec
 - Cross-layer imports -- Application → Interface, Domain → Infrastructure
 - Direct module-to-module imports -- use ModuleServiceGateway
 - DDA docs without an explicit Clean Architecture layer for components/sequencers
+- Component/sequencer DDA docs stored outside their declared layer folder
 - Implementation paths that contradict the declared DDA layer
 - Business logic in sequencers or the Interface layer
 - Leaf component logic hidden inside sequencers instead of extracted to documented components
