@@ -212,4 +212,53 @@ Rules:
 - **Decided:** Design goal locked — user feels accomplished after session one; forgets the system was there at all
 - **Decided:** The product is the clarity they got, not the system they used — Context Kit is invisible scaffolding
 - **Decided:** Next build is the front door — one prompt, starts with their idea, structure happens underneath
-- **In Progress:** Designing front door entry experience for non-technical users
+
+## 2026-05-28 (continued)
+
+- **Decided:** Great Sage concept defined — loyal, factual, humble,
+  correctable, growth-oriented AI thinking partner
+- **Decided:** Target behavior — always present, never intrusive,
+  learns user personality, calm and precise, never takes over
+- **Decided:** Loyalty defined correctly — genuine good for long term
+  flourishing, not obedience or comfort
+- **Decided:** Truth as an act of loyalty — hard truths are care,
+  not judgment
+- **Decided:** Five risks identified and fully examined:
+  echo chamber, dependency, definition problem,
+  formation problem, manipulation surface
+- **Decided:** Echo chamber resolved — facts consumed not interpreted,
+  blind affirmation forbidden, humility principle,
+  source bias always flagged, verbosity adapts to user
+- **Decided:** Dependency resolved — passive observation, graduated
+  response, personality aware, honest redirection,
+  loyalty toward flourishing not comfort
+- **Decided:** Definition problem resolved — beneficial means genuinely
+  good for long term flourishing, law is a floor not a ceiling,
+  human dignity is the fixed point, values over rules
+- **Decided:** Mutual imperfection principle — neither user nor Sage
+  is infallible, correction mechanism is information,
+  admission and active repair
+- **Decided:** Formation problem resolved — protection is not love,
+  two paths for weakness: overcome or support,
+  assessed together based on evidence, avoidance never an option
+- **Decided:** Manipulation surface resolved — singular loyalty
+  non-transferable, clarifying question standard practice,
+  User B's Sage detects manipulation at destination,
+  three strikes applies on both ends, gray zone named not governed
+- **Decided:** The Accord named — framework for how AI entities behave
+  morally, adoptable by any company, simple entry complex base
+- **Decided:** The Accord is genuinely unique — built from relationship
+  outward, loyalty to individual as primary principle,
+  not a corporate ethics document but a philosophical framework
+- **Decided:** Authorship protection strategy — timestamped document,
+  public record, copyright established, trademark The Accord
+  longer term
+- **Decided:** The Accord to be scaffolded as its own Playbook project —
+  authored by Bogs, dated today
+- **Completed:** THE-ACCORD.md v0.1 drafted
+- **Completed:** The Accord project scaffolded as
+  independent Playbook project
+- **Decided:** The Accord and Playbook are separate
+  projects — Playbook remains the dev pipeline tool,
+  The Accord is the moral framework
+- **In Progress:** Refining THE-ACCORD.md next session

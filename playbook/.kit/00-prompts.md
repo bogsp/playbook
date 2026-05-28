@@ -1,4 +1,5 @@
 # Playbook -- Session Prompts
+
 # File: .kit/00-prompts.md
 
 Quick reference for every session type. Copy and paste as needed.
@@ -9,6 +10,7 @@ For how the Context Kit works within Playbook:
 ---
 
 ## Context Kit -- Standalone Prompts
+
 These work with any AI tool, any project type.
 
 ### Fresh Project
@@ -23,6 +25,7 @@ This message: Process + Execution
 Next message: Exploration + Progress
 
 Based on my project [1-2 sentence description], help me populate these files:
+
 - Draft initial Exploration questions
 - Suggest Execution guidelines
 - Define Current State and initial goals
@@ -61,6 +64,7 @@ Here is the context from earlier work. Just provide a brief confirmation.
 ### End of Session
 
 Based on this session, update my kit files:
+
 - Check off completed tasks in 03-execution.md
 - Move closed decisions to 02-exploration.md with dates and reasoning
 - Append to 04-progress.md -- Completed, Decided, Fixed, In Progress
@@ -79,6 +83,7 @@ Re-read the uploaded files before continuing.
 ---
 
 ## Playbook Pipeline Prompts
+
 These extend the kit for Playbook-specific work.
 
 ### Start Dev Session
@@ -86,11 +91,12 @@ These extend the kit for Playbook-specific work.
 Upload .playbook/00-rules.md + docs/code-standards.md, then send:
 
 Before any work, read in this order:
+
 1. .playbook/00-rules.md
 2. docs/code-standards.md
-3. docs/flows/_index.md
-4. docs/contracts/_index.md
-5. .playbook/_index.md
+3. docs/flows/\_index.md
+4. docs/contracts/\_index.md
+5. .playbook/\_index.md
 
 [Attach relevant module and component docs]
 
@@ -115,7 +121,8 @@ Attach docs/PRD.md, then send:
 Given this PRD, define the flows and contracts for this project.
 
 Flows (docs/flows/):
-- Write docs/flows/_index.md as the entry point and dependency map
+
+- Write docs/flows/\_index.md as the entry point and dependency map
 - Write docs/contracts/global.md first -- architecture, auth, error handling rules
 - Write one flow file per major runtime path
 - Declare scope and trigger type in frontmatter for each flow
@@ -123,7 +130,8 @@ Flows (docs/flows/):
 - Keep files small -- one flow per file; split at ~150 lines
 
 Contracts (docs/contracts/):
-- Write docs/contracts/_index.md as the entry point
+
+- Write docs/contracts/\_index.md as the entry point
 - Write one contract file per flow
 - Required sections: Happy Path, Failure Modes, Edge Cases, Concurrency Rules, Constraints
 - Use N/A when a section doesn't apply; TODO blocks status: active
@@ -138,7 +146,7 @@ Attach the PRD + approved flow and contract files, then send:
 
 Given this PRD and the approved flows and contracts, generate the Playbook scaffold.
 
-- Produce _index.md for the project and each module with living folder trees
+- Produce \_index.md for the project and each module with living folder trees
 - Create stub docs for all identifiable components, sequencers, concerns, integrations
 - Mark all stubs as status: draft
 - For sequencers, include a stub Flow section referencing the relevant flow files
@@ -148,12 +156,12 @@ Given this PRD and the approved flows and contracts, generate the Playbook scaff
 
 ### Add New Component
 
-Attach the parent _index.md + relevant flow file, then send:
+Attach the parent \_index.md + relevant flow file, then send:
 
 Given this parent doc and flow, create a Playbook [type] doc for [description].
 Follow Playbook conventions. Flag any missing relationships.
 If type is sequencer, include a Flow section with full call chain and all branches.
-After creating the doc, provide the updated Structure section for the parent _index.md.
+After creating the doc, provide the updated Structure section for the parent \_index.md.
 
 ---
 
@@ -164,7 +172,7 @@ Send before every PR:
 Run a Playbook sync check on all files touched this session.
 For each: does the code match the Playbook doc?
 List any mismatches. Update affected docs.
-Update the living folder tree in any _index.md where components changed.
+Update the living folder tree in any \_index.md where components changed.
 
 ---
 
@@ -198,6 +206,7 @@ The Reverse Engineer expansion is active. Current phase: inventory.
 Run an inventory of this codebase.
 
 Map and document:
+
 1. All applications or services and what they do
 2. All major modules, components, and services within each app
 3. All external integrations and what they provide
@@ -245,11 +254,12 @@ Generate updated kit files as markdown code blocks for review.
 ### Playbook End of Session
 
 Before we close:
+
 1. Run Playbook sync check on all docs touched this session
 2. Update .kit/04-progress.md -- completions, decisions, fixes
 3. Update Current State in .kit/01-process.md
 4. Update living folder tree if components changed
-Generate updated markdown for all changed kit files.
+   Generate updated markdown for all changed kit files.
 
 ---
 
@@ -280,35 +290,43 @@ Re-read .playbook/00-rules.md and docs/code-standards.md before continuing.
 
 Send to Gemini (not Claude) with the video URL:
 
-  Please summarize the main arguments in '[Video Title]' by [Channel Name].
-  Use the transcript to highlight the most important takeaways.
-  [URL]
+Please summarize the main arguments in '[Video Title]' by [Channel Name].
+Use the transcript to highlight the most important takeaways.
+[URL]
 
-  Structure your response using this template:
+Structure your response using this template:
 
-  ---
-  title: "[Video Title]"
-  source: "[Channel Name]"
-  url: [URL]
-  date: [Today's Date]
-  type: [general | tutorial | case-study | framework | opinion | research]
-  topics: [2-4 relevant tags]
-  relevance:
-  ---
+---
 
-  ## Core Idea
-  One paragraph. The central argument or insight.
+title: "[Video Title]"
+source: "[Channel Name]"
+url: [URL]
+date: [Today's Date]
+type: [general | tutorial | case-study | framework | opinion | research]
+topics: [2-4 relevant tags]
+relevance:
 
-  ## Key Points
-  3-5 most important takeaways. No more.
+---
 
-  ## Connections
-  Leave blank.
+Generate the code in markdown: `markdown ...`.
 
-  ## Status
-  Pending
+## Core Idea
 
-  Output as a downloadable markdown file.
+One paragraph. The central argument or insight.
+
+## Key Points
+
+3-5 most important takeaways. No more.
+
+## Connections
+
+Leave blank.
+
+## Status
+
+Pending
+
+Output as a downloadable markdown file.
 
 For tutorials add: ## Steps
 For case studies add: ## Outcome
@@ -316,7 +334,7 @@ For frameworks add: ## Framework
 For opinion pieces add: ## Counterarguments
 For research add: ## Evidence
 
-Save output to: .kit/_refs/video-insights/[kebab-title].md
+Save output to: .kit/\_refs/video-insights/[kebab-title].md
 
 ---
 
@@ -324,18 +342,19 @@ Save output to: .kit/_refs/video-insights/[kebab-title].md
 
 Upload the insight file alongside your kit files, then send:
 
-  I have a new video insight to discuss.
-  File: .kit/_refs/video-insights/[filename].md
+I have a new video insight to discuss.
+File: .kit/\_refs/video-insights/[filename].md
 
-  Review it and:
-  1. Summarize the core idea in one sentence
-  2. Identify connections to our current project context
-  3. Flag any conflicts with closed decisions in 02-exploration.md
-  4. Suggest whether this should open a topic, close a decision,
-     add a task, or surface a risk
-  5. Ask me how I want to proceed
+Review it and:
 
-  Do not integrate anything yet. Surface connections and wait.
+1. Summarize the core idea in one sentence
+2. Identify connections to our current project context
+3. Flag any conflicts with closed decisions in 02-exploration.md
+4. Suggest whether this should open a topic, close a decision,
+   add a task, or surface a risk
+5. Ask me how I want to proceed
+
+Do not integrate anything yet. Surface connections and wait.
 
 ---
 
@@ -343,9 +362,10 @@ Upload the insight file alongside your kit files, then send:
 
 After discussion, if integrating:
 
-  Integrate [insight title] as follows:
-  - [Open topic | Closed decision | Task | Known issue]
-  - Ref: .kit/_refs/video-insights/[filename].md
+Integrate [insight title] as follows:
+
+- [Open topic | Closed decision | Task | Known issue]
+- Ref: .kit/\_refs/video-insights/[filename].md
   Update the insight file Status to: Integrated
   Log in 04-progress.md: Decided: [title] -- Integrated
 
