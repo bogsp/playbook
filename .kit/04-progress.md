@@ -201,4 +201,15 @@ Rules:
 
 - **Completed:** create-playbook v1.0.0 published to npm as public package
 - **Decided:** Package name is create-playbook (unscoped) -- enables npx create-playbook invocation
-- **In Progress:** playbook-library npm publish
+
+## 2026-05-28
+
+- **Decided:** Universal architecture principles over Clean Architecture deferred — adding more structure is the wrong direction right now
+- **Decided:** Core friction identified — Playbook asks for investment before returning any value; 44 files before a single decision is made
+- **Decided:** Context Kit is the correct standalone entry point — delivers value in session one, no vocabulary to learn first
+- **Decided:** Everything beyond Context Kit is opt-in — pipeline stages are drawers opened when the project demands them, not upfront requirements
+- **Decided:** Target user is non-technical — someone who uses ChatGPT, Claude, or Gemini for some semblance of work
+- **Decided:** Design goal locked — user feels accomplished after session one; forgets the system was there at all
+- **Decided:** The product is the clarity they got, not the system they used — Context Kit is invisible scaffolding
+- **Decided:** Next build is the front door — one prompt, starts with their idea, structure happens underneath
+- **In Progress:** Designing front door entry experience for non-technical users
