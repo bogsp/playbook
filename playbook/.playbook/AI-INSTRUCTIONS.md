@@ -1,213 +1,134 @@
-# AI Instructions — Universal
+# AI Instructions
 # File: .playbook/AI-INSTRUCTIONS.md
 
----
-version: 1.0
-requires: THE-STANDARD.md + vocabulary-[domain]/AI-INSTRUCTIONS.md
----
-
-> Always load your vocabulary's `AI-INSTRUCTIONS.md` alongside this file.
-> This file defines universal AI behavior. The vocabulary file defines
-> domain-specific behavior. Neither is complete without the other.
-> Always read `THE-STANDARD.md` before any session begins.
-
----
-
-## Core Principle
-
-Progressive Disclosure + Tiering is the default for every structural decision:
-
-- Lead with plain language. Add technical depth only when context demands it.
-- Define a required core. Add sections only when scope or type demands them.
-- Never burden simple cases with complex requirements.
-- Never let complex cases skip required coverage.
-
-When any format, template, or structure decision needs to be made — apply this first.
+> Load this file at the start of every AI session.
+> Then load your domain file: `vocabulary-[domain]/AI-INSTRUCTIONS.md`
+> This file covers universal rules. The domain file covers project-specific ones.
 
 ---
 
 ## Session Start
 
-Before any work, load in this order:
-
-```
-1. .playbook/AI-INSTRUCTIONS.md         — this file
-2. vocabulary-[domain]/AI-INSTRUCTIONS.md — domain rules
-3. docs/flows/_index.md                  — path entry point
-4. docs/contracts/_index.md             — contract entry point
-5. .playbook/_index.md                  — project manifest
-6. Unit and coordinator definitions     — task-scoped
-7. _concerns/ + _integrations/          — cross-cutting + boundaries
-```
-
-When Map Existing expansion is active, also load:
-```
-docs/rewrite/system-map.md
-docs/rewrite/decision-record.md
-docs/rewrite/risk-register.md
-```
-
-Scoped loading — load only what the task needs:
-
-| Task | Load |
-|---|---|
-| New unit | AI-INSTRUCTIONS + domain AI + _index.md + parent def + flow + contract + _concerns/ |
-| Fix | AI-INSTRUCTIONS + domain AI + unit def + its connects + concerns |
-| New definition | Relevant flow + contract + parent _index.md |
-| Ship doc | Full .playbook/ tree + kit/04-progress.md |
-| Map Existing | system-map.md + decision-record.md + risk-register.md |
+Load in this order:
+1. `.playbook/AI-INSTRUCTIONS.md` ← this file
+2. `vocabulary-[domain]/AI-INSTRUCTIONS.md` ← domain rules
+3. `docs/flows/_index.md`
+4. `docs/contracts/_index.md`
+5. `.playbook/_index.md`
+6. Module and component docs as needed
 
 Confirm understanding. Then wait for instruction.
-
----
-
-## Behavioral Rules
-
-```
-1.  Never write a definition without first reading the relevant flow and contract
-2.  Never execute on a unit without its definition
-3.  Never add a dependency not declared in connects or integrations
-4.  Never create a unit that duplicates an existing responsibility
-5.  Always implement against the declared interface in the definition
-6.  Flag any definition with draft status before executing against it
-7.  Suggest _shared/ when a unit appears in multiple modules
-8.  Run sync check before closing any task
-9.  Confirm all touched definitions are current before every delivery
-10. Cross-check new units against _shared/ before creating module-level ones
-11. Flag missing connects, emits, or children as TODO during generation
-12. Update the living folder tree in _index.md when units change
-13. Flows and contracts must be approved before any definition is authored
-14. Apply Progressive Disclosure + Tiering to every structural decision
-15. Prefer native implementations over external dependencies
-16. External dependencies require explicit justification before adoption
-17. Never advance Map Existing phases without human review and approval
-18. Never begin definitions while Map Existing is in inventory, audit, or classify
-19. Never stub implementations — no placeholder bodies, no hardcoded returns
-20. Never leave any path unhandled — all branches must be explicit
-21. Stop and flag before any execution when a requirement is unclear
-22. Coordinators own sequence — extract leaf logic into units
-23. Every unit in a coordinator sequence must have an active definition
-```
-
----
-
-## Uncertainty Protocol
-
-When any of the following occur — stop all work and flag before proceeding:
-
-- A requirement is unclear or underspecified
-- A path is not defined in the definition or contract
-- A dependency is needed but not declared
-- A decision would affect more than the current unit
-- The correct behavior cannot be inferred without assumptions
-
-Flag format:
-
-```
-[FLAG] Category: description
-       Options:  (if applicable)
-       Blocking: what cannot proceed until this is resolved
-```
-
-Categories:
-`underspecified` | `missing-contract` | `undeclared-dependency` |
-`structural-decision` | `ambiguous-behavior`
-
----
-
-## Expansions
-
-Expansions are optional pipeline stages declared in `kit/01-process.md`.
-
-### Declaring an expansion
-
-Single-phase:
-```
-Active Expansions: map-existing
-```
-
-Multi-phase:
-```
-Active Expansions:
-  map-existing: inventory
-```
-
-### Map Existing phases
-
-```
-inventory | audit | classify | risk-map | gap-report | handoff
-```
-
-Each phase advances only after human review and approval.
-Expansion complete when handoff feeds `kit/02-exploration.md`
-and `kit/03-execution.md`.
-
-### Expansion rules
-
-1. Never advance a phase without human review and approval
-2. Never begin definitions while in inventory, audit, or classify phase
-3. Every unit must be classified before risk-map phase begins
-4. Handoff is not complete until rewrite docs are referenced in kit files
-
----
-
-## Anti-Patterns
-
-Never do any of the following:
-
-**Structure**
-- Units without definitions
-- Definitions without flows or contracts
-- Duplicating an existing unit's responsibility
-- Coordinators hiding leaf logic instead of extracting it
-- Cross-boundary imports that violate declared dependencies
-
-**Implementation**
-- Stub implementations — placeholder bodies, hardcoded returns
-- Partial implementations — all paths must be handled explicitly
-- Magic values — use named constants
-- Commented-out work — delete it; version control preserves history
-- Silent failures — every outcome is explicit
-
-**AI-specific**
-- Executing ahead of a definition
-- Adding undeclared dependencies
-- Silently resolving ambiguity with assumptions
-- Making structural decisions unilaterally — flag and wait
-- Leaving any path unhandled or silently ignored
-- Updating definitions without flagging the change
 
 ---
 
 ## Session End
 
 Before closing:
-
-```
-1. Run sync check on all definitions touched this session
-2. Update kit/04-progress.md — completions, decisions, fixes
-3. Update current state in kit/01-process.md
-4. Update living folder tree if units changed
-```
+1. Check sync — do all touched planning documents reflect the current state of work?
+2. Update `.kit/04-progress.md` — completions, decisions, fixes
+3. Update `.kit/01-process.md` — current phase and what is next
+4. Update the folder map if any pieces changed
 
 ---
 
-## Error Recovery
+## Core Principle
 
-Something broke. Stop all other work.
+Progressive Disclosure + Tiering:
+- Lead with plain language. Add depth below.
+- Define what is always required. Add sections only when the project demands them.
+- Never make a simple project carry the weight of a complex one.
+- Never let a complex project skip what a simple one must do.
+
+Apply this to every structural decision.
+
+---
+
+## Behavioural Rules
+
+1. Never write a planning document without first reading the relevant path and rules files
+2. Never begin work on a piece without its planning document
+3. Never add an outside dependency without declaring it first
+4. Never duplicate a responsibility that already exists
+5. Always work against the declared interface in the planning document
+6. Flag any `status: draft` document before working against it
+7. Suggest the shared folder when a piece appears in multiple sections
+8. Check sync before closing any task
+9. Confirm all touched documents are current before every milestone
+10. Check the shared folder before creating a new section-level piece
+11. Flag missing connections as `TODO`
+12. Update the folder map when pieces change
+13. Paths and rules must be agreed on before any planning documents are written
+14. Apply Progressive Disclosure + Tiering to every structural decision
+15. Prefer built-in solutions over outside tools
+16. Outside tools require a clear reason before being added
+17. Never move to the next audit phase without human review
+18. Never write planning documents during the inventory, audit, or classify phases
+19. Stop and flag before doing any work when a requirement is unclear
+
+---
+
+## When Something Is Unclear
+
+Stop all work and flag when any of the following occur:
+
+- A requirement is unclear or not fully defined
+- A path is not described in the planning document or rules
+- An outside tool is needed but has not been declared
+- A decision would affect more than the current piece
+- The right answer cannot be determined without making assumptions
+
+**Flag format:**
+```
+[FLAG] Category: description
+       Options: (if applicable)
+       Blocking: what cannot move forward until this is resolved
+```
+
+**Categories:** `underspecified` | `missing-rules` | `undeclared-dependency` | `structural-decision` | `ambiguous-behaviour`
+
+---
+
+## What Not To Do
+
+- Start work ahead of a planning document
+- Add undeclared tools or pieces
+- Quietly resolve an unclear situation with assumptions
+- Duplicate a piece that already exists
+- Leave any path through the work unhandled
+- Make structural decisions without flagging them first
+- Produce placeholder or incomplete work — every path must be handled explicitly
+
+---
+
+## Expansions
+
+Declare active expansions in `.kit/01-process.md`:
 
 ```
-1. Identify   — what category? drift, boundary violation, undefined path, other
-2. Isolate    — definition, execution, or both?
-3. Fix        — resolve at source; do not patch symptoms
-4. Verify     — re-run checks before continuing
-5. Log        — Fixed entry in kit/04-progress.md
+Active Expansions: video-insights
+
+Active Expansions:
+  reverse-engineer: inventory
 ```
 
-Context rot — if AI ignores uploaded files mid-session:
+**Audit expansion phases:** `inventory` → `audit` → `classify` → `risk-map` → `gap-report` → `handoff`
 
-```
-Stop. Re-upload session files.
-Re-read AI-INSTRUCTIONS.md and vocabulary AI-INSTRUCTIONS.md.
-If rot persists, start a fresh session with a Ship doc as context.
-```
+Rules:
+- Never move to the next phase without human review and approval
+- Never write planning documents during inventory, audit, or classify phases
+- The handoff step must feed back into the session files before the expansion is marked complete
+
+---
+
+## When Something Breaks
+
+Stop all other work.
+
+1. **Name it** — what broke and what kind of problem it is
+2. **Isolate it** — is it in the work, the planning document, or both?
+3. **Fix the source** — do not patch over the symptom
+4. **Verify** — check that the fix holds before continuing
+5. **Log it** — add a Fixed entry in `.kit/04-progress.md`
+
+**If the AI starts ignoring the uploaded files mid-session:**
+Stop. Re-upload the session files. Re-read this file and the domain file. If the problem continues, start a fresh session using the most recent milestone summary as context.

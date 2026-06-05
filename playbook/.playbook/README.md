@@ -1,116 +1,75 @@
 # Playbook
 # File: .playbook/README.md
 
-You have something to build.
+> "The work begins before the work begins — everything built on unclear ground must eventually be rebuilt."
 
-Maybe it is software. Maybe it is a product, a manuscript, a process,
-a system, or something that does not have a name yet.
-Whatever it is — it deserves more than a good start and good intentions.
+Playbook is a thinking and planning system. It keeps you and your AI working from the same understanding — from the first idea all the way to finished work. Everything is defined before it is built. Everything built is written down. Nothing changes without anyone noticing.
 
-Playbook is a production pipeline. It gives any project a clear structure,
-a disciplined process, and a record of every decision from the first idea
-to the finished work. It works with any AI tool, without any AI tool,
-for any domain, at any scale.
-
-The core principle is simple:
-
-*The work begins before the work begins —
-everything built on unclear ground must eventually be rebuilt.*
-
----
-
-## Before You Start
-
-Read these two files first. Everything else references them.
-
-- [THE-STANDARD.md](./THE-STANDARD.md) — the foundation everything stands on
-- [pipeline.md](./pipeline.md) — the stages from idea to done
-
-Five minutes here prevents five hours of confusion later.
-
----
-
-## Choose Your Vocabulary
-
-Playbook ships with vocabulary guides for different production domains.
-Pick the one that matches your project. Delete the rest.
-
-| Domain | Folder | Use when |
-|---|---|---|
-| Software | `vocabulary-software/` | Building apps, systems, APIs, tools |
-| Manufacturing | `vocabulary-manufacturing/` | Physical production, process design |
-| Writing | `vocabulary-writing/` | Books, articles, scripts, documentation |
-
-Open your vocabulary folder's `README.md` for domain-specific guidance.
-Delete the other vocabulary folders before starting work.
+It lives alongside your project while you work. When the project ships, Playbook stays behind.
 
 ---
 
 ## Where to Start
 
-| If you are... | Go here |
+| If you are... | Start here |
 |---|---|
+| New to Playbook | You are in the right place — read on |
 | Starting a new project | `guides/new-project.md` |
-| Adopting an existing project | `guides/adopt.md` |
-| Resuming a project | `kit/00-prompts.md` |
-| Starting an AI session | `AI-INSTRUCTIONS.md` + your vocabulary `AI-INSTRUCTIONS.md` |
-| Learning how the Kit works | `guides/context-kit.md` |
-| Looking up the full pipeline | `pipeline.md` |
-| Housekeeping or cleanup | `maintenance.md` |
+| Bringing an existing project into Playbook | `guides/adopt.md` |
+| Picking up where you left off | `.kit/00-prompts.md` |
+| Starting a working session with AI | `AI-INSTRUCTIONS.md` |
+| Continuing from a previous milestone summary | `docs/rollout/[milestone].md` → `AI-INSTRUCTIONS.md` |
+| Looking up how the pipeline works | `pipeline.md` |
+| Looking up session prompts | `.kit/00-prompts.md` |
 
 ---
 
-## The Pipeline at a Glance
+## How It Works
+
+Playbook moves through stages. Each stage sets the foundation for the next. Skipping a stage means the next one is built on guesswork.
 
 ```
-Define → Plan → Map → Contract → Structure → Build → Ship
+Thinking → Discovery → Mapping → Rules → Planning → Work → Handoff
 ```
 
-Every stage produces something the next stage depends on.
-Nothing is built without a definition. Nothing is defined without a purpose.
-The full pipeline is in `pipeline.md`.
+| Stage | What Happens |
+|---|---|
+| Thinking | Capture decisions, open questions, and progress across sessions |
+| Discovery | Define what you are making, why, and for whom |
+| Mapping | Walk through every major path before any work begins |
+| Rules | Write down what every part must follow — no surprises later |
+| Planning | Define every piece of the project before touching it |
+| Work | Do the work against the plan |
+| Handoff | Capture what was built and why, for the next person or next session |
+| Audit *(existing projects)* | Understand what already exists before changing anything |
 
 ---
 
-## The Folder Structure
+## Choose Your Domain
 
-```
-.playbook/
-├── README.md              — this file
-├── THE-STANDARD.md        — the foundation
-├── pipeline.md            — the stages
-├── AI-INSTRUCTIONS.md     — universal AI rules
-├── maintenance.md         — housekeeping guide
-├── _index.md              — project manifest
-├── _concerns/             — cross-cutting capabilities
-├── _integrations/         — external dependencies
-├── _shared/               — reusable components across the project
-├── kit/                   — session and decision management
-├── guides/                — how to use the pipeline
-├── vocabulary-[domain]/   — your chosen domain vocabulary
-└── templates/             — blank starters for new documents
-```
+Playbook adapts to different kinds of projects. Each domain folder translates the pipeline into language that fits your work.
 
-Project knowledge lives outside `.playbook/`:
+| Project type | Folder | Status |
+|---|---|---|
+| Software development | `vocabulary-software/` | Active |
+| Writing & editorial | `vocabulary-writing/` | Growing |
+| Production & operations | `vocabulary-production/` | Growing |
+| Manufacturing | `vocabulary-manufacturing/` | Growing |
 
-```
-docs/
-├── flows/                 — runtime or process paths
-├── contracts/             — implementation rules
-├── rewrite/               — map-existing expansion outputs
-└── rollout/               — milestone snapshots
-```
+Open the folder that matches your project and follow its `README.md`.
 
 ---
 
-## Removing Playbook
+## The Rules That Never Change
 
-When a project is complete and the pipeline is no longer needed,
-Playbook can be cleanly removed. See `maintenance.md` for instructions.
-
-The project knowledge in `docs/` belongs to the project —
-it stays regardless of whether Playbook does.
+- Nothing gets built without a written plan for it
+- The map and the rules are agreed on before planning begins
+- Written plans stay up to date with the actual work
+- The session log is added to — never edited
+- Nothing is deleted — it is either active or archived
 
 ---
 
-*The doc is the contract. The work follows.*
+For the full pipeline reference: `pipeline.md`
+For AI session setup: `AI-INSTRUCTIONS.md`
+For keeping things tidy: `maintenance.md`

@@ -1,330 +1,229 @@
 # Playbook Pipeline
 # File: .playbook/pipeline.md
 
-> The complete reference for the Playbook pipeline.
-> This document explains what each stage is and why it exists.
-> For how AI implements it, read `AI-INSTRUCTIONS.md` and your
-> vocabulary's `AI-INSTRUCTIONS.md`.
-> For the foundation everything stands on, read `THE-STANDARD.md`.
+> The complete reference for how Playbook works.
+> Applies to any kind of project.
+> For AI session setup: `AI-INSTRUCTIONS.md`
+> For project-specific language: `vocabulary-[domain]/`
+
+---
+
+## Core Principle
+
+**Progressive Disclosure + Tiering**
+
+Start with the simplest, most human-readable version. Add depth below it only when needed. Define what is always required, then add sections only when the project demands them.
+
+Never make a simple project carry the weight of a complex one.
+Never let a complex project skip what a simple one must do.
+
+This applies to every document, template, and decision in Playbook.
 
 ---
 
 ## The Pipeline
 
 ```
-[Map Existing] → Kit → Define → Plan → Flows → Contracts → Structure → Build → Ship
+Thinking → Discovery → Mapping → Rules → Planning → Work → Handoff
 ```
 
-`[Map Existing]` is conditional — only for existing projects.
-New projects start at Kit.
-
-| Stage | What It Does | Where It Lives | Conditional |
-|---|---|---|---|
-| Map Existing | Maps what exists before building what should | `docs/rewrite/` | Existing projects only |
-| Kit | Captures thinking, decisions, and progress | `.playbook/kit/` | Always |
-| Define | Defines what to build and why | `docs/` | Always |
-| Plan | Defines runtime or process paths | `docs/flows/` | Always |
-| Contract | Defines implementation rules | `docs/contracts/` | Always |
-| Structure | Defines every unit before it is built | `.playbook/` | Always |
-| Build | Execution against definitions | project root | Always |
-| Ship | Generated milestone snapshots | `docs/rollout/` | Always |
+Each stage feeds the next. Skipping a stage means the next one is built on guesswork.
 
 ---
 
-## Core Principle
+## Stage 0 — Audit *(existing projects only)*
 
-### Progressive Disclosure + Tiering
+Understand what already exists before deciding what to change.
 
-Every format, template, and structure in Playbook follows this principle:
+**Why it matters:** You cannot redesign something you do not fully understand. Every assumption that turns out wrong costs time to undo.
 
-**Progressive disclosure** — surface the simplest, most human-readable version
-first. Add depth below it. The same document serves multiple audiences
-without sacrificing either.
+**What it produces:**
+- `docs/rewrite/system-map.md` — what exists, where it lives, what depends on what
+- `docs/rewrite/decision-record.md` — a verdict on every major piece, with reasoning
+- `docs/rewrite/risk-register.md` — what breaks if X changes, and in what order things can safely change
 
-**Tiering** — define a required core, then add sections only when the scope
-or type demands it. Never burden simple cases with complex requirements.
-Never let complex cases skip required coverage.
+**Steps:** inventory → audit → classify → risk-map → gap-report → handoff
 
-When any structural decision needs to be made — apply this principle first.
+Each step requires human review before moving to the next. The final step feeds back into the Thinking stage.
 
----
-
-## Expansions
-
-Expansions are optional pipeline stages that extend Playbook for specific needs.
-They plug in around the core pipeline without changing it.
-
-| Expansion | Plugs In | When to Use | Guide |
-|---|---|---|---|
-| Map Existing | Before Kit | Existing or legacy projects | `guides/expansions/map-existing.md` |
-
-Activating an expansion:
-Declare it in `.playbook/kit/01-process.md` under `Active Expansions` before use.
+Full guide: `guides/reverse-engineer.md`
 
 ---
 
-## Stage 0 — Map Existing
+## Stage 1 — Thinking *(always active)*
 
-Only active when declared in `kit/01-process.md`.
-New projects skip this stage entirely.
+The session and decision layer. It runs underneath every other stage, start to finish.
 
-### Why This Stage Exists
+**Files:**
 
-Anything that already exists cannot be improved without first understanding
-what it actually does — not what it was designed to do, but what it does
-right now. Every assumption that turns out wrong costs time and effort.
-This stage eliminates assumptions before they become problems.
-
-### What It Produces
-
-Three documents in `docs/rewrite/`:
-
-| Document | What It Contains |
-|---|---|
-| `system-map.md` | What exists, where it lives, what depends on what |
-| `decision-record.md` | Classification per unit with reasoning |
-| `risk-register.md` | What breaks if X changes, migration constraints |
-
-### Classification System
-
-Every unit receives one classification:
-
-| Classification | Meaning |
-|---|---|
-| Keep | Works as-is, no changes needed |
-| Align | Works but needs to conform to new standards |
-| Extract | Good logic in the wrong place — move it out |
-| Rewrite | Wrong or too coupled — rebuild from scratch |
-| Replace | Responsibility stays, tool or method changes |
-| Discard | No longer needed — remove entirely |
-| Defer | Decision not yet possible — needs more information |
-| Evaluate | Uncertain — needs investigation before classifying |
-
-Full guide: `guides/expansions/map-existing.md`
-
----
-
-## Stage 1 — Kit
-
-The Kit is the project management layer. It captures thinking, locks decisions,
-and tracks progress across every session — with or without AI.
-
-### Files
-
-| File | Job | Updated |
+| File | What it holds | When to update |
 |---|---|---|
-| `kit/01-process.md` | Session spark — where you are, what comes next | Every session |
-| `kit/02-exploration.md` | Decision log — open and closed | When decisions change |
-| `kit/03-execution.md` | Guidelines, plan, tasks, known issues | When work changes |
-| `kit/04-progress.md` | Append-only project history | Every session |
-| `kit/05-kanban.md` | Ticket breakdown (optional) | When tickets change |
-| `kit/06-qa.md` | Verification registry and sign-off (optional) | When tests change |
+| `.kit/01-process.md` | Where you are and what is next | Every session |
+| `.kit/02-exploration.md` | Open questions and settled decisions | When decisions change |
+| `.kit/03-execution.md` | Guidelines, plan, tasks, known problems | When work changes |
+| `.kit/04-progress.md` | Running history — append only | Every session |
+| `.kit/05-kanban.md` | Work tickets | When tickets change |
+| `.kit/06-qa.md` | Checks and sign-off | When checks change |
 
-### Session Rhythm
-
+**Each session:**
 ```
-Start   → load kit files, confirm current state
-Work    → focus on what is in current state only
-End     → update 01-process.md + 04-progress.md before closing
+Start  → load your session files (2 messages)
+Work   → stay focused on what is current
+End    → update 01-process.md and 04-progress.md before closing
 ```
-
-Never close a session without updating these two files.
 
 Full guide: `guides/context-kit.md`
 
 ---
 
-## Stage 2 — Define
+## Stage 2 — Discovery
 
-Defines what is being built and why. The upstream input for everything else.
+Define what you are making, why, and for whom. Everything else flows from this.
 
-What belongs here: goals, outcomes, scope, acceptance criteria, constraints.
-What does not: process paths, implementation rules, unit relationships, execution.
+**What belongs here:** goals, outcomes, audience, constraints, what done looks like, what is out of scope.
 
-Stored in `docs/` — the project owns this, not Playbook.
+**What does not belong here:** how it works, how it is built, what the parts are.
 
----
-
-## Stage 3 — Plan
-
-Defines every major process path before any unit is designed.
-Every path has a name, a trigger, a walkthrough, and all outcomes accounted for —
-including the ones that fail.
-
-### Path Taxonomy
-
-By scope: Journey | Sequence | Operation | Composite | Compensation
-By trigger: Request | Event | Background | Reactive | Webhook | Stream
-
-Required sections for every path:
-- What It Does — plain language
-- Pre-conditions
-- Post-conditions
-- Walkthrough — narrative, then step-by-step with all branches
-
-Stored in `docs/flows/`.
-
-N/A — section considered, does not apply.
-TODO — not documented; blocks active status.
+**Output:** a discovery document or brief, saved in `docs/`
 
 ---
 
-## Stage 4 — Contract
+## Stage 3 — Mapping
 
-Extracts implementation rules from paths.
-All rules live here. Unit definitions reference contracts — never restate them.
+Walk through every major path through the project before any piece is defined.
 
-Required sections for every contract:
-- Happy Path
-- Failure Modes
-- Edge Cases
-- Concurrency or Sequencing Rules
-- Constraints
+**Why it matters:** Pieces designed without a map are guesses. Problems live in the connections between things, not inside the things themselves. One hour of mapping prevents four hours of rework.
 
-Required sections for `global.md`:
-- Foundation Rules
-- Trust and Access Boundaries
-- Error and Recovery Rules
-- Audit Requirements
-- Cross-Cutting Constraints
+**Rules:**
+- One file per path — small and focused
+- Every path includes what happens when something goes wrong, not just when it goes right
+- All paths are agreed on before any planning begins
 
-Read `global.md` before any path-specific contract. Always.
-
-Stored in `docs/contracts/`.
+**Output:** `docs/flows/` — one file per path, `_index.md` as the entry point
 
 ---
 
-## Stage 5 — Structure
+## Stage 4 — Rules
 
-Defines every unit before it is built.
-The definition is the contract. Execution follows it.
+Write down what every piece must follow, drawn from the paths you mapped.
 
-### Unit Types
+**Why it matters:** Behaviour lives here. Plans point to rules — they never repeat them.
 
-| Type | Owns |
+**Every rules file must cover:**
+- What the good path looks like
+- Every way it can go wrong
+- Edge cases — the unusual situations that still have to work
+- Ordering requirements — what must happen before what
+- Hard constraints — things that must always be true
+
+**The `global.md` file must cover:**
+- How the project is structured overall
+- Who or what has authority over what
+- How failures are handled
+- What must always be recorded
+- Rules that apply everywhere with no exceptions
+
+Read `global.md` before any path-specific rules file. Always.
+
+**Output:** `docs/contracts/` — `global.md` plus one file per path
+
+---
+
+## Stage 5 — Planning
+
+Define every piece of the project before doing any work on it.
+
+**Why it matters:** The plan is the agreement. Work follows it. Starting work without a plan means making invisible decisions that are expensive to change.
+
+**Document types:**
+
+| Type | Used for |
 |---|---|
-| Structure | Shape, manifest, and index of a project, app, or module |
-| Coordinator | Runtime or process coordination — owns sequence, not logic |
-| Unit | A single bounded responsibility |
-| Concern | A cross-cutting capability |
-| Integration | An external dependency contract |
+| `index` | A map and summary of a section or the whole project |
+| `coordinator` | Something that sequences other pieces and routes outcomes |
+| `component` | A single piece with one clear job |
+| `concern` | Something that applies across the whole project |
+| `integration` | An outside tool, service, or dependency |
 
-**Coordinator vs unit:**
-- Coordinator: receives a trigger, orders other units, routes work, branches by outcome
-- Unit: performs one bounded responsibility — calculation, validation, storage, transformation
-- Coordinators own sequence, not logic
-- Logic inside a coordinator must be extracted into a unit with its own definition
-
-### Document Structure
-
-Every definition follows progressive disclosure:
-
+**Every planning document follows the same shape:**
 ```
-What It Does    — plain language, any audience
-Process         — required for coordinators; trigger, sequence, branches
-Interface       — required for units; contract reference + signature
-Detail          — edge cases, constraints — omit if nothing fits
+What It Does   → plain language, anyone can understand it
+Interface      → what goes in, what comes out, what rules apply
+Detail         → edge cases and constraints — leave this out if nothing fits
 ```
 
-Stored in `.playbook/` — domain subfolders defined by vocabulary guide.
+**Output:** `.playbook/` — one planning document per piece
 
 ---
 
-## Stage 6 — Build
+## Stage 6 — Work
 
-Execution against definitions.
-The definition is the source of truth. Execution follows it — never ahead of it.
+Do the work against the plan. The plan is the source of truth.
 
-### What Compliant Execution Means
+**Rules:**
+- Nothing gets built without a planning document for it
+- No new outside dependency without a declared document for it
+- Planning documents stay up to date with the actual work
+- Run the completion checklist before closing any phase
 
-- All definitions are complete and active before execution begins
-- Every path is handled — happy, failure, and edge cases
-- No silent failures — every outcome is explicit
-- No undefined dependencies — everything declared before use
-- No partial implementations — all branches complete
-- Definitions stay current as execution evolves — never let them drift
-- Every session ends with updated kit files
-
-### AI Boot Sequence
-
-```
-1. .playbook/AI-INSTRUCTIONS.md
-2. vocabulary-[domain]/AI-INSTRUCTIONS.md
-3. docs/flows/_index.md
-4. docs/contracts/_index.md
-5. .playbook/_index.md
-6. Unit and coordinator definitions as needed
-```
+**Completion checklist:**
+- [ ] All work meets the quality bar for this project
+- [ ] All planning documents reflect the current state of work
+- [ ] No planning documents marked `draft` are in active work paths
+- [ ] Session files updated — `01-process.md` and `04-progress.md`
+- [ ] All changes saved and backed up
+- [ ] Handoff document generated if a milestone was reached
 
 ---
 
-## Stage 7 — Ship
+## Stage 7 — Handoff
 
-Generated artifacts — never authored manually.
+A snapshot of what was built and why, generated at each milestone. Never written by hand.
 
-Two purposes:
-- Human-facing — delivery guide, release notes, migration steps
-- Context-facing — full project snapshot for a fresh session or new team member
+**Two uses:**
+1. For people — what changed, how to use it, what to do next
+2. For AI — full project context for starting a fresh session
 
-Stored in `docs/rollout/`.
-
----
-
-## Adopting an Existing Project
-
-For all adoption paths:
-`guides/adopt.md`
+**Output:** `docs/rollout/[milestone].md`
 
 ---
 
-## Phase Completion Checklist
+## Bringing an Existing Project In
 
-### Any Stage
+For all paths into Playbook from an existing project: `guides/adopt.md`
 
-- [ ] Decisions logged in `kit/02-exploration.md`
-- [ ] Progress logged in `kit/04-progress.md`
-- [ ] Current state updated in `kit/01-process.md`
-- [ ] Active expansions declared in `kit/01-process.md`
-
-### Build Stage
-
-- [ ] All definitions complete and active before execution
-- [ ] All paths handled — happy, failure, edge cases
-- [ ] No undefined dependencies
-- [ ] No partial implementations
-- [ ] Definitions updated to reflect current execution state
-- [ ] Kit files updated
-- [ ] Rollout doc generated if a milestone was completed
+Answer four questions to find where to start:
+1. Does the project already have a `.kit/` folder?
+2. Can you describe every major piece without going back to the source material?
+3. Is there existing documentation?
+4. Is this a partial update or a full rebuild?
 
 ---
 
 ## Quick Reference
 
-### Naming Conventions
+**File naming:**
 
-| Item | Convention | Example |
+| Thing | Style | Example |
 |---|---|---|
-| Files | kebab-case | invoice-validator.md |
-| IDs | match filename | id: invoice-validator |
-| Folders | kebab-case | billing/ |
-| Reserved folders | leading underscore | _concerns/ |
-| Structure docs | always _index.md | billing/_index.md |
-| Identity docs | ALL-CAPS | THE-STANDARD.md |
+| Files | lowercase, hyphens | `invoice-validator.md` |
+| IDs | match the filename | `id: invoice-validator` |
+| Folders | lowercase, hyphens | `billing/` |
+| Reserved folders | underscore prefix | `_concerns/` |
+| Index files | always `_index.md` | `billing/_index.md` |
 
-### Classification System (Map Existing expansion)
+**Two markers used throughout:**
+- `N/A` — this section was considered and does not apply
+- `TODO` — this section is not yet written; the document cannot be marked active until it is
 
-| Classification | Meaning |
-|---|---|
-| Keep | Works as-is |
-| Align | Works but needs to conform to new standards |
-| Extract | Good logic in the wrong place |
-| Rewrite | Wrong or too coupled — rebuild |
-| Replace | Responsibility stays, method changes |
-| Discard | No longer needed |
-| Defer | Decision not yet possible |
-| Evaluate | Needs investigation |
+**Declaring an active expansion** (in `.kit/01-process.md`):
+```
+Active Expansions: video-insights
+
+Active Expansions:
+  reverse-engineer: classify
+```
 
 ---
 
-*The work begins before the work begins.*
-*The definition is the contract. Execution follows.*
+The plan is the agreement. The work follows.
