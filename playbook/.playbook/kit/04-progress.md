@@ -1,5 +1,5 @@
-# PROGRESS LOG (APPEND-ONLY)
-# File: .kit/04-progress.md
+# Progress Log (Append-Only)
+# File: .playbook/kit/04-progress.md
 
 Rules:
 - Entries are never edited or deleted

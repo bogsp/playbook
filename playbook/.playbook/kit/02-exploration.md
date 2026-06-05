@@ -1,12 +1,12 @@
-# EXPLORATION
-# File: .kit/02-exploration.md
+# Exploration
+# File: .playbook/kit/02-exploration.md
 
 ## Open Topics
 
 **[Topic Name]**
 - Questions to resolve
 - Options being considered
-- Ref: `.kit/_refs/[type]/[filename]` _(if applicable)_
+- Ref: `kit/_refs/[type]/[filename]` _(if applicable)_
 
 ---
 
@@ -16,5 +16,5 @@
 - What was decided
 - Why
 - Alternatives considered
-- Ref: `.kit/_refs/[type]/[filename]` _(if applicable)_
+- Ref: `kit/_refs/[type]/[filename]` _(if applicable)_
 - Flow: `docs/flows/flow-N-name.md` _(if applicable)_

@@ -1,5 +1,5 @@
-# EXECUTION
-# File: .kit/03-execution.md
+# Execution
+# File: .playbook/kit/03-execution.md
 
 ## Guidelines
 
@@ -9,13 +9,13 @@
 **Rules & Constraints:**
 - [Specific requirements]
 - [Things to avoid]
-- Prefer native implementations over external libraries
+- Prefer native implementations over external dependencies
 - External dependencies require explicit justification before adoption
 
 **Quality Bar:**
 - [Standards for completion]
 
-**QA Tier:** [core | standard | full]
+**Verification Tier:** [core | standard | full]
 
 **Custom Ticket Types:** _(if needed — declare before use in kanban)_
 - `[type]` — [description]
@@ -57,5 +57,5 @@
 |---|---|---|---|---|---|
 | — | — | — | — | — | — |
 
-_Type: bug | dependency | design | performance | security_
+_Type: defect | dependency | design | performance | security_
 _Severity: critical | high | low_

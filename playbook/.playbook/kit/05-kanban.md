@@ -1,5 +1,5 @@
-# KANBAN
-# File: .kit/05-kanban.md
+# Kanban
+# File: .playbook/kit/05-kanban.md
 
 ## Rules
 - Tickets seeded from Acceptance Criteria in `03-execution.md`
@@ -9,8 +9,8 @@
 - When a ticket moves to Done, log it in `04-progress.md`
 
 ## Ticket Types
-**Core** _(always available)_: `feature` | `bug` | `task`
-**Pipeline** _(when .playbook/ exists)_: `doc` | `sync`
+**Core** _(always available)_: `feature` | `defect` | `task`
+**Pipeline** _(when .playbook/ is active)_: `definition` | `sync`
 **Project** _(declared in `03-execution.md` guidelines)_: [custom types]
 
 ---
@@ -18,9 +18,9 @@
 ## Backlog
 
 ### [K-01] Ticket Title
-**Type:** feature | bug | task | doc | sync | [custom]
+**Type:** feature | defect | task | definition | sync | [custom]
 **Description:** What needs to happen and why.
-**Ref:** [optional — flow, contract, DDA doc, or _refs/ file]
+**Ref:** [optional — flow, contract, definition, or _refs/ file]
 **Blocked by:** none
 
 ---
@@ -28,7 +28,7 @@
 ## In Progress
 
 ### [K-02] Ticket Title
-**Type:** feature | bug | task | doc | sync | [custom]
+**Type:** feature | defect | task | definition | sync | [custom]
 **Description:** What needs to happen and why.
 **Ref:** [optional]
 **Blocked by:** none
