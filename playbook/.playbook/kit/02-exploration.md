@@ -1,20 +1,20 @@
-# Exploration
-# File: .playbook/kit/02-exploration.md
+# EXPLORATION
+# File: .kit/02-exploration.md
 
-## Open Topics
+## Open Questions
 
-**[Topic Name]**
-- Questions to resolve
-- Options being considered
-- Ref: `kit/_refs/[type]/[filename]` _(if applicable)_
+**[Question or topic]**
+- What is being considered
+- Options on the table
+- Ref: `.kit/_refs/[type]/[filename]` _(if applicable)_
 
 ---
 
-## Closed Decisions
+## Settled Decisions
 
-**[YYYY-MM-DD] Decision Name**
+**[YYYY-MM-DD] Decision name**
 - What was decided
 - Why
-- Alternatives considered
-- Ref: `kit/_refs/[type]/[filename]` _(if applicable)_
+- What else was considered
+- Ref: `.kit/_refs/[type]/[filename]` _(if applicable)_
 - Flow: `docs/flows/flow-N-name.md` _(if applicable)_

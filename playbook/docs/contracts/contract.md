@@ -1,26 +1,25 @@
-# [Flow Name] Contract
-# File: docs/contracts/[flow-N-name].md
-
-> Companion contract to `docs/flows/[flow-N-name].md`
-> Read `docs/contracts/global.md` before this file.
+# [Flow Name] Rules
+# File: docs/contracts/flow-N-[kebab-name].md
+# Companion to: docs/flows/flow-N-[kebab-name].md
+# Read docs/contracts/global.md before this file.
 
 ---
 
-## Happy Path
-The expected successful execution — inputs, steps, and guaranteed outputs.
+## The Good Path
+What a successful run looks like — what goes in, what happens, what comes out.
 
-## Failure Modes
-Every way this flow can fail and what happens in each case.
+## Ways It Can Fail
+Every way this path can go wrong and what happens in each case.
 
 ## Edge Cases
-Boundary conditions and non-obvious scenarios that must be handled.
+Unusual situations that still have to work correctly.
 
-## Concurrency Rules
-Atomicity requirements, race conditions, ordering constraints.
+## Ordering Rules
+What must happen before what. Anything that cannot happen at the same time.
 
-## Constraints
-Rules every implementation must honour without exception.
+## Hard Constraints
+Rules every implementation must follow without exception.
 
 ---
-_N/A — section considered and does not apply_
-_TODO — section not yet documented; blocks status: active_
+N/A — this section was considered and does not apply
+TODO — not yet written; blocks status: active

@@ -1,53 +1,89 @@
+# Playbook
+# File: .playbook/_index.md
+
+> This file is the living map of your project's Playbook setup.
+> Update the Structure section whenever pieces are added or removed.
+> It is the first file an AI reads after the instruction files.
+
 ---
 id: [project-name]
 type: structure
 scope: project
 status: draft
-entry: []
 contains: []
 concerns: []
 integrations: []
-vocabulary: [software | manufacturing | writing]
 ---
 
-<!-- Describe the project purpose in one paragraph -->
+## What This Project Is
+[One paragraph — plain language description of the project and what it produces.]
 
 ## Structure
 
-- [.playbook/](./)
-  - [README.md](./README.md) — entry point
-  - [THE-STANDARD.md](./THE-STANDARD.md) — foundation
-  - [pipeline.md](./pipeline.md) — pipeline reference
-  - [AI-INSTRUCTIONS.md](./AI-INSTRUCTIONS.md) — universal AI rules
-  - [maintenance.md](./maintenance.md) — housekeeping guide
-  - [_index.md](./_index.md) — this file; project manifest
-  - [_concerns/](./_concerns/) — cross-cutting capabilities
-  - [_integrations/](./_integrations/) — external dependencies
-  - [_shared/](./_shared/) — reusable units across the project
-  - [kit/](./kit/)
-    - [00-prompts.md](./kit/00-prompts.md) — session prompts
-    - [01-process.md](./kit/01-process.md) — session spark
-    - [02-exploration.md](./kit/02-exploration.md) — decision log
-    - [03-execution.md](./kit/03-execution.md) — guidelines, plan, tasks
-    - [04-progress.md](./kit/04-progress.md) — append-only progress log
-    - [05-kanban.md](./kit/05-kanban.md) — ticket breakdown (optional)
-    - [06-qa.md](./kit/06-qa.md) — verification registry (optional)
-  - [guides/](./guides/)
-    - [new-project.md](./guides/new-project.md) — new project walkthrough
-    - [adopt.md](./guides/adopt.md) — adoption paths
-    - [context-kit.md](./guides/context-kit.md) — kit guide
-    - [expansions/](./guides/expansions/)
-      - [map-existing.md](./guides/expansions/map-existing.md)
-  - [vocabulary-[domain]/](./vocabulary-[domain]/)
-    - [README.md](./vocabulary-[domain]/README.md) — domain guide
-    - [AI-INSTRUCTIONS.md](./vocabulary-[domain]/AI-INSTRUCTIONS.md) — domain AI rules
-  - [templates/](./templates/) — blank document starters
-- [docs/](../docs/)
-  - [flows/](../docs/flows/) — process paths
-  - [contracts/](../docs/contracts/) — implementation rules
-  - [rewrite/](../docs/rewrite/) — map-existing outputs
-  - [rollout/](../docs/rollout/) — milestone snapshots
+```
+.playbook/
+  README.md                        — entry point and orientation
+  pipeline.md                      — how the pipeline works
+  AI-INSTRUCTIONS.md               — universal AI session rules
+  _index.md                        — this file; project map
+  maintenance.md                   — keeping files lean and current
+  guides/
+    _index.md                      — all guides in one place
+    new-project.md                 — starting from scratch
+    adopt.md                       — bringing an existing project in
+    context-kit.md                 — how the session files work
+    video-insights.md              — using video as research and reference
+    reverse-engineer.md            — mapping an existing project before changing it
+  vocabulary-[domain]/
+    README.md                      — how the pipeline maps to this domain
+    AI-INSTRUCTIONS.md             — domain-specific AI rules
+    templates/                     — planning document templates for this domain
+  templates/
+    kit-00-prompts.md              — session prompts
+    kit-01-process.md              — process file template
+    kit-02-exploration.md          — exploration file template
+    kit-03-execution.md            — execution file template
+    kit-04-progress.md             — progress log template
+    kit-05-kanban.md               — work tracker template
+    kit-06-qa.md                   — checks and sign-off template
+    kit-test.md                    — individual check file template
+    flow.md                        — path document template
+    contract.md                    — rules document template
+    global-contract.md             — global rules template
+    video-insight-base.md          — video insight file template
+    video-insight-variants.md      — extra sections by video type
+.kit/
+  00-prompts.md                    — session prompts (copy from templates)
+  01-process.md                    — where you are and what is next
+  02-exploration.md                — open questions and settled decisions
+  03-execution.md                  — guidelines, plan, tasks, known problems
+  04-progress.md                   — append-only history
+  05-kanban.md                     — work tracker (optional)
+  06-qa.md                         — checks and sign-off (optional)
+  _refs/
+    video-insights/                — extracted video insight files
+  _tests/                          — individual check files
+  _archives/                       — lean history
+docs/
+  [brief or PRD].md                — discovery document
+  flows/
+    _index.md                      — entry point for all path documents
+    global.md                      — optional: rules spanning every path
+    flow-N-[name].md               — one file per path
+  contracts/
+    _index.md                      — entry point for all rules documents
+    global.md                      — rules that apply everywhere
+    flow-N-[name].md               — companion rules file per path
+  rollout/
+    [milestone].md                 — generated milestone snapshots
+```
+
+## Project Planning Documents
+
+[Add links here as planning documents are created — top-down order]
+
+- [_index.md](./_index.md) — this file
+- [Add coordinators, components, concerns, integrations as they are authored]
 
 ## Detail
-
-<!-- Architecture decisions, constraints, known assumptions -->
+[Architecture decisions, constraints, or known assumptions specific to this project. Remove this section if nothing fits.]

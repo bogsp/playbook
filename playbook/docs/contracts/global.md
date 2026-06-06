@@ -1,26 +1,26 @@
-# Global Contract
+# Global Rules
 # File: docs/contracts/global.md
 
-> Read this file before any flow-specific contract.
-> Rules here apply to every component, every layer, every flow.
+> Read this file before any path-specific rules file.
+> Everything here applies to every piece, every path, every part of this project.
 
 ---
 
-## Architecture Rules
-Layer boundaries, module rules, dependency direction.
+## How the Project Is Structured
+How the parts relate to each other and what direction things flow in.
 
-## Auth Boundaries
-Where authentication and authorization are enforced and how.
+## Who or What Has Authority Over What
+Where decisions are made and enforced. What each part is and is not allowed to do.
 
-## Error Handling Rules
-Result pattern usage, error hierarchy, layer responsibilities, mapping conventions.
+## How Failures Are Handled
+How failures are represented, passed along, and reported across the project.
 
-## Audit Requirements
-What must always be logged, when, and in what format.
+## What Must Always Be Recorded
+What must be logged or written down, when, and in what form.
 
-## Cross-Cutting Constraints
-Rules that apply everywhere without exception.
+## Rules That Apply Everywhere
+Constraints with no exceptions. If it is not listed here, it is not universal.
 
 ---
-_N/A — section considered and does not apply_
-_TODO — section not yet documented; blocks status: active_
+N/A — this section was considered and does not apply
+TODO — not yet written; blocks status: active

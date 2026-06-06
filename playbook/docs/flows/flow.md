@@ -1,8 +1,11 @@
+# [Flow Name]
+# File: docs/flows/flow-N-[kebab-name].md
+
 ---
-id: [flow-N-kebab-name]
+id: flow-N-[kebab-name]
 type: flow
-scope: [journey | sequence | operation | composite | compensation]
-trigger: [request-response | event-driven | background | reactive | webhook | stream]
+scope: journey | sequence | operation | composite | compensation
+trigger: request-response | event-driven | background | reactive | webhook | stream
 status: draft
 triggers: []
 calls: []
@@ -11,78 +14,66 @@ called-by: []
 ---
 
 ## What It Does
-Plain language description of this flow's purpose and outcome.
-Any reader understands this without technical knowledge.
+Plain language — any reader understands this without prior knowledge.
 
-## Pre-conditions
-What must be true before this flow can start.
+## Before It Starts
+What must be true before this path can begin.
 
-## Post-conditions
-What is guaranteed to be true when this flow completes successfully.
+## When It Finishes
+What is guaranteed to be true when this path completes successfully.
 
 ## Walkthrough
 
-Narrative description of what happens at each stage — what decisions are made,
-what can go wrong, what the system guarantees. Written for any reader but
-precise enough for a developer to follow.
+Narrative — what happens at each step, what decisions are made, what can go wrong.
 
 ---
 
-1. On [TriggerEvent](input):
-   a. [componentName].[method](input)
-      → ok: [ResultType]     → continue to b
-      → err: [ErrorType]     → emit [FailureEvent], halt
-   b. [componentName].[method](result)
-      → ok: [ResultType]     → continue to c
-      → err: [ErrorType]     → compensate, emit [FailureEvent]
+1. On [Trigger](input):
+   a. [piece].[action](input)
+      → ok: [Result]   → continue to b
+      → err: [Error]   → emit [FailureEvent], halt
+   b. [piece].[action](result)
+      → ok: [Result]   → continue to c
+      → err: [Error]   → undo previous steps, emit [FailureEvent]
+   c. [piece].[action](result)
+      → ok: [Result]   → emit [SuccessEvent]
+      → err: [Error]   → undo previous steps, emit [FailureEvent]
 
 ---
-_(Add sections below based on scope and trigger type)_
 
-## Compensation
-_(Required for Journey and Sequence scope)_
-What happens when the flow fails mid-way and state needs unwinding.
+## Undoing Steps
+_(Required when scope is journey or sequence — what happens if this path fails halfway through)_
 
-## Child Flows
-_(Required for Journey and Composite scope)_
-- `[flow-id]` — [what it handles]
+## Child Paths
+_(Required when scope is journey or composite — what sub-paths this one coordinates)_
 
-## Event Contract
-_(Required for Event-Driven trigger)_
-Event schema and delivery guarantees.
+## Event Shape
+_(Required when trigger is event-driven — what the event contains and how it is delivered)_
 
 ## Schedule
-_(Required for Background/Scheduled trigger)_
-When and how often this flow runs.
+_(Required when trigger is background — when and how often this runs)_
 
-## Timeout Behavior
-_(Required for Background/Scheduled trigger)_
-What happens when the flow exceeds its time budget.
+## Timeout Behaviour
+_(Required when trigger is background — what happens when this exceeds its time budget)_
 
-## Subscription Contract
-_(Required for Reactive and Stream triggers)_
-What is subscribed to and what constitutes a triggering change.
+## Subscription
+_(Required when trigger is reactive or stream — what is being watched and what counts as a change)_
 
-## Disconnect Behavior
-_(Required for Reactive and Stream triggers)_
-What happens when the connection drops mid-flow.
+## Disconnection
+_(Required when trigger is reactive or stream — what happens when the connection drops)_
 
-## Reconnect Behavior
-_(Required for Stream trigger)_
-How and when reconnection is attempted.
+## Reconnection
+_(Required when trigger is stream — how and when reconnection is attempted)_
 
-## Payload Contract
-_(Required for Webhook trigger)_
-Expected payload schema and validation rules.
+## Incoming Payload
+_(Required when trigger is webhook — what the payload must contain and how it is validated)_
 
-## Retry Behavior
-_(Required for Webhook trigger)_
-Retry strategy, backoff, and failure handling.
+## Retry Behaviour
+_(Required when trigger is webhook — retry strategy and failure handling)_
 
 ## Detail
-_(Optional — present only for concurrency rules, known constraints, or quirks
-that cannot be inferred from the walkthrough)_
+_(Optional — concurrency rules, known constraints, edge cases that cannot be inferred from the walkthrough)_
 
 ---
-_N/A — section considered and does not apply_
-_TODO — section not yet documented; blocks status: active_
+N/A — this section was considered and does not apply
+TODO — not yet written; blocks status: active

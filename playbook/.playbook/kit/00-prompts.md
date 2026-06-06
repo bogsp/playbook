@@ -1,77 +1,67 @@
 # Session Prompts
-# File: .playbook/kit/00-prompts.md
+# File: .kit/00-prompts.md
 
-Quick reference for every session type. Copy and paste as needed.
+Copy and paste the prompt that matches what you are doing.
 
-For how the Kit works: `guides/context-kit.md`
+Wherever you see `[domain]` in a prompt, replace it with the name of your vocabulary folder:
+`software` | `writing` | `production` | `manufacturing`
+
+Wherever you see `[description]`, `[filename]`, or `[milestone]` — fill in the actual value before sending.
+For how the session files work: `.playbook/guides/context-kit.md`
 
 ---
 
-## Kit — Standalone Prompts
+## Starting a New Project
 
-These work with any AI tool, any project type.
-
-### Fresh Project
-
-**Message 1**
-Upload `kit/01-process.md` + `kit/03-execution.md`, then send:
+**Message 1** — upload `01-process.md` + `03-execution.md`, then send:
 
 ```
-I'm starting a new project using the Playbook Kit.
-I'll share files in two messages.
+I'm starting a new project using Playbook. I'll share files in two messages.
+This message: Process + Execution. Next: Exploration + Progress.
 
-This message: Process + Execution
-Next message: Exploration + Progress
+Based on my project — [1–2 sentence description] — help me populate these files:
+- Draft initial open questions for Exploration
+- Suggest guidelines for Execution
+- Set the Current State and initial goals
 
-Based on my project [1-2 sentence description], help me populate these files:
-- Draft initial Exploration questions
-- Suggest Execution guidelines
-- Define Current State and initial goals
-
-Just provide a brief confirmation.
+Just give me a brief confirmation for now.
 ```
 
-**Message 2**
-Upload `kit/02-exploration.md` + `kit/04-progress.md`, then send:
+**Message 2** — upload `02-exploration.md` + `04-progress.md`, then send:
 
 ```
-Here are the remaining blank templates. Just provide a brief confirmation.
+Here are the remaining blank templates. Just a brief confirmation.
 ```
 
 ---
 
-### Resume Project
+## Picking Up Where You Left Off
 
-**Message 1**
-Upload current `kit/01-process.md` + `kit/03-execution.md`, then send:
-
-```
-I'm resuming a project using the Playbook Kit.
-I'll share files in two messages.
-
-This message: Process + Execution
-Next message: Exploration + Progress
-
-Focus only on Current State. Do not reopen closed decisions unless I ask.
-Just provide a brief confirmation.
-```
-
-**Message 2**
-Upload current `kit/02-exploration.md` + `kit/04-progress.md`, then send:
+**Message 1** — upload current `01-process.md` + `03-execution.md`, then send:
 
 ```
-Here is the context from earlier work. Just provide a brief confirmation.
+I'm resuming a project using Playbook. I'll share files in two messages.
+This message: Process + Execution. Next: Exploration + Progress.
+
+Focus only on what is current. Do not reopen settled decisions unless I ask.
+Just a brief confirmation.
+```
+
+**Message 2** — upload current `02-exploration.md` + `04-progress.md`, then send:
+
+```
+Here is the context from earlier work. Just a brief confirmation.
 [Optionally describe what you want to work on this session.]
 ```
 
 ---
 
-### End of Session
+## End of Session
 
 ```
 Based on this session, update my kit files:
 - Check off completed tasks in 03-execution.md
-- Move closed decisions to 02-exploration.md with dates and reasoning
+- Move settled decisions to 02-exploration.md with dates and reasoning
 - Append to 04-progress.md — Completed, Decided, Fixed, In Progress
 - Update Current State in 01-process.md
 
@@ -80,223 +70,206 @@ Generate updated markdown for all changed files.
 
 ---
 
-### Context Rot Recovery
+## When the AI Loses the Thread
 
 ```
-Stop. Your only source of truth is the files uploaded at session start.
-Ignore all prior conversation context.
+Stop. Your only source of truth is the files uploaded at the start of this session.
+Ignore everything else in the conversation.
 Re-read the uploaded files before continuing.
 ```
 
 ---
 
-## Playbook Pipeline Prompts
-
-These extend the Kit for Playbook-specific work.
-
-### Start Session
+## Starting an AI Work Session
 
 Upload `AI-INSTRUCTIONS.md` + `vocabulary-[domain]/AI-INSTRUCTIONS.md`, then send:
 
 ```
 Before any work, read in this order:
-1. .playbook/AI-INSTRUCTIONS.md
+1. AI-INSTRUCTIONS.md
 2. vocabulary-[domain]/AI-INSTRUCTIONS.md
 3. docs/flows/_index.md
 4. docs/contracts/_index.md
 5. .playbook/_index.md
 
-[Attach relevant unit definitions]
+[Attach relevant planning docs for the current task]
 
 Confirm your understanding. Then wait for my instruction.
 ```
 
 ---
 
-### Resume from Ship Doc
+## Picking Up from a Milestone Summary
 
-Upload `docs/rollout/[milestone].md` + `AI-INSTRUCTIONS.md` + domain `AI-INSTRUCTIONS.md`, then send:
+Upload `docs/rollout/[milestone].md` + `AI-INSTRUCTIONS.md` + `vocabulary-[domain]/AI-INSTRUCTIONS.md`, then send:
 
 ```
 I'm resuming work on an existing project.
-Read the Ship doc first, then both AI-INSTRUCTIONS files.
+Read the milestone summary first, then the two instruction files.
 Confirm your understanding before we begin.
 ```
 
 ---
 
-### Write Flows and Contracts
+## Writing Paths and Rules
 
-Attach the Define document, then send:
+Attach `docs/[brief or PRD].md`, then send:
 
 ```
-Given this project definition, define the flows and contracts.
+Given this brief, define the paths and rules for this project.
 
-Flows (docs/flows/):
+Paths (docs/flows/):
 - Write docs/flows/_index.md as the entry point
-- Write docs/contracts/global.md first — foundation, trust, error handling rules
-- Write one flow file per major process path
-- Declare scope and trigger type in frontmatter for each flow
-- Include all failure paths — not just the happy path
-- Keep files small — one flow per file; split at ~150 lines
+- Write docs/contracts/global.md first — rules that apply everywhere
+- Write one path file per major flow
+- Include what happens when things go wrong, not just the good path
+- Keep files small — one path per file
 
-Contracts (docs/contracts/):
+Rules (docs/contracts/):
 - Write docs/contracts/_index.md as the entry point
-- Write one contract file per flow
-- Required sections: Happy Path, Failure Modes, Edge Cases,
-  Sequencing Rules, Constraints
-- Use N/A when a section does not apply; TODO blocks active status
+- Write one rules file per path
+- Required sections: The Good Path, Ways It Can Fail, Edge Cases,
+  Ordering Rules, Hard Constraints
+- Mark N/A if a section does not apply. Mark TODO if it is not yet written.
 
-Flag anything underspecified. Wait for review before writing any definitions.
+Flag anything unclear. Wait for review before writing any planning documents.
 ```
 
 ---
 
-### Bootstrap Definitions from Define Doc
+## Building the Planning Structure
 
-Attach the Define doc + approved flow and contract files, then send:
+Attach the brief + approved path and rules files, then send:
 
 ```
-Given this project definition and the approved flows and contracts,
-generate the Playbook structure definitions.
+Given this brief and the approved paths and rules, build the planning structure.
 
-- Produce _index.md for the project and each module with living folder trees
-- Create stub definitions for all identifiable units, coordinators,
-  concerns, integrations
-- Mark all stubs as status: draft
-- For coordinators, include a stub Process section referencing relevant flows
-- Flag anything underspecified
+- Create an _index.md for the project and each section with a living map
+- Create planning documents for all identifiable pieces, coordinators,
+  concerns, and integrations — mark all as status: draft
+- For coordinators, include a sequence section referencing the relevant path files
+- Flag anything unclear
 ```
 
 ---
 
-### Add New Unit
+## Adding a New Piece
 
-Attach the parent `_index.md` + relevant flow file, then send:
-
-```
-Given this parent definition and flow, create a Playbook [type] definition
-for [description]. Follow Playbook conventions. Flag any missing relationships.
-If type is coordinator, include a Process section with full sequence and all branches.
-After creating the definition, provide the updated Structure section
-for the parent _index.md.
-```
-
----
-
-### Sync Check
-
-Send before every delivery:
+Attach the parent `_index.md` + relevant path file, then send:
 
 ```
-Run a Playbook sync check on all definitions touched this session.
-For each: does the execution match the definition?
-List any mismatches. Update affected definitions.
-Update the living folder tree in any _index.md where units changed.
+Given this parent document and path, create a planning document
+for [description of the piece].
+Flag any missing connections.
+After creating it, give me the updated Structure section for the parent _index.md.
 ```
 
 ---
 
-### Generate Ship Doc
-
-Attach all `.playbook/` definitions + `kit/04-progress.md`, then send:
+## Sync Check
 
 ```
-Generate a Ship doc for [milestone name].
-Read the full .playbook/ tree and kit/04-progress.md.
+Run a sync check on all planning documents touched this session.
+For each: does the current work match the planning document?
+List anything that has drifted. Update affected documents.
+Update the folder map in any _index.md where pieces changed.
+```
+
+---
+
+## Generating a Milestone Summary
+
+Attach all `.playbook/` docs + `.kit/04-progress.md`, then send:
+
+```
+Generate a milestone summary for [milestone name].
+Read the full planning structure and progress log.
 Output to docs/rollout/[milestone].md.
 ```
 
 ---
 
-### Adopt Existing Project
+## Bringing an Existing Project In
 
-Upload `AI-INSTRUCTIONS.md` + domain `AI-INSTRUCTIONS.md`, then send:
+Upload `AI-INSTRUCTIONS.md` + `vocabulary-[domain]/AI-INSTRUCTIONS.md`, then send:
 
 ```
-I am adopting the Playbook pipeline for an existing project.
-Read these two files first. Confirm you have read them.
+I am bringing an existing project into Playbook.
+Read the two instruction files first. Confirm you have read them.
 Do not begin any work yet.
-
-Then follow the decision tree in guides/adopt.md.
+Then follow .playbook/guides/adopt.md.
 ```
 
 ---
 
-### Map Existing — Start Inventory
+## Audit Expansion — Start Inventory
 
-Upload `AI-INSTRUCTIONS.md` + all available project context, then send:
+Upload instruction files + all available project context, then send:
 
 ```
-The Map Existing expansion is active. Current phase: inventory.
+The audit expansion is active. Current phase: inventory.
 
 Map and document:
-1. All major units, components, or sections and what they do
-2. All external dependencies and what they provide
-3. The information model — what data or content exists and how it is structured
-4. Entry points — how the project is accessed or initiated
-5. Dependency relationships — what depends on what
-6. Current tools, methods, and approaches
+1. All major pieces, sections, and components and what they do
+2. All outside tools or dependencies and what they provide
+3. The information structure — what exists and how it is organised
+4. Entry points — how the project is accessed or consumed
+5. What depends on what
 
-Produce a draft system-map.md. Use plain language.
-Flag anything unclear or needing investigation.
-Wait for review before proceeding.
+Produce a draft docs/rewrite/system-map.md. Use plain language.
+Flag anything unclear. Wait for review.
 ```
 
 ---
 
-### Map Existing — Advance Phase
-
-Send when advancing to the next phase:
+## Audit Expansion — Move to Next Phase
 
 ```
-Map Existing current phase: [inventory | audit | classify | risk-map | gap-report | handoff]
-Previous phase output reviewed and approved.
+Audit expansion current phase: [inventory | audit | classify | risk-map | gap-report | handoff]
+Previous phase reviewed and approved.
 
-Proceed to [next phase].
-[Attach relevant rewrite docs]
-
-Follow the phase instructions in guides/expansions/map-existing.md.
-Wait for review before advancing again.
+Move to [next phase].
+Follow .playbook/guides/reverse-engineer.md.
+Wait for review before moving again.
 ```
 
 ---
 
-### Map Existing — Handoff
+## Audit Expansion — Handoff
 
 Attach all `docs/rewrite/` files + current kit files, then send:
 
 ```
-Map Existing expansion is complete. Run the handoff.
+The audit expansion is complete. Run the handoff.
 
-1. Extract open topics from system-map.md for kit/02-exploration.md
-2. Extract closed decisions from decision-record.md for kit/02-exploration.md
-3. Extract known issues from risk-register.md for kit/03-execution.md
-4. Update kit/01-process.md — mark expansion complete, update Current State
+1. Pull open questions from system-map.md → .kit/02-exploration.md
+2. Pull settled decisions from decision-record.md → .kit/02-exploration.md
+3. Pull known problems from risk-register.md → .kit/03-execution.md
+4. Update .kit/01-process.md — mark audit complete, update Current State
 
-Generate updated kit files as markdown for review.
+Generate updated kit files for review.
 ```
 
 ---
 
-### Research Insights — Extract
+## Video Insights — Extract with Gemini
 
-Send to an AI tool with video or document access:
+Send to Gemini (not Claude) with the video URL:
 
 ```
-Please summarize the main arguments in '[Title]' by [Source].
-Use the source material to highlight the most important takeaways.
-[URL or attachment]
+Please summarise the main arguments in '[Video Title]' by [Channel Name].
+Use the transcript to highlight the most important takeaways.
+[URL]
 
 Structure your response using this template:
 
 ---
-title: "[Title]"
-source: "[Source]"
+title: "[Video Title]"
+source: "[Channel Name]"
 url: [URL]
 date: [Today's Date]
 type: [general | tutorial | case-study | framework | opinion | research]
-topics: [2-4 relevant tags]
+topics: [2–4 relevant tags]
 relevance:
 ---
 
@@ -304,7 +277,7 @@ relevance:
 One paragraph. The central argument or insight.
 
 ## Key Points
-3-5 most important takeaways. No more.
+3–5 most important takeaways. No more.
 
 ## Connections
 Leave blank.
@@ -315,80 +288,52 @@ Pending
 Output as a downloadable markdown file.
 ```
 
-For specific content types, add one section after Key Points:
-- Tutorial → `## Steps`
-- Case Study → `## Outcome`
-- Framework → `## Framework`
-- Opinion → `## Counterarguments`
-- Research → `## Evidence`
+Add one extra section based on the video type — see `guides/video-insights.md`.
 
-Save to: `kit/_refs/research/[kebab-title].md`
+Save the output to: `.kit/_refs/video-insights/[short-descriptive-title].md`
 
 ---
 
-### Research Insights — Discuss
+## Video Insights — Discuss in a Session
 
-Upload the insight file alongside kit files, then send:
+Upload the insight file alongside your kit files, then send:
 
 ```
-I have a new research insight to discuss.
-File: kit/_refs/research/[filename].md
+I have a new video insight to discuss.
+File: .kit/_refs/video-insights/[filename].md
 
 Review it and:
-1. Summarize the core idea in one sentence
-2. Identify connections to our current project context
-3. Flag any conflicts with closed decisions in 02-exploration.md
-4. Suggest whether this should open a topic, close a decision,
-   add a task, or surface a risk
+1. Summarise the core idea in one sentence
+2. Identify connections to our current project
+3. Flag any conflicts with decisions already made
+4. Suggest whether this opens a question, settles a decision,
+   adds a task, or flags a risk
 5. Ask me how I want to proceed
 
-Do not integrate anything yet. Surface connections and wait.
+Do not integrate anything yet. Surface the connections and wait.
 ```
 
 ---
 
-### Session Limit Warning
+## Video Insights — Integrate
+
+After the discussion, if integrating:
+
+```
+Integrate [insight title] as follows:
+- [Open question | Settled decision | Task | Known problem]
+- Ref: .kit/_refs/video-insights/[filename].md
+
+Update the insight file Status to: Integrated
+Log in 04-progress.md: Decided: [title] — Integrated
+```
+
+---
+
+## Approaching the Session Limit
 
 ```
 We are approaching the session limit.
-Update all kit files and any changed definitions now.
-Generate markdown for each so I can copy-paste and save before we continue.
-```
-
----
-
-### Playbook End of Session
-
-```
-Before we close:
-1. Run sync check on all definitions touched this session
-2. Update kit/04-progress.md — completions, decisions, fixes
-3. Update Current State in kit/01-process.md
-4. Update living folder tree if units changed
-Generate updated markdown for all changed kit files.
-```
-
----
-
-### Error Recovery
-
-```
-Something has gone wrong. Stop all other work.
-
-1. What broke: [description]
-2. Category: drift | boundary violation | undefined path | other
-3. Location: definition | execution | both
-4. Fix at source — do not patch symptoms
-5. After fixing: re-run sync check
-6. Log as Fixed entry in kit/04-progress.md
-```
-
----
-
-### Context Rot Recovery — Playbook
-
-```
-Stop. Your only source of truth is the files uploaded at session start.
-Ignore all prior conversation context.
-Re-read AI-INSTRUCTIONS.md and vocabulary AI-INSTRUCTIONS.md before continuing.
+Update all kit files and any changed planning documents now.
+Generate the markdown for each so I can save them before we continue.
 ```

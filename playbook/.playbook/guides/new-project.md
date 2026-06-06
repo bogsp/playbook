@@ -1,178 +1,196 @@
 # Starting a New Project
 # File: .playbook/guides/new-project.md
 
-This guide walks through every stage of the Playbook pipeline from scratch.
-Follow the stages in order. Do not skip ahead.
+> Follow the stages in order. Do not skip ahead.
+> "The work begins before the work begins."
 
 ---
 
-## Before You Begin
+## Before You Start
 
-**1. Choose your vocabulary**
-Pick the vocabulary that matches your project domain.
-Delete all other `vocabulary-*/` folders from `.playbook/`.
+**Choose your vocabulary.**
 
-**2. Read THE-STANDARD.md**
-Five minutes of orientation. Everything else references it.
+Copy the vocabulary folder that matches your project type into `.playbook/`:
 
-**3. Set up kit files**
-The kit files in `.playbook/kit/` are your blank templates.
-You will populate them in Stage 1.
+| Project type | Copy this folder |
+|---|---|
+| Software development | `vocabulary-software/` |
+| Writing or editorial | `vocabulary-writing/` |
+| Production or operations | `vocabulary-production/` |
+| Manufacturing | `vocabulary-manufacturing/` |
 
----
+The vocabulary folder contains:
+- `README.md` — how the pipeline maps to your domain
+- `AI-INSTRUCTIONS.md` — domain-specific AI rules
+- `templates/` — planning document templates shaped for your domain
 
-## Stage 1 — Kit (Exploration)
+**If your project spans more than one domain:**
 
-Get your thinking straight before touching any tools.
+Some projects do not fit neatly into one vocabulary — a documentary film is both writing and production; a branded product launch is both manufacturing and production. In that case:
 
-### What to do
+1. Choose the vocabulary that covers the majority of your work as your primary
+2. Copy its folder as normal
+3. Borrow individual templates from the secondary vocabulary folder as needed — drop them into your primary `templates/` folder
+4. Note the mixed domain in your `_index.md` Detail section so collaborators and AI know what to expect
 
-1. Upload `kit/01-process.md` + `kit/03-execution.md` to a new AI session
-2. Describe your project in 1–2 sentences and ask AI to populate the files
-3. Upload `kit/02-exploration.md` + `kit/04-progress.md`
-4. Work through open questions until key decisions are locked
-5. Review closed decisions — are you ready to define what to build?
-
-Use prompt: **Kit — Fresh Project** from `kit/00-prompts.md`
-
-### Done when
-
-- Project goals are clear
-- Key decisions are in Closed Decisions
-- Current State phase is set to Define
+You do not need a perfect fit. Choose the vocabulary that reduces the most translation work and adapt from there.
 
 ---
 
-## Stage 2 — Define
+## What Your Project Folder Will Look Like
 
-Define what you are building and why.
-This is the upstream input for all paths, contracts, and structure.
+Before you write a single planning document, here is the shape you are building toward:
 
-### What to do
+```
+.playbook/
+  _index.md                  ← project map — start here each session
+  AI-INSTRUCTIONS.md         ← universal AI rules
+  vocabulary-[domain]/
+    AI-INSTRUCTIONS.md       ← domain rules
+  [your planning docs]       ← added as you work through the stages
+docs/
+  [brief or PRD].md          ← discovery document
+  flows/
+    _index.md
+    global.md
+    flow-N-[name].md         ← one per major path
+  contracts/
+    _index.md
+    global.md
+    flow-N-[name].md         ← one per path
+  rollout/                   ← milestone snapshots, generated later
+.kit/
+  00-prompts.md
+  01-process.md
+  02-exploration.md
+  03-execution.md
+  04-progress.md
+```
 
-1. Use closed decisions from `02-exploration.md` as input
-2. Ask AI to draft a definition document from your decisions
-3. Review and approve
-4. Store in `docs/`
-5. Log completion in `04-progress.md`
-
-### Done when
-
-- Definition is approved and saved to `docs/`
-- Acceptance criteria are clear and verifiable
-
----
-
-## Stage 3 — Plan (Flows)
-
-Define every major process path before any unit is designed.
-This stage prevents problems that would otherwise live in
-the connections between units.
-
-### What to do
-
-1. Write flow files under `docs/flows/`
-   (entry point: `docs/flows/_index.md`)
-2. Write a companion contract file under `docs/contracts/` for each flow
-   (entry point: `docs/contracts/_index.md`)
-3. Always write `docs/contracts/global.md` first
-4. Walk each path step by step including failure paths
-5. Review paths and contracts together for completeness
-6. Lock paths and contracts in `kit/01-process.md` before any definitions
-
-### Flows vs contracts
-
-- **Flows** answer: what happens? What are the steps? What happens on failure?
-- **Contracts** answer: what rules must every implementation honour?
-
-### Done when
-
-- Every process path has a flow file
-- Every flow has a companion contract file
-- `global.md` covers trust, access, and foundation rules
-- Flows and contracts are reviewed and marked locked
+You do not build this all at once. Each stage below adds one layer.
 
 ---
 
-## Stage 4 — Structure (Definitions)
+## Stage 1 — Thinking
 
-Define every unit before any execution begins.
-The definition is the contract. Execution follows it.
+Get your thinking straight before touching anything else.
 
-### What to do
+1. Copy the kit templates from `.playbook/templates/` into `.kit/`
+2. Upload `.kit/01-process.md` + `.kit/03-execution.md` to a new AI session
+3. Describe your project in 1–2 sentences and ask AI to populate the files
+4. Upload `.kit/02-exploration.md` + `.kit/04-progress.md`
+5. Work through open questions until key decisions are settled
 
-1. Load Playbook context (use prompt: **Start Session**)
-2. Bootstrap definitions from your definition document
-3. Review all generated stubs — does the structure make sense?
-4. Author each definition top-down:
-   project `_index.md` → module `_index.md` → coordinators → units
-5. For each coordinator definition, read the relevant flow and contract first
-6. Activate definitions one by one: change `status: draft` to `status: active`
-7. Confirm the living folder tree in every `_index.md` is accurate
+**Done when:** project goals are clear, key decisions are settled, and you are ready to define what to make.
 
-### Done when
-
-- All definitions are `status: active`
-- Living folder trees are accurate
-- No TODO flags remain
-- Every coordinator references its flow and contract
+Use prompt: **Starting a New Project** from `.kit/00-prompts.md`
 
 ---
 
-## Stage 5 — Build
+## Stage 2 — Discovery
 
-Execute against definitions.
+Define what you are making, why, and for whom.
 
-### What to do
+1. Use settled decisions from `.kit/02-exploration.md` as input
+2. Ask AI to draft a discovery document from your decisions
+3. Review and approve it
+4. Save it to `docs/[name].md`
+5. Log completion in `.kit/04-progress.md`
 
-1. Start every session with the Playbook session prompt
-2. Load only the definitions needed for the current task
-3. Work ticket by ticket if using Kanban (`kit/05-kanban.md`)
-4. After each unit: run sync check
-5. Before every delivery: run Phase Completion Checklist
-6. Keep definitions updated as execution evolves
-
-### Rules
-
-- Nothing is built without a definition
-- No new dependency without a declared integration
-- Definitions stay in sync with execution
-
-### Done when
-
-- All acceptance criteria from `kit/03-execution.md` are met
-- All verification cases pass (if `kit/06-qa.md` is active)
-- Phase Completion Checklist passes fully
+**Done when:** the discovery document is approved, goals and acceptance criteria are clear and verifiable.
 
 ---
 
-## Stage 6 — Ship
+## Stage 3 — Mapping
+
+Walk through every major path before defining any piece.
+
+1. Create `docs/flows/_index.md` — the entry point for all path documents
+2. Write `docs/contracts/global.md` first — rules that apply everywhere
+3. Write one path file per major flow: `docs/flows/flow-N-[name].md`
+4. Write one companion rules file per path: `docs/contracts/flow-N-[name].md`
+5. Walk each path including what happens when things go wrong
+6. Lock paths and rules before writing any planning documents
+
+**Done when:** every major path has a document and a companion rules file, all reviewed and agreed on.
+
+Use template: `templates/flow.md` and `templates/contract.md`
+
+---
+
+## Stage 4 — Rules
+
+Done alongside mapping — but worth confirming before moving on.
+
+Make sure every rules file covers:
+- The good path
+- Every way it can fail
+- Edge cases
+- Ordering requirements
+- Hard constraints
+
+And that `global.md` covers:
+- How the project is structured overall
+- Who or what has authority over what
+- How failures are handled
+- What must always be recorded
+- Rules that apply everywhere
+
+Use template: `templates/global-contract.md`
+
+---
+
+## Stage 5 — Planning
+
+Define every piece before any work begins on it.
+
+1. Create `.playbook/_index.md` — the project map (use `templates/` in `.playbook/` as your starting point)
+2. Use AI to draft planning documents from your paths and rules
+3. Review all generated documents — does the structure make sense?
+4. Work top-down: project map → coordinators → components → concerns → integrations
+5. Change each document from `status: draft` to `status: active` as it is approved
+
+**Done when:** all planning documents are active, the project map is accurate, no TODO sections remain.
+
+Use templates from: `vocabulary-[domain]/templates/`
+
+---
+
+## Stage 6 — Work
+
+Do the work against the planning documents.
+
+1. Start every session with the AI prompts from `.kit/00-prompts.md`
+2. Load only the planning documents needed for the current task
+3. Use the work tracker if the project has many discrete pieces (`.kit/05-kanban.md`)
+4. After each piece: run a sync check — does the planning document still match?
+5. Before every milestone: run the completion checklist from `pipeline.md`
+
+**Done when:** all acceptance criteria are met and all checks pass.
+
+---
+
+## Stage 7 — Handoff
 
 Generate a snapshot for the completed milestone.
 
-### What to do
+1. Use the milestone summary prompt from `.kit/00-prompts.md`
+2. Attach all `.playbook/` documents + `.kit/04-progress.md`
+3. Review `docs/rollout/[milestone].md`
+4. Update kit files with final state
 
-1. Use prompt: **Generate Ship Doc**
-2. Attach all `.playbook/` definitions + `kit/04-progress.md`
-3. Review the generated `docs/rollout/[milestone].md`
-4. Use it as context for the next session or new team member
-5. Never edit Ship docs directly — edit the source definition and regenerate
-
-### Done when
-
-- Ship doc is generated and saved to `docs/rollout/`
-- Kit files are updated with final state
-- All changes are committed to version control
+**Done when:** milestone summary is generated, kit files reflect the current state.
 
 ---
 
 ## Quick Reference
 
 ```
-Stage 1   Kit            .playbook/kit/ + session
-Stage 2   Define         docs/[definition].md
-Stage 3   Plan           docs/flows/ + docs/contracts/
-Stage 4   Structure      .playbook/ definitions
-Stage 5   Build          execution — built against definitions
-Stage 6   Ship           docs/rollout/[milestone].md
+Stage 1   Thinking     .kit/ files
+Stage 2   Discovery    docs/[brief].md
+Stage 3   Mapping      docs/flows/
+Stage 4   Rules        docs/contracts/
+Stage 5   Planning     .playbook/
+Stage 6   Work         your output
+Stage 7   Handoff      docs/rollout/[milestone].md
 ```

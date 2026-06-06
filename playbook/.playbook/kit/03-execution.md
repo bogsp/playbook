@@ -1,61 +1,60 @@
-# Execution
-# File: .playbook/kit/03-execution.md
+# EXECUTION
+# File: .kit/03-execution.md
 
 ## Guidelines
 
 **Style & Voice:**
-- [Tone and approach]
+- [Tone and approach for this project]
 
 **Rules & Constraints:**
-- [Specific requirements]
-- [Things to avoid]
-- Prefer native implementations over external dependencies
-- External dependencies require explicit justification before adoption
+- [What must always be true]
+- [What to avoid]
+- Prefer built-in solutions over outside tools
+- Outside tools require a clear reason before being added
 
 **Quality Bar:**
-- [Standards for completion]
+- [What done looks like for this project]
 
-**Verification Tier:** [core | standard | full]
+**Check Tier:** core | standard | full
 
-**Custom Ticket Types:** _(if needed — declare before use in kanban)_
-- `[type]` — [description]
+**Custom Ticket Types:** _(declare before using in the work tracker)_
+- `[type]` — [what it means]
 
 ---
 
 ## Plan
 
 **Goals:**
-- [What you're building]
+- [What you are making]
 
 **Outcomes:**
-- [What done looks like]
+- [What done looks like from the outside]
 
 **Out of Scope:**
-- [What's not included]
+- [What is not included]
 
 **Acceptance Criteria:**
-- [ ] [Verifiable condition]
-- [ ] [Verifiable condition]
+- [ ] [Something verifiable]
+- [ ] [Something verifiable]
 
 ---
 
-## Action
+## Right Now
 
-**Right Now:**
-[Current focus]
+**Current Focus:**
+[What is being worked on this session]
 
 **Tasks:**
-- [ ] [Task category]
-  - [ ] [Subtask]
+- [ ] [Task]
   - [ ] [Subtask]
 
 ---
 
-## Known Issues
+## Known Problems
 
-| # | Issue | Type | Severity | Blocked By | Resolution |
+| # | Problem | Type | Severity | Blocked By | Resolution |
 |---|---|---|---|---|---|
 | — | — | — | — | — | — |
 
-_Type: defect | dependency | design | performance | security_
+_Type: bug | dependency | design | performance | security_
 _Severity: critical | high | low_
