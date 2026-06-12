@@ -9,8 +9,8 @@ All Playbook guides in one place. Start with the one that matches where you are.
 
 | Guide | What it covers |
 |---|---|
-| `new-project.md` | Starting a brand new project with Playbook from scratch |
-| `adopt.md` | Bringing an existing project into Playbook without breaking anything |
+| [New project](new-project.md) | Starting a brand new project with Playbook from scratch |
+| [Adopt an existing project](adopt.md) | Bringing an existing project into Playbook without breaking anything |
 
 ---
 
@@ -18,8 +18,8 @@ All Playbook guides in one place. Start with the one that matches where you are.
 
 | Guide | What it covers |
 |---|---|
-| `context-kit.md` | How the session files work and why they matter |
-| `video-insights.md` | Using videos as research and reference — extracting and integrating ideas |
+| [Context kit](context-kit.md) | How the session files work and why they matter |
+| [Video insights](video-insights.md) | Using videos as research — extracting and integrating ideas |
 
 ---
 
@@ -27,23 +27,10 @@ All Playbook guides in one place. Start with the one that matches where you are.
 
 | Guide | What it covers |
 |---|---|
-| `reverse-engineer.md` | Mapping an existing project before redesigning or rebuilding it |
-
----
-
-## Domain Vocabulary
-
-Each vocabulary folder also has its own `README.md` that explains how the pipeline maps to that domain's language.
-
-| Domain | Where to find it |
-|---|---|
-| Software development | `vocabulary-software/README.md` |
-| Writing & editorial | `vocabulary-writing/README.md` |
-| Production & operations | `vocabulary-production/README.md` |
-| Manufacturing | `vocabulary-manufacturing/README.md` |
+| [Reverse engineer](reverse-engineer.md) | Mapping an existing project before redesigning or rebuilding it |
 
 ---
 
 ## Not Sure Where to Start?
 
-Read `../README.md` — the table at the top will point you to the right place.
+Read the [Playbook README](../README.md) — the table at the top will point you to the right place.

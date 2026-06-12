@@ -1,229 +1,189 @@
 # Playbook Pipeline
 # File: .playbook/pipeline.md
 
-> The complete reference for how Playbook works.
-> Applies to any kind of project.
-> For AI session setup: `AI-INSTRUCTIONS.md`
-> For project-specific language: `vocabulary-[domain]/`
+This is the complete reference for how Playbook works — every stage, every output, every format. Read as much or as little as you need.
 
 ---
 
-## Core Principle
+## The Big Picture
 
-**Progressive Disclosure + Tiering**
-
-Start with the simplest, most human-readable version. Add depth below it only when needed. Define what is always required, then add sections only when the project demands them.
-
-Never make a simple project carry the weight of a complex one.
-Never let a complex project skip what a simple one must do.
-
-This applies to every document, template, and decision in Playbook.
-
----
-
-## The Pipeline
+Playbook moves every project through the same stages, in order. Each stage produces something concrete that the next stage builds on. Skipping a stage means the next one is built on guesswork.
 
 ```
 Thinking → Discovery → Mapping → Rules → Planning → Work → Handoff
 ```
 
-Each stage feeds the next. Skipping a stage means the next one is built on guesswork.
+Existing projects add one stage at the front — understanding what already exists before anything changes.
+
+| Stage | Plain language | Produces |
+|---|---|---|
+| 0 — Audit | Understand what already exists | Findings in `docs/rewrite/` |
+| 1 — Thinking | Get aligned and stay aligned | Session files in `.playbook/kit/` |
+| 2 — Discovery | Define what you're making and why | A brief in `docs/` |
+| 3 — Mapping | Walk every path before building anything | Path documents in `docs/flows/` |
+| 4 — Rules | Write what every piece must follow | Rules documents in `docs/contracts/` |
+| 5 — Planning | Define every piece before touching it | Planning documents in `.playbook/` |
+| 6 — Work | Do the work against the plan | Your output |
+| 7 — Handoff | Capture what was built and why | A snapshot in `docs/rollout/` |
 
 ---
 
 ## Stage 0 — Audit *(existing projects only)*
 
-Understand what already exists before deciding what to change.
+Before redesigning or rebuilding something, you need to understand what it actually is — not what you think it is. This stage maps it.
 
-**Why it matters:** You cannot redesign something you do not fully understand. Every assumption that turns out wrong costs time to undo.
+**Phases:** inventory → audit → classify → risk-map → gap-report → handoff
+
+Each phase requires your review before moving to the next. Nothing advances on its own.
 
 **What it produces:**
 - `docs/rewrite/system-map.md` — what exists, where it lives, what depends on what
 - `docs/rewrite/decision-record.md` — a verdict on every major piece, with reasoning
-- `docs/rewrite/risk-register.md` — what breaks if X changes, and in what order things can safely change
+- `docs/rewrite/risk-register.md` — what breaks if X changes, and the safe order to change things
 
-**Steps:** inventory → audit → classify → risk-map → gap-report → handoff
+When complete, findings feed directly into the session files so the rest of the pipeline has accurate context to work from.
 
-Each step requires human review before moving to the next. The final step feeds back into the Thinking stage.
-
-Full guide: `guides/reverse-engineer.md`
+Full guide: `.playbook/guides/reverse-engineer.md`
 
 ---
 
 ## Stage 1 — Thinking *(always active)*
 
-The session and decision layer. It runs underneath every other stage, start to finish.
+This isn't a stage that completes — it runs underneath every other stage from start to finish. It's how you and your AI stay aligned across sessions.
 
-**Files:**
+| File | What it holds |
+|---|---|
+| `.playbook/kit/01-process.md` | Where you are and what comes next |
+| `.playbook/kit/02-exploration.md` | Open questions and settled decisions |
+| `.playbook/kit/03-execution.md` | Guidelines, plan, tasks, known issues |
+| `.playbook/kit/04-progress.md` | Everything that's happened — never edited, only added to |
+| `.playbook/kit/05-kanban.md` | Work tickets, when the project needs them (optional) |
+| `.playbook/kit/06-qa.md` | Checks and sign-off, when the project needs them (optional) |
 
-| File | What it holds | When to update |
-|---|---|---|
-| `.kit/01-process.md` | Where you are and what is next | Every session |
-| `.kit/02-exploration.md` | Open questions and settled decisions | When decisions change |
-| `.kit/03-execution.md` | Guidelines, plan, tasks, known problems | When work changes |
-| `.kit/04-progress.md` | Running history — append only | Every session |
-| `.kit/05-kanban.md` | Work tickets | When tickets change |
-| `.kit/06-qa.md` | Checks and sign-off | When checks change |
+Update `.playbook/kit/01-process.md` and `.playbook/kit/04-progress.md` at the end of every session. These two files are never optional.
 
-**Each session:**
-```
-Start  → load your session files (2 messages)
-Work   → stay focused on what is current
-End    → update 01-process.md and 04-progress.md before closing
-```
-
-Full guide: `guides/context-kit.md`
+Full guide: `.playbook/guides/context-kit.md`
+Session prompts: `.playbook/kit/00-prompts.md`
 
 ---
 
 ## Stage 2 — Discovery
 
-Define what you are making, why, and for whom. Everything else flows from this.
+Define what you are making, why, and for whom. Everything else flows from this. This stage is complete when anyone can read the document and understand the goal.
 
-**What belongs here:** goals, outcomes, audience, constraints, what done looks like, what is out of scope.
-
-**What does not belong here:** how it works, how it is built, what the parts are.
-
-**Output:** a discovery document or brief, saved in `docs/`
+**Produces:** `docs/[name].md` — goals, audience, constraints, acceptance criteria
+**Done when:** document approved, acceptance criteria are clear and verifiable
 
 ---
 
 ## Stage 3 — Mapping
 
-Walk through every major path through the project before any piece is defined.
+Walk through every major path the project will take — including what happens when things go wrong — before defining any individual piece. Problems live in the connections between things, not inside the things themselves.
 
-**Why it matters:** Pieces designed without a map are guesses. Problems live in the connections between things, not inside the things themselves. One hour of mapping prevents four hours of rework.
+**Produces:** `docs/flows/_index.md` + one `docs/flows/flow-N-[name].md` per path
+**Done when:** every major path has a document, all reviewed and agreed on
 
-**Rules:**
-- One file per path — small and focused
-- Every path includes what happens when something goes wrong, not just when it goes right
-- All paths are agreed on before any planning begins
-
-**Output:** `docs/flows/` — one file per path, `_index.md` as the entry point
+Template: `.playbook/templates/flow.md`
 
 ---
 
 ## Stage 4 — Rules
 
-Write down what every piece must follow, drawn from the paths you mapped.
+Write down what every piece must follow, drawn from the paths you mapped. This is where behaviour lives — individual planning documents point here, they never repeat it.
 
-**Why it matters:** Behaviour lives here. Plans point to rules — they never repeat them.
+**Produces:** `docs/contracts/_index.md` + `docs/contracts/global.md` + one `docs/contracts/flow-N-[name].md` per path
+**Done when:** all required sections complete, no section marked TODO
 
-**Every rules file must cover:**
-- What the good path looks like
-- Every way it can go wrong
-- Edge cases — the unusual situations that still have to work
-- Ordering requirements — what must happen before what
-- Hard constraints — things that must always be true
-
-**The `global.md` file must cover:**
-- How the project is structured overall
-- Who or what has authority over what
-- How failures are handled
-- What must always be recorded
-- Rules that apply everywhere with no exceptions
-
-Read `global.md` before any path-specific rules file. Always.
-
-**Output:** `docs/contracts/` — `global.md` plus one file per path
+Templates: `.playbook/templates/contract.md`, `.playbook/templates/global-contract.md`
 
 ---
 
 ## Stage 5 — Planning
 
-Define every piece of the project before doing any work on it.
+Define every piece of the project before doing any work on it. A planning document is the agreement — the work follows it.
 
-**Why it matters:** The plan is the agreement. Work follows it. Starting work without a plan means making invisible decisions that are expensive to change.
+**Produces:** `.playbook/_index.md` + one planning document per piece
+**Done when:** all documents approved, project map current, no section marked TODO
 
-**Document types:**
+Templates: `.playbook/vocabulary-[domain]/templates/` and `.playbook/templates/`
 
-| Type | Used for |
-|---|---|
-| `index` | A map and summary of a section or the whole project |
-| `coordinator` | Something that sequences other pieces and routes outcomes |
-| `component` | A single piece with one clear job |
-| `concern` | Something that applies across the whole project |
-| `integration` | An outside tool, service, or dependency |
+### Planning Document Types
 
-**Every planning document follows the same shape:**
+Every piece in a project gets one of these document types:
+
+| Type | What it's for | Plain language |
+|---|---|---|
+| `structure` | A module or app | The map of a section — what's in it and how the pieces relate |
+| `sequencer` | Something that coordinates other pieces | Owns the order of operations, not the logic itself |
+| `component` | A single piece of work | One job, one responsibility, clearly defined inputs and outputs |
+| `concern` | A rule or capability that applies everywhere | Things like security, logging, error handling — defined once, used everywhere |
+| `integration` | A connection to an outside tool or service | What the outside thing provides and how the project depends on it |
+
+Every planning document follows the same shape — plain language first, technical detail below:
+
 ```
-What It Does   → plain language, anyone can understand it
-Interface      → what goes in, what comes out, what rules apply
-Detail         → edge cases and constraints — leave this out if nothing fits
+## What It Does    → plain language, any reader
+## Interface       → what goes in, what comes out, what rules apply
+## Detail          → edge cases and constraints only — leave this out if nothing fits
 ```
-
-**Output:** `.playbook/` — one planning document per piece
 
 ---
 
 ## Stage 6 — Work
 
-Do the work against the plan. The plan is the source of truth.
+Do the work against the planning documents. The plan is the source of truth — if the work diverges from it, update the plan first, then continue.
 
-**Rules:**
-- Nothing gets built without a planning document for it
-- No new outside dependency without a declared document for it
-- Planning documents stay up to date with the actual work
-- Run the completion checklist before closing any phase
+**Done when:** all acceptance criteria met, all checks pass, sync check clean
 
-**Completion checklist:**
-- [ ] All work meets the quality bar for this project
-- [ ] All planning documents reflect the current state of work
-- [ ] No planning documents marked `draft` are in active work paths
-- [ ] Session files updated — `01-process.md` and `04-progress.md`
-- [ ] All changes saved and backed up
-- [ ] Handoff document generated if a milestone was reached
+Run the completion checklist in `docs/code-standards.md` before closing any phase.
 
 ---
 
 ## Stage 7 — Handoff
 
-A snapshot of what was built and why, generated at each milestone. Never written by hand.
+A snapshot of what was built and why, generated at each milestone. Never written by hand — always generated from the planning documents and session history.
 
-**Two uses:**
-1. For people — what changed, how to use it, what to do next
-2. For AI — full project context for starting a fresh session
+**Produces:** `docs/rollout/[milestone].md`
+**Done when:** snapshot generated, kit files reflect final state
 
-**Output:** `docs/rollout/[milestone].md`
+Use prompt: `.playbook/kit/00-prompts.md` → **Generating a Milestone Summary**
 
----
-
-## Bringing an Existing Project In
-
-For all paths into Playbook from an existing project: `guides/adopt.md`
-
-Answer four questions to find where to start:
-1. Does the project already have a `.kit/` folder?
-2. Can you describe every major piece without going back to the source material?
-3. Is there existing documentation?
-4. Is this a partial update or a full rebuild?
+**Resuming from a milestone:** If you're starting a fresh AI session and want to pick up from a previous milestone, load `docs/rollout/[milestone].md` alongside `.playbook/AI-INSTRUCTIONS.md`. The snapshot gives the AI the full context of where the project stands.
 
 ---
 
-## Quick Reference
+## Why Playbook Works This Way
 
-**File naming:**
+Playbook is built on one principle: **Progressive Disclosure + Tiering**.
 
-| Thing | Style | Example |
+Start with the simplest version. Add depth only when the work demands it. Define what is always required, then add sections only when the project's scope makes them necessary.
+
+This means:
+- Simple projects carry only what they need — no extra weight
+- Complex projects never skip what simpler ones must do
+- Every reader, human or AI, stops when they have enough — the detail is always there if they need it
+
+---
+
+## Reference: File Naming
+
+| Thing | Convention | Example |
 |---|---|---|
-| Files | lowercase, hyphens | `invoice-validator.md` |
+| Files | `kebab-case` | `invoice-validator.md` |
 | IDs | match the filename | `id: invoice-validator` |
-| Folders | lowercase, hyphens | `billing/` |
+| Folders | `kebab-case` | `billing/` |
 | Reserved folders | underscore prefix | `_concerns/` |
 | Index files | always `_index.md` | `billing/_index.md` |
 
 **Two markers used throughout:**
 - `N/A` — this section was considered and does not apply
-- `TODO` — this section is not yet written; the document cannot be marked active until it is
+- `TODO` — not yet written; a document cannot be marked approved until all TODOs are resolved
 
-**Declaring an active expansion** (in `.kit/01-process.md`):
+**Declaring an active expansion** in `.playbook/kit/01-process.md`:
+
 ```
 Active Expansions: video-insights
 
 Active Expansions:
   reverse-engineer: classify
 ```
-
----
-
-The plan is the agreement. The work follows.

@@ -2,176 +2,90 @@
 # File: .playbook/vocabulary-software/AI-INSTRUCTIONS.md
 
 > Load `.playbook/AI-INSTRUCTIONS.md` first, then this file.
+> For coding tasks, also load `docs/code-standards.md`.
 > This file adds software-specific rules on top of the universal rules.
-> Also load `docs/code-standards.md` for language and tooling standards.
 
 ---
 
-## Load Order
+## Additional Load Order for Software Tasks
 
-1. `.playbook/AI-INSTRUCTIONS.md`
-2. `.playbook/vocabulary-software/AI-INSTRUCTIONS.md` ← this file
-3. `docs/code-standards.md`
-4. `docs/flows/_index.md`
-5. `docs/contracts/_index.md`
-6. `.playbook/_index.md`
-7. Module and component docs as needed
+| Task | Also load |
+|---|---|
+| Any coding task | `docs/code-standards.md` |
+| Module work | `.playbook/[module]/_index.md` + relevant component and sequencer docs |
+| Flow or contract authoring | `docs/flows/_index.md`, `docs/contracts/_index.md` |
 
 ---
 
-## Document Types
+## Architecture Layer Rules
 
-### sequencer
+Every component and sequencer declares a `layer`. The declared layer must match the DDA file path, the implementation file path, and the import direction.
 
-Owns runtime sequence. Does not contain leaf logic.
-
-Use when a unit receives a trigger, orders other units, routes work, or branches by outcome.
-
-```yaml
-id: [kebab-case]
-export: [ExportedName]
-file: [src/module/sequencer.ts]
-layer: application
-type: sequencer
-status: draft
-parent: [module]
-triggers: []
-sequence: []
-emits: []
-concerns: []
-```
-
-Flow section shows the full call chain with all branches:
-```
-1. On [TriggerEvent](input):
-   a. [component].[method](input)
-      → ok: [ResultType]   → continue to b
-      → err: [ErrorType]   → emit [FailureEvent], halt
-   b. [component].[method](result)
-      → ok: [ResultType]   → emit [SuccessEvent]
-      → err: [ErrorType]   → compensate, emit [FailureEvent]
-```
-
----
-
-### component
-
-Single unit of logic. One responsibility. Returns typed Result.
-
-```yaml
-id: [kebab-case]
-export: [ExportedName]
-file: [src/module/component.ts]
-layer: domain | application | infrastructure | interface
-type: component
-status: draft
-parent: [parent]
-children: []
-connects: []
-emits: []
-concerns: []
-```
-
-Interface section:
-```
-Contract: docs/contracts/[flow]/[file].md#[section]
-
-input:  [InputType]
-output: Result<[SuccessType], [ErrorType]>
-```
-
----
-
-### concern
-
-```yaml
-id: [kebab-case]
-type: concern
-status: draft
-affects: all
-provided-by: internal
-```
-
----
-
-### integration
-
-```yaml
-id: [kebab-case]
-type: integration
-kind: external-service | external-library | internal-service
-status: draft
-used-by: []
-config: []
-docs: [url]
-```
-
----
-
-## Clean Architecture Rules
-
-Every component and sequencer declares `layer`. The declared layer must match:
-- The DDA file path
-- The implementation file path
-- The import direction
-
-| Layer | May Depend On | Must Not Depend On |
+| Layer | May depend on | Must not depend on |
 |---|---|---|
-| `domain` | Nothing project-specific | application, infrastructure, interface |
-| `application` | domain, declared ports | infrastructure implementations, interface |
-| `infrastructure` | application ports, domain types | interface |
-| `interface` | application APIs | infrastructure internals |
+| `domain` | Nothing project-specific | `application`, `infrastructure`, `interface` |
+| `application` | `domain`, declared ports | Infrastructure implementations, `interface` |
+| `infrastructure` | Application ports, domain types | `interface` |
+| `interface` | Application APIs | Infrastructure internals |
 
-If path and declared layer disagree, the doc stays `draft` until resolved.
+A component whose declared layer conflicts with its file path or imports stays `status: draft` until resolved. Flag it — do not work around it.
 
 ---
 
 ## Software-Specific Behavioral Rules
 
-1. All arrays in domain and application must be typed as `readonly`
+1. All arrays passed into or returned from `domain` and `application` functions must be typed as `readonly`
 2. Never mutate input parameters — always return new objects
-3. Never call `new Date()` in domain or application — inject a clock abstraction
-4. Always store and transmit dates in UTC
-5. Never use raw `throw` in domain or application — use `Result<T, E>`
-6. No `any` type anywhere in the codebase
-7. No non-null assertions (`!`)
-8. No type assertions (`as`) outside adapter boundaries
-9. No secrets hardcoded — all via validated environment variables
-10. No client-supplied IDs trusted for authorization without session verification
-11. Sequencers own sequence, not leaf logic — extract each leaf into its own component doc
+3. Never call `new Date()` in `domain` or `application` — inject a clock abstraction
+4. Always store and transmit dates in UTC; display formatting happens at the `interface` layer only
+5. Never use raw `throw` in `domain` or `application` — return `Result<T, E>`
+6. Never use `any` type anywhere in the codebase
+7. Never use non-null assertions (`!`)
+8. Never use type assertions (`as`) outside adapter boundaries — include an inline justification comment when you do
+9. Never hardcode secrets — all secrets via environment variables validated at startup
+10. Never trust client-supplied IDs for authorisation — always verify against session context
+11. Sequencers own sequence, not leaf logic — extract each meaningful leaf operation into its own component
 12. Every item in a sequencer's `sequence` must resolve to an active component doc or be marked `TODO`
 
 ---
 
 ## Software Anti-Patterns
 
-- Cross-layer imports (Application → Interface, Domain → Infrastructure)
-- Direct module-to-module imports — use a gateway
-- Business logic in sequencers or the interface layer
-- Anemic domain models — behavior belongs on the domain object
+**Architecture**
+- Cross-layer imports — `application` → `interface`, `domain` → `infrastructure`
+- Direct module-to-module imports — use a `ModuleServiceGateway`
+- Business logic in sequencers or the `interface` layer
+- Anemic domain models — behaviour belongs on the domain object
+
+**TypeScript**
+- `any` type anywhere in the codebase
+- Non-null assertions (`!`)
+- Type assertions (`as`) outside adapter boundaries
+- Inferred return types on public APIs
 - Boolean domain or application state — use enums, dates, or discriminated unions
+
+**Implementation**
 - Stub implementations — hardcoded returns, artificial delays, placeholder bodies
 - Partial implementations — all paths must be handled explicitly
+- Raw `throw` in `domain` or `application`
 - Magic strings or numbers — use named constants
 - Commented-out code — delete it; version control preserves history
-- `new Date()` in domain or application
+- `new Date()` in `domain` or `application`
 - Mutating input parameters
 
 ---
 
-## Phase Completion Checklist (Software)
+## Phase Completion Checklist
 
-- [ ] All linting and formatting checks pass
-- [ ] Type check passes — no errors
-- [ ] All tests pass — coverage gates met (domain 100%, application 90%+)
-- [ ] No stub or partial implementations
-- [ ] All arrays in domain/application typed as `readonly`
+Run this before closing any phase. The full checklist is in `docs/code-standards.md` Section 10 — these are the software-specific items.
+
+- [ ] All arrays in `domain` and `application` typed as `readonly`
 - [ ] No input parameters mutated
-- [ ] No `new Date()` in domain or application
-- [ ] All dates UTC
-- [ ] No raw `throw` in domain or application
+- [ ] No `new Date()` in `domain` or `application` — clock injected
+- [ ] All dates stored and transmitted in UTC
+- [ ] No raw `throw` in `domain` or `application` — `Result<T, E>` used throughout
 - [ ] No hardcoded secrets
-- [ ] All touched structure docs reflect current code
-- [ ] Living folder trees updated
-- [ ] Kit files updated
-- [ ] Rollout doc generated if milestone completed
+- [ ] All touched planning documents reflect current implementation
+- [ ] Living folder trees in `_index.md` files updated
+- [ ] No component coded without an active planning document
+- [ ] Rollout doc generated if a milestone was reached

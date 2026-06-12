@@ -1,22 +1,19 @@
 # Vocabulary — Software Development
 # File: .playbook/vocabulary-software/README.md
 
-This folder adapts the Playbook pipeline for software projects. It translates the pipeline stages into the language developers use, and adds the rules that apply specifically to code.
+This folder adapts Playbook for software projects. Every stage of the pipeline maps directly to something developers already do — the difference is that Playbook makes it explicit, ordered, and AI-ready.
 
 ---
 
-## How the Pipeline Maps
+## How the Pipeline Maps to Software
 
 | Playbook stage | Software equivalent |
 |---|---|
-| Discovery | Product requirements (PRD) |
+| Thinking | Session files — decisions, tasks, progress |
+| Discovery | Product requirements document (PRD) |
 | Mapping | Runtime flows and sequences |
 | Rules | Implementation contracts |
-| Planning | Document-Driven Architecture (DDA) |
-| Coordinator | Sequencer — coordinates other components |
-| Component | Service, module, class, or function |
-| Concern | Cross-cutting capability (logging, auth, error handling) |
-| Integration | Third-party service or library |
+| Planning | Component and module architecture (DDA) |
 | Work | Code |
 | Handoff | Deployment milestone |
 
@@ -24,13 +21,13 @@ This folder adapts the Playbook pipeline for software projects. It translates th
 
 ## Planning Document Types
 
-| Type | Used for |
-|---|---|
-| `structure` | App or module map with a living folder tree |
-| `sequencer` | Runtime coordinator — sequences other components |
-| `component` | Single unit of logic — one responsibility |
-| `concern` | Cross-cutting capability used across modules |
-| `integration` | External service or library contract |
+| Type | Software equivalent | What it defines |
+|---|---|---|
+| `structure` | App or module | The map — what's in it, how pieces connect |
+| `sequencer` | Use case coordinator | Owns the call sequence, not the logic |
+| `component` | Service, class, or function | One responsibility, typed input and output |
+| `concern` | Cross-cutting capability | Auth, logging, error handling — defined once |
+| `integration` | Third-party service or library | What it provides, how the project depends on it |
 
 ---
 
@@ -38,20 +35,19 @@ This folder adapts the Playbook pipeline for software projects. It translates th
 
 ```
 .playbook/
-  AI-INSTRUCTIONS.md
-  _index.md               ← project map
-  _concerns/              ← cross-cutting capabilities
-  _integrations/          ← external contracts
-  _shared/                ← components used across modules
-  [module]/
-    _index.md
-    [sequencer].md
-    [component].md
+├── _index.md                  ← project map
+├── _concerns/                 ← cross-cutting capabilities
+├── _integrations/             ← external contracts
+├── _shared/                   ← components used across modules
+└── [module]/
+    ├── _index.md              ← module map
+    ├── [sequencer].md
+    └── [component].md
+
 docs/
-  flows/
-  contracts/
-  code-standards.md       ← language and tooling rules
-  rollout/
+├── flows/                     ← runtime flows and sequences
+├── contracts/                 ← implementation contracts
+└── code-standards.md          ← language and tooling standards
 ```
 
 ---
@@ -60,28 +56,28 @@ docs/
 
 Every component and sequencer belongs to one layer. The layer determines what it is allowed to depend on.
 
-| Layer | Owns | Can depend on | Cannot depend on |
+| Layer | Owns | May depend on | Must not depend on |
 |---|---|---|---|
 | `domain` | Business rules, data shapes | Nothing project-specific | Everything else |
 | `application` | Use cases, coordination | Domain, declared ports | Infrastructure, interface |
-| `infrastructure` | Connections to outside systems | Application ports, domain | Interface |
+| `infrastructure` | Connections to outside systems | Application ports, domain types | Interface |
 | `interface` | HTTP, CLI, UI, entry points | Application | Infrastructure internals |
 
-The declared layer must match both the file location and what the code is allowed to import.
+The declared layer in every planning document must match the file location and what the code is allowed to import. If they disagree, the document stays `status: draft` until resolved.
+
+---
+
+## What Makes Software Different
+
+- Every component has a typed input and output — the interface is always explicit
+- Paths can fail in ways that require unwinding what's already happened — plan for it
+- Every outside dependency must be declared before it is used
+- Code must be tested — coverage requirements apply per layer
+- Secrets never appear in code, logs, or planning documents
 
 ---
 
 ## Additional Files
 
-- `AI-INSTRUCTIONS.md` — software-specific rules for AI sessions
-- Copy `code-standards.md` into `docs/` — language and tooling rules
-
----
-
-## What Is Different About Software
-
-- Every component has a typed input and output — what goes in and what comes out is explicit
-- Paths can fail in ways that require unwinding what has already happened
-- Every outside tool must be declared before it is used
-- Code must be tested — coverage requirements apply per layer
-- Secrets never appear in code, logs, or documents
+- `AI-INSTRUCTIONS.md` — software-specific rules for AI sessions; loaded alongside `.playbook/AI-INSTRUCTIONS.md`
+- `docs/code-standards.md` — canonical language and tooling standards; copy into `docs/` for each project
