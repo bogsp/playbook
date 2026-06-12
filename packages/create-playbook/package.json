@@ -1,34 +1,41 @@
 {
-	"name": "create-playbook",
-	"version": "1.0.0",
-	"description": "Scaffold the Playbook pipeline for any project",
-	"author": "Bogs",
-	"license": "MIT",
-	"type": "module",
-	"bin": {
-		"create-playbook": "./index.js"
-	},
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/bogsp/playbook.git",
-		"directory": "packages/create-playbook"
-	},
-	"homepage": "https://github.com/bogsp/playbook#readme",
-	"bugs": {
-		"url": "https://github.com/bogsp/playbook/issues"
-	},
-	"keywords": [
-		"playbook",
-		"context-kit",
-		"ai-assisted-development",
-		"scaffold",
-		"dda"
-	],
-	"engines": {
-		"node": ">=18"
-	},
-	"files": [
-		"index.js",
-		"README.md"
-	]
+  "name": "create-playbook",
+  "version": "3.0.0",
+  "description": "Initialize and manage Playbook projects",
+  "author": "Bogs",
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "create-playbook": "./index.js"
+  },
+  "scripts": {
+    "build": "node build.js",
+    "prepublishOnly": "node build.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bogsp/playbook.git",
+    "directory": "packages/create-playbook"
+  },
+  "homepage": "https://github.com/bogsp/playbook#readme",
+  "bugs": {
+    "url": "https://github.com/bogsp/playbook/issues"
+  },
+  "keywords": [
+    "playbook",
+    "context-kit",
+    "ai-assisted-development",
+    "scaffold",
+    "planning-docs"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "files": [
+    "index.js",
+    "build.js",
+    "lib/",
+    "templates/",
+    "README.md"
+  ]
 }

@@ -1,80 +1,203 @@
 # create-playbook
-# File: create-playbook/README.md
+# File: packages/create-playbook/README.md
 
-Scaffold the Playbook pipeline for any project.
+Initialize and manage Playbook projects from the command line.
 
-Zero dependencies. Works with npx, pnpm dlx, and yarn dlx.
+Zero dependencies. Works with pnpm, npx, and yarn dlx.
 
 ---
 
 ## Usage
 
 ```bash
-npx create-playbook my-project
-pnpm dlx create-playbook my-project
-yarn dlx create-playbook my-project
-```
-
-Omit the project name to scaffold in the current directory:
-
-```bash
-npx create-playbook .
+pnpm dlx create-playbook [project-name]
+pnpm dlx create-playbook .
+npx create-playbook [project-name]
+yarn dlx create-playbook [project-name]
 ```
 
 ---
 
-## What It Creates
+## Commands
+
+### `init` (default)
+
+Initialize a new Playbook project. Runs automatically when no command is given.
+
+```bash
+pnpm dlx create-playbook my-project   # scaffold into a new folder
+pnpm dlx create-playbook .            # scaffold in the current directory
+```
+
+The CLI asks a small number of questions and scaffolds the correct structure:
+
+1. **Project name**
+2. **Domain** — software / writing / production / manufacturing / none
+3. **Do you have existing work?**
+   - No → Starting from scratch
+   - Yes → Is the existing work well understood or does it need investigating first?
+     - Well understood → Adopting existing project
+     - Needs investigating → Auditing existing project before adopting
+4. **Install library?** (software domain only — installs `@bogsp/playbook-software-library`)
+
+The scaffold is tailored to your answers:
+- Domain vocabulary folder included for the chosen domain
+- Kit files pre-populated with the correct phase and expansion state
+- Guides filtered to what is relevant — no unused files
+- `docs/rewrite/` scaffolded only for audit projects
+- Library docs copied into `.playbook/` for software projects that opt in
+
+---
+
+### `sync`
+
+Update library docs in an existing software project.
+
+```bash
+pnpm dlx create-playbook sync
+```
+
+Checks the installed `@bogsp/playbook-software-library` version against the latest,
+lists which docs have changed, and guides you through updating. Must be run inside
+a Playbook project.
+
+---
+
+### `generate` / `g`
+
+Generate a single document inside an existing Playbook project.
+
+```bash
+pnpm dlx create-playbook generate flow
+pnpm dlx create-playbook generate contract
+pnpm dlx create-playbook generate component
+pnpm dlx create-playbook generate concern
+pnpm dlx create-playbook generate integration
+
+# Shorthand
+pnpm dlx create-playbook g flow
+pnpm dlx create-playbook g contract
+```
+
+Must be run inside a Playbook project (`.playbook/_index.md` must exist).
+
+| Type | What it generates | Where it goes |
+|---|---|---|
+| `flow` | A flow document with sections pre-structured for scope and trigger type | `docs/flows/` |
+| `contract` | A contract companion to an existing flow | `docs/contracts/` |
+| `component` | A planning doc for a single piece of work | `.playbook/` |
+| `concern` | A cross-cutting capability doc | `.playbook/_concerns/` |
+| `integration` | An external service or library doc | `.playbook/_integrations/` |
+
+Each generator asks for the required fields and drops a correctly structured file
+in the right location. Flow and contract generators update the relevant `_index.md`
+automatically.
+
+---
+
+## What Gets Scaffolded
+
+### All projects
 
 ```
-[project-name]/
-  .playbook/
-    README.md              -> orientation and journey matrix
-    pipeline.md            -> complete pipeline reference
-    00-rules.md            -> AI execution layer
-    _index.md              -> project manifest
-    _concerns/             -> cross-cutting capabilities
-    _integrations/         -> external contracts
-    _shared/               -> cross-module components
-    .guides/               -> guides (copy from Playbook template)
-    templates/             -> doc type templates (copy from Playbook template)
-  .kit/
-    00-prompts.md          -> session prompts
-    01-process.md          -> session spark
-    02-exploration.md      -> active decisions
-    03-execution.md        -> guidelines and plan
-    04-progress.md         -> progress log
-    05-kanban.md           -> ticket breakdown (optional)
-    06-qa.md               -> test registry (optional)
-    _refs/                 -> supporting material
-    _tests/                -> QA test files
-    _archives/             -> lean history
-  docs/
-    flows/
-      _index.md
-    contracts/
-      _index.md
-      global.md
-    rewrite/               -> RE expansion outputs (when active)
-      system-map.md
-      decision-record.md
-      risk-register.md
-    rollout/
+.playbook/
+  AI-INSTRUCTIONS.md          — universal AI session rules
+  pipeline.md                 — how the pipeline works
+  maintenance.md              — keeping files lean and current
+  templates.md                — universal planning doc shapes
+  _index.md                   — project map (pre-populated)
+  _concerns/
+  _integrations/
+  _shared/
+  guides/
+    _index.md
+    context-kit.md
+    video-insights.md
+    [new-project | adopt | audit].md  — based on project type
+.kit/
+  00-prompts.md
+  01-process.md               — pre-populated with correct phase and expansion
+  02-exploration.md
+  03-execution.md
+  04-progress.md              — pre-populated with project type entry
+  05-kanban.md
+  06-qa.md
+  _refs/
+  _tests/
+  _archives/
+docs/
+  flows/
+    _index.md
+    flow-template.md
+  contracts/
+    _index.md
+    global.md
+    contract-template.md
+  rollout/
+```
+
+### Software domain (additional)
+
+```
+.playbook/
+  vocabulary-software/
+    README.md
+    AI-INSTRUCTIONS.md
+    templates.md
+  _concerns/          — library concern docs (if library installed)
+  _integrations/      — library integration docs (if library installed)
+  _solutions/         — library solution docs (if library installed)
+```
+
+### Writing / Production / Manufacturing domains (additional)
+
+```
+.playbook/
+  vocabulary-[domain]/
+    README.md
+    AI-INSTRUCTIONS.md
+    templates.md
+```
+
+### Audit projects (additional)
+
+```
+docs/
+  rewrite/
+    system-map.md
+    decision-record.md
+    risk-register.md
 ```
 
 ---
 
 ## After Scaffolding
 
-1. Read `.playbook/README.md` -- find your starting point
-2. Read `.playbook/.guides/context-kit.md` -- understand the session layer
-3. Open `.kit/00-prompts.md` -- copy your first session prompt
-4. Copy `docs/code-standards.md` into the project `docs/` folder
+1. Read `.playbook/README.md` — find your starting point
+2. Read the guide for your project type:
+   - New project → `.playbook/guides/new-project.md`
+   - Adopting → `.playbook/guides/adopt.md`
+   - Auditing → `.playbook/guides/audit.md`
+3. Open `.kit/00-prompts.md` — copy your first session prompt
+
+---
+
+## Building
+
+Templates are copied from the Playbook source files at build time. To rebuild:
+
+```bash
+pnpm build
+```
+
+This copies the latest files from `playbook/.playbook/` and `playbook/docs/`
+into `templates/`. Always run before publishing.
 
 ---
 
 ## Notes
 
-- `.playbook/` and `.kit/` are Playbook's world -- never shipped
-- `docs/flows/`, `docs/contracts/`, and `docs/rewrite/` belong to the project
-- The guides in `.playbook/.guides/` are hidden -- not part of the product
-- All kit files are templates -- populate them with your project context
+- `.playbook/` and `.kit/` are Playbook's world — never shipped with your project
+- `docs/flows/` and `docs/contracts/` belong to your project
+- `generate` commands require an initialized Playbook project
+- `sync` is only relevant for software domain projects using the library
