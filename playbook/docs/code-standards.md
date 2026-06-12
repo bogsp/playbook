@@ -418,9 +418,9 @@ chore: update Biome to 1.9
 - PR description includes: what changed, why, and how to test
 - CI must pass (lint, format, type check, tests, coverage gates)
 - Checklist before requesting review:
-  - [ ] DDA sync check — all touched docs reflect current implementation
-  - [ ] No new dependencies added without a DDA doc
-  - [ ] No new components coded without a DDA doc
+  - [ ] Planning doc sync check — all touched docs reflect current implementation
+  - [ ] No new dependencies added without a planning doc
+  - [ ] No new components coded without a planning doc
   - [ ] No cross-layer violations
   - [ ] No direct module-to-module imports
   - [ ] Events follow naming conventions
@@ -519,29 +519,30 @@ export const env = EnvSchema.parse(process.env);
 
 ## 9. AI-Assisted Development
 
-This project uses Document-Driven Architecture (DDA). Always load `.playbook/00-rules.md`
-alongside this file at the start of every AI session. DDA defines structure;
-this file defines implementation. Neither is complete without the other.
+This project uses Playbook. Always load `.playbook/AI-INSTRUCTIONS.md`
+and `vocabulary-[domain]/AI-INSTRUCTIONS.md` alongside this file at the start of every AI session.
+Playbook defines structure; this file defines implementation. Neither is complete without the other.
 
-### DDA Integration
+### Planning Doc Integration
 
 - All components are defined in `.playbook/` before any code is written
-- AI generates code against DDA component docs — not ahead of them
+- AI generates code against planning docs — not ahead of them
 - Every module has a `_index.md` in `.playbook/[module]/` describing: purpose,
   entry points, contained components, integrations, and concerns
-- Keep DDA docs updated when implementations change — run sync mode before every PR
+- Keep planning docs updated when implementations change — run sync mode before every PR
 
 ### AI Session Boot Order
 
 ```
-1. .playbook/00-rules.md
-2. docs/code-standards.md        ← this file
-3. docs/flows/_index.md
-4. docs/contracts/_index.md
-5. .playbook/_index.md
-6. .playbook/[module]/_index.md
-7. Relevant component and sequencer docs
-8. _concerns/ + _integrations/
+1. .playbook/AI-INSTRUCTIONS.md
+2. vocabulary-[domain]/AI-INSTRUCTIONS.md
+3. docs/code-standards.md        ← this file
+4. docs/flows/_index.md
+5. docs/contracts/_index.md
+6. .playbook/_index.md
+7. .playbook/[module]/_index.md
+8. Relevant component and sequencer docs
+9. _concerns/ + _integrations/
 ```
 
 ### Deep Modules for AI Clarity
@@ -561,7 +562,7 @@ export class PostInvoiceUseCase { ... }
 
 ### Prompting Standards
 
-- Always provide: the relevant DDA component doc, the interface the code must implement,
+- Always provide: the relevant planning doc, the interface the code must implement,
   and the error types it must handle
 - Never accept AI-generated code that uses `any`, raw throws, or skips Zod validation
 - Never accept stub implementations — no hardcoded return values, no artificial delays or intervals standing in for real logic, no placeholder function bodies
@@ -589,7 +590,7 @@ export class PostInvoiceUseCase { ... }
 When any of the following occur, stop all work and flag before writing any code:
 
 - A requirement is unclear or underspecified
-- A flow path is not defined in the DDA doc or contract
+- A flow path is not defined in the planning doc or contract
 - A dependency is needed but not declared in the component doc
 - A decision would affect more than the current component
 - The correct behavior cannot be inferred without making assumptions
@@ -609,7 +610,7 @@ Never do any of the following:
 
 **Architecture**
 - Cross-layer imports — Application → Interface, Domain → Infrastructure
-- Direct module-to-module imports — use `ModuleServiceGateway`
+- Direct module-to-module imports — use a declared module gateway
 - Business logic in sequencers or the Interface layer
 - Anemic domain models — behavior belongs on the domain object, not in a service
 
@@ -630,7 +631,7 @@ Never do any of the following:
 - Mutating input parameters — return new objects
 
 **AI-Specific**
-- Generating code ahead of a DDA doc
+- Generating code ahead of a planning doc
 - Adding undeclared dependencies or components
 - Silently resolving ambiguity with assumptions
 - Duplicating an existing component's responsibilities
@@ -653,11 +654,11 @@ No phase is complete until all applicable items are checked.
 - [ ] No stub implementations — no hardcoded returns, artificial delays, or placeholder bodies
 - [ ] No partial implementations — all branches handled: happy path, errors, and edge cases
 
-### DDA Sync
+### Planning Doc Sync
 
-- [ ] All touched components have up-to-date DDA docs
-- [ ] No new dependencies added without a DDA doc
-- [ ] No new components coded without a DDA doc
+- [ ] All touched components have up-to-date planning docs
+- [ ] No new dependencies added without a planning doc
+- [ ] No new components coded without a planning doc
 - [ ] Emergent components traced back — parent and `_index.md` updated
 - [ ] All modified docs are `status: active` (not `draft`)
 
@@ -681,7 +682,7 @@ No phase is complete until all applicable items are checked.
 ### Milestone Only (at major releases)
 
 - [ ] Rollout doc generated — `docs/rollout/[milestone].md`
-- [ ] All DDA docs audited — code matches docs across all touched modules
+- [ ] All planning docs audited — code matches docs across all touched modules
 - [ ] QA sign-off complete if `06-qa.md` is active
 
 ---
@@ -719,25 +720,25 @@ No phase is complete until all applicable items are checked.
 
 - Biome configured as pre-commit hook — broken code never reaches the repo
 - CI enforces: lint, format, type check, tests, coverage gates — all must pass
-- DDA sync check is mandatory before every PR — no exceptions
-- All `status: draft` DDA docs must be resolved before coding begins
+- Planning doc sync check is mandatory before every PR — no exceptions
+- All `status: draft` planning docs must be resolved before coding begins
 
 ### Detection
 
 - Biome and TypeScript surface issues at write time in the editor
 - CI gate catches anything that slips through locally
-- DDA audit at each milestone catches structural drift
+- Planning doc audit at each milestone catches structural drift
 - QA plan (`06-qa.md`) catches behavioral regressions
 
 ### Recovery
 
 - **Build failure** — fix Biome/type errors before any other work; do not stack changes on broken builds
 - **Test failure** — revert to last passing commit if cause is unclear; fix forward only if root cause is known
-- **DDA drift** — run sync mode immediately; update the doc before writing any new code on that component
-- **Context rot** — re-upload kit files and DDA docs; use the anchoring prompt in `.kit/00-prompts.md`
+- **Planning doc drift** — run sync mode immediately; update the doc before writing any new code on that component
+- **Context rot** — re-upload kit files and planning docs; use the anchoring prompt in `.kit/00-prompts.md`
 - **Bad merge** — revert the merge commit; re-apply changes manually with proper review
 
 ---
 
 *This document is the source of truth for code standards. When in doubt, refer here first.*
-*Always load alongside `.playbook/00-rules.md`.*
+*Always load alongside `.playbook/AI-INSTRUCTIONS.md` and `vocabulary-[domain]/AI-INSTRUCTIONS.md`.*

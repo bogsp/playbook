@@ -1,5 +1,6 @@
 # Session Prompts
-# File: .kit/00-prompts.md
+
+# File: kit/00-prompts.md
 
 Copy and paste the prompt that matches what you are doing.
 
@@ -105,7 +106,9 @@ Upload `docs/rollout/[milestone].md` + `AI-INSTRUCTIONS.md` + `vocabulary-[domai
 
 ```
 I'm resuming work on an existing project.
-Read the milestone summary first, then the two instruction files.
+Read the milestone summary first, then load in this order:
+1. AI-INSTRUCTIONS.md
+2. vocabulary-[domain]/AI-INSTRUCTIONS.md
 Confirm your understanding before we begin.
 ```
 
@@ -179,7 +182,7 @@ Update the folder map in any _index.md where pieces changed.
 
 ## Generating a Milestone Summary
 
-Attach all `.playbook/` docs + `.kit/04-progress.md`, then send:
+Attach all `.playbook/` docs + `kit/04-progress.md`, then send:
 
 ```
 Generate a milestone summary for [milestone name].
@@ -229,7 +232,7 @@ Audit expansion current phase: [inventory | audit | classify | risk-map | gap-re
 Previous phase reviewed and approved.
 
 Move to [next phase].
-Follow .playbook/guides/reverse-engineer.md.
+Follow .playbook/guides/audit.md.
 Wait for review before moving again.
 ```
 
@@ -242,10 +245,10 @@ Attach all `docs/rewrite/` files + current kit files, then send:
 ```
 The audit expansion is complete. Run the handoff.
 
-1. Pull open questions from system-map.md → .kit/02-exploration.md
-2. Pull settled decisions from decision-record.md → .kit/02-exploration.md
-3. Pull known problems from risk-register.md → .kit/03-execution.md
-4. Update .kit/01-process.md — mark audit complete, update Current State
+1. Pull open questions from system-map.md → kit/02-exploration.md
+2. Pull settled decisions from decision-record.md → kit/02-exploration.md
+3. Pull known problems from risk-register.md → kit/03-execution.md
+4. Update kit/01-process.md — mark audit complete, update Current State
 
 Generate updated kit files for review.
 ```
@@ -290,7 +293,7 @@ Output as a downloadable markdown file.
 
 Add one extra section based on the video type — see `guides/video-insights.md`.
 
-Save the output to: `.kit/_refs/video-insights/[short-descriptive-title].md`
+Save the output to: `kit/_refs/video-insights/[short-descriptive-title].md`
 
 ---
 
@@ -300,7 +303,7 @@ Upload the insight file alongside your kit files, then send:
 
 ```
 I have a new video insight to discuss.
-File: .kit/_refs/video-insights/[filename].md
+File: kit/_refs/video-insights/[filename].md
 
 Review it and:
 1. Summarise the core idea in one sentence
@@ -322,7 +325,7 @@ After the discussion, if integrating:
 ```
 Integrate [insight title] as follows:
 - [Open question | Settled decision | Task | Known problem]
-- Ref: .kit/_refs/video-insights/[filename].md
+- Ref: kit/_refs/video-insights/[filename].md
 
 Update the insight file Status to: Integrated
 Log in 04-progress.md: Decided: [title] — Integrated

@@ -1,20 +1,21 @@
 # Risk Register
+
 # File: docs/rewrite/risk-register.md
 
-> Output of the Reverse Engineer expansion -- Phase 4 (Risk Map).
+> Output of the Reverse Engineer expansion - Phase 4 (Risk Map).
 > Documents what breaks if X changes and the safe order for migration.
-> For large projects, split into docs/rewrite/risk-register/ with _index.md.
+> For large projects, split into docs/rewrite/risk-register/ with \_index.md.
 
 ---
 
 ## Summary
 
 | Risk Level | Count |
-|---|---|
-| Critical | 0 |
-| High | 0 |
-| Medium | 0 |
-| **Total** | **0** |
+| ---------- | ----- |
+| Critical   | 0     |
+| High       | 0     |
+| Medium     | 0     |
+| **Total**  | **0** |
 
 ---
 
@@ -64,17 +65,17 @@ Changes that break specific features.
 The safe order for the rewrite based on risk dependencies.
 Read as: X must be complete before Y can begin.
 
-| Step | Must Complete | Before Starting |
-|---|---|---|
-| 1 | [component or phase] | [component or phase] |
-| 2 | [component or phase] | [component or phase] |
+| Step | Must Complete        | Before Starting      |
+| ---- | -------------------- | -------------------- |
+| 1    | [component or phase] | [component or phase] |
+| 2    | [component or phase] | [component or phase] |
 
 ---
 
 ## Circular Dependencies
 
-Components that mutually depend on each other -- these require special handling.
+Components that mutually depend on each other - these require special handling.
 
-| Component A | Component B | Resolution Strategy |
-|---|---|---|
-| [name] | [name] | [how to break the cycle] |
+| Component A | Component B | Resolution Strategy      |
+| ----------- | ----------- | ------------------------ |
+| [name]      | [name]      | [how to break the cycle] |
