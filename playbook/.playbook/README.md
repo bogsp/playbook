@@ -3,9 +3,12 @@
 
 Playbook is a planning system for working with AI on real projects.
 
-Before anything gets built, it gets written down. Once it's built, it stays written down. This keeps you, your team, and your AI assistant working from the same understanding — from the first idea to the finished work.
+Before anything gets built, it gets written down. Once it's built, it stays
+written down. This keeps you, your team, and your AI assistant working from
+the same understanding — from the first idea to the finished work.
 
-You don't need to be technical to use it. The guides walk you through every step.
+You don't need to be technical to use it. The guides walk you through every
+step.
 
 ---
 
@@ -16,6 +19,7 @@ You don't need to be technical to use it. The guides walk you through every step
 | Understand how this system works | [Pipeline guide](pipeline.md) |
 | Start a brand new project | [New project guide](guides/new-project.md) |
 | Bring an existing project in | [Adoption guide](guides/adopt.md) |
+| Map an existing project before changing it | [Audit guide](guides/audit.md) |
 | Pick up where I left off | [Session prompts](kit/00-prompts.md) |
 | Start or resume a session with AI | [Session prompts](kit/00-prompts.md) |
 
@@ -23,13 +27,15 @@ You don't need to be technical to use it. The guides walk you through every step
 
 ## How It Works
 
-Every project moves through the same stages — in order. Each stage sets the foundation for the next.
+Every project moves through the same stages — in order. Each stage sets the
+foundation for the next.
 
 ```
 Thinking → Discovery → Mapping → Rules → Planning → Work → Handoff
 ```
 
-Existing projects add one stage at the front to map what already exists before anything changes.
+Existing projects add one stage at the front to map what already exists
+before anything changes.
 
 The full breakdown is in the [pipeline guide](pipeline.md).
 
@@ -41,13 +47,14 @@ The full breakdown is in the [pipeline guide](pipeline.md).
 - The map and the rules are agreed on before planning begins
 - Written plans stay current with the actual work
 - The session log is never edited — only added to
-- Nothing is deleted — it is either active or archived
+- Nothing is deleted — it's either active or archived
 
 ---
 
 ## Choose Your Project Type
 
-Playbook adapts to different kinds of work. Pick the folder that matches your project and read its guide to see how the pipeline applies to you.
+Playbook adapts to different kinds of work. Pick the folder that matches your
+project and read its guide to see how the pipeline applies to you.
 
 | Project type | Guide |
 |---|---|
@@ -60,16 +67,17 @@ Playbook adapts to different kinds of work. Pick the folder that matches your pr
 
 ## How It's Organised
 
-You don't need to understand all of this to get started — the guides handle the setup for you.
+You don't need to understand all of this to get started — the guides handle
+the setup for you.
 
 ```
 project-root/
 │
 ├── .playbook/                    ← Playbook system files
 │   ├── README.md                 ← you are here
-│   ├── pipeline.md               ← how the pipeline works, all stages, all formats
+│   ├── pipeline.md                ← how the pipeline works, all stages, all formats
 │   ├── AI-INSTRUCTIONS.md        ← loaded by your AI assistant at session start
-│   ├── _index.md                 ← this project's living map (edit per project)
+│   ├── _index.md                  ← this project's living map (edit per project)
 │   ├── maintenance.md            ← keeping files lean and current
 │   ├── _concerns/                ← cross-cutting capabilities (auth, logging, etc.)
 │   ├── _integrations/            ← external service and library contracts
@@ -78,8 +86,8 @@ project-root/
 │   │   ├── _index.md             ← all guides in one place
 │   │   ├── new-project.md        ← starting from scratch
 │   │   ├── adopt.md              ← bringing an existing project in
+│   │   ├── audit.md              ← mapping a project before changing it
 │   │   ├── context-kit.md        ← how the session files work
-│   │   ├── reverse-engineer.md   ← mapping a project before changing it
 │   │   └── video-insights.md     ← using video as research and reference
 │   ├── kit/                      ← your session and planning files
 │   │   ├── 00-prompts.md         ← session prompts, copy and paste
@@ -91,17 +99,18 @@ project-root/
 │   │   ├── 06-qa.md              ← checks and sign-off (optional)
 │   │   ├── _archives/            ← older history, moved not deleted
 │   │   ├── _refs/                ← supporting material and research
-│   │   └── _tests/               ← one file per check
-│   ├── templates/                ← all file templates
+│   │   └── _tests/                ← one file per check
+│   ├── templates/                ← universal, domain-agnostic templates
+│   │   └── kit-*.md               ← raw kit file references for realignment — never edited
 │   └── vocabulary-[domain]/
 │       ├── README.md             ← how the pipeline maps to this project type
 │       ├── AI-INSTRUCTIONS.md    ← loaded by your AI assistant for this project type
-│       └── templates/            ← planning document templates
+│       └── templates/             ← planning document templates for this domain
 │
 └── docs/                         ← your project's documentation
     ├── flows/                    ← one file per major path
     ├── contracts/                ← rules for each path
-    ├── code-standards.md         ← language and tooling standards (software projects)
-    ├── rewrite/                  ← existing project audit outputs
+    ├── code-standards.md         ← language and tooling standards (optional, your own)
+    ├── rewrite/                  ← audit outputs for existing projects
     └── rollout/                  ← milestone snapshots
 ```

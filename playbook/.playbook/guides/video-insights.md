@@ -12,7 +12,7 @@ Watch a video
      ↓
 Extract the key ideas with Gemini
      ↓
-Save the insight file to .kit/_refs/video-insights/
+Save the insight file to kit/_refs/video-insights/
      ↓
 Discuss it in a Playbook session
      ↓
@@ -78,15 +78,15 @@ Output as a downloadable markdown file.
 Save the Gemini output to:
 
 ```
-.kit/_refs/video-insights/[short-descriptive-title].md
+kit/_refs/video-insights/[short-descriptive-title].md
 ```
 
 Use lowercase with hyphens. Keep it short and recognisable.
 
 ```
-.kit/_refs/video-insights/atomic-habits-james-clear.md
-.kit/_refs/video-insights/lean-startup-overview.md
-.kit/_refs/video-insights/colour-grading-basics.md
+kit/_refs/video-insights/atomic-habits-james-clear.md
+kit/_refs/video-insights/lean-startup-overview.md
+kit/_refs/video-insights/colour-grading-basics.md
 ```
 
 ---
@@ -97,7 +97,7 @@ Upload the insight file alongside your kit files, then send:
 
 ```
 I have a new video insight to discuss.
-File: .kit/_refs/video-insights/[filename].md
+File: kit/_refs/video-insights/[filename].md
 
 Review it and:
 1. Summarise the core idea in one sentence
@@ -126,10 +126,10 @@ Promote it to the right place in the kit:
 
 | What it does | Where it goes |
 |---|---|
-| Opens a question | `.kit/02-exploration.md` — Open Questions |
-| Settles a decision | `.kit/02-exploration.md` — Settled Decisions |
-| Adds a task | `.kit/03-execution.md` — Tasks |
-| Flags a risk | `.kit/03-execution.md` — Known Problems |
+| Opens a question | `kit/02-exploration.md` — Open Questions |
+| Settles a decision | `kit/02-exploration.md` — Settled Decisions |
+| Adds a task | `kit/03-execution.md` — Tasks |
+| Flags a risk | `kit/03-execution.md` — Known Problems |
 
 Then update the insight file:
 ```
@@ -164,7 +164,7 @@ It stays in `_refs/` as a record. Nothing is deleted.
 
 ## Step 5 — Log It
 
-Add one line to `.kit/04-progress.md`:
+Add one line to `kit/04-progress.md`:
 
 ```
 - **Decided:** [Video title] — Integrated | Deferred | Set Aside
@@ -178,14 +178,14 @@ Add one line to `.kit/04-progress.md`:
 - Gemini extracts. Playbook connects. The discussion step is never skipped.
 - The `Connections` and `Relevance` fields in the insight file are filled during a Playbook session — not by Gemini.
 - Insights that are set aside stay in `_refs/` — they are never deleted.
-- Every integrated insight is traceable back to a decision in `.kit/02-exploration.md`.
-- Every decision is logged in `.kit/04-progress.md`.
+- Every integrated insight is traceable back to a decision in `kit/02-exploration.md`.
+- Every decision is logged in `kit/04-progress.md`.
 
 ---
 
 ## Activating This Expansion
 
-When you have insights to discuss, declare it in `.kit/01-process.md`:
+When you have insights to discuss, declare it in `kit/01-process.md`:
 
 ```
 Active Expansions: video-insights
@@ -204,8 +204,8 @@ Active Expansions: none
 The base template and variant reference are in:
 
 ```
-.kit/_refs/video-insights/video-insight-base.md
-.kit/_refs/video-insights/video-insight-variants.md
+kit/_refs/video-insights/video-insight-base.md
+kit/_refs/video-insights/video-insight-variants.md
 ```
 
 Copy `video-insight-base.md` as a starting point if Gemini is unavailable or you are extracting insights manually.

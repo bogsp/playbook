@@ -1,16 +1,17 @@
 # Mapping What Already Exists
-# File: .playbook/guides/reverse-engineer.md
+# File: .playbook/guides/audit.md
 
 > You cannot design what should exist without understanding what does exist.
 > Every assumption about existing work that turns out wrong costs time to undo.
 
-Use this guide when bringing an existing project into Playbook or when rebuilding something that already has a history.
+Use this guide when bringing an existing project into Playbook, or when
+rebuilding something that already has a history.
 
-Activate before starting:
+Activate before starting — add this to [kit/01-process.md](../kit/01-process.md):
 
 ```
 Active Expansions:
-  reverse-engineer: inventory
+  audit: inventory
 ```
 
 ---
@@ -23,7 +24,7 @@ Three documents saved in `docs/rewrite/`:
 |---|---|
 | `system-map.md` | What exists, where it lives, what depends on what |
 | `decision-record.md` | A verdict on every major piece, with reasoning |
-| `risk-register.md` | What breaks if X changes and what order things can safely change in |
+| `risk-register.md` | What breaks if X changes, and what order things can safely change in |
 
 For large projects, any of these can be split into a sub-folder with its own `_index.md`.
 
@@ -31,25 +32,34 @@ For large projects, any of these can be split into a sub-folder with its own `_i
 
 ## What "Inventory" Means in Your Domain
 
-Inventory is not one-size-fits-all. What you are mapping depends on what your project is made of.
+Inventory isn't one-size-fits-all. What you're mapping depends on what your
+project is made of.
 
 **Software project:**
-Map the codebase — apps, modules, services, data models, external APIs, configuration, entry points, and what imports what.
+Map the codebase — apps, modules, services, data models, external APIs,
+configuration, entry points, and what imports what.
 
 **Writing project:**
-Map the body of work — published pieces, drafts, outlines, the publication structure, editorial standards that exist (written or unwritten), platforms or publishers in use, and what each piece depends on.
+Map the body of work — published pieces, drafts, outlines, the publication
+structure, editorial standards that exist (written or unwritten), platforms or
+publishers in use, and what each piece depends on.
 
 **Production project:**
-Map the production history — deliverables produced, phases completed, vendors and tools used, assets created and where they live, approvals obtained, and what is still outstanding.
+Map the production history — deliverables produced, phases completed, vendors
+and tools used, assets created and where they live, approvals obtained, and
+what's still outstanding.
 
 **Manufacturing project:**
-Map what has been built or is in progress — parts, assemblies, process steps, suppliers, specifications on file, inspection records, and anything with a known defect or open question.
+Map what's been built or is in progress — parts, assemblies, process steps,
+suppliers, specifications on file, inspection records, and anything with a
+known defect or open question.
 
-The phases below apply to all domains. Interpret each prompt through the lens of what your project is actually made of.
+The phases below apply to every domain. Interpret each prompt through the lens
+of what your project is actually made of.
 
 ---
 
-## Classification System
+## Verdicts
 
 Every major piece receives one of these verdicts:
 
@@ -61,14 +71,15 @@ Every major piece receives one of these verdicts:
 | `Rewrite` | Wrong, unclear, or too tangled — rebuild from scratch |
 | `Replace` | The responsibility stays but the tool or method changes |
 | `Discard` | No longer needed — remove it |
-| `Defer` | Cannot decide yet — needs more information |
+| `Defer` | Can't decide yet — needs more information |
 | `Evaluate` | Uncertain — needs investigation before a verdict can be given |
 
 ---
 
 ## Phases
 
-Each phase requires your review before moving to the next. No phase advances automatically.
+Each phase requires your review before moving to the next. No phase advances
+automatically.
 
 ---
 
@@ -82,12 +93,12 @@ Run an inventory of this project.
 Map and document:
 1. All major pieces, sections, or components and what they do
 2. All outside tools, services, or dependencies and what they provide
-3. The information structure — what data or content exists and how it is organised
+3. The information structure — what data or content exists and how it's organised
 4. Entry points — how the project is accessed, used, or consumed
 5. What depends on what
 
 Use plain language throughout.
-Flag anything that is unclear or needs investigation.
+Flag anything that's unclear or needs investigation.
 Produce a draft docs/rewrite/system-map.md.
 Wait for review before moving on.
 ```
@@ -130,8 +141,8 @@ Wait for review before moving on.
 ```
 Using the audited system map, classify every major piece.
 
-For each piece document:
-- Verdict (from the classification system)
+For each piece, document:
+- Verdict (from the verdict list)
 - Reasoning — why this verdict
 - What else is affected by this decision
 - Risk level — low | medium | high | critical
@@ -168,14 +179,14 @@ Wait for review before moving on.
 
 ### Phase 5 — Gap Report
 
-**Goal:** Name what is missing, broken, or undocumented.
+**Goal:** Name what's missing, broken, or undocumented.
 
 ```
 Using all three documents, produce a gap report.
 
 Identify:
 - Missing — things needed but not yet existing
-- Broken — things that do not work correctly right now
+- Broken — things that don't work correctly right now
 - Undocumented — things with no written record, spec, or clear owner
 - Quality concerns — anything known to cause problems under real conditions
 
@@ -197,22 +208,22 @@ Wait for review before moving on.
 The mapping phase is complete. Run the handoff.
 
 1. Pull open questions from system-map.md
-   → add to .kit/02-exploration.md under Open Questions
+   -> add to kit/02-exploration.md under Open Questions
 
 2. Pull settled verdicts from decision-record.md
-   → add to .kit/02-exploration.md under Settled Decisions
+   -> add to kit/02-exploration.md under Settled Decisions
 
 3. Pull known problems from risk-register.md
-   → add to .kit/03-execution.md under Known Problems
+   -> add to kit/03-execution.md under Known Problems
 
-4. Update .kit/01-process.md
-   → mark this expansion complete
-   → update Current State to reflect where the project now stands
+4. Update kit/01-process.md
+   -> mark this expansion complete
+   -> update Current State to reflect where the project now stands
 
 Generate updated kit files for review.
 ```
 
-**Output:** Updated `.kit/02-exploration.md`, `.kit/03-execution.md`, `.kit/01-process.md`
+**Output:** Updated `kit/02-exploration.md`, `kit/03-execution.md`, `kit/01-process.md`
 **Complete when:** all three kit files are updated and reviewed.
 
 ---
@@ -222,4 +233,4 @@ Generate updated kit files for review.
 - Never move to the next phase without your review and approval
 - Never write planning documents during inventory, audit, or classify phases
 - Every piece must be classified before the risk map phase begins
-- The handoff is not complete until the rewrite documents feed the kit files
+- The handoff isn't complete until the rewrite documents feed the kit files
