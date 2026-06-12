@@ -1,13 +1,17 @@
 # Local Model Runtime
-# File: packages/playbook-library/_solutions/local-model-runtime.md
+
+# File: packages/playbook-software-library/\_solutions/local-model-runtime.md
+
 # Version: 1.0.0
 
 ---
+
 id: local-model-runtime
 type: solution
 status: active
 applies-to: [local-ai, model-serving, agent-runtime]
 integrations: [llama-cpp]
+
 ---
 
 ## What It Solves
@@ -18,6 +22,7 @@ resource limits, process health, streaming, and recovery behavior.
 ## Behavior
 
 **Runtime sequence:**
+
 1. Resolve requested role or model
 2. Check resource availability
 3. Allocate port and process slot
@@ -29,6 +34,7 @@ resource limits, process health, streaming, and recovery behavior.
 9. Unload when idle or replaced
 
 **Rules:**
+
 - Only the model service manages model processes
 - Model loading is serialized per resource pool
 - Port allocation is tracked and released

@@ -1,8 +1,11 @@
 # Cloudflare R2
-# File: packages/playbook-library/_integrations/cloudflare-r2.md
+
+# File: packages/playbook-software-library/\_integrations/cloudflare-r2.md
+
 # Version: 1.0.0
 
 ---
+
 id: cloudflare-r2
 type: integration
 kind: external-service
@@ -10,6 +13,7 @@ status: active
 used-by: []
 config: [R2_ACCOUNT_ID, R2_ACCESS_KEY_ID, R2_SECRET_ACCESS_KEY, R2_BUCKET_NAME, R2_PUBLIC_URL]
 docs: https://developers.cloudflare.com/r2/
+
 ---
 
 ## What It Does
@@ -31,12 +35,14 @@ What this integration exposes to the system:
 ## Behavior
 
 **Upload:**
+
 - Files are always stored with an explicit content type -- never inferred
 - Storage keys follow a defined pattern: `[entity-type]/[entity-id]/[filename]`
 - Duplicate keys overwrite the existing file -- callers must ensure key uniqueness
 - Maximum file size is enforced before upload begins -- never after
 
 **Signed URLs:**
+
 - Expiry must always be declared explicitly -- never use a default
 - Minimum expiry: 15 minutes
 - Maximum expiry: 60 minutes for user-facing downloads
@@ -44,11 +50,13 @@ What this integration exposes to the system:
 - The raw R2 bucket URL is never exposed to clients under any circumstances
 
 **Delete:**
+
 - Deleting a non-existent key is not an error -- it is a no-op
 - Deletion is permanent -- no recycle bin, no soft delete via this integration
 - Soft delete must be handled at the application layer before calling delete
 
 **Rules:**
+
 - The R2 bucket must never be publicly accessible
 - Access credentials must never appear in logs, errors, or responses
 - All operations are wrapped in the Result pattern -- never throw

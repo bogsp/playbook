@@ -1,13 +1,17 @@
 # Missing Script Drift Check
-# File: packages/playbook-library/_solutions/missing-script-drift-check.md
+
+# File: packages/playbook-software-library/\_solutions/missing-script-drift-check.md
+
 # Version: 1.0.0
 
 ---
+
 id: missing-script-drift-check
 type: solution
 status: active
 applies-to: [repo-tooling, package-scripts, operational-scripts]
 integrations: []
+
 ---
 
 ## What It Solves
@@ -19,12 +23,14 @@ developers or CI hit them.
 ## Behavior
 
 **Check rules:**
+
 - Every package script that invokes a local file must point to an existing file
 - Every referenced local script must have a platform or module DDA entry
 - If a referenced script is intentionally absent, the owning DDA doc is draft
 - Script removal and package script removal happen in the same change
 
 **Common references to check:**
+
 - `node scripts/...`
 - `tsx scripts/...`
 - `powershell -File scripts/...`

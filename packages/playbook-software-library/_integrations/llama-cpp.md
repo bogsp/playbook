@@ -1,8 +1,11 @@
 # llama.cpp
-# File: packages/playbook-library/_integrations/llama-cpp.md
+
+# File: packages/playbook-software-library/\_integrations/llama-cpp.md
+
 # Version: 1.0.0
 
 ---
+
 id: llama-cpp
 type: integration
 kind: external-service
@@ -10,6 +13,7 @@ status: active
 used-by: []
 config: [LLAMA_CPP_BIN_PATH, LLAMA_CPP_MODELS_PATH]
 docs: https://github.com/ggerganov/llama.cpp
+
 ---
 
 ## What It Does
@@ -29,18 +33,21 @@ never starts or calls llama.cpp directly.
 ## Behavior
 
 **Runtime ownership:**
+
 - One service owns process lifecycle
 - Each model process has a declared port and resource budget
 - Model load/unload is serialized per resource pool
 - Streaming output is relayed through the owning service, not directly to clients
 
 **Resource rules:**
+
 - CPU threads, context size, RAM budget, and GPU offload are configuration
 - Resource availability is checked before loading a model
 - Model files are read-only at runtime
 - Port allocation is explicit and released on process exit
 
 **Failure rules:**
+
 - Stalled generation has a timeout and recovery path
 - Crashed processes are removed from the registry
 - Partial output is checkpointed only when the caller can resume safely

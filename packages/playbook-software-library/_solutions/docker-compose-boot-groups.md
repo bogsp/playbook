@@ -1,13 +1,17 @@
 # Docker Compose Boot Groups
-# File: packages/playbook-library/_solutions/docker-compose-boot-groups.md
+
+# File: packages/playbook-software-library/\_solutions/docker-compose-boot-groups.md
+
 # Version: 1.0.0
 
 ---
+
 id: docker-compose-boot-groups
 type: solution
 status: active
 applies-to: [service-orchestration, local-stack, docker-compose]
 integrations: [docker-compose]
+
 ---
 
 ## What It Solves
@@ -18,11 +22,13 @@ model runtimes, dashboards, or project workers.
 ## Behavior
 
 **Group model:**
+
 1. Infrastructure group starts first
 2. Core application group waits for infrastructure health
 3. Worker/project/optional group waits for core application health
 
 **Rules:**
+
 - Group dependencies use service health checks, not sleep timers
 - Every service that gates another service has a health check
 - Optional admin tools use Compose profiles
@@ -30,6 +36,7 @@ model runtimes, dashboards, or project workers.
 - Infrastructure failure halts dependent boot
 
 **Restart policy guidance:**
+
 - Infrastructure: `unless-stopped`
 - Core application services: `unless-stopped` when recoverable
 - Project workers: bounded `on-failure` when isolated

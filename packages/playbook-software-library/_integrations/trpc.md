@@ -1,8 +1,11 @@
 # tRPC
-# File: packages/playbook-library/_integrations/trpc.md
+
+# File: packages/playbook-software-library/\_integrations/trpc.md
+
 # Version: 1.0.0
 
 ---
+
 id: trpc
 type: integration
 kind: library
@@ -10,6 +13,7 @@ status: active
 used-by: []
 config: []
 docs: https://trpc.io/docs
+
 ---
 
 ## What It Does
@@ -27,12 +31,14 @@ request and response types without a separate generated REST client.
 ## Behavior
 
 **Server rules:**
+
 - Every procedure validates input at the boundary
 - Procedure context contains auth and trace metadata
 - Errors are mapped from typed application errors to tRPC errors at the interface layer
 - Routers compose interface procedures only; business logic remains in application services
 
 **Client rules:**
+
 - Client imports router types, not server implementation code
 - Reactive data remains with the reactive data layer; tRPC is for commands and non-reactive reads
 - Cache invalidation rules are explicit per mutation

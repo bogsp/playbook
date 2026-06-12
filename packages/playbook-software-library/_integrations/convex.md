@@ -1,8 +1,11 @@
 # Convex
-# File: packages/playbook-library/_integrations/convex.md
+
+# File: packages/playbook-software-library/\_integrations/convex.md
+
 # Version: 1.0.0
 
 ---
+
 id: convex
 type: integration
 kind: external-service
@@ -10,6 +13,7 @@ status: active
 used-by: []
 config: [CONVEX_URL, CONVEX_DEPLOY_KEY]
 docs: https://docs.convex.dev
+
 ---
 
 ## What It Does
@@ -29,18 +33,21 @@ projects, feature flags, notifications, sync runs, and operational status.
 ## Behavior
 
 **State ownership:**
+
 - Convex is authoritative for reactive state conflicts
 - Every mutation must validate input before writing
 - State transitions must be atomic; partial writes are not allowed
 - Clients subscribe reactively; polling is not allowed for live state
 
 **Schema rules:**
+
 - Schema changes are contract changes
 - Indexes must exist before query paths depend on them
 - Table names and field names are stable API once consumed by apps
 - Generated client files are build artifacts; do not hand-edit them
 
 **Write rules:**
+
 - Mutations own state changes
 - Actions may call external systems, then commit results through mutations
 - Large binary data and long-term archival records belong in object storage or a durable database, not reactive state

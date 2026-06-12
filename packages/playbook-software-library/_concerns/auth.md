@@ -1,13 +1,17 @@
 # Auth
-# File: packages/playbook-library/_concerns/auth.md
+
+# File: packages/playbook-software-library/\_concerns/auth.md
+
 # Version: 1.0.0
 
 ---
+
 id: auth
 type: concern
 status: active
 affects: all
 provided-by: internal
+
 ---
 
 ## What It Does
@@ -24,23 +28,27 @@ flows from the incoming request -- never queried mid-flow.
 These are distinct operations and must never be conflated.
 
 **Where auth is enforced:**
+
 - At the interface layer -- request is rejected before entering the application if unauthenticated
 - At the sequencer boundary -- permission is checked before the flow begins
 - Never inside a component -- components receive pre-verified identity
 
 **Auth context:**
+
 - Originates at the interface layer from the incoming request
 - Passed explicitly to the sequencer -- never accessed via global state or singleton
 - Contains: caller identity, verified roles, session metadata
 - Is immutable -- never modified after creation
 
 **Permission model:**
+
 - Permissions are checked against the auth context -- never re-fetched mid-flow
 - A permission check that fails must halt the flow immediately
 - Failed permission checks are logged with the caller identity and the permission checked
 - Permission errors are never swallowed or defaulted to allowed
 
 **Rules:**
+
 - Components must never import or call auth services directly
 - Auth context must never be stored in mutable shared state
 - Session tokens must never be logged at any level

@@ -1,8 +1,11 @@
 # Vite
-# File: packages/playbook-library/_integrations/vite.md
+
+# File: packages/playbook-software-library/\_integrations/vite.md
+
 # Version: 1.0.0
 
 ---
+
 id: vite
 type: integration
 kind: tooling
@@ -10,6 +13,7 @@ status: active
 used-by: []
 config: [VITE_*]
 docs: https://vite.dev/
+
 ---
 
 ## What It Does
@@ -27,12 +31,14 @@ feedback, environment variable injection, and optimized static build output.
 ## Behavior
 
 **Build rules:**
+
 - Client-exposed variables use the configured public prefix
 - Secret variables are never exposed to browser bundles
 - Production output is static unless server-side rendering is explicitly adopted
 - Build output path is declared and consumed by deployment/runtime docs
 
 **Development rules:**
+
 - HMR is development-only
 - Dev server proxy rules are explicit
 - Route generation and plugin outputs are deterministic

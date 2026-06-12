@@ -1,9 +1,9 @@
-# Platform DDA Coverage
-# File: packages/playbook-library/_solutions/platform-dda-coverage.md
-# Version: 1.0.0
+# Platform Planning Coverage
+# File: packages/playbook-software-library/_solutions/platform-planning-coverage.md
+# Version: 1.1.0
 
 ---
-id: platform-dda-coverage
+id: platform-planning-coverage
 type: solution
 status: active
 applies-to: [repo-tooling, runtime-config, docker, schema, scripts]
@@ -13,12 +13,12 @@ integrations: [docker-compose]
 ## What It Solves
 
 Repo-level operational files often sit outside app and package folders. This
-solution gives them first-class DDA coverage so config, Docker, schemas, and
-scripts do not become undocumented implementation surfaces.
+solution gives them first-class planning doc coverage so config, Docker,
+schemas, and scripts do not become undocumented implementation surfaces.
 
 ## Behavior
 
-**Recommended platform DDA tree:**
+**Recommended platform planning doc tree:**
 
 ```text
 .playbook/platform/_index.md
@@ -39,7 +39,7 @@ scripts do not become undocumented implementation surfaces.
 **Status rules:**
 - A platform doc is active only when all referenced files exist
 - If a package script points to a missing script file, the launch-scripts doc is draft
-- Secrets may be named as config keys, but values are never copied into DDA
+- Secrets may be named as config keys, but values are never copied into planning docs
 
 ## Failure Modes
 
@@ -50,6 +50,6 @@ scripts do not become undocumented implementation surfaces.
 
 ## Constraints
 
-- Platform DDA documents structure and contracts, not environment secret values
-- Platform docs do not replace app/package DDA
+- Platform planning docs document structure and contracts, not environment secret values
+- Platform docs do not replace app/package planning docs
 - Operational file references are treated as implementation references and must stay current

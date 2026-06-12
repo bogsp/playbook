@@ -1,8 +1,11 @@
 # WorkOS
-# File: packages/playbook-library/_integrations/workos.md
+
+# File: packages/playbook-software-library/\_integrations/workos.md
+
 # Version: 1.0.0
 
 ---
+
 id: workos
 type: integration
 kind: external-service
@@ -10,6 +13,7 @@ status: active
 used-by: []
 config: [WORKOS_API_KEY, WORKOS_CLIENT_ID, WORKOS_REDIRECT_URI]
 docs: https://workos.com/docs
+
 ---
 
 ## What It Does
@@ -27,12 +31,14 @@ identity, and machine-to-machine access patterns.
 ## Behavior
 
 **Boundary rules:**
+
 - Raw tokens are read only at the interface boundary
 - Application code receives an auth context, not provider tokens
 - Provider SDK usage is isolated behind an auth adapter
 - Feature flags may swap auth adapters only at composition boundaries
 
 **Session rules:**
+
 - Tokens are never logged
 - Browser tokens are stored using the provider-recommended secure mechanism
 - Missing auth context is unauthenticated, never implicitly anonymous
