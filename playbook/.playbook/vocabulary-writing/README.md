@@ -1,74 +1,64 @@
-# Vocabulary — Writing & Editorial
+# Vocabulary — Writing and Editorial
 # File: .playbook/vocabulary-writing/README.md
 
-This vocabulary folder adapts the Playbook pipeline for writing and editorial projects — long-form articles, books, scripts, newsletters, content series, and any project where the output is words.
+This folder adapts Playbook for writing and editorial projects — articles, books, scripts, content series, and any work where the primary output is written language.
 
 ---
 
-## Pipeline Mapping
+## How the Pipeline Maps to Writing
 
-| Playbook Term | Writing Term |
+| Playbook stage | Writing equivalent |
 |---|---|
-| Discovery | Brief / Editorial brief |
-| Flows | Content paths — outlines, chapter flow, narrative arc |
-| Contracts | Editorial standards — voice, style, structure rules |
-| Structure docs | Content architecture — sections, pieces, assets |
-| Coordinator | Editor / Series coordinator |
-| Component | Article, chapter, section, scene |
-| Concern | Cross-cutting standard (voice, formatting, citations) |
-| Integration | External source, publisher, platform |
-| Work | Writing, editing, publishing |
-| Rollout | Published milestone — issue, volume, release |
+| Thinking | Session files — decisions, tasks, progress |
+| Discovery | Brief — topic, audience, angle, purpose |
+| Mapping | Structure — sections, narrative flow, argument paths |
+| Rules | Editorial standards — voice, style, what is and isn't in scope |
+| Planning | Piece and section definitions |
+| Work | Writing and editing |
+| Handoff | Published or delivered work |
 
 ---
 
-## Document Types
+## Planning Document Types
 
-| Type | Used For |
-|---|---|
-| `structure` | Publication or series manifest |
-| `coordinator` | Manages sequence of pieces — series, chapters, issue flow |
-| `component` | A single piece of content — article, chapter, section |
-| `concern` | Voice guide, style guide, citation rules |
-| `integration` | Publisher, platform, distribution channel |
+| Type | Writing equivalent | What it defines |
+|---|---|---|
+| `coordinator` | Series or publication | The map — what pieces belong, how they connect |
+| `piece` | Article, chapter, or script | One piece of writing — angle, structure, audience |
+| `concern` | Cross-cutting standard | Voice, tone, formatting — defined once, applied everywhere |
+| `integration` | External source or tool | A reference, platform, or tool the project depends on |
 
 ---
 
-## Folder Structure
+## Folder Layout
 
 ```
 .playbook/
-  AI-INSTRUCTIONS.md
-  _index.md               ← publication or project manifest
-  _concerns/              ← voice, style, citation guides
-  _integrations/          ← publisher and platform contracts
-  [series or volume]/
-    _index.md
-    [piece].md
+├── _index.md                  ← project map
+├── _concerns/                 ← voice, tone, formatting standards
+├── _integrations/             ← external sources and tools
+└── [publication or series]/
+    ├── _index.md              ← section or series map
+    └── [piece].md             ← one file per article, chapter, or script
+
 docs/
-  flows/                  ← outline flows, narrative arcs
-  contracts/              ← editorial standards
-  rollout/                ← published milestone snapshots
+├── flows/                     ← narrative flows and reader paths
+├── contracts/                 ← editorial standards per flow
+└── [brief].md                 ← what you're writing, why, for whom
 ```
 
 ---
 
 ## What Makes Writing Different
 
-- The "interface" of a piece is its premise and its promise to the reader
-- Flows map the reader's journey — what they know at each point and what they need next
-- Contracts define voice, tone, structure, and what is always true about this publication
-- A piece is not done when it is written — it is done when it is edited, approved, and published
-- Drift in writing looks like inconsistent voice, broken narrative thread, or unresolved premises
+- The reader path matters as much as the content — map it before writing
+- Voice and tone are cross-cutting concerns — define them once and reference them everywhere
+- Every piece has an angle and an audience — these are not optional fields
+- Editorial decisions are permanent once a piece is published — settle them before work begins
+- Revisions are part of the work — plan for them, don't treat them as failures
 
 ---
 
 ## Additional Files
 
-- `AI-INSTRUCTIONS.md` — writing-specific AI rules
-
----
-
-## Status
-
-Core vocabulary defined. This folder grows as writing projects develop.
+- [AI-INSTRUCTIONS.md](AI-INSTRUCTIONS.md) — writing-specific rules for AI sessions; loaded alongside [.playbook/AI-INSTRUCTIONS.md](../AI-INSTRUCTIONS.md)

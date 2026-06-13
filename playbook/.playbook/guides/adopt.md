@@ -1,168 +1,57 @@
-# Adopting Playbook
+# Adoption Guide
 # File: .playbook/guides/adopt.md
 
-This guide covers all adoption paths. Answer four questions to find your
-starting point. No assumptions, no rigid categories — just honest routing.
+Bringing an existing project into Playbook without breaking anything. Four questions determine where you start.
 
 ---
 
-## Where to Start
+## Where Do You Start?
 
-Answer these questions in order. Each answer points to your next step.
+**1. Does the project have any documentation?**
+- No → start at [Discovery](../pipeline.md#stage-2--discovery)
+- Yes → continue to question 2
 
----
+**2. Is the documentation current and accurate?**
+- No → start at [Audit](../pipeline.md#stage-0--audit-existing-projects-only)
+- Yes → continue to question 3
 
-**Question 1 — Does the project have `.playbook/kit/` files?**
+**3. Are the paths and rules defined?**
+- No → start at [Mapping](../pipeline.md#stage-3--mapping)
+- Yes → continue to question 4
 
-```
-Yes -> skip to Question 2
-No  -> generate kit files first
-      Upload AI-INSTRUCTIONS.md + docs/code-standards.md (if it exists)
-      Use prompt: Bringing an Existing Project In (from kit/00-prompts.md)
-      Then continue to Question 2
-```
-
----
-
-**Question 2 — Is the project organised enough to map without an audit?**
-
-Ask yourself: can you describe what every major part does and how they
-connect, without digging through the work itself?
-
-```
-Yes -> skip to Question 3
-No  -> run the Audit expansion first
-      Add to kit/01-process.md:
-        Active Expansions:
-          audit: inventory
-      Read .playbook/guides/audit.md
-      Complete all audit phases before continuing
-      Then return to Question 3
-```
+**4. Does every piece have a planning document?**
+- No → start at [Planning](../pipeline.md#stage-5--planning)
+- Yes → you are already running Playbook — set up your [kit files](../kit/) and continue
 
 ---
 
-**Question 3 — Is there existing documentation, notes, or specs?**
+## Setting Up
 
-```
-Yes -> attach them to your review prompt as additional context
-No  -> review from the source material only; AI will surface what it finds
-```
+Regardless of where you start, do this first:
 
----
-
-**Question 4 — Is this a partial update or a full rewrite?**
-
-```
-Partial update  -> strangler fig approach
-                   Adopt incrementally, keep the project running
-                   Priority: _concerns/ -> _integrations/ -> _shared/ -> coordinators -> components
-
-Full rewrite    -> greenfield with the Audit expansion
-                   Audit must be complete before any new work begins
-                   New structure defined in Planning before old work is touched
-```
+1. Copy the kit files from [.playbook/kit/](../kit/) into your project
+2. Open [01-process.md](../kit/01-process.md) — fill in the project name, current stage, and what's next
+3. Open [02-exploration.md](../kit/02-exploration.md) — record what you already know: key decisions made, open questions, known constraints
+4. Open [03-execution.md](../kit/03-execution.md) — record the current plan and any known issues
 
 ---
 
-## Running the Review
+## If the Project Needs an Audit First
 
-Once you've answered the four questions, run the structured review.
+An audit maps what already exists before anything changes. It runs as Stage 0 and hands off findings directly into your kit files.
 
-Upload all available context — kit files, docs, source material — then send:
-
-```
-Run a structured review against the Playbook pipeline.
-
-1. Inventory
-   - Map all modules, services, pieces, dependencies, tools in use
-   - Note all third-party integrations
-   - Identify entry points and how things connect
-
-2. Review
-   - What exists in .playbook/ already?
-   - Do docs/flows/ and docs/contracts/ exist? Are they complete?
-   - Which pieces have no planning document?
-   - Are there boundary issues or undeclared dependencies?
-   - Are there undocumented concerns or integrations?
-   - What drifts from Playbook conventions?
-
-3. Gap Report
-   - Missing: what doesn't exist yet
-   - Drifting: what exists but doesn't match Playbook
-   - Compliant: what already follows Playbook
-
-Wait for review before proceeding.
-```
+Full guide: [reverse-engineer.md](reverse-engineer.md)
 
 ---
 
-## Scaffolding
+## Starting Your First AI Session
 
-After reviewing and approving the gap report:
-
-```
-Proceed with scaffold:
-
-1. Scaffold paths and rules if missing
-   - Create docs/flows/_index.md and docs/contracts/_index.md
-   - Draft stub path documents from the existing project
-   - Draft docs/contracts/global.md
-
-2. Scaffold .playbook/ around existing work
-   - Create _index.md with a living folder tree
-   - Create stub documents (status: draft) for all unmapped pieces
-   - Do not modify any existing work
-
-3. Reconcile -- for each stub, note:
-   - What the work currently does vs what the document says
-   - Any naming that needs to align with conventions
-   - Any structural changes recommended (not required yet)
-
-4. Update kit files -- Current State and Progress log
-
-Generate all files as markdown code blocks for review.
-```
+Open [00-prompts.md](../kit/00-prompts.md) and use the **Adopting an Existing Project** prompt.
 
 ---
 
-## Incremental Adoption
+## Reference
 
-After scaffolding is reviewed and approved:
-
-```
-Begin incremental adoption.
-
-Work through the gap report in priority order:
-1. _concerns/      -- cross-cutting capabilities first
-2. _integrations/  -- external contracts next
-3. _shared/        -- cross-module pieces
-4. Coordinators    -- paths before piece-level work
-5. Components      -- one at a time, check after each
-
-For each item:
-1. Author or update the planning document to status: active
-2. Identify changes needed -- flag but don't make yet
-3. Once the document is approved, make corresponding changes
-4. Run the Phase Completion Checklist after each item
-5. Log completion in kit/04-progress.md
-```
-
----
-
-## Adoption Rules
-
-- Nothing is deleted -- adoption is additive only
-- Existing work stays intact until its planning document is active
-- Settled decisions in existing kit files stay settled
-- Progress log entries are never edited -- new entries only
-- Flag risky structural changes -- defer them; compliance is incremental
-- Full rewrite: no new work until the Audit handoff is complete
-
----
-
-## Related
-
-- Audit expansion: [audit.md](audit.md)
-- New project: [new-project.md](new-project.md)
-- Session prompts: [../kit/00-prompts.md](../kit/00-prompts.md)
+- Full pipeline breakdown — [pipeline.md](../pipeline.md)
+- How session files work — [context-kit.md](context-kit.md)
+- Mapping an existing project — [reverse-engineer.md](reverse-engineer.md)

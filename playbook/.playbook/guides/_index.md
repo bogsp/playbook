@@ -27,7 +27,7 @@ All Playbook guides in one place. Start with the one that matches where you are.
 
 | Guide | What it covers |
 |---|---|
-| [Audit](audit.md) | Mapping an existing project before redesigning or rebuilding it |
+| [Reverse engineer](audit.md) | Mapping an existing project before redesigning or rebuilding it |
 
 ---
 

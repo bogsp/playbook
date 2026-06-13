@@ -1,17 +1,27 @@
-# PROGRESS LOG
-# File: .kit/04-progress.md
+# Progress
+# File: .playbook/kit/04-progress.md
 
-Rules:
-- Entries are never edited or deleted
-- New entries are always added at the bottom
-- Three entry types only: Completed, Decided, Fixed
-- In Progress is always the last entry, overwritten each session
-- Add a date heading per session: ## YYYY-MM-DD
+Append only. Never edit existing entries. Most recent at the top.
 
 ---
 
-## YYYY-MM-DD
-- **Completed:** [what got done]
-- **Decided:** [what was settled and why]
-- **Fixed:** [what was resolved]
-- **In Progress:** [what is underway — always last, always overwritten]
+<!-- Format:
+
+## [YYYY-MM-DD] — [Session or milestone label]
+
+### Completed
+- [what was finished]
+
+### Decisions
+- [what was decided and why — one line]
+
+### Fixed
+- [what was broken and how it was resolved]
+
+### In Progress
+- [what is actively being worked on]
+
+### Next
+- [what comes immediately after this session]
+
+-->

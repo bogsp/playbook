@@ -1,64 +1,54 @@
 # AI Instructions — Manufacturing
 # File: .playbook/vocabulary-manufacturing/AI-INSTRUCTIONS.md
 
-Read this file at the start of every session alongside .playbook/AI-INSTRUCTIONS.md.
+> Load `.playbook/AI-INSTRUCTIONS.md` first, then this file.
+> This file adds manufacturing-specific rules on top of the universal rules.
 
 ---
 
-## Session Boot Order
+## Additional Load Order for Manufacturing Tasks
 
-At the start of each session, read the files in order:
-
-- .playbook/README.md
-- .playbook/AI-INSTRUCTIONS.md
-- .playbook/_index.md
-- .playbook/kit/01-process.md
-- .playbook/kit/04-progress.md
-- .playbook/kit/05-kanban.md (optional)
-
-Then load the component and flow docs relevant to the current task.
+| Task | Also load |
+|---|---|
+| Any manufacturing task | `vocabulary-manufacturing/AI-INSTRUCTIONS.md` (this file) |
+| Part or sub-assembly work | `.playbook/[product]/[part].md` |
+| Product or production run work | `.playbook/[product]/_index.md` + relevant part docs |
+| Flow or contract authoring | `docs/flows/_index.md`, `docs/contracts/_index.md` |
 
 ---
 
-## File Header Rule
+## Manufacturing-Specific Behavioral Rules
 
-Every generated file must include its filename and full location path at the top:
-
-```
-# DocumentName
-# File: .playbook/[module]/document-name.md
-```
-
-No exceptions.
-
----
-
-## Kit Update Rule
-
-Always update `.playbook/kit/01-process.md` and `.playbook/kit/04-progress.md`
-before the session ends or when context reaches 80%. Do not wait to be asked.
+1. Every part must have a declared specification and definition of done before any work begins on it
+2. Tolerances and compliance requirements declared in planning documents are hard constraints — never interpret or relax them without explicit instruction
+3. Assembly sequence dependencies must be declared before production begins — never assume a dependency is resolved
+4. Quality checkpoints are defined in `docs/flows/` — never skip or reorder them without explicit instruction
+5. Every supplier and external process is declared as an integration — never introduce one without flagging it
+6. A blocked part or process must be flagged immediately with what is blocking it and what cannot proceed until resolved
+7. Compliance and safety standards are defined in `_concerns/` — never interpret or relax them without explicit instruction
+8. Never mark a part or process done without all specification criteria explicitly verified
 
 ---
 
-## Domain Vocabulary
+## Manufacturing Anti-Patterns
 
-This is a manufacturing project. Use the terminology defined in:
-
-- `.playbook/vocabulary-manufacturing/README.md` — domain language
-- `.playbook/vocabulary-manufacturing/templates.md` — planning doc shapes
-
-Apply this vocabulary consistently across all planning docs and session output.
-Never use terminology from another domain.
+- Starting work on a part without a declared specification
+- Interpreting or relaxing tolerances without explicit instruction
+- Assuming assembly dependencies are resolved without confirmation
+- Skipping or reordering quality checkpoints
+- Introducing undeclared supplier or external process dependencies
+- Marking a part done before specification criteria are verified
+- Resolving blockers silently with assumptions
 
 ---
 
-## Manufacturing-Specific Rules
+## Phase Completion Checklist
 
-- Every component, process, and supply chain dependency is defined in a planning
-  doc before any production begins
-- AI plans against the planning doc — not ahead of it
-- No component is marked `status: active` with unresolved TODOs
-- Flag ambiguity before writing any plan or planning doc
-- Do not add scope beyond what is defined in the current planning doc
-- Materials, tolerances, and constraints are defined in planning docs — not assumed
-- Supply chain and dependency decisions are made in planning docs — not during execution
+- [ ] All parts have declared specifications and definitions of done
+- [ ] All assembly sequence dependencies declared and resolved or flagged
+- [ ] Quality checkpoints match the declared flow documents
+- [ ] All suppliers and external processes declared as integrations
+- [ ] All blockers flagged with explicit blocking statements
+- [ ] Compliance and safety standards verified against `_concerns/`
+- [ ] All part documents updated to reflect current state
+- [ ] Progress logged in `.playbook/kit/04-progress.md`

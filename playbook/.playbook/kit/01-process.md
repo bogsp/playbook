@@ -1,10 +1,33 @@
-# PROCESS
-# File: .kit/01-process.md
+# Process
+# File: .playbook/kit/01-process.md
 
 ---
 
-**Phase:** Exploration
-**Last Completed:** [most recent milestone]
-**Next:** [active goal]
-**Active Modules:** none
-**Active Expansions:** none
+## Project
+
+Name:
+Type: <!-- software / writing / production / manufacturing -->
+Domain vocabulary: <!-- .playbook/vocabulary-[domain]/ -->
+
+---
+
+## Current State
+
+Stage: <!-- Thinking / Discovery / Mapping / Rules / Planning / Work / Handoff -->
+Last completed:
+What's next:
+
+---
+
+## Active Expansions
+
+<!-- Leave blank if none active -->
+<!-- Single: Active Expansions: video-insights -->
+<!-- With phase: Active Expansions:
+       audit: inventory -->
+
+---
+
+## Notes
+
+<!-- Anything that doesn't fit above — temporary context, reminders, open flags -->

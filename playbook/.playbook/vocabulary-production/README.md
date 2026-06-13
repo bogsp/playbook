@@ -1,74 +1,64 @@
-# Vocabulary — Production & Operations
+# Vocabulary — Production and Operations
 # File: .playbook/vocabulary-production/README.md
 
-This vocabulary folder adapts the Playbook pipeline for production and operations projects — event production, content production, media pipelines, operational workflows, and any project where the output is a produced result delivered at a specific time or in a specific format.
+This folder adapts Playbook for production and operations projects — campaigns, events, launches, deliverable-based work, and any project where the output is a produced result rather than a written or coded artefact.
 
 ---
 
-## Pipeline Mapping
+## How the Pipeline Maps to Production
 
-| Playbook Term | Production Term |
+| Playbook stage | Production equivalent |
 |---|---|
-| Discovery | Production brief / Creative brief |
-| Flows | Production pipeline — pre-production, production, post |
-| Contracts | Production standards — format, delivery specs, quality gates |
-| Structure docs | Production architecture — assets, deliverables, dependencies |
-| Coordinator | Production coordinator / Director |
-| Component | Asset, deliverable, task, scene, segment |
-| Concern | Cross-cutting standard (format specs, brand guidelines, compliance) |
-| Integration | Vendor, platform, tool, delivery channel |
-| Work | Production |
-| Rollout | Delivery milestone — final cut, air date, launch |
+| Thinking | Session files — decisions, tasks, progress |
+| Discovery | Project brief — what is being produced, for whom, by when |
+| Mapping | Production paths — delivery sequences, dependencies, approval flows |
+| Rules | Production standards — quality thresholds, approval requirements, constraints |
+| Planning | Deliverable and role definitions |
+| Work | Production and delivery |
+| Handoff | Delivered and signed-off work |
 
 ---
 
-## Document Types
+## Planning Document Types
 
-| Type | Used For |
-|---|---|
-| `structure` | Project or show manifest |
-| `coordinator` | Manages sequence of production phases or deliverables |
-| `component` | A single asset or deliverable |
-| `concern` | Format spec, brand guideline, compliance requirement |
-| `integration` | Vendor, tool, delivery platform |
+| Type | Production equivalent | What it defines |
+|---|---|---|
+| `coordinator` | Project or campaign | The map — what deliverables belong, dependencies, sequence |
+| `deliverable` | A single produced output | What it is, who it's for, what done looks like |
+| `concern` | Cross-cutting standard | Quality, approval, compliance — defined once, applied everywhere |
+| `integration` | External vendor or platform | What it provides, what the project depends on it for |
 
 ---
 
-## Folder Structure
+## Folder Layout
 
 ```
 .playbook/
-  AI-INSTRUCTIONS.md
-  _index.md               ← project manifest
-  _concerns/              ← format specs, brand guidelines
-  _integrations/          ← vendor and platform contracts
-  [phase or segment]/
-    _index.md
-    [deliverable].md
+├── _index.md                  ← project map
+├── _concerns/                 ← quality, approval, compliance standards
+├── _integrations/             ← vendors, platforms, external dependencies
+└── [project or campaign]/
+    ├── _index.md              ← deliverable map
+    └── [deliverable].md       ← one file per produced output
+
 docs/
-  flows/                  ← production pipeline flows
-  contracts/              ← delivery specs and quality gates
-  rollout/                ← delivery milestone snapshots
+├── flows/                     ← production paths and approval flows
+├── contracts/                 ← standards per path
+└── [brief].md                 ← what is being produced, why, for whom
 ```
 
 ---
 
 ## What Makes Production Different
 
-- Every deliverable has a format spec and a delivery deadline
-- Flows follow pre-production → production → post-production phases
-- Dependencies between deliverables are explicit — a cut cannot be completed without an approved script
-- Quality gates are not optional — they are contracts
-- Drift in production looks like missed specs, format mismatches, or late deliverables
+- Deadlines are constraints, not targets — they belong in the planning document, not just in conversation
+- Dependencies between deliverables must be mapped before work begins — a blocked deliverable blocks everything after it
+- Approval flows are paths — they must be defined at the Mapping stage
+- Every deliverable has a clear definition of done — never left to interpretation
+- External vendors and platforms are integrations — declare them before depending on them
 
 ---
 
 ## Additional Files
 
-- `AI-INSTRUCTIONS.md` — production-specific AI rules
-
----
-
-## Status
-
-Core vocabulary defined. This folder grows as production projects develop.
+- [AI-INSTRUCTIONS.md](AI-INSTRUCTIONS.md) — production-specific rules for AI sessions; loaded alongside [.playbook/AI-INSTRUCTIONS.md](../AI-INSTRUCTIONS.md)

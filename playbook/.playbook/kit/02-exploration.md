@@ -1,20 +1,33 @@
-# EXPLORATION
-# File: .kit/02-exploration.md
+# Exploration
+# File: .playbook/kit/02-exploration.md
+
+---
 
 ## Open Questions
 
-**[Question or topic]**
-- What is being considered
-- Options on the table
-- Ref: `.kit/_refs/[type]/[filename]` _(if applicable)_
+<!-- Questions that are unresolved and blocking or affecting active work -->
+<!-- Format:
+Q: [question]
+   Context: [why this matters]
+   Blocking: [what cannot move forward until resolved]
+-->
 
 ---
 
 ## Settled Decisions
 
-**[YYYY-MM-DD] Decision name**
-- What was decided
-- Why
-- What else was considered
-- Ref: `.kit/_refs/[type]/[filename]` _(if applicable)_
-- Flow: `docs/flows/flow-N-name.md` _(if applicable)_
+<!-- Decisions that are closed — do not reopen without explicit instruction -->
+<!-- Format:
+D: [what was decided]
+   Because: [one line reason]
+   Ref: [file or section this affects, if any]
+-->
+
+---
+
+## Constraints
+
+<!-- Fixed limits that apply to the whole project -->
+<!-- Format:
+- [constraint] — [source or reason]
+-->

@@ -1,60 +1,49 @@
-# EXECUTION
-# File: .kit/03-execution.md
+# Execution
+# File: .playbook/kit/03-execution.md
+
+---
 
 ## Guidelines
 
-**Style & Voice:**
-- [Tone and approach for this project]
-
-**Rules & Constraints:**
-- [What must always be true]
-- [What to avoid]
-- Prefer built-in solutions over outside tools
-- Outside tools require a clear reason before being added
-
-**Quality Bar:**
-- [What done looks like for this project]
-
-**Check Tier:** core | standard | full
-
-**Custom Ticket Types:** _(declare before using in the work tracker)_
-- `[type]` — [what it means]
+<!-- Principles and standards that apply to all work in this project -->
+<!-- Format:
+- [guideline]
+-->
 
 ---
 
 ## Plan
 
-**Goals:**
-- [What you are making]
-
-**Outcomes:**
-- [What done looks like from the outside]
-
-**Out of Scope:**
-- [What is not included]
-
-**Acceptance Criteria:**
-- [ ] [Something verifiable]
-- [ ] [Something verifiable]
+<!-- The current phase plan — what will be built or done, in order -->
+<!-- Format:
+1. [step or deliverable]
+2. [step or deliverable]
+-->
 
 ---
 
-## Right Now
+## Tasks
 
-**Current Focus:**
-[What is being worked on this session]
-
-**Tasks:**
-- [ ] [Task]
-  - [ ] [Subtask]
+<!-- Active tasks — granular, actionable, assigned to a stage or component -->
+<!-- Format:
+- [ ] [task] — [context or reference if needed]
+- [x] [completed task]
+-->
 
 ---
 
-## Known Problems
+## Known Issues
 
-| # | Problem | Type | Severity | Blocked By | Resolution |
-|---|---|---|---|---|---|
-| — | — | — | — | — | — |
+<!-- Problems identified but not yet resolved -->
+<!-- Format:
+- [issue] — [impact] — [status: open / in progress / blocked]
+-->
 
-_Type: bug | dependency | design | performance | security_
-_Severity: critical | high | low_
+---
+
+## Acceptance Criteria
+
+<!-- What done looks like for the current stage or deliverable -->
+<!-- Format:
+- [ ] [criterion]
+-->

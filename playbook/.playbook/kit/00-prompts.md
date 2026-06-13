@@ -1,144 +1,84 @@
-# Prompts
+# Session Prompts
 # File: .playbook/kit/00-prompts.md
 
-Session prompts for the Playbook pipeline.
-Copy the relevant prompt at the start of each session.
+Copy the prompt that matches your situation. Attach the files listed, then send.
 
 ---
 
-## Starting an AI Work Session
+## Starting a New Project
 
-```
-New session. Load these files in order:
+**Attach:** `.playbook/AI-INSTRUCTIONS.md`, `.playbook/_index.md`, `.playbook/kit/01-process.md`, `.playbook/kit/02-exploration.md`, `.playbook/kit/03-execution.md`
 
-1. .playbook/README.md
-2. .playbook/AI-INSTRUCTIONS.md
-3. docs/code-standards.md
-4. .playbook/_index.md
-5. .playbook/kit/01-process.md
-6. .playbook/kit/04-progress.md
-7. .playbook/kit/05-kanban.md (only if kanban is active)
-
-Then load the module and component docs relevant to today's task.
-
-Rules for this session:
-- Every generated file must include its filename and full path at the top
-- Update .playbook/kit/01-process.md and .playbook/kit/04-progress.md before the session ends
-  or when context reaches 80% — do not wait to be asked
-- Flag any ambiguity before writing any code or planning doc
-- Do not add anything outside the current task scope
-```
+> I am starting a new Playbook project. Read all attached files before responding.
+> Confirm what stage we are at, what the next step is, and wait for my instruction.
+> Do not begin any work until I give you a specific task.
 
 ---
 
-## Picking Up from a Milestone Summary
+## Picking Up Where You Left Off
 
-```
-New session. Load these files in order:
+**Message 1 — attach:** `.playbook/AI-INSTRUCTIONS.md`, `.playbook/kit/01-process.md`, `.playbook/kit/03-execution.md`
 
-1. .playbook/README.md
-2. .playbook/AI-INSTRUCTIONS.md
-3. docs/code-standards.md
-4. .playbook/_index.md
-5. .playbook/kit/01-process.md
-6. .playbook/kit/04-progress.md
-7. .playbook/kit/05-kanban.md (only if kanban is active)
+> I am resuming a Playbook project. Files coming in two messages.
+> This message: instructions, process, and execution. Next: exploration and progress.
+> Focus only on what is current. Do not reopen settled decisions unless I ask.
+> Brief confirmation only.
 
-Then read the milestone summary at docs/rollout/[milestone].md.
+**Message 2 — attach:** `.playbook/kit/02-exploration.md`, `.playbook/kit/04-progress.md`
 
-Rules for this session:
-- Every generated file must include its filename and full path at the top
-- Update .playbook/kit/01-process.md and .playbook/kit/04-progress.md before the session ends
-  or when context reaches 80% — do not wait to be asked
-- Flag any ambiguity before writing any code or planning doc
-- Do not add anything outside the current task scope
-```
+> Here is the context from earlier work. Brief confirmation only. Wait for my instruction.
+
+Add `.playbook/kit/05-kanban.md` and `.playbook/kit/06-qa.md` to Message 2 when active.
 
 ---
 
-## Sync Mode — Updating Planning Docs
+## Adopting an Existing Project
 
-```
-Sync mode. Load these files in order:
+**Attach:** `.playbook/AI-INSTRUCTIONS.md`, `.playbook/kit/01-process.md`, `.playbook/kit/02-exploration.md`, `.playbook/kit/03-execution.md`
 
-1. .playbook/README.md
-2. .playbook/AI-INSTRUCTIONS.md
-3. .playbook/_index.md
-4. .playbook/kit/01-process.md
-5. .playbook/kit/04-progress.md
-
-Compare every planning doc against the current implementation.
-For each doc:
-- If implementation matches the doc: confirm status: active
-- If implementation diverges: list every difference, do not change the doc yet
-- If a component exists in code but has no planning doc: flag it
-
-Do not update any planning doc until I have reviewed the differences.
-```
+> I am bringing an existing project into Playbook. Read all attached files before responding.
+> My project is at the [stage] stage. Confirm the current state and wait for my instruction.
+> Do not begin any work until I give you a specific task.
 
 ---
 
-## Audit Expansion — Inventory
+## Starting a Audit Audit
 
-```
-Audit mode. Load these files in order:
+**Attach:** `.playbook/AI-INSTRUCTIONS.md`, `.playbook/guides/audit.md`, `.playbook/kit/01-process.md`
 
-1. .playbook/README.md
-2. .playbook/AI-INSTRUCTIONS.md
-3. .playbook/_index.md
-4. .playbook/kit/01-process.md
-5. .playbook/kit/04-progress.md
-6. docs/rewrite/system-map.md
-
-Follow .playbook/guides/audit.md.
-
-Rules for this session:
-- Every generated file must include its filename and full path at the top
-- Update .playbook/kit/01-process.md and .playbook/kit/04-progress.md before the session ends
-  or when context reaches 80% — do not wait to be asked
-- Do not create planning docs yet — inventory and map first
-```
+> I am starting a audit audit. Read all attached files before responding.
+> The current phase is [phase]. Confirm and wait for my instruction.
+> Do not advance to the next phase without my explicit approval.
 
 ---
 
-## Audit Expansion — Move to Next Phase
+## Generating a Milestone Summary
 
-```
-Audit phase transition. Load these files in order:
+**Attach:** `.playbook/AI-INSTRUCTIONS.md`, `.playbook/kit/01-process.md`, `.playbook/kit/02-exploration.md`, `.playbook/kit/03-execution.md`, `.playbook/kit/04-progress.md`
 
-1. .playbook/README.md
-2. .playbook/AI-INSTRUCTIONS.md
-3. .playbook/_index.md
-4. .playbook/kit/01-process.md
-5. .playbook/kit/04-progress.md
-6. docs/rewrite/system-map.md
-7. docs/rewrite/decision-record.md
-8. docs/rewrite/risk-register.md
-
-Follow .playbook/guides/audit.md.
-
-Rules for this session:
-- Every generated file must include its filename and full path at the top
-- Update .playbook/kit/01-process.md and .playbook/kit/04-progress.md before the session ends
-  or when context reaches 80% — do not wait to be asked
-```
+> Generate a milestone summary for [milestone name].
+> Use only the attached files as your source. Do not invent or infer anything not present.
+> Format: what was built, key decisions made, what is next.
+> Save to `docs/rollout/[milestone-name].md`.
 
 ---
 
-## Anchoring — Context Reset
+## Video Insights
 
-Use when context has drifted or the session has lost track of the current task.
+**Attach:** `.playbook/AI-INSTRUCTIONS.md`, `.playbook/guides/video-insights.md`
 
-```
-Context reset. Reload these files in order:
+> I have a video I want to extract insights from.
+> Title: [video title]
+> Source: [URL or description]
+> I will provide the transcript or summary in my next message.
+> Wait for it before doing anything.
 
-1. .playbook/README.md
-2. .playbook/AI-INSTRUCTIONS.md
-3. .playbook/_index.md
-4. .playbook/kit/01-process.md
-5. .playbook/kit/04-progress.md
-6. .playbook/kit/05-kanban.md (only if kanban is active)
+---
 
-State the current phase, active goal, and the next task.
-Do not continue any previous work until you have confirmed what we were doing.
-```
+## Resuming from a Milestone
+
+**Attach:** `docs/rollout/[milestone].md`, `.playbook/AI-INSTRUCTIONS.md`, `.playbook/kit/01-process.md`
+
+> I am resuming from a milestone snapshot. Read all attached files before responding.
+> Confirm the current state and what comes next. Wait for my instruction.
+> Do not begin any work until I give you a specific task.
