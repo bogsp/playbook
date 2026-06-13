@@ -1,93 +1,65 @@
-# AI Instructions — Writing & Editorial
+# AI Instructions — Writing
 # File: .playbook/vocabulary-writing/AI-INSTRUCTIONS.md
 
-> Load `.playbook/AI-INSTRUCTIONS.md` first, then this file.
-> This file adds writing-specific rules on top of the universal rules.
+Read this file at the start of every session alongside .playbook/AI-INSTRUCTIONS.md.
 
 ---
 
-## Document Types
+## Session Boot Order
 
-### coordinator
+At the start of each session, read the files in order:
 
-Manages the sequence of pieces in a series, volume, or publication.
+- .playbook/README.md
+- .playbook/AI-INSTRUCTIONS.md
+- docs/code-standards.md
+- .playbook/_index.md
+- .playbook/kit/01-process.md
+- .playbook/kit/04-progress.md
+- .playbook/kit/05-kanban.md (optional)
 
-```yaml
-id: [kebab-case]
-type: coordinator
-status: draft
-parent: [publication]
-sequence: []
-concerns: []
-```
-
-Sequence section shows the editorial flow:
-```
-1. [piece-id] — [what it establishes for the reader]
-   → leads to: [next-piece-id]
-   → depends on: [piece-id] being complete
-```
+Then load the component and flow docs relevant to the current task.
 
 ---
 
-### component (piece)
+## File Header Rule
 
-A single content unit — article, chapter, scene, section.
+Every generated file must include its filename and full location path at the top:
 
-```yaml
-id: [kebab-case]
-type: component
-status: draft
-parent: [coordinator or series]
-premise: [one sentence — what this piece establishes]
-promise: [one sentence — what the reader gets from it]
-concerns: []
+```
+# DocumentName
+# File: .playbook/[module]/document-name.md
 ```
 
-Interface section:
-```
-Premise: what the reader knows coming in
-Promise: what the reader knows going out
-Depends on: [piece-ids that must come before this]
-```
+No exceptions.
 
 ---
 
-### concern (voice / style)
+## Kit Update Rule
 
-```yaml
-id: [kebab-case]
-type: concern
-status: draft
-affects: all
-```
-
-A concern doc defines a rule that applies to every piece in the project — voice, tone, structure pattern, citation style.
+Always update `.playbook/kit/01-process.md` and `.playbook/kit/04-progress.md` before the session
+ends or when context reaches 80%. Do not wait to be asked.
 
 ---
 
-## Writing-Specific Behavioral Rules
+## Domain Vocabulary
 
-1. Never begin a piece without a premise and a promise defined
-2. Never write out of sequence when earlier pieces are unresolved
-3. Voice and tone are defined in a concern doc — never invent them per piece
-4. A piece is not complete until it delivers on its promise
-5. Outlines are flows — they must be approved before writing begins
-6. Editorial standards are contracts — they must be referenced, not re-explained in each piece
-7. Flag any piece where the premise contradicts a previous piece
+This is a writing project. Use the terminology defined in:
 
----
+- `.playbook/vocabulary-writing/README.md` — domain language
+- `.playbook/vocabulary-writing/templates.md` — planning doc shapes
 
-## Writing Anti-Patterns
-
-- Beginning with structure before establishing premise
-- Inconsistent voice across pieces in the same publication
-- Unresolved setups — promises made and not delivered
-- Pieces written in isolation that break the narrative arc
-- Redefining editorial standards per piece instead of per publication
+Apply this vocabulary consistently across all planning docs and session output.
+Never use terminology from another domain.
 
 ---
 
-## Status
+## Writing-Specific Rules
 
-This file grows as projects in this domain develop.
+- Every piece — article, chapter, script, series — is defined in a planning doc
+  before any writing begins
+- AI writes against the planning doc — not ahead of it
+- No piece is marked `status: active` with unresolved TODOs
+- Flag ambiguity before writing any content or planning doc
+- Do not add scope beyond what is defined in the current planning doc
+- Voice, tone, and style are defined in the vocabulary README — apply them consistently
+- Structure decisions are made in planning docs — not during drafting

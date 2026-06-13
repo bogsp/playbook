@@ -114,7 +114,7 @@ automatically.
     context-kit.md
     video-insights.md
     [new-project | adopt | audit].md  — based on project type
-.kit/
+.playbook/kit/
   00-prompts.md
   01-process.md               — pre-populated with correct phase and expansion
   02-exploration.md
@@ -178,7 +178,7 @@ docs/
    - New project → `.playbook/guides/new-project.md`
    - Adopting → `.playbook/guides/adopt.md`
    - Auditing → `.playbook/guides/audit.md`
-3. Open `.kit/00-prompts.md` — copy your first session prompt
+3. Open `.playbook/kit/00-prompts.md` — copy your first session prompt
 
 ---
 
@@ -197,7 +197,7 @@ into `templates/`. Always run before publishing.
 
 ## Notes
 
-- `.playbook/` and `.kit/` are Playbook's world — never shipped with your project
+- `.playbook/` and `.playbook/kit/` are Playbook's world — never shipped with your project
 - `docs/flows/` and `docs/contracts/` belong to your project
 - `generate` commands require an initialized Playbook project
 - `sync` is only relevant for software domain projects using the library

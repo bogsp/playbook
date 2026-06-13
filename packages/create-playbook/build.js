@@ -19,6 +19,10 @@ const templatesDir = join(__dirname, "templates");
 const sources = [
   // Universal — from playbook/.playbook/
   {
+    from: join(repoRoot, "playbook", ".playbook", "README.md"),
+    to: join(templatesDir, "universal", "playbook", "README.md"),
+  },
+  {
     from: join(repoRoot, "playbook", ".playbook", "AI-INSTRUCTIONS.md"),
     to: join(templatesDir, "universal", "playbook", "AI-INSTRUCTIONS.md"),
   },

@@ -133,7 +133,7 @@ function buildProgress(projectType) {
   }[projectType];
 
   return `# PROGRESS LOG
-# File: .kit/04-progress.md
+# File: .playbook/kit/04-progress.md
 
 Rules:
 - Entries are never edited or deleted
@@ -164,6 +164,7 @@ export async function scaffold({ projectName, domain, projectType, root, library
   const p = (...parts) => join(root, ...parts);
 
   // --- Universal playbook files ---
+  await copyTemplate("universal/playbook/README.md", p(".playbook", "README.md"));
   await write(p(".playbook", "_index.md"), await buildIndex(projectName, domain, libraryVersion));
   await copyTemplate("universal/playbook/AI-INSTRUCTIONS.md", p(".playbook", "AI-INSTRUCTIONS.md"));
   await copyTemplate("universal/playbook/pipeline.md", p(".playbook", "pipeline.md"));
@@ -201,24 +202,24 @@ export async function scaffold({ projectName, domain, projectType, root, library
   }
 
   // --- Kit files ---
-  await copyTemplate("universal/kit/00-prompts.md", p(".kit", "00-prompts.md"));
-  await write(p(".kit", "01-process.md"), await buildProcess(projectType));
-  await copyTemplate("universal/kit/02-exploration.md", p(".kit", "02-exploration.md"));
-  await copyTemplate("universal/kit/03-execution.md", p(".kit", "03-execution.md"));
-  await write(p(".kit", "04-progress.md"), buildProgress(projectType));
-  await copyTemplate("universal/kit/05-kanban.md", p(".kit", "05-kanban.md"));
-  await copyTemplate("universal/kit/06-qa.md", p(".kit", "06-qa.md"));
+  await copyTemplate("universal/kit/00-prompts.md", p(".playbook", "kit", "00-prompts.md"));
+  await write(p(".playbook", "kit", "01-process.md"), await buildProcess(projectType));
+  await copyTemplate("universal/kit/02-exploration.md", p(".playbook", "kit", "02-exploration.md"));
+  await copyTemplate("universal/kit/03-execution.md", p(".playbook", "kit", "03-execution.md"));
+  await write(p(".playbook", "kit", "04-progress.md"), buildProgress(projectType));
+  await copyTemplate("universal/kit/05-kanban.md", p(".playbook", "kit", "05-kanban.md"));
+  await copyTemplate("universal/kit/06-qa.md", p(".playbook", "kit", "06-qa.md"));
 
   // Kit support folders
-  await gitkeep(p(".kit", "_refs", "video-insights"));
-  await gitkeep(p(".kit", "_refs", "templates"));
-  await gitkeep(p(".kit", "_refs", "examples"));
-  await gitkeep(p(".kit", "_refs", "snippets"));
-  await gitkeep(p(".kit", "_refs", "research"));
-  await gitkeep(p(".kit", "_tests"));
-  await gitkeep(p(".kit", "_archives", "exploration"));
-  await gitkeep(p(".kit", "_archives", "progress"));
-  await gitkeep(p(".kit", "_archives", "kanban"));
+  await gitkeep(p(".playbook", "kit", "_refs", "video-insights"));
+  await gitkeep(p(".playbook", "kit", "_refs", "templates"));
+  await gitkeep(p(".playbook", "kit", "_refs", "examples"));
+  await gitkeep(p(".playbook", "kit", "_refs", "snippets"));
+  await gitkeep(p(".playbook", "kit", "_refs", "research"));
+  await gitkeep(p(".playbook", "kit", "_tests"));
+  await gitkeep(p(".playbook", "kit", "_archives", "exploration"));
+  await gitkeep(p(".playbook", "kit", "_archives", "progress"));
+  await gitkeep(p(".playbook", "kit", "_archives", "kanban"));
 
   // --- Docs ---
   await write(p("docs", "flows", "_index.md"), buildFlowsIndex());

@@ -533,17 +533,43 @@ Playbook defines structure; this file defines implementation. Neither is complet
 
 ### AI Session Boot Order
 
+Load these files at the start of every AI session, in order:
+
 ```
-1. .playbook/AI-INSTRUCTIONS.md
-2. vocabulary-[domain]/AI-INSTRUCTIONS.md
+1. .playbook/README.md
+2. .playbook/AI-INSTRUCTIONS.md
 3. docs/code-standards.md        ← this file
-4. docs/flows/_index.md
-5. docs/contracts/_index.md
-6. .playbook/_index.md
-7. .playbook/[module]/_index.md
-8. Relevant component and sequencer docs
-9. _concerns/ + _integrations/
+4. .playbook/_index.md
+5. .playbook/kit/01-process.md
+6. .playbook/kit/04-progress.md
+7. .playbook/kit/05-kanban.md             ← load only if kanban is active
 ```
+
+Then load the module and component docs relevant to the current task:
+
+```
+.playbook/[module]/_index.md
+Relevant component and sequencer docs
+_concerns/ + _integrations/
+docs/flows/ and docs/contracts/ as needed
+```
+
+### File Header Rule
+
+Every generated file must include its filename and full location path at the top:
+
+```
+# ComponentName
+# File: .playbook/[module]/component-name.md
+```
+
+No exceptions. This applies to planning docs, kit files, flow docs, contract docs,
+concern docs, integration docs, and solution docs.
+
+### Kit File Update Rule
+
+Always update `.playbook/kit/01-process.md` and `.playbook/kit/04-progress.md` before the session
+ends or when context reaches 80%. Do not wait to be asked.
 
 ### Deep Modules for AI Clarity
 
@@ -735,7 +761,7 @@ No phase is complete until all applicable items are checked.
 - **Build failure** — fix Biome/type errors before any other work; do not stack changes on broken builds
 - **Test failure** — revert to last passing commit if cause is unclear; fix forward only if root cause is known
 - **Planning doc drift** — run sync mode immediately; update the doc before writing any new code on that component
-- **Context rot** — re-upload kit files and planning docs; use the anchoring prompt in `.kit/00-prompts.md`
+- **Context rot** — re-upload kit files and planning docs; use the anchoring prompt in `.playbook/kit/00-prompts.md`
 - **Bad merge** — revert the merge commit; re-apply changes manually with proper review
 
 ---

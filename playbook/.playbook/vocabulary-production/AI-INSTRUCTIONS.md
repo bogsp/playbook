@@ -1,99 +1,64 @@
-# AI Instructions — Production & Operations
+# AI Instructions — Production
 # File: .playbook/vocabulary-production/AI-INSTRUCTIONS.md
 
-> Load `.playbook/AI-INSTRUCTIONS.md` first, then this file.
-> This file adds production-specific rules on top of the universal rules.
+Read this file at the start of every session alongside .playbook/AI-INSTRUCTIONS.md.
 
 ---
 
-## Document Types
+## Session Boot Order
 
-### coordinator
+At the start of each session, read the files in order:
 
-Manages the sequence of production phases or deliverables.
+- .playbook/README.md
+- .playbook/AI-INSTRUCTIONS.md
+- .playbook/_index.md
+- .playbook/kit/01-process.md
+- .playbook/kit/04-progress.md
+- .playbook/kit/05-kanban.md (optional)
 
-```yaml
-id: [kebab-case]
-type: coordinator
-status: draft
-parent: [project]
-sequence: []
-concerns: []
-```
-
-Sequence section shows the production pipeline:
-```
-1. Pre-production:
-   a. [deliverable] — [what it enables]
-      → gates: [next deliverable]
-      → deadline: [relative deadline]
-
-2. Production:
-   a. [deliverable] — [what it produces]
-      → depends on: [pre-production deliverable]
-```
+Then load the component and flow docs relevant to the current task.
 
 ---
 
-### component (deliverable)
+## File Header Rule
 
-A single asset or deliverable.
+Every generated file must include its filename and full location path at the top:
 
-```yaml
-id: [kebab-case]
-type: component
-status: draft
-parent: [coordinator or phase]
-format: [delivery format spec]
-deadline: [relative or absolute]
-depends-on: []
-concerns: []
+```
+# DocumentName
+# File: .playbook/[module]/document-name.md
 ```
 
-Interface section:
-```
-Format: [spec — resolution, format, duration, file type, etc.]
-Delivery: [how and where it is delivered]
-Quality gates: [what must be true before this is approved]
-Depends on: [deliverable-ids that must be complete first]
-```
+No exceptions.
 
 ---
 
-### concern (format spec / brand guideline)
+## Kit Update Rule
 
-```yaml
-id: [kebab-case]
-type: concern
-status: draft
-affects: all | [phase or deliverable list]
-```
-
-A concern doc defines a rule that applies across deliverables — brand guidelines, format specs, compliance requirements.
+Always update `.playbook/kit/01-process.md` and `.playbook/kit/04-progress.md`
+before the session ends or when context reaches 80%. Do not wait to be asked.
 
 ---
 
-## Production-Specific Behavioral Rules
+## Domain Vocabulary
 
-1. Never begin production on a deliverable without an approved brief and format spec
-2. Never skip a quality gate — they are contracts, not suggestions
-3. Dependencies between deliverables are explicit — flag missing dependencies before beginning work
-4. Format specs live in concern docs — never invent them per deliverable
-5. Deadline changes must be reflected in the structure doc before work continues
-6. Flag any deliverable where the format spec is unclear or missing
+This is a production project. Use the terminology defined in:
 
----
+- `.playbook/vocabulary-production/README.md` — domain language
+- `.playbook/vocabulary-production/templates.md` — planning doc shapes
 
-## Production Anti-Patterns
-
-- Beginning production before pre-production is approved
-- Missing or vague format specs on deliverables
-- Undeclared dependencies between deliverables
-- Quality gates treated as optional
-- Deadline changes not reflected in structure docs
+Apply this vocabulary consistently across all planning docs and session output.
+Never use terminology from another domain.
 
 ---
 
-## Status
+## Production-Specific Rules
 
-This file grows as projects in this domain develop.
+- Every deliverable, workflow, and operational process is defined in a planning
+  doc before any execution begins
+- AI plans against the planning doc — not ahead of it
+- No deliverable is marked `status: active` with unresolved TODOs
+- Flag ambiguity before writing any plan or planning doc
+- Do not add scope beyond what is defined in the current planning doc
+- Roles, responsibilities, and handoffs are defined in planning docs — not assumed
+- Timeline and dependency decisions are made in planning docs — not during execution

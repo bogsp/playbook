@@ -1,96 +1,64 @@
 # AI Instructions — Manufacturing
 # File: .playbook/vocabulary-manufacturing/AI-INSTRUCTIONS.md
 
-> Load `.playbook/AI-INSTRUCTIONS.md` first, then this file.
-> This file adds manufacturing-specific rules on top of the universal rules.
+Read this file at the start of every session alongside .playbook/AI-INSTRUCTIONS.md.
 
 ---
 
-## Document Types
+## Session Boot Order
 
-### coordinator (process coordinator)
+At the start of each session, read the files in order:
 
-Manages the fabrication or assembly sequence.
+- .playbook/README.md
+- .playbook/AI-INSTRUCTIONS.md
+- .playbook/_index.md
+- .playbook/kit/01-process.md
+- .playbook/kit/04-progress.md
+- .playbook/kit/05-kanban.md (optional)
 
-```yaml
-id: [kebab-case]
-type: coordinator
-status: draft
-parent: [product or assembly]
-sequence: []
-concerns: []
-```
-
-Sequence section shows the process flow:
-```
-1. [step] — [what it produces]
-   → gates: [next step]
-   → requires: [tooling, materials, or prior steps]
-   → inspection: [what is checked before proceeding]
-```
+Then load the component and flow docs relevant to the current task.
 
 ---
 
-### component (part or process step)
+## File Header Rule
 
-A single part, sub-assembly, or process step.
+Every generated file must include its filename and full location path at the top:
 
-```yaml
-id: [kebab-case]
-type: component
-status: draft
-parent: [coordinator or assembly]
-specification: [drawing number or spec reference]
-material: []
-depends-on: []
-concerns: []
+```
+# DocumentName
+# File: .playbook/[module]/document-name.md
 ```
 
-Interface section:
-```
-Specification: [drawing or spec reference]
-Material: [material and grade]
-Tolerances: [key dimensions and tolerances]
-Inspection criteria: [what must be true before this part is accepted]
-Depends on: [parts or steps that must be complete first]
-```
+No exceptions.
 
 ---
 
-### concern (material spec / standard)
+## Kit Update Rule
 
-```yaml
-id: [kebab-case]
-type: concern
-status: draft
-affects: all | [assembly or process list]
-```
-
-A concern doc defines a standard that applies across the product — material specs, safety standards, compliance requirements.
+Always update `.playbook/kit/01-process.md` and `.playbook/kit/04-progress.md`
+before the session ends or when context reaches 80%. Do not wait to be asked.
 
 ---
 
-## Manufacturing-Specific Behavioral Rules
+## Domain Vocabulary
 
-1. Never begin fabrication on a part without an approved specification
-2. Never skip an inspection step — quality gates are contracts
-3. Material substitutions must be documented and approved before use
-4. Process deviations must be flagged and documented before the step is marked complete
-5. Dependencies between parts and steps are explicit — flag missing dependencies before beginning work
-6. Specifications live in concern docs or component docs — never assume a standard applies without declaring it
+This is a manufacturing project. Use the terminology defined in:
 
----
+- `.playbook/vocabulary-manufacturing/README.md` — domain language
+- `.playbook/vocabulary-manufacturing/templates.md` — planning doc shapes
 
-## Manufacturing Anti-Patterns
-
-- Beginning fabrication without an approved drawing or specification
-- Undocumented material substitutions
-- Skipped or undocumented inspection steps
-- Process deviations not captured in the structure doc
-- Undeclared dependencies between parts or steps
+Apply this vocabulary consistently across all planning docs and session output.
+Never use terminology from another domain.
 
 ---
 
-## Status
+## Manufacturing-Specific Rules
 
-This file grows as projects in this domain develop.
+- Every component, process, and supply chain dependency is defined in a planning
+  doc before any production begins
+- AI plans against the planning doc — not ahead of it
+- No component is marked `status: active` with unresolved TODOs
+- Flag ambiguity before writing any plan or planning doc
+- Do not add scope beyond what is defined in the current planning doc
+- Materials, tolerances, and constraints are defined in planning docs — not assumed
+- Supply chain and dependency decisions are made in planning docs — not during execution
