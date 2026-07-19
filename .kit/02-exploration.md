@@ -1,5 +1,5 @@
 # EXPLORATION
-# File: .kit/02-exploration.md
+# File: .playbook/kit/02-exploration.md
 
 ## Open Topics
 
@@ -20,12 +20,12 @@
 **2026-05-23 — Playbook as Dev-Dependency**
 - Playbook is present during development, invisible in production — like a linter or type checker
 - `.playbook/` contains all Playbook pipeline files — never shipped
-- `.kit/` stays at root — planning and ideation layer, drives the pipeline, not subordinate to it
+- `.playbook/kit/` stays at root — planning and ideation layer, drives the pipeline, not subordinate to it
 - `docs/flows/` and `docs/contracts/` belong to the project — useful to anyone regardless of Playbook
-- Adopting Playbook on an existing project is truly non-destructive — add `.playbook/` and `.kit/`, nothing changes
+- Adopting Playbook on an existing project is truly non-destructive — add `.playbook/` and `.playbook/kit/`, nothing changes
 
 **2026-05-23 — Playbook File Structure and Boundaries**
-- `.playbook/` and `.kit/` are Playbook's world
+- `.playbook/` and `.playbook/kit/` are Playbook's world
 - Everything else is the project's world
 - Locked structure:
   ```
@@ -38,7 +38,7 @@
     _integrations/
     _shared/
     .guides/
-  .kit/
+  .playbook/kit/
     01-process.md
     02-exploration.md
     03-execution.md
@@ -67,12 +67,12 @@
 - `.playbook/pipeline.md` — what every stage is and why it exists. Reference, not tutorial.
 - `.playbook/00-rules.md` — how AI implements the pipeline right now. Execution layer, no narrative.
 - `.playbook/_index.md` — project manifest, living folder tree. Project-specific only.
-- `.kit/01-process.md` — session spark only. Phase, last completed, next, active modules. Updated every session.
-- `.kit/02-exploration.md` — active decisions only. Open topics and closed decisions relevant to current work.
-- `.kit/03-execution.md` — guidelines, plan, acceptance criteria, tasks, known issues.
-- `.kit/04-progress.md` — append-only log. Current phase entries only. Three types: Completed, Decided, Fixed.
-- `.kit/05-kanban.md` — active tickets only. Work state registry.
-- `.kit/06-qa.md` — test registry and sign-off only. Test detail lives in `_tests/`.
+- `.playbook/kit/01-process.md` — session spark only. Phase, last completed, next, active modules. Updated every session.
+- `.playbook/kit/02-exploration.md` — active decisions only. Open topics and closed decisions relevant to current work.
+- `.playbook/kit/03-execution.md` — guidelines, plan, acceptance criteria, tasks, known issues.
+- `.playbook/kit/04-progress.md` — append-only log. Current phase entries only. Three types: Completed, Decided, Fixed.
+- `.playbook/kit/05-kanban.md` — active tickets only. Work state registry.
+- `.playbook/kit/06-qa.md` — test registry and sign-off only. Test detail lives in `_tests/`.
 
 **2026-05-23 — Journey Matrix in README.md**
 - `.playbook/README.md` contains a journey matrix near the top — after a one-paragraph description, before anything else
@@ -81,11 +81,11 @@
   - New project → `.playbook/README.md` → `.playbook/.guides/new-project.md`
   - Adopting existing (with kit) → `.playbook/.guides/adopt-with-kit.md`
   - Adopting existing (without kit) → `.playbook/.guides/adopt-without-kit.md`
-  - Resuming project → `.kit/00-prompts.md`
+  - Resuming project → `.playbook/kit/00-prompts.md`
   - AI dev session → `.playbook/00-rules.md`
   - AI from rollout → `docs/rollout/[milestone].md` → `.playbook/00-rules.md`
   - Looking up formats → `.playbook/pipeline.md`
-  - Looking up prompts → `.kit/00-prompts.md`
+  - Looking up prompts → `.playbook/kit/00-prompts.md`
 
 **2026-05-23 — Flow Taxonomy**
 - Flows defined by two independent axes: scope and trigger type
@@ -150,7 +150,7 @@
 - Format: ComponentName.method(input) → ok: ResultType → continue | err: ErrorType → action
 - Makes the flow section a verifiable call chain, not just a description
 
-**2026-05-23 — .kit/ Folder Structure**
+**2026-05-23 — .playbook/kit/ Folder Structure**
 - _refs/ — supporting material referenced by 02-exploration.md
   - video-insights/ — extracted video insight files
   - templates/ — reusable templates
@@ -163,21 +163,21 @@
   - kanban/ — done tickets no longer referenced
 - Rule: main files point, supporting folders own detail, archives own history
 
-**2026-05-23 — .kit/01-process.md Responsibility**
+**2026-05-23 — .playbook/kit/01-process.md Responsibility**
 - Session spark only — four fields: Phase, Last Completed, Next, Active Modules
 - Updated at the end of every session, read at the start of the next
 - Rule: if it doesn't change session to session, it doesn't live here
 - Everything else moved to .playbook/00-rules.md or .playbook/pipeline.md
 
-**2026-05-23 — .kit/02-exploration.md Responsibility**
+**2026-05-23 — .playbook/kit/02-exploration.md Responsibility**
 - Active decisions only — Open Topics and Closed Decisions relevant to current work
-- Ref: field for supporting material → points to .kit/_refs/
+- Ref: field for supporting material → points to .playbook/kit/_refs/
 - Flow: field for flows that resulted from a decision → points to docs/flows/
 - Rule: decisions that produce flows must reference them
 - Rule: flows must be traceable to a decision
-- Deprecated decisions moved to .kit/_archives/exploration/
+- Deprecated decisions moved to .playbook/kit/_archives/exploration/
 
-**2026-05-23 — .kit/03-execution.md Responsibility**
+**2026-05-23 — .playbook/kit/03-execution.md Responsibility**
 - Guidelines — style, voice, constraints, quality bar
 - External dependency philosophy declared here as a constraint — prefer native implementations
 - Plan — goals, outcomes, scope, acceptance criteria
@@ -191,11 +191,11 @@
 - Custom QA tier declared in guidelines: core | standard | full
 - Custom ticket types declared in guidelines before use
 
-**2026-05-23 — .kit/04-progress.md Responsibility**
+**2026-05-23 — .playbook/kit/04-progress.md Responsibility**
 - Append-only log — entries never edited or deleted
 - Three entry types: Completed, Decided, Fixed
 - In Progress — always the last entry, overwritten each session
-- Current phase entries only — older entries moved to .kit/_archives/progress/
+- Current phase entries only — older entries moved to .playbook/kit/_archives/progress/
 - Rule: if it happened, it gets logged; if it didn't happen, it doesn't get added retroactively
 
 **2026-05-23 — Kanban Ticket Type Tiering**
@@ -210,7 +210,7 @@
 - Core: checklist only — pass or fail
 - Standard: structured test cases — steps, expected result, executor, status
 - Full: complete coverage — pre-conditions, steps, expected result, edge cases, executor, status
-- Each test case is a separate file in .kit/_tests/
+- Each test case is a separate file in .playbook/kit/_tests/
 - 06-qa.md is a registry and sign-off document only — points to _tests/ files
 - Executor field: Agent | Human | Both | Automated
 - Automated only valid when CI/CD pipeline declared in .playbook/_integrations/
@@ -222,7 +222,7 @@
 - Consequences of Sign-off declared — what this approval gates
 
 **2026-05-23 — Archive Strategy**
-- _archives/ is the long-term history folder for .kit/
+- _archives/ is the long-term history folder for .playbook/kit/
 - Three sub-folders: exploration/, progress/, kanban/
 - Archive rule for exploration: closed decisions no longer gating any active task, flow, or component
 - Archive rule for progress: entries older than the current phase
@@ -337,7 +337,7 @@
 **2026-05-23 -- Video Insights as Future Expansion**
 - Acknowledged as a planned expansion
 - Plugs in during Context Kit exploration phase
-- Feeds .kit/_refs/video-insights/ and .kit/02-exploration.md
+- Feeds .playbook/kit/_refs/video-insights/ and .playbook/kit/02-exploration.md
 - Guide to be authored as .playbook/.guides/expansions/video-insights.md
 - Status: Coming soon -- not yet defined
 
@@ -362,5 +362,5 @@
 - Three outcomes: Integrate (promotes to kit), Discard (stays in _refs/), Defer (stays Pending)
 - All integrated insights traceable via Ref: in 02-exploration.md
 - Every decision logged in 04-progress.md
-- Files live in .kit/_refs/video-insights/
-- Prompts in .kit/00-prompts.md -- Video Insights section
+- Files live in .playbook/kit/_refs/video-insights/
+- Prompts in .playbook/kit/00-prompts.md -- Video Insights section

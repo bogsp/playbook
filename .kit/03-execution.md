@@ -1,6 +1,6 @@
 # EXECUTION
 
-# File: .kit/03-execution.md
+# File: .playbook/kit/03-execution.md
 
 ## Guidelines
 
@@ -61,7 +61,7 @@
 3. `.playbook/00-rules.md` — AI execution layer
 4. Updated flow and contract formats
 5. Updated DDA doc formats
-6. Updated `.kit/` templates
+6. Updated `.playbook/kit/` templates
 7. Updated CLI (create-playbook)
 
 **Out of Scope:**
@@ -94,11 +94,11 @@
 - [ ] Updated contract format drafted — required sections, N/A/TODO discipline, split rules
 - [ ] Updated component doc format drafted — new frontmatter, ## What It Does, ## Interface
 - [ ] Updated sequencer doc format drafted — full call chain with all branches
-- [ ] Updated .kit/ templates drafted — all six files, lean and current
-- [ ] .kit/\_refs/ folder structure defined and documented
-- [ ] .kit/\_tests/ test file template drafted
-- [ ] .kit/\_archives/ archive conventions documented
-- [ ] Video insights integration defined — .kit/\_refs/video-insights/ pattern
+- [ ] Updated .playbook/kit/ templates drafted — all six files, lean and current
+- [ ] .playbook/kit/\_refs/ folder structure defined and documented
+- [ ] .playbook/kit/\_tests/ test file template drafted
+- [ ] .playbook/kit/\_archives/ archive conventions documented
+- [ ] Video insights integration defined — .playbook/kit/\_refs/video-insights/ pattern
 - [ ] create-playbook CLI updated to reflect new structure
 
 ---
@@ -118,13 +118,13 @@ Design the front door — single entry experience for non-technical users
   - [ ] Contract doc template
   - [ ] Component doc template
   - [ ] Sequencer doc template
-  - [ ] .kit/01-process.md template
-  - [ ] .kit/02-exploration.md template
-  - [ ] .kit/03-execution.md template
-  - [ ] .kit/04-progress.md template
-  - [ ] .kit/05-kanban.md template
-  - [ ] .kit/06-qa.md template
-  - [ ] .kit/\_tests/ test file template
+  - [ ] .playbook/kit/01-process.md template
+  - [ ] .playbook/kit/02-exploration.md template
+  - [ ] .playbook/kit/03-execution.md template
+  - [ ] .playbook/kit/04-progress.md template
+  - [ ] .playbook/kit/05-kanban.md template
+  - [ ] .playbook/kit/06-qa.md template
+  - [ ] .playbook/kit/\_tests/ test file template
   - [ ] Video insights integration
 
 - [ ] Front door design

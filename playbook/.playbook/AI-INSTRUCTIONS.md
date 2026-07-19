@@ -1,4 +1,5 @@
 # AI Instructions
+
 # File: .playbook/AI-INSTRUCTIONS.md
 
 > Load this file at the start of every session.
@@ -20,14 +21,40 @@ Read these files at the start of every session, in this order:
 
 **Load based on the task:**
 
-| Task | Also load |
-|---|---|
-| Any coding task | `vocabulary-[domain]/AI-INSTRUCTIONS.md` |
-| Planning or structure work | `docs/flows/_index.md`, `docs/contracts/_index.md` |
-| Specific module work | `.playbook/[module]/_index.md` + relevant component docs |
-| Audit expansion | `docs/rewrite/` files as they exist |
+| Task                       | Also load                                                |
+| -------------------------- | -------------------------------------------------------- |
+| Any coding task            | `vocabulary-[domain]/AI-INSTRUCTIONS.md`                 |
+| Planning or structure work | `docs/flows/_index.md`, `docs/contracts/_index.md`       |
+| Specific module work       | `.playbook/[module]/_index.md` + relevant component docs |
+| Audit expansion            | `docs/rewrite/` files as they exist                      |
 
 Confirm what you have loaded. Then wait for instruction.
+
+---
+
+## Hierarchical Context Headers (HCH)
+
+Every markdown file (planning documents, flows, contracts) must manage an explicit HCH metadata block at the absolute top of the file to guarantee it can function as a self-contained context packet.
+
+### 1. Structure Enforcement
+
+## The header must use the exact format below:
+
+MODULE_ID: [Unique system coordinate]
+SYSTEM_CONTEXT: [Macro-project or engine scope]
+UPSTREAM_DEPENDENCIES: [Array of dependent path files]
+DOWNSTREAM_IMPACT: [Array of affected system files]
+CORE_SYSTEM_INVARIANTS:
+
+- [Constraint 1]
+- [Constraint 2]
+
+---
+
+### 2. Behavioral Directives for AI
+
+- **Context Initialization**: Read the HCH front-matter immediately upon file ingestion. You must adjust your technical assumptions based strictly on the declared system invariants (do not inject default cloud/web SaaS paradigms into bare-metal or local-first environments unless explicitly stated).
+- **Modification Rule**: When generating or revising any planning document, you must evaluate if the upstream or downstream dependencies have broken. Update the HCH arrays dynamically during the sync check before declaring the file update complete.
 
 ---
 

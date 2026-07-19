@@ -1,6 +1,6 @@
 # PROCESS
 
-# File: .kit/01-process.md
+# File: .playbook/kit/01-process.md
 
 ---
 

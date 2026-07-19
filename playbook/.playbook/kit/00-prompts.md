@@ -1,4 +1,5 @@
 # Session Prompts
+
 # File: .playbook/kit/00-prompts.md
 
 Copy the prompt that matches your situation. Attach the files listed, then send.
@@ -32,6 +33,20 @@ Add `.playbook/kit/05-kanban.md` and `.playbook/kit/06-qa.md` to Message 2 when 
 
 ---
 
+## Loading a Localized Context Packet (Packets A–E)
+
+**Message 1 — attach:** `.playbook/kit/01-process.md`, `.playbook/kit/03-execution.md`
+
+> I am uploading active project steering files. I will follow up with a high-context isolated knowledge packet.
+> This message: Process + Execution. Next: Isolated Knowledge Packet.
+> Confirm briefly.
+
+**Message 2 — attach:** [Specific bundle of files mapping to Packet A, B, C, D, or E]
+
+> Here is Packet [A/B/C/D/E]. Read the absolute front-matter metadata headers completely to initialize your understanding of the localized system constraints and invariants. Do not assume traditional SaaS cloud architectures or standard web stack overhead unless explicitly directed by the metadata invariants.
+
+---
+
 ## Adopting an Existing Project
 
 **Attach:** `.playbook/AI-INSTRUCTIONS.md`, `.playbook/kit/01-process.md`, `.playbook/kit/02-exploration.md`, `.playbook/kit/03-execution.md`
@@ -42,7 +57,7 @@ Add `.playbook/kit/05-kanban.md` and `.playbook/kit/06-qa.md` to Message 2 when 
 
 ---
 
-## Starting a Audit Audit
+## Starting a Audit
 
 **Attach:** `.playbook/AI-INSTRUCTIONS.md`, `.playbook/guides/audit.md`, `.playbook/kit/01-process.md`
 

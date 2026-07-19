@@ -1,5 +1,6 @@
 # Session Prompts
-# File: .kit/00-prompts.md
+
+# File: .playbook/kit/00-prompts.md
 
 Copy and paste the prompt that matches what you are doing.
 
@@ -179,7 +180,7 @@ Update the folder map in any _index.md where pieces changed.
 
 ## Generating a Milestone Summary
 
-Attach all `.playbook/` docs + `.kit/04-progress.md`, then send:
+Attach all `.playbook/` docs + `.playbook/kit/04-progress.md`, then send:
 
 ```
 Generate a milestone summary for [milestone name].
@@ -242,10 +243,10 @@ Attach all `docs/rewrite/` files + current kit files, then send:
 ```
 The audit expansion is complete. Run the handoff.
 
-1. Pull open questions from system-map.md → .kit/02-exploration.md
-2. Pull settled decisions from decision-record.md → .kit/02-exploration.md
-3. Pull known problems from risk-register.md → .kit/03-execution.md
-4. Update .kit/01-process.md — mark audit complete, update Current State
+1. Pull open questions from system-map.md → .playbook/kit/02-exploration.md
+2. Pull settled decisions from decision-record.md → .playbook/kit/02-exploration.md
+3. Pull known problems from risk-register.md → .playbook/kit/03-execution.md
+4. Update .playbook/kit/01-process.md — mark audit complete, update Current State
 
 Generate updated kit files for review.
 ```
@@ -290,7 +291,7 @@ Output as a downloadable markdown file.
 
 Add one extra section based on the video type — see `guides/video-insights.md`.
 
-Save the output to: `.kit/_refs/video-insights/[short-descriptive-title].md`
+Save the output to: `.playbook/kit/_refs/video-insights/[short-descriptive-title].md`
 
 ---
 
@@ -300,7 +301,7 @@ Upload the insight file alongside your kit files, then send:
 
 ```
 I have a new video insight to discuss.
-File: .kit/_refs/video-insights/[filename].md
+File: .playbook/kit/_refs/video-insights/[filename].md
 
 Review it and:
 1. Summarise the core idea in one sentence
@@ -322,7 +323,7 @@ After the discussion, if integrating:
 ```
 Integrate [insight title] as follows:
 - [Open question | Settled decision | Task | Known problem]
-- Ref: .kit/_refs/video-insights/[filename].md
+- Ref: .playbook/kit/_refs/video-insights/[filename].md
 
 Update the insight file Status to: Integrated
 Log in 04-progress.md: Decided: [title] — Integrated
