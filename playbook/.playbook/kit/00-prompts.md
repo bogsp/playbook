@@ -1,6 +1,19 @@
-# Session Prompts
+---
+File: .playbook/kit/00-prompts.md
 
-# File: .playbook/kit/00-prompts.md
+MODULE_ID: PLAYBOOK-CORE-00-PROMPTS
+SYSTEM_CONTEXT: Playbook Strategic Orchestration Shell
+UPSTREAM_DEPENDENCIES: []
+DOWNSTREAM_IMPACT: []
+CORE_SYSTEM_INVARIANTS:
+  - [Invariant 1]
+
+Project:
+Type: <!-- software / writing / production / manufacturing -->
+Domain vocabulary: <!-- .playbook/vocabulary-[domain]/ -->
+---
+
+# Session Prompts
 
 Copy the prompt that matches your situation. Attach the files listed, then send.
 

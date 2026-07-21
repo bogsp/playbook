@@ -1,15 +1,19 @@
 ---
+File: .playbook/kit/03-execution.md
+
 MODULE_ID: PLAYBOOK-CORE-03-EXECUTE
 SYSTEM_CONTEXT: Playbook Strategic Orchestration Shell
 UPSTREAM_DEPENDENCIES: [.playbook/kit/02-exploration.md]
 DOWNSTREAM_IMPACT: [.playbook/kit/04-progress.md, .playbook/kit/05-kanban.md]
 CORE_SYSTEM_INVARIANTS:
   - Framework: No execution tracks can be initiated without matching documentation boundaries.
+
+Project:
+Type: <!-- software / writing / production / manufacturing -->
+Domain vocabulary: <!-- .playbook/vocabulary-[domain]/ -->
 ---
 
 # Execution
-
-# File: .playbook/kit/03-execution.md
 
 ---
 
