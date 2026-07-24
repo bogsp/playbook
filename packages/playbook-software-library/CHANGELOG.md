@@ -1,6 +1,10 @@
 # Changelog
 # File: packages/playbook-software-library/CHANGELOG.md
 
+## 1.3.0
+
+- Added `dependency-registry` solution — supply chain vetting process and approved dependency registry format; enforces that no external dependency enters a project without a completed, human-approved registry entry
+
 ## 1.2.0
 
 - Renamed `clean-architecture-dda` to `clean-architecture-planning-layout` — terminology updated throughout to replace "DDA" with "planning docs"

@@ -63,6 +63,7 @@ _solutions/      Patterns that span multiple components
 |---|---|---|
 | `clean-architecture-planning-layout` | 1.1.0 | Planning doc layer folder layout and validation rules |
 | `convex-reactive-state` | 1.0.0 | Live state split between Convex and durable storage |
+| `dependency-registry` | 1.0.0 | Supply chain vetting process and approved dependency registry |
 | `docker-compose-boot-groups` | 1.0.0 | Health-gated service startup pattern |
 | `local-model-runtime` | 1.0.0 | Safe local model process orchestration |
 | `missing-script-drift-check` | 1.0.0 | Package script reference validation |
@@ -84,6 +85,7 @@ Copy the docs you need into your project:
 ```bash
 cp node_modules/@bogsp/playbook-software-library/_concerns/logging.md .playbook/_concerns/
 cp node_modules/@bogsp/playbook-software-library/_integrations/cloudflare-r2.md .playbook/_integrations/
+cp node_modules/@bogsp/playbook-software-library/_solutions/dependency-registry.md .playbook/_solutions/
 ```
 
 Review and adapt each doc to your project's specific context.

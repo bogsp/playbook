@@ -1,5 +1,5 @@
 # docs/code-standards-rust.md
-# Project Sage — Rust Code Standards
+# Rust Code Standards
 
 This document is the authoritative standard for all Rust code in `rust-shell/`. It is a mandatory gate in the Playbook pipeline. No component is considered complete unless it satisfies every applicable section below. AI code generation must follow this document mechanically; the source code is intentionally hostile to reading and must not be interpreted or reasoned about aesthetically.
 
@@ -22,12 +22,12 @@ This document is the authoritative standard for all Rust code in `rust-shell/`. 
 
 ```toml
 [profile.release]
-opt-level     = 3
-lto           = true
-codegen-units = 1
-panic         = "abort"
-strip         = "symbols"
-debug         = false
+opt-level       = 3
+lto             = true
+codegen-units   = 1
+panic           = "abort"
+strip           = "symbols"
+debug           = false
 overflow-checks = false
 ```
 
@@ -55,19 +55,19 @@ In sensitive paths, prefer `dyn Trait` dispatch over generic monomorphization. M
 **Pattern:**
 ```rust
 // Define the operation contract
-trait SageOp: Send + Sync {
-    fn execute(&self, ctx: &mut SageCtx) -> SageResult;
+trait Op: Send + Sync {
+    fn execute(&self, ctx: &mut Ctx) -> EngineResult;
 }
 
 // Concrete implementations are private to their module
 struct CompressOp;
-impl SageOp for CompressOp {
-    fn execute(&self, ctx: &mut SageCtx) -> SageResult { ... }
+impl Op for CompressOp {
+    fn execute(&self, ctx: &mut Ctx) -> EngineResult { ... }
 }
 
 // Dispatcher holds boxed trait objects — not generic parameters
-struct SageDispatcher {
-    ops: Vec<Box<dyn SageOp>>,
+struct Dispatcher {
+    ops: Vec<Box<dyn Op>>,
 }
 ```
 
@@ -83,19 +83,19 @@ Insert opaque predicates at exported function entry points and key branch bounda
 ```rust
 use std::hint::black_box;
 
-// Seed value — module-level, never exported
-static SAGE_OP_SEED: u32 = 0x9E3779B9;
+// Obfuscation seed — module-level, never exported
+static OBFUSCATION_SEED: u32 = 0x9E3779B9;
 
-macro_rules! sage_opaque_true {
+macro_rules! opaque_true {
     () => {{
-        let s = black_box(SAGE_OP_SEED);
+        let s = black_box(OBFUSCATION_SEED);
         (s ^ (s >> 16)) != 0xFFFF_FFFF
     }};
 }
 
-macro_rules! sage_opaque_false {
+macro_rules! opaque_false {
     () => {{
-        let s = black_box(SAGE_OP_SEED);
+        let s = black_box(OBFUSCATION_SEED);
         (s & s.wrapping_add(1)) == 0xFFFF_FFFF
     }};
 }
@@ -103,8 +103,8 @@ macro_rules! sage_opaque_false {
 
 Usage:
 ```rust
-pub fn sage_process(ctx: &mut SageCtx) -> SageResult {
-    if sage_opaque_true!() && ctx.is_ready() {
+pub fn process(ctx: &mut Ctx) -> EngineResult {
+    if opaque_true!() && ctx.is_ready() {
         // real path
     }
     ...
@@ -112,7 +112,7 @@ pub fn sage_process(ctx: &mut SageCtx) -> SageResult {
 ```
 
 - `black_box` is mandatory — without it, the compiler eliminates the predicate
-- At least one `sage_opaque_true!()` guard per `pub` function in engine-adjacent modules
+- At least one `opaque_true!()` guard per `pub` function in engine-adjacent modules
 - Do not comment on what the predicate evaluates to
 
 ### 3.3 `STRING_XOR` — Compile-Time String Obfuscation
@@ -121,26 +121,29 @@ No plaintext string literals in `rust-shell/src/`. All string constants are XOR-
 
 **Pattern:**
 ```rust
-// XOR key — one per module, defined at module top
-const SAGE_XK: u8 = 0x5A;
+// XOR key — one per module file, defined at module top
+const STR_XOR_KEY: u8 = 0x5A;
 
-macro_rules! sage_str_enc {
+macro_rules! str_xor_encode {
     ($s:literal) => {{
         const BYTES: &[u8] = $s.as_bytes();
         const LEN: usize = BYTES.len();
         const fn encode() -> [u8; LEN] {
             let mut out = [0u8; LEN];
             let mut i = 0;
-            while i < LEN { out[i] = BYTES[i] ^ 0x5A; i += 1; }
+            while i < LEN {
+                out[i] = BYTES[i] ^ STR_XOR_KEY;
+                i += 1;
+            }
             out
         }
         encode()
     }};
 }
 
-macro_rules! sage_str_use {
+macro_rules! str_xor_decode {
     ($enc:expr, $body:expr) => {{
-        let mut buf: Vec<u8> = $enc.iter().map(|b| b ^ SAGE_XK).collect();
+        let mut buf: Vec<u8> = $enc.iter().map(|b| b ^ STR_XOR_KEY).collect();
         $body(&buf);
         // Zero after use
         for b in buf.iter_mut() { *b = 0; }
@@ -149,22 +152,25 @@ macro_rules! sage_str_use {
 }
 ```
 
-- `SAGE_XK` must differ per module file — defined at the top of each `mod.rs` or `*.rs` file
+- `STR_XOR_KEY` must differ per module file — defined at the top of each `mod.rs` or `*.rs` file
 - Decoded buffers are always stack or short-lived heap — never stored in struct fields
 - Zeroing after use is mandatory
-- Log strings follow the same rule — pass through `sage_log_*` stubs only
+- Log strings follow the same rule — pass through `log_*` stubs only
 
 ### 3.4 `ZERO_ON_DROP` — Zeroizing Sensitive Types
 
-Any type holding a key, fingerprint, decoded string, or graph-derived secret must implement `Drop` to zero its memory. No exceptions.
+Any type holding a key, fingerprint, decoded string, or derived secret must implement `Drop` to zero its memory. No exceptions.
 
 **Pattern:**
 ```rust
-struct SageKey([u8; 32]);
+struct SecretKey([u8; 32]);
 
-impl Drop for SageKey {
+impl Drop for SecretKey {
     fn drop(&mut self) {
-        // Volatile write to prevent compiler elimination
+        // SAFETY: write_volatile is required to prevent the compiler from
+        // eliminating zeroing in Drop. This is a documented, DDA-approved
+        // unsafe site — the only acceptable use of unsafe outside ffi.rs
+        // for this purpose.
         for b in self.0.iter_mut() {
             unsafe { std::ptr::write_volatile(b, 0u8); }
         }
@@ -191,7 +197,7 @@ Use `#[inline(always)]` and `#[inline(never)]` deliberately to break recognizabl
 fn compress_chunk(buf: &[u8]) -> u64 { ... }
 
 #[inline(never)]
-pub fn sage_process_input(ctx: &mut SageCtx, input: &[u8]) -> SageResult { ... }
+pub fn process_input(ctx: &mut Ctx, input: &[u8]) -> EngineResult { ... }
 ```
 
 ---
@@ -220,7 +226,7 @@ These apply exclusively to `ffi.rs` and any file its DDA doc explicitly designat
 
 ## 6. Error Handling
 
-- All functions return `SageResult<T>` — no `unwrap()`, no `expect()`, no `panic!()` in `src/` outside of tests
+- All functions return `EngineResult<T>` — no `unwrap()`, no `expect()`, no `panic!()` in `src/` outside of tests
 - `?` propagation is the standard pattern
 - On error paths, `ZERO_ON_DROP` types handle their own cleanup automatically — verify this is not bypassed by `std::mem::forget` or similar
 - Error variants defined in `rust-shell/src/error.rs` — no raw string errors, no `anyhow` or `thiserror` unless already in `Cargo.toml`
@@ -232,13 +238,14 @@ These apply exclusively to `ffi.rs` and any file its DDA doc explicitly designat
 
 | Scope | Convention | Example |
 |---|---|---|
-| Public API types | `SagePascalCase` | `SageCtx`, `SageResult` |
-| Internal types | `PascalCase` (no prefix) | `CompressOp`, `KeyBuffer` |
-| Public functions | `sage_snake_case` | `sage_process_input` |
+| Public API types | `PascalCase` | `Ctx`, `Fingerprint` |
+| Internal types | `PascalCase` | `CompressOp`, `KeyBuffer` |
+| Sensitive types (with Drop) | `Secret<Name>` or descriptive | `SecretKey`, `Fingerprint` |
+| Public functions | `snake_case` | `process_input` |
 | Internal functions | `snake_case` | `compress_chunk` |
-| Constants | `SAGE_UPPER_SNAKE` | `SAGE_FINGERPRINT_SIZE` |
-| Hardening macros | `sage_<pattern>!` | `sage_opaque_true!`, `sage_str_enc!` |
-| Sensitive types | `Sage<Name>` with `Drop` impl | `SageKey`, `SageFingerprint` |
+| Constants | `UPPER_SNAKE_CASE` | `FINGERPRINT_SIZE` |
+| Obfuscation seed | `OBFUSCATION_SEED` | `OBFUSCATION_SEED` |
+| Hardening macros | `snake_case!` | `opaque_true!`, `str_xor_encode!` |
 
 ---
 
@@ -249,21 +256,21 @@ Every component DDA doc must include a hardening checklist section confirming th
 ```
 ## Hardening Checklist
 - [ ] DISPATCH_TABLE: dyn Trait used over generics in all sensitive dispatch paths
-- [ ] OPAQUE_PRED: sage_opaque_true!() at all pub function entry points
-- [ ] STRING_XOR: no plaintext string literals in src/; sage_str_enc! applied
+- [ ] OPAQUE_PRED: opaque_true!() at all pub function entry points
+- [ ] STRING_XOR: no plaintext string literals in src/; str_xor_encode! applied
 - [ ] ZERO_ON_DROP: all sensitive types implement Drop with write_volatile zeroing
 - [ ] INLINE_CONTROL: #[inline(always)] / #[inline(never)] applied deliberately
 - [ ] Visibility: all internals pub(crate) or private; pub only at lib.rs boundary
 - [ ] FFI boundary: null checks, SAFETY comments, no Rust types crossing boundary
 - [ ] No unwrap/expect/panic in release paths
-- [ ] SageResult<T> returned from all fallible functions
+- [ ] EngineResult<T> returned from all fallible functions
 - [ ] Release profile flags verified in Cargo.toml
 - [ ] No new external crate dependencies introduced
 ```
 
 ---
 
-## 9. What AI Must Not Do
+## 9. AI Constraints
 
 When generating Rust code for this project:
 
