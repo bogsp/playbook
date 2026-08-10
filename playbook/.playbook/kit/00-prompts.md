@@ -5,10 +5,9 @@ MODULE_ID: PLAYBOOK-CORE-00-PROMPTS
 SYSTEM_CONTEXT: Playbook Strategic Orchestration Shell
 UPSTREAM_DEPENDENCIES: []
 DOWNSTREAM_IMPACT: []
-CORE_SYSTEM_INVARIANTS:
-  - [Invariant 1]
+CORE_SYSTEM_INVARIANTS: []
 
-Project:
+Project: [Project Name]
 Type: <!-- software / writing / production / manufacturing -->
 Domain vocabulary: <!-- .playbook/vocabulary-[domain]/ -->
 ---

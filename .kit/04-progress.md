@@ -1,6 +1,6 @@
 # PROGRESS LOG (APPEND-ONLY)
 
-# File: .playbook/kit/04-progress.md
+# File: .kit/04-progress.md
 
 Rules:
 
@@ -262,3 +262,33 @@ Rules:
   projects — Playbook remains the dev pipeline tool,
   The Accord is the moral framework
 - **In Progress:** Refining THE-ACCORD.md next session
+
+## 2026-08-10
+
+- **Decided:** The Accord work is paused (not closed) to run a full reconciliation of the
+  Playbook pipeline tracking files against actual shipped state — kit files had drifted
+  significantly out of sync with the real repo.
+- **Completed:** Full sync check across `.kit/03-execution.md`, `.kit/02-exploration.md`,
+  `playbook/.playbook/`, `playbook/docs/`, `packages/create-playbook/`,
+  `packages/playbook-software-library/`. Full findings in
+  `.kit/_refs/sync-check-playbook-pipeline-2026-08-10.md`.
+- **Decided:** 3 previously-unchecked acceptance criteria in `.kit/03-execution.md`
+  (`pipeline.md`, sequencer format, `_archives/` conventions) are confirmed complete — the
+  checkboxes were simply never updated when the work landed.
+- **Fixed:** `# File:` header paths in `.kit/01-process.md`, `.kit/04-progress.md`, and
+  `.kit/05-kanban.md` corrected to their actual location (`.kit/`, not
+  `.playbook/kit/`) as part of this session's edits.
+- **Decided:** 6 architecture-level discrepancies require human decision before closing —
+  logged as flags, not resolved unilaterally, per `AI-INSTRUCTIONS.md`: `00-rules.md` vs
+  `AI-INSTRUCTIONS.md` naming; duplicate template sources (`templates.md` vs `templates/`
+  folder); inconsistent Hierarchical Context Header (HCH) frontmatter adoption; leftover
+  "SAGE-" naming from the Accord project inside generic Playbook templates; contract
+  section names diverged from the logged decision; journey matrix location
+  (`README.md` vs `_index.md`).
+- **Decided:** Two major pieces of shipped scope — `@bogsp/playbook-software-library` and
+  an apparent C11 engine / Rust shell subproject referenced in `docs/code-standards-c.md`
+  and `docs/code-standards-rust.md` — exist with no corresponding planning doc or logged
+  decision anywhere in `.kit/`. Flagged for a scoping decision, not assumed in or out.
+- **In Progress:** Awaiting direction on flagged items K-01 through K-06 before resuming
+  the remaining `.kit/03-execution.md` checklist (`_tests/` template) and before resuming
+  The Accord work.
