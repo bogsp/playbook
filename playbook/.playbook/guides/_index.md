@@ -19,6 +19,7 @@ All Playbook guides in one place. Start with the one that matches where you are.
 | Guide | What it covers |
 |---|---|
 | [Context kit](context-kit.md) | How the session files work and why they matter |
+| [Project identity](project-identity.md) | Keeping README.md, AI-INSTRUCTIONS.md, and _index.md current for this project |
 | [Video insights](video-insights.md) | Using videos as research — extracting and integrating ideas |
 
 ---

@@ -6,7 +6,7 @@ archive_rule: 'N/A'
 ---
 
 Phase: Planning
-Last Completed: Closed K-01 and K-03, locked YAML frontmatter adoption, and verified root `.playbook/` isolation (K-11).
-Next: Populate the clean `playbook/` template structure (K-12).
+Last Completed: Rewrote root `.playbook/README.md`, `AI-INSTRUCTIONS.md`, and `_index.md` to describe this repo distinctly from the `playbook/` template; added `playbook/.playbook/guides/project-identity.md` and wired it into `AI-INSTRUCTIONS.md` and `guides/_index.md`. Locked guides modernization scope (K-14–K-18).
+Next: Resolve Q-02 (standalone Context Kit as its own guide vs. a section in `context-kit.md`), then execute K-14 — split `guides/context-kit.md` into standalone and Playbook-integrated usage.
 Active Modules: kanban
 Active Expansions: none

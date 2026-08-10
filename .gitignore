@@ -58,5 +58,5 @@ coverage/
 .nyc_output/
 
 # Misc
-.nx/
+.nx/*
 .gemini/

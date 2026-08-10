@@ -28,6 +28,7 @@ Read these files at the start of every session, in this exact order:
 | Planning or structure work | `docs/flows/_index.md`, `docs/contracts/_index.md` |
 | Specific module work | `.playbook/[module]/_index.md` + relevant component docs |
 | Audit expansion | `docs/rewrite/` files as they exist |
+| Updating README.md, AI-INSTRUCTIONS.md, or `_index.md` to match this project | `guides/project-identity.md` |
 
 Confirm what you have loaded. Then wait for instruction.
 
@@ -57,6 +58,7 @@ Every planning document, flow, and contract manages explicit metadata/headers at
 15. Never move to the next expansion phase without human review.
 16. Never write planning documents during inventory, audit, or classify phases.
 17. Stop and flag before doing any work when a requirement is unclear.
+18. Keep `.playbook/README.md`, `.playbook/AI-INSTRUCTIONS.md`, and `.playbook/_index.md` current with this specific project — see `guides/project-identity.md` for what to update, when, and what must stay fixed.
 
 ## When Something Is Unclear
 
@@ -72,6 +74,7 @@ Stop all work. Flag using this exact format:
 - Leave any path through the work unhandled.
 - Make structural decisions without flagging them first.
 - Produce placeholder or incomplete work.
+- Edit the core Behavioral Rules or Session Load Order in this file to fit a project — append project-specific rules instead (see `guides/project-identity.md`).
 
 ## Expansions
 
