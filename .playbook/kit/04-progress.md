@@ -18,4 +18,7 @@ archive_rule: 'Entries older than the current phase move to .playbook/kit/_archi
 - **Decided**: Discarded legacy C11/Rust engine references (resolves K-09).
 - **Completed**: Closed K-01 (deprecated `00-rules.md` in favor of `AI-INSTRUCTIONS.md`) and K-03 (locked YAML frontmatter adoption and agreed to add frontmatter rules to code standards).
 - **Completed**: Closed K-11 (migrated internal Context Kit to `.playbook/kit/`).
-- **In Progress**: Executing K-12 to populate the clean `playbook/` template structure.
+- **Decided**: Scoped the guides modernization work — five tickets (K-14–K-18) to bring `playbook/.playbook/guides/*.md` in line with the current pipeline, with the Context Kit split into standalone and Playbook-integrated documentation as the centerpiece.
+- **Completed**: Logged open question Q-02 (standalone Context Kit — own guide file vs. section in `context-kit.md`) in `02-exploration.md`, gating K-14.
+- **Completed**: Seeded K-14 through K-18 in `05-kanban.md` Backlog, with K-15 marked as the resolution path for K-06.
+- **In Progress**: Executing K-12 to populate the clean `playbook/` template structure. Guides modernization (K-14–K-18) queued behind it — Q-02 to be resolved first.

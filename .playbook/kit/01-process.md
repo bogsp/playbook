@@ -6,7 +6,7 @@ archive_rule: 'N/A'
 ---
 
 Phase: Planning
-Last Completed: Rewrote root `.playbook/README.md`, `AI-INSTRUCTIONS.md`, and `_index.md` to describe this repo distinctly from the `playbook/` template; added `playbook/.playbook/guides/project-identity.md` and wired it into `AI-INSTRUCTIONS.md` and `guides/_index.md`. Locked guides modernization scope (K-14–K-18).
-Next: Resolve Q-02 (standalone Context Kit as its own guide vs. a section in `context-kit.md`), then execute K-14 — split `guides/context-kit.md` into standalone and Playbook-integrated usage.
+Last Completed: Scoped guides modernization (K-14–K-18) — Context Kit standalone vs. integrated split, guide entry-point restructure, terminology fixes, standalone session prompt, template README/AI-INSTRUCTIONS check. Logged Q-02 and seeded all five tickets in the kanban.
+Next: Resolve Q-02 (standalone Context Kit as its own guide vs. a section in `context-kit.md`), then execute K-14.
 Active Modules: kanban
 Active Expansions: none

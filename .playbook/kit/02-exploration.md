@@ -7,6 +7,8 @@ archive_rule: 'Closed decisions no longer gating any active task move to .playbo
 
 ## Open Topics
 
+- [ ] **[Q-02]:** Standalone Context Kit documentation — does it get its own guide file (e.g. `guides/context-kit-standalone.md`), or a section inside the existing `guides/context-kit.md`? Blocks K-14. To be resolved at the start of K-14.
+
 ---
 
 ## Closed Decisions
