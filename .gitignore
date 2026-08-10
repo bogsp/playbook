@@ -59,4 +59,4 @@ coverage/
 
 # Misc
 .nx/
-.kit/gemini/
+.gemini/
