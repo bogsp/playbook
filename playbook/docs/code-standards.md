@@ -1,10 +1,12 @@
-# docs/code-standards.md
+---
+File: docs/code-standards.md
+
+Version: 3.1 — Removed project-specific naming, removed StrykerJS, updated dependency governance, fixed Vitest coverage config.
+Scope: Architecture, Security, TypeScript, Validation, Error Handling, Code Hygiene, Testing, Observability, Git, Tooling, AI-Assisted Development.
+Usage: Copy to `/docs/code-standards.md` in each repo. Loaded as part of the Playbook session boot order — see [Section 14](#14-ai-assisted-development).
+---
 
 # Code Standards — Canonical Reference
-
-> **Version:** 3.1 — Removed project-specific naming, removed StrykerJS, updated dependency governance, fixed Vitest coverage config.
-> **Scope:** Architecture, Security, TypeScript, Validation, Error Handling, Code Hygiene, Testing, Observability, Git, Tooling, AI-Assisted Development.
-> **Usage:** Copy to `/docs/code-standards.md` in each repo. Loaded as part of the Playbook session boot order — see [Section 14](#14-ai-assisted-development).
 
 ---
 

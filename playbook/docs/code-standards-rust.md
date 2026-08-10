@@ -1,4 +1,11 @@
-# docs/code-standards-rust.md
+---
+File: docs/code-standards-rust.md
+
+Version:
+Scope:
+Usage:
+---
+
 # Rust Code Standards
 
 This document is the authoritative standard for all Rust code in `rust-shell/`. It is a mandatory gate in the Playbook pipeline. No component is considered complete unless it satisfies every applicable section below. AI code generation must follow this document mechanically; the source code is intentionally hostile to reading and must not be interpreted or reasoned about aesthetically.
@@ -53,6 +60,7 @@ Every module in `rust-shell/src/` must apply **all** of the following patterns u
 In sensitive paths, prefer `dyn Trait` dispatch over generic monomorphization. Monomorphized generics produce multiple copies of recognizably structured code that static analysis can correlate. Dynamic dispatch through trait objects produces a vtable-indirected call that is harder to trace.
 
 **Pattern:**
+
 ```rust
 // Define the operation contract
 trait Op: Send + Sync {
@@ -80,6 +88,7 @@ struct Dispatcher {
 Insert opaque predicates at exported function entry points and key branch boundaries. Use `std::hint::black_box` to prevent the compiler from evaluating them statically.
 
 **Pattern:**
+
 ```rust
 use std::hint::black_box;
 
@@ -102,6 +111,7 @@ macro_rules! opaque_false {
 ```
 
 Usage:
+
 ```rust
 pub fn process(ctx: &mut Ctx) -> EngineResult {
     if opaque_true!() && ctx.is_ready() {
@@ -120,6 +130,7 @@ pub fn process(ctx: &mut Ctx) -> EngineResult {
 No plaintext string literals in `rust-shell/src/`. All string constants are XOR-encoded as byte arrays at compile time via a macro and decoded into stack-local `Vec<u8>` or `[u8; N]` buffers at runtime. Buffers are zeroed immediately after use.
 
 **Pattern:**
+
 ```rust
 // XOR key — one per module file, defined at module top
 const STR_XOR_KEY: u8 = 0x5A;
@@ -162,6 +173,7 @@ macro_rules! str_xor_decode {
 Any type holding a key, fingerprint, decoded string, or derived secret must implement `Drop` to zero its memory. No exceptions.
 
 **Pattern:**
+
 ```rust
 struct SecretKey([u8; 32]);
 
@@ -188,6 +200,7 @@ impl Drop for SecretKey {
 Use `#[inline(always)]` and `#[inline(never)]` deliberately to break recognizable function boundaries in the binary. This is not a performance optimization — it is a structural obfuscation tool.
 
 **Rules:**
+
 - Short, hot internal helpers: `#[inline(always)]` — forces them to disappear into callers
 - Sensitive top-level handlers that should not be traceable as a unit: `#[inline(never)]` — prevents the compiler from merging or collapsing them
 - Do not use `#[inline]` (without qualifier) in `rust-shell/src/` — always be explicit
@@ -236,16 +249,16 @@ These apply exclusively to `ffi.rs` and any file its DDA doc explicitly designat
 
 ## 7. Naming Conventions
 
-| Scope | Convention | Example |
-|---|---|---|
-| Public API types | `PascalCase` | `Ctx`, `Fingerprint` |
-| Internal types | `PascalCase` | `CompressOp`, `KeyBuffer` |
-| Sensitive types (with Drop) | `Secret<Name>` or descriptive | `SecretKey`, `Fingerprint` |
-| Public functions | `snake_case` | `process_input` |
-| Internal functions | `snake_case` | `compress_chunk` |
-| Constants | `UPPER_SNAKE_CASE` | `FINGERPRINT_SIZE` |
-| Obfuscation seed | `OBFUSCATION_SEED` | `OBFUSCATION_SEED` |
-| Hardening macros | `snake_case!` | `opaque_true!`, `str_xor_encode!` |
+| Scope                       | Convention                    | Example                           |
+| --------------------------- | ----------------------------- | --------------------------------- |
+| Public API types            | `PascalCase`                  | `Ctx`, `Fingerprint`              |
+| Internal types              | `PascalCase`                  | `CompressOp`, `KeyBuffer`         |
+| Sensitive types (with Drop) | `Secret<Name>` or descriptive | `SecretKey`, `Fingerprint`        |
+| Public functions            | `snake_case`                  | `process_input`                   |
+| Internal functions          | `snake_case`                  | `compress_chunk`                  |
+| Constants                   | `UPPER_SNAKE_CASE`            | `FINGERPRINT_SIZE`                |
+| Obfuscation seed            | `OBFUSCATION_SEED`            | `OBFUSCATION_SEED`                |
+| Hardening macros            | `snake_case!`                 | `opaque_true!`, `str_xor_encode!` |
 
 ---
 

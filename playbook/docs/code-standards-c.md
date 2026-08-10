@@ -1,4 +1,11 @@
-# docs/code-standards-c.md
+---
+File: docs/code-standards-c.md
+
+Version:
+Scope:
+Usage:
+---
+
 # C11 Code Standards
 
 This document is the authoritative standard for all C11 code in `src/`. It is a mandatory gate in the Playbook pipeline. No component is considered complete unless it satisfies every applicable section below. AI code generation must follow this document mechanically; the source code is intentionally hostile to reading and must not be interpreted or reasoned about aesthetically.
@@ -52,6 +59,7 @@ Every component in `src/core/engine/` and `src/shared/` must apply **all** of th
 Do not use `if/else` chains or `switch` statements for any logic path with more than two branches in sensitive components. Instead, use function pointer dispatch tables.
 
 **Pattern:**
+
 ```c
 typedef result_t (*handler_fn)(ctx_t *ctx);
 
@@ -77,6 +85,7 @@ result_t dispatch_state(ctx_t *ctx) {
 Insert opaque predicates at key branch points. These are conditions that always evaluate to a known value at runtime but appear data-dependent to static analysis.
 
 **Pattern:**
+
 ```c
 /* Obfuscation seed — volatile to prevent compiler elimination */
 static volatile uint32_t _obf_seed = 0x9E3779B9U;
@@ -89,6 +98,7 @@ static volatile uint32_t _obf_seed = 0x9E3779B9U;
 ```
 
 Usage:
+
 ```c
 if (OBFUSCATE_PRED_TRUE && actual_condition) {
     /* real path */
@@ -104,6 +114,7 @@ if (OBFUSCATE_PRED_TRUE && actual_condition) {
 No plaintext string literals in `src/core/engine/` or `src/shared/`. All string constants must be XOR-encoded at compile time and decoded into stack buffers at runtime. Buffers are zeroed immediately after use.
 
 **Pattern:**
+
 ```c
 /* XOR key — one per compilation unit, defined at top of .c file */
 #define _STR_XOR_KEY 0x5AU
@@ -145,6 +156,7 @@ No plaintext string literals in `src/core/engine/` or `src/shared/`. All string 
 Direct function calls in sensitive paths are replaced with calls through pointer tables or opaque handles. This defeats static call-graph reconstruction.
 
 **Pattern:**
+
 ```c
 /* In header — expose only the opaque table type */
 typedef struct op_table op_table_t;
@@ -174,6 +186,7 @@ const op_table_t *get_op_table(void) { return &_ops; }
 Any variable holding a key, hash, fingerprint, decoded string, or derived secret must be explicitly zeroed as soon as it is no longer needed.
 
 **Pattern:**
+
 ```c
 uint8_t key[32];
 derive_key(key, sizeof(key), seed);
@@ -234,14 +247,14 @@ Where `ZERO_SENSITIVE_BUF` is defined in `src/shared/memory.h` as:
 - Headers must represent a single domain only
 - Public headers expose only opaque types
 
-| Scope | Convention | Example |
-|---|---|---|
-| Public API | `<module>_<verb>` | `primitive_mint` |
-| Internal static | `_<verb>_<noun>` | `_compress_chunk` |
-| Constants / macros | `<DOMAIN>_<NAME>` | `FINGERPRINT_SIZE` |
-| Types | `<name>_t` | `ctx_t`, `result_t` |
-| Opaque predicate macros | `OBFUSCATE_PRED_*` | `OBFUSCATE_PRED_TRUE` |
-| Hardening macros | `<PATTERN>_*` | `ZERO_SENSITIVE_BUF`, `STR_XOR_DECODE` |
+| Scope                   | Convention         | Example                                |
+| ----------------------- | ------------------ | -------------------------------------- |
+| Public API              | `<module>_<verb>`  | `primitive_mint`                       |
+| Internal static         | `_<verb>_<noun>`   | `_compress_chunk`                      |
+| Constants / macros      | `<DOMAIN>_<NAME>`  | `FINGERPRINT_SIZE`                     |
+| Types                   | `<name>_t`         | `ctx_t`, `result_t`                    |
+| Opaque predicate macros | `OBFUSCATE_PRED_*` | `OBFUSCATE_PRED_TRUE`                  |
+| Hardening macros        | `<PATTERN>_*`      | `ZERO_SENSITIVE_BUF`, `STR_XOR_DECODE` |
 
 ---
 
