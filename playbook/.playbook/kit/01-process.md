@@ -1,39 +1,23 @@
 ---
-File: .playbook/kit/01-process.md
-
-MODULE_ID: PLAYBOOK-CORE-01-PROCESS
-SYSTEM_CONTEXT: Playbook Strategic Orchestration Shell
-UPSTREAM_DEPENDENCIES: []
-DOWNSTREAM_IMPACT: [.playbook/AI-INSTRUCTIONS.md, .playbook/kit/03-execution.md]
-CORE_SYSTEM_INVARIANTS:
-  - Framework: Progressive Disclosure + Tiering is applied to all operational layouts.
-
-Project:
-Type: <!-- software / writing / production / manufacturing -->
-Domain vocabulary: <!-- .playbook/vocabulary-[domain]/ -->
+file: '.playbook/kit/01-process.md'
+responsibility: 'Session spark. Tracks Current State, Last Completed, and immediate Next Steps.'
+ai_instructions: 'Read at session start. Update Current State and Next Steps before closing session. Do not append history here.'
+archive_rule: 'N/A - Overwrite state as it changes to keep the file lean.'
 ---
 
 # Process
 
----
-
 ## Current State
 
-Stage: <!-- Thinking / Discovery / Mapping / Rules / Planning / Work / Handoff -->
-Last completed:
-What's next:
-
----
+- **Stage:** [Audit | Discovery | Mapping | Rules | Planning | Work | Handoff]
+- **Last Completed:** [Summary of most recently completed milestone/task]
+- **What's Next:** [Immediate focus area or next stage requirement]
 
 ## Active Expansions
 
-<!-- Leave blank if none active -->
-<!-- Single: Active Expansions: video-insights -->
-<!-- With phase: Active Expansions:
-       audit: inventory -->
+- **Expansion Name:** [None]
+- **Current Phase:** [N/A]
 
----
+## Session Notes
 
-## Notes
-
-<!-- Anything that doesn't fit above — temporary context, reminders, open flags -->
+- [Brief operational notes or temporary flags for the current session only. Clear these when resolved.]

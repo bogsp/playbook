@@ -1,54 +1,40 @@
 ---
-File: .playbook/kit/05-kanban.md
-
-MODULE_ID: PLAYBOOK-CORE-05-KANBAN
-SYSTEM_CONTEXT: Playbook Work State Registry
-UPSTREAM_DEPENDENCIES: [.playbook/kit/03-execution.md]
-DOWNSTREAM_IMPACT: [.playbook/kit/04-progress.md]
-CORE_SYSTEM_INVARIANTS:
-  - Layout Rule: Priority is strictly top-down within individual columns.
-
-Project:
-Type: <!-- software / writing / production / manufacturing -->
-Domain vocabulary: <!-- .playbook/vocabulary-[domain]/ -->
+file: '.playbook/kit/05-kanban.md'
+responsibility: 'Active work state registry tracking tasks across Backlog, In Progress, Blocked, and Done.'
+ai_instructions: 'Update ticket status dynamically during the session. Map tickets directly to Acceptance Criteria in 03-execution.md. Maintain strict top-down priority. Never bundle multiple outcomes into one ticket.'
+archive_rule: "Move 'Done' tickets to `.playbook/kit/_archives/kanban/` when they are logged in 04-progress.md and no longer referenced by active work."
 ---
 
 # Kanban
 
-Optional. Use when the project has enough parallel work to benefit from a board.
+## Rules
+
+- Tickets are seeded from Acceptance Criteria in `03-execution.md`.
+- One outcome per ticket — no bundling.
+- Priority within each column is strictly top-down (top = next).
+- Blocked tickets stay in their column; blocking relationship must be explicit.
+- DDA tickets: No coding ticket is created without a corresponding planning doc.
+
+## Ticket Types
+
+- **[DDA]** — Authoring or syncing a planning document.
+- **[CODE]** — Implementation against a DDA doc (requires DDA doc to be `status: active`).
+- **[SYNC]** — Drift correction between code and DDA doc.
 
 ---
 
 ## Backlog
 
-<!-- Work that is defined but not yet started -->
-<!-- Format:
-- [ID] [title] — [one line description]
--->
+- **[K-01]** [Example Task] — [Description of work to be done]
 
 ---
 
 ## In Progress
 
-<!-- Work that is actively being done — limit to what is actually active -->
-<!-- Format:
-- [ID] [title] — [who or what is working on it]
--->
-
 ---
 
 ## Blocked
 
-<!-- Work that cannot proceed — must include what is blocking it -->
-<!-- Format:
-- [ID] [title] — Blocked by: [what]
--->
-
 ---
 
 ## Done
-
-<!-- Completed work — archive older entries to _archives/ when the board gets heavy -->
-<!-- Format:
-- [ID] [title] — [date completed]
--->

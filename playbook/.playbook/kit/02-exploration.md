@@ -1,34 +1,23 @@
 ---
-File: .playbook/kit/02-exploration.md
-
-MODULE_ID: PLAYBOOK-CORE-02-EXPLORE
-SYSTEM_CONTEXT: Playbook Strategic Orchestration Shell
-UPSTREAM_DEPENDENCIES: [.playbook/kit/01-process.md]
-DOWNSTREAM_IMPACT: [.playbook/kit/03-execution.md]
-CORE_SYSTEM_INVARIANTS:
-  - Framework: Explicit traceability. Decisions must map directly to architectural bounds.
-
-Project:
-Type: <!-- software / writing / production / manufacturing -->
-Domain vocabulary: <!-- .playbook/vocabulary-[domain]/ -->
+file: '.playbook/kit/02-exploration.md'
+responsibility: 'Decision log. Holds Open Questions, Settled Decisions, and System Constraints.'
+ai_instructions: 'Log all new decisions here. Do not reopen settled decisions without explicit human instruction. Do not put execution tasks here.'
+archive_rule: 'Move settled decisions to `.playbook/kit/_archives/exploration/` when they no longer affect any active task, flow, or component.'
 ---
 
 # Exploration
 
----
-
 ## Open Questions
 
-<!-- Questions that are unresolved and blocking or affecting active work -->
-
----
+- [ ] **[Q-01]:** [Description of unresolved architectural question or choice]
 
 ## Settled Decisions
 
-<!-- Decisions that are closed — do not reopen without explicit instruction -->
-
----
+- **[YYYY-MM-DD] — [Decision Title]**
+  - **Context:** [Brief rationale/problem statement]
+  - **Decision:** [Chosen path/approach]
+  - **Ref:** [Link to flow, contract, or reference document]
 
 ## Constraints
 
-<!-- Fixed limits that apply to the whole project -->
+- **[C-01]:** [System requirement or technological constraint]

@@ -1,46 +1,36 @@
 ---
-File: .playbook/kit/03-execution.md
-
-MODULE_ID: PLAYBOOK-CORE-03-EXECUTE
-SYSTEM_CONTEXT: Playbook Strategic Orchestration Shell
-UPSTREAM_DEPENDENCIES: [.playbook/kit/02-exploration.md]
-DOWNSTREAM_IMPACT: [.playbook/kit/04-progress.md, .playbook/kit/05-kanban.md]
-CORE_SYSTEM_INVARIANTS:
-  - Framework: No execution tracks can be initiated without matching documentation boundaries.
-
-Project:
-Type: <!-- software / writing / production / manufacturing -->
-Domain vocabulary: <!-- .playbook/vocabulary-[domain]/ -->
+file: '.playbook/kit/03-execution.md'
+responsibility: 'Execution playbook. Holds Guidelines, Active Phase Plan, In-Flight Tasks, and Known Issues.'
+ai_instructions: 'Follow all guidelines strictly. Update task checkboxes during the session. Do not keep completed tasks here permanently.'
+archive_rule: 'Move completed tasks to `.playbook/kit/_archives/execution/` when they have been logged in `04-progress.md` and are no longer active.'
 ---
 
 # Execution
 
----
-
 ## Guidelines
 
-<!-- Principles and standards that apply to all work in this project -->
-
----
+- Progressive Disclosure + Tiering is the default for all structural decisions.
+- Docs must be clear, concise, and skimmable for humans; dense for AI.
+- No component is coded before its corresponding planning document exists.
 
 ## Plan
 
-<!-- The current phase plan — what will be built or done, in order -->
-
----
+- [ ] **Phase 1:** [Current Phase Name]
+- [ ] **Phase 2:** [Upcoming Phase Name]
 
 ## Tasks
 
-<!-- Active tasks — granular, actionable, assigned to a stage or component -->
-
----
+- [ ] **[TASK-01]:** [Actionable item description]
+  - **Blocks:** [Dependent task/component]
+  - **Spec:** [Path to planning document]
 
 ## Known Issues
 
-<!-- Problems identified but not yet resolved -->
-
----
+| #   | Issue               | Type                    | Severity          | Blocked By | Resolution         |
+| --- | ------------------- | ----------------------- | ----------------- | ---------- | ------------------ |
+| 1   | [Issue description] | [bug/dependency/design] | [high/medium/low] | [Task ID]  | [Pending/Fix path] |
 
 ## Acceptance Criteria
 
-<!-- What done looks like for the current stage or deliverable -->
+- [ ] All active tasks pass QA, tests, and formatting checks.
+- [ ] Corresponding planning/DDA documents synced with implementation.
