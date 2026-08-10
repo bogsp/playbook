@@ -5,10 +5,6 @@ ai_instructions: 'Load this file first in every session on this repo. Do not con
 archive_rule: 'N/A — core system file.'
 ---
 
-# AI-INSTRUCTIONS.md
-
----
-
 # AI Instructions — This Repo
 
 Load this file at the start of every session working on the Playbook pipeline repo
@@ -26,14 +22,31 @@ itself. This is not the generic template — it governs work on `create-playbook
 
 **Load based on the task:**
 
-| Task                                                 | Also load                                                                                       |
-| ---------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
-| CLI work (`packages/create-playbook/`)               | `packages/create-playbook/README.md`, relevant `lib/*.js`                                       |
-| Library work (`packages/playbook-software-library/`) | `CONTRIBUTING.md`, `CHANGELOG.md`, `README.md` in that package                                  |
-| Template source work (`playbook/`)                   | The specific file being changed; check for a sync-check finding in `.playbook/kit/_refs/` first |
-| Resolving an open K-ticket                           | `.playbook/kit/02-exploration.md` for related decisions                                         |
+| Task | Also load |
+|---|---|
+| CLI work (`packages/create-playbook/`) | `packages/create-playbook/README.md`, relevant `lib/*.js` |
+| Library work (`packages/playbook-software-library/`) | `CONTRIBUTING.md`, `CHANGELOG.md`, `README.md` in that package |
+| Template source work (`playbook/`) | The specific file being changed; check for a sync-check finding in `.playbook/kit/_refs/` first |
+| Resolving an open K-ticket | `.playbook/kit/02-exploration.md` for related decisions |
 
 Confirm what you have loaded. Then wait for instruction.
+
+## Frontmatter Standard
+
+Every planning document, kit file, and generated artifact in this repo uses this
+frontmatter block — no separate `# Title` / `# File:` comment header above it:
+
+```yaml
+---
+file: '[full path from repo root]'
+responsibility: '[one line — what this file holds, and nothing else]'
+ai_instructions: '[how AI should read or update this file]'
+archive_rule: '[when/how content moves to _archives/, or N/A]'
+---
+```
+
+The `file:` field is the single source of truth for a document's filename and path.
+Do not duplicate it as a heading comment.
 
 ## Behavioral Rules
 
@@ -46,6 +59,7 @@ Confirm what you have loaded. Then wait for instruction.
 7. When editing a file that exists in two places (root `.playbook/` vs `playbook/.playbook/`), confirm which one is intended before touching either — they now serve different purposes and must not drift back into being copies of each other.
 8. Run `pnpm lint` / `biome check` conventions (see `biome.json`) — this repo has no separate `docs/code-standards.md`; Biome config is the standard.
 9. No planning document, kit file, or template change proceeds without checking `.playbook/_index.md` is still accurate afterward.
+10. Every generated file uses the standardized frontmatter block above — never a separate `# File:` comment header.
 
 ## When Something Is Unclear
 
@@ -63,6 +77,7 @@ whether a requested change belongs in `.playbook/` (this repo's own state) or
 - Resolve an open K-ticket architectural decision without human review
 - Let `.playbook/_index.md`'s Structure section go stale
 - Copy content between root `.playbook/` and `playbook/.playbook/` to "keep them in sync" — they are intentionally different documents now
+- Add a `# Title` / `# File:` comment header above the frontmatter block
 
 ## Expansions
 

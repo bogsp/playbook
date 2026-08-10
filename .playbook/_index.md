@@ -5,23 +5,21 @@ ai_instructions: 'Read this right after AI-INSTRUCTIONS.md. Update the Structure
 archive_rule: 'N/A — kept current at all times, never archived.'
 ---
 
-# The Playbook Meta-Pipeline
-
----
+# Playbook — Project Map
 
 ## What This Project Is
 
 This repo builds and maintains **Playbook** itself: the `create-playbook` CLI, the
 `@bogsp/playbook-software-library` npm package, and the domain-agnostic template
 source that `create-playbook` scaffolds into consuming projects. It is not a
-project that _uses_ Playbook for an app — it is the tooling and templates that
+project that *uses* Playbook for an app — it is the tooling and templates that
 other projects install.
 
 Two Playbook worlds exist side by side in this repo, and they must not be confused:
 
-| Path                                             | What it is                                                                                                                                        |
-| ------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `.playbook/` (this folder, dotted)               | The **meta-pipeline** — governs AI sessions working on this repo's own code and templates                                                         |
+| Path | What it is |
+|---|---|
+| `.playbook/` (this folder, dotted) | The **meta-pipeline** — governs AI sessions working on this repo's own code and templates |
 | `playbook/.playbook/`, `playbook/docs/` (no dot) | The **template source** — the deliverable that gets copied into `packages/create-playbook/templates/` and scaffolded into other people's projects |
 
 Never edit files under `playbook/` as if they were this repo's own planning docs —
@@ -29,13 +27,13 @@ they are product source, not meta-pipeline state.
 
 ## How to Use This File
 
-| If you're...                                                | Do this                                                                                                                                 |
-| ----------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
-| Resuming a session on this repo                             | Read this file, then `kit/01-process.md`                                                                                                |
-| Editing the CLI (`packages/create-playbook/`)               | Also read `packages/create-playbook/README.md`                                                                                          |
-| Editing the library (`packages/playbook-software-library/`) | Also read `CONTRIBUTING.md` and `README.md` in that package                                                                             |
-| Editing template source (`playbook/`)                       | Remember: `packages/create-playbook/templates/` is a **build artifact** — never hand-edit it; edit `playbook/` then run `node build.js` |
-| Adding a kit file or planning doc                           | Follow `.playbook/AI-INSTRUCTIONS.md` behavioral rules                                                                                  |
+| If you're... | Do this |
+|---|---|
+| Resuming a session on this repo | Read this file, then `kit/01-process.md` |
+| Editing the CLI (`packages/create-playbook/`) | Also read `packages/create-playbook/README.md` |
+| Editing the library (`packages/playbook-software-library/`) | Also read `CONTRIBUTING.md` and `README.md` in that package |
+| Editing template source (`playbook/`) | Remember: `packages/create-playbook/templates/` is a **build artifact** — never hand-edit it; edit `playbook/` then run `node build.js` |
+| Adding a kit file or planning doc | Follow `.playbook/AI-INSTRUCTIONS.md` behavioral rules |
 
 ## Structure
 
@@ -103,14 +101,14 @@ Root
 
 ## Active Packages
 
-| Package                     | Version | Published as                       |
-| --------------------------- | ------- | ---------------------------------- |
-| `create-playbook`           | 3.0.0   | `create-playbook` (npm bin)        |
-| `playbook-software-library` | 1.3.0   | `@bogsp/playbook-software-library` |
+| Package | Version | Published as |
+|---|---|---|
+| `create-playbook` | 3.0.0 | `create-playbook` (npm bin) |
+| `playbook-software-library` | 1.3.0 | `@bogsp/playbook-software-library` |
 
 ## Project Planning Documents
 
-- [\_index.md](./_index.md) — this file
+- [_index.md](./_index.md) — this file
 - [kit/01-process.md](kit/01-process.md) — current phase
 - [kit/05-kanban.md](kit/05-kanban.md) — active tickets (K-05, K-06, K-07, K-10, K-12, K-13 open)
 
@@ -123,4 +121,4 @@ Root
 - There is no root-level `docs/code-standards.md` for this repo's own code. This repo's
   own coding standard is enforced via `biome.json` + `package.json` scripts
   (`lint`, `lint:fix`, `format`). The `docs/code-standards*.md` files under `playbook/`
-  are template deliverables for _consuming_ projects, not standards for this repo.
+  are template deliverables for *consuming* projects, not standards for this repo.

@@ -5,13 +5,9 @@ ai_instructions: 'Read first in every session on this repo. This file describes 
 archive_rule: 'N/A — core orientation file.'
 ---
 
-# README.md
-
----
-
 This is the **Playbook pipeline repository** — the source for `create-playbook`,
 `@bogsp/playbook-software-library`, and the template files those tools ship.
-If you are looking for how to _use_ Playbook in a project, read
+If you are looking for how to *use* Playbook in a project, read
 [playbook/.playbook/README.md](../playbook/.playbook/README.md) instead — that is
 the template a consuming project actually gets.
 
@@ -42,23 +38,23 @@ Load these files at the start of every AI session on this repo, in order:
 
 Then load whatever is relevant to the task:
 
-| Task                       | Also load                                                                       |
-| -------------------------- | ------------------------------------------------------------------------------- |
-| Editing the CLI            | `packages/create-playbook/README.md`, the file(s) under `lib/` being touched    |
-| Editing the library        | `packages/playbook-software-library/CONTRIBUTING.md`                            |
-| Editing template source    | the specific file under `playbook/.playbook/` or `playbook/docs/` being changed |
-| Resolving an open decision | `.playbook/kit/02-exploration.md` and the relevant K-ticket in `05-kanban.md`   |
+| Task | Also load |
+|---|---|
+| Editing the CLI | `packages/create-playbook/README.md`, the file(s) under `lib/` being touched |
+| Editing the library | `packages/playbook-software-library/CONTRIBUTING.md` |
+| Editing template source | the specific file under `playbook/.playbook/` or `playbook/docs/` being changed |
+| Resolving an open decision | `.playbook/kit/02-exploration.md` and the relevant K-ticket in `05-kanban.md` |
 
 ---
 
 ## The Two Playbook Worlds — Do Not Confuse Them
 
-|                        | `.playbook/` (this repo's own)                      | `playbook/.playbook/` (template source)                   |
-| ---------------------- | --------------------------------------------------- | --------------------------------------------------------- |
-| Governs                | AI sessions working on _this repo_                  | Nothing directly — it's copied into other projects        |
-| Who reads it           | Contributors to `create-playbook` / the library     | A brand-new Playbook project, after scaffolding           |
-| Edited when            | Repo planning changes (new ticket, phase, decision) | The _product_ changes (a template, a guide, a rule)       |
-| Consequence of editing | Changes this repo's own working state               | Changes what every future `create-playbook init` produces |
+| | `.playbook/` (this repo's own) | `playbook/.playbook/` (template source) |
+|---|---|---|
+| Governs | AI sessions working on *this repo* | Nothing directly — it's copied into other projects |
+| Who reads it | Contributors to `create-playbook` / the library | A brand-new Playbook project, after scaffolding |
+| Edited when | Repo planning changes (new ticket, phase, decision) | The *product* changes (a template, a guide, a rule) |
+| Consequence of editing | Changes this repo's own working state | Changes what every future `create-playbook init` produces |
 
 Editing `playbook/` is a product change and must go through `packages/create-playbook/build.js`
 (`pnpm build` inside `packages/create-playbook/`) before it reaches `templates/`.
@@ -97,7 +93,7 @@ See `.playbook/_index.md` for the full structure.
 
 ## File Rules
 
-- Every generated file includes its filename and full path at the top
+- Every generated file includes the standardized frontmatter block (`file:`, `responsibility:`, `ai_instructions:`, `archive_rule:`) at the top
 - Kit files are updated before every session ends or at 80% context — do not wait to be asked
 - `packages/create-playbook/templates/` is a build artifact — never edit directly, run `pnpm build`
 - `playbook/` changes are product changes — flag before making structural edits, same as any planning-document change
