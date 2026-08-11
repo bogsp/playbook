@@ -1,17 +1,16 @@
 ---
-File: docs/contracts/flow-N-[kebab-name].md
-
+file: 'docs/contracts/flow-N-[kebab-name].md'
+responsibility: '[One line — what behavioral rules this contract locks in for its companion flow]'
+ai_instructions: 'Companion to docs/flows/flow-N-[kebab-name].md. Read docs/contracts/global.md before this file — do not repeat global rules here, only extend or specialize them.'
+archive_rule: 'N/A — active contract document; archive alongside its companion flow if that path no longer exists.'
 id: flow-N-[kebab-name]
 type: contract
 scope: global
 status: draft
-
-Companion to: docs/flows/flow-N-[kebab-name].md
-Read: docs/contracts/global.md before this file.
-
-Project: [Project Name]
-Type: software
-Domain vocabulary: .playbook/vocabulary-software/
+companion-flow: 'docs/flows/flow-N-[kebab-name].md'
+project: '[Project Name]'
+project-type: software | writing | production | manufacturing
+domain-vocabulary: '.playbook/vocabulary-[domain]/'
 ---
 
 # [Flow Name] Rules

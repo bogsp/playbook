@@ -1,6 +1,8 @@
 ---
-File: docs/flows/flow-N-[kebab-name].md
-
+file: 'docs/flows/flow-N-[kebab-name].md'
+responsibility: '[One line — what this flow accomplishes and for whom]'
+ai_instructions: 'Read before implementing or modifying this flow. Companion contract: docs/contracts/flow-N-[kebab-name].md.'
+archive_rule: 'N/A — active flow document; archive only if this path no longer exists in the project.'
 id: flow-N-[kebab-name]
 type: flow
 scope: journey | sequence | operation | composite | compensation
@@ -10,10 +12,9 @@ triggers: []
 calls: []
 emits: []
 called-by: []
-
-Project: [Project Name]
-Type: software
-Domain vocabulary: .playbook/vocabulary-software/
+project: '[Project Name]'
+project-type: software | writing | production | manufacturing
+domain-vocabulary: '.playbook/vocabulary-[domain]/'
 ---
 
 # [Flow Name]
@@ -39,18 +40,16 @@ Narrative — what happens at each step, what decisions are made, what can go wr
 ---
 
 ```
-
 1. On [Trigger](input):
    a. [piece].[action](input)
-   → ok: [Result] → continue to b
-   → err: [Error] → emit [FailureEvent], halt
+      → ok: [Result] → continue to b
+      → err: [Error] → emit [FailureEvent], halt
    b. [piece].[action](result)
-   → ok: [Result] → continue to c
-   → err: [Error] → undo previous steps, emit [FailureEvent]
+      → ok: [Result] → continue to c
+      → err: [Error] → undo previous steps, emit [FailureEvent]
    c. [piece].[action](result)
-   → ok: [Result] → emit [SuccessEvent]
-   → err: [Error] → undo previous steps, emit [FailureEvent]
-
+      → ok: [Result] → emit [SuccessEvent]
+      → err: [Error] → undo previous steps, emit [FailureEvent]
 ```
 
 ---
@@ -103,7 +102,3 @@ _(Optional — concurrency rules, known constraints, edge cases that cannot be i
 
 N/A — this section was considered and does not apply
 TODO — not yet written; blocks status: active
-
-```
-
-```
