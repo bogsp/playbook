@@ -1,5 +1,11 @@
+---
+file: '.playbook/README.md'
+responsibility: 'Orientation for anyone — human or AI — starting a Playbook-scaffolded project. First file loaded, points to everything else.'
+ai_instructions: 'Load first in every session. Do not reorder Start Here or Session Boot Order without a logged architectural decision.'
+archive_rule: 'N/A — core orientation file.'
+---
+
 # README
-# File: .playbook/README.md
 
 This is a Playbook project. Playbook is a planning pipeline for AI-assisted work.
 It keeps planning docs, session context, and implementation in sync so nothing
@@ -16,6 +22,11 @@ If you are new to this project, read in this order:
 3. `.playbook/_index.md` — what this project contains and how it is structured
 4. `.playbook/kit/01-process.md` — where the project is right now
 5. `.playbook/kit/04-progress.md` — what has been completed and decided
+
+> Not running the full pipeline — just want session continuity across
+> restarts? See [guides/context-kit-standalone.md](guides/context-kit-standalone.md)
+> instead. For any other situation, [guides/\_index.md](guides/_index.md) routes
+> you to the right guide.
 
 ---
 
@@ -54,23 +65,18 @@ It does not resolve uncertainty silently.
 ## Folder Map
 
 ```
-.playbook/          Planning docs — updated as the project evolves
-  _index.md         Project map — structure, modules, status
-  AI-INSTRUCTIONS.md Session rules — loaded at the start of every session
-  guides/           How to use the pipeline for this project type
-  vocabulary-[domain]/ Domain-specific language and templates
-  _concerns/        Cross-cutting capabilities (logging, auth, error handling)
-  _integrations/    External services and libraries
-  _solutions/       Shared patterns (software projects)
-
-.playbook/kit/               Session context — updated every session
-  00-prompts.md     Session prompts — copy and use at session start
-  01-process.md     Current phase, active goal, active expansions
-  02-exploration.md Open questions and decisions
-  03-execution.md   Current milestone tasks
-  04-progress.md    Permanent log of completions and decisions
-  05-kanban.md      Active task board (optional)
-  06-qa.md          QA plan and sign-off (optional)
+.playbook/
+  README.md                         — orientation, where to start
+  pipeline.md                       — how the pipeline works, all stages
+  AI-INSTRUCTIONS.md                — universal AI session rules
+  _index.md                         — this file; project map
+  maintenance.md                    — keeping files lean and current
+  templates.md                      — universal planning document shapes
+  _concerns/                        — cross-cutting capabilities (auth, logging, etc.)
+  _integrations/                    — external service and library contracts
+  _shared/                          — components used across modules
+  guides/                           — situational guides; start at guides/_index.md
+  kit/                              — session context — updated every session
 
 docs/               Project deliverables — part of the project
   flows/            Runtime flow definitions

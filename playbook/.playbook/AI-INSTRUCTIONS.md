@@ -24,6 +24,7 @@ Read these files at the start of every session, in this exact order:
 **Load based on the task:**
 | Task | Also load |
 | --- | --- |
+| Session using kit files only, no pipeline stages | `guides/context-kit-standalone.md` |
 | Any coding task | `vocabulary-[domain]/AI-INSTRUCTIONS.md` |
 | Planning or structure work | `docs/flows/_index.md`, `docs/contracts/_index.md` |
 | Specific module work | `.playbook/[module]/_index.md` + relevant component docs |
