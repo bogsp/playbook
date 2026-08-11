@@ -8,11 +8,38 @@ archive_rule: 'Closed decisions no longer gating any active task move to .playbo
 ## Open Topics
 
 - [ ] **[Q-03]:** Frontmatter sweep beyond `guides/` — not a blocker for any current ticket, fix opportunistically when each file is next touched: `playbook/docs/flows/flow.md` and `playbook/docs/contracts/contract.md`/`global.md` are now resolved (see 2026-08-11 decision below) — remaining scope is `playbook/.playbook/templates.md` + `templates/*.md` (HCH block — already an open item from the 2026-08-10 sync check); `playbook/.playbook/pipeline.md`, `playbook/.playbook/README.md`, and all four `vocabulary-*/{README,AI-INSTRUCTIONS,templates}.md` (still `# Title` / `# File:` style).
-- [ ] **[Q-04]:** Root-level `docs/flows/flow.md`, `docs/contracts/contract.md`, and `docs/contracts/global.md` duplicate the canonical `playbook/docs/` template source but were not updated in the 2026-08-11 frontmatter standardization pass. `docs/contracts/global.md` at root is not a template at all — it holds unrelated filled-in content (DragonPay/Stripe/PHP financial rules), suggesting these root copies are stale artifacts predating the meta-repo restructure rather than tracked deliverables. Gates: whether to update, retire, or explicitly document these root files before closing out the Templates track's frontmatter work.
 
 ---
 
 ## Closed Decisions
+
+**2026-08-11 — Q-04 resolved: root-level stale doc duplicates**
+
+- **Context:** Root `docs/flows/flow.md`, `docs/contracts/contract.md`, and
+  `docs/contracts/global.md` duplicated the canonical `playbook/docs/`
+  template source but were never updated in the 2026-08-11 frontmatter
+  standardization pass — they still carried the old `File:`/`id:`/`type:`
+  header style instead of the four-field standard. `docs/contracts/global.md`
+  was not even a placeholder — it held unrelated filled-in content (a
+  DragonPay/Stripe/PHP financial platform's global contract), suggesting it
+  was a stale artifact from a different project predating the meta-repo
+  restructure.
+- **Decision:**
+  - `docs/flows/flow.md` and `docs/contracts/contract.md` — deleted. They
+    were pure unedited duplicates of `playbook/docs/flows/flow.md` and
+    `playbook/docs/contracts/contract.md` with no distinct content, so
+    nothing was lost.
+  - `docs/contracts/global.md` — retained. Root `docs/` is confirmed to hold
+    real, tracked work for this repo's own three tracks (create-playbook
+    CLI, playbook-software-library, playbook-templates — see
+    `docs/flows/create-playbook/`, `docs/flows/playbook-templates/`), so a
+    root `docs/contracts/global.md` has a legitimate purpose: the global
+    contract governing all flows across those three tracks. The file is kept
+    as a placeholder to be overwritten with content scoped to this repo's
+    own flows once contract-writing work reaches it (see K-28 and beyond) —
+    not deleted, since deleting would remove a correctly-located file
+    pending correct content.
+- **Ref:** `.playbook/kit/04-progress.md` 2026-08-11 entry; `.playbook/kit/05-kanban.md`.
 
 **2026-08-11 — K-27 scope expanded to include pipeline user-journey flows**
 
