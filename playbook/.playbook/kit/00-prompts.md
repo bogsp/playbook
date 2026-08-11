@@ -11,6 +11,33 @@ Copy the prompt that matches your situation. Attach the files listed, then send.
 
 ---
 
+## Starting or Resuming — Context Kit Standalone
+
+Use this when you're running the six kit files on their own, with no pipeline
+stages, flows, contracts, or planning documents. See
+[context-kit-standalone.md](../guides/context-kit-standalone.md) for the full
+guide.
+
+**Message 1 — attach:** `.playbook/kit/01-process.md`, `.playbook/kit/03-execution.md`
+
+```
+I'm using the Playbook Context Kit on its own — no pipeline stages, no planning documents.
+Files coming in two messages. This message: process and execution.
+Next: exploration and progress.
+Focus only on what is current. Do not reopen settled decisions unless I ask.
+Brief confirmation only.
+```
+
+**Message 2 — attach:** `.playbook/kit/02-exploration.md`, `.playbook/kit/04-progress.md`
+
+```
+Here is the context from earlier work. Brief confirmation only. Wait for my instruction.
+```
+
+_(Add `.playbook/kit/05-kanban.md` and `.playbook/kit/06-qa.md` to Message 2 when active.)_
+
+---
+
 ## Starting a New Project
 
 **Attach:** `.playbook/AI-INSTRUCTIONS.md`, `.playbook/_index.md`, `.playbook/kit/01-process.md`, `.playbook/kit/02-exploration.md`, `.playbook/kit/03-execution.md`
@@ -106,7 +133,7 @@ Save to `docs/rollout/[milestone-name].md`.
 ```
 I have a video I want to extract insights from.
 Title: [video title]
-Source: https://www.merriam-webster.com/dictionary/or
+Source: [URL or description]
 I will provide the transcript or summary in my next message. Wait for it before doing anything.
 ```
 
