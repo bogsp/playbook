@@ -7,6 +7,8 @@ archive_rule: 'Closed decisions no longer gating any active task move to .playbo
 
 ## Open Topics
 
+- [ ] **[Q-03]:** Frontmatter sweep beyond `guides/` — not a blocker for any current ticket, fix opportunistically when each file is next touched: `playbook/docs/flows/flow.md`, `playbook/docs/contracts/contract.md`, `playbook/docs/contracts/global.md` (own `id/type/status` frontmatter family — decide whether to align to the 4-field guide standard or leave distinct); `playbook/.playbook/templates.md` + `templates/*.md` (HCH block — already an open item from the 2026-08-10 sync check); `playbook/.playbook/pipeline.md`, `playbook/.playbook/README.md`, and all four `vocabulary-*/{README,AI-INSTRUCTIONS,templates}.md` (still `# Title` / `# File:` style).
+
 ---
 
 ## Closed Decisions

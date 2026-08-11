@@ -21,10 +21,12 @@ archive_rule: 'Entries older than the current phase move to .playbook/kit/_archi
 - **Decided**: Scoped the guides modernization work — five tickets (K-14–K-18) to bring `playbook/.playbook/guides/*.md` in line with the current pipeline, with the Context Kit split into standalone and Playbook-integrated documentation as the centerpiece.
 - **Completed**: Logged open question Q-02 (standalone Context Kit — own guide file vs. section in `context-kit.md`) in `02-exploration.md`, gating K-14.
 - **Completed**: Seeded K-14 through K-18 in `05-kanban.md` Backlog, with K-15 marked as the resolution path for K-06.
-- **Decided**: Resolved Q-02 — standalone Context Kit gets its own guide file, `guides/context-kit-standalone.md`, reaffirming the 2026-05-28 decision.
-- **Completed**: Closed K-14. Authored `playbook/.playbook/guides/context-kit-standalone.md`. Updated `playbook/.playbook/guides/context-kit.md` with a cross-link to the standalone guide.
-- **Completed**: Closed K-15. Added a "Which Guide Do I Need?" journey matrix to `guides/_index.md`; resolves K-06.
-- **Decided**: Expanded K-16's scope to also standardize frontmatter on `project-identity.md` and `video-insights.md`.
-- **Completed**: Closed K-16. Fixed the broken `reverse-engineer.md` → `audit.md` link in `adopt.md` (2 occurrences). Added missing `project-identity.md` cross-links to `new-project.md`, `adopt.md`, and `audit.md`. Converted the remaining five guides to standardized frontmatter.
-- **Fixed**: `video-insights.md`'s "Output Format" template — the example insight-file header still showed the old `# Title` / `# File:` style after K-16 closed. Converted the template itself to the standardized frontmatter block so files it produces match the standard, not just the guide document.
-- **In Progress**: Executing K-12 (populate `playbook/` template structure) and K-17 (standalone Context Kit session-start prompt for `kit/00-prompts.md`).
+- **Decided**: Resolved Q-02 — standalone Context Kit gets its own guide file, `guides/context-kit-standalone.md`.
+- **Completed**: Closed K-14. Authored `playbook/.playbook/guides/context-kit-standalone.md`; cross-linked from `context-kit.md`.
+- **Completed**: Closed K-15. Added journey matrix to `guides/_index.md`; resolves K-06.
+- **Completed**: Closed K-16. Fixed broken `reverse-engineer.md` → `audit.md` links, added missing `project-identity.md` cross-links, standardized frontmatter across five guides.
+- **Fixed**: `video-insights.md`'s "Output Format" template still used the old header after K-16 closed — converted to standardized frontmatter.
+- **Decided**: Logged Q-03 in `02-exploration.md` — deferred frontmatter sweep for files outside `guides/` (flow/contract templates, `templates.md` + HCH block, `pipeline.md`, `README.md`, all four `vocabulary-*/` files). No dedicated ticket; fix opportunistically when next touched.
+- **Completed**: Closed K-17. Added "Starting or Resuming — Context Kit Standalone" as the first prompt in `kit/00-prompts.md`, cross-linked to `context-kit-standalone.md`.
+- **Fixed**: A stray broken placeholder in `00-prompts.md`'s existing Video Insights prompt (`Source:` line referenced a dictionary URL instead of `[URL or description]`) — found and corrected while adding the standalone prompt.
+- **In Progress**: Executing K-12 (populate `playbook/` template structure) and K-18 (confirm `playbook/.playbook/README.md` and `AI-INSTRUCTIONS.md` reference the standalone path).

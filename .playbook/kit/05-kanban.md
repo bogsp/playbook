@@ -46,11 +46,6 @@ Type: SYNC
 Description: Confirm the shipped version of global.md is final before moving it to playbook/docs/contracts/.
 Blocked by: human decision
 
-[K-17] Add standalone Context Kit session-start prompt
-Type: DDA
-Description: Add a session prompt to playbook/.playbook/kit/00-prompts.md for starting with kit files only (no pipeline files) — companion to the existing "Starting a New Project" / "Picking Up Where You Left Off" prompts. Reference context-kit-standalone.md.
-Blocked by: none
-
 [K-18] Confirm template README/AI-INSTRUCTIONS reference standalone path
 Type: SYNC
 Description: Confirm playbook/.playbook/README.md and playbook/.playbook/AI-INSTRUCTIONS.md reference the standalone Context Kit path without disrupting the existing boot order or Behavioral Rules.
@@ -58,7 +53,7 @@ Blocked by: none
 
 In Progress
 [K-12] Populate playbook/ template structure
-[K-17] Add standalone Context Kit session-start prompt
+[K-18] Confirm template README/AI-INSTRUCTIONS reference standalone path
 
 Blocked
 (none)
@@ -83,14 +78,13 @@ Done
 (Resolved: Legacy C11/Rust subproject explicitly discarded from structure)
 
 [K-14] Split Context Kit guide into standalone vs. integrated usage
-(Resolved: Authored playbook/.playbook/guides/context-kit-standalone.md — kit files only, no pipeline content. Updated playbook/.playbook/guides/context-kit.md with a cross-link to the standalone guide. Resolves Q-02.)
+(Resolved: Authored playbook/.playbook/guides/context-kit-standalone.md. Updated context-kit.md with a cross-link. Resolves Q-02.)
 
 [K-15] Restructure guide entry points for standalone Context Kit path
 (Resolved: Added "Which Guide Do I Need?" journey matrix to guides/\_index.md. Resolves K-06.)
 
 [K-16] Fix terminology drift and standardize frontmatter across pipeline guides
-(Resolved: Fixed broken reverse-engineer.md → audit.md links in adopt.md [2 occurrences]. Added missing project-identity.md cross-links to new-project.md, adopt.md, and audit.md. Converted new-project.md, adopt.md, audit.md, project-identity.md, video-insights.md from old `# Title` / `# File:` headers to standardized frontmatter. All seven files in guides/ now carry consistent frontmatter and consistent Context Kit terminology (Standalone / Integrated).)
+(Resolved: Fixed broken reverse-engineer.md → audit.md links in adopt.md. Added missing project-identity.md cross-links. Converted five guides to standardized frontmatter. Follow-up fix: video-insights.md's embedded output template also converted.)
 
-In Progress
-[K-12] Populate playbook/ template structure
 [K-17] Add standalone Context Kit session-start prompt
+(Resolved: Added "Starting or Resuming — Context Kit Standalone" as the first prompt in kit/00-prompts.md, cross-linked to context-kit-standalone.md. Fixed a stray broken placeholder in the existing Video Insights prompt's Source: line, found while editing nearby.)
