@@ -6,7 +6,7 @@ archive_rule: 'N/A'
 ---
 
 Phase: Planning
-Last Completed: Closed K-17 — added the standalone Context Kit prompt to kit/00-prompts.md, cross-linked to context-kit-standalone.md; fixed a stray broken placeholder found in the existing Video Insights prompt. Logged Q-03 (deferred frontmatter sweep outside guides/) in 02-exploration.md.
-Next: Execute K-18 — confirm playbook/.playbook/README.md and AI-INSTRUCTIONS.md reference the standalone Context Kit path without disrupting the existing boot order. This is the last ticket in the guides modernization phase.
+Last Completed: K-27 completed with expanded scope — seven Templates-track flow documents shipped under docs/flows/playbook-templates/ (flow-1/flow-2: internal build mechanics; flow-3 through flow-7: pipeline user journeys — new project, adopt, audit, resume session, milestone handoff/resume). Standardized frontmatter applied to playbook/docs/flows/flow.md, playbook/docs/contracts/contract.md, and playbook/docs/contracts/global.md, folding flow-tracking fields into the standard file:/responsibility:/ai_instructions:/archive_rule: block. Also fixed hardcoded `Type: software` in those templates to generic project-type/domain-vocabulary placeholders. K-19 (CLI flow drafts for create-playbook) started but paused, unconfirmed — deprioritized in favor of Track C.
+Next: Awaiting direction — either K-28 (write docs/contracts/playbook-templates/, seven per-flow contracts) or resolve Q-04 (root-level docs/flows/flow.md, docs/contracts/contract.md, docs/contracts/global.md duplicates) first, since docs/contracts/global.md at root holds unrelated filled content rather than template placeholders.
 Active Modules: kanban
 Active Expansions: none

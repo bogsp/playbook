@@ -7,27 +7,49 @@ archive_rule: 'Closed decisions no longer gating any active task move to .playbo
 
 ## Open Topics
 
-- [ ] **[Q-03]:** Frontmatter sweep beyond `guides/` — not a blocker for any current ticket, fix opportunistically when each file is next touched: `playbook/docs/flows/flow.md`, `playbook/docs/contracts/contract.md`, `playbook/docs/contracts/global.md` (own `id/type/status` frontmatter family — decide whether to align to the 4-field guide standard or leave distinct); `playbook/.playbook/templates.md` + `templates/*.md` (HCH block — already an open item from the 2026-08-10 sync check); `playbook/.playbook/pipeline.md`, `playbook/.playbook/README.md`, and all four `vocabulary-*/{README,AI-INSTRUCTIONS,templates}.md` (still `# Title` / `# File:` style).
+- [ ] **[Q-03]:** Frontmatter sweep beyond `guides/` — not a blocker for any current ticket, fix opportunistically when each file is next touched: `playbook/docs/flows/flow.md` and `playbook/docs/contracts/contract.md`/`global.md` are now resolved (see 2026-08-11 decision below) — remaining scope is `playbook/.playbook/templates.md` + `templates/*.md` (HCH block — already an open item from the 2026-08-10 sync check); `playbook/.playbook/pipeline.md`, `playbook/.playbook/README.md`, and all four `vocabulary-*/{README,AI-INSTRUCTIONS,templates}.md` (still `# Title` / `# File:` style).
+- [ ] **[Q-04]:** Root-level `docs/flows/flow.md`, `docs/contracts/contract.md`, and `docs/contracts/global.md` duplicate the canonical `playbook/docs/` template source but were not updated in the 2026-08-11 frontmatter standardization pass. `docs/contracts/global.md` at root is not a template at all — it holds unrelated filled-in content (DragonPay/Stripe/PHP financial rules), suggesting these root copies are stale artifacts predating the meta-repo restructure rather than tracked deliverables. Gates: whether to update, retire, or explicitly document these root files before closing out the Templates track's frontmatter work.
 
 ---
 
 ## Closed Decisions
 
-**2026-08-11 — Standalone Context Kit gets its own guide file (Q-02)**
+**2026-08-11 — K-27 scope expanded to include pipeline user-journey flows**
 
-- Resolves Q-02, gating K-14.
-- Standalone Context Kit usage is documented in its own file, `guides/context-kit-standalone.md` — not a section inside `guides/context-kit.md`.
-- Reaffirms the 2026-05-28 decision that Context Kit is the correct low-friction, standalone entry point.
-- `guides/context-kit.md` remains the Playbook-integrated version; each guide cross-links to the other.
-- Both guides share the same six kit files (`kit/01-process.md` through `06-qa.md`) — no divergence in file structure between standalone and integrated use.
+- Original K-27 scope (per the three-track plan) covered only internal
+  template-maintenance mechanics: editing template source and the
+  build/publish step.
+- Scope expanded after review: the Templates track also needs to document
+  how a person in a *consuming* project actually moves through the shipped
+  pipeline — five additional flows (new project, adopt, audit, resume
+  session, milestone handoff/resume), grouped separately from the two
+  build-mechanic flows in `docs/flows/playbook-templates/_index.md`.
+- These journey flows describe `playbook/.playbook/guides/*.md` as
+  executable paths, not just prose — direct working reference for updating
+  Playbook-integrated pipelines in other projects.
 
-**2026-08-11 — Meta-Repo Directory Structure Locked**
+**2026-08-11 — Standardized frontmatter adopted for generated flow docs and shipped templates**
 
-- Solves the recursive "Playbook building Playbook" confusion.
-- Root `.playbook/` governs the repository's own AI sessions and pipeline (Meta-Playbook).
-- Root `playbook/` (no dot) is the template source directory containing the raw deliverables for `create-playbook`.
-- Root `packages/` holds the publishable code (`create-playbook` CLI and `playbook-software-library`).
-- Implicitly resolves [K-02] by cleanly dividing active internal templates (`.playbook/templates/`) from distributable templates (`playbook/templates/`).
-- Implicitly resolves [K-09] by confirming the legacy C11/Rust engine and shells are out of scope (they do not exist in the locked directory map).
+- All newly generated flow documents (`docs/flows/create-playbook/`,
+  `docs/flows/playbook-templates/`) use the four-field standard
+  (`file:`/`responsibility:`/`ai_instructions:`/`archive_rule:`) as the
+  primary frontmatter block, with flow-tracking fields (`id`, `type`,
+  `scope`, `trigger`, `status`, `calls`, `emits`, `called-by`) folded into
+  the same YAML block rather than a second frontmatter section.
+- The shipped templates `playbook/docs/flows/flow.md`,
+  `playbook/docs/contracts/contract.md`, and
+  `playbook/docs/contracts/global.md` were updated to match — every future
+  project scaffolded from these templates will produce flow/contract docs
+  in this shape by default.
+- Adjacent fix made in the same pass: these three templates hardcoded
+  `Type: software` / `Domain vocabulary: .playbook/vocabulary-software/`,
+  which is incorrect for a domain-agnostic template shipped to
+  writing/production/manufacturing projects too. Replaced with generic
+  `project-type: software | writing | production | manufacturing` and
+  `domain-vocabulary: '.playbook/vocabulary-[domain]/'` placeholders.
 
-_(Archived pre-August decisions to `.playbook/kit/_archives/exploration/decisions-pre-migration.md` to maintain pristine context for the restructure)_
+---
+
+## Constraints
+
+- **[C-01]:** [System requirement or technological constraint]
