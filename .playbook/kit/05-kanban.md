@@ -46,20 +46,9 @@ Type: SYNC
 Description: Confirm the shipped version of global.md is final before moving it to playbook/docs/contracts/.
 Blocked by: human decision
 
-[K-06] Reconcile journey matrix location
+[K-16] Fix terminology drift and standardize frontmatter across pipeline guides
 Type: SYNC
-Description: Decide the canonical location (README.md vs \_index.md) before placing the final template in playbook/.
-Blocked by: human decision
-Note: Targeted for resolution by K-15 (guide entry point restructure).
-
-[K-15] Restructure guide entry points for standalone Context Kit path
-Type: SYNC
-Description: Update playbook/.playbook/guides/\_index.md so standalone Context Kit (context-kit-standalone.md) is its own path, not buried under full-pipeline guides (New Project / Adopt / Audit). Resolves K-06 by giving the journey matrix a home that matches actual reader paths.
-Blocked by: none
-
-[K-16] Fix terminology drift across pipeline guides
-Type: SYNC
-Description: Fix "Reverse Engineer" vs. "Audit" naming drift, stray typos, and missing project-identity.md cross-links in guides/new-project.md, guides/adopt.md, guides/audit.md.
+Description: Fix "Reverse Engineer" vs. "Audit" naming drift, stray typos, and missing project-identity.md cross-links in guides/new-project.md, guides/adopt.md, guides/audit.md. Also convert all five remaining guides — new-project.md, adopt.md, audit.md, project-identity.md, video-insights.md — from the old `# Title` / `# File:` comment header to the standardized frontmatter block (file / responsibility / ai_instructions / archive_rule), matching context-kit.md, context-kit-standalone.md, and guides/\_index.md.
 Blocked by: none
 
 [K-17] Add standalone Context Kit session-start prompt
@@ -70,11 +59,11 @@ Blocked by: none
 [K-18] Confirm template README/AI-INSTRUCTIONS reference standalone path
 Type: SYNC
 Description: Confirm playbook/.playbook/README.md and playbook/.playbook/AI-INSTRUCTIONS.md reference the standalone Context Kit path without disrupting the existing boot order or Behavioral Rules.
-Blocked by: K-15
+Blocked by: none
 
 In Progress
 [K-12] Populate playbook/ template structure
-[K-15] Restructure guide entry points for standalone Context Kit path
+[K-16] Fix terminology drift and standardize frontmatter across pipeline guides
 
 Blocked
 (none)
@@ -100,3 +89,6 @@ Done
 
 [K-14] Split Context Kit guide into standalone vs. integrated usage
 (Resolved: Authored playbook/.playbook/guides/context-kit-standalone.md — kit files only, no pipeline content. Updated playbook/.playbook/guides/context-kit.md with a cross-link to the standalone guide; pipeline-specific content (stage table, milestone-snapshot fallback) left unchanged there. Resolves Q-02.)
+
+[K-15] Restructure guide entry points for standalone Context Kit path
+(Resolved: Added "Which Guide Do I Need?" journey matrix to playbook/.playbook/guides/\_index.md, routing by reader situation. Split the ambiguous "Context kit" row into Standalone / Integrated. Promoted Audit into "Getting Started" and corrected its label to match the actual filename. Resolves K-06. Applied standardized frontmatter to \_index.md — was still using the old `# Title` / `# File:` header, caught during review.)

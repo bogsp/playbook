@@ -6,7 +6,7 @@ archive_rule: 'N/A'
 ---
 
 Phase: Planning
-Last Completed: Resolved Q-02 and closed K-14 — authored `playbook/.playbook/guides/context-kit-standalone.md`, cross-linked from the updated `guides/context-kit.md`.
-Next: Execute K-15 — restructure `guides/_index.md` so the standalone Context Kit path is a first-class entry point, not buried under full-pipeline guides. This also resolves K-06.
+Last Completed: Closed K-15 — added journey matrix to `guides/_index.md`, resolving K-06. Expanded K-16 to cover frontmatter standardization on the two guides (`project-identity.md`, `video-insights.md`) that weren't originally in its file list.
+Next: Execute K-16 — fix terminology drift in `new-project.md`, `adopt.md`, `audit.md`, and apply standardized frontmatter across all five remaining guides.
 Active Modules: kanban
 Active Expansions: none
