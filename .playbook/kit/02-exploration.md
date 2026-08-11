@@ -7,11 +7,17 @@ archive_rule: 'Closed decisions no longer gating any active task move to .playbo
 
 ## Open Topics
 
-- [ ] **[Q-02]:** Standalone Context Kit documentation — does it get its own guide file (e.g. `guides/context-kit-standalone.md`), or a section inside the existing `guides/context-kit.md`? Blocks K-14. To be resolved at the start of K-14.
-
 ---
 
 ## Closed Decisions
+
+**2026-08-11 — Standalone Context Kit gets its own guide file (Q-02)**
+
+- Resolves Q-02, gating K-14.
+- Standalone Context Kit usage is documented in its own file, `guides/context-kit-standalone.md` — not a section inside `guides/context-kit.md`.
+- Reaffirms the 2026-05-28 decision that Context Kit is the correct low-friction, standalone entry point.
+- `guides/context-kit.md` remains the Playbook-integrated version; each guide cross-links to the other.
+- Both guides share the same six kit files (`kit/01-process.md` through `06-qa.md`) — no divergence in file structure between standalone and integrated use.
 
 **2026-08-11 — Meta-Repo Directory Structure Locked**
 

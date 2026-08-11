@@ -6,7 +6,7 @@ archive_rule: 'N/A'
 ---
 
 Phase: Planning
-Last Completed: Scoped guides modernization (K-14–K-18) — Context Kit standalone vs. integrated split, guide entry-point restructure, terminology fixes, standalone session prompt, template README/AI-INSTRUCTIONS check. Logged Q-02 and seeded all five tickets in the kanban.
-Next: Resolve Q-02 (standalone Context Kit as its own guide vs. a section in `context-kit.md`), then execute K-14.
+Last Completed: Resolved Q-02 and closed K-14 — authored `playbook/.playbook/guides/context-kit-standalone.md`, cross-linked from the updated `guides/context-kit.md`.
+Next: Execute K-15 — restructure `guides/_index.md` so the standalone Context Kit path is a first-class entry point, not buried under full-pipeline guides. This also resolves K-06.
 Active Modules: kanban
 Active Expansions: none

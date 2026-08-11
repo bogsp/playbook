@@ -50,17 +50,12 @@ Blocked by: human decision
 Type: SYNC
 Description: Decide the canonical location (README.md vs \_index.md) before placing the final template in playbook/.
 Blocked by: human decision
-Note: Targeted for resolution by K-15 (guide entry point restructure) — see below.
-
-[K-14] Split Context Kit guide into standalone vs. integrated usage
-Type: DDA
-Description: Rewrite playbook/.playbook/guides/context-kit.md so standalone use (kit files only, no pipeline) and Playbook-integrated use (kit files + full pipeline) are both clearly documented, with a boundary a reader can't miss.
-Blocked by: human decision (Q-02 — own guide file vs. section within context-kit.md)
+Note: Targeted for resolution by K-15 (guide entry point restructure).
 
 [K-15] Restructure guide entry points for standalone Context Kit path
 Type: SYNC
-Description: Update playbook/.playbook/guides/\_index.md so standalone Context Kit is its own path, not buried under full-pipeline guides (New Project / Adopt / Audit). Resolves K-06 by giving the journey matrix a home that matches actual reader paths.
-Blocked by: K-14
+Description: Update playbook/.playbook/guides/\_index.md so standalone Context Kit (context-kit-standalone.md) is its own path, not buried under full-pipeline guides (New Project / Adopt / Audit). Resolves K-06 by giving the journey matrix a home that matches actual reader paths.
+Blocked by: none
 
 [K-16] Fix terminology drift across pipeline guides
 Type: SYNC
@@ -69,16 +64,17 @@ Blocked by: none
 
 [K-17] Add standalone Context Kit session-start prompt
 Type: DDA
-Description: Add a session prompt to playbook/.playbook/kit/00-prompts.md for starting with kit files only (no pipeline files) — companion to the existing "Starting a New Project" / "Picking Up Where You Left Off" prompts.
-Blocked by: K-14
+Description: Add a session prompt to playbook/.playbook/kit/00-prompts.md for starting with kit files only (no pipeline files) — companion to the existing "Starting a New Project" / "Picking Up Where You Left Off" prompts. Reference context-kit-standalone.md.
+Blocked by: none
 
 [K-18] Confirm template README/AI-INSTRUCTIONS reference standalone path
 Type: SYNC
 Description: Confirm playbook/.playbook/README.md and playbook/.playbook/AI-INSTRUCTIONS.md reference the standalone Context Kit path without disrupting the existing boot order or Behavioral Rules.
-Blocked by: K-14, K-15
+Blocked by: K-15
 
 In Progress
 [K-12] Populate playbook/ template structure
+[K-15] Restructure guide entry points for standalone Context Kit path
 
 Blocked
 (none)
@@ -101,3 +97,6 @@ Done
 
 [K-09] Scope the C11 engine / Rust shell subproject
 (Resolved: Legacy C11/Rust subproject explicitly discarded from structure)
+
+[K-14] Split Context Kit guide into standalone vs. integrated usage
+(Resolved: Authored playbook/.playbook/guides/context-kit-standalone.md — kit files only, no pipeline content. Updated playbook/.playbook/guides/context-kit.md with a cross-link to the standalone guide; pipeline-specific content (stage table, milestone-snapshot fallback) left unchanged there. Resolves Q-02.)

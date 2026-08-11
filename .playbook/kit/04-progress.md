@@ -21,4 +21,6 @@ archive_rule: 'Entries older than the current phase move to .playbook/kit/_archi
 - **Decided**: Scoped the guides modernization work — five tickets (K-14–K-18) to bring `playbook/.playbook/guides/*.md` in line with the current pipeline, with the Context Kit split into standalone and Playbook-integrated documentation as the centerpiece.
 - **Completed**: Logged open question Q-02 (standalone Context Kit — own guide file vs. section in `context-kit.md`) in `02-exploration.md`, gating K-14.
 - **Completed**: Seeded K-14 through K-18 in `05-kanban.md` Backlog, with K-15 marked as the resolution path for K-06.
-- **In Progress**: Executing K-12 to populate the clean `playbook/` template structure. Guides modernization (K-14–K-18) queued behind it — Q-02 to be resolved first.
+- **Decided**: Resolved Q-02 — standalone Context Kit gets its own guide file, `guides/context-kit-standalone.md`, reaffirming the 2026-05-28 decision.
+- **Completed**: Closed K-14. Authored `playbook/.playbook/guides/context-kit-standalone.md` (kit files, session rhythm, two-message pattern, expansions, drift recovery — no pipeline content). Updated `playbook/.playbook/guides/context-kit.md` with a cross-link to the standalone guide, pipeline-specific sections unchanged.
+- **In Progress**: Executing K-12 (populate `playbook/` template structure) and K-15 (restructure `guides/_index.md` entry points to surface the standalone path and resolve K-06).

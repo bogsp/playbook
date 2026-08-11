@@ -1,10 +1,21 @@
-# The Context Kit
+---
+file: '.playbook/guides/context-kit.md'
+responsibility: 'How the Context Kit works inside the full Playbook pipeline — session files plus staged planning.'
+ai_instructions: 'Load when a session is running the full pipeline (Discovery, Mapping, Rules, Planning, Work, Handoff), not just kit files alone.'
+archive_rule: 'N/A — orientation guide.'
+---
 
-# File: .playbook/guides/context-kit.md
+# The Context Kit
 
 Every project loses context between sessions. Without a system, every restart wastes time re-explaining what was already decided and re-discovering what was already built.
 
 The context kit solves this with a small set of files — each with one job. Upload them at the start of any session and pick up exactly where you left off.
+
+> This guide covers Context Kit usage **inside the full Playbook pipeline** —
+> alongside Discovery, Mapping, Rules, Planning, Work, and Handoff. If you
+> only want the six kit files with no pipeline stages, see
+> [context-kit-standalone.md](context-kit-standalone.md) instead — same
+> files, none of the pipeline overhead.
 
 ---
 
