@@ -1,5 +1,11 @@
+---
+file: 'playbook/.playbook/guides/video-insights.md'
+responsibility: 'How to turn a video into structured reference material for the project — the video-insights expansion.'
+ai_instructions: 'Load when a person wants to extract ideas, decisions, or research from a video and integrate them into the project.'
+archive_rule: 'N/A — orientation guide.'
+---
+
 # Video Insights Guide
-# File: .playbook/guides/video-insights.md
 
 Use this guide when you want to extract ideas, decisions, or research from a video and integrate them into your project.
 
@@ -56,19 +62,30 @@ If the video fully answered an open question, close the question in [02-explorat
 Each insight file follows the same structure:
 
 ```
-# [Video Title]
-# File: .playbook/kit/_refs/[video-name].md
+---
+file: '.playbook/kit/_refs/[video-name].md'
+responsibility: 'Structured insight extracted from [Video Title] — source material for project decisions.'
+ai_instructions: 'Reference only. Do not treat as a settled decision unless linked from a Closed Decision in 02-exploration.md.'
+archive_rule: 'Move to .playbook/kit/_archives/ once every decision it informed is settled and no longer active.'
+---
 
-Source: [URL or description]
-Extracted: [date]
+# [Video Title]
+
+---
+
+**Source:** [URL or description]
+**Extracted:** [date]
 
 ## Key Points
+
 [Concise, usable points — not a transcript]
 
 ## Decisions Informed
+
 [Which open questions or decisions this resolves or informs]
 
 ## References
+
 [Timestamps or sections for anything that needs verification]
 ```
 
@@ -76,5 +93,5 @@ Extracted: [date]
 
 ## Reference
 
-- Session files — [context-kit.md](context-kit.md)
+- Session files — [Context Kit — Integrated](context-kit.md)
 - All session prompts — [kit/00-prompts.md](../kit/00-prompts.md)

@@ -6,7 +6,7 @@ archive_rule: 'N/A'
 ---
 
 Phase: Planning
-Last Completed: Closed K-15 — added journey matrix to `guides/_index.md`, resolving K-06. Expanded K-16 to cover frontmatter standardization on the two guides (`project-identity.md`, `video-insights.md`) that weren't originally in its file list.
-Next: Execute K-16 — fix terminology drift in `new-project.md`, `adopt.md`, `audit.md`, and apply standardized frontmatter across all five remaining guides.
+Last Completed: Closed K-16 — fixed the broken reverse-engineer.md → audit.md link in adopt.md, added missing project-identity.md cross-links to three guides, and standardized frontmatter across all five remaining guide files.
+Next: Execute K-17 — add a standalone Context Kit session-start prompt to kit/00-prompts.md, referencing context-kit-standalone.md.
 Active Modules: kanban
 Active Expansions: none
