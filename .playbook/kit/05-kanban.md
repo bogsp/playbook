@@ -21,6 +21,36 @@ DDA Ticket Types
 
 Backlog
 
+[K-33] Split playbook/.playbook/templates.md into per-type files
+Type: DDA
+Description: Generate playbook/.playbook/templates/{structure,coordinator,component,concern,integration}.md using the Frontmatter Tiering Rule (Tier 1: deep-module header + four-field purpose block + type fields) and 4-backtick outer / 3-backtick inner code fencing. Retire templates.md once all five are approved.
+Blocked by: none
+
+[K-34] Split vocabulary-software/templates.md into per-type files
+Type: DDA
+Description: Generate playbook/.playbook/vocabulary-software/templates/{structure,sequencer,component}.md with the same tiered frontmatter and fencing rules. concern/integration stay pointer-only per the current vocabulary file — no split needed for those two.
+Blocked by: K-33
+
+[K-35] Delete stray root template duplicates
+Type: SYNC
+Description: Remove root .playbook/templates.md and .playbook/templates/*.md — duplicates that don't belong in this repo's own planning-only .playbook/ per _index.md. User-owned action, confirmed in session.
+Blocked by: none
+
+[K-36] Update references to templates.md across shipped docs
+Type: SYNC
+Description: Update playbook/.playbook/_index.md (Folder Map + How to Use This File table), playbook/.playbook/README.md (Folder Map), and each vocabulary-[domain]/templates.md's "read templates.md first" pointer to reference the templates/ folder instead.
+Blocked by: K-33, K-34
+
+[K-37] Update build.js and scaffold.js for templates/ folder
+Type: CODE
+Description: packages/create-playbook/build.js must copy all split files (5 universal + 3 software) instead of a single templates.md; lib/scaffold.js must copy the templates/ folder into every scaffolded project instead of a single file.
+Blocked by: K-33, K-34
+
+[K-38] Scope domain-specific templates for writing/production/manufacturing
+Type: DDA
+Description: Deferred. Same split-file treatment will eventually apply to vocabulary-writing/production/manufacturing templates.md, but their per-type field structures haven't been discussed yet. Revisit in a dedicated future session — not scheduled.
+Blocked by: none (explicitly deferred)
+
 [K-12] Populate playbook/ template structure
 Type: SYNC
 Description: Move and organize the domain-agnostic Playbook templates into the new root playbook/ directory (including docs/, .playbook/kit/, and templates/).
@@ -129,7 +159,8 @@ Done
 (Resolved: All tracking files shifted to root .playbook/kit/)
 
 [K-02] De-duplicate template sources
-(Resolved by meta-repo architecture: internal templates live in .playbook/, distributable ones in playbook/)
+(Resolved by meta-repo architecture: internal templates live in .playbook/, distributable ones in playbook/.playbook/)
+Fixed 2026-08-12: Resolution note was incomplete. Stray copies of templates.md and a templates/ folder existed in this repo's own root .playbook/, which per _index.md should hold only kit files and the project map — duplicating playbook/.playbook/templates.md. See K-33–K-37 for the corrected fix.
 
 [K-08] Scope @bogsp/playbook-software-library into the plan
 (Resolved by meta-repo architecture: explicitly mapped to packages/)
