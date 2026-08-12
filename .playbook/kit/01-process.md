@@ -6,7 +6,7 @@ archive_rule: 'N/A'
 ---
 
 Phase: Planning
-Last Completed: Q-04 resolved — deleted root docs/flows/flow.md and docs/contracts/contract.md (unedited stale duplicates of playbook/docs/ canonical source); retained root docs/contracts/global.md as a placeholder for this repo's own cross-track global contract, to be overwritten once K-28 contract-writing work reaches it. K-27 (seven Templates-track flow documents) remains the last completed flow work.
-Next: K-28 — write docs/contracts/playbook-templates/ (global.md + seven per-flow contracts companioning flow-1 through flow-7 in docs/flows/playbook-templates/).
+Last Completed: K-28 — drafted and approved docs/contracts/playbook-templates/global.md (cross-cutting rules for all eight flows in the track, flow-0 through flow-7) and docs/contracts/playbook-templates/flow-5-planning-stage.md (companion contract to docs/flows/playbook-templates/flow-5-planning-stage.md). 2 of 8 required contracts complete for the playbook-templates track.
+Next: Continue K-28 — draft remaining per-flow contracts, in this order: flow-0-audit-existing-project, flow-1-thinking-resume-session, flow-2-discovery-stage, flow-3-mapping-stage, flow-4-rules-stage, flow-6-work-stage, flow-7-handoff-and-resume.
 Active Modules: kanban
 Active Expansions: none
