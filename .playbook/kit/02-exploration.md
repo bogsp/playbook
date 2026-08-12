@@ -7,73 +7,31 @@ archive_rule: 'Closed decisions no longer gating any active task move to .playbo
 
 ## Open Topics
 
-- [ ] **[Q-03]:** Frontmatter sweep beyond `guides/` — not a blocker for any current ticket, fix opportunistically when each file is next touched: `playbook/docs/flows/flow.md` and `playbook/docs/contracts/contract.md`/`global.md` are now resolved (see 2026-08-11 decision below) — remaining scope is `playbook/.playbook/templates.md` + `templates/*.md` (HCH block — already an open item from the 2026-08-10 sync check); `playbook/.playbook/pipeline.md`, `playbook/.playbook/README.md`, and all four `vocabulary-*/{README,AI-INSTRUCTIONS,templates}.md` (still `# Title` / `# File:` style).
+- [ ] **[Q-03]:** Frontmatter sweep beyond `guides/` — not a blocker for any current ticket, fix opportunistically when each file is next touched: `playbook/docs/flows/flow.md` and `playbook/docs/contracts/contract.md`/`global.md` are now resolved (see 2026-08-11 decision below) — remaining scope on `playbook/.playbook/templates.md` + `templates/*.md` (HCH block) is resolved by the 2026-08-12 Frontmatter Tiering Rule below; `playbook/.playbook/pipeline.md`, `playbook/.playbook/README.md`, and all four `vocabulary-*/{README,AI-INSTRUCTIONS,templates}.md` (still `# Title` / `# File:` style) remain open.
 
 ---
 
-## Closed Decisions
+## Settled Decisions
 
-**2026-08-11 — Q-04 resolved: root-level stale doc duplicates**
+- **[2026-08-12] — Frontmatter Tiering Rule established**
+  - **Context:** Splitting `playbook/.playbook/templates.md` into per-type files (K-33) required deciding what frontmatter each file carries. The deep-module header (`MODULE_ID`, `SYSTEM_CONTEXT`, `UPSTREAM_DEPENDENCIES`, `DOWNSTREAM_IMPACT`, `CORE_SYSTEM_INVARIANTS`) was flagged as unresolved in the 2026-08-10 sync check (K-03) — present in templates/kit files, absent from `_concerns/`, never traced to a decision. Separately, prior drift between `02-exploration.md`/`03-execution.md`/`04-progress.md` (see archived 2026-05-23 decision) was only resolved by giving each kit file an explicit `responsibility`/`ai_instructions` boundary, establishing that the four-field purpose block is what prevents this class of drift.
+  - **Decision:** Progressive Disclosure applied to frontmatter itself, in two tiers. Tier 1 (DDA/planning docs — the five universal types and domain-specific counterparts like software's `sequencer`): deep-module header + four-field purpose block (`file`, `responsibility`, `ai_instructions`, `archive_rule`) + type-specific tracking fields (`id`, `type`, `status`, etc.). Tier 2 (kit files, flows, contracts, guides, READMEs, indexes): the four-field purpose block is mandatory and never dropped, since it prevents drift between documents with adjacent purposes — plus any already-established tracking fields for that doc type (flows/contracts keep `id`/`type`/`scope`/`trigger`/`status`/`calls`/`emits`/`called-by`). The deep-module header stays Tier-1-only — it exists to protect AI-generated code against upstream/downstream impact, a risk specific to docs that gate implementation.
+  - **Ref:** `04-progress.md` 2026-08-12 entry; `05-kanban.md` K-33, K-34.
 
-- **Context:** Root `docs/flows/flow.md`, `docs/contracts/contract.md`, and
-  `docs/contracts/global.md` duplicated the canonical `playbook/docs/`
-  template source but were never updated in the 2026-08-11 frontmatter
-  standardization pass — they still carried the old `File:`/`id:`/`type:`
-  header style instead of the four-field standard. `docs/contracts/global.md`
-  was not even a placeholder — it held unrelated filled-in content (a
-  DragonPay/Stripe/PHP financial platform's global contract), suggesting it
-  was a stale artifact from a different project predating the meta-repo
-  restructure.
-- **Decision:**
-  - `docs/flows/flow.md` and `docs/contracts/contract.md` — deleted. They
-    were pure unedited duplicates of `playbook/docs/flows/flow.md` and
-    `playbook/docs/contracts/contract.md` with no distinct content, so
-    nothing was lost.
-  - `docs/contracts/global.md` — retained. Root `docs/` is confirmed to hold
-    real, tracked work for this repo's own three tracks (create-playbook
-    CLI, playbook-software-library, playbook-templates — see
-    `docs/flows/create-playbook/`, `docs/flows/playbook-templates/`), so a
-    root `docs/contracts/global.md` has a legitimate purpose: the global
-    contract governing all flows across those three tracks. The file is kept
-    as a placeholder to be overwritten with content scoped to this repo's
-    own flows once contract-writing work reaches it (see K-28 and beyond) —
-    not deleted, since deleting would remove a correctly-located file
-    pending correct content.
-- **Ref:** `.playbook/kit/04-progress.md` 2026-08-11 entry; `.playbook/kit/05-kanban.md`.
+- **[2026-08-11] — Root-level stale doc duplicates resolved (Q-04)**
+  - **Context:** Root `docs/flows/flow.md`, `docs/contracts/contract.md`, and `docs/contracts/global.md` duplicated the canonical `playbook/docs/` template source but were never updated in the frontmatter standardization pass — still carried the old header style. `docs/contracts/global.md` held unrelated filled-in content (a DragonPay/Stripe/PHP financial platform's global contract), suggesting a stale artifact from a different project.
+  - **Decision:** Deleted `docs/flows/flow.md` and `docs/contracts/contract.md` — unedited duplicates, nothing lost. Retained `docs/contracts/global.md` — root `docs/` legitimately holds this repo's own tracked flows (create-playbook, playbook-templates tracks), so a root global contract has a real purpose; kept as a placeholder to be overwritten once contract-writing work (K-28+) reaches it.
+  - **Ref:** `04-progress.md` 2026-08-11 entry; `05-kanban.md`.
 
-**2026-08-11 — K-27 scope expanded to include pipeline user-journey flows**
+- **[2026-08-11] — K-27 scope expanded to include pipeline user-journey flows**
+  - **Context:** Original K-27 scope (three-track plan) covered only internal template-maintenance mechanics — editing template source and the build/publish step.
+  - **Decision:** Scope expanded to also document how a person in a consuming project moves through the shipped pipeline — five additional flows (new project, adopt, audit, resume session, milestone handoff/resume), grouped separately from the two build-mechanic flows in `docs/flows/playbook-templates/_index.md`. These journey flows describe `playbook/.playbook/guides/*.md` as executable paths, not just prose.
+  - **Ref:** `04-progress.md` 2026-08-11 entry; `05-kanban.md` K-27.
 
-- Original K-27 scope (per the three-track plan) covered only internal
-  template-maintenance mechanics: editing template source and the
-  build/publish step.
-- Scope expanded after review: the Templates track also needs to document
-  how a person in a *consuming* project actually moves through the shipped
-  pipeline — five additional flows (new project, adopt, audit, resume
-  session, milestone handoff/resume), grouped separately from the two
-  build-mechanic flows in `docs/flows/playbook-templates/_index.md`.
-- These journey flows describe `playbook/.playbook/guides/*.md` as
-  executable paths, not just prose — direct working reference for updating
-  Playbook-integrated pipelines in other projects.
-
-**2026-08-11 — Standardized frontmatter adopted for generated flow docs and shipped templates**
-
-- All newly generated flow documents (`docs/flows/create-playbook/`,
-  `docs/flows/playbook-templates/`) use the four-field standard
-  (`file:`/`responsibility:`/`ai_instructions:`/`archive_rule:`) as the
-  primary frontmatter block, with flow-tracking fields (`id`, `type`,
-  `scope`, `trigger`, `status`, `calls`, `emits`, `called-by`) folded into
-  the same YAML block rather than a second frontmatter section.
-- The shipped templates `playbook/docs/flows/flow.md`,
-  `playbook/docs/contracts/contract.md`, and
-  `playbook/docs/contracts/global.md` were updated to match — every future
-  project scaffolded from these templates will produce flow/contract docs
-  in this shape by default.
-- Adjacent fix made in the same pass: these three templates hardcoded
-  `Type: software` / `Domain vocabulary: .playbook/vocabulary-software/`,
-  which is incorrect for a domain-agnostic template shipped to
-  writing/production/manufacturing projects too. Replaced with generic
-  `project-type: software | writing | production | manufacturing` and
-  `domain-vocabulary: '.playbook/vocabulary-[domain]/'` placeholders.
+- **[2026-08-11] — Standardized frontmatter adopted for generated flow docs and shipped templates**
+  - **Context:** Flow and contract documents needed a consistent frontmatter shape. The shipped templates (`playbook/docs/flows/flow.md`, `playbook/docs/contracts/contract.md`, `playbook/docs/contracts/global.md`) also hardcoded `Type: software`, incorrect for a domain-agnostic template shipped to writing/production/manufacturing projects too.
+  - **Decision:** All newly generated flow documents use the four-field standard (`file`/`responsibility`/`ai_instructions`/`archive_rule`) as the primary block, with flow-tracking fields (`id`, `type`, `scope`, `trigger`, `status`, `calls`, `emits`, `called-by`) folded into the same YAML block. Shipped templates updated to match, and hardcoded software values replaced with generic `project-type: software | writing | production | manufacturing` and `domain-vocabulary: '.playbook/vocabulary-[domain]/'` placeholders.
+  - **Ref:** `04-progress.md` 2026-08-11 entry.
 
 ---
 
