@@ -39,7 +39,7 @@ Every branch in every flow walkthrough resolves to exactly one of four terminals
 No other terminal exists in this track.
 
 | Terminal     | Meaning                                                  |
-| ------------ | -------------------------------------------------------- |
+| ------------ | --------------------------------------------------------- |
 | **CONTINUE** | Proceed to the named step within the same flow           |
 | **HALT**     | Stop; a human must act before anything resumes           |
 | **RETURN**   | Hand control back to whichever context called this flow  |
@@ -55,8 +55,8 @@ must be flagged, not force-fit.
 No stage, phase, or sub-step in this track advances autonomously.
 
 - Every step that produces an artifact (a draft flow, a draft contract, a
-  planning document, a phase output) requires explicit human approval before
-  the next step begins.
+  planning document, a phase output, a milestone snapshot) requires explicit
+  human approval before the next step begins.
 - "Approved" means the human reviewed the specific artifact produced at that
   step — not a prior version, not an adjacent artifact.
 - A revision request returns control to the same step, not the next one.
@@ -159,6 +159,34 @@ until this sync has happened.
   contract is drafted — this is restated here because it governs this
   track's own contract-writing work (K-28), not just a rule this track
   documents about other projects.
+
+---
+
+## 9. Plan-Before-Divergence
+
+- If work in `flow-6` needs to diverge from an approved planning document,
+  the planning document is updated — and re-reviewed if the divergence is
+  structural — before work continues. The plan is never left stale while
+  implementation moves ahead of it.
+- This rule is stated here, not only in `flow-6`'s own contract, because it
+  governs the general relationship between any planning document in this
+  track and the work done against it — not a Work-stage-specific quirk.
+
+---
+
+## 10. No Invented Content in Generated Artifacts
+
+- Any artifact this track generates from source files — a milestone
+  snapshot (`flow-7`), a planning document (`flow-5`), a flow or contract
+  document (`flow-3`, `flow-4`) — states only what is traceable to those
+  source files. A claim that cannot be traced back to an attached or
+  referenced file is removed or flagged, never included on the assumption
+  it is probably correct.
+- This is a general prohibition on fabrication across the whole track. It is
+  most visible in `flow-7`'s milestone-generation step (which explicitly
+  halts on an untraceable claim), but it applies equally to every other
+  flow that produces a document from prior state rather than from a human's
+  direct instruction in the current step.
 
 ---
 
