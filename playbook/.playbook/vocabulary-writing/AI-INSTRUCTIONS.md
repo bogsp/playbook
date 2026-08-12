@@ -1,5 +1,11 @@
+---
+file: '.playbook/vocabulary-writing/AI-INSTRUCTIONS.md'
+responsibility: 'Writing-domain-specific AI session rules — loaded alongside the universal .playbook/AI-INSTRUCTIONS.md.'
+ai_instructions: 'Load .playbook/AI-INSTRUCTIONS.md first, then this file.'
+archive_rule: 'N/A — core domain reference file.'
+---
+
 # AI Instructions — Writing and Editorial
-# File: .playbook/vocabulary-writing/AI-INSTRUCTIONS.md
 
 > Load `.playbook/AI-INSTRUCTIONS.md` first, then this file.
 > This file adds writing-specific rules on top of the universal rules.
@@ -14,6 +20,14 @@
 | Piece work | `.playbook/[publication]/[piece].md` |
 | Series or publication work | `.playbook/[publication]/_index.md` + relevant piece docs |
 | Flow or contract authoring | `docs/flows/_index.md`, `docs/contracts/_index.md` |
+
+---
+
+## Frontmatter
+
+Frontmatter for every file in this domain — including `piece` planning docs —
+follows the Frontmatter Tiering Rule defined in `maintenance.md` (Tier 1 for
+planning docs, Tier 2 for everything else). Don't invent a different shape here.
 
 ---
 

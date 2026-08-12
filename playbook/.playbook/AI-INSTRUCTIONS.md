@@ -30,6 +30,7 @@ Read these files at the start of every session, in this exact order:
 | Specific module work | `.playbook/[module]/_index.md` + relevant component docs |
 | Audit expansion | `docs/rewrite/` files as they exist |
 | Updating README.md, AI-INSTRUCTIONS.md, or `_index.md` to match this project | `guides/project-identity.md` |
+| Unsure what frontmatter shape a file should carry | `maintenance.md` — Frontmatter Tiering |
 
 Confirm what you have loaded. Then wait for instruction.
 
@@ -60,6 +61,7 @@ Every planning document, flow, and contract manages explicit metadata/headers at
 16. Never write planning documents during inventory, audit, or classify phases.
 17. Stop and flag before doing any work when a requirement is unclear.
 18. Keep `.playbook/README.md`, `.playbook/AI-INSTRUCTIONS.md`, and `.playbook/_index.md` current with this specific project — see `guides/project-identity.md` for what to update, when, and what must stay fixed.
+19. Every file's frontmatter shape follows the Frontmatter Tiering Rule in `maintenance.md` — Tier 1 for planning documents, Tier 2 for everything else. Do not restate or reinvent that rule here; update frontmatter in the same pass any file is otherwise touched.
 
 ## When Something Is Unclear
 
@@ -76,6 +78,7 @@ Stop all work. Flag using this exact format:
 - Make structural decisions without flagging them first.
 - Produce placeholder or incomplete work.
 - Edit the core Behavioral Rules or Session Load Order in this file to fit a project — append project-specific rules instead (see `guides/project-identity.md`).
+- Invent a frontmatter shape outside the two tiers defined in `maintenance.md`.
 
 ## Expansions
 
@@ -102,3 +105,4 @@ Update these two files before the session ends or when context reaches 80% — d
 
 3. Run a sync check — do all touched planning documents reflect current work?
 4. Update the folder map in `_index.md` if any components changed.
+5. Confirm every file touched this session has frontmatter matching its tier (`maintenance.md` — Frontmatter Tiering) — fix before logging progress, not after.

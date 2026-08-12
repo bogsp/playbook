@@ -1,5 +1,11 @@
+---
+file: '.playbook/vocabulary-manufacturing/AI-INSTRUCTIONS.md'
+responsibility: 'Manufacturing-domain-specific AI session rules — loaded alongside the universal .playbook/AI-INSTRUCTIONS.md.'
+ai_instructions: 'Load .playbook/AI-INSTRUCTIONS.md first, then this file.'
+archive_rule: 'N/A — core domain reference file.'
+---
+
 # AI Instructions — Manufacturing
-# File: .playbook/vocabulary-manufacturing/AI-INSTRUCTIONS.md
 
 > Load `.playbook/AI-INSTRUCTIONS.md` first, then this file.
 > This file adds manufacturing-specific rules on top of the universal rules.
@@ -14,6 +20,14 @@
 | Part or sub-assembly work | `.playbook/[product]/[part].md` |
 | Product or production run work | `.playbook/[product]/_index.md` + relevant part docs |
 | Flow or contract authoring | `docs/flows/_index.md`, `docs/contracts/_index.md` |
+
+---
+
+## Frontmatter
+
+Frontmatter for every file in this domain — including `part` planning docs —
+follows the Frontmatter Tiering Rule defined in `maintenance.md` (Tier 1 for
+planning docs, Tier 2 for everything else). Don't invent a different shape here.
 
 ---
 

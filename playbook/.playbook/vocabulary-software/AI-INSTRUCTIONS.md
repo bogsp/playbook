@@ -1,5 +1,11 @@
+---
+file: '.playbook/vocabulary-software/AI-INSTRUCTIONS.md'
+responsibility: 'Software-domain-specific AI session rules — loaded alongside the universal .playbook/AI-INSTRUCTIONS.md.'
+ai_instructions: 'Read this file at the start of every session alongside .playbook/AI-INSTRUCTIONS.md.'
+archive_rule: 'N/A — core domain reference file.'
+---
+
 # AI Instructions — Software
-# File: .playbook/vocabulary-software/AI-INSTRUCTIONS.md
 
 Read this file at the start of every session alongside .playbook/AI-INSTRUCTIONS.md.
 
@@ -50,6 +56,15 @@ This is a software project. Use the terminology defined in:
 
 Apply this vocabulary consistently across all planning docs, flow docs,
 contracts, and session output. Never use terminology from another domain.
+
+---
+
+## Frontmatter
+
+Frontmatter for every file in this domain — including `sequencer` and `component`
+planning docs — follows the Frontmatter Tiering Rule defined in `maintenance.md`
+(Tier 1 for planning docs, Tier 2 for everything else). Don't invent a different
+shape here.
 
 ---
 

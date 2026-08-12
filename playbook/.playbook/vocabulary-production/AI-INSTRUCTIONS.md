@@ -1,5 +1,11 @@
+---
+file: '.playbook/vocabulary-production/AI-INSTRUCTIONS.md'
+responsibility: 'Production-and-operations-domain-specific AI session rules — loaded alongside the universal .playbook/AI-INSTRUCTIONS.md.'
+ai_instructions: 'Load .playbook/AI-INSTRUCTIONS.md first, then this file.'
+archive_rule: 'N/A — core domain reference file.'
+---
+
 # AI Instructions — Production and Operations
-# File: .playbook/vocabulary-production/AI-INSTRUCTIONS.md
 
 > Load `.playbook/AI-INSTRUCTIONS.md` first, then this file.
 > This file adds production-specific rules on top of the universal rules.
@@ -14,6 +20,14 @@
 | Deliverable work | `.playbook/[project]/[deliverable].md` |
 | Project or campaign work | `.playbook/[project]/_index.md` + relevant deliverable docs |
 | Flow or contract authoring | `docs/flows/_index.md`, `docs/contracts/_index.md` |
+
+---
+
+## Frontmatter
+
+Frontmatter for every file in this domain — including `deliverable` planning docs —
+follows the Frontmatter Tiering Rule defined in `maintenance.md` (Tier 1 for
+planning docs, Tier 2 for everything else). Don't invent a different shape here.
 
 ---
 

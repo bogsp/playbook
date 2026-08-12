@@ -21,6 +21,11 @@ DDA Ticket Types
 
 Backlog
 
+[K-39] Finish frontmatter sweep — pipeline.md, README.md, vocabulary README/templates
+Type: SYNC
+Description: Remaining Q-03 scope after this session's AI-INSTRUCTIONS.md rollout: playbook/.playbook/pipeline.md, playbook/.playbook/README.md, and all four vocabulary-[domain]/README.md + templates.md files still carry the old # Title/# File: comment header instead of the four-field YAML block. Convert to Tier 2 frontmatter. Open question to resolve first: does pipeline.md and/or README.md also need a "Frontmatter Tiering" pointer line (per the instruction that any reference to structure/formatting adherence should be clear wherever a reader would look — AI-INSTRUCTIONS, pipeline, or README), or is the pointer sufficient in AI-INSTRUCTIONS.md alone since that's the file every session actually loads for behavioral rules?
+Blocked by: none
+
 [K-33] Split playbook/.playbook/templates.md into per-type files
 Type: DDA
 Description: Generate playbook/.playbook/templates/{structure,coordinator,component,concern,integration}.md using the Frontmatter Tiering Rule (Tier 1: deep-module header + four-field purpose block + type fields) and 4-backtick outer / 3-backtick inner code fencing. Retire templates.md once all five are approved.
@@ -154,6 +159,7 @@ Done
 
 [K-03] Standardize YAML Frontmatter adoption
 (Resolved: Light YAML frontmatter successfully adopted across framework files)
+Fixed 2026-08-12: Frontmatter Tiering Rule (the mechanism this ticket's frontmatter adoption needed but never got) established and rolled out to maintenance.md (both copies), both AI-INSTRUCTIONS.md files, and all four vocabulary-*/AI-INSTRUCTIONS.md files. See K-39 for the files still outstanding.
 
 [K-11] Migrate internal Context Kit to .playbook/kit/
 (Resolved: All tracking files shifted to root .playbook/kit/)
@@ -185,3 +191,6 @@ Fixed 2026-08-12: Resolution note was incomplete. Stray copies of templates.md a
 
 [K-28] Write docs/contracts/playbook-templates/
 (Resolved: Authored docs/contracts/playbook-templates/flow-1 through flow-7, plus updated docs/contracts/global.md (the playbook-templates track's global contract, retained at root docs/contracts/global.md per the Q-04 decision) with two new sections — §9 Plan-Before-Divergence, §10 No Invented Content. All 8 contracts complete: global.md, flow-0 (already existed from an earlier session), flow-1 through flow-7. Byproduct: authored the two flow documents that were missing despite being listed in global.md's governs field — flow-6-work-stage.md and flow-7-handoff-and-resume.md — logged as an amendment to K-27 above.)
+
+[K-40] Roll out Frontmatter Tiering Rule to maintenance.md, AI-INSTRUCTIONS.md, and vocabulary AI-INSTRUCTIONS.md
+(Resolved 2026-08-12: Canonical "Frontmatter Tiering" section added to playbook/.playbook/maintenance.md, own-terms application section added to root .playbook/maintenance.md, pointer rules added to both AI-INSTRUCTIONS.md files, and all four playbook/.playbook/vocabulary-*/AI-INSTRUCTIONS.md files converted to YAML frontmatter with a domain-scoped pointer added. Spawned K-39 for the remaining Q-03 scope — pipeline.md, README.md, vocabulary README/templates.md files, plus an open question on whether pipeline.md/README.md need their own pointer line.)
