@@ -19,6 +19,27 @@ DDA Ticket Types
 - [CODE] — implementation against a DDA doc (requires DDA doc to be status: active)
 - [SYNC] — drift correction between code and DDA doc
 
+Locked Track — Clerical / Upkeep (next session)
+
+Order confirmed 2026-08-13. Documentation and reference work only — no
+CLI or library code changes in this track, per explicit instruction to
+keep code work separate.
+
+1. K-33 — confirm universal templates/ split, retire templates.md
+2. K-36 — update templates.md cross-references (blocked by K-33)
+3. K-39 — frontmatter sweep, pipeline.md + vocabulary README.md files
+4. K-07 — author missing _tests/ template
+5. K-10 — document _refs/ subfolders in _index.md
+6. K-18 — confirm template README/AI-INSTRUCTIONS standalone path
+
+Not in this track:
+
+- K-05 — flagged, not scheduled. Requires explicit human decision on
+  final contract section-naming convention before any work proceeds.
+  Do not resolve silently.
+- K-37 — deferred out of this track entirely. Belongs to a separate
+  CLI/library session (build.js / scaffold.js changes).
+
 Backlog
 
 [K-39] Finish frontmatter sweep — pipeline.md, README.md, vocabulary README.md
