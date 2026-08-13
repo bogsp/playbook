@@ -21,40 +21,25 @@ DDA Ticket Types
 
 Backlog
 
-[K-39] Finish frontmatter sweep — pipeline.md, README.md, vocabulary README/templates
+[K-39] Finish frontmatter sweep — pipeline.md, README.md, vocabulary README.md
 Type: SYNC
-Description: Remaining Q-03 scope after this session's AI-INSTRUCTIONS.md rollout: playbook/.playbook/pipeline.md, playbook/.playbook/README.md, and all four vocabulary-[domain]/README.md + templates.md files still carry the old # Title/# File: comment header instead of the four-field YAML block. Convert to Tier 2 frontmatter. Open question to resolve first: does pipeline.md and/or README.md also need a "Frontmatter Tiering" pointer line (per the instruction that any reference to structure/formatting adherence should be clear wherever a reader would look — AI-INSTRUCTIONS, pipeline, or README), or is the pointer sufficient in AI-INSTRUCTIONS.md alone since that's the file every session actually loads for behavioral rules?
+Description: Remaining scope after K-34/K-38 closed this session (2026-08-13): playbook/.playbook/pipeline.md, playbook/.playbook/README.md, and all four vocabulary-[domain]/README.md files still carry the old # Title/# File: comment header instead of the four-field YAML block. templates.md is no longer in scope for any domain — all four now use templates/_index.md (already correct Tier 2 frontmatter, generated 2026-08-13). Open question to resolve first: does pipeline.md and/or README.md also need a "Frontmatter Tiering" pointer line, or is the pointer in AI-INSTRUCTIONS.md alone sufficient since that's the file every session actually loads for behavioral rules? Confirmed 2026-08-13: both README.md files (root and playbook/) already carry correct Tier 2 frontmatter — remove from scope, this ticket covers pipeline.md (both copies) and the four vocabulary-*/README.md files only.
 Blocked by: none
 
 [K-33] Split playbook/.playbook/templates.md into per-type files
 Type: DDA
-Description: Generate playbook/.playbook/templates/{structure,coordinator,component,concern,integration}.md using the Frontmatter Tiering Rule (Tier 1: deep-module header + four-field purpose block + type fields) and 4-backtick outer / 3-backtick inner code fencing. Retire templates.md once all five are approved.
-Blocked by: none
-
-[K-34] Split vocabulary-software/templates.md into per-type files
-Type: DDA
-Description: Generate playbook/.playbook/vocabulary-software/templates/{structure,sequencer,component}.md with the same tiered frontmatter and fencing rules. concern/integration stay pointer-only per the current vocabulary file — no split needed for those two.
-Blocked by: K-33
-
-[K-35] Delete stray root template duplicates
-Type: SYNC
-Description: Remove root .playbook/templates.md and .playbook/templates/*.md — duplicates that don't belong in this repo's own planning-only .playbook/ per _index.md. User-owned action, confirmed in session.
+Description: Confirm playbook/.playbook/templates/{structure,coordinator,component,concern,integration}.md (the universal five) are complete and correctly cross-referenced by all four vocabulary-[domain]/templates/_index.md files (generated 2026-08-13, each points to ../../templates/concern.md and integration.md). Retire playbook/.playbook/templates.md once confirmed. Broader in scope than originally ticketed — now gates K-36 for four domains, not one.
 Blocked by: none
 
 [K-36] Update references to templates.md across shipped docs
 Type: SYNC
-Description: Update playbook/.playbook/_index.md (Folder Map + How to Use This File table), playbook/.playbook/README.md (Folder Map), and each vocabulary-[domain]/templates.md's "read templates.md first" pointer to reference the templates/ folder instead.
-Blocked by: K-33, K-34
+Description: Broadened 2026-08-13 — now applies to all four domains, not just software. Update playbook/.playbook/_index.md (Folder Map + How to Use This File table), playbook/.playbook/README.md (Folder Map), and each vocabulary-[domain]/AI-INSTRUCTIONS.md's "Frontmatter" pointer section to reference templates/_index.md instead of a single templates.md file. Software's AI-INSTRUCTIONS.md already points at "templates.md" by name (see playbook/.playbook/vocabulary-software/AI-INSTRUCTIONS.md "Domain Vocabulary" section) — needs correcting to templates/_index.md now that the split exists.
+Blocked by: K-33
 
-[K-37] Update build.js and scaffold.js for templates/ folder
+[K-37] Update build.js and scaffold.js for templates/ folder — all four domains
 Type: CODE
-Description: packages/create-playbook/build.js must copy all split files (5 universal + 3 software) instead of a single templates.md; lib/scaffold.js must copy the templates/ folder into every scaffolded project instead of a single file.
-Blocked by: K-33, K-34
-
-[K-38] Scope domain-specific templates for writing/production/manufacturing
-Type: DDA
-Description: Deferred. Same split-file treatment will eventually apply to vocabulary-writing/production/manufacturing templates.md, but their per-type field structures haven't been discussed yet. Revisit in a dedicated future session — not scheduled.
-Blocked by: none (explicitly deferred)
+Description: Broadened 2026-08-13 — packages/create-playbook/build.js must copy all split files (5 universal + 3 software + 2 writing + 2 production + 2 part/coordinator manufacturing, each domain's _index.md included) instead of a single templates.md per domain; lib/scaffold.js must copy each domain's templates/ folder into the scaffolded project instead of a single file. Previously scoped to software only.
+Blocked by: K-33
 
 [K-12] Populate playbook/ template structure
 Type: SYNC
@@ -194,3 +179,13 @@ Fixed 2026-08-12: Resolution note was incomplete. Stray copies of templates.md a
 
 [K-40] Roll out Frontmatter Tiering Rule to maintenance.md, AI-INSTRUCTIONS.md, and vocabulary AI-INSTRUCTIONS.md
 (Resolved 2026-08-12: Canonical "Frontmatter Tiering" section added to playbook/.playbook/maintenance.md, own-terms application section added to root .playbook/maintenance.md, pointer rules added to both AI-INSTRUCTIONS.md files, and all four playbook/.playbook/vocabulary-*/AI-INSTRUCTIONS.md files converted to YAML frontmatter with a domain-scoped pointer added. Spawned K-39 for the remaining Q-03 scope — pipeline.md, README.md, vocabulary README/templates.md files, plus an open question on whether pipeline.md/README.md need their own pointer line.)
+
+[K-41] Log Session End frontmatter-check enforcement as its own ticket
+Type: SYNC
+(Resolved 2026-08-13, retroactive: the fifth Session End checklist item — confirm every touched file's frontmatter matches its tier before logging progress — was added to both AI-INSTRUCTIONS.md files on 2026-08-12 and logged in 04-progress.md, but never given its own K-ID. Created and closed in the same pass for traceability; no further work required.)
+
+[K-34] Split vocabulary-software/templates.md into per-type files
+(Resolved 2026-08-13: Authored playbook/.playbook/vocabulary-software/templates/{_index,structure,sequencer,component}.md. concern/integration confirmed pointer-only to ../../templates/ — no software-specific fields exist for either. Files delivered as downloadable artifacts; not yet committed — see 04-progress.md 2026-08-13 entry.)
+
+[K-38] Scope domain-specific templates for writing/production/manufacturing
+(Resolved 2026-08-13, ahead of schedule — was explicitly deferred with no target session. Authored playbook/.playbook/vocabulary-{writing,production,manufacturing}/templates/{_index,coordinator,[type]}.md for all three, following the K-34 split-file pattern. Field structures settled: writing/piece → angle + audience; production/deliverable → deadline + definition-of-done; manufacturing/part → specification + definition-of-done. Files delivered as downloadable artifacts; not yet committed — see 04-progress.md 2026-08-13 entry.)
