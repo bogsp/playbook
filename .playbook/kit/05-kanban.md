@@ -19,15 +19,15 @@ DDA Ticket Types
 - [CODE] — implementation against a DDA doc (requires DDA doc to be status: active)
 - [SYNC] — drift correction between code and DDA doc
 
-Locked Track — Clerical / Upkeep (next session)
+Locked Track — Clerical / Upkeep (in progress)
 
 Order confirmed 2026-08-13. Documentation and reference work only — no
 CLI or library code changes in this track, per explicit instruction to
 keep code work separate.
 
-1. K-33 — confirm universal templates/ split, retire templates.md
-2. K-36 — update templates.md cross-references (blocked by K-33)
-3. K-39 — frontmatter sweep, pipeline.md + vocabulary README.md files
+1. K-33 — DONE — confirm universal templates/ split, retire templates.md
+2. K-36 — DONE — update templates.md cross-references
+3. K-39 — NEXT — frontmatter sweep, pipeline.md + vocabulary README.md files (also fixes a stale templates.md link in pipeline.md found during K-36)
 4. K-07 — author missing _tests/ template
 5. K-10 — document _refs/ subfolders in _index.md
 6. K-18 — confirm template README/AI-INSTRUCTIONS standalone path
@@ -44,23 +44,13 @@ Backlog
 
 [K-39] Finish frontmatter sweep — pipeline.md, README.md, vocabulary README.md
 Type: SYNC
-Description: Remaining scope after K-34/K-38 closed this session (2026-08-13): playbook/.playbook/pipeline.md, playbook/.playbook/README.md, and all four vocabulary-[domain]/README.md files still carry the old # Title/# File: comment header instead of the four-field YAML block. templates.md is no longer in scope for any domain — all four now use templates/_index.md (already correct Tier 2 frontmatter, generated 2026-08-13). Open question to resolve first: does pipeline.md and/or README.md also need a "Frontmatter Tiering" pointer line, or is the pointer in AI-INSTRUCTIONS.md alone sufficient since that's the file every session actually loads for behavioral rules? Confirmed 2026-08-13: both README.md files (root and playbook/) already carry correct Tier 2 frontmatter — remove from scope, this ticket covers pipeline.md (both copies) and the four vocabulary-*/README.md files only.
+Description: Remaining scope after K-34/K-38 closed 2026-08-13: playbook/.playbook/pipeline.md, and all four vocabulary-[domain]/README.md files still carry the old # Title/# File: comment header instead of the four-field YAML block. templates.md is no longer in scope for any domain — all four now use templates/_index.md. Confirmed 2026-08-13: both README.md files (root and playbook/) already carry correct Tier 2 frontmatter — this ticket covers pipeline.md (both copies) and the four vocabulary-*/README.md files only. Added scope during K-36 (2026-08-13): pipeline.md's Stage 5 section also has a stale [templates/](templates.md) link — fix the link as part of this same edit pass, not a separate ticket.
 Blocked by: none
-
-[K-33] Split playbook/.playbook/templates.md into per-type files
-Type: DDA
-Description: Confirm playbook/.playbook/templates/{structure,coordinator,component,concern,integration}.md (the universal five) are complete and correctly cross-referenced by all four vocabulary-[domain]/templates/_index.md files (generated 2026-08-13, each points to ../../templates/concern.md and integration.md). Retire playbook/.playbook/templates.md once confirmed. Broader in scope than originally ticketed — now gates K-36 for four domains, not one.
-Blocked by: none
-
-[K-36] Update references to templates.md across shipped docs
-Type: SYNC
-Description: Broadened 2026-08-13 — now applies to all four domains, not just software. Update playbook/.playbook/_index.md (Folder Map + How to Use This File table), playbook/.playbook/README.md (Folder Map), and each vocabulary-[domain]/AI-INSTRUCTIONS.md's "Frontmatter" pointer section to reference templates/_index.md instead of a single templates.md file. Software's AI-INSTRUCTIONS.md already points at "templates.md" by name (see playbook/.playbook/vocabulary-software/AI-INSTRUCTIONS.md "Domain Vocabulary" section) — needs correcting to templates/_index.md now that the split exists.
-Blocked by: K-33
 
 [K-37] Update build.js and scaffold.js for templates/ folder — all four domains
 Type: CODE
-Description: Broadened 2026-08-13 — packages/create-playbook/build.js must copy all split files (5 universal + 3 software + 2 writing + 2 production + 2 part/coordinator manufacturing, each domain's _index.md included) instead of a single templates.md per domain; lib/scaffold.js must copy each domain's templates/ folder into the scaffolded project instead of a single file. Previously scoped to software only.
-Blocked by: K-33
+Description: Broadened 2026-08-13 — packages/create-playbook/build.js must copy all split files (5 universal + 3 software + 2 writing + 2 production + 2 part/coordinator manufacturing, each domain's _index.md included) instead of a single templates.md per domain; lib/scaffold.js must copy each domain's templates/ folder into the scaffolded project instead of a single file. Previously scoped to software only. Deferred to a separate CLI/library session per explicit instruction.
+Blocked by: none — deferred, not blocked
 
 [K-12] Populate playbook/ template structure
 Type: SYNC
@@ -210,3 +200,9 @@ Type: SYNC
 
 [K-38] Scope domain-specific templates for writing/production/manufacturing
 (Resolved 2026-08-13, ahead of schedule — was explicitly deferred with no target session. Authored playbook/.playbook/vocabulary-{writing,production,manufacturing}/templates/{_index,coordinator,[type]}.md for all three, following the K-34 split-file pattern. Field structures settled: writing/piece → angle + audience; production/deliverable → deadline + definition-of-done; manufacturing/part → specification + definition-of-done. Files delivered as downloadable artifacts; not yet committed — see 04-progress.md 2026-08-13 entry.)
+
+[K-33] Split playbook/.playbook/templates.md into per-type files
+(Resolved 2026-08-13: Confirmed all 5 universal templates/*.md files complete and correctly cross-referenced by all 4 domain templates/_index.md files. templates.md confirmed retired — no longer present, proceeded without a diff per explicit instruction. Authored the missing playbook/.playbook/templates/_index.md, closing an asymmetry flagged mid-ticket — domain templates/ folders each had an index, the universal one didn't. Folded in on request rather than spun into a separate ticket.)
+
+[K-36] Update references to templates.md across shipped docs
+(Resolved 2026-08-13: Updated playbook/.playbook/_index.md (Folder Map + How to Use This File table) and playbook/.playbook/README.md (Folder Map) to reference templates/_index.md. Corrected vocabulary-software/AI-INSTRUCTIONS.md's Domain Vocabulary section — the only domain AI-INSTRUCTIONS.md that named templates.md directly; writing/production/manufacturing had no equivalent reference. A stale templates.md link found in pipeline.md's Stage 5 section during this ticket was flagged and folded into K-39's scope instead of fixed here, since it fell outside K-36's agreed file list.)

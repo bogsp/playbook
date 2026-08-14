@@ -71,7 +71,7 @@ It does not resolve uncertainty silently.
   AI-INSTRUCTIONS.md                — universal AI session rules
   _index.md                         — this file; project map
   maintenance.md                    — keeping files lean and current
-  templates.md                      — universal planning document shapes
+  templates/                        — universal planning document shapes (entry: _index.md)
   _concerns/                        — cross-cutting capabilities (auth, logging, etc.)
   _integrations/                    — external service and library contracts
   _shared/                          — components used across modules

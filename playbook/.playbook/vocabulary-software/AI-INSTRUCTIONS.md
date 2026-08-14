@@ -52,7 +52,7 @@ ends or when context reaches 80%. Do not wait to be asked.
 This is a software project. Use the terminology defined in:
 
 - `.playbook/vocabulary-software/README.md` — domain language
-- `.playbook/vocabulary-software/templates.md` — planning doc shapes
+- `.playbook/vocabulary-software/templates/_index.md` — planning doc shapes
 
 Apply this vocabulary consistently across all planning docs, flow docs,
 contracts, and session output. Never use terminology from another domain.
