@@ -1,5 +1,11 @@
+---
+file: '.playbook/vocabulary-software/README.md'
+responsibility: 'Adapts Playbook vocabulary for software development projects — how the pipeline stages, planning document types, and folder layout map to software development work.'
+ai_instructions: 'Load alongside .playbook/vocabulary-software/AI-INSTRUCTIONS.md for any software project.'
+archive_rule: 'N/A — core domain reference file.'
+---
+
 # Vocabulary — Software Development
-# File: .playbook/vocabulary-software/README.md
 
 This folder adapts Playbook for software projects. Every stage of the pipeline maps directly to something developers already do — the difference is that Playbook makes it explicit, ordered, and AI-ready.
 

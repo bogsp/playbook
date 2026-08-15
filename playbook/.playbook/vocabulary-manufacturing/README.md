@@ -1,5 +1,11 @@
+---
+file: '.playbook/vocabulary-manufacturing/README.md'
+responsibility: 'Adapts Playbook vocabulary for manufacturing projects — how the pipeline stages, planning document types, and folder layout map to physical product and production process work.'
+ai_instructions: 'Load alongside .playbook/vocabulary-manufacturing/AI-INSTRUCTIONS.md for any manufacturing project.'
+archive_rule: 'N/A — core domain reference file.'
+---
+
 # Vocabulary — Manufacturing
-# File: .playbook/vocabulary-manufacturing/README.md
 
 This folder adapts Playbook for manufacturing projects — product development, production runs, process design, and any work where the output is a physical product or repeatable production process.
 

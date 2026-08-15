@@ -1,5 +1,11 @@
+---
+file: '.playbook/vocabulary-writing/README.md'
+responsibility: 'Adapts Playbook vocabulary for writing and editorial projects — how the pipeline stages, planning document types, and folder layout map to writing work.'
+ai_instructions: 'Load alongside .playbook/vocabulary-writing/AI-INSTRUCTIONS.md for any writing project.'
+archive_rule: 'N/A — core domain reference file.'
+---
+
 # Vocabulary — Writing and Editorial
-# File: .playbook/vocabulary-writing/README.md
 
 This folder adapts Playbook for writing and editorial projects — articles, books, scripts, content series, and any work where the primary output is written language.
 

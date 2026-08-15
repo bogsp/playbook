@@ -1,5 +1,11 @@
+---
+file: '.playbook/vocabulary-production/README.md'
+responsibility: 'Adapts Playbook vocabulary for production and operations projects — how the pipeline stages, planning document types, and folder layout map to deliverable-based work.'
+ai_instructions: 'Load alongside .playbook/vocabulary-production/AI-INSTRUCTIONS.md for any production project.'
+archive_rule: 'N/A — core domain reference file.'
+---
+
 # Vocabulary — Production and Operations
-# File: .playbook/vocabulary-production/README.md
 
 This folder adapts Playbook for production and operations projects — campaigns, events, launches, deliverable-based work, and any project where the output is a produced result rather than a written or coded artefact.
 
