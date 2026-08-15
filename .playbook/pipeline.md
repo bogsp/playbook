@@ -1,5 +1,11 @@
+---
+file: '.playbook/pipeline.md'
+responsibility: 'Complete reference for how the Playbook pipeline works — every stage, every output, every format. Currently identical to playbook/.playbook/pipeline.md content, pending a decision on repo-specific authoring (see maintenance.md and AI-INSTRUCTIONS.md for the established own-terms pattern).'
+ai_instructions: 'Read as much or as little as needed. Points to templates and guides rather than duplicating them.'
+archive_rule: 'N/A — core reference file, kept current as stages evolve.'
+---
+
 # Playbook Pipeline
-# File: .playbook/pipeline.md
 
 This is the complete reference for how Playbook works — every stage, every
 output, every format. Read as much or as little as you need.
@@ -121,7 +127,7 @@ document is the agreement — the work follows it.
 **Produces:** `_index.md` + one planning document per piece
 **Done when:** all documents approved, project map current, no section marked TODO
 
-Templates: [vocabulary-[domain]/templates/](vocabulary-software/templates/) and [templates/](templates/)
+Templates: [vocabulary-[domain]/templates/](vocabulary-software/templates/_index.md) and [templates/](templates/_index.md)
 
 ### Planning Document Types
 

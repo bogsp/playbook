@@ -27,8 +27,8 @@ keep code work separate.
 
 1. K-33 — DONE — confirm universal templates/ split, retire templates.md
 2. K-36 — DONE — update templates.md cross-references
-3. K-39 — NEXT — frontmatter sweep, pipeline.md + vocabulary README.md files (also fixes a stale templates.md link in pipeline.md found during K-36)
-4. K-07 — author missing _tests/ template
+3. K-39 — DONE — frontmatter sweep, pipeline.md (both copies, confirmed separate legitimate files) + vocabulary README.md files, plus stale templates.md link fix
+4. K-07 — NEXT — author missing _tests/ template
 5. K-10 — document _refs/ subfolders in _index.md
 6. K-18 — confirm template README/AI-INSTRUCTIONS standalone path
 
@@ -41,11 +41,6 @@ Not in this track:
   CLI/library session (build.js / scaffold.js changes).
 
 Backlog
-
-[K-39] Finish frontmatter sweep — pipeline.md, README.md, vocabulary README.md
-Type: SYNC
-Description: Remaining scope after K-34/K-38 closed 2026-08-13: playbook/.playbook/pipeline.md, and all four vocabulary-[domain]/README.md files still carry the old # Title/# File: comment header instead of the four-field YAML block. templates.md is no longer in scope for any domain — all four now use templates/_index.md. Confirmed 2026-08-13: both README.md files (root and playbook/) already carry correct Tier 2 frontmatter — this ticket covers pipeline.md (both copies) and the four vocabulary-*/README.md files only. Added scope during K-36 (2026-08-13): pipeline.md's Stage 5 section also has a stale [templates/](templates.md) link — fix the link as part of this same edit pass, not a separate ticket.
-Blocked by: none
 
 [K-37] Update build.js and scaffold.js for templates/ folder — all four domains
 Type: CODE
@@ -206,3 +201,6 @@ Type: SYNC
 
 [K-36] Update references to templates.md across shipped docs
 (Resolved 2026-08-13: Updated playbook/.playbook/_index.md (Folder Map + How to Use This File table) and playbook/.playbook/README.md (Folder Map) to reference templates/_index.md. Corrected vocabulary-software/AI-INSTRUCTIONS.md's Domain Vocabulary section — the only domain AI-INSTRUCTIONS.md that named templates.md directly; writing/production/manufacturing had no equivalent reference. A stale templates.md link found in pipeline.md's Stage 5 section during this ticket was flagged and folded into K-39's scope instead of fixed here, since it fell outside K-36's agreed file list.)
+
+[K-39] Finish frontmatter sweep — pipeline.md, vocabulary README.md
+(Resolved 2026-08-13: Converted playbook/.playbook/pipeline.md, root .playbook/pipeline.md, and all four vocabulary-[domain]/README.md files to Tier 2 four-field frontmatter. Fixed the stale [templates/](templates.md) link (found during K-36) in both pipeline.md copies. Clarified mid-ticket: root .playbook/pipeline.md and playbook/.playbook/pipeline.md are two separate, both-legitimate files — not a K-33-style duplicate; an initial proposal to delete the root copy was corrected by the person. Flagged, not resolved: root pipeline.md's content is currently identical to the template source copy, unlike maintenance.md and AI-INSTRUCTIONS.md which were each authored on their own terms for this repo — noted in the file's responsibility field for a future decision, not rewritten as part of this frontmatter-only ticket.)
