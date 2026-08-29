@@ -17,7 +17,7 @@ domain-vocabulary: '.playbook/vocabulary-software/'
 
 ---
 
-## The Good Path
+## Normal Flow
 
 Work proceeds unit by unit against approved (`status: active`) planning
 documents. Each unit is implemented against its declared interface,
@@ -26,7 +26,7 @@ planning document before the next unit begins. Once every acceptance
 criterion for the phase is met, the phase is emitted as approved and
 control returns to the caller.
 
-## Ways It Can Fail
+## Failures
 
 - **Selected unit's planning document is still `status: draft` (step
   a)** — halt, flag per `AI-INSTRUCTIONS.md` rule 6, resolve before
@@ -52,7 +52,7 @@ control returns to the caller.
   to Planning (`flow-5`) rather than being resolved by improvising in
   Work.
 
-## Ordering Rules
+## Ordering
 
 - Step a's `status: active` check always precedes implementation — no
   exceptions for "quick" or "obvious" changes.
@@ -61,7 +61,7 @@ control returns to the caller.
 - Step d's sync check happens after every unit, not batched at the end of
   the phase — drift is caught unit by unit.
 
-## Hard Constraints
+## Constraints
 
 - No component is coded before its planning document is `status: active`.
 - If work diverges from the plan, the plan is updated first — never the

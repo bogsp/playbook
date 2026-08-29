@@ -17,7 +17,7 @@ domain-vocabulary: '.playbook/vocabulary-software/'
 
 ---
 
-## The Good Path
+## Normal Flow
 
 **Generate:** source material — approved (`status: active`) planning
 documents plus current kit files — is gathered, a milestone snapshot is
@@ -27,7 +27,7 @@ reflect the milestone.
 `AI-INSTRUCTIONS.md` and `01-process.md`; the AI confirms state briefly
 and waits for a specific task.
 
-## Ways It Can Fail
+## Failures
 
 - **A referenced planning document is still `status: draft` at generation
   time (step a.i)** — halt; a milestone cannot snapshot unapproved work.
@@ -56,7 +56,7 @@ and waits for a specific task.
   failure of this flow; resume simply proceeds entirely through `flow-1`'s
   standard pattern instead, per this flow's own step b.i fallback.
 
-## Ordering Rules
+## Ordering
 
 - Generation's step a.i (gather source) always precedes step a.ii (draft)
   — the snapshot is never drafted first and backfilled with sources.
@@ -66,7 +66,7 @@ and waits for a specific task.
 - Resume's step b.i (attach snapshot) always precedes step b.ii (AI
   confirmation) — same two-step orientation pattern as `flow-1`.
 
-## Hard Constraints
+## Constraints
 
 - A milestone snapshot is always generated from planning documents and
   kit files — never written by hand or from unstated memory.

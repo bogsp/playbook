@@ -17,7 +17,7 @@ domain-vocabulary: '.playbook/vocabulary-software/'
 
 ---
 
-## The Good Path
+## Normal Flow
 
 A session starts. Message 1 (`01-process.md` + `03-execution.md`) is
 attached; the AI confirms current state briefly. Message 2
@@ -26,7 +26,7 @@ active) is attached; the AI confirms briefly and waits. The person gives a
 specific, in-scope task; control returns to whichever stage flow that task
 belongs to.
 
-## Ways It Can Fail
+## Failures
 
 - **Kit files missing or empty at Message 1** — halt immediately; do not
   proceed with an assumed or default state. Flag missing kit files per the
@@ -55,7 +55,7 @@ belongs to.
   proceeding, since exploration/progress context may change how the task
   is scoped.
 
-## Ordering Rules
+## Ordering
 
 - Message 1 always precedes Message 2 — `02-exploration.md` and
   `04-progress.md` reference decisions made against the state in
@@ -67,7 +67,7 @@ belongs to.
   confirmation steps (b, d) are brief acknowledgements only, never partial
   work.
 
-## Hard Constraints
+## Constraints
 
 - Standalone kit-file use and pipeline-integrated use share this exact
   two-message mechanic without exception.

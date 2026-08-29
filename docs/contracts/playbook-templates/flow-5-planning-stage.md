@@ -17,7 +17,7 @@ domain-vocabulary: '.playbook/vocabulary-software/'
 
 ---
 
-## The Good Path
+## Normal Flow
 
 Every piece implied by the approved flows/contracts is identified. For
 each, `.playbook/_shared/` is checked first for an existing component
@@ -27,7 +27,7 @@ review. Once every piece is approved, `.playbook/_index.md`'s Structure
 section is written or updated, and a final check confirms no planning
 document has a TODO in a required section.
 
-## Ways It Can Fail
+## Failures
 
 - **A flow references a piece with no clear owner or type (step a)** —
   halt, flag as missing-contract or ambiguous-behavior, resolve before
@@ -56,7 +56,7 @@ document has a TODO in a required section.
   rule (does it sequence others, or is it one bounded leaf
   responsibility?) before drafting, not deferred to review.
 
-## Ordering Rules
+## Ordering
 
 - Step b.i (shared-component dedup check) always happens before step b.ii
   (drafting) — never draft first and check for duplicates after.
@@ -66,7 +66,7 @@ document has a TODO in a required section.
   document is `status: active`, not `draft` — this flow's step d clean
   check is the entry condition `flow-6` checks at its own first step.
 
-## Hard Constraints
+## Constraints
 
 - `.playbook/_shared/` is always checked before authoring a new
   cross-module component — no exceptions, per `AI-INSTRUCTIONS.md` rule 7.

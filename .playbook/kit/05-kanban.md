@@ -23,20 +23,19 @@ Locked Track — Clerical / Upkeep (in progress)
 
 Order confirmed 2026-08-13. Documentation and reference work only — no
 CLI or library code changes in this track, per explicit instruction to
-keep code work separate.
+keep code work separate. K-05 was resolved out of band (2026-08-29,
+pipeline review session) and no longer blocks anything in this track.
 
 1. K-33 — DONE — confirm universal templates/ split, retire templates.md
 2. K-36 — DONE — update templates.md cross-references
 3. K-39 — DONE — frontmatter sweep, pipeline.md (both copies, confirmed separate legitimate files) + vocabulary README.md files, plus stale templates.md link fix
-4. K-07 — NEXT — author missing _tests/ template
-5. K-10 — document _refs/ subfolders in _index.md
-6. K-18 — confirm template README/AI-INSTRUCTIONS standalone path
+4. K-05 — DONE — contract section naming finalized (see 04-progress.md 2026-08-29)
+5. K-07 — NEXT — author missing _tests/ template
+6. K-10 — document _refs/ subfolders in _index.md
+7. K-18 — confirm template README/AI-INSTRUCTIONS standalone path
 
 Not in this track:
 
-- K-05 — flagged, not scheduled. Requires explicit human decision on
-  final contract section-naming convention before any work proceeds.
-  Do not resolve silently.
 - K-37 — deferred out of this track entirely. Belongs to a separate
   CLI/library session (build.js / scaffold.js changes).
 
@@ -66,11 +65,6 @@ Blocked by: none
 Type: SYNC
 Description: Add video-insights/, templates/, examples/, snippets/, and research/ to the folder map.
 Blocked by: none
-
-[K-05] Reconcile contract section names
-Type: SYNC
-Description: Confirm the shipped version of global.md is final before moving it to playbook/docs/contracts/.
-Blocked by: human decision
 
 [K-18] Confirm template README/AI-INSTRUCTIONS reference standalone path
 Type: SYNC
@@ -182,6 +176,7 @@ Fixed 2026-08-12: Resolution note was incomplete. Stray copies of templates.md a
 
 [K-28] Write docs/contracts/playbook-templates/
 (Resolved: Authored docs/contracts/playbook-templates/flow-1 through flow-7, plus updated docs/contracts/global.md (the playbook-templates track's global contract, retained at root docs/contracts/global.md per the Q-04 decision) with two new sections — §9 Plan-Before-Divergence, §10 No Invented Content. All 8 contracts complete: global.md, flow-0 (already existed from an earlier session), flow-1 through flow-7. Byproduct: authored the two flow documents that were missing despite being listed in global.md's governs field — flow-6-work-stage.md and flow-7-handoff-and-resume.md — logged as an amendment to K-27 above.)
+Amended 2026-08-29: section names within all 8 flow-N contracts plus playbook/docs/contracts/contract.md renamed per K-05's resolution (Normal Flow / Failures / Edge Cases / Ordering / Constraints, replacing the shipped Good-Path-framed names). Content unchanged — headers only.
 
 [K-40] Roll out Frontmatter Tiering Rule to maintenance.md, AI-INSTRUCTIONS.md, and vocabulary AI-INSTRUCTIONS.md
 (Resolved 2026-08-12: Canonical "Frontmatter Tiering" section added to playbook/.playbook/maintenance.md, own-terms application section added to root .playbook/maintenance.md, pointer rules added to both AI-INSTRUCTIONS.md files, and all four playbook/.playbook/vocabulary-*/AI-INSTRUCTIONS.md files converted to YAML frontmatter with a domain-scoped pointer added. Spawned K-39 for the remaining Q-03 scope — pipeline.md, README.md, vocabulary README/templates.md files, plus an open question on whether pipeline.md/README.md need their own pointer line.)
@@ -204,3 +199,6 @@ Type: SYNC
 
 [K-39] Finish frontmatter sweep — pipeline.md, vocabulary README.md
 (Resolved 2026-08-13: Converted playbook/.playbook/pipeline.md, root .playbook/pipeline.md, and all four vocabulary-[domain]/README.md files to Tier 2 four-field frontmatter. Fixed the stale [templates/](templates.md) link (found during K-36) in both pipeline.md copies. Clarified mid-ticket: root .playbook/pipeline.md and playbook/.playbook/pipeline.md are two separate, both-legitimate files — not a K-33-style duplicate; an initial proposal to delete the root copy was corrected by the person. Flagged, not resolved: root pipeline.md's content is currently identical to the template source copy, unlike maintenance.md and AI-INSTRUCTIONS.md which were each authored on their own terms for this repo — noted in the file's responsibility field for a future decision, not rewritten as part of this frontmatter-only ticket.)
+
+[K-05] Reconcile contract section names
+(Resolved 2026-08-29, pipeline review session: Both prior candidates rejected — original decision-log names (Happy Path/Failure Modes/Concurrency Rules/Constraints) and shipped names (The Good Path/Ways It Can Fail/Ordering Rules/Hard Constraints) both carried success-framed language or redundant qualifiers. Final naming: Normal Flow, Failures, Edge Cases, Ordering, Constraints — plain, neutral, no assumption the path succeeds. Concurrency folded into Ordering rather than broken out, since most projects have no concurrency concerns and a dedicated section would sit empty by default. Applied to playbook/docs/contracts/contract.md and all 8 docs/contracts/playbook-templates/flow-N-*.md files. See 02-exploration.md 2026-08-29 decision.)

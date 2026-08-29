@@ -17,7 +17,7 @@ domain-vocabulary: '.playbook/vocabulary-software/'
 
 ---
 
-## The Good Path
+## Normal Flow
 
 A brief (`docs/[name].md`) is drafted covering goals, audience,
 constraints, and acceptance criteria, then approved by a human. Acceptance
@@ -26,7 +26,7 @@ criteria are verified as clear and independently verifiable.
 and any decisions settled while drafting are logged in
 `02-exploration.md`.
 
-## Ways It Can Fail
+## Failures
 
 - **Goal or audience not determinable from available context (step a)** —
   halt, flag as underspecified, request clarification. Never invent a goal
@@ -48,7 +48,7 @@ and any decisions settled while drafting are logged in
   Discovery produces a single artifact and rushing approval here
   propagates ambiguity into every later stage.
 
-## Ordering Rules
+## Ordering
 
 - Step a→b must complete before step c — acceptance criteria are only
   checked for verifiability once the draft itself is approved in
@@ -58,7 +58,7 @@ and any decisions settled while drafting are logged in
 - Mapping (`flow-3`) never begins against an unapproved `docs/[name].md`
   — this flow's step d is the explicit gate.
 
-## Hard Constraints
+## Constraints
 
 - This stage produces exactly one artifact — no fan-out across multiple
   candidate briefs.

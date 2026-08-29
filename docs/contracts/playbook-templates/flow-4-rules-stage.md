@@ -17,16 +17,16 @@ domain-vocabulary: '.playbook/vocabulary-software/'
 
 ---
 
-## The Good Path
+## Normal Flow
 
 `docs/contracts/global.md` is drafted first and approved before any
 per-flow contract begins. For each approved flow, a companion contract is
-drafted (Good Path, Ways It Can Fail, Edge Cases, Ordering Rules, Hard
-Constraints) that extends rather than repeats `global.md`, then approved.
+drafted (Normal Flow, Failures, Edge Cases, Ordering, Constraints) that
+extends rather than repeats `global.md`, then approved.
 `docs/contracts/_index.md` is written or updated. A final check confirms
 no required section across any contract is marked TODO.
 
-## Ways It Can Fail
+## Failures
 
 - **A global rule conflicts with an already-approved flow's walkthrough
   (step a)** — halt, flag as architectural-decision, resolve before
@@ -51,7 +51,7 @@ no required section across any contract is marked TODO.
   into `global.md`; promotion to global scope only happens once a rule is
   discovered to apply across multiple flows.
 
-## Ordering Rules
+## Ordering
 
 - `global.md` (steps a–b) fully completes before any per-flow contract
   (step c) begins — no per-flow contract is drafted against a still-draft
@@ -61,7 +61,7 @@ no required section across any contract is marked TODO.
 - Planning (`flow-5`) does not begin against an unapproved contract set —
   step e's clean check is the gate.
 
-## Hard Constraints
+## Constraints
 
 - No per-flow contract repeats a `global.md` rule — extension and
   specialization only.

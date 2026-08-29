@@ -17,7 +17,7 @@ domain-vocabulary: '.playbook/vocabulary-software/'
 
 ---
 
-## The Good Path
+## Normal Flow
 
 A person or `flow-9-adopt-existing-project` triggers the audit. Active
 Expansion is set to `audit: inventory`. Each of the six phases (inventory,
@@ -30,7 +30,7 @@ as the phases produce them. On handoff, findings are written into
 Expansion is cleared, and control returns to whichever context started the
 audit.
 
-## Ways It Can Fail
+## Failures
 
 - **Human requests revision at any phase** — the phase's draft output is
   reworked and resubmitted for review at the same phase. This is not a
@@ -74,7 +74,7 @@ audit.
   explicitly marked as partial), but audit (phase b) may not begin against
   an inventory still marked partial.
 
-## Ordering Rules
+## Ordering
 
 - Phase (b) audit requires phase (a) inventory approved.
 - Phase (c) classify requires phase (b) audit approved.
@@ -90,7 +90,7 @@ audit.
   and is restated here because it is a hard ordering constraint on this
   specific flow, not just a general rule.
 
-## Hard Constraints
+## Constraints
 
 - No phase advances without explicit human review — this flow never
   progresses autonomously, at any phase, under any condition.

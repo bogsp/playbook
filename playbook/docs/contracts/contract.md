@@ -17,11 +17,11 @@ domain-vocabulary: '.playbook/vocabulary-[domain]/'
 
 ---
 
-## The Good Path
+## Normal Flow
 
 What a successful run looks like — what goes in, what happens, what comes out.
 
-## Ways It Can Fail
+## Failures
 
 Every way this path can go wrong and what happens in each case.
 
@@ -29,11 +29,11 @@ Every way this path can go wrong and what happens in each case.
 
 Unusual situations that still have to work correctly.
 
-## Ordering Rules
+## Ordering
 
-What must happen before what. Anything that cannot happen at the same time.
+What must happen before what. Anything that cannot happen at the same time, including concurrency concerns if this project has any.
 
-## Hard Constraints
+## Constraints
 
 Rules every implementation must follow without exception.
 
