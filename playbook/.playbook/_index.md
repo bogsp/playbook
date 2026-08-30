@@ -46,7 +46,9 @@ integrations: []
     new-project.md                  — starting from scratch
     adopt.md                        — bringing an existing project in
     audit.md                        — mapping a project before changing it
-    context-kit.md                  — how the session files work
+    context-kit.md                  — how the session files work (pipeline-integrated)
+    context-kit-standalone.md       — how the session files work (kit files only, no pipeline)
+    project-identity.md             — keeping README/AI-INSTRUCTIONS/_index.md current for this project
     video-insights.md               — using video as research and reference
   kit/
     00-prompts.md                   — session prompts, copy and paste
@@ -57,8 +59,13 @@ integrations: []
     05-kanban.md                    — work tracker (optional)
     06-qa.md                        — checks and sign-off (optional)
     _archives/                      — older history, moved not deleted
-    _refs/                          — supporting material and research
-    _tests/                         — one file per check
+    _refs/                          — supporting material referenced by kit files, by category:
+      video-insights/               — structured insight files extracted from videos (see guides/video-insights.md)
+      templates/                    — reusable file shapes or snippets pulled in mid-session
+      examples/                     — worked examples kept for reference
+      snippets/                     — small reusable text fragments
+      research/                     — outside research material informing a decision
+    _tests/                         — one file per QA check (template: _tests/test-case.md)
   vocabulary-[domain]/
     README.md                       — how the pipeline maps to this project type
     AI-INSTRUCTIONS.md              — domain-specific AI rules

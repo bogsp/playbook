@@ -31,9 +31,9 @@ finalized, so they were closed first regardless of track assignment.
 3. K-39 — DONE — frontmatter sweep, pipeline.md (both copies, confirmed separate legitimate files) + vocabulary README.md files, plus stale templates.md link fix
 4. K-05 — DONE — contract section naming finalized (see 04-progress.md 2026-08-29)
 5. K-37 — DONE — build.js/scaffold.js updated for split templates/ folders (see 04-progress.md 2026-08-29)
-6. K-07 — NEXT — author missing _tests/ template
-7. K-10 — document _refs/ subfolders in _index.md
-8. K-18 — confirm template README/AI-INSTRUCTIONS standalone path
+6. K-07 — DONE — test file template already existed (kit/_tests/test-case.md); confirmed and closed
+7. K-10 — DONE — _refs/ subfolders documented in playbook/.playbook/_index.md
+8. K-18 — NEXT — confirm template README/AI-INSTRUCTIONS standalone path
 
 Backlog
 
@@ -46,16 +46,6 @@ Blocked by: none
 Type: CODE
 Description: Update the CLI scaffold logic to point to the new playbook/ directory instead of the old locations.
 Blocked by: K-12
-
-[K-07] Author .playbook/kit/\_tests/ test file template
-Type: DDA
-Description: Author the missing test file template for the playbook/ template directory.
-Blocked by: none
-
-[K-10] Document \_refs/ subfolder structure in \_index.md
-Type: SYNC
-Description: Add video-insights/, templates/, examples/, snippets/, and research/ to the folder map.
-Blocked by: none
 
 [K-18] Confirm template README/AI-INSTRUCTIONS reference standalone path
 Type: SYNC
@@ -196,3 +186,9 @@ Type: SYNC
 
 [K-37] Update build.js and scaffold.js for templates/ folder — all four domains
 (Resolved 2026-08-29, pipeline review session: Rewrote packages/create-playbook/build.js source list and lib/scaffold.js copy logic to use the split per-type templates/ folders instead of the retired single templates.md per scope. Universal: 6 files (_index, structure, coordinator, component, concern, integration). Software: 4 files (_index, structure, sequencer, component). Writing/production/manufacturing: 3 files each (_index, coordinator, + domain leaf type). Both files now share explicit UNIVERSAL_TEMPLATE_FILES / DOMAIN_TEMPLATE_FILES constants to stay in sync. Scope flagged and expanded during the fix: build.js/scaffold.js were also missing guides/context-kit-standalone.md, guides/project-identity.md, and kit/_tests/test-case.md — none had ever been wired into the CLI despite existing in the repo. Included in this ticket rather than left as a second undetected gap, since K-18 (standalone-path verification) cannot be tested against a real scaffold without it. Flagged to the person per escalation protocol before proceeding.)
+
+[K-07] Author .playbook/kit/_tests/ test file template
+(Resolved 2026-08-29, pipeline review session: Found already authored — playbook/.playbook/kit/_tests/test-case.md exists and is complete (frontmatter, Description, Steps, Expected Result, Execution, Notes). The ticket was never marked closed and the file was never wired into the CLI's copy list until K-37 fixed that gap this same session. No new content needed — confirmed and closed.)
+
+[K-10] Document _refs/ subfolder structure in _index.md
+(Resolved 2026-08-29, pipeline review session: playbook/.playbook/_index.md's Folder Map expanded _refs/ from a single flat line into its five actual subfolders — video-insights/, templates/, examples/, snippets/, research/ — matching what scaffold.js already creates via gitkeep. This repo's own root .playbook/_index.md was checked and left as-is: its _refs/ holds sync-check reports, a different structure specific to this repo, not the template's five-folder pattern.)
