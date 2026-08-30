@@ -11,6 +11,25 @@ import { existsSync } from "fs";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const templatesDir = join(__dirname, "..", "templates");
 
+// Split per-type template folders (K-33 universal, K-34 software, K-38
+// writing/production/manufacturing). Mirrors the source list in build.js —
+// keep both in sync if a template type is added or removed.
+const UNIVERSAL_TEMPLATE_FILES = [
+  "_index.md",
+  "structure.md",
+  "coordinator.md",
+  "component.md",
+  "concern.md",
+  "integration.md",
+];
+
+const DOMAIN_TEMPLATE_FILES = {
+  software: ["_index.md", "structure.md", "sequencer.md", "component.md"],
+  writing: ["_index.md", "coordinator.md", "piece.md"],
+  production: ["_index.md", "coordinator.md", "deliverable.md"],
+  manufacturing: ["_index.md", "coordinator.md", "part.md"],
+};
+
 /**
  * Check whether the current working directory is a Playbook project.
  * @param {string} cwd
@@ -52,6 +71,18 @@ async function write(filePath, content) {
 async function copyTemplate(templateRelPath, destPath) {
   const content = await readTemplate(templateRelPath);
   await write(destPath, content);
+}
+
+/**
+ * Copy every file in a flat template folder to a destination folder.
+ * @param {string} templateRelDir — relative to templates/, no trailing slash
+ * @param {string} destDir — absolute destination directory
+ * @param {string[]} filenames
+ */
+async function copyTemplateFolder(templateRelDir, destDir, filenames) {
+  for (const file of filenames) {
+    await copyTemplate(`${templateRelDir}/${file}`, join(destDir, file));
+  }
 }
 
 /**
@@ -169,11 +200,19 @@ export async function scaffold({ projectName, domain, projectType, root, library
   await copyTemplate("universal/playbook/AI-INSTRUCTIONS.md", p(".playbook", "AI-INSTRUCTIONS.md"));
   await copyTemplate("universal/playbook/pipeline.md", p(".playbook", "pipeline.md"));
   await copyTemplate("universal/playbook/maintenance.md", p(".playbook", "maintenance.md"));
-  await copyTemplate("universal/playbook/templates.md", p(".playbook", "templates.md"));
+
+  // --- Universal templates/ folder (K-33) ---
+  await copyTemplateFolder(
+    "universal/playbook/templates",
+    p(".playbook", "templates"),
+    UNIVERSAL_TEMPLATE_FILES
+  );
 
   // --- Guides ---
   await copyTemplate("universal/playbook/guides/_index.md", p(".playbook", "guides", "_index.md"));
   await copyTemplate("universal/playbook/guides/context-kit.md", p(".playbook", "guides", "context-kit.md"));
+  await copyTemplate("universal/playbook/guides/context-kit-standalone.md", p(".playbook", "guides", "context-kit-standalone.md"));
+  await copyTemplate("universal/playbook/guides/project-identity.md", p(".playbook", "guides", "project-identity.md"));
   await copyTemplate("universal/playbook/guides/video-insights.md", p(".playbook", "guides", "video-insights.md"));
 
   // Project type specific guides
@@ -198,7 +237,11 @@ export async function scaffold({ projectName, domain, projectType, root, library
     const vocabFolder = `vocabulary-${domain}`;
     await copyTemplate(`${domain}/vocabulary/README.md`, p(".playbook", vocabFolder, "README.md"));
     await copyTemplate(`${domain}/vocabulary/AI-INSTRUCTIONS.md`, p(".playbook", vocabFolder, "AI-INSTRUCTIONS.md"));
-    await copyTemplate(`${domain}/vocabulary/templates.md`, p(".playbook", vocabFolder, "templates.md"));
+    await copyTemplateFolder(
+      `${domain}/vocabulary/templates`,
+      p(".playbook", vocabFolder, "templates"),
+      DOMAIN_TEMPLATE_FILES[domain]
+    );
   }
 
   // --- Kit files ---
@@ -209,6 +252,7 @@ export async function scaffold({ projectName, domain, projectType, root, library
   await write(p(".playbook", "kit", "04-progress.md"), buildProgress(projectType));
   await copyTemplate("universal/kit/05-kanban.md", p(".playbook", "kit", "05-kanban.md"));
   await copyTemplate("universal/kit/06-qa.md", p(".playbook", "kit", "06-qa.md"));
+  await copyTemplate("universal/kit/_tests/test-case.md", p(".playbook", "kit", "_tests", "test-case.md"));
 
   // Kit support folders
   await gitkeep(p(".playbook", "kit", "_refs", "video-insights"));
@@ -216,7 +260,6 @@ export async function scaffold({ projectName, domain, projectType, root, library
   await gitkeep(p(".playbook", "kit", "_refs", "examples"));
   await gitkeep(p(".playbook", "kit", "_refs", "snippets"));
   await gitkeep(p(".playbook", "kit", "_refs", "research"));
-  await gitkeep(p(".playbook", "kit", "_tests"));
   await gitkeep(p(".playbook", "kit", "_archives", "exploration"));
   await gitkeep(p(".playbook", "kit", "_archives", "progress"));
   await gitkeep(p(".playbook", "kit", "_archives", "kanban"));

@@ -21,30 +21,21 @@ DDA Ticket Types
 
 Locked Track — Clerical / Upkeep (in progress)
 
-Order confirmed 2026-08-13. Documentation and reference work only — no
-CLI or library code changes in this track, per explicit instruction to
-keep code work separate. K-05 was resolved out of band (2026-08-29,
-pipeline review session) and no longer blocks anything in this track.
+Order confirmed 2026-08-13. K-05 and K-37 were resolved out of band
+(2026-08-29, pipeline review session) ahead of this track's original
+sequencing — both were declared blockers on calling the pipeline
+finalized, so they were closed first regardless of track assignment.
 
 1. K-33 — DONE — confirm universal templates/ split, retire templates.md
 2. K-36 — DONE — update templates.md cross-references
 3. K-39 — DONE — frontmatter sweep, pipeline.md (both copies, confirmed separate legitimate files) + vocabulary README.md files, plus stale templates.md link fix
 4. K-05 — DONE — contract section naming finalized (see 04-progress.md 2026-08-29)
-5. K-07 — NEXT — author missing _tests/ template
-6. K-10 — document _refs/ subfolders in _index.md
-7. K-18 — confirm template README/AI-INSTRUCTIONS standalone path
-
-Not in this track:
-
-- K-37 — deferred out of this track entirely. Belongs to a separate
-  CLI/library session (build.js / scaffold.js changes).
+5. K-37 — DONE — build.js/scaffold.js updated for split templates/ folders (see 04-progress.md 2026-08-29)
+6. K-07 — NEXT — author missing _tests/ template
+7. K-10 — document _refs/ subfolders in _index.md
+8. K-18 — confirm template README/AI-INSTRUCTIONS standalone path
 
 Backlog
-
-[K-37] Update build.js and scaffold.js for templates/ folder — all four domains
-Type: CODE
-Description: Broadened 2026-08-13 — packages/create-playbook/build.js must copy all split files (5 universal + 3 software + 2 writing + 2 production + 2 part/coordinator manufacturing, each domain's _index.md included) instead of a single templates.md per domain; lib/scaffold.js must copy each domain's templates/ folder into the scaffolded project instead of a single file. Previously scoped to software only. Deferred to a separate CLI/library session per explicit instruction.
-Blocked by: none — deferred, not blocked
 
 [K-12] Populate playbook/ template structure
 Type: SYNC
@@ -202,3 +193,6 @@ Type: SYNC
 
 [K-05] Reconcile contract section names
 (Resolved 2026-08-29, pipeline review session: Both prior candidates rejected — original decision-log names (Happy Path/Failure Modes/Concurrency Rules/Constraints) and shipped names (The Good Path/Ways It Can Fail/Ordering Rules/Hard Constraints) both carried success-framed language or redundant qualifiers. Final naming: Normal Flow, Failures, Edge Cases, Ordering, Constraints — plain, neutral, no assumption the path succeeds. Concurrency folded into Ordering rather than broken out, since most projects have no concurrency concerns and a dedicated section would sit empty by default. Applied to playbook/docs/contracts/contract.md and all 8 docs/contracts/playbook-templates/flow-N-*.md files. See 02-exploration.md 2026-08-29 decision.)
+
+[K-37] Update build.js and scaffold.js for templates/ folder — all four domains
+(Resolved 2026-08-29, pipeline review session: Rewrote packages/create-playbook/build.js source list and lib/scaffold.js copy logic to use the split per-type templates/ folders instead of the retired single templates.md per scope. Universal: 6 files (_index, structure, coordinator, component, concern, integration). Software: 4 files (_index, structure, sequencer, component). Writing/production/manufacturing: 3 files each (_index, coordinator, + domain leaf type). Both files now share explicit UNIVERSAL_TEMPLATE_FILES / DOMAIN_TEMPLATE_FILES constants to stay in sync. Scope flagged and expanded during the fix: build.js/scaffold.js were also missing guides/context-kit-standalone.md, guides/project-identity.md, and kit/_tests/test-case.md — none had ever been wired into the CLI despite existing in the repo. Included in this ticket rather than left as a second undetected gap, since K-18 (standalone-path verification) cannot be tested against a real scaffold without it. Flagged to the person per escalation protocol before proceeding.)

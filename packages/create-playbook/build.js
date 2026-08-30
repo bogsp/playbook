@@ -16,6 +16,25 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const repoRoot = join(__dirname, "..", "..");
 const templatesDir = join(__dirname, "templates");
 
+// Split per-type template folders (K-33 universal, K-34 software, K-38
+// writing/production/manufacturing). Replaces the retired single
+// templates.md per scope — see docs/rewrite or K-37 for history.
+const UNIVERSAL_TEMPLATE_FILES = [
+  "_index.md",
+  "structure.md",
+  "coordinator.md",
+  "component.md",
+  "concern.md",
+  "integration.md",
+];
+
+const DOMAIN_TEMPLATE_FILES = {
+  software: ["_index.md", "structure.md", "sequencer.md", "component.md"],
+  writing: ["_index.md", "coordinator.md", "piece.md"],
+  production: ["_index.md", "coordinator.md", "deliverable.md"],
+  manufacturing: ["_index.md", "coordinator.md", "part.md"],
+};
+
 const sources = [
   // Universal — from playbook/.playbook/
   {
@@ -33,10 +52,6 @@ const sources = [
   {
     from: join(repoRoot, "playbook", ".playbook", "maintenance.md"),
     to: join(templatesDir, "universal", "playbook", "maintenance.md"),
-  },
-  {
-    from: join(repoRoot, "playbook", ".playbook", "templates.md"),
-    to: join(templatesDir, "universal", "playbook", "templates.md"),
   },
   {
     from: join(repoRoot, "playbook", ".playbook", "_index.md"),
@@ -62,6 +77,14 @@ const sources = [
   {
     from: join(repoRoot, "playbook", ".playbook", "guides", "context-kit.md"),
     to: join(templatesDir, "universal", "playbook", "guides", "context-kit.md"),
+  },
+  {
+    from: join(repoRoot, "playbook", ".playbook", "guides", "context-kit-standalone.md"),
+    to: join(templatesDir, "universal", "playbook", "guides", "context-kit-standalone.md"),
+  },
+  {
+    from: join(repoRoot, "playbook", ".playbook", "guides", "project-identity.md"),
+    to: join(templatesDir, "universal", "playbook", "guides", "project-identity.md"),
   },
   {
     from: join(repoRoot, "playbook", ".playbook", "guides", "video-insights.md"),
@@ -95,6 +118,10 @@ const sources = [
   {
     from: join(repoRoot, "playbook", ".playbook", "kit", "06-qa.md"),
     to: join(templatesDir, "universal", "kit", "06-qa.md"),
+  },
+  {
+    from: join(repoRoot, "playbook", ".playbook", "kit", "_tests", "test-case.md"),
+    to: join(templatesDir, "universal", "kit", "_tests", "test-case.md"),
   },
   // Docs templates
   {
@@ -130,10 +157,6 @@ const sources = [
     from: join(repoRoot, "playbook", ".playbook", "vocabulary-software", "AI-INSTRUCTIONS.md"),
     to: join(templatesDir, "software", "vocabulary", "AI-INSTRUCTIONS.md"),
   },
-  {
-    from: join(repoRoot, "playbook", ".playbook", "vocabulary-software", "templates.md"),
-    to: join(templatesDir, "software", "vocabulary", "templates.md"),
-  },
   // Writing vocabulary
   {
     from: join(repoRoot, "playbook", ".playbook", "vocabulary-writing", "README.md"),
@@ -142,10 +165,6 @@ const sources = [
   {
     from: join(repoRoot, "playbook", ".playbook", "vocabulary-writing", "AI-INSTRUCTIONS.md"),
     to: join(templatesDir, "writing", "vocabulary", "AI-INSTRUCTIONS.md"),
-  },
-  {
-    from: join(repoRoot, "playbook", ".playbook", "vocabulary-writing", "templates.md"),
-    to: join(templatesDir, "writing", "vocabulary", "templates.md"),
   },
   // Production vocabulary
   {
@@ -156,10 +175,6 @@ const sources = [
     from: join(repoRoot, "playbook", ".playbook", "vocabulary-production", "AI-INSTRUCTIONS.md"),
     to: join(templatesDir, "production", "vocabulary", "AI-INSTRUCTIONS.md"),
   },
-  {
-    from: join(repoRoot, "playbook", ".playbook", "vocabulary-production", "templates.md"),
-    to: join(templatesDir, "production", "vocabulary", "templates.md"),
-  },
   // Manufacturing vocabulary
   {
     from: join(repoRoot, "playbook", ".playbook", "vocabulary-manufacturing", "README.md"),
@@ -169,11 +184,25 @@ const sources = [
     from: join(repoRoot, "playbook", ".playbook", "vocabulary-manufacturing", "AI-INSTRUCTIONS.md"),
     to: join(templatesDir, "manufacturing", "vocabulary", "AI-INSTRUCTIONS.md"),
   },
-  {
-    from: join(repoRoot, "playbook", ".playbook", "vocabulary-manufacturing", "templates.md"),
-    to: join(templatesDir, "manufacturing", "vocabulary", "templates.md"),
-  },
 ];
+
+// Universal templates/ folder (K-33) — one source entry per file
+for (const file of UNIVERSAL_TEMPLATE_FILES) {
+  sources.push({
+    from: join(repoRoot, "playbook", ".playbook", "templates", file),
+    to: join(templatesDir, "universal", "playbook", "templates", file),
+  });
+}
+
+// Domain templates/ folders (K-34 software, K-38 writing/production/manufacturing)
+for (const [domain, files] of Object.entries(DOMAIN_TEMPLATE_FILES)) {
+  for (const file of files) {
+    sources.push({
+      from: join(repoRoot, "playbook", ".playbook", `vocabulary-${domain}`, "templates", file),
+      to: join(templatesDir, domain, "vocabulary", "templates", file),
+    });
+  }
+}
 
 async function build() {
   console.log("\nBuilding create-playbook templates...\n");
