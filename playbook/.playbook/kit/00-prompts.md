@@ -124,7 +124,7 @@ Save to `docs/rollout/[milestone-name].md`.
 I have a video I want to extract insights from.
 Title: [video title]
 Source: [URL or description]
-I will provide the transcript or summary in my next message. Wait for it before doing anything.
+Generate a downloadable markdown file following the guide.
 ```
 
 ---
