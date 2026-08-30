@@ -43,7 +43,7 @@ Regardless of where you start, do this first:
 2. Open [01-process.md](../kit/01-process.md) — fill in the project name, current stage, and what's next
 3. Open [02-exploration.md](../kit/02-exploration.md) — record what you already know: key decisions made, open questions, known constraints
 4. Open [03-execution.md](../kit/03-execution.md) — record the current plan and any known issues
-5. Update `.playbook/_index.md`, `README.md`, and `AI-INSTRUCTIONS.md` to reflect this project — see [Project identity](project-identity.md)
+5. Update `.playbook/_index.md` and `README.md` to reflect this project — see [Project identity](project-identity.md)
 
 ---
 
@@ -66,4 +66,4 @@ Open [00-prompts.md](../kit/00-prompts.md) and use the **Adopting an Existing Pr
 - Full pipeline breakdown — [pipeline.md](../pipeline.md)
 - How session files work — [Context Kit — Integrated](context-kit.md)
 - Mapping an existing project — [audit.md](audit.md)
-- Keeping README.md, AI-INSTRUCTIONS.md, and \_index.md current — [Project identity](project-identity.md)
+- Keeping `_index.md` and `README.md` current — [Project identity](project-identity.md)

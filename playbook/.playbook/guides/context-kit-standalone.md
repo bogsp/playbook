@@ -10,7 +10,9 @@ archive_rule: 'N/A — orientation guide.'
 You don't need the rest of Playbook to get value from the Context Kit. The six
 files below work on their own for any ongoing project — tracking decisions,
 tasks, and history across AI sessions without a discovery brief, flow
-documents, contracts, or planning documents.
+documents, contracts, or planning documents. `.playbook/_index.md` is still
+the entry point every session starts with — it carries session rules even in
+standalone use.
 
 If you later want the full pipeline — mapped paths, written contracts,
 planning documents before code — see [context-kit.md](context-kit.md) for the
@@ -22,7 +24,7 @@ same six files carry forward unchanged.
 ## The Files
 
 | File                                          | Job                                       | Update when      |
-| --------------------------------------------- | ----------------------------------------- | ---------------- |
+| --------------------------------------------- | ------------------------------------------ | ---------------- |
 | [01-process.md](../kit/01-process.md)         | Where you are and what comes next         | Every session    |
 | [02-exploration.md](../kit/02-exploration.md) | Open questions and settled decisions      | Decisions change |
 | [03-execution.md](../kit/03-execution.md)     | Guidelines, plan, tasks, known issues     | Work changes     |
@@ -40,8 +42,9 @@ Use only what earns its keep. Many standalone projects run for months on just
 Every session follows the same pattern:
 
 **Start**
-Upload the kit files. Use the two-message pattern below if working with AI.
-Confirm the current state before doing any work.
+Read [`_index.md`](../_index.md) first — session rules live there. Attach the
+kit files (see "Starting a Session" below). Confirm the current state before
+doing any work.
 
 **Work**
 Stay focused on what is in `01-process.md`. Log decisions and issues as they
@@ -49,30 +52,34 @@ come up — don't save them for the end.
 
 **End**
 Update `01-process.md` — last completed, what's next.
-Append to `04-progress.md` — completions, decisions, fixes, what's in progress.
+Append to `04-progress.md` — completions, decisions, fixes. Fold any prior
+`In Progress` entry into a `Decided`/`Completed` note first — only one should
+exist at a time.
 
 These two files are updated every session without exception. Everything else
 is optional.
 
 ---
 
-## Starting a Session with AI — Two Messages
+## Starting a Session with AI
 
-**Message 1** — attach `01-process.md` and `03-execution.md`, then send:
+Attach `_index.md` and the current kit files together, in one message. Most
+current AI tools (Claude, Gemini, and similar) have no hard limit that
+requires splitting this up.
 
-> I'm resuming a project using the Playbook Context Kit standalone.
-> Files coming in two messages. This message: process and execution.
-> Next: exploration and progress.
-> Focus only on what is current. Do not reopen settled decisions unless I ask.
-> Brief confirmation only.
+**Attach:** `.playbook/_index.md`, `kit/01-process.md`, `kit/03-execution.md`, `kit/02-exploration.md`, `kit/04-progress.md` (+ `kit/05-kanban.md`, `kit/06-qa.md` if active)
 
-**Message 2** — attach `02-exploration.md` and `04-progress.md`, then send:
+> I'm using the Playbook Context Kit standalone — no pipeline stages, no
+> planning documents. Everything you need is attached — `_index.md` for
+> session rules, plus the current kit files. Confirm the current state
+> briefly, then wait for my instruction. Do not reopen settled decisions
+> unless I ask.
 
-> Here is the context from earlier work. Brief confirmation only.
-
-Add `05-kanban.md` and `06-qa.md` when active.
-
-Message 1 orients. Message 2 contextualises. Always in that order.
+**If your tool limits what you can attach at once:** send `_index.md` +
+`01-process.md` + `04-progress.md` first — that alone is usually enough to
+resume. Send the rest only if the task needs it: an open decision →
+`02-exploration.md`; active tasks → `03-execution.md`; tickets →
+`05-kanban.md`; QA → `06-qa.md`.
 
 ---
 
@@ -81,7 +88,7 @@ Message 1 orients. Message 2 contextualises. Always in that order.
 Active files hold what is current. Archives hold the history.
 
 | File                | Archive when                                             |
-| ------------------- | -------------------------------------------------------- |
+| -------------------- | ---------------------------------------------------------- |
 | `02-exploration.md` | A settled decision no longer affects any active task     |
 | `04-progress.md`    | Entries are from a completed phase or milestone          |
 | `05-kanban.md`      | Done tickets are no longer referenced by anything active |

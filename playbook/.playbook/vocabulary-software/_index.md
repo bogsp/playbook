@@ -1,7 +1,7 @@
 ---
-file: '.playbook/vocabulary-software/README.md'
-responsibility: 'Adapts Playbook vocabulary for software development projects — how the pipeline stages, planning document types, and folder layout map to software development work.'
-ai_instructions: 'Load alongside .playbook/vocabulary-software/AI-INSTRUCTIONS.md for any software project.'
+file: '.playbook/vocabulary-software/_index.md'
+responsibility: 'Combined entry point for the software domain — vocabulary, planning document shapes, and software-specific AI session rules, loaded alongside the universal .playbook/_index.md.'
+ai_instructions: 'Load after .playbook/_index.md for any software project. Merges the former README.md and AI-INSTRUCTIONS.md for this domain — both retired as separate files in the 2026-08-29 consolidation.'
 archive_rule: 'N/A — core domain reference file.'
 ---
 
@@ -35,13 +35,15 @@ This folder adapts Playbook for software projects. Every stage of the pipeline m
 | `concern` | Cross-cutting capability | Auth, logging, error handling — defined once |
 | `integration` | Third-party service or library | What it provides, how the project depends on it |
 
+Templates: [templates/_index.md](templates/_index.md).
+
 ---
 
 ## Folder Layout
 
 ```
 .playbook/
-├── _index.md                  ← project map
+├── _index.md                  ← project map + session rules
 ├── _concerns/                 ← cross-cutting capabilities
 ├── _integrations/             ← external contracts
 ├── _shared/                   ← components used across modules
@@ -83,7 +85,36 @@ The declared layer in every planning document must match the file location and w
 
 ---
 
-## Additional Files
+## Software-Specific AI Rules
 
-- `AI-INSTRUCTIONS.md` — software-specific rules for AI sessions; loaded alongside `.playbook/AI-INSTRUCTIONS.md`
-- `docs/code-standards.md` — canonical language and tooling standards; copy into `docs/` for each project
+- Every component is defined in a planning doc before any code is written
+- AI generates code against planning docs — not ahead of them
+- No component is marked `status: active` with unresolved TODOs
+- No code path is left unhandled — all branches must be explicit
+- Flag ambiguity before writing any code or planning doc
+- Do not add anything outside the current task scope
+- Do not rename, move, or restructure anything outside the current task
+- Do not introduce a dependency not declared in the component's planning doc
+
+## Anti-Patterns
+
+Never do any of the following:
+
+- Cross-layer imports
+- Direct module-to-module imports — use declared interfaces
+- Business logic in the interface layer
+- `any` type anywhere in the codebase
+- Raw `throw` in Domain or Application layer
+- Stub or partial implementations
+- Silently resolving ambiguity
+- Generating code ahead of a planning doc
+
+---
+
+## File Header Rule
+
+Every generated file's location is declared in its frontmatter `file:` field — no separate `# Title` / `# File:` comment header above it.
+
+## Frontmatter
+
+Every file in this domain — including `sequencer` and `component` planning docs — follows the Frontmatter Tiering Rule defined in `maintenance.md` (Tier 1 for planning docs, Tier 2 for everything else). Don't invent a different shape here.

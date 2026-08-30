@@ -192,3 +192,17 @@ Type: SYNC
 
 [K-18] Confirm template README/AI-INSTRUCTIONS reference standalone path
 (Resolved 2026-08-29, pipeline review session: Confirmed, no edits needed. playbook/.playbook/README.md already has a callout right after "Start Here" pointing to guides/context-kit-standalone.md, placed before Session Boot Order — doesn't disrupt it. playbook/.playbook/AI-INSTRUCTIONS.md's "Load based on the task" table already has the row for standalone kit-only sessions pointing to the same guide, placed after Session Load Order (1-7) — doesn't touch Behavioral Rules 1-19. Both were correct already; the ticket had simply never been verified and closed.)
+
+[K-42] Consolidate README/AI-INSTRUCTIONS/_index.md into a single entry point (template)
+Type: DDA
+(Resolved 2026-08-29, pipeline review session: playbook/.playbook/_index.md is now the single entry point — absorbed AI-INSTRUCTIONS.md's Session Load Order, Behavioral Rules 1-19, Never Do These, escalation format, Expansions, When Something Breaks, and Session End checklist. playbook/.playbook/README.md reduced to a plain human-facing readme with one pointer line. playbook/.playbook/AI-INSTRUCTIONS.md retired — flagged for deletion (git rm), not generated as a file this session. Same merge applied to all four vocabulary-[domain]/ folders: README.md + AI-INSTRUCTIONS.md -> single vocabulary-[domain]/_index.md each, since none of those folders had their own _index.md before this change. context-kit.md, context-kit-standalone.md, and 00-prompts.md rewritten for single-message session start, with the two-message pattern kept only as an explicit fallback for hard-limited tools. guides/project-identity.md rewritten for the two-file (index+readme) model. guides/adopt.md's stale AI-INSTRUCTIONS.md reference fixed. See 02-exploration.md 2026-08-29 decision for full rationale.)
+
+[K-43] Cross-reference sweep — remaining AI-INSTRUCTIONS.md mentions
+Type: SYNC
+Description: K-42 rewrote _index.md, README.md, both context-kit guides, 00-prompts.md, project-identity.md, and adopt.md. Not yet checked: playbook/.playbook/pipeline.md, playbook/.playbook/maintenance.md, guides/audit.md, guides/new-project.md, guides/video-insights.md, guides/_index.md, and all four docs/code-standards*.md variants (root and playbook/ copies) — several of the code-standards files explicitly reference "AI-INSTRUCTIONS.md" in their AI-Assisted Development sections and need updating to point at _index.md instead, or need their own review given they're optional add-ons rather than core Playbook files. Also unchecked: whether templates/*.md or vocabulary-*/templates/*.md reference the retired file anywhere.
+Blocked by: none
+
+[K-44] Apply the same _index.md consolidation to this repo's own root .playbook/
+Type: DDA
+Description: Root .playbook/README.md and AI-INSTRUCTIONS.md need the same merge into root .playbook/_index.md, per the person's explicit instruction to avoid confusion in future sessions on this repo. Queued as the next task after K-42/K-43.
+Blocked by: none
