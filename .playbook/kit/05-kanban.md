@@ -33,7 +33,9 @@ finalized, so they were closed first regardless of track assignment.
 5. K-37 — DONE — build.js/scaffold.js updated for split templates/ folders (see 04-progress.md 2026-08-29)
 6. K-07 — DONE — test file template already existed (kit/_tests/test-case.md); confirmed and closed
 7. K-10 — DONE — _refs/ subfolders documented in playbook/.playbook/_index.md
-8. K-18 — NEXT — confirm template README/AI-INSTRUCTIONS standalone path
+8. K-18 — DONE — confirmed, no edits needed; both files already correct
+
+Clerical track fully closed as of 2026-08-29.
 
 Backlog
 
@@ -46,11 +48,6 @@ Blocked by: none
 Type: CODE
 Description: Update the CLI scaffold logic to point to the new playbook/ directory instead of the old locations.
 Blocked by: K-12
-
-[K-18] Confirm template README/AI-INSTRUCTIONS reference standalone path
-Type: SYNC
-Description: Confirm playbook/.playbook/README.md and playbook/.playbook/AI-INSTRUCTIONS.md reference the standalone Context Kit path without disrupting the existing boot order or Behavioral Rules.
-Blocked by: none
 
 [K-19] Map CLI flows — create-playbook
 Type: DDA
@@ -192,3 +189,6 @@ Type: SYNC
 
 [K-10] Document _refs/ subfolder structure in _index.md
 (Resolved 2026-08-29, pipeline review session: playbook/.playbook/_index.md's Folder Map expanded _refs/ from a single flat line into its five actual subfolders — video-insights/, templates/, examples/, snippets/, research/ — matching what scaffold.js already creates via gitkeep. This repo's own root .playbook/_index.md was checked and left as-is: its _refs/ holds sync-check reports, a different structure specific to this repo, not the template's five-folder pattern.)
+
+[K-18] Confirm template README/AI-INSTRUCTIONS reference standalone path
+(Resolved 2026-08-29, pipeline review session: Confirmed, no edits needed. playbook/.playbook/README.md already has a callout right after "Start Here" pointing to guides/context-kit-standalone.md, placed before Session Boot Order — doesn't disrupt it. playbook/.playbook/AI-INSTRUCTIONS.md's "Load based on the task" table already has the row for standalone kit-only sessions pointing to the same guide, placed after Session Load Order (1-7) — doesn't touch Behavioral Rules 1-19. Both were correct already; the ticket had simply never been verified and closed.)
