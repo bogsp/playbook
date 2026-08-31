@@ -1,7 +1,7 @@
 ---
 file: '.playbook/maintenance.md'
 responsibility: 'How this repo keeps its own kit files lean, and how the Frontmatter Tiering Rule (canonically defined in playbook/.playbook/maintenance.md) applies to this repo's own files.'
-ai_instructions: 'Read when archiving this repo's kit content, or when unsure what frontmatter shape a file in root .playbook/ should carry. AI-INSTRUCTIONS.md points here rather than restating the rule.'
+ai_instructions: 'Read when archiving this repo's kit content, or when unsure what frontmatter shape a file in root .playbook/ should carry. _index.md points here rather than restating the rule.'
 archive_rule: 'N/A — core reference file.'
 ---
 
@@ -62,6 +62,6 @@ The Frontmatter Tiering Rule is canonically defined in `playbook/.playbook/maint
 
 **Tier 1 doesn't apply at the repo root.** Root `.playbook/` carries no planning documents (`structure`, `coordinator`, `component`, `concern`, `integration`) of its own — only kit files and `_index.md`, per `_index.md`'s own Detail note. The deep-module header (`MODULE_ID`, `SYSTEM_CONTEXT`, etc.) has nothing to attach to here. Tier 1 is exercised inside `playbook/.playbook/` (template source) and `packages/playbook-software-library/` (the published library), where real planning documents live.
 
-**Tier 2 applies to every file directly under `.playbook/`** — `README.md`, `AI-INSTRUCTIONS.md`, `_index.md`, `maintenance.md` (this file), and all six `kit/*.md` files. Each carries the four-field purpose block (`file`, `responsibility`, `ai_instructions`, `archive_rule`) as a mandatory floor, plus no additional tracking fields — this repo's kit files don't need `id`/`type`/`status` the way a flow or contract does, since they aren't referenced by ID anywhere.
+**Tier 2 applies to every file directly under `.playbook/`** — `README.md`, `_index.md`, `maintenance.md` (this file), and all six `kit/*.md` files. Each carries the four-field purpose block (`file`, `responsibility`, `ai_instructions`, `archive_rule`) as a mandatory floor, plus no additional tracking fields — this repo's kit files don't need `id`/`type`/`status` the way a flow or contract does, since they aren't referenced by ID anywhere.
 
 **When to update:** same rule as the canonical version — update a file's frontmatter in the same pass it's otherwise touched; if a phase leaves files untouched, bring them into line together at the end of that phase (see `.playbook/kit/01-process.md` for the current phase's outstanding items).
