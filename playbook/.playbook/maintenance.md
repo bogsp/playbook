@@ -1,7 +1,7 @@
 ---
 file: '.playbook/maintenance.md'
 responsibility: 'How to keep Playbook files lean over time, and the frontmatter shape every file in a Playbook project carries — canonical definition, ships to every scaffolded project.'
-ai_instructions: 'Read when archiving content, or when unsure what frontmatter shape a new or edited file should carry. AI-INSTRUCTIONS.md points here for the frontmatter rule rather than restating it.'
+ai_instructions: 'Read when archiving content, or when unsure what frontmatter shape a new or edited file should carry. _index.md points here for the frontmatter rule rather than restating it.'
 archive_rule: 'N/A — core reference file.'
 ---
 
@@ -69,7 +69,7 @@ The folder map in `_index.md` must reflect the actual structure at all times. If
 
 ## Frontmatter Tiering
 
-Every file in a Playbook project — kit files, flows, contracts, guides, READMEs, indexes, and planning documents — carries frontmatter. Which shape it carries depends on its tier. This is the canonical definition; `AI-INSTRUCTIONS.md` points here rather than restating it.
+Every file in a Playbook project — kit files, flows, contracts, guides, this file itself, and planning documents — carries frontmatter. Which shape it carries depends on its tier. This is the canonical definition; `_index.md` points here rather than restating it.
 
 **Tier 1 — DDA / planning documents** (`structure`, `coordinator`/`sequencer`, `component`, `concern`, `integration`, and any domain-specific counterpart such as manufacturing's `part`):
 
@@ -79,7 +79,7 @@ Every file in a Playbook project — kit files, flows, contracts, guides, README
 
 The deep-module header is Tier-1-only. It exists to protect AI-generated code against unseen upstream/downstream impact — a risk specific to documents that gate implementation. Kit files, flows, and guides don't gate code the same way, so they don't carry it.
 
-**Tier 2 — everything else** (kit files, flow and contract documents, guides, `README.md`, `AI-INSTRUCTIONS.md`, `_index.md`, and other planning-adjacent docs):
+**Tier 2 — everything else** (kit files, flow and contract documents, guides, `_index.md`, `README.md`, and other planning-adjacent docs):
 
 - Four-field purpose block: `file`, `responsibility`, `ai_instructions`, `archive_rule` — mandatory, never dropped
 - Plus any tracking fields already established for that specific doc type (flows/contracts keep `id`, `type`, `scope`, `trigger`, `status`, `calls`, `emits`, `called-by`; concerns/integrations keep `id`, `type`, `status`, `affects` or `used-by`, etc.)

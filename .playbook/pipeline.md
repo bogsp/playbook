@@ -1,6 +1,6 @@
 ---
 file: '.playbook/pipeline.md'
-responsibility: 'Complete reference for how the Playbook pipeline works — every stage, every output, every format. Currently identical to playbook/.playbook/pipeline.md content, pending a decision on repo-specific authoring (see maintenance.md and AI-INSTRUCTIONS.md for the established own-terms pattern).'
+responsibility: 'Complete reference for how the Playbook pipeline works — every stage, every output, every format. Currently identical to playbook/.playbook/pipeline.md content, pending a decision on repo-specific authoring (see maintenance.md and _index.md for the established own-terms pattern).'
 ai_instructions: 'Read as much or as little as needed. Points to templates and guides rather than duplicating them.'
 archive_rule: 'N/A — core reference file, kept current as stages evolve.'
 ---
@@ -177,8 +177,8 @@ Use prompt: [kit/00-prompts.md](kit/00-prompts.md) → **Generating a Milestone 
 
 **Resuming from a milestone:** If you're starting a fresh AI session and want
 to pick up from a previous milestone, load `docs/rollout/[milestone].md`
-alongside [AI-INSTRUCTIONS.md](AI-INSTRUCTIONS.md). The snapshot gives the AI
-the full context of where the project stands.
+alongside [_index.md](_index.md). The snapshot gives the AI the full context
+of where the project stands.
 
 ---
 

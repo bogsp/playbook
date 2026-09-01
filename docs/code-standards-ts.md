@@ -1,7 +1,7 @@
 ---
 File: docs/code-standards.md
 
-Version: 3.1 — Removed project-specific naming, removed StrykerJS, updated dependency governance, fixed Vitest coverage config.
+Version: 3.2 — Updated AI-Assisted Development section: session boot order now starts at _index.md (single entry point) instead of separate README.md/AI-INSTRUCTIONS.md steps.
 Scope: Architecture, Security, TypeScript, Validation, Error Handling, Code Hygiene, Testing, Observability, Git, Tooling, AI-Assisted Development.
 Usage: Copy to `/docs/code-standards.md` in each repo. Loaded as part of the Playbook session boot order — see [Section 14](#14-ai-assisted-development).
 ---
@@ -98,7 +98,7 @@ No layer may import from a layer above it. The arrow indicates the direction of 
 ### Layer Responsibilities
 
 | Layer                | Responsibility                                              | What is Forbidden                                 |
-| -------------------- | ----------------------------------------------------------- | ------------------------------------------------- |
+| -------------------- | ----------------------------------------------------------- | -------------------------------------------------- |
 | **Domain**           | Pure business logic, invariants, domain events              | Frameworks, DB, network, any external import      |
 | **Application**      | Use cases (CQRS-lite); orchestrates domain via interfaces   | Concrete SDKs, direct DB calls, Interface imports |
 | **Infrastructure**   | Interfaces, abstract ports, contracts                       | Concrete vendor libraries, SDK imports            |
@@ -347,7 +347,7 @@ export class InvoiceNotFoundError extends ApplicationError {
 ### Layer Responsibilities
 
 | Layer                | Policy                                                                                                                        |
-| -------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| --------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
 | **Domain**           | Returns `Result<T, DomainError>` — never throws                                                                               |
 | **Application**      | Returns `Result<T, ApplicationError>` — maps domain errors up, never throws                                                   |
 | **Infrastructure**   | May throw system/OS errors — caught at boundary, wrapped in `InfrastructureError`, returned as `Result`                       |
@@ -445,7 +445,7 @@ import { createInvoice } from "./invoices/create-invoice";
 ### General
 
 | Thing          | Convention                   | Example                |
-| -------------- | ---------------------------- | ---------------------- |
+| -------------- | ----------------------------- | ------------------------ |
 | Files          | `kebab-case`                 | `create-invoice.ts`    |
 | Directories    | `kebab-case`                 | `use-cases/`           |
 | Classes        | `PascalCase`                 | `InvoiceRepository`    |
@@ -459,7 +459,7 @@ import { createInvoice } from "./invoices/create-invoice";
 ### Domain and Events
 
 | Thing        | Pattern                      | Example                            |
-| ------------ | ---------------------------- | ---------------------------------- |
+| ------------ | ----------------------------- | ------------------------------------ |
 | Events       | past-tense, aggregate-scoped | `InvoicePosted`, `PaymentReceived` |
 | Use Cases    | verb + noun + `UseCase`      | `CreateInvoiceUseCase`             |
 | Repositories | noun + `Repository`          | `InvoiceRepository`                |
@@ -469,7 +469,7 @@ import { createInvoice } from "./invoices/create-invoice";
 ### Module-Scoped (replace `[module]` with actual module id)
 
 | Resource    | Pattern                    | Example                       |
-| ----------- | -------------------------- | ----------------------------- |
+| ----------- | --------------------------- | -------------------------------- |
 | tRPC routes | `module.resource.action`   | `accounting.invoices.create`  |
 | Events      | `[Module][Entity][Action]` | `AccountingInvoicePosted`     |
 | DB tables   | `[module]_[table]`         | `accounting_invoices`         |
@@ -498,7 +498,7 @@ import { createInvoice } from "./invoices/create-invoice";
 ### Coverage Gates (enforced in CI — PR fails if not met)
 
 | Layer                         | Line                      | Branch | Method | Approach                                       |
-| ----------------------------- | ------------------------- | ------ | ------ | ---------------------------------------------- |
+| ------------------------------ | -------------------------- | ------ | ------ | ------------------------------------------------- |
 | **Domain**                    | 100%                      | 100%   | 100%   | Pure unit tests — no DB, no network            |
 | **Application (Use Cases)**   | 95%                       | 95%    | 95%    | Integration tests with mocked adapters via MSW |
 | **Infrastructure / Adapters** | 90%                       | 85%    | 90%    | Test against real DB/Redis in CI               |
@@ -554,7 +554,7 @@ Required for: HTTP, WebSockets, background jobs, and synchronization flows.
 **Log levels:**
 
 | Level   | Use                                                                |
-| ------- | ------------------------------------------------------------------ |
+| -------- | -------------------------------------------------------------------- |
 | `error` | Unrecoverable failures — include full context and original cause   |
 | `warn`  | Recoverable issues or degraded behavior                            |
 | `info`  | Significant state transitions (`InvoicePosted`, `PaymentReceived`) |
@@ -579,7 +579,7 @@ All approved dependencies are recorded in the Playbook dependency registry. If a
 ### Branch Naming
 
 | Type      | Pattern                         | Example                                  |
-| --------- | ------------------------------- | ---------------------------------------- |
+| ---------- | --------------------------------- | ------------------------------------------- |
 | Feature   | `feature/[scope]/[description]` | `feature/accounting/add-invoice-search`  |
 | Fix       | `fix/[scope]/[description]`     | `fix/accounting/invoice-date-validation` |
 | Milestone | `milestone/[number]-[name]`     | `milestone/1-platform-core`              |
@@ -702,26 +702,24 @@ Pin build and runtime toolchains to an explicitly supported Node LTS version.
 
 ## 14. AI-Assisted Development
 
-This project uses Playbook. Always follow the session boot order below. `.playbook/AI-INSTRUCTIONS.md` defines session rules and structure; this file defines implementation standards. Neither is complete without the other.
+This project uses Playbook. Always follow the session boot order below. `.playbook/_index.md` is the single entry point — it defines session rules, structure, and behavioral rules; this file defines implementation standards. Neither is complete without the other.
 
 ### AI Session Boot Order
 
 Load in order at the start of every session:
 
 ```
-1. .playbook/README.md
-2. .playbook/AI-INSTRUCTIONS.md
-3. docs/code-standards.md              ← this file
-4. .playbook/_index.md
-5. .playbook/kit/01-process.md
-6. .playbook/kit/04-progress.md
-7. .playbook/kit/05-kanban.md          ← if active
+1. .playbook/_index.md                 ← entry point; session rules + structure
+2. docs/code-standards.md              ← this file
+3. .playbook/kit/01-process.md
+4. .playbook/kit/04-progress.md
+5. .playbook/kit/05-kanban.md          ← if active
 ```
 
 Then load based on the task:
 
 | Task                            | Also load                                                                                 |
-| ------------------------------- | ----------------------------------------------------------------------------------------- |
+| --------------------------------- | --------------------------------------------------------------------------------------------- |
 | Any coding task                 | `docs/vocabulary.md`                                                                      |
 | C11 engine work (`src/`)        | `docs/code-standards-c.md`, `.playbook/engine-c/_index.md` + relevant component docs      |
 | Rust shell work (`rust-shell/`) | `docs/code-standards-rust.md`, `.playbook/rust-shell/_index.md` + relevant component docs |
@@ -923,4 +921,4 @@ Run at the end of every phase and before every PR. No phase is complete until al
 ---
 
 _This document is the source of truth for code standards. When in doubt, refer here first._
-_Always loaded as part of the Playbook session boot order — `.playbook/README.md` → `.playbook/AI-INSTRUCTIONS.md` → this file._
+_Always loaded as part of the Playbook session boot order — `.playbook/_index.md` → this file._

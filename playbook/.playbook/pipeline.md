@@ -177,8 +177,8 @@ Use prompt: [kit/00-prompts.md](kit/00-prompts.md) → **Generating a Milestone 
 
 **Resuming from a milestone:** If you're starting a fresh AI session and want
 to pick up from a previous milestone, load `docs/rollout/[milestone].md`
-alongside [AI-INSTRUCTIONS.md](AI-INSTRUCTIONS.md). The snapshot gives the AI
-the full context of where the project stands.
+alongside [_index.md](_index.md). The snapshot gives the AI the full context
+of where the project stands.
 
 ---
 

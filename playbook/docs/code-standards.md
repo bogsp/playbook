@@ -1,7 +1,7 @@
 ---
 file: "docs/code-standards.md"
 responsibility: "Authoritative engineering standards and AI implementation guardrails for the project."
-ai_instructions: "Load after AI-INSTRUCTIONS.md for all software tasks. Strictly adhere to the architectural, testing, and formatting rules defined here. Do not bypass these rules."
+ai_instructions: "Load after _index.md for all software tasks. Strictly adhere to the architectural, testing, and formatting rules defined here. Do not bypass these rules."
 archive_rule: "N/A - Living document. Version changes in place."
 ---
 
@@ -41,7 +41,7 @@ archive_rule: "N/A - Living document. Version changes in place."
 
 ## 6. AI-Assisted Development (Playbook Rules)
 
-This project uses Playbook. `.playbook/AI-INSTRUCTIONS.md` defines session rules; this file defines implementation standards. Neither is complete without the other.
+This project uses Playbook. `.playbook/_index.md` defines session rules; this file defines implementation standards. Neither is complete without the other.
 
 ### Planning Doc Integration
 - All components are defined in `.playbook/` before any code is written.
