@@ -4,6 +4,7 @@ responsibility: 'The single entry point for this repo — project map, AI sessio
 ai_instructions: 'Read this file completely before doing anything else, every session on this repo. It replaces README.md''s boot order and AI-INSTRUCTIONS.md''s session rules — both now live here. This file describes THIS repo, not a project that consumes Playbook. Update the Structure section in the same session as any file is added, moved, or removed.'
 archive_rule: 'N/A — kept current at all times, never archived.'
 review-gate: strict
+pipeline-mode: full
 ---
 
 # Playbook — Project Map & Session Rules
@@ -168,6 +169,20 @@ model. This repo does not use that flexibility on itself.
 The same principle governs the meta-track this repo runs on itself:
 `docs/contracts/playbook-templates/global.md` §2 declares the identical
 `strict` behavior for every flow in that track.
+
+---
+
+## Pipeline Mode
+
+This repo runs `pipeline-mode: full` (declared above) — it uses
+`docs/flows/playbook-templates/` and `docs/contracts/playbook-templates/`
+to govern its own meta-track (Discovery through Handoff), and
+`playbook/.playbook/` plus `packages/playbook-software-library/` carry
+real planning documents. `kit-only` mode — just the six kit files, no
+flows/contracts/planning docs required — is the default for new projects
+scaffolded by `create-playbook`; see the Pipeline Mode section in
+`playbook/.playbook/_index.md` for that model. This repo doesn't use it
+on itself, since its own work genuinely spans the full pipeline.
 
 ---
 

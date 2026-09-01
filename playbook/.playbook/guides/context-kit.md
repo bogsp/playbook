@@ -11,9 +11,10 @@ Every project loses context between sessions. Without a system, every restart wa
 
 The context kit solves this with a small set of files — each with one job. `.playbook/_index.md` is the entry point every session starts with; the kit files below carry the working history on top of it.
 
-> This guide covers Context Kit usage **inside the full Playbook pipeline** —
-> alongside Discovery, Mapping, Rules, Planning, Work, and Handoff. If you
-> only want the six kit files with no pipeline stages, see
+> This guide covers Context Kit usage **inside the full Playbook pipeline**
+> (`pipeline-mode: full` in `.playbook/_index.md`) — alongside Discovery,
+> Mapping, Rules, Planning, Work, and Handoff. If `pipeline-mode` is
+> `kit-only` (the default for new projects), see
 > [context-kit-standalone.md](context-kit-standalone.md) instead — same
 > files, none of the pipeline overhead.
 

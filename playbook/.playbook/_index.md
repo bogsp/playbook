@@ -8,6 +8,7 @@ type: structure
 scope: project
 status: draft
 review-gate: balanced
+pipeline-mode: kit-only
 contains: []
 concerns: []
 integrations: []
@@ -37,7 +38,7 @@ Read this file first, every session — it is the single entry point.
 - Ticket detail → `kit/05-kanban.md`
 - Testing/sign-off → `kit/06-qa.md`
 
-**Starting fresh:** fill in **What This Project Is** below, then work through [pipeline.md](pipeline.md) stage by stage.
+**Starting fresh:** fill in **What This Project Is** below. If this project's `pipeline-mode` is `kit-only` (the default), that's all you need — start working, tracked through the kit files. If it's `full`, work through [pipeline.md](pipeline.md) stage by stage.
 
 **Domain-specific work:** also load `vocabulary-[domain]/_index.md` — it carries this project's domain vocabulary, planning doc shapes, and domain-specific behavioral rules alongside the universal ones below.
 
@@ -48,6 +49,12 @@ Confirm what you've loaded, then wait for instruction.
 ## AI Behavioral Rules
 
 ### Rules
+
+Rules 1, 2, 5, 6, 7, 9, and 12 govern flow, contract, and planning-document
+work. They apply only when this project's `pipeline-mode` is `full` — see
+the Pipeline Mode section below. In `kit-only` mode, skip directly to
+kit-file discipline; there is no flow, contract, or planning-document
+requirement to satisfy.
 
 1. Never write a planning document without first reading the relevant flow and contract files.
 2. Never begin work on a component without its planning document.
@@ -133,6 +140,27 @@ approval each time it repeats.
 Change the level anytime by editing the frontmatter above — the AI never
 changes it unilaterally. When it's unclear which category something falls
 into, treat it as the stricter case and ask.
+
+---
+
+## Pipeline Mode
+
+This project's pipeline mode is declared above in this file's frontmatter
+(`pipeline-mode:`). It determines whether flows, contracts, and planning
+documents are required before work begins — simple entry by default,
+complex base available when the work actually needs it.
+
+| Mode | What applies |
+|---|---|
+| `kit-only` *(default)* | Just the six kit files — track decisions, tasks, and history. No flow documents, contracts, or planning documents required. See `guides/context-kit-standalone.md`. |
+| `full` | The complete pipeline — Discovery through Handoff, flow and contract documents before planning documents, planning documents before code. See `pipeline.md`. |
+
+Switch from `kit-only` to `full` anytime by editing the frontmatter —
+nothing already built is wasted; the same kit files carry forward
+unchanged. Switching back down from `full` to `kit-only` isn't
+recommended once flow, contract, or planning documents already exist for
+the project, since those documents don't disappear just because the mode
+changes.
 
 ---
 

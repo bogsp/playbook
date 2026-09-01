@@ -14,10 +14,13 @@ documents, contracts, or planning documents. `.playbook/_index.md` is still
 the entry point every session starts with — it carries session rules even in
 standalone use.
 
-If you later want the full pipeline — mapped paths, written contracts,
-planning documents before code — see [context-kit.md](context-kit.md) for the
-Playbook-integrated version. Nothing here is wasted if you grow into it: the
-same six files carry forward unchanged.
+This is the default mode for every new Playbook project — declared as
+`pipeline-mode: kit-only` in `.playbook/_index.md`'s frontmatter. If you
+later want the full pipeline — mapped paths, written contracts, planning
+documents before code — switch that field to `full` and see
+[context-kit.md](context-kit.md) for the Playbook-integrated version.
+Nothing here is wasted if you grow into it: the same six files carry
+forward unchanged.
 
 ---
 
