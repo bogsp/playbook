@@ -3,6 +3,7 @@ file: '.playbook/_index.md'
 responsibility: 'The single entry point for this repo — project map, AI session rules, and structure combined. Read this file first, every session working on this repo.'
 ai_instructions: 'Read this file completely before doing anything else, every session on this repo. It replaces README.md''s boot order and AI-INSTRUCTIONS.md''s session rules — both now live here. This file describes THIS repo, not a project that consumes Playbook. Update the Structure section in the same session as any file is added, moved, or removed.'
 archive_rule: 'N/A — kept current at all times, never archived.'
+review-gate: strict
 ---
 
 # Playbook — Project Map & Session Rules
@@ -150,6 +151,23 @@ do not wait to be asked:
 3. Confirm this file's Structure section still matches the repo.
 4. If any `playbook/` template file changed, note whether `pnpm build` (in `packages/create-playbook/`) still needs to run.
 5. Confirm every file touched this session has frontmatter matching its tier (`.playbook/maintenance.md`, canonically `playbook/.playbook/maintenance.md`) — fix before logging progress, not after.
+
+---
+
+## Review Gate
+
+This repo runs `review-gate: strict` (declared above in this file's
+frontmatter) — every artifact-producing step requires explicit human
+approval before the next one begins, with no exceptions. This is
+deliberate: this repo is the source that every future scaffolded project
+copies from, so mistakes here propagate outward. Shipped Playbook projects
+may declare `balanced` (the default) or `lean` instead — see the Review
+Gate section in `playbook/.playbook/_index.md` for the full three-level
+model. This repo does not use that flexibility on itself.
+
+The same principle governs the meta-track this repo runs on itself:
+`docs/contracts/playbook-templates/global.md` §2 declares the identical
+`strict` behavior for every flow in that track.
 
 ---
 

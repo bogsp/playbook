@@ -52,7 +52,12 @@ must be flagged, not force-fit.
 
 ## 2. Human Review Gating
 
-No stage, phase, or sub-step in this track advances autonomously.
+This repo declares `review-gate: strict` in `.playbook/_index.md` (see that
+file's Review Gate section for the general three-level model — `strict` /
+`balanced` / `lean` — that shipped Playbook projects may choose between).
+This repo runs `strict` deliberately: it is the source every future
+scaffolded project copies from, so mistakes here propagate outward. No
+stage, phase, or sub-step in this track advances autonomously.
 
 - Every step that produces an artifact (a draft flow, a draft contract, a
   planning document, a phase output, a milestone snapshot) requires explicit
@@ -85,7 +90,7 @@ No stage, phase, or sub-step in this track advances autonomously.
 
 When any flow in this track hits ambiguity it cannot resolve from its own
 walkthrough, it halts and flags using the standard format from
-`AI-INSTRUCTIONS.md`:
+`_index.md`:
 
 ```
 Categories: underspecified | missing-contract | undeclared-dependency | architectural-decision | ambiguous-behavior

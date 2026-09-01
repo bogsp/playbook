@@ -1,12 +1,13 @@
 ---
 file: 'playbook/.playbook/_index.md'
 responsibility: 'The single entry point for a Playbook project — project map, AI session rules, and structure combined. Copied into every new project by create-playbook. Read this file first, every session.'
-ai_instructions: "Read this file completely before doing anything else, every session. It replaces README.md's boot order and AI-INSTRUCTIONS.md's session rules — both now live here. Update the Structure section whenever pieces are added or removed."
+ai_instructions: 'Read this file completely before doing anything else, every session. It replaces README.md''s boot order and AI-INSTRUCTIONS.md''s session rules — both now live here. Update the Structure section whenever pieces are added or removed.'
 archive_rule: 'N/A — living document, kept current at all times.'
 id: [project-name]
 type: structure
 scope: project
 status: draft
+review-gate: balanced
 contains: []
 concerns: []
 integrations: []
@@ -31,7 +32,6 @@ Read this file first, every session — it is the single entry point.
 - `kit/05-kanban.md` — active tickets, if the project uses one
 
 **If your tool limits what you can attach at once:** send this file + `01-process.md` + `04-progress.md` first — that alone is enough to resume for most sessions. Pull in the rest only if the task calls for it:
-
 - An open question or decision → `kit/02-exploration.md`
 - Active execution work → `kit/03-execution.md`
 - Ticket detail → `kit/05-kanban.md`
@@ -115,15 +115,36 @@ Update these two files before the session ends or when context reaches 80% — d
 
 ---
 
+## Review Gate
+
+This project's review-gate level is declared above in this file's frontmatter
+(`review-gate:`). It controls how much AI-produced work stops for approval
+before continuing — it does not change whether ambiguous work gets flagged.
+Ambiguous or unclear work is always flagged and halted, at every level; the
+level only changes how much routine, already-decided work needs a fresh
+approval each time it repeats.
+
+| Level | Always halts for approval | Proceeds without waiting |
+|---|---|---|
+| `strict` | Every artifact-producing step | Nothing |
+| `balanced` *(default)* | New architecture, new content or decisions, dependencies, security/auth/persistence changes, deletions | Propagating an already-approved decision across similar files, frontmatter/formatting fixes, reference corrections, kit housekeeping |
+| `lean` | Only true architectural or security-impacting decisions | Everything `balanced` allows, plus: similar approval-needing items are reviewed together as one batch instead of one at a time |
+
+Change the level anytime by editing the frontmatter above — the AI never
+changes it unilaterally. When it's unclear which category something falls
+into, treat it as the stricter case and ask.
+
+---
+
 ## How to Use This File
 
-| If you're...             | Do this                                                                                                                                                                                                                             |
-| ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Starting fresh           | Fill in **What This Project Is**, then work through [pipeline.md](pipeline.md) stage by stage                                                                                                                                       |
-| Resuming a session       | Read **Session Start** above, then `kit/01-process.md`                                                                                                                                                                              |
-| Adding a piece           | Find its place in **Structure** below, create the planning document using [templates/](templates/_index.md) or [vocabulary-[domain]/templates/](vocabulary-software/templates/_index.md), then update this file's Structure section |
-| Looking for a template   | [templates/](templates/_index.md) — universal shapes; [vocabulary-[domain]/templates/](vocabulary-software/templates/_index.md) — domain-specific fields                                                                            |
-| Looking for domain rules | [vocabulary-[domain]/\_index.md](vocabulary-software/_index.md) — domain vocabulary, planning doc shapes, and domain-specific AI rules, layered on top of the universal rules above                                                 |
+| If you're...                  | Do this                                                                                                                                                                                                                   |
+| ------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Starting fresh                | Fill in **What This Project Is**, then work through [pipeline.md](pipeline.md) stage by stage                                                                                                                             |
+| Resuming a session            | Read **Session Start** above, then `kit/01-process.md`                                                                                                                                                                    |
+| Adding a piece                | Find its place in **Structure** below, create the planning document using [templates/](templates/_index.md) or [vocabulary-[domain]/templates/](vocabulary-software/templates/_index.md), then update this file's Structure section |
+| Looking for a template        | [templates/](templates/_index.md) — universal shapes; [vocabulary-[domain]/templates/](vocabulary-software/templates/_index.md) — domain-specific fields                                                                            |
+| Looking for domain rules      | [vocabulary-[domain]/_index.md](vocabulary-software/_index.md) — domain vocabulary, planning doc shapes, and domain-specific AI rules, layered on top of the universal rules above                                       |
 
 ## Structure
 
