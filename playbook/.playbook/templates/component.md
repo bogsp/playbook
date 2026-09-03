@@ -1,7 +1,7 @@
 ---
 File: .playbook/[module]/[kebab-case].md
 
-MODULE_ID: SAGE-COORD-XX-[NAME]
+MODULE_ID: PLAYBOOK-COORD-XX-[NAME]
 SYSTEM_CONTEXT: [Macro System Block Context]
 UPSTREAM_DEPENDENCIES: []
 DOWNSTREAM_IMPACT: []

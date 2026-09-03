@@ -1,7 +1,7 @@
 ---
 File: .playbook/[module]/[kebab-case].md
 
-MODULE_ID: SAGE-INTEGRATE-XX-[NAME]
+MODULE_ID: PLAYBOOK-INTEGRATE-XX-[NAME]
 SYSTEM_CONTEXT: [Macro System Block Context]
 UPSTREAM_DEPENDENCIES: []
 DOWNSTREAM_IMPACT: []

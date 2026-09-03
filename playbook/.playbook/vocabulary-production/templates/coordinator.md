@@ -1,7 +1,7 @@
 ---
 File: .playbook/[project]/[kebab-case].md
 
-MODULE_ID: SAGE-COORD-XX-[NAME]
+MODULE_ID: PLAYBOOK-COORD-XX-[NAME]
 SYSTEM_CONTEXT: [Project or Campaign Context]
 UPSTREAM_DEPENDENCIES: []
 DOWNSTREAM_IMPACT: []

@@ -1,7 +1,7 @@
 ---
 File: .playbook/[project]/[kebab-case].md
 
-MODULE_ID: SAGE-DELIV-XX-[NAME]
+MODULE_ID: PLAYBOOK-DELIV-XX-[NAME]
 SYSTEM_CONTEXT: [Macro System Block Context]
 UPSTREAM_DEPENDENCIES: []
 DOWNSTREAM_IMPACT: []

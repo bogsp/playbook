@@ -1,7 +1,7 @@
 ---
 File: .playbook/[module]/[kebab-case].md
 
-MODULE_ID: SAGE-CORE-XX-[NAME]
+MODULE_ID: PLAYBOOK-CORE-XX-[NAME]
 SYSTEM_CONTEXT: [Project Name Context]
 UPSTREAM_DEPENDENCIES: []
 DOWNSTREAM_IMPACT: []
