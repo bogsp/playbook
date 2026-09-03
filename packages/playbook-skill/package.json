@@ -1,0 +1,32 @@
+{
+  "name": "@bogsp/playbook-skill",
+  "version": "1.0.0",
+  "description": "Claude Skill packaging of Playbook — scaffold a Playbook project directly in a Claude session, no CLI required",
+  "author": "Bogs",
+  "license": "MIT",
+  "private": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bogsp/playbook.git",
+    "directory": "packages/playbook-skill"
+  },
+  "homepage": "https://github.com/bogsp/playbook/tree/main/packages/playbook-skill#readme",
+  "bugs": {
+    "url": "https://github.com/bogsp/playbook/issues"
+  },
+  "keywords": [
+    "playbook",
+    "claude-skill",
+    "ai-assisted-development",
+    "scaffold"
+  ],
+  "scripts": {
+    "build": "node build.js"
+  },
+  "files": [
+    "SKILL.md",
+    "build.js",
+    "assets/",
+    "README.md"
+  ]
+}
