@@ -39,6 +39,8 @@ The CLI asks a small number of questions and scaffolds the correct structure:
      - Well understood → Adopting existing project
      - Needs investigating → Auditing existing project before adopting
 4. **Install library?** (software domain only — installs `@bogsp/playbook-software-library`)
+5. **Pipeline mode** — `kit-only` (default; just the six kit files, no flows/contracts/planning docs required) or `full` (the complete Discovery-through-Handoff pipeline)
+6. **Review gate** — how much the AI stops for your approval: `balanced` (default), `strict` (every step), or `lean` (balanced + batched review)
 
 The scaffold is tailored to your answers:
 - Domain vocabulary folder included for the chosen domain
@@ -46,6 +48,7 @@ The scaffold is tailored to your answers:
 - Guides filtered to what is relevant — no unused files
 - `docs/rewrite/` scaffolded only for audit projects
 - Library docs copied into `.playbook/` for software projects that opt in
+- `.playbook/_index.md`'s frontmatter carries your chosen `pipeline-mode` and `review-gate` — edit it anytime to change either setting later
 
 ---
 
@@ -101,17 +104,19 @@ automatically.
 
 ```
 .playbook/
-  AI-INSTRUCTIONS.md          — universal AI session rules
+  README.md                   — human-facing readme for this project
   pipeline.md                 — how the pipeline works
   maintenance.md              — keeping files lean and current
-  templates.md                — universal planning doc shapes
-  _index.md                   — project map (pre-populated)
+  _index.md                   — single entry point: session rules, structure,
+                                 project map, review-gate and pipeline-mode
+  templates/                  — universal planning-doc shapes (entry: _index.md)
   _concerns/
   _integrations/
   _shared/
   guides/
     _index.md
     context-kit.md
+    context-kit-standalone.md
     video-insights.md
     [new-project | adopt | audit].md  — based on project type
 .playbook/kit/
@@ -119,7 +124,7 @@ automatically.
   01-process.md               — pre-populated with correct phase and expansion
   02-exploration.md
   03-execution.md
-  04-progress.md              — pre-populated with project type entry
+  04-progress.md               — pre-populated with project type entry
   05-kanban.md
   06-qa.md
   _refs/
@@ -141,9 +146,7 @@ docs/
 ```
 .playbook/
   vocabulary-software/
-    README.md
-    AI-INSTRUCTIONS.md
-    templates.md
+    _index.md              — vocabulary, planning-doc shapes, and AI rules combined
   _concerns/          — library concern docs (if library installed)
   _integrations/      — library integration docs (if library installed)
   _solutions/         — library solution docs (if library installed)
@@ -154,9 +157,7 @@ docs/
 ```
 .playbook/
   vocabulary-[domain]/
-    README.md
-    AI-INSTRUCTIONS.md
-    templates.md
+    _index.md              — vocabulary, planning-doc shapes, and AI rules combined
 ```
 
 ### Audit projects (additional)
@@ -173,7 +174,7 @@ docs/
 
 ## After Scaffolding
 
-1. Read `.playbook/README.md` — find your starting point
+1. Read `.playbook/_index.md` — the entry point: session rules, structure, and where to start
 2. Read the guide for your project type:
    - New project → `.playbook/guides/new-project.md`
    - Adopting → `.playbook/guides/adopt.md`

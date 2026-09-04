@@ -13,6 +13,11 @@ archive_rule: 'Closed decisions no longer gating any active task move to .playbo
 
 ## Settled Decisions
 
+- **[2026-08-31] — create-playbook CLI updated for K-42 and given the two new settings**
+  - **Context:** `build.js` and `scaffold.js` still copied the retired `AI-INSTRUCTIONS.md` and per-domain `README.md`+`AI-INSTRUCTIONS.md` pairs (K-42 had merged these into a single `_index.md` each, but the CLI's own build/scaffold logic was explicitly deferred at the time). Separately, `review-gate` and `pipeline-mode` (K-45, K-46) had no way to be set during scaffolding — only by hand-editing frontmatter afterward.
+  - **Decision:** `build.js` now sources the single merged `_index.md` per domain instead of the retired pair; the universal `AI-INSTRUCTIONS.md` source entry is removed entirely. `scaffold.js` mirrors this on the write side, and `buildIndex()` now accepts `reviewGate`/`pipelineMode` and overwrites the template's placeholder frontmatter values with the person's actual answer. `index.js`'s `runInit()` asks both as new questions, same UI pattern as the domain question, with `balanced`/`kit-only` as the recommended defaults matching what the template itself ships with. Version bumped 3.0.0 → 3.1.0.
+  - **Ref:** `04-progress.md` 2026-08-31 entry; `05-kanban.md` K-49.
+
 - **[2026-08-31] — Playbook packaged as a Claude Skill, sharing the template source rather than duplicating it**
   - **Context:** A Skill would let Claude scaffold Playbook projects directly in-session without the `create-playbook` CLI, but the person was explicit that a second hand-maintained copy of the template content was not acceptable.
   - **Decision:** New package `packages/playbook-skill/` with its own `build.js` that reads from the same `playbook/.playbook/` and `playbook/docs/` source `create-playbook/build.js` reads from, producing `assets/` as a build output (never hand-edited, same discipline as `create-playbook/templates/`). `SKILL.md` carries the trigger conditions and scaffold instructions, mirroring `create-playbook init`'s setup questions (domain, project type, review-gate, pipeline-mode). The Skill and the CLI are treated as two equivalent, additive entry points into the same scaffold — neither is authoritative over the other; both derive from `playbook/.playbook/`.

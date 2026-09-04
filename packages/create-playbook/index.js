@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// create-playbook v3.0.0
+// create-playbook v3.1.0
 // File: packages/create-playbook/index.js
 //
 // Usage:
@@ -79,14 +79,29 @@ async function runInit(nameArg) {
     );
   }
 
+  // Pipeline mode
+  const pipelineMode = await choose("\n  How much of the pipeline do you want?", [
+    { value: "kit-only", label: "Kit only (recommended)", description: "just the six kit files — no flows, contracts, or planning docs required to start" },
+    { value: "full", label: "Full pipeline", description: "Discovery through Handoff — flows and contracts before planning docs, planning docs before code" },
+  ]);
+
+  // Review gate
+  const reviewGate = await choose("\n  How much should the AI stop for your approval?", [
+    { value: "balanced", label: "Balanced (recommended)", description: "halts on new architecture, content, dependencies, security, or deletions — routine, already-decided work proceeds without a fresh approval" },
+    { value: "strict", label: "Strict", description: "approve every artifact-producing step, no exceptions" },
+    { value: "lean", label: "Lean", description: "balanced, plus similar approval-needing items get batched into one review instead of one at a time" },
+  ]);
+
   // Summary
   console.log("\n  ─────────────────────────────────────");
-  console.log(`  Project:  ${projectName}`);
-  console.log(`  Domain:   ${domain}`);
-  console.log(`  Type:     ${projectTypeLabel(projectType)}`);
+  console.log(`  Project:       ${projectName}`);
+  console.log(`  Domain:        ${domain}`);
+  console.log(`  Type:          ${projectTypeLabel(projectType)}`);
   if (domain === "software") {
-    console.log(`  Library:  ${installLib ? "yes" : "no"}`);
+    console.log(`  Library:       ${installLib ? "yes" : "no"}`);
   }
+  console.log(`  Pipeline mode: ${pipelineMode}`);
+  console.log(`  Review gate:   ${reviewGate}`);
   console.log("  ─────────────────────────────────────\n");
 
   const confirmed = await confirm("  Scaffold this project?", true);
@@ -108,13 +123,13 @@ async function runInit(nameArg) {
     libraryVersion = await installLibrary(root);
   }
 
-  await scaffold({ projectName, domain, projectType, root, libraryVersion });
+  await scaffold({ projectName, domain, projectType, root, libraryVersion, reviewGate, pipelineMode });
 
   console.log(`  ✓ ${countMessage(projectType, domain, installLib)}\n`);
   console.log("  ─────────────────────────────────────");
   console.log("  Done. Your Playbook project is ready.\n");
   console.log("  Next steps:");
-  console.log("    1. Read .playbook/README.md — find your starting point");
+  console.log("    1. Read .playbook/_index.md — session rules, structure, and where to start");
 
   if (projectType === "new") {
     console.log("    2. Read .playbook/guides/new-project.md — follow the stages");

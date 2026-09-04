@@ -37,13 +37,11 @@ const DOMAIN_TEMPLATE_FILES = {
 
 const sources = [
   // Universal — from playbook/.playbook/
+  // NOTE: AI-INSTRUCTIONS.md is intentionally absent — retired in the K-42
+  // consolidation. Its content now lives inside _index.md below.
   {
     from: join(repoRoot, "playbook", ".playbook", "README.md"),
     to: join(templatesDir, "universal", "playbook", "README.md"),
-  },
-  {
-    from: join(repoRoot, "playbook", ".playbook", "AI-INSTRUCTIONS.md"),
-    to: join(templatesDir, "universal", "playbook", "AI-INSTRUCTIONS.md"),
   },
   {
     from: join(repoRoot, "playbook", ".playbook", "pipeline.md"),
@@ -148,41 +146,23 @@ const sources = [
     from: join(repoRoot, "playbook", "docs", "rewrite", "risk-register.md"),
     to: join(templatesDir, "universal", "docs", "rewrite", "risk-register.md"),
   },
-  // Software vocabulary
+  // Domain vocabulary — single merged _index.md per domain (K-42 consolidation).
+  // README.md + AI-INSTRUCTIONS.md no longer exist as separate files.
   {
-    from: join(repoRoot, "playbook", ".playbook", "vocabulary-software", "README.md"),
-    to: join(templatesDir, "software", "vocabulary", "README.md"),
+    from: join(repoRoot, "playbook", ".playbook", "vocabulary-software", "_index.md"),
+    to: join(templatesDir, "software", "vocabulary", "_index.md"),
   },
   {
-    from: join(repoRoot, "playbook", ".playbook", "vocabulary-software", "AI-INSTRUCTIONS.md"),
-    to: join(templatesDir, "software", "vocabulary", "AI-INSTRUCTIONS.md"),
-  },
-  // Writing vocabulary
-  {
-    from: join(repoRoot, "playbook", ".playbook", "vocabulary-writing", "README.md"),
-    to: join(templatesDir, "writing", "vocabulary", "README.md"),
+    from: join(repoRoot, "playbook", ".playbook", "vocabulary-writing", "_index.md"),
+    to: join(templatesDir, "writing", "vocabulary", "_index.md"),
   },
   {
-    from: join(repoRoot, "playbook", ".playbook", "vocabulary-writing", "AI-INSTRUCTIONS.md"),
-    to: join(templatesDir, "writing", "vocabulary", "AI-INSTRUCTIONS.md"),
-  },
-  // Production vocabulary
-  {
-    from: join(repoRoot, "playbook", ".playbook", "vocabulary-production", "README.md"),
-    to: join(templatesDir, "production", "vocabulary", "README.md"),
+    from: join(repoRoot, "playbook", ".playbook", "vocabulary-production", "_index.md"),
+    to: join(templatesDir, "production", "vocabulary", "_index.md"),
   },
   {
-    from: join(repoRoot, "playbook", ".playbook", "vocabulary-production", "AI-INSTRUCTIONS.md"),
-    to: join(templatesDir, "production", "vocabulary", "AI-INSTRUCTIONS.md"),
-  },
-  // Manufacturing vocabulary
-  {
-    from: join(repoRoot, "playbook", ".playbook", "vocabulary-manufacturing", "README.md"),
-    to: join(templatesDir, "manufacturing", "vocabulary", "README.md"),
-  },
-  {
-    from: join(repoRoot, "playbook", ".playbook", "vocabulary-manufacturing", "AI-INSTRUCTIONS.md"),
-    to: join(templatesDir, "manufacturing", "vocabulary", "AI-INSTRUCTIONS.md"),
+    from: join(repoRoot, "playbook", ".playbook", "vocabulary-manufacturing", "_index.md"),
+    to: join(templatesDir, "manufacturing", "vocabulary", "_index.md"),
   },
 ];
 

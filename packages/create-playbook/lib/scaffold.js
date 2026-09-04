@@ -99,11 +99,20 @@ async function gitkeep(dirPath) {
  * @param {string} projectName
  * @param {string} domain
  * @param {string} libraryVersion — installed library version or empty string
+ * @param {string} reviewGate — "strict" | "balanced" | "lean"
+ * @param {string} pipelineMode — "kit-only" | "full"
  * @returns {Promise<string>}
  */
-async function buildIndex(projectName, domain, libraryVersion) {
+async function buildIndex(projectName, domain, libraryVersion, reviewGate, pipelineMode) {
   const content = await readTemplate("universal/playbook/_index.md");
   let result = content.replace(/\[project-name\]/g, projectName);
+
+  // Template ships with default placeholders (review-gate: balanced,
+  // pipeline-mode: kit-only) — overwrite with the person's actual choice,
+  // even when it matches the default, so the field is never silently stale.
+  result = result.replace(/review-gate: \w+/, `review-gate: ${reviewGate}`);
+  result = result.replace(/pipeline-mode: [\w-]+/, `pipeline-mode: ${pipelineMode}`);
+
   if (domain === "software" && libraryVersion) {
     result = result.replace(
       "status: draft",
@@ -188,16 +197,17 @@ Rules:
  *   domain: "software"|"writing"|"production"|"manufacturing"|"none",
  *   projectType: "new"|"adopt"|"audit",
  *   root: string,
- *   libraryVersion: string
+ *   libraryVersion: string,
+ *   reviewGate: "strict"|"balanced"|"lean",
+ *   pipelineMode: "kit-only"|"full"
  * }} options
  */
-export async function scaffold({ projectName, domain, projectType, root, libraryVersion }) {
+export async function scaffold({ projectName, domain, projectType, root, libraryVersion, reviewGate, pipelineMode }) {
   const p = (...parts) => join(root, ...parts);
 
   // --- Universal playbook files ---
   await copyTemplate("universal/playbook/README.md", p(".playbook", "README.md"));
-  await write(p(".playbook", "_index.md"), await buildIndex(projectName, domain, libraryVersion));
-  await copyTemplate("universal/playbook/AI-INSTRUCTIONS.md", p(".playbook", "AI-INSTRUCTIONS.md"));
+  await write(p(".playbook", "_index.md"), await buildIndex(projectName, domain, libraryVersion, reviewGate, pipelineMode));
   await copyTemplate("universal/playbook/pipeline.md", p(".playbook", "pipeline.md"));
   await copyTemplate("universal/playbook/maintenance.md", p(".playbook", "maintenance.md"));
 
@@ -232,11 +242,10 @@ export async function scaffold({ projectName, domain, projectType, root, library
   await gitkeep(p(".playbook", "_integrations"));
   await gitkeep(p(".playbook", "_shared"));
 
-  // --- Domain vocabulary ---
+  // --- Domain vocabulary — single merged _index.md per domain (K-42) ---
   if (domain !== "none") {
     const vocabFolder = `vocabulary-${domain}`;
-    await copyTemplate(`${domain}/vocabulary/README.md`, p(".playbook", vocabFolder, "README.md"));
-    await copyTemplate(`${domain}/vocabulary/AI-INSTRUCTIONS.md`, p(".playbook", vocabFolder, "AI-INSTRUCTIONS.md"));
+    await copyTemplate(`${domain}/vocabulary/_index.md`, p(".playbook", vocabFolder, "_index.md"));
     await copyTemplateFolder(
       `${domain}/vocabulary/templates`,
       p(".playbook", vocabFolder, "templates"),
