@@ -32,11 +32,23 @@
       "packages/create-playbook/package.json",
       "nx/core/package-json"
     ],
-    "tags.npm:dda": [
+    "tags.npm:planning-docs": [
       "packages/create-playbook/package.json",
       "nx/core/package-json"
     ],
     "metadata.targetGroups": [
+      "packages/create-playbook/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups.NPM Scripts": [
+      "packages/create-playbook/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups.NPM Scripts.0": [
+      "packages/create-playbook/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups.NPM Scripts.1": [
       "packages/create-playbook/package.json",
       "nx/core/package-json"
     ],
@@ -62,6 +74,226 @@
     ],
     "targets": [
       "packages/create-playbook/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.build": [
+      "packages/create-playbook/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.build.executor": [
+      "packages/create-playbook/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.build.options": [
+      "packages/create-playbook/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.build.metadata": [
+      "packages/create-playbook/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.build.options.script": [
+      "packages/create-playbook/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.build.metadata.scriptContent": [
+      "packages/create-playbook/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.build.metadata.runCommand": [
+      "packages/create-playbook/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.prepublishOnly": [
+      "packages/create-playbook/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.prepublishOnly.executor": [
+      "packages/create-playbook/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.prepublishOnly.options": [
+      "packages/create-playbook/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.prepublishOnly.metadata": [
+      "packages/create-playbook/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.prepublishOnly.options.script": [
+      "packages/create-playbook/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.prepublishOnly.metadata.scriptContent": [
+      "packages/create-playbook/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.prepublishOnly.metadata.runCommand": [
+      "packages/create-playbook/package.json",
+      "nx/core/package-json"
+    ]
+  },
+  "packages/playbook-skill": {
+    "root": [
+      "packages/playbook-skill/package.json",
+      "nx/core/package-json"
+    ],
+    "name": [
+      "packages/playbook-skill/package.json",
+      "nx/core/package-json"
+    ],
+    "tags": [
+      "packages/playbook-skill/package.json",
+      "nx/core/package-json"
+    ],
+    "tags.npm:public": [
+      "packages/playbook-skill/package.json",
+      "nx/core/package-json"
+    ],
+    "tags.npm:playbook": [
+      "packages/playbook-skill/package.json",
+      "nx/core/package-json"
+    ],
+    "tags.npm:claude-skill": [
+      "packages/playbook-skill/package.json",
+      "nx/core/package-json"
+    ],
+    "tags.npm:ai-assisted-development": [
+      "packages/playbook-skill/package.json",
+      "nx/core/package-json"
+    ],
+    "tags.npm:scaffold": [
+      "packages/playbook-skill/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups": [
+      "packages/playbook-skill/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups.NPM Scripts": [
+      "packages/playbook-skill/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups.NPM Scripts.0": [
+      "packages/playbook-skill/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.description": [
+      "packages/playbook-skill/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js": [
+      "packages/playbook-skill/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageName": [
+      "packages/playbook-skill/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageVersion": [
+      "packages/playbook-skill/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.isInPackageManagerWorkspaces": [
+      "packages/playbook-skill/package.json",
+      "nx/core/package-json"
+    ],
+    "targets": [
+      "packages/playbook-skill/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.build": [
+      "packages/playbook-skill/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.build.executor": [
+      "packages/playbook-skill/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.build.options": [
+      "packages/playbook-skill/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.build.metadata": [
+      "packages/playbook-skill/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.build.options.script": [
+      "packages/playbook-skill/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.build.metadata.scriptContent": [
+      "packages/playbook-skill/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.build.metadata.runCommand": [
+      "packages/playbook-skill/package.json",
+      "nx/core/package-json"
+    ]
+  },
+  "packages/playbook-software-library": {
+    "root": [
+      "packages/playbook-software-library/package.json",
+      "nx/core/package-json"
+    ],
+    "name": [
+      "packages/playbook-software-library/package.json",
+      "nx/core/package-json"
+    ],
+    "tags": [
+      "packages/playbook-software-library/package.json",
+      "nx/core/package-json"
+    ],
+    "tags.npm:public": [
+      "packages/playbook-software-library/package.json",
+      "nx/core/package-json"
+    ],
+    "tags.npm:playbook": [
+      "packages/playbook-software-library/package.json",
+      "nx/core/package-json"
+    ],
+    "tags.npm:dda": [
+      "packages/playbook-software-library/package.json",
+      "nx/core/package-json"
+    ],
+    "tags.npm:clean-architecture": [
+      "packages/playbook-software-library/package.json",
+      "nx/core/package-json"
+    ],
+    "tags.npm:ai-assisted-development": [
+      "packages/playbook-software-library/package.json",
+      "nx/core/package-json"
+    ],
+    "tags.npm:architecture-library": [
+      "packages/playbook-software-library/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups": [
+      "packages/playbook-software-library/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.description": [
+      "packages/playbook-software-library/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js": [
+      "packages/playbook-software-library/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageName": [
+      "packages/playbook-software-library/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageVersion": [
+      "packages/playbook-software-library/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.isInPackageManagerWorkspaces": [
+      "packages/playbook-software-library/package.json",
+      "nx/core/package-json"
+    ],
+    "targets": [
+      "packages/playbook-software-library/package.json",
       "nx/core/package-json"
     ]
   }

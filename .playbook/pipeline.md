@@ -1,6 +1,6 @@
 ---
 file: '.playbook/pipeline.md'
-responsibility: 'Complete reference for how the Playbook pipeline works — every stage, every output, every format. Currently identical to playbook/.playbook/pipeline.md content, pending a decision on repo-specific authoring (see maintenance.md and _index.md for the established own-terms pattern).'
+responsibility: 'Complete reference for how the Playbook pipeline works — every stage, every output, every format.'
 ai_instructions: 'Read as much or as little as needed. Points to templates and guides rather than duplicating them.'
 archive_rule: 'N/A — core reference file, kept current as stages evolve.'
 ---

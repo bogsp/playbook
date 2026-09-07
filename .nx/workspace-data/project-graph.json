@@ -1,5 +1,32 @@
 {
   "nodes": {
+    "@bogsp/playbook-software-library": {
+      "name": "@bogsp/playbook-software-library",
+      "type": "app",
+      "data": {
+        "root": "packages/playbook-software-library",
+        "name": "@bogsp/playbook-software-library",
+        "tags": [
+          "npm:public",
+          "npm:playbook",
+          "npm:dda",
+          "npm:clean-architecture",
+          "npm:ai-assisted-development",
+          "npm:architecture-library"
+        ],
+        "metadata": {
+          "targetGroups": {},
+          "description": "Reusable Playbook concerns, integrations, and solution patterns",
+          "js": {
+            "packageName": "@bogsp/playbook-software-library",
+            "packageVersion": "1.3.0",
+            "isInPackageManagerWorkspaces": true
+          }
+        },
+        "targets": {},
+        "implicitDependencies": []
+      }
+    },
     "create-playbook": {
       "name": "create-playbook",
       "type": "lib",
@@ -12,18 +39,91 @@
           "npm:context-kit",
           "npm:ai-assisted-development",
           "npm:scaffold",
-          "npm:dda"
+          "npm:planning-docs"
         ],
         "metadata": {
-          "targetGroups": {},
-          "description": "Scaffold the Playbook pipeline for any project",
+          "targetGroups": {
+            "NPM Scripts": [
+              "build",
+              "prepublishOnly"
+            ]
+          },
+          "description": "Initialize and manage Playbook projects",
           "js": {
             "packageName": "create-playbook",
+            "packageVersion": "3.1.0",
+            "isInPackageManagerWorkspaces": true
+          }
+        },
+        "targets": {
+          "build": {
+            "executor": "nx:run-script",
+            "options": {
+              "script": "build"
+            },
+            "metadata": {
+              "scriptContent": "node build.js",
+              "runCommand": "pnpm run build"
+            },
+            "configurations": {},
+            "parallelism": true
+          },
+          "prepublishOnly": {
+            "executor": "nx:run-script",
+            "options": {
+              "script": "prepublishOnly"
+            },
+            "metadata": {
+              "scriptContent": "node build.js",
+              "runCommand": "pnpm run prepublishOnly"
+            },
+            "configurations": {},
+            "parallelism": true
+          }
+        },
+        "implicitDependencies": []
+      }
+    },
+    "@bogsp/playbook-skill": {
+      "name": "@bogsp/playbook-skill",
+      "type": "app",
+      "data": {
+        "root": "packages/playbook-skill",
+        "name": "@bogsp/playbook-skill",
+        "tags": [
+          "npm:public",
+          "npm:playbook",
+          "npm:claude-skill",
+          "npm:ai-assisted-development",
+          "npm:scaffold"
+        ],
+        "metadata": {
+          "targetGroups": {
+            "NPM Scripts": [
+              "build"
+            ]
+          },
+          "description": "Claude Skill packaging of Playbook — scaffold a Playbook project directly in a Claude session, no CLI required",
+          "js": {
+            "packageName": "@bogsp/playbook-skill",
             "packageVersion": "1.0.0",
             "isInPackageManagerWorkspaces": true
           }
         },
-        "targets": {},
+        "targets": {
+          "build": {
+            "executor": "nx:run-script",
+            "options": {
+              "script": "build"
+            },
+            "metadata": {
+              "scriptContent": "node build.js",
+              "runCommand": "pnpm run build"
+            },
+            "configurations": {},
+            "parallelism": true
+          }
+        },
         "implicitDependencies": []
       }
     }
@@ -1363,7 +1463,9 @@
     }
   },
   "dependencies": {
+    "@bogsp/playbook-software-library": [],
     "create-playbook": [],
+    "@bogsp/playbook-skill": [],
     "npm:@biomejs/biome": [
       {
         "source": "npm:@biomejs/biome",
@@ -2406,5 +2508,5 @@
   },
   "version": "6.0",
   "errors": [],
-  "computedAt": 1779793645665
+  "computedAt": 1788765879466
 }
