@@ -1,5 +1,5 @@
 ---
-file: 'playbook/.playbook/_index.md'
+file: '.playbook/_index.md'
 responsibility: 'The single entry point for a Playbook project — project map, AI session rules, and structure combined. Copied into every new project by create-playbook. Read this file first, every session.'
 ai_instructions: 'Read this file completely before doing anything else, every session. It replaces README.md''s boot order and AI-INSTRUCTIONS.md''s session rules — both now live here. Update the Structure section whenever pieces are added or removed.'
 archive_rule: 'N/A — living document, kept current at all times.'

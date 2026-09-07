@@ -1,5 +1,5 @@
 ---
-file: 'playbook/.playbook/pipeline.md'
+file: '.playbook/pipeline.md'
 responsibility: 'Complete reference for how the Playbook pipeline works — every stage, every output, every format.'
 ai_instructions: 'Read as much or as little as needed. Points to templates and guides rather than duplicating them.'
 archive_rule: 'N/A — core reference file, kept current as stages evolve.'
