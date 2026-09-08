@@ -6,219 +6,415 @@
   "fileMap": {
     "nonProjectFiles": [
       {
-        "file": "playbook/.playbook/guides/audit.md",
-        "hash": "8341240707638282921"
+        "file": "playbook/docs/contracts/global.md",
+        "hash": "11301321611499780563"
       },
       {
-        "file": "playbook/.playbook/vocabulary-software/templates/structure.md",
-        "hash": "13771945580242163605"
+        "file": "playbook/.playbook/templates/_index.md",
+        "hash": "13750844701162300561"
       },
       {
-        "file": ".playbook/vocabulary-software/AI-INSTRUCTIONS.md",
-        "hash": "4891304820033054384"
+        "file": "playbook/docs/rewrite/decision-record.md",
+        "hash": "1702476923665438899"
       },
       {
-        "file": "docs/code-standards.md",
-        "hash": "6988046008641652139"
-      },
-      {
-        "file": "playbook/.playbook/templates/component.md",
-        "hash": "14203190247653578349"
-      },
-      {
-        "file": ".playbook/_concerns/logging.md",
-        "hash": "15657221988327914454"
-      },
-      {
-        "file": ".playbook/README.md",
-        "hash": "11871194242543092773"
-      },
-      {
-        "file": ".gitignore",
-        "hash": "6350701627612419317"
-      },
-      {
-        "file": "playbook/.playbook/guides/context-kit-standalone.md",
-        "hash": "1798965613636326102"
-      },
-      {
-        "file": "playbook/.playbook/vocabulary-manufacturing/templates/_index.md",
-        "hash": "1270998487065802677"
-      },
-      {
-        "file": "nx.json",
-        "hash": "11908029425187988017"
-      },
-      {
-        "file": "opencode.json",
-        "hash": "5877716226091408087"
-      },
-      {
-        "file": "playbook/.playbook/vocabulary-software/templates/sequencer.md",
-        "hash": "15548706577493901081"
-      },
-      {
-        "file": "docs/contracts/playbook-templates/flow-4-rules-stage.md",
-        "hash": "14166900164272237065"
-      },
-      {
-        "file": "playbook/.playbook/guides/_index.md",
-        "hash": "16341995361618678101"
-      },
-      {
-        "file": "docs/rewrite/system-map.md",
-        "hash": "14980739315039612322"
+        "file": "docs/flows/playbook-templates/flow-0-audit-existing-project.md",
+        "hash": "4568335475938847932"
       },
       {
         "file": "playbook/.playbook/vocabulary-production/_index.md",
         "hash": "1180848493430884837"
       },
       {
-        "file": ".playbook/kit/_archives/kanban/done-pre-migration.md",
-        "hash": "704474770081143774"
+        "file": ".playbook/_concerns/error-handling.md",
+        "hash": "18132033964788893616"
       },
       {
-        "file": "docs/contracts/playbook-templates/flow-1-thinking-resume-session.md",
-        "hash": "15574438863558217029"
+        "file": "docs/contracts/playbook-templates/flow-2-discovery-stage.md",
+        "hash": "1901157072317113837"
       },
       {
-        "file": "playbook/.playbook/vocabulary-production/templates/_index.md",
-        "hash": "15386849572662486138"
+        "file": "nx.json",
+        "hash": "11908029425187988017"
+      },
+      {
+        "file": "playbook/.playbook/guides/video-insights.md",
+        "hash": "5063321409031604728"
       },
       {
         "file": "docs/contracts/playbook-templates/flow-3-mapping-stage.md",
         "hash": "10625196677438919308"
       },
       {
-        "file": "docs/flows/playbook-templates/flows--flow-7-handoff-and-resume.md",
-        "hash": "13384958172017933590"
-      },
-      {
-        "file": "playbook/.playbook/guides/project-identity.md",
-        "hash": "11140377399027002933"
-      },
-      {
         "file": "docs/flows/playbook-templates/flow-1-thinking-resume-session.md",
         "hash": "3659283703322913505"
       },
       {
-        "file": "playbook/.playbook/guides/adopt.md",
-        "hash": "11946650715055646307"
+        "file": "docs/contracts/playbook-templates/flow-5-planning-stage.md",
+        "hash": "13180618445326394405"
       },
       {
-        "file": "playbook/docs/rollout/.gitkeep",
-        "hash": "3244421341483603138"
+        "file": ".gitignore",
+        "hash": "6350701627612419317"
       },
       {
-        "file": ".playbook/pipeline.md",
-        "hash": "2001037088235240246"
+        "file": "playbook/.playbook/README.md",
+        "hash": "6169009704483160633"
       },
       {
-        "file": "docs/flows/playbook-templates/flow-2-discovery-stage.md",
-        "hash": "7266494234850142136"
-      },
-      {
-        "file": ".playbook/kit/06-qa.md",
-        "hash": "13877327095952903688"
-      },
-      {
-        "file": "playbook/.playbook/_index.md",
-        "hash": "11183815248092112116"
-      },
-      {
-        "file": "docs/contracts/playbook-templates/flow-6-work-stage.md",
-        "hash": "7146235872444245679"
+        "file": ".playbook/vocabulary-software/AI-INSTRUCTIONS.md",
+        "hash": "4891304820033054384"
       },
       {
         "file": "docs/flows/playbook-templates/flow-3-mapping-stage.md",
         "hash": "4836775066388094008"
       },
       {
-        "file": "pnpm-workspace.yaml",
-        "hash": "5278389832866736010"
-      },
-      {
-        "file": "playbook/.playbook/_concerns/error-handling.md",
-        "hash": "18132033964788893616"
-      },
-      {
         "file": ".playbook/vocabulary-software/README.md",
         "hash": "3253412218910850371"
       },
       {
-        "file": "docs/flows/playbook-templates/flow-4-rules-stage.md",
-        "hash": "11911513029087191801"
+        "file": "playbook/.playbook/kit/01-process.md",
+        "hash": "1369749439559843707"
       },
       {
-        "file": ".playbook/kit/05-kanban.md",
-        "hash": "18359029150712131893"
-      },
-      {
-        "file": ".playbook/templates/structure.md",
-        "hash": "1457673856662853496"
-      },
-      {
-        "file": "playbook/.playbook/kit/02-exploration.md",
-        "hash": "11310170493297130271"
-      },
-      {
-        "file": "playbook/docs/contracts/contract.md",
-        "hash": "17359031269959308777"
-      },
-      {
-        "file": "playbook/.playbook/vocabulary-software/_index.md",
-        "hash": "3204273960085280855"
-      },
-      {
-        "file": "playbook/.playbook/guides/context-kit.md",
-        "hash": "16411441162211734877"
-      },
-      {
-        "file": "playbook/.playbook/guides/new-project.md",
-        "hash": "15812876573490862444"
-      },
-      {
-        "file": ".playbook/kit/02-exploration.md",
-        "hash": "3939181135744404821"
-      },
-      {
-        "file": "playbook/.playbook/kit/05-kanban.md",
-        "hash": "7665869440775568062"
-      },
-      {
-        "file": "playbook/.playbook/vocabulary-writing/templates/coordinator.md",
-        "hash": "4628312229876647440"
-      },
-      {
-        "file": ".playbook/_integrations/.gitkeep",
-        "hash": "3244421341483603138"
-      },
-      {
-        "file": ".playbook/kit/01-process.md",
-        "hash": "8877785793219793728"
-      },
-      {
-        "file": "playbook/.playbook/templates/coordinator.md",
-        "hash": "13723573119194165087"
+        "file": "docs/rewrite/decision-record.md",
+        "hash": "1702476923665438899"
       },
       {
         "file": ".playbook/kit/_archives/exploration/decisions-pre-migration.md",
         "hash": "1083483566019738220"
       },
       {
+        "file": "playbook/docs/flows/flow.md",
+        "hash": "14372382231811098048"
+      },
+      {
+        "file": "playbook/.playbook/kit/03-execution.md",
+        "hash": "3056848890888130598"
+      },
+      {
+        "file": "playbook/.playbook/templates/coordinator.md",
+        "hash": "13723573119194165087"
+      },
+      {
         "file": "README.md",
         "hash": "17084159633730169372"
       },
       {
-        "file": "docs/contracts/global.md",
-        "hash": "252977090908375546"
+        "file": "playbook/.playbook/_concerns/error-handling.md",
+        "hash": "18132033964788893616"
+      },
+      {
+        "file": ".playbook/_shared/.gitkeep",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": ".playbook/kit/_refs/sync-check-playbook-pipeline-2026-08-10.md",
+        "hash": "13225744368388847730"
+      },
+      {
+        "file": "playbook/.playbook/kit/00-prompts.md",
+        "hash": "14918179054145643760"
+      },
+      {
+        "file": "playbook/.playbook/vocabulary-manufacturing/templates/part.md",
+        "hash": "8307811569652889415"
+      },
+      {
+        "file": "playbook/.playbook/kit/_tests/test-case.md",
+        "hash": "14552771552310964111"
+      },
+      {
+        "file": ".playbook/maintenance.md",
+        "hash": "16118582033565569398"
+      },
+      {
+        "file": "playbook/.playbook/_concerns/logging.md",
+        "hash": "15657221988327914454"
+      },
+      {
+        "file": "playbook/.playbook/kit/05-kanban.md",
+        "hash": "7665869440775568062"
+      },
+      {
+        "file": "playbook/.playbook/vocabulary-manufacturing/templates/coordinator.md",
+        "hash": "12768819407267162769"
+      },
+      {
+        "file": "playbook/.playbook/pipeline.md",
+        "hash": "13942580179194891374"
+      },
+      {
+        "file": ".playbook/kit/05-kanban.md",
+        "hash": "18359029150712131893"
+      },
+      {
+        "file": "docs/flows/playbook-templates/flow-2-discovery-stage.md",
+        "hash": "7266494234850142136"
+      },
+      {
+        "file": "playbook/.playbook/guides/context-kit-standalone.md",
+        "hash": "1798965613636326102"
+      },
+      {
+        "file": ".playbook/README.md",
+        "hash": "6169009704483160633"
+      },
+      {
+        "file": "playbook/docs/code-standards-c.md",
+        "hash": "12914614731251606829"
+      },
+      {
+        "file": ".playbook/templates/concern.md",
+        "hash": "16789559818677079289"
+      },
+      {
+        "file": "playbook/.playbook/templates/integration.md",
+        "hash": "12493458902209351970"
+      },
+      {
+        "file": "playbook/.playbook/vocabulary-writing/templates/piece.md",
+        "hash": "17933130198595601696"
+      },
+      {
+        "file": ".playbook/templates/component.md",
+        "hash": "17770473010906367260"
+      },
+      {
+        "file": "playbook/.playbook/vocabulary-writing/templates/_index.md",
+        "hash": "3089503105260222417"
+      },
+      {
+        "file": ".playbook/kit/04-progress.md",
+        "hash": "2125516512444228326"
+      },
+      {
+        "file": "playbook/.playbook/maintenance.md",
+        "hash": "7845414874190771264"
+      },
+      {
+        "file": ".playbook/_index.md",
+        "hash": "5734971249809260843"
+      },
+      {
+        "file": "playbook/.playbook/vocabulary-software/templates/component.md",
+        "hash": "5282088835403665056"
+      },
+      {
+        "file": ".playbook/kit/01-process.md",
+        "hash": "5051662203417183821"
+      },
+      {
+        "file": "playbook/.playbook/vocabulary-software/templates/_index.md",
+        "hash": "10077750449738690310"
+      },
+      {
+        "file": ".playbook/pipeline.md",
+        "hash": "13942580179194891374"
+      },
+      {
+        "file": ".playbook/kit/02-exploration.md",
+        "hash": "3939181135744404821"
+      },
+      {
+        "file": "pnpm-lock.yaml",
+        "hash": "7346818492504472262"
+      },
+      {
+        "file": "playbook/.playbook/templates/concern.md",
+        "hash": "8496091492318166686"
+      },
+      {
+        "file": "docs/rollout/.gitkeep",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "playbook/.playbook/kit/02-exploration.md",
+        "hash": "11310170493297130271"
+      },
+      {
+        "file": "playbook/.playbook/vocabulary-production/templates/coordinator.md",
+        "hash": "10595178427286589998"
+      },
+      {
+        "file": "docs/code-standards.md",
+        "hash": "6988046008641652139"
+      },
+      {
+        "file": "package.json",
+        "hash": "3185231336242900430"
+      },
+      {
+        "file": "playbook/.playbook/templates/component.md",
+        "hash": "14203190247653578349"
+      },
+      {
+        "file": ".playbook/kit/_archives/progress/progress-pre-migration.md",
+        "hash": "2395610333801035845"
+      },
+      {
+        "file": "biome.json",
+        "hash": "15876799709302106241"
+      },
+      {
+        "file": "playbook/.playbook/guides/context-kit.md",
+        "hash": "16411441162211734877"
+      },
+      {
+        "file": "docs/contracts/playbook-templates/flow-0-audit-existing-project.md",
+        "hash": "6252752448582100238"
+      },
+      {
+        "file": "docs/contracts/playbook-templates/flow-1-thinking-resume-session.md",
+        "hash": "15574438863558217029"
+      },
+      {
+        "file": "playbook/.playbook/kit/04-progress.md",
+        "hash": "12192609417149076061"
+      },
+      {
+        "file": ".playbook/templates/coordinator.md",
+        "hash": "13503559899294781754"
+      },
+      {
+        "file": "opencode.json",
+        "hash": "5877716226091408087"
+      },
+      {
+        "file": "playbook/.playbook/vocabulary-manufacturing/templates/_index.md",
+        "hash": "1270998487065802677"
+      },
+      {
+        "file": "docs/flows/playbook-templates/flows--flow-6-work-stage.md",
+        "hash": "1283156791049684362"
+      },
+      {
+        "file": "docs/flows/playbook-templates/flow-5-planning-stage.md",
+        "hash": "4925480448710631022"
+      },
+      {
+        "file": ".playbook/templates/integration.md",
+        "hash": "4439422005342376305"
+      },
+      {
+        "file": "pnpm-workspace.yaml",
+        "hash": "5278389832866736010"
+      },
+      {
+        "file": "playbook/.playbook/guides/new-project.md",
+        "hash": "15812876573490862444"
+      },
+      {
+        "file": "docs/contracts/playbook-templates/flow-7-handoff-and-resume.md",
+        "hash": "7794804174684083645"
       },
       {
         "file": "playbook/docs/rewrite/risk-register.md",
         "hash": "7243357383362486592"
       },
       {
-        "file": ".playbook/_shared/.gitkeep",
+        "file": "playbook/.playbook/templates/structure.md",
+        "hash": "6789179997930245224"
+      },
+      {
+        "file": "playbook/.playbook/vocabulary-software/_index.md",
+        "hash": "3204273960085280855"
+      },
+      {
+        "file": "docs/rewrite/system-map.md",
+        "hash": "14980739315039612322"
+      },
+      {
+        "file": "playbook/.playbook/guides/_index.md",
+        "hash": "16341995361618678101"
+      },
+      {
+        "file": ".playbook/kit/_archives/progress/progress-reconciliation-2026-08.md",
+        "hash": "14246586851257093865"
+      },
+      {
+        "file": "playbook/.playbook/vocabulary-writing/_index.md",
+        "hash": "1239945044683492738"
+      },
+      {
+        "file": "docs/contracts/global.md",
+        "hash": "252977090908375546"
+      },
+      {
+        "file": "playbook/.playbook/vocabulary-production/templates/_index.md",
+        "hash": "15386849572662486138"
+      },
+      {
+        "file": "playbook/.playbook/_concerns/auth.md",
+        "hash": "17092641787452655665"
+      },
+      {
+        "file": "playbook/.playbook/guides/adopt.md",
+        "hash": "11946650715055646307"
+      },
+      {
+        "file": "playbook/.playbook/vocabulary-writing/templates/coordinator.md",
+        "hash": "4628312229876647440"
+      },
+      {
+        "file": "docs/flows/playbook-templates/flows--flow-7-handoff-and-resume.md",
+        "hash": "13384958172017933590"
+      },
+      {
+        "file": "playbook/.playbook/vocabulary-manufacturing/_index.md",
+        "hash": "10167105966060051141"
+      },
+      {
+        "file": "playbook/docs/code-standards.md",
+        "hash": "6988046008641652139"
+      },
+      {
+        "file": "playbook/.playbook/vocabulary-software/templates/structure.md",
+        "hash": "13771945580242163605"
+      },
+      {
+        "file": "docs/contracts/playbook-templates/flow-6-work-stage.md",
+        "hash": "7146235872444245679"
+      },
+      {
+        "file": "playbook/docs/rollout/.gitkeep",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "playbook/.playbook/guides/project-identity.md",
+        "hash": "11140377399027002933"
+      },
+      {
+        "file": ".playbook/_concerns/logging.md",
+        "hash": "15657221988327914454"
+      },
+      {
+        "file": "playbook/docs/code-standards-rust.md",
+        "hash": "12498756910673164328"
+      },
+      {
+        "file": ".playbook/kit/03-execution.md",
+        "hash": "14210835123075024152"
+      },
+      {
+        "file": ".playbook/templates/structure.md",
+        "hash": "1457673856662853496"
+      },
+      {
+        "file": "docs/rewrite/risk-register.md",
+        "hash": "7243357383362486592"
+      },
+      {
+        "file": "playbook/docs/rewrite/system-map.md",
+        "hash": "14980739315039612322"
+      },
+      {
+        "file": "playbook/.playbook/vocabulary-software/templates/sequencer.md",
+        "hash": "15548706577493901081"
+      },
+      {
+        "file": "playbook/.playbook/_integrations/.gitkeep",
         "hash": "3244421341483603138"
       },
       {
@@ -226,256 +422,64 @@
         "hash": "3244421341483603138"
       },
       {
-        "file": "playbook/.playbook/vocabulary-manufacturing/templates/coordinator.md",
-        "hash": "12768819407267162769"
+        "file": "playbook/.playbook/_index.md",
+        "hash": "5734971249809260843"
       },
       {
-        "file": "journey.md",
-        "hash": "7365773893014942289"
-      },
-      {
-        "file": ".playbook/_index.md",
-        "hash": "3191108853587347584"
-      },
-      {
-        "file": "playbook/docs/code-standards-c.md",
-        "hash": "12914614731251606829"
-      },
-      {
-        "file": "playbook/.playbook/kit/04-progress.md",
-        "hash": "12192609417149076061"
-      },
-      {
-        "file": "docs/contracts/playbook-templates/flow-5-planning-stage.md",
-        "hash": "13180618445326394405"
-      },
-      {
-        "file": ".playbook/maintenance.md",
-        "hash": "16118582033565569398"
-      },
-      {
-        "file": "biome.json",
-        "hash": "15876799709302106241"
-      },
-      {
-        "file": ".playbook/kit/03-execution.md",
-        "hash": "14210835123075024152"
-      },
-      {
-        "file": "playbook/.playbook/templates/structure.md",
-        "hash": "6789179997930245224"
-      },
-      {
-        "file": "playbook/.playbook/kit/00-prompts.md",
-        "hash": "14918179054145643760"
-      },
-      {
-        "file": "playbook/.playbook/guides/video-insights.md",
-        "hash": "5063321409031604728"
-      },
-      {
-        "file": ".playbook/kit/_archives/progress/progress-reconciliation-2026-08.md",
-        "hash": "14246586851257093865"
-      },
-      {
-        "file": "docs/contracts/playbook-templates/flow-0-audit-existing-project.md",
-        "hash": "6252752448582100238"
-      },
-      {
-        "file": "docs/rollout/.gitkeep",
-        "hash": "3244421341483603138"
-      },
-      {
-        "file": "playbook/.playbook/vocabulary-software/templates/_index.md",
-        "hash": "10077750449738690310"
-      },
-      {
-        "file": "playbook/docs/code-standards.md",
-        "hash": "6988046008641652139"
-      },
-      {
-        "file": ".playbook/templates/concern.md",
-        "hash": "16789559818677079289"
-      },
-      {
-        "file": "playbook/.playbook/_concerns/auth.md",
-        "hash": "17092641787452655665"
-      },
-      {
-        "file": ".playbook/kit/_archives/progress/progress-pre-migration.md",
-        "hash": "2395610333801035845"
-      },
-      {
-        "file": ".playbook/templates/_index.md",
-        "hash": "13750844701162300561"
-      },
-      {
-        "file": ".playbook/kit/_refs/sync-check-playbook-pipeline-2026-08-10.md",
-        "hash": "13225744368388847730"
-      },
-      {
-        "file": "playbook/.playbook/kit/01-process.md",
-        "hash": "1369749439559843707"
-      },
-      {
-        "file": "playbook/.playbook/kit/_tests/test-case.md",
-        "hash": "14552771552310964111"
-      },
-      {
-        "file": "docs/flows/playbook-templates/flow-0-audit-existing-project.md",
-        "hash": "4568335475938847932"
-      },
-      {
-        "file": "playbook/.playbook/vocabulary-writing/templates/_index.md",
-        "hash": "3089503105260222417"
-      },
-      {
-        "file": "pnpm-lock.yaml",
-        "hash": "7346818492504472262"
-      },
-      {
-        "file": ".playbook/templates/integration.md",
-        "hash": "4439422005342376305"
-      },
-      {
-        "file": "playbook/docs/contracts/global.md",
-        "hash": "11301321611499780563"
-      },
-      {
-        "file": "playbook/.playbook/vocabulary-manufacturing/templates/part.md",
-        "hash": "8307811569652889415"
-      },
-      {
-        "file": "playbook/.playbook/vocabulary-writing/templates/piece.md",
-        "hash": "17933130198595601696"
-      },
-      {
-        "file": ".playbook/templates/coordinator.md",
-        "hash": "13503559899294781754"
-      },
-      {
-        "file": "playbook/.playbook/maintenance.md",
-        "hash": "7845414874190771264"
-      },
-      {
-        "file": "docs/flows/playbook-templates/flows--flow-6-work-stage.md",
-        "hash": "1283156791049684362"
-      },
-      {
-        "file": "docs/rewrite/decision-record.md",
-        "hash": "1702476923665438899"
-      },
-      {
-        "file": ".playbook/_concerns/error-handling.md",
-        "hash": "18132033964788893616"
-      },
-      {
-        "file": "docs/contracts/playbook-templates/flow-7-handoff-and-resume.md",
-        "hash": "7794804174684083645"
-      },
-      {
-        "file": "playbook/.playbook/_integrations/.gitkeep",
-        "hash": "3244421341483603138"
-      },
-      {
-        "file": "playbook/.playbook/templates/integration.md",
-        "hash": "12493458902209351970"
-      },
-      {
-        "file": "playbook/docs/code-standards-ts.md",
-        "hash": "10907203004908051410"
-      },
-      {
-        "file": "docs/flows/playbook-templates/flow-5-planning-stage.md",
-        "hash": "4925480448710631022"
-      },
-      {
-        "file": "playbook/docs/code-standards-rust.md",
-        "hash": "12498756910673164328"
-      },
-      {
-        "file": "docs/code-standards-ts.md",
-        "hash": "10907203004908051410"
-      },
-      {
-        "file": ".playbook/kit/04-progress.md",
-        "hash": "9780875063174896871"
-      },
-      {
-        "file": "playbook/.playbook/kit/06-qa.md",
-        "hash": "7394721196440684385"
-      },
-      {
-        "file": "package.json",
-        "hash": "3185231336242900430"
-      },
-      {
-        "file": "playbook/.playbook/templates/concern.md",
-        "hash": "8496091492318166686"
-      },
-      {
-        "file": "docs/rewrite/risk-register.md",
-        "hash": "7243357383362486592"
-      },
-      {
-        "file": ".playbook/kit/00-prompts.md",
-        "hash": "1044189077356073879"
-      },
-      {
-        "file": "playbook/docs/rewrite/system-map.md",
-        "hash": "14980739315039612322"
-      },
-      {
-        "file": "playbook/.playbook/_concerns/logging.md",
-        "hash": "15657221988327914454"
-      },
-      {
-        "file": ".playbook/templates/component.md",
-        "hash": "17770473010906367260"
+        "file": ".playbook/kit/06-qa.md",
+        "hash": "13877327095952903688"
       },
       {
         "file": "playbook/.playbook/vocabulary-production/templates/deliverable.md",
         "hash": "9282255606561928968"
       },
       {
-        "file": "playbook/.playbook/kit/03-execution.md",
-        "hash": "3056848890888130598"
+        "file": "playbook/docs/contracts/contract.md",
+        "hash": "17359031269959308777"
       },
       {
-        "file": "playbook/.playbook/README.md",
-        "hash": "413481155823969059"
+        "file": "playbook/.playbook/kit/06-qa.md",
+        "hash": "7394721196440684385"
       },
       {
-        "file": "playbook/docs/flows/flow.md",
-        "hash": "14372382231811098048"
+        "file": "docs/contracts/playbook-templates/flow-4-rules-stage.md",
+        "hash": "14166900164272237065"
       },
       {
-        "file": "playbook/.playbook/vocabulary-manufacturing/_index.md",
-        "hash": "10167105966060051141"
+        "file": "playbook/.playbook/guides/audit.md",
+        "hash": "8341240707638282921"
       },
       {
-        "file": "playbook/.playbook/pipeline.md",
-        "hash": "1469725600456416474"
+        "file": ".playbook/_integrations/.gitkeep",
+        "hash": "3244421341483603138"
       },
       {
-        "file": "playbook/.playbook/vocabulary-writing/_index.md",
-        "hash": "1239945044683492738"
+        "file": "journey.md",
+        "hash": "7365773893014942289"
       },
       {
-        "file": "playbook/.playbook/vocabulary-software/templates/component.md",
-        "hash": "5282088835403665056"
+        "file": ".playbook/kit/_archives/kanban/done-pre-migration.md",
+        "hash": "704474770081143774"
       },
       {
-        "file": "docs/contracts/playbook-templates/flow-2-discovery-stage.md",
-        "hash": "1901157072317113837"
+        "file": ".playbook/kit/00-prompts.md",
+        "hash": "1044189077356073879"
       },
       {
-        "file": "playbook/docs/rewrite/decision-record.md",
-        "hash": "1702476923665438899"
+        "file": "playbook/docs/code-standards-ts.md",
+        "hash": "10907203004908051410"
       },
       {
-        "file": "playbook/.playbook/vocabulary-production/templates/coordinator.md",
-        "hash": "10595178427286589998"
+        "file": "docs/flows/playbook-templates/flow-4-rules-stage.md",
+        "hash": "11911513029087191801"
+      },
+      {
+        "file": "docs/code-standards-ts.md",
+        "hash": "10907203004908051410"
+      },
+      {
+        "file": ".playbook/templates/_index.md",
+        "hash": "13750844701162300561"
       }
     ],
     "projectFileMap": {
@@ -487,6 +491,62 @@
         {
           "file": "packages/playbook-skill/SKILL.md",
           "hash": "2903048091781372832"
+        },
+        {
+          "file": "packages/playbook-skill/assets/manufacturing/vocabulary/_index.md",
+          "hash": "10167105966060051141"
+        },
+        {
+          "file": "packages/playbook-skill/assets/manufacturing/vocabulary/templates/_index.md",
+          "hash": "1270998487065802677"
+        },
+        {
+          "file": "packages/playbook-skill/assets/manufacturing/vocabulary/templates/coordinator.md",
+          "hash": "12768819407267162769"
+        },
+        {
+          "file": "packages/playbook-skill/assets/manufacturing/vocabulary/templates/part.md",
+          "hash": "8307811569652889415"
+        },
+        {
+          "file": "packages/playbook-skill/assets/production/vocabulary/_index.md",
+          "hash": "1180848493430884837"
+        },
+        {
+          "file": "packages/playbook-skill/assets/production/vocabulary/templates/_index.md",
+          "hash": "15386849572662486138"
+        },
+        {
+          "file": "packages/playbook-skill/assets/production/vocabulary/templates/coordinator.md",
+          "hash": "10595178427286589998"
+        },
+        {
+          "file": "packages/playbook-skill/assets/production/vocabulary/templates/deliverable.md",
+          "hash": "9282255606561928968"
+        },
+        {
+          "file": "packages/playbook-skill/assets/software/vocabulary/_index.md",
+          "hash": "3204273960085280855"
+        },
+        {
+          "file": "packages/playbook-skill/assets/software/vocabulary/templates/_index.md",
+          "hash": "10077750449738690310"
+        },
+        {
+          "file": "packages/playbook-skill/assets/software/vocabulary/templates/component.md",
+          "hash": "5282088835403665056"
+        },
+        {
+          "file": "packages/playbook-skill/assets/software/vocabulary/templates/sequencer.md",
+          "hash": "15548706577493901081"
+        },
+        {
+          "file": "packages/playbook-skill/assets/software/vocabulary/templates/structure.md",
+          "hash": "13771945580242163605"
+        },
+        {
+          "file": "packages/playbook-skill/assets/universal/docs/contract-template.md",
+          "hash": "17359031269959308777"
         },
         {
           "file": "packages/playbook-skill/assets/universal/docs/decision-record.md",
@@ -501,8 +561,40 @@
           "hash": "11301321611499780563"
         },
         {
+          "file": "packages/playbook-skill/assets/universal/docs/risk-register.md",
+          "hash": "7243357383362486592"
+        },
+        {
           "file": "packages/playbook-skill/assets/universal/docs/system-map.md",
           "hash": "14980739315039612322"
+        },
+        {
+          "file": "packages/playbook-skill/assets/universal/kit/00-prompts.md",
+          "hash": "14918179054145643760"
+        },
+        {
+          "file": "packages/playbook-skill/assets/universal/kit/01-process.md",
+          "hash": "1369749439559843707"
+        },
+        {
+          "file": "packages/playbook-skill/assets/universal/kit/02-exploration.md",
+          "hash": "11310170493297130271"
+        },
+        {
+          "file": "packages/playbook-skill/assets/universal/kit/03-execution.md",
+          "hash": "3056848890888130598"
+        },
+        {
+          "file": "packages/playbook-skill/assets/universal/kit/04-progress.md",
+          "hash": "12192609417149076061"
+        },
+        {
+          "file": "packages/playbook-skill/assets/universal/kit/05-kanban.md",
+          "hash": "7665869440775568062"
+        },
+        {
+          "file": "packages/playbook-skill/assets/universal/kit/06-qa.md",
+          "hash": "7394721196440684385"
         },
         {
           "file": "packages/playbook-skill/assets/universal/kit/_tests/test-case.md",
@@ -510,11 +602,11 @@
         },
         {
           "file": "packages/playbook-skill/assets/universal/playbook/README.md",
-          "hash": "413481155823969059"
+          "hash": "6169009704483160633"
         },
         {
           "file": "packages/playbook-skill/assets/universal/playbook/_index.md",
-          "hash": "11183815248092112116"
+          "hash": "5734971249809260843"
         },
         {
           "file": "packages/playbook-skill/assets/universal/playbook/guides/_index.md",
@@ -529,6 +621,10 @@
           "hash": "8341240707638282921"
         },
         {
+          "file": "packages/playbook-skill/assets/universal/playbook/guides/context-kit-standalone.md",
+          "hash": "1798965613636326102"
+        },
+        {
           "file": "packages/playbook-skill/assets/universal/playbook/guides/context-kit.md",
           "hash": "16411441162211734877"
         },
@@ -541,12 +637,56 @@
           "hash": "11140377399027002933"
         },
         {
+          "file": "packages/playbook-skill/assets/universal/playbook/guides/video-insights.md",
+          "hash": "5063321409031604728"
+        },
+        {
           "file": "packages/playbook-skill/assets/universal/playbook/maintenance.md",
           "hash": "7845414874190771264"
         },
         {
           "file": "packages/playbook-skill/assets/universal/playbook/pipeline.md",
-          "hash": "1469725600456416474"
+          "hash": "13942580179194891374"
+        },
+        {
+          "file": "packages/playbook-skill/assets/universal/playbook/templates/_index.md",
+          "hash": "13750844701162300561"
+        },
+        {
+          "file": "packages/playbook-skill/assets/universal/playbook/templates/component.md",
+          "hash": "14203190247653578349"
+        },
+        {
+          "file": "packages/playbook-skill/assets/universal/playbook/templates/concern.md",
+          "hash": "8496091492318166686"
+        },
+        {
+          "file": "packages/playbook-skill/assets/universal/playbook/templates/coordinator.md",
+          "hash": "13723573119194165087"
+        },
+        {
+          "file": "packages/playbook-skill/assets/universal/playbook/templates/integration.md",
+          "hash": "12493458902209351970"
+        },
+        {
+          "file": "packages/playbook-skill/assets/universal/playbook/templates/structure.md",
+          "hash": "6789179997930245224"
+        },
+        {
+          "file": "packages/playbook-skill/assets/writing/vocabulary/_index.md",
+          "hash": "1239945044683492738"
+        },
+        {
+          "file": "packages/playbook-skill/assets/writing/vocabulary/templates/_index.md",
+          "hash": "3089503105260222417"
+        },
+        {
+          "file": "packages/playbook-skill/assets/writing/vocabulary/templates/coordinator.md",
+          "hash": "4628312229876647440"
+        },
+        {
+          "file": "packages/playbook-skill/assets/writing/vocabulary/templates/piece.md",
+          "hash": "17933130198595601696"
         },
         {
           "file": "packages/playbook-skill/build.js",
@@ -687,6 +827,202 @@
         {
           "file": "packages/create-playbook/package.json",
           "hash": "17408832279706442649"
+        },
+        {
+          "file": "packages/create-playbook/templates/manufacturing/vocabulary/_index.md",
+          "hash": "10167105966060051141"
+        },
+        {
+          "file": "packages/create-playbook/templates/manufacturing/vocabulary/templates/_index.md",
+          "hash": "1270998487065802677"
+        },
+        {
+          "file": "packages/create-playbook/templates/manufacturing/vocabulary/templates/coordinator.md",
+          "hash": "12768819407267162769"
+        },
+        {
+          "file": "packages/create-playbook/templates/manufacturing/vocabulary/templates/part.md",
+          "hash": "8307811569652889415"
+        },
+        {
+          "file": "packages/create-playbook/templates/production/vocabulary/_index.md",
+          "hash": "1180848493430884837"
+        },
+        {
+          "file": "packages/create-playbook/templates/production/vocabulary/templates/_index.md",
+          "hash": "15386849572662486138"
+        },
+        {
+          "file": "packages/create-playbook/templates/production/vocabulary/templates/coordinator.md",
+          "hash": "10595178427286589998"
+        },
+        {
+          "file": "packages/create-playbook/templates/production/vocabulary/templates/deliverable.md",
+          "hash": "9282255606561928968"
+        },
+        {
+          "file": "packages/create-playbook/templates/software/vocabulary/_index.md",
+          "hash": "3204273960085280855"
+        },
+        {
+          "file": "packages/create-playbook/templates/software/vocabulary/templates/_index.md",
+          "hash": "10077750449738690310"
+        },
+        {
+          "file": "packages/create-playbook/templates/software/vocabulary/templates/component.md",
+          "hash": "5282088835403665056"
+        },
+        {
+          "file": "packages/create-playbook/templates/software/vocabulary/templates/sequencer.md",
+          "hash": "15548706577493901081"
+        },
+        {
+          "file": "packages/create-playbook/templates/software/vocabulary/templates/structure.md",
+          "hash": "13771945580242163605"
+        },
+        {
+          "file": "packages/create-playbook/templates/universal/docs/contracts/contract-template.md",
+          "hash": "17359031269959308777"
+        },
+        {
+          "file": "packages/create-playbook/templates/universal/docs/contracts/global.md",
+          "hash": "11301321611499780563"
+        },
+        {
+          "file": "packages/create-playbook/templates/universal/docs/flows/flow-template.md",
+          "hash": "14372382231811098048"
+        },
+        {
+          "file": "packages/create-playbook/templates/universal/docs/rewrite/decision-record.md",
+          "hash": "1702476923665438899"
+        },
+        {
+          "file": "packages/create-playbook/templates/universal/docs/rewrite/risk-register.md",
+          "hash": "7243357383362486592"
+        },
+        {
+          "file": "packages/create-playbook/templates/universal/docs/rewrite/system-map.md",
+          "hash": "14980739315039612322"
+        },
+        {
+          "file": "packages/create-playbook/templates/universal/kit/00-prompts.md",
+          "hash": "14918179054145643760"
+        },
+        {
+          "file": "packages/create-playbook/templates/universal/kit/01-process.md",
+          "hash": "1369749439559843707"
+        },
+        {
+          "file": "packages/create-playbook/templates/universal/kit/02-exploration.md",
+          "hash": "11310170493297130271"
+        },
+        {
+          "file": "packages/create-playbook/templates/universal/kit/03-execution.md",
+          "hash": "3056848890888130598"
+        },
+        {
+          "file": "packages/create-playbook/templates/universal/kit/04-progress.md",
+          "hash": "12192609417149076061"
+        },
+        {
+          "file": "packages/create-playbook/templates/universal/kit/05-kanban.md",
+          "hash": "7665869440775568062"
+        },
+        {
+          "file": "packages/create-playbook/templates/universal/kit/06-qa.md",
+          "hash": "7394721196440684385"
+        },
+        {
+          "file": "packages/create-playbook/templates/universal/kit/_tests/test-case.md",
+          "hash": "14552771552310964111"
+        },
+        {
+          "file": "packages/create-playbook/templates/universal/playbook/README.md",
+          "hash": "6169009704483160633"
+        },
+        {
+          "file": "packages/create-playbook/templates/universal/playbook/_index.md",
+          "hash": "5734971249809260843"
+        },
+        {
+          "file": "packages/create-playbook/templates/universal/playbook/guides/_index.md",
+          "hash": "16341995361618678101"
+        },
+        {
+          "file": "packages/create-playbook/templates/universal/playbook/guides/adopt.md",
+          "hash": "11946650715055646307"
+        },
+        {
+          "file": "packages/create-playbook/templates/universal/playbook/guides/audit.md",
+          "hash": "8341240707638282921"
+        },
+        {
+          "file": "packages/create-playbook/templates/universal/playbook/guides/context-kit-standalone.md",
+          "hash": "1798965613636326102"
+        },
+        {
+          "file": "packages/create-playbook/templates/universal/playbook/guides/context-kit.md",
+          "hash": "16411441162211734877"
+        },
+        {
+          "file": "packages/create-playbook/templates/universal/playbook/guides/new-project.md",
+          "hash": "15812876573490862444"
+        },
+        {
+          "file": "packages/create-playbook/templates/universal/playbook/guides/project-identity.md",
+          "hash": "11140377399027002933"
+        },
+        {
+          "file": "packages/create-playbook/templates/universal/playbook/guides/video-insights.md",
+          "hash": "5063321409031604728"
+        },
+        {
+          "file": "packages/create-playbook/templates/universal/playbook/maintenance.md",
+          "hash": "7845414874190771264"
+        },
+        {
+          "file": "packages/create-playbook/templates/universal/playbook/pipeline.md",
+          "hash": "13942580179194891374"
+        },
+        {
+          "file": "packages/create-playbook/templates/universal/playbook/templates/_index.md",
+          "hash": "13750844701162300561"
+        },
+        {
+          "file": "packages/create-playbook/templates/universal/playbook/templates/component.md",
+          "hash": "14203190247653578349"
+        },
+        {
+          "file": "packages/create-playbook/templates/universal/playbook/templates/concern.md",
+          "hash": "8496091492318166686"
+        },
+        {
+          "file": "packages/create-playbook/templates/universal/playbook/templates/coordinator.md",
+          "hash": "13723573119194165087"
+        },
+        {
+          "file": "packages/create-playbook/templates/universal/playbook/templates/integration.md",
+          "hash": "12493458902209351970"
+        },
+        {
+          "file": "packages/create-playbook/templates/universal/playbook/templates/structure.md",
+          "hash": "6789179997930245224"
+        },
+        {
+          "file": "packages/create-playbook/templates/writing/vocabulary/_index.md",
+          "hash": "1239945044683492738"
+        },
+        {
+          "file": "packages/create-playbook/templates/writing/vocabulary/templates/_index.md",
+          "hash": "3089503105260222417"
+        },
+        {
+          "file": "packages/create-playbook/templates/writing/vocabulary/templates/coordinator.md",
+          "hash": "4628312229876647440"
+        },
+        {
+          "file": "packages/create-playbook/templates/writing/vocabulary/templates/piece.md",
+          "hash": "17933130198595601696"
         }
       ]
     }
