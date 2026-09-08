@@ -9,7 +9,7 @@ node_modules/
 
 # Nx
 .nx/cache
-.nx/workspace-data
+.nx/workspace-data/*
 
 # Build outputs
 dist/
