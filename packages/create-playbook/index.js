@@ -125,7 +125,7 @@ async function runInit(nameArg) {
 
   await scaffold({ projectName, domain, projectType, root, libraryVersion, reviewGate, pipelineMode });
 
-  console.log(`  ✓ ${countMessage(projectType, domain, installLib)}\n`);
+  console.log(`  ✓ ${countMessage(projectType, domain, Boolean(libraryVersion))}\n`);
   console.log("  ─────────────────────────────────────");
   console.log("  Done. Your Playbook project is ready.\n");
   console.log("  Next steps:");
@@ -207,9 +207,9 @@ function projectTypeLabel(type) {
   }[type];
 }
 
-function countMessage(projectType, domain, installLib) {
+function countMessage(projectType, domain, libraryInstalled) {
   const parts = ["Scaffold created"];
   if (domain !== "none") parts.push(`${domain} vocabulary included`);
-  if (installLib) parts.push("library docs installed");
+  if (libraryInstalled) parts.push("library docs installed");
   return parts.join(" · ");
 }
