@@ -28,5 +28,6 @@
     "build.js",
     "assets/",
     "README.md"
-  ]
+  ],
+  "type": "module"
 }

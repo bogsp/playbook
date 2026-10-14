@@ -6,29 +6,22 @@
 import { mkdir, writeFile, readFile, copyFile } from "fs/promises";
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
-import { existsSync } from "fs";
+import { existsSync, readFileSync } from "fs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const templatesDir = join(__dirname, "..", "templates");
 
-// Split per-type template folders (K-33 universal, K-34 software, K-38
-// writing/production/manufacturing). Mirrors the source list in build.js —
-// keep both in sync if a template type is added or removed.
-const UNIVERSAL_TEMPLATE_FILES = [
-  "_index.md",
-  "structure.md",
-  "coordinator.md",
-  "component.md",
-  "concern.md",
-  "integration.md",
-];
-
-const DOMAIN_TEMPLATE_FILES = {
-  software: ["_index.md", "structure.md", "sequencer.md", "component.md"],
-  writing: ["_index.md", "coordinator.md", "piece.md"],
-  production: ["_index.md", "coordinator.md", "deliverable.md"],
-  manufacturing: ["_index.md", "coordinator.md", "part.md"],
-};
+// The list of template files comes from templates/manifest.json — a copy of
+// packages/template-manifest.json written by build.js. There is no second
+// list to keep in sync here.
+let manifest;
+try {
+  manifest = JSON.parse(readFileSync(join(templatesDir, "manifest.json"), "utf8"));
+} catch {
+  throw new Error("templates/manifest.json not found — run `pnpm build` in packages/create-playbook first.");
+}
+const UNIVERSAL_TEMPLATE_FILES = manifest.universalTemplates;
+const DOMAIN_TEMPLATE_FILES = manifest.domains;
 
 /**
  * Check whether the current working directory is a Playbook project.

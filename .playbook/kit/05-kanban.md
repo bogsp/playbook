@@ -39,15 +39,11 @@ Clerical track fully closed as of 2026-08-29.
 
 Backlog
 
-[K-13] Update packages/create-playbook/ pathing
-Type: CODE
-Description: Update the CLI scaffold logic to point to the new playbook/ directory instead of the old locations.
-Blocked by: K-12
-
 [K-19] Map CLI flows — create-playbook
 Type: DDA
 Description: docs/flows/create-playbook/{_index,flow-1-init,flow-2-sync,flow-3-generate}.md. Draft content exists but is unconfirmed — paused in favor of Track C. Resume and confirm before starting K-20.
 Blocked by: none (deprioritized, not blocked)
+Note 2026-10-14: no draft exists in the repo or on GitHub main — docs/flows/create-playbook/ was never committed. Treat as unstarted unless the person uploads the draft.
 
 [K-20] Write docs/contracts/create-playbook/
 Type: DDA
@@ -99,16 +95,18 @@ Type: SYNC
 Description: Update .playbook/_index.md Structure section and Folder Map to reflect all three new doc trees.
 Blocked by: K-22, K-26, K-30
 
-[K-32] Update docs/flows/playbook-templates/_index.md and docs/contracts/_index.md
+[K-32] Create docs/flows/playbook-templates/_index.md and docs/contracts/_index.md
 Type: SYNC
-Description: Add flow-6-work-stage, flow-7-handoff-and-resume, and all seven new per-flow contracts (flow-1 through flow-7) to their respective index/dependency-map tables. Requires reading the current live _index.md files, which were not present in session context when K-28 closed.
+Description: Corrected 2026-10-14 after checking the live repo and GitHub main: neither _index.md exists (the earlier log entries assumed they did). Author both for the files that exist today — eight stage flows (flow-0 … flow-7) and their eight per-flow contracts plus docs/contracts/global.md — then extend when K-50 lands.
+Blocked by: none
+
+[K-50] Author the journey flows for docs/flows/playbook-templates/
+Type: DDA
+Description: Raised 2026-10-14. K-27's Done note and the 2026-08-11 progress log describe five journey flows (edit-template-source, build-and-publish, new-project, adopt-existing-project, resume-session) plus a rewritten flows _index.md with a Groups split and dependency map. None exist in the repo or on GitHub main; only the eight pipeline-stage flows do. Author them (or upload the originals), then fold into K-32's index.
 Blocked by: none
 
 In Progress
-[K-12] Populate playbook/ template structure
-Type: SYNC
-Description: Move and organize the domain-agnostic Playbook templates into the new root playbook/ directory (including docs/, .playbook/kit/, and templates/).
-Blocked by: none
+(none)
 
 Blocked
 (none)
@@ -148,6 +146,7 @@ Fixed 2026-08-12: Resolution note was incomplete. Stray copies of templates.md a
 
 [K-27] Map template flows — playbook-templates
 (Resolved, scope expanded twice beyond original ticket text: authored docs/flows/playbook-templates/ with seven flows — flow-1-edit-template-source and flow-2-build-and-publish for internal build mechanics, plus flow-3-new-project, flow-4-adopt-existing-project, flow-5-audit-existing-project, flow-6-resume-session, flow-7-milestone-handoff-and-resume for pipeline user journeys. _index.md rewritten with a Groups split and full dependency map. Also standardized frontmatter on playbook/docs/flows/flow.md, playbook/docs/contracts/contract.md, and playbook/docs/contracts/global.md as part of the same pass, fixing a hardcoded Type: software bug in those templates. See 02-exploration.md 2026-08-11 decisions and Q-04. Amended again to add the pipeline-stage-numbered flow-6-work-stage.md and flow-7-handoff-and-resume.md needed to companion K-28's contracts — the pipeline-stage flow set (flow-0 through flow-7, matching Audit/Thinking/Discovery/Mapping/Rules/Planning/Work/Handoff) is distinct from the mechanics/journey flow set named above and both currently coexist under docs/flows/playbook-templates/; K-32 should confirm _index.md reflects both sets correctly rather than treating this as a naming conflict to resolve silently.)
+Corrected 2026-10-14: verified against the live repo and GitHub main — only the eight pipeline-stage flows (flow-0 … flow-7) exist. The mechanics/journey flows and the rewritten _index.md described above were never committed; re-ticketed as K-50 and K-32. The K-13 backlog entry was closed and moved to Done.)
 
 [K-28] Write docs/contracts/playbook-templates/
 (Resolved: Authored docs/contracts/playbook-templates/flow-1 through flow-7, plus updated docs/contracts/global.md (the playbook-templates track's global contract, retained at root docs/contracts/global.md per the Q-04 decision) with two new sections — §9 Plan-Before-Divergence, §10 No Invented Content. All 8 contracts complete: global.md, flow-0 (already existed from an earlier session), flow-1 through flow-7. Byproduct: authored the two flow documents that were missing despite being listed in global.md's governs field — flow-6-work-stage.md and flow-7-handoff-and-resume.md — logged as an amendment to K-27 above.)
@@ -220,3 +219,22 @@ Type: DDA
 [K-49] Update create-playbook CLI for the K-42 consolidation and new settings
 Type: CODE
 (Resolved 2026-08-31, pipeline review session: index.js -- added two questions to runInit() mirroring the domain question: Pipeline Mode (kit-only default / full) and Review Gate (balanced default / strict / lean), both passed through to scaffold() and echoed in the pre-scaffold summary; "Next steps" output now points to _index.md instead of the retired AI-INSTRUCTIONS.md. build.js -- removed the universal AI-INSTRUCTIONS.md source entry (file no longer exists); replaced the four domain README.md+AI-INSTRUCTIONS.md source pairs with a single vocabulary-[domain]/_index.md entry each, matching the K-42 consolidation. scaffold.js -- removed the AI-INSTRUCTIONS.md copyTemplate call; domain vocabulary block now copies _index.md instead of README.md+AI-INSTRUCTIONS.md; buildIndex() takes new reviewGate/pipelineMode params and overwrites the template's default frontmatter values with the person's actual choice (even when it matches the default, so the field is never silently stale). package.json version bumped 3.0.0 -> 3.1.0 (no CHANGELOG.md exists for this package, unlike playbook-software-library, so none required). README.md's documented question list and scaffolded-structure diagrams updated to match -- 6 questions now instead of 4, vocabulary folders show a single _index.md instead of README.md+AI-INSTRUCTIONS.md pairs. NOT done this session: actually running `pnpm build` against the real repo tree, or testing a real `create-playbook init` scaffold end-to-end -- no filesystem access to the actual repo in this session. Both must be run and verified before publishing a new version.)
+
+[K-12] Populate playbook/ template structure
+(Resolved 2026-10-14: playbook/ holds the template source (.playbook/ and docs/), and both packages build from it — verified by clean builds and a scaffold of all four domains. Residual: playbook/docs/code-standards-c.md and -rust.md remain by decision (kept 2026-10-14); the 03-execution.md criterion about archiving them stays open.)
+
+[K-13] Update packages/create-playbook/ pathing
+(Resolved 2026-10-14: build.js reads from playbook/ via packages/template-manifest.json; verified by build plus real scaffolds for software, writing, production, and manufacturing.)
+
+[K-51] Single-source the template file list (packages/template-manifest.json)
+Type: CODE
+(Resolved 2026-10-14, Topic B: one manifest replaces three hand-synced lists (create-playbook/build.js, playbook-skill/build.js, lib/scaffold.js). Both builds and scaffold.js read it; build output verified byte-identical to the previous builds, plus the manifest copy in the CLI's templates/.)
+
+[K-52] Stop committing the CLI's generated templates/
+Type: CODE
+(Resolved 2026-10-14, Topic B: packages/create-playbook/templates/ is gitignored and untracked; rebuilt on publish (prepublishOnly) and via pnpm build. playbook-skill/assets/ stays committed because the Skill is installed from a clone.)
+
+[K-53] Add a drift check for committed generated output
+Type: CODE
+(Resolved 2026-10-14, Topic B: packages/check-drift.mjs (pnpm check:drift) rebuilds into a temp folder and fails if playbook-skill/assets/ differs, or if the CLI build fails. Tested both ways: passes on a clean tree, fails on a tampered asset. Not yet wired into CI or a pre-commit hook.)
+

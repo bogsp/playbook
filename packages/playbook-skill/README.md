@@ -33,12 +33,14 @@ pnpm build
 ```
 
 Run this once before first use, and again any time `playbook/.playbook/`
-changes in a way the skill should pick up — same discipline as
-`create-playbook`'s own `pnpm build`. If
-`packages/create-playbook/build.js` and this file's `build.js` ever copy a
-different set of files from the same source, that's a bug — the
-`UNIVERSAL_TEMPLATE_FILES` / `DOMAIN_TEMPLATE_FILES` constants in both
-files should be kept in sync.
+changes in a way the skill should pick up. `assets/` is committed (the Skill
+is installed from a clone), so it is guarded by a drift check: run
+`pnpm check:drift` from the repo root — it fails if `assets/` differs from a
+fresh build, which means someone changed the template and forgot to rebuild.
+
+Which files get copied is defined once, in
+[`../template-manifest.json`](../template-manifest.json), shared with
+`create-playbook`. There is no second list to keep in sync.
 
 ## Installing
 

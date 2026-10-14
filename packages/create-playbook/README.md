@@ -191,8 +191,12 @@ Templates are copied from the Playbook source files at build time. To rebuild:
 pnpm build
 ```
 
-This copies the latest files from `playbook/.playbook/` and `playbook/docs/`
-into `templates/`. Always run before publishing.
+This copies the files listed in [`../template-manifest.json`](../template-manifest.json)
+from `playbook/.playbook/` and `playbook/docs/` into `templates/`. That manifest is
+the only list of shipped files — add or remove a template there, nowhere else.
+
+`templates/` is gitignored build output: run `pnpm build` after cloning and
+before running the CLI locally. It is rebuilt automatically on publish.
 
 ---
 

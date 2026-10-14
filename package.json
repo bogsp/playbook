@@ -11,7 +11,9 @@
   "scripts": {
     "lint": "biome check packages",
     "lint:fix": "biome check --write packages",
-    "format": "biome format --write packages"
+    "format": "biome format --write packages",
+    "build": "node packages/create-playbook/build.js && node packages/playbook-skill/build.js",
+    "check:drift": "node packages/check-drift.mjs"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.4.4",

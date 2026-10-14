@@ -2,148 +2,51 @@
 // build.js
 // File: packages/playbook-skill/build.js
 //
-// Copies source files from playbook/.playbook/ and playbook/docs/ into
-// packages/playbook-skill/assets/ before the skill is packaged.
+// Copies the files listed in packages/template-manifest.json from
+// playbook/.playbook/ and playbook/docs/ into packages/playbook-skill/assets/.
+// assets/ is committed (the Skill is installed from a clone) and guarded by
+// `pnpm check:drift`, which fails if assets/ differs from a fresh build.
 //
-// Same source tree as packages/create-playbook/build.js — this file exists
-// so the Skill has its own build step producing its own assets/ folder,
-// without hand-maintaining a second copy of any template content. If the
-// two build scripts drift in what they copy, that is itself a bug; keep
-// UNIVERSAL_TEMPLATE_FILES / DOMAIN_TEMPLATE_FILES in sync between them.
+// Same manifest as packages/create-playbook/build.js — the list of shipped
+// files lives ONLY in the manifest. Only the output layout differs (docs/
+// is flat here).
 //
-// Run: node build.js
+// Run: node build.js [--out <dir>]
 // Or via package.json script: pnpm build
 
 import { cp, rm, mkdir } from "fs/promises";
-import { join, dirname } from "path";
+import { readFileSync } from "fs";
+import { join, dirname, resolve } from "path";
 import { fileURLToPath } from "url";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const repoRoot = join(__dirname, "..", "..");
-const assetsDir = join(__dirname, "assets");
+const manifestPath = join(__dirname, "..", "template-manifest.json");
+const outIdx = process.argv.indexOf("--out");
+const assetsDir = outIdx > -1 ? resolve(process.argv[outIdx + 1]) : join(__dirname, "assets");
 
-const UNIVERSAL_TEMPLATE_FILES = [
-  "_index.md",
-  "structure.md",
-  "coordinator.md",
-  "component.md",
-  "concern.md",
-  "integration.md",
-];
+const m = JSON.parse(readFileSync(manifestPath, "utf8"));
 
-const DOMAIN_TEMPLATE_FILES = {
-  software: ["_index.md", "structure.md", "sequencer.md", "component.md"],
-  writing: ["_index.md", "coordinator.md", "piece.md"],
-  production: ["_index.md", "coordinator.md", "deliverable.md"],
-  manufacturing: ["_index.md", "coordinator.md", "part.md"],
-};
+const pb = (...p) => join(repoRoot, "playbook", ".playbook", ...p);
+const pd = (...p) => join(repoRoot, "playbook", "docs", ...p);
+const out = (...p) => join(assetsDir, ...p);
 
-const GUIDE_FILES = [
-  "_index.md",
-  "new-project.md",
-  "adopt.md",
-  "audit.md",
-  "context-kit.md",
-  "context-kit-standalone.md",
-  "project-identity.md",
-  "video-insights.md",
-];
+const sources = [];
 
-const KIT_FILES = [
-  "00-prompts.md",
-  "01-process.md",
-  "02-exploration.md",
-  "03-execution.md",
-  "04-progress.md",
-  "05-kanban.md",
-  "06-qa.md",
-];
-
-const sources = [
-  // Universal playbook files
-  {
-    from: join(repoRoot, "playbook", ".playbook", "_index.md"),
-    to: join(assetsDir, "universal", "playbook", "_index.md"),
-  },
-  {
-    from: join(repoRoot, "playbook", ".playbook", "README.md"),
-    to: join(assetsDir, "universal", "playbook", "README.md"),
-  },
-  {
-    from: join(repoRoot, "playbook", ".playbook", "pipeline.md"),
-    to: join(assetsDir, "universal", "playbook", "pipeline.md"),
-  },
-  {
-    from: join(repoRoot, "playbook", ".playbook", "maintenance.md"),
-    to: join(assetsDir, "universal", "playbook", "maintenance.md"),
-  },
-  // Docs templates
-  {
-    from: join(repoRoot, "playbook", "docs", "flows", "flow.md"),
-    to: join(assetsDir, "universal", "docs", "flow-template.md"),
-  },
-  {
-    from: join(repoRoot, "playbook", "docs", "contracts", "contract.md"),
-    to: join(assetsDir, "universal", "docs", "contract-template.md"),
-  },
-  {
-    from: join(repoRoot, "playbook", "docs", "contracts", "global.md"),
-    to: join(assetsDir, "universal", "docs", "global.md"),
-  },
-  {
-    from: join(repoRoot, "playbook", "docs", "rewrite", "system-map.md"),
-    to: join(assetsDir, "universal", "docs", "system-map.md"),
-  },
-  {
-    from: join(repoRoot, "playbook", "docs", "rewrite", "decision-record.md"),
-    to: join(assetsDir, "universal", "docs", "decision-record.md"),
-  },
-  {
-    from: join(repoRoot, "playbook", "docs", "rewrite", "risk-register.md"),
-    to: join(assetsDir, "universal", "docs", "risk-register.md"),
-  },
-  {
-    from: join(repoRoot, "playbook", ".playbook", "kit", "_tests", "test-case.md"),
-    to: join(assetsDir, "universal", "kit", "_tests", "test-case.md"),
-  },
-];
-
-// Universal guides
-for (const file of GUIDE_FILES) {
-  sources.push({
-    from: join(repoRoot, "playbook", ".playbook", "guides", file),
-    to: join(assetsDir, "universal", "playbook", "guides", file),
-  });
+for (const f of m.playbookRoot) sources.push({ from: pb(f), to: out("universal", "playbook", f) });
+for (const f of m.guides) sources.push({ from: pb("guides", f), to: out("universal", "playbook", "guides", f) });
+for (const f of m.kit) sources.push({ from: pb("kit", f), to: out("universal", "kit", f) });
+for (const f of m.kitTests) sources.push({ from: pb("kit", "_tests", f), to: out("universal", "kit", "_tests", f) });
+for (const d of m.docs) sources.push({ from: pd(d.group, d.source), to: out("universal", "docs", d.name) });
+for (const f of m.universalTemplates) {
+  sources.push({ from: pb("templates", f), to: out("universal", "playbook", "templates", f) });
 }
 
-// Universal kit files
-for (const file of KIT_FILES) {
-  sources.push({
-    from: join(repoRoot, "playbook", ".playbook", "kit", file),
-    to: join(assetsDir, "universal", "kit", file),
-  });
-}
-
-// Universal templates/ folder
-for (const file of UNIVERSAL_TEMPLATE_FILES) {
-  sources.push({
-    from: join(repoRoot, "playbook", ".playbook", "templates", file),
-    to: join(assetsDir, "universal", "playbook", "templates", file),
-  });
-}
-
-// Domain vocabulary — single merged _index.md per domain (post K-42), plus
-// that domain's templates/ folder
-for (const [domain, files] of Object.entries(DOMAIN_TEMPLATE_FILES)) {
-  sources.push({
-    from: join(repoRoot, "playbook", ".playbook", `vocabulary-${domain}`, "_index.md"),
-    to: join(assetsDir, domain, "vocabulary", "_index.md"),
-  });
-  for (const file of files) {
-    sources.push({
-      from: join(repoRoot, "playbook", ".playbook", `vocabulary-${domain}`, "templates", file),
-      to: join(assetsDir, domain, "vocabulary", "templates", file),
-    });
+// Domain vocabulary — single merged _index.md per domain, plus that domain's templates/ folder
+for (const [domain, files] of Object.entries(m.domains)) {
+  sources.push({ from: pb(`vocabulary-${domain}`, "_index.md"), to: out(domain, "vocabulary", "_index.md") });
+  for (const f of files) {
+    sources.push({ from: pb(`vocabulary-${domain}`, "templates", f), to: out(domain, "vocabulary", "templates", f) });
   }
 }
 

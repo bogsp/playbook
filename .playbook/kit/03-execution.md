@@ -41,13 +41,13 @@ Acceptance Criteria:
 
 - [x] Root `.playbook/` contains ONLY the project's own meta-pipeline files.
 - [ ] Root `playbook/` contains ONLY the clean, domain-agnostic template source files.
-- [ ] `packages/create-playbook/` pathing logic updated to pull from the newly mapped `playbook/` template directory.
+- [x] `packages/create-playbook/` pathing logic updated to pull from the newly mapped `playbook/` template directory. (Verified 2026-10-14: builds and scaffolds from `playbook/` via `packages/template-manifest.json`.)
 - [ ] `docs/code-standards-c.md` and `docs/code-standards-rust.md` are archived or deleted.
 - [ ] Sync check confirms no broken references in `_index.md`.
 
 Action
 
-Right Now: Execute `playbook/` template population (K-12).
+Right Now: Topic C — drift guards (validator, session-start check, archive thresholds). Topics A and B closed; see 01-process.md.
 Tasks:
 
 - [x] Migrate current `.kit/` files to root `.playbook/kit/`.
