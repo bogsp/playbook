@@ -160,3 +160,8 @@ archive_rule: 'Entries older than the current phase move to .playbook/kit/_archi
 - **Completed:** Real scaffolds run for all four domains (software, writing, production, manufacturing) from the manifest-driven code — 45/44/44/44 files, correct vocabulary folders and per-domain template files, correct `id`/`review-gate`/`pipeline-mode` frontmatter. This closes follow-up (1) from the 2026-08-31 verification entry for file structure; content-level review of non-software scaffolds not done.
 - **Decided:** `playbook-skill/assets/` stays committed (the Skill is installed from a clone) and rebuilt from the new template `_index.md`; `check:drift` is the guard. Not yet wired into CI or a pre-commit hook — a Topic C item.
 - **Decided:** Not verified: `biome check` on the new and changed JS (`check-drift.mjs`, both `build.js`, `scaffold.js`) — the npm registry was unreachable from the session and dependencies are not installed. Run `pnpm lint` locally before merging.
+
+2026-10-14 (continued)
+
+- **Completed:** Wrote 18 candidate optimization recommendations (R1–R18) grouped A–E: cut context cost, make drift detectable, simplify the process, domain-agnostic, distribution and ease of use. Measured basis: session start in this repo loads ≈110 KB, ≈76% of it `04-progress.md` + `05-kanban.md`; the CLI has no `check` or template-upgrade command; no `AGENTS.md`/`CLAUDE.md` pointer exists. Document delivered to the person as `pipeline-optimization-recommendations.md` (proposed path `docs/rewrite/`; not committed to the repo).
+- **Decided:** Nothing in R1–R18 is approved. Discussion order and approvals pending; suggested first bundle is R1–R5. Topic C and D in the earlier plan are subsumed by this list and should be re-scoped from the person's selections.
