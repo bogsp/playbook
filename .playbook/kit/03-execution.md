@@ -22,7 +22,7 @@ Rules & Constraints:
 
 Quality Bar:
 
-- Phase not complete until Phase Completion Checklist in .playbook/pipeline.md fully passes
+- Phase not complete until Phase Completion Checklist in docs/code-standards.md (§7) fully passes
 - QA Tier: standard
 
 Plan
@@ -43,7 +43,7 @@ Acceptance Criteria:
 - [ ] Root `playbook/` contains ONLY the clean, domain-agnostic template source files.
 - [ ] `packages/create-playbook/` pathing logic updated to pull from the newly mapped `playbook/` template directory.
 - [ ] `docs/code-standards-c.md` and `docs/code-standards-rust.md` are archived or deleted.
-- [ ] Sync check confirms no broken references in `_index.md` or `AI-INSTRUCTIONS.md`.
+- [ ] Sync check confirms no broken references in `_index.md`.
 
 Action
 

@@ -19,7 +19,7 @@ DDA Ticket Types
 - [CODE] — implementation against a DDA doc (requires DDA doc to be status: active)
 - [SYNC] — drift correction between code and DDA doc
 
-Locked Track — Clerical / Upkeep (in progress)
+Locked Track — Clerical / Upkeep (closed 2026-08-29)
 
 Order confirmed 2026-08-13. K-05 and K-37 were resolved out of band
 (2026-08-29, pipeline review session) ahead of this track's original
@@ -38,11 +38,6 @@ finalized, so they were closed first regardless of track assignment.
 Clerical track fully closed as of 2026-08-29.
 
 Backlog
-
-[K-12] Populate playbook/ template structure
-Type: SYNC
-Description: Move and organize the domain-agnostic Playbook templates into the new root playbook/ directory (including docs/, .playbook/kit/, and templates/).
-Blocked by: none
 
 [K-13] Update packages/create-playbook/ pathing
 Type: CODE
@@ -111,7 +106,9 @@ Blocked by: none
 
 In Progress
 [K-12] Populate playbook/ template structure
-[K-18] Confirm template README/AI-INSTRUCTIONS reference standalone path
+Type: SYNC
+Description: Move and organize the domain-agnostic Playbook templates into the new root playbook/ directory (including docs/, .playbook/kit/, and templates/).
+Blocked by: none
 
 Blocked
 (none)
@@ -200,16 +197,6 @@ Type: DDA
 [K-42] Consolidate README/AI-INSTRUCTIONS/_index.md into a single entry point (template)
 Type: DDA
 (Resolved 2026-08-29, pipeline review session: playbook/.playbook/_index.md is now the single entry point — absorbed AI-INSTRUCTIONS.md's Session Load Order, Behavioral Rules 1-19, Never Do These, escalation format, Expansions, When Something Breaks, and Session End checklist. playbook/.playbook/README.md reduced to a plain human-facing readme with one pointer line. playbook/.playbook/AI-INSTRUCTIONS.md retired — flagged for deletion (git rm), not generated as a file this session. Same merge applied to all four vocabulary-[domain]/ folders: README.md + AI-INSTRUCTIONS.md -> single vocabulary-[domain]/_index.md each, since none of those folders had their own _index.md before this change. context-kit.md, context-kit-standalone.md, and 00-prompts.md rewritten for single-message session start, with the two-message pattern kept only as an explicit fallback for hard-limited tools. guides/project-identity.md rewritten for the two-file (index+readme) model. guides/adopt.md's stale AI-INSTRUCTIONS.md reference fixed. See 02-exploration.md 2026-08-29 decision for full rationale.)
-
-[K-43] Cross-reference sweep — remaining AI-INSTRUCTIONS.md mentions
-Type: SYNC
-Description: K-42 rewrote _index.md, README.md, both context-kit guides, 00-prompts.md, project-identity.md, and adopt.md. Not yet checked: playbook/.playbook/pipeline.md, playbook/.playbook/maintenance.md, guides/audit.md, guides/new-project.md, guides/video-insights.md, guides/_index.md, and all four docs/code-standards*.md variants (root and playbook/ copies) — several of the code-standards files explicitly reference "AI-INSTRUCTIONS.md" in their AI-Assisted Development sections and need updating to point at _index.md instead, or need their own review given they're optional add-ons rather than core Playbook files. Also unchecked: whether templates/*.md or vocabulary-*/templates/*.md reference the retired file anywhere.
-Blocked by: none
-
-[K-44] Apply the same _index.md consolidation to this repo's own root .playbook/
-Type: DDA
-Description: Root .playbook/README.md and AI-INSTRUCTIONS.md need the same merge into root .playbook/_index.md, per the person's explicit instruction to avoid confusion in future sessions on this repo. Queued as the next task after K-42/K-43.
-Blocked by: none
 
 [K-43] Cross-reference sweep — remaining AI-INSTRUCTIONS.md mentions
 (Resolved 2026-08-29, pipeline review session: Checked all files not yet touched by K-42/K-44. Clean, no changes needed: guides/audit.md, guides/new-project.md, guides/video-insights.md, guides/_index.md. Fixed: playbook/.playbook/pipeline.md and root .playbook/pipeline.md (stale "alongside [AI-INSTRUCTIONS.md](AI-INSTRUCTIONS.md)" link in the Handoff stage's Resuming-from-a-milestone note, now points to _index.md); playbook/.playbook/maintenance.md (Tier 2 file listing under Frontmatter Tiering dropped the AI-INSTRUCTIONS.md reference); docs/code-standards.md and playbook/docs/code-standards.md (Section 6 intro sentence updated to reference _index.md); docs/code-standards-ts.md and playbook/docs/code-standards-ts.md (Section 14 intro sentence and AI Session Boot Order table both updated -- boot order collapsed from a 7-step README/AI-INSTRUCTIONS/_index.md/code-standards/kit sequence to a 5-step _index.md-first sequence, version bumped to 3.2 in the file's own header comment). Not in scope for this ticket and left untouched: code-standards-c.md and code-standards-rust.md (playbook copies only, no AI-INSTRUCTIONS.md references found in either -- these are separately flagged as legacy/should-be-discarded per K-09's C11/Rust decision, an unrelated open item). Template and this repo's own root files are now both fully consistent -- no remaining AI-INSTRUCTIONS.md references anywhere in the repo outside of the retired files themselves, which are flagged for git rm.)

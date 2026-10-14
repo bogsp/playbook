@@ -56,7 +56,7 @@ on its own.
 When complete, findings feed directly into the session files so the rest of
 the pipeline has accurate context to work from.
 
-Full guide: [guides/audit.md](guides/audit.md)
+Full guide: [guides/audit.md](../playbook/.playbook/guides/audit.md)
 
 ---
 
@@ -77,7 +77,7 @@ start to finish. It's how you and your AI stay aligned across sessions.
 Update `kit/01-process.md` and `kit/04-progress.md` at the end of every
 session. These two files are never optional.
 
-Full guide: [guides/context-kit.md](guides/context-kit.md)
+Full guide: [guides/context-kit.md](../playbook/.playbook/guides/context-kit.md)
 Session prompts: [kit/00-prompts.md](kit/00-prompts.md)
 
 ---
@@ -102,7 +102,7 @@ the connections between things, not inside the things themselves.
 **Produces:** `docs/flows/_index.md` + one `docs/flows/flow-N-[name].md` per path
 **Done when:** every major path has a document, all reviewed and agreed on
 
-Template: [templates/flow.md](templates/flow.md)
+Template: [playbook/docs/flows/flow.md](../playbook/docs/flows/flow.md)
 
 ---
 
@@ -115,7 +115,7 @@ they never repeat it.
 **Produces:** `docs/contracts/_index.md` + `docs/contracts/global.md` + one `docs/contracts/flow-N-[name].md` per path
 **Done when:** all required sections complete, no section marked TODO
 
-Templates: [templates/contract.md](templates/contract.md), [templates/global-contract.md](templates/global-contract.md)
+Templates: [playbook/docs/contracts/contract.md](../playbook/docs/contracts/contract.md), [playbook/docs/contracts/global.md](../playbook/docs/contracts/global.md)
 
 ---
 
@@ -127,7 +127,7 @@ document is the agreement — the work follows it.
 **Produces:** `_index.md` + one planning document per piece
 **Done when:** all documents approved, project map current, no section marked TODO
 
-Templates: [vocabulary-[domain]/templates/](vocabulary-software/templates/_index.md) and [templates/](templates/_index.md)
+Templates: [vocabulary-[domain]/templates/](../playbook/.playbook/vocabulary-software/templates/_index.md) and [templates/](../playbook/.playbook/templates/_index.md)
 
 ### Planning Document Types
 

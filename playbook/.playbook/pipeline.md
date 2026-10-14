@@ -102,7 +102,7 @@ the connections between things, not inside the things themselves.
 **Produces:** `docs/flows/_index.md` + one `docs/flows/flow-N-[name].md` per path
 **Done when:** every major path has a document, all reviewed and agreed on
 
-Template: [templates/flow.md](templates/flow.md)
+Template: [docs/flows/flow-template.md](../docs/flows/flow-template.md)
 
 ---
 
@@ -115,7 +115,7 @@ they never repeat it.
 **Produces:** `docs/contracts/_index.md` + `docs/contracts/global.md` + one `docs/contracts/flow-N-[name].md` per path
 **Done when:** all required sections complete, no section marked TODO
 
-Templates: [templates/contract.md](templates/contract.md), [templates/global-contract.md](templates/global-contract.md)
+Templates: [docs/contracts/contract-template.md](../docs/contracts/contract-template.md), [docs/contracts/global.md](../docs/contracts/global.md)
 
 ---
 

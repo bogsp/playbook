@@ -49,8 +49,8 @@ session the change happens.
 | ------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
 | Frontmatter block shape (`file:`, `responsibility:`, `ai_instructions:`, `archive_rule:`) | `_index.md` → **What This Project Is**, **Structure**, **Project Planning Documents** |
 | Session Start order in `_index.md`                                                        | `_index.md` → project-specific rules appended under **AI Behavioral Rules**            |
-| The numbered AI Behavioral Rules 1–19 in `_index.md`                                       | `README.md` → whatever a human visitor to this project actually needs to know          |
-| "Never Do These" list                                                                     | —                                                                                       |
+| The Core (C), Dependencies (D), and Pipeline (P) rule groups in `_index.md`                | `README.md` → whatever a human visitor to this project actually needs to know          |
+| Rule IDs (`C1`, `P3`, …) — stable, never renumbered                                       | —                                                                                       |
 | Expansion mechanics (declared in `kit/01-process.md`)                                     | —                                                                                       |
 
 Core rules are never removed or reworded to fit a project. If a core rule
@@ -65,7 +65,7 @@ seems wrong for this project, flag it — don't edit around it.
 1. Replace `[project-name]` and the placeholder paragraph under **What This Project Is** with the actual one-paragraph description — plain language, matches the Discovery brief once one exists.
 2. Keep **Structure** current — add, move, or archive entries the same session the filesystem changes.
 3. Add each new planning document to **Project Planning Documents** in top-down order as it's authored.
-4. If a project-specific behavioral rule is needed, append it under **AI Behavioral Rules** as a new numbered item — don't renumber or interleave with the universal 1–19.
+4. If a project-specific behavioral rule is needed, append it under the **Project** group of **AI Behavioral Rules** as the next `X` rule (`X1`, `X2`, …) — never edit or interleave with the C, D, and P groups.
 
 **`README.md`:**
 

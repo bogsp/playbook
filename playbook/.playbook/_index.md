@@ -48,56 +48,49 @@ Confirm what you've loaded, then wait for instruction.
 
 ## AI Behavioral Rules
 
-### Rules
+Every rule appears once, grouped by what it governs. IDs are stable — cite them (e.g. "per P3"), never by position. Project-specific rules are appended as `X1`, `X2`, … in the **Project** group; the core groups are never edited to fit a project.
 
-Rules 1, 2, 5, 6, 7, 9, and 12 govern flow, contract, and planning-document
-work. They apply only when this project's `pipeline-mode` is `full` — see
-the Pipeline Mode section below. In `kit-only` mode, skip directly to
-kit-file discipline; there is no flow, contract, or planning-document
-requirement to satisfy.
+### Core — always apply
 
-1. Never write a planning document without first reading the relevant flow and contract files.
-2. Never begin work on a component without its planning document.
-3. Never add an outside dependency without declaring it first.
-4. Never duplicate a responsibility that already exists.
-5. Always work against the declared interface in the planning document.
-6. Flag any `status: draft` document before working against it.
-7. Check the `_shared/` folder before creating a new cross-module component.
-8. Run a sync check before closing any task — do all touched planning documents reflect current work?
-9. Confirm all touched documents are current before every milestone.
-10. Flag missing connections as `TODO`.
-11. Update the folder map in this file's Structure section when components change.
-12. Flow and contract files must be agreed on before any planning documents are written.
-13. Prefer built-in solutions over outside tools.
-14. Outside tools require explicit justification before adoption.
-15. Never move to the next expansion phase without human review.
-16. Never write planning documents during inventory, audit, or classify phases.
-17. Stop and flag before doing any work when a requirement is unclear.
-18. Keep this file's **What This Project Is** and **Structure** sections current with the actual project — see `guides/project-identity.md` for what to update, when, and what must stay fixed.
-19. Every file's frontmatter shape follows the Frontmatter Tiering Rule in `maintenance.md` — Tier 1 for planning documents, Tier 2 for everything else. Update frontmatter in the same pass any file is otherwise touched.
+- **C1** When a requirement is unclear, stop all work and flag it. Never resolve ambiguity silently with an assumption.
+- **C2** Never duplicate a responsibility that already exists.
+- **C3** Never produce placeholder or incomplete work. Leave no path through the work unhandled.
+- **C4** Flag a structural decision before making it.
+- **C5** Flag any missing connection as `TODO`.
+- **C6** Run a sync check before closing any task and before every milestone: do all touched documents reflect current work?
+- **C7** Frontmatter follows the Frontmatter Tiering Rule in `maintenance.md` — Tier 1 for planning documents, Tier 2 for everything else. Fix it in the same pass a file is otherwise touched.
+- **C8** Keep **What This Project Is** and **Structure** in this file current (see `guides/project-identity.md`).
 
-### When Something Is Unclear
+### Dependencies — always apply
 
-Stop all work. Flag using this exact format:
+- **D1** Declare any outside dependency or component before adding it.
+- **D2** Prefer built-in solutions. An outside tool needs explicit justification before adoption.
+
+### Pipeline — apply only when `pipeline-mode: full`
+
+- **P1** Read the relevant flow and contract files before writing a planning document.
+- **P2** Agree flow and contract files before any planning document is written.
+- **P3** Never begin work on a component without its planning document.
+- **P4** Work against the interface declared in the planning document.
+- **P5** Flag any `status: draft` document before working against it.
+- **P6** Check `_shared/` before creating a new cross-module component.
+- **P7** Never write planning documents during inventory, audit, or classify phases.
+- **P8** Never advance to the next expansion phase without human review. Active expansions are declared in `kit/01-process.md`.
+
+### Review gate and domain rules
+
+How much work stops for approval is set by `review-gate` (see **Review Gate**), not by a rule here. Domain rules live in `vocabulary-[domain]/_index.md`.
+
+### Project — appended per project
+
+_None yet. Append `X1`, `X2`, … here._
+
+### When something is unclear
+
+Flag using this exact format:
 `Categories: underspecified | missing-contract | undeclared-dependency | architectural-decision | ambiguous-behavior`
 
-### Never Do These
-
-- Start work ahead of a planning document.
-- Add undeclared dependencies or components.
-- Resolve ambiguity silently with assumptions.
-- Duplicate a responsibility that already exists.
-- Leave any path through the work unhandled.
-- Make structural decisions without flagging them first.
-- Produce placeholder or incomplete work.
-- Edit the core Rules or Session Start order in this file to fit a project — append project-specific rules instead (see `guides/project-identity.md`).
-- Invent a frontmatter shape outside the two tiers defined in `maintenance.md`.
-
-### Expansions
-
-Active expansions are declared in `kit/01-process.md`. Expansion phases advance only after human review. Never advance autonomously.
-
-### When Something Breaks
+### When something breaks
 
 1. **Name it** — what broke and what kind of problem it is.
 2. **Isolate it** — is it in the work, the planning document, or both?
@@ -107,18 +100,14 @@ Active expansions are declared in `kit/01-process.md`. Expansion phases advance 
 
 _If context drifts mid-session:_ re-read the uploaded files. If it persists, start a fresh session using the most recent `docs/rollout/[milestone].md` as context.
 
-### Session End
+### Session end
 
-Update these two files before the session ends or when context reaches 80% — do not wait to be asked:
+Update these before the session ends or when context reaches 80% — do not wait to be asked:
 
 1. `kit/01-process.md` — current phase and what is next.
-2. `kit/04-progress.md` — completions, decisions, fixes. Fold any prior `In Progress` entry into a `Decided`/`Completed` note before adding a new one — only one `In Progress` entry should exist at a time.
+2. `kit/04-progress.md` — completions, decisions, fixes. Fold any prior `In Progress` entry into a `Decided`/`Completed` note first; only one `In Progress` entry may exist.
 
-**Then:**
-
-3. Run a sync check — do all touched planning documents reflect current work?
-4. Update this file's Structure section if any components changed.
-5. Confirm every file touched this session has frontmatter matching its tier (`maintenance.md` — Frontmatter Tiering) — fix before logging progress, not after.
+Then: run a sync check (C6), update **Structure** if components changed (C8), and confirm every touched file's frontmatter matches its tier (C7) — before logging progress, not after.
 
 ---
 
