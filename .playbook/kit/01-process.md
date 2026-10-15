@@ -6,8 +6,8 @@ archive_rule: 'N/A'
 ---
 
 Phase: Planning
-Last: Charter §8 answered by the person; K1 approach drafted for confirmation → 04-progress
-Next: 1) Person confirms the K1 approach (self-triggering roll-over, one merged guide, lossless-compact archives). 2) Draft K1 text. 3) K2–K5, then slice 1 at S1.
+Last: K1 drafted (merged kit guide, narrowed maintenance) → outputs k1/, 04-progress
+Next: 1) Person reviews K1 drafts. 2) Install K1, then K2 (templates with budgets). 3) K3–K5, then slice 1 at S1.
 Open: code checks (biome, build, check:drift) deferred until code work; branch not merged; K-50, K-32, K-19–K-26, `_to_delete/` → 05-kanban
 Active Modules: kanban
 Active Expansions: none
