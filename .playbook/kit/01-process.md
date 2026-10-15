@@ -6,7 +6,8 @@ archive_rule: 'N/A'
 ---
 
 Phase: Planning
-Last Completed: Topics A and B. A: repo-specific root `_index.md`, grouped single-source rules (C/D/P/X), stray root copies staged in `_to_delete/`, links/filenames/kanban fixed, K-12/K-13 closed, log corrected (missing docs re-ticketed as K-50/K-32). B: `packages/template-manifest.json` single-sources the shipped file list for both builds and `scaffold.js`; CLI `templates/` gitignored; `pnpm check:drift` guards committed Skill `assets/`; all four domain scaffolds verified. Branch `claude/pipeline-assessment-kit-update`; not merged; `biome` not run.
-Next: Person to answer the five open questions in `slice-1-design-cards-registry-history.md` §9 (domain confirmation, `responsibility` cap, library-doc frontmatter, kit files in registry, id prefixes) and approve step S1. Then S1 → S2 → S3 in order, each approved before it starts; ticket approved steps in `05-kanban.md`. Before merging the branch, run `pnpm install && pnpm lint && pnpm build && pnpm check:drift` locally (biome unverified). Backlog: K-50, K-32, K-19–K-26, `_to_delete/` cleanup.
+Last: Kit Charter proposal delivered; slice-1 §9 answers recorded → 04-progress, kit-charter-proposal.md
+Next: 1) Person answers Charter §8 (five decisions). 2) Approve K1, then K2–K5. 3) Resume slice 1 at S1.
+Open: run `pnpm install && pnpm lint && pnpm build && pnpm check:drift` locally; branch not merged; K-50, K-32, K-19–K-26, `_to_delete/` → 05-kanban
 Active Modules: kanban
 Active Expansions: none
