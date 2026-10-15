@@ -6,8 +6,8 @@ archive_rule: 'N/A'
 ---
 
 Phase: Planning
-Last: Kit Charter proposal delivered; slice-1 §9 answers recorded → 04-progress, kit-charter-proposal.md
-Next: 1) Person answers Charter §8 (five decisions). 2) Approve K1, then K2–K5. 3) Resume slice 1 at S1.
-Open: run `pnpm install && pnpm lint && pnpm build && pnpm check:drift` locally; branch not merged; K-50, K-32, K-19–K-26, `_to_delete/` → 05-kanban
+Last: Charter §8 answered by the person; K1 approach drafted for confirmation → 04-progress
+Next: 1) Person confirms the K1 approach (self-triggering roll-over, one merged guide, lossless-compact archives). 2) Draft K1 text. 3) K2–K5, then slice 1 at S1.
+Open: code checks (biome, build, check:drift) deferred until code work; branch not merged; K-50, K-32, K-19–K-26, `_to_delete/` → 05-kanban
 Active Modules: kanban
 Active Expansions: none
