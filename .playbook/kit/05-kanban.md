@@ -105,6 +105,11 @@ Type: DDA
 Description: Raised 2026-10-14. K-27's Done note and the 2026-08-11 progress log describe five journey flows (edit-template-source, build-and-publish, new-project, adopt-existing-project, resume-session) plus a rewritten flows _index.md with a Groups split and dependency map. None exist in the repo or on GitHub main; only the eight pipeline-stage flows do. Author them (or upload the originals), then fold into K-32's index.
 Blocked by: none
 
+[K-54] Design large-project partitioning (compartmentalization, modularization, breakdowns, cross-part references)
+Type: DDA
+Description: Raised 2026-10-16. Test cases: multi-book novel with cross-book details; multi-module SaaS with apps and add-ons; biomimetic AI with a C11 engine, Rust shell and multi-modal input; 3D-printing prototyping service. Sequencing to be decided with the person.
+Blocked by: none
+
 In Progress
 (none)
 

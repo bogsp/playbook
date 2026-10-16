@@ -201,6 +201,7 @@ export async function scaffold({ projectName, domain, projectType, root, library
   // --- Universal playbook files ---
   await copyTemplate("universal/playbook/README.md", p(".playbook", "README.md"));
   await write(p(".playbook", "_index.md"), await buildIndex(projectName, domain, libraryVersion, reviewGate, pipelineMode));
+  await copyTemplate("universal/playbook/rules.md", p(".playbook", "rules.md"));
   await copyTemplate("universal/playbook/pipeline.md", p(".playbook", "pipeline.md"));
   await copyTemplate("universal/playbook/maintenance.md", p(".playbook", "maintenance.md"));
 
