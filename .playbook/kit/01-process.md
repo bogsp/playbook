@@ -6,8 +6,8 @@ archive_rule: 'N/A'
 ---
 
 Phase: Planning
-Last: R2 installed and verified (drift clean, four scaffolds ok); K-54 large-project partitioning raised → 04-progress, 05-kanban
-Next: 1) Person decides sequencing for K-54. 2) R3 kit/00-guide (01-process gains In flight). 3) R4, R5, R6; K2–K5; slice 1.
+Last: R3 drafted (kit/00-guide.md) → outputs r3/, 04-progress
+Next: 1) Person reviews R3 and prompt wording. 2) Install R3. 3) R4 pipeline/expansions/maintenance, R5 READMEs, R6; K-54; K2–K5; slice 1.
 Open: code checks (biome, build, check:drift) deferred until code work; branch not merged; K-50, K-32, K-19–K-26, `_to_delete/` → 05-kanban
 Active Modules: kanban
 Active Expansions: none
