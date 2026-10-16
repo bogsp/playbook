@@ -6,8 +6,8 @@ archive_rule: 'N/A'
 ---
 
 Phase: Planning
-Last: K1 redraft 3 — guide as journey, maintenance with stage close-out → 04-progress
-Next: 1) Person reviews K1 (stage close-out rows are new). 2) Install K1, then K2. 3) K3–K5, then slice 1 at S1.
+Last: Guides dissolved into Playbook docs (decided); structure and README role proposed → 04-progress
+Next: 1) Person approves tree, README location, and step order R1–R6. 2) R1 coverage map (no edits). 3) R2–R6, then K2–K5, then slice 1 at S1.
 Open: code checks (biome, build, check:drift) deferred until code work; branch not merged; K-50, K-32, K-19–K-26, `_to_delete/` → 05-kanban
 Active Modules: kanban
 Active Expansions: none
