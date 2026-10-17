@@ -79,6 +79,25 @@ async function copyTemplateFolder(templateRelDir, destDir, filenames) {
 }
 
 /**
+ * Write the project's root README. Never overwrite an existing one: if it
+ * exists, only add the pointer to .playbook/README.md when it is missing.
+ * @param {string} destPath
+ * @param {string} projectName
+ */
+async function writeRootReadme(destPath, projectName) {
+  if (!existsSync(destPath)) {
+    const tpl = await readTemplate("universal/project-README.md");
+    await write(destPath, tpl.replace(/\[Project Name\]/g, projectName));
+    return;
+  }
+  const current = readFileSync(destPath, "utf8");
+  if (current.includes(".playbook/README.md")) return;
+  const pointer =
+    "\n## Working with AI\n\nThis project uses [Playbook](https://github.com/bogsp/playbook) to keep AI-assisted planning on track and sessions continuous. Start at [.playbook/README.md](.playbook/README.md).\n";
+  await writeFile(destPath, current.replace(/\s*$/, "\n") + pointer, "utf8");
+}
+
+/**
  * Generate a .gitkeep file.
  * @param {string} dirPath
  */
@@ -200,6 +219,7 @@ export async function scaffold({ projectName, domain, projectType, root, library
 
   // --- Universal playbook files ---
   await copyTemplate("universal/playbook/README.md", p(".playbook", "README.md"));
+  await writeRootReadme(p("README.md"), projectName);
   await write(p(".playbook", "_index.md"), await buildIndex(projectName, domain, libraryVersion, reviewGate, pipelineMode));
   await copyTemplate("universal/playbook/rules.md", p(".playbook", "rules.md"));
   await copyTemplate("universal/playbook/expansions.md", p(".playbook", "expansions.md"));

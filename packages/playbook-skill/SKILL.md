@@ -48,7 +48,7 @@ Copy from `assets/` — generated from `playbook/.playbook/` and `playbook/docs/
 1. `assets/universal/playbook/_index.md` → `.playbook/_index.md`. Replace
    `[project-name]` with the actual project name. Set `review-gate:` and
    `pipeline-mode:` in the frontmatter to the answers gathered above.
-2. `assets/universal/playbook/README.md` → `.playbook/README.md`.
+2. `assets/universal/playbook/README.md` → `.playbook/README.md`. Then the root `README.md`: if the project has none, copy `assets/universal/project-README.md` and replace `[Project Name]`; if one exists, never overwrite it — only append the "Working with AI" section from the template when it does not already mention `.playbook/README.md`.
 3. `assets/universal/playbook/pipeline.md` → `.playbook/pipeline.md`.
 4. `assets/universal/playbook/maintenance.md` → `.playbook/maintenance.md`.
 5. `assets/universal/playbook/templates/*` → `.playbook/templates/*` (the 5 universal

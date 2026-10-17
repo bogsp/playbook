@@ -3,7 +3,6 @@
   "playbookRoot": ["_index.md", "rules.md", "README.md", "pipeline.md", "maintenance.md", "expansions.md"],
   "kit": [
     "00-guide.md",
-    "00-guide.md",
     "01-process.md",
     "02-exploration.md",
     "03-execution.md",
@@ -11,6 +10,7 @@
     "05-kanban.md",
     "06-qa.md"
   ],
+  "projectReadme": "project-readme.md",
   "kitTests": ["test-case.md"],
   "docs": [
     { "group": "flows", "source": "flow.md", "name": "flow-template.md" },
