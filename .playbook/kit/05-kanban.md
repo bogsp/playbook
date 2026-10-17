@@ -110,6 +110,16 @@ Type: DDA
 Description: Raised 2026-10-16. Test cases: multi-book novel with cross-book details; multi-module SaaS with apps and add-ons; biomimetic AI with a C11 engine, Rust shell and multi-modal input; 3D-printing prototyping service. Sequencing to be decided with the person.
 Blocked by: none
 
+[K-55] Distribution: GitHub repo as source; no-terminal scaffolder; scaffolder leaves no runtime dependency
+Type: DDA
+Description: Raised 2026-10-17. GitHub is the distribution source. Non-technical users scaffold without a terminal (candidate: static web page that runs the shared scaffold code and downloads a ZIP; plus the Claude skill and a single starter file for AI-only tools). The scaffolder gets out of the way after writing files. Order and options to be agreed.
+Blocked by: K-56
+
+[K-56] Extract a shared core (scaffold, index, check, roll-over) for CLI, web, skill, and a future platform or book-publishing service
+Type: DDA
+Description: Raised 2026-10-17. Pure functions over a file map, no filesystem or terminal assumption; shells (CLI, web, skill) stay thin. Prepares the library and CLI for a platform and book publishing. Depends on the pipeline fix (R5–R6, K2–K5) and slice 1.
+Blocked by: none
+
 In Progress
 (none)
 

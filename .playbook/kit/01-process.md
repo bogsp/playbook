@@ -6,8 +6,8 @@ archive_rule: 'N/A'
 ---
 
 Phase: Planning
-Last: Branch merged to main (88e1062); pre-scaffold entry gap found in R5 → 04-progress
-Next: 1) Person picks the pre-scaffold entry paths. 2) Finish R5 (Playbook root README plus the two READMEs). 3) R6, K-54, K2–K5, slice 1. Work on main.
+Last: Distribution direction decided (GitHub source, no-terminal scaffolder); K-55, K-56 ticketed → 04-progress, 05-kanban
+Next: 1) Person confirms the roadmap order. 2) Finish R5 (Playbook root README, two READMEs) and R6. 3) K2–K5, slice 1, K-54, then K-56, K-55.
 Open: code checks (biome, build) deferred until code work; K-50, K-32, K-19–K-26, `_to_delete/` → 05-kanban
 Active Modules: kanban
 Active Expansions: none
