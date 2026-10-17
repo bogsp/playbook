@@ -202,6 +202,7 @@ export async function scaffold({ projectName, domain, projectType, root, library
   await copyTemplate("universal/playbook/README.md", p(".playbook", "README.md"));
   await write(p(".playbook", "_index.md"), await buildIndex(projectName, domain, libraryVersion, reviewGate, pipelineMode));
   await copyTemplate("universal/playbook/rules.md", p(".playbook", "rules.md"));
+  await copyTemplate("universal/playbook/expansions.md", p(".playbook", "expansions.md"));
   await copyTemplate("universal/playbook/pipeline.md", p(".playbook", "pipeline.md"));
   await copyTemplate("universal/playbook/maintenance.md", p(".playbook", "maintenance.md"));
 
@@ -211,25 +212,6 @@ export async function scaffold({ projectName, domain, projectType, root, library
     p(".playbook", "templates"),
     UNIVERSAL_TEMPLATE_FILES
   );
-
-  // --- Guides ---
-  await copyTemplate("universal/playbook/guides/_index.md", p(".playbook", "guides", "_index.md"));
-  await copyTemplate("universal/playbook/guides/context-kit.md", p(".playbook", "guides", "context-kit.md"));
-  await copyTemplate("universal/playbook/guides/context-kit-standalone.md", p(".playbook", "guides", "context-kit-standalone.md"));
-  await copyTemplate("universal/playbook/guides/project-identity.md", p(".playbook", "guides", "project-identity.md"));
-  await copyTemplate("universal/playbook/guides/video-insights.md", p(".playbook", "guides", "video-insights.md"));
-
-  // Project type specific guides
-  if (projectType === "new") {
-    await copyTemplate("universal/playbook/guides/new-project.md", p(".playbook", "guides", "new-project.md"));
-  }
-  if (projectType === "adopt") {
-    await copyTemplate("universal/playbook/guides/adopt.md", p(".playbook", "guides", "adopt.md"));
-  }
-  if (projectType === "audit") {
-    await copyTemplate("universal/playbook/guides/adopt.md", p(".playbook", "guides", "adopt.md"));
-    await copyTemplate("universal/playbook/guides/audit.md", p(".playbook", "guides", "audit.md"));
-  }
 
   // --- Empty reserved folders ---
   await gitkeep(p(".playbook", "_concerns"));

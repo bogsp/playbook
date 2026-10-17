@@ -35,7 +35,7 @@ Ask one question at a time unless the person has already stated their preference
    pipeline)
 
 If domain requires investigating an existing project first, run the six-phase audit
-(`assets/universal/playbook/guides/audit.md`) before scaffolding kit files with
+(`assets/universal/playbook/expansions.md`, Audit) before scaffolding kit files with
 real content — inventory, audit, classify, risk-map, gap-report, handoff, each
 gated by human review.
 
@@ -53,9 +53,7 @@ Copy from `assets/` — generated from `playbook/.playbook/` and `playbook/docs/
 4. `assets/universal/playbook/maintenance.md` → `.playbook/maintenance.md`.
 5. `assets/universal/playbook/templates/*` → `.playbook/templates/*` (the 5 universal
    planning-doc shapes).
-6. `assets/universal/playbook/guides/*` → `.playbook/guides/*`. Only include
-   `new-project.md` for a fresh project, `adopt.md` for adoption, or both `adopt.md`
-   and `audit.md` when the project needs an audit first.
+6. `assets/universal/playbook/rules.md` → `.playbook/rules.md`, and `assets/universal/playbook/expansions.md` → `.playbook/expansions.md`.
 7. `assets/universal/kit/*` → `.playbook/kit/*`. Generate `01-process.md` and
    `04-progress.md` fresh (today's date, one `In Progress` entry reflecting the
    project type — starting from scratch / adopting / auditing) rather than copying

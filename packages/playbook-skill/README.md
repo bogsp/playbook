@@ -95,8 +95,8 @@ packages/playbook-skill/
   build.js               — generates assets/ from playbook/.playbook/ + playbook/docs/
   assets/                 — BUILD ARTIFACT — generated, never hand-edited
     universal/
-      playbook/            — _index.md, README.md, pipeline.md, maintenance.md,
-                              templates/, guides/
+      playbook/            — _index.md, rules.md, README.md, pipeline.md, maintenance.md,
+                              expansions.md, templates/
       kit/                  — the kit file templates + _tests/test-case.md
       docs/                 — flow-template.md, contract-template.md, global.md,
                               rewrite templates
