@@ -248,7 +248,7 @@ export async function scaffold({ projectName, domain, projectType, root, library
   }
 
   // --- Kit files ---
-  await copyTemplate("universal/kit/00-prompts.md", p(".playbook", "kit", "00-prompts.md"));
+  await copyTemplate("universal/kit/00-guide.md", p(".playbook", "kit", "00-guide.md"));
   await write(p(".playbook", "kit", "01-process.md"), await buildProcess(projectType));
   await copyTemplate("universal/kit/02-exploration.md", p(".playbook", "kit", "02-exploration.md"));
   await copyTemplate("universal/kit/03-execution.md", p(".playbook", "kit", "03-execution.md"));

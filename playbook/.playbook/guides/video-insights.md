@@ -43,7 +43,7 @@ Active Expansions: video-insights
 Name the video and what you expect to extract from it. Add an open question in [02-exploration.md](../kit/02-exploration.md) if there is something specific you are trying to resolve.
 
 **Step 2 — Extract**
-Use the **Video Insights** prompt from [00-prompts.md](../kit/00-prompts.md). Provide the transcript or a summary. The AI produces a structured insight file.
+Use the **Video insights** prompt from [00-guide.md](../kit/00-guide.md). Provide the transcript or a summary. The AI produces a structured insight file.
 
 **Step 3 — Review**
 Read the output. Correct anything that was misread or misrepresented. The insight file is only as good as the source material.
@@ -94,4 +94,4 @@ archive_rule: 'Move to .playbook/kit/_archives/ once every decision it informed 
 ## Reference
 
 - Session files — [Context Kit — Integrated](context-kit.md)
-- All session prompts — [kit/00-prompts.md](../kit/00-prompts.md)
+- All session prompts — [kit/00-guide.md](../kit/00-guide.md)

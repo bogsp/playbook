@@ -124,7 +124,7 @@ alone has drifted too far to recover.
 ## Detail
 
 - Step a.ii's "never invent content" rule mirrors the person-facing rule
-  already stated in `00-prompts.md`'s Generating a Milestone Summary
+  already stated in `00-guide.md`'s Generating a Milestone Summary
   prompt: "Use only the attached files as your source. Do not invent or
   infer anything not present."
 - Step b is deliberately not a full re-run of `flow-1` — it substitutes

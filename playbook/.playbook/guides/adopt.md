@@ -57,7 +57,7 @@ Full guide: [audit.md](audit.md)
 
 ## Starting Your First AI Session
 
-Open [00-prompts.md](../kit/00-prompts.md) and use the **Adopting an Existing Project** prompt.
+Open [00-guide.md](../kit/00-guide.md) and use the **Adopting an existing project** prompt.
 
 ---
 

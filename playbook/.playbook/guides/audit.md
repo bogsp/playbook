@@ -71,7 +71,7 @@ After handoff, the project continues from whichever pipeline stage the findings 
 
 ## Starting the Audit with AI
 
-Open [00-prompts.md](../kit/00-prompts.md) and use the **Starting an Audit** prompt.
+Open [00-guide.md](../kit/00-guide.md) and use the **Audit** prompt.
 
 ---
 

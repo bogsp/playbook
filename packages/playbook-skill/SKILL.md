@@ -59,7 +59,7 @@ Copy from `assets/` — generated from `playbook/.playbook/` and `playbook/docs/
 7. `assets/universal/kit/*` → `.playbook/kit/*`. Generate `01-process.md` and
    `04-progress.md` fresh (today's date, one `In Progress` entry reflecting the
    project type — starting from scratch / adopting / auditing) rather than copying
-   the raw template verbatim; copy `00-prompts.md`, `02-exploration.md`,
+   the raw template verbatim; copy `00-guide.md`, `02-exploration.md`,
    `03-execution.md`, `05-kanban.md`, `06-qa.md`, and `_tests/test-case.md` as-is.
    Create empty `_archives/{exploration,progress,kanban}/` and
    `_refs/{video-insights,templates,examples,snippets,research}/` folders.

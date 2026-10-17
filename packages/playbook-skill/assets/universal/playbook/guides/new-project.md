@@ -60,7 +60,7 @@ Open the vocabulary folder that matches your project and read its guide.
 
 ## Step 4 — Start Your First AI Session
 
-Open [00-prompts.md](../kit/00-prompts.md) and use the **Starting a New Project** prompt. It tells the AI what you are doing and what files to load.
+Open [00-guide.md](../kit/00-guide.md) and use the **New project** prompt. It tells the AI what you are doing and what files to load.
 
 ---
 
@@ -69,4 +69,4 @@ Open [00-prompts.md](../kit/00-prompts.md) and use the **Starting a New Project*
 - Full pipeline breakdown — [pipeline.md](../pipeline.md)
 - How session files work — [Context Kit — Integrated](context-kit.md)
 - Keeping README.md, AI-INSTRUCTIONS.md, and \_index.md current — [Project identity](project-identity.md)
-- All session prompts — [kit/00-prompts.md](../kit/00-prompts.md)
+- All session prompts — [kit/00-guide.md](../kit/00-guide.md)

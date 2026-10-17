@@ -12,7 +12,8 @@
     "video-insights.md"
   ],
   "kit": [
-    "00-prompts.md",
+    "00-guide.md",
+    "00-guide.md",
     "01-process.md",
     "02-exploration.md",
     "03-execution.md",

@@ -120,7 +120,7 @@ automatically.
     video-insights.md
     [new-project | adopt | audit].md  — based on project type
 .playbook/kit/
-  00-prompts.md
+  00-guide.md
   01-process.md               — pre-populated with correct phase and expansion
   02-exploration.md
   03-execution.md
@@ -179,7 +179,7 @@ docs/
    - New project → `.playbook/guides/new-project.md`
    - Adopting → `.playbook/guides/adopt.md`
    - Auditing → `.playbook/guides/audit.md`
-3. Open `.playbook/kit/00-prompts.md` — copy your first session prompt
+3. Open `.playbook/kit/00-guide.md` — copy your first session prompt
 
 ---
 

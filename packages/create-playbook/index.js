@@ -139,7 +139,7 @@ async function runInit(nameArg) {
     console.log("    2. Read .playbook/guides/audit.md — map your project before changing it");
   }
 
-  console.log("    3. Open .playbook/kit/00-prompts.md — copy your first session prompt");
+  console.log("    3. Open .playbook/kit/00-guide.md — copy your first session prompt");
   console.log("  ─────────────────────────────────────\n");
 }
 

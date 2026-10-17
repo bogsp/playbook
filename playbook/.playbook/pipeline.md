@@ -78,7 +78,7 @@ Update `kit/01-process.md` and `kit/04-progress.md` at the end of every
 session. These two files are never optional.
 
 Full guide: [guides/context-kit.md](guides/context-kit.md)
-Session prompts: [kit/00-prompts.md](kit/00-prompts.md)
+Session prompts: [kit/00-guide.md](kit/00-guide.md)
 
 ---
 
@@ -173,7 +173,7 @@ history.
 **Produces:** `docs/rollout/[milestone].md`
 **Done when:** snapshot generated, kit files reflect final state
 
-Use prompt: [kit/00-prompts.md](kit/00-prompts.md) → **Generating a Milestone Summary**
+Use prompt: [kit/00-guide.md](kit/00-guide.md) → **Generate a milestone summary**
 
 **Resuming from a milestone:** If you're starting a fresh AI session and want
 to pick up from a previous milestone, load `docs/rollout/[milestone].md`
