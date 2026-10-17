@@ -6,8 +6,8 @@ archive_rule: 'N/A'
 ---
 
 Phase: Planning
-Last: R4 installed, guides folder removed, drift clean, 12 scaffolds ok → 04-progress
-Next: 1) R5: root README template and .playbook/README.md. 2) R6: re-point meta docs, version stamp, changelog. Then K-54, K2–K5, slice 1.
+Last: R5 drafted (two READMEs); branch pushed, not merged → outputs r5/, 04-progress
+Next: 1) Person reviews R5. 2) Install R5 (scaffold writes root README only if absent). 3) R6: re-point meta docs, version stamp, changelog, rebuild. Then K-54, K2–K5, slice 1.
 Open: code checks (biome, build, check:drift) deferred until code work; branch not merged; K-50, K-32, K-19–K-26, `_to_delete/` → 05-kanban
 Active Modules: kanban
 Active Expansions: none
