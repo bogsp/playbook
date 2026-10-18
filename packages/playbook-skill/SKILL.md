@@ -55,7 +55,7 @@ Copy from `assets/` — generated from `playbook/.playbook/` and `playbook/docs/
    planning-doc shapes).
 6. `assets/universal/playbook/rules.md` → `.playbook/rules.md`, and `assets/universal/playbook/expansions.md` → `.playbook/expansions.md`.
 7. `assets/universal/kit/*` → `.playbook/kit/*`. Generate `01-process.md` and
-   `04-progress.md` fresh (today's date, one `In Progress` entry reflecting the
+   `04-progress.md` fresh (today's date, one `Completed` line noting the
    project type — starting from scratch / adopting / auditing) rather than copying
    the raw template verbatim; copy `00-guide.md`, `02-exploration.md`,
    `03-execution.md`, `05-kanban.md`, `06-qa.md`, and `_tests/test-case.md` as-is.
@@ -74,6 +74,7 @@ Copy from `assets/` — generated from `playbook/.playbook/` and `playbook/docs/
 11. Create an empty `docs/rollout/` folder.
 12. If project type is audit: also copy `assets/universal/docs/system-map.md`,
     `decision-record.md`, and `risk-register.md` into `docs/rewrite/`.
+13. Last, write `.playbook/.version` as JSON: `templateVersion` (from `assets/manifest.json`), `scaffolded` (today's date), and `files` mapping every file under `.playbook/` (except `.gitkeep` and `.version`) to the first 16 characters of its sha256 (`sha256sum`). A later mismatch means the project edited that file; a newer template version means Playbook has updates to offer.
 
 Empty reserved folders (`.playbook/_concerns/`, `_integrations/`, `_shared/`) get a
 `.gitkeep` placeholder, not content.

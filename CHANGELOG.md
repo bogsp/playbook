@@ -1,0 +1,25 @@
+---
+file: 'CHANGELOG.md'
+responsibility: 'Template version history: what changed in the files Playbook ships to projects.'
+ai_instructions: 'Add a new entry at the top for every change to shipped templates and bump templateVersion in packages/template-manifest.json to match. Do not rewrite past entries.'
+archive_rule: 'N/A — keep all entries; one short block per version.'
+owner: playbook
+---
+
+# Changelog
+
+Template versions. The current version is `templateVersion` in `packages/template-manifest.json`. Each scaffolded project records the version it started from in `.playbook/.version`.
+
+## 2.0.0 — 2026-10-18
+
+Restructure of the shipped pipeline. Existing projects are not upgraded automatically; an upgrade path comes later.
+
+- `.playbook/_index.md` is the single AI entry. It holds a Session Start handshake that works with and without file access.
+- Rules moved to `.playbook/rules.md` (C1–C10, D1–D2, P1–P8). C9 (name what you deliver) and C10 (`In flight:` line) are new.
+- The `guides/` folder is gone. Its content now lives in `pipeline.md` (starting, close-out per stage), `expansions.md` (Audit, Video Insights), `maintenance.md` (close-out, project identity) and `kit/00-guide.md` (kit use, prompts, roll-over).
+- `kit/00-prompts.md` became `kit/00-guide.md`; prompts are shorter.
+- Two READMEs: the project's own root `README.md` (never overwritten if present) and `.playbook/README.md` (the Playbook entry for people).
+- Kit Charter: budgets and entry shapes per kit file; roll-over to `_archives/`.
+- `.playbook/.version` records the template version and a hash per file as scaffolded.
+- Example concerns (auth, error-handling, logging) are no longer copied into projects; concerns are created when a task needs one.
+- `04-progress.md` is scaffolded with one `Completed` line instead of an `In Progress` entry.

@@ -1,7 +1,7 @@
 ---
 file: 'docs/flows/playbook-templates/flow-2-discovery-stage.md'
 responsibility: 'Defines Stage 2 (Discovery) — drafting and approving the project brief, with every revision and escalation branch made explicit.'
-ai_instructions: 'Read before authoring or revising the Discovery stage guidance in playbook/.playbook/pipeline.md or guides/new-project.md. Companion contract: docs/contracts/playbook-templates/flow-2-discovery-stage.md.'
+ai_instructions: 'Read before authoring or revising the Discovery stage guidance in playbook/.playbook/pipeline.md (the Starting section). Companion contract: docs/contracts/playbook-templates/flow-2-discovery-stage.md.'
 archive_rule: 'N/A — active flow document; archive only if the Discovery stage is fundamentally restructured.'
 id: flow-2-discovery-stage
 type: flow

@@ -1,7 +1,7 @@
 ---
 file: 'docs/flows/playbook-templates/flow-1-thinking-resume-session.md'
 responsibility: 'Defines the two-message pattern for loading project context at the start of any session — Stage 1 (Thinking), always active beneath every other stage.'
-ai_instructions: 'Read before authoring or revising playbook/.playbook/guides/context-kit.md or context-kit-standalone.md. Companion contract: docs/contracts/playbook-templates/flow-1-thinking-resume-session.md.'
+ai_instructions: 'Read before authoring or revising playbook/.playbook/kit/00-guide.md. Companion contract: docs/contracts/playbook-templates/flow-1-thinking-resume-session.md.'
 archive_rule: 'N/A — active flow document; archive only if the kit-file session pattern is fundamentally restructured.'
 id: flow-1-thinking-resume-session
 type: flow

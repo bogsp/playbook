@@ -1,5 +1,6 @@
 {
   "_comment": "File: packages/template-manifest.json. The ONE list of template files that ship from playbook/. Read by packages/create-playbook/build.js, packages/playbook-skill/build.js, and (via templates/manifest.json) packages/create-playbook/lib/scaffold.js. Add or remove a shipped file here and nowhere else. Paths are relative to playbook/.playbook/ unless noted.",
+  "templateVersion": "2.0.0",
   "playbookRoot": ["_index.md", "rules.md", "README.md", "pipeline.md", "maintenance.md", "expansions.md"],
   "kit": [
     "00-guide.md",

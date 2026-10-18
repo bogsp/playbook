@@ -6,8 +6,8 @@ archive_rule: 'N/A'
 ---
 
 Phase: Planning
-Last: R5 installed (Playbook README, project README template, Playbook root README); scaffold keeps an existing root README → 04-progress
-Next: R6 (re-point meta docs, version stamp and changelog, on-demand concerns, buildProgress fix), then K2–K5, slice 1, K-54, K-56, K-55.
+Last: R6 done: links re-pointed, template version 2.0.0, CHANGELOG, `.version` stamp, progress-entry fix; 12 scaffolds and drift check pass → 04-progress
+Next: K2–K5 (kit templates with budgets, checker and roll-over, migrate this repo's kit), then K-54, slice 1, K-56, K-55. Phase 2 (templates) runs alongside slice 1.
 Open: code checks (biome, build) deferred until code work; K-50, K-32, K-19–K-26, `_to_delete/` → 05-kanban
 Active Modules: kanban
 Active Expansions: none

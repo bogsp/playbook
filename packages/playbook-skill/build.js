@@ -50,6 +50,9 @@ for (const [domain, files] of Object.entries(m.domains)) {
   }
 }
 
+// Manifest copy so the skill can read templateVersion
+sources.push({ from: manifestPath, to: out("manifest.json") });
+
 async function build() {
   console.log("\nBuilding playbook-skill assets...\n");
 

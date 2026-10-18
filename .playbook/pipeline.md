@@ -56,7 +56,7 @@ on its own.
 When complete, findings feed directly into the session files so the rest of
 the pipeline has accurate context to work from.
 
-Full guide: [guides/audit.md](../playbook/.playbook/guides/audit.md)
+Full guide: [Audit in expansions.md](../playbook/.playbook/expansions.md#audit)
 
 ---
 
@@ -77,8 +77,7 @@ start to finish. It's how you and your AI stay aligned across sessions.
 Update `kit/01-process.md` and `kit/04-progress.md` at the end of every
 session. These two files are never optional.
 
-Full guide: [guides/context-kit.md](../playbook/.playbook/guides/context-kit.md)
-Session prompts: [kit/00-prompts.md](kit/00-prompts.md)
+Full guide and session prompts: [kit/00-guide.md](../playbook/.playbook/kit/00-guide.md)
 
 ---
 
@@ -173,7 +172,7 @@ history.
 **Produces:** `docs/rollout/[milestone].md`
 **Done when:** snapshot generated, kit files reflect final state
 
-Use prompt: [kit/00-prompts.md](kit/00-prompts.md) → **Generating a Milestone Summary**
+Use prompt: [kit/00-guide.md](../playbook/.playbook/kit/00-guide.md) → **Generate a milestone summary**
 
 **Resuming from a milestone:** If you're starting a fresh AI session and want
 to pick up from a previous milestone, load `docs/rollout/[milestone].md`

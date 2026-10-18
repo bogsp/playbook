@@ -82,7 +82,7 @@ Both follow the template's sections of the same names, with one addition: log `F
   _index.md                         — this file
   maintenance.md                    — archiving and Frontmatter Tiering for this repo
   pipeline.md                       — pipeline stage reference
-  kit/                              — 00-prompts … 06-qa, _archives/, _refs/
+  kit/                              — 00-prompts … 06-qa (this repo's kit predates 00-guide), _archives/, _refs/
   _to_delete/                       — staged for human deletion (pending cleanup)
 
 docs/                               — this repo's own tracked flows and contracts
@@ -93,7 +93,7 @@ docs/                               — this repo's own tracked flows and contra
   rollout/                          — milestone snapshots
 
 playbook/                           — TEMPLATE SOURCE (template world)
-  .playbook/                        — _index.md, pipeline.md, maintenance.md, kit/, guides/,
+  .playbook/                        — _index.md, pipeline.md, maintenance.md, rules.md, expansions.md, kit/,
                                       templates/, _concerns/, vocabulary-[domain]/
   docs/                             — flow/contract templates, rewrite templates, code-standards variants
 

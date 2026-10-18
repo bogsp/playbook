@@ -1,0 +1,38 @@
+{
+  "_comment": "File: packages/template-manifest.json. The ONE list of template files that ship from playbook/. Read by packages/create-playbook/build.js, packages/playbook-skill/build.js, and (via templates/manifest.json) packages/create-playbook/lib/scaffold.js. Add or remove a shipped file here and nowhere else. Paths are relative to playbook/.playbook/ unless noted.",
+  "templateVersion": "2.0.0",
+  "playbookRoot": ["_index.md", "rules.md", "README.md", "pipeline.md", "maintenance.md", "expansions.md"],
+  "kit": [
+    "00-guide.md",
+    "01-process.md",
+    "02-exploration.md",
+    "03-execution.md",
+    "04-progress.md",
+    "05-kanban.md",
+    "06-qa.md"
+  ],
+  "projectReadme": "project-readme.md",
+  "kitTests": ["test-case.md"],
+  "docs": [
+    { "group": "flows", "source": "flow.md", "name": "flow-template.md" },
+    { "group": "contracts", "source": "contract.md", "name": "contract-template.md" },
+    { "group": "contracts", "source": "global.md", "name": "global.md" },
+    { "group": "rewrite", "source": "system-map.md", "name": "system-map.md" },
+    { "group": "rewrite", "source": "decision-record.md", "name": "decision-record.md" },
+    { "group": "rewrite", "source": "risk-register.md", "name": "risk-register.md" }
+  ],
+  "universalTemplates": [
+    "_index.md",
+    "structure.md",
+    "coordinator.md",
+    "component.md",
+    "concern.md",
+    "integration.md"
+  ],
+  "domains": {
+    "software": ["_index.md", "structure.md", "sequencer.md", "component.md"],
+    "writing": ["_index.md", "coordinator.md", "piece.md"],
+    "production": ["_index.md", "coordinator.md", "deliverable.md"],
+    "manufacturing": ["_index.md", "coordinator.md", "part.md"]
+  }
+}
