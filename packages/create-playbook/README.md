@@ -115,6 +115,8 @@ automatically.
   _shared/
   rules.md
   expansions.md
+  adopt.md                  — adopt and audit projects only
+  audit.md                  — audit projects only
     [new-project | adopt | audit].md  — based on project type
 .playbook/kit/
   00-guide.md
@@ -172,10 +174,10 @@ docs/
 ## After Scaffolding
 
 1. Read `.playbook/_index.md` — the entry point: session rules, structure, and where to start
-2. Read the start path for your project type in `.playbook/pipeline.md` (Starting):
-   - New project → A new project
-   - Adopting → An existing project
-   - Auditing → the Audit in `.playbook/expansions.md`
+2. Read the start path for your project type:
+   - New project → `.playbook/pipeline.md` (Starting, A new project)
+   - Adopting → `.playbook/adopt.md`
+   - Auditing → `.playbook/audit.md`
 3. Open `.playbook/kit/00-guide.md` — copy your first session prompt
 
 ---

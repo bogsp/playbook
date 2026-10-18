@@ -32,7 +32,7 @@ Cleanup is part of finishing, not a separate chore. Before moving on, tidy what 
 | 3 — Mapping | `docs/flows/_index.md` lists every flow. A path that no longer exists is archived, with a pointer left behind. |
 | 4 — Rules | Every contract maps to a flow. No section is marked `TODO`. Superseded rule versions are archived. |
 | 5 — Planning | The project map in `_index.md` matches the filesystem. Retired components are archived (see Planning Documents). No section is marked `TODO` on an approved document. |
-| 6 — Work | Plan and work agree (sync check). Done tasks in `03-execution.md` and Done tickets in `05-kanban.md` are rolled over. Fixed issues are closed. |
+| 6 — Work | Plan and work agree (sync check). Done tasks in `03-execution.md` and Done tickets in `05-kanban.md` are rolled over. Fixed issues are closed. Before QA sign-off: every finished piece has an active planning document; nothing depends on anything outside its declared connections or integrations; each planning document matches the work; no `status: draft` document sits on a path in use. |
 | 7 — Handoff | The snapshot in `docs/rollout/` is generated. Kit files reflect the final state. The finished phase is archived from `03-execution.md` and `04-progress.md`. |
 
 ---

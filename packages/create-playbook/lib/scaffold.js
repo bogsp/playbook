@@ -137,67 +137,41 @@ async function buildIndex(projectName, domain, libraryVersion, reviewGate, pipel
 
 /**
  * Generate kit/01-process.md pre-populated based on project type.
+ * Fills the Phase, Last, Next and Active Expansions lines of the template.
  * @param {"new"|"adopt"|"audit"} projectType
  * @returns {Promise<string>}
  */
 async function buildProcess(projectType) {
   const content = await readTemplate("universal/kit/01-process.md");
-
-  if (projectType === "new") {
-    return content
-      .replace("[most recent milestone]", "Playbook scaffold generated")
-      .replace("[active goal]", "Populate Exploration with initial project questions")
-      .replace("Active Expansions: none", "Active Expansions: none");
-  }
-
-  if (projectType === "adopt") {
-    return content
-      .replace("**Phase:** Exploration", "**Phase:** Exploration")
-      .replace("[most recent milestone]", "Playbook scaffold generated")
-      .replace("[active goal]", "Run structured review against existing project")
-      .replace("Active Expansions: none", "Active Expansions: none");
-  }
-
-  if (projectType === "audit") {
-    return content
-      .replace("**Phase:** Exploration", "**Phase:** Exploration")
-      .replace("[most recent milestone]", "Playbook scaffold generated")
-      .replace("[active goal]", "Begin audit inventory of existing project")
-      .replace(
-        "Active Expansions: none",
-        "Active Expansions:\n  audit: inventory"
-      );
-  }
-
-  return content;
+  const state = {
+    new: { phase: "Discovery", next: "Populate 02-exploration with the first project questions" },
+    adopt: { phase: "Discovery", next: "Answer the four questions in adopt.md; record what is known in 02-exploration" },
+    audit: { phase: "Audit", next: "Begin the audit inventory (see audit.md)" },
+  }[projectType];
+  let result = content
+    .replace(/^Phase: .*$/m, `Phase: ${state.phase}`)
+    .replace(/^Last: .*$/m, "Last: Playbook scaffold generated")
+    .replace(/^Next: .*$/m, `Next: ${state.next}`)
+    .replace(/^Open: .*$/m, "Open: none")
+    .replace(/^Active Expansions: .*$/m, projectType === "audit" ? "Active Expansions: audit | inventory | audit.md, docs/rewrite/ | none" : "Active Expansions: none");
+  return result;
 }
 
 /**
- * Generate kit/04-progress.md with today's date and one Completed line.
+ * Generate kit/04-progress.md: the template plus one Completed line.
  * Current state lives in 01-process.md, not here.
  * @param {"new"|"adopt"|"audit"} projectType
- * @returns {string}
+ * @returns {Promise<string>}
  */
-function buildProgress(projectType) {
+async function buildProgress(projectType) {
+  const content = await readTemplate("universal/kit/04-progress.md");
   const today = new Date().toISOString().split("T")[0];
   const start = {
     new: "starting from scratch",
     adopt: "adopting an existing project",
     audit: "auditing an existing project before adopting",
   }[projectType];
-
-  return `# PROGRESS LOG
-# File: .playbook/kit/04-progress.md
-
-Rules:
-- Append only. Never edit or delete past entries.
-- One line per event: date | Completed, Decided or Fixed | what | refs
-- Current state belongs in 01-process.md, not here.
-
----
-
-${today} | Completed | Playbook scaffold generated (${start}) | .playbook/.version
-`;
+  return `${content.trimEnd()}\n\n${today} | Completed | Playbook scaffold generated (${start}) | .playbook/.version\n`;
 }
 
 /**
@@ -251,6 +225,10 @@ export async function scaffold({ projectName, domain, projectType, root, library
   await copyTemplate("universal/playbook/expansions.md", p(".playbook", "expansions.md"));
   await copyTemplate("universal/playbook/pipeline.md", p(".playbook", "pipeline.md"));
   await copyTemplate("universal/playbook/maintenance.md", p(".playbook", "maintenance.md"));
+  // Rarely used guides ship only to the project types that need them
+  for (const [file, types] of Object.entries(manifest.onDemand)) {
+    if (types.includes(projectType)) await copyTemplate(`universal/playbook/${file}`, p(".playbook", file));
+  }
 
   // --- Universal templates/ folder (K-33) ---
   await copyTemplateFolder(
@@ -280,12 +258,14 @@ export async function scaffold({ projectName, domain, projectType, root, library
   await write(p(".playbook", "kit", "01-process.md"), await buildProcess(projectType));
   await copyTemplate("universal/kit/02-exploration.md", p(".playbook", "kit", "02-exploration.md"));
   await copyTemplate("universal/kit/03-execution.md", p(".playbook", "kit", "03-execution.md"));
-  await write(p(".playbook", "kit", "04-progress.md"), buildProgress(projectType));
+  await write(p(".playbook", "kit", "04-progress.md"), await buildProgress(projectType));
   await copyTemplate("universal/kit/05-kanban.md", p(".playbook", "kit", "05-kanban.md"));
   await copyTemplate("universal/kit/06-qa.md", p(".playbook", "kit", "06-qa.md"));
   await copyTemplate("universal/kit/_tests/test-case.md", p(".playbook", "kit", "_tests", "test-case.md"));
 
   // Kit support folders
+  await gitkeep(p(".playbook", "kit", "_refs", "decisions"));
+  await gitkeep(p(".playbook", "kit", "_refs", "questions"));
   await gitkeep(p(".playbook", "kit", "_refs", "video-insights"));
   await gitkeep(p(".playbook", "kit", "_refs", "templates"));
   await gitkeep(p(".playbook", "kit", "_refs", "examples"));

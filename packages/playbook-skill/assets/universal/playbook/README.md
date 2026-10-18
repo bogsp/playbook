@@ -34,8 +34,8 @@ If your tool can open this repository, say `.playbook/_index.md` instead of atta
 | Your situation | Go to |
 |---|---|
 | New project | [pipeline.md](pipeline.md), **A new project** |
-| Existing project, documented | [pipeline.md](pipeline.md), **An existing project** |
-| Existing project you do not fully understand | [expansions.md](expansions.md), **Audit** |
+| Existing project, documented | [adopt.md](https://github.com/bogsp/playbook/blob/main/playbook/.playbook/adopt.md) |
+| Existing project you do not fully understand | [audit.md](https://github.com/bogsp/playbook/blob/main/playbook/.playbook/audit.md) |
 | Just want session continuity, no pipeline | [kit/00-guide.md](kit/00-guide.md) |
 | Bring a video into the project | [expansions.md](expansions.md), **Video Insights** |
 

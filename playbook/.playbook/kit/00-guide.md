@@ -40,6 +40,17 @@ Each file carries its limits in its frontmatter (`max-bytes`, `max-lines`, `line
 
 ---
 
+### Kit file rules
+
+- Tickets come from the checklist in `03-execution`; one outcome per ticket.
+- The top of a kanban column is next. A blocked ticket stays in its column and names its blocker.
+- Ticket types: `DDA` writes or syncs a planning document; `CODE` implements against an active planning document; `SYNC` corrects drift between the work and its document. Other domains may rename the types.
+- Every check in `06-qa` maps to one acceptance criterion or ticket. A criterion is done only when its check passes. A failure links to a ticket.
+- A check passes only after the planning documents match the work (rule C6).
+- `01-process` also names what is active beyond the kit: `Active Expansions:` lists each expansion with its phase, its exclusive files and the domain templates in use, so a new session loads only those.
+
+---
+
 ## The Session Loop
 
 **Start.** Give your AI `_index.md` and the prompt below. The AI checks what it can open, asks for the base files it needs (`rules.md` and `kit/01-process.md`), and confirms the state. Load more only when the task calls for it.
@@ -66,19 +77,7 @@ Start a Playbook session. Follow the Session Start in the attached _index.md.
 Start a Playbook session. Follow the Session Start in the attached _index.md. This is a new project.
 ```
 
-**Adopting an existing project**
-
-```
-Start a Playbook session. Follow the Session Start in the attached _index.md.
-I'm bringing an existing project into Playbook. It's at the [stage] stage.
-```
-
-**Audit** (also attach `expansions.md`)
-
-```
-Start a Playbook session. Follow the Session Start in the attached _index.md.
-I'm starting an audit. The current phase is [phase]. Don't advance without my approval.
-```
+**Existing project or audit:** the prompts are in `adopt.md` and `audit.md`.
 
 **Resume from a milestone** (also attach `docs/rollout/[milestone].md`)
 
@@ -152,7 +151,7 @@ Core files hold what is current. The core file keeps a line and a link; the cont
 | File | Overflow goes to |
 |---|---|
 | `01-process` | nowhere; overwrite in place |
-| `02-exploration` | detail → `_refs/decisions/D-nn.md`; old decisions → `_archives/exploration/` (the index line stays) |
+| `02-exploration` | question detail → `_refs/questions/Q-nn.md`; decision detail → `_refs/decisions/D-nn.md`; old decisions → `_archives/exploration/` (the index line stays) |
 | `03-execution` | finished phases → `_archives/execution/`; a current phase that alone exceeds budget splits into parts, one line each here and the checklist in `_refs/execution/<part>.md` |
 | `04-progress` | `_archives/progress/YYYY-MM.md` |
 | `05-kanban` | Done tickets beyond the latest 10 → `_archives/kanban/` |

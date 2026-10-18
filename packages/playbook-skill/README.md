@@ -96,7 +96,7 @@ packages/playbook-skill/
   assets/                 — BUILD ARTIFACT — generated, never hand-edited
     universal/
       playbook/            — _index.md, rules.md, README.md, pipeline.md, maintenance.md,
-                              expansions.md, templates/
+                              expansions.md, adopt.md, audit.md, templates/
       kit/                  — the kit file templates + _tests/test-case.md
       docs/                 — flow-template.md, contract-template.md, global.md,
                               rewrite templates

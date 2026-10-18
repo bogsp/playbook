@@ -47,8 +47,8 @@ Where you start depends on the project.
 | I want session continuity — decisions, tasks, progress — with no pipeline overhead | [kit/00-guide.md](kit/00-guide.md) (`pipeline-mode: kit-only`) |
 | I want the kit alongside the full pipeline (Discovery → Handoff) | [kit/00-guide.md](kit/00-guide.md), then the stages below (`pipeline-mode: full`) |
 | I'm starting a brand new project | **A new project**, below |
-| I have an existing project and know it well | **An existing project**, below |
-| I have an existing project I don't fully understand yet | the Audit in [expansions.md](expansions.md#audit) |
+| I have an existing project and know it well | [adopt.md](https://github.com/bogsp/playbook/blob/main/playbook/.playbook/adopt.md) |
+| I have an existing project I don't fully understand yet | [audit.md](https://github.com/bogsp/playbook/blob/main/playbook/.playbook/audit.md) |
 | I want to keep `README.md` and `_index.md` current for this project | Keep Project Identity Current in [maintenance.md](maintenance.md) |
 | I want to bring a video (tutorial, interview, research) into my project | Video Insights in [expansions.md](expansions.md#video-insights) |
 
@@ -73,39 +73,7 @@ Not sure where to start? Read `.playbook/README.md`.
 
 ### An existing project
 
-Bringing an existing project into Playbook without breaking anything. Four questions determine where you start.
-
-**1. Does the project have any documentation?**
-
-- No → start at [Discovery](#stage-2--discovery)
-- Yes → continue to question 2
-
-**2. Is the documentation current and accurate?**
-
-- No → start at [Audit](#stage-0--audit-existing-projects-only)
-- Yes → continue to question 3
-
-**3. Are the paths and rules defined?**
-
-- No → start at [Mapping](#stage-3--mapping)
-- Yes → continue to question 4
-
-**4. Does every piece have a planning document?**
-
-- No → start at [Planning](#stage-5--planning)
-- Yes → you are already running Playbook — set up your [kit files](kit/) and continue
-
-Regardless of where you start, do this first:
-
-1. Copy the kit files from [kit/](kit/) into your project
-2. Open [01-process.md](kit/01-process.md) — fill in the project name, current stage, and what's next
-3. Open [02-exploration.md](kit/02-exploration.md) — record what you already know: key decisions made, open questions, known constraints
-4. Open [03-execution.md](kit/03-execution.md) — record the current plan and any known issues
-5. Update `.playbook/_index.md` and `README.md` to reflect this project — see Keep Project Identity Current in [maintenance.md](maintenance.md)
-
-If the project needs an audit first: an audit maps what already exists before anything changes. It runs as Stage 0 and hands off findings directly into your kit files. Full process: [expansions.md](expansions.md#audit).
-
-Then start your first AI session with the **Adopting an existing project** prompt in [kit/00-guide.md](kit/00-guide.md).
+Bringing an existing project into Playbook is covered in [adopt.md](https://github.com/bogsp/playbook/blob/main/playbook/.playbook/adopt.md). It is not loaded here, to keep this file short. Projects scaffolded as adopt or audit already have it in `.playbook/`.
 
 ### Growing from kit-only
 
@@ -131,7 +99,7 @@ on its own.
 When complete, findings feed directly into the session files so the rest of
 the pipeline has accurate context to work from.
 
-Full process: [expansions.md](expansions.md#audit)
+Full process: [audit.md](https://github.com/bogsp/playbook/blob/main/playbook/.playbook/audit.md)
 
 **Close out:** findings are in `kit/02-exploration.md` and `kit/03-execution.md`; superseded inventory notes in `docs/rewrite/` are archived. The system map, decision record, and risk register stay active until the rewrite they describe is done.
 

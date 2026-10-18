@@ -1,16 +1,14 @@
 ---
 file: '.playbook/kit/04-progress.md'
-responsibility: 'Historical log. Append-only record of Completed items, Settled Decisions, and Fixes.'
-ai_instructions: 'Never edit or delete past entries. Always add new updates at the bottom under a YYYY-MM-DD heading. Ensure items are categorized as Completed, Decided, or Fixed.'
-archive_rule: 'Move entries to `.playbook/kit/_archives/progress/` when they belong to an older, fully completed phase.'
+responsibility: 'Append-only log of events: one line each.'
+ai_instructions: 'Add one line per event at the bottom, naming what happened, what was decided and why in brief, with refs to the files holding detail. Never edit or delete past lines.'
+archive_rule: 'Over budget, the oldest lines move verbatim to _archives/progress/YYYY-MM.md.'
+owner: project
+max-bytes: 6144
+max-lines: 40
+line-max: 240
+entry-shape: 'date | Completed|Decided|Fixed | <=160 chars | refs'
 ---
 
-# Progress Log (Append-Only)
+# Progress
 
----
-
-## [YYYY-MM-DD]
-
-- **Completed:** [Description of work done]
-- **Decided:** [Decision made and rationale]
-- **Fixed:** [Bug or drift issue resolved]

@@ -134,9 +134,9 @@ async function runInit(nameArg) {
   if (projectType === "new") {
     console.log("    2. Read .playbook/pipeline.md (Starting, a new project) — follow the stages");
   } else if (projectType === "adopt") {
-    console.log("    2. Read .playbook/pipeline.md (Starting, an existing project) — bring your existing work in");
+    console.log("    2. Read .playbook/adopt.md — bring your existing work in");
   } else {
-    console.log("    2. Read .playbook/expansions.md (Audit) — map your project before changing it");
+    console.log("    2. Read .playbook/audit.md — map your project before changing it");
   }
 
   console.log("    3. Open .playbook/kit/00-guide.md — copy your first session prompt");

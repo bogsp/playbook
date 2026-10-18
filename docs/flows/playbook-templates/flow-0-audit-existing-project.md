@@ -1,7 +1,7 @@
 ---
 file: 'docs/flows/playbook-templates/flow-0-audit-existing-project.md'
 responsibility: 'Defines the audit expansion — six sequential, human-reviewed phases that map an existing project before anything about it changes, with every phase transition, revision loop, and abort path made explicit.'
-ai_instructions: 'Read before authoring or revising the Audit section of playbook/.playbook/expansions.md. Companion contract: docs/contracts/playbook-templates/flow-0-audit-existing-project.md.'
+ai_instructions: 'Read before authoring or revising playbook/.playbook/audit.md. Companion contract: docs/contracts/playbook-templates/flow-0-audit-existing-project.md.'
 archive_rule: 'N/A — active flow document; archive only if the six-phase audit sequence is fundamentally restructured.'
 id: flow-0-audit-existing-project
 type: flow

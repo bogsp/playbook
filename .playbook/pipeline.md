@@ -56,7 +56,7 @@ on its own.
 When complete, findings feed directly into the session files so the rest of
 the pipeline has accurate context to work from.
 
-Full guide: [Audit in expansions.md](../playbook/.playbook/expansions.md#audit)
+Full guide: [audit.md](../playbook/.playbook/audit.md)
 
 ---
 

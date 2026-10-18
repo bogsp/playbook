@@ -59,7 +59,7 @@ audit.
 - **Audit requested standalone (no `flow-9` caller)** — the flow supports
   this per its own Before It Starts condition. On handoff, control returns
   to session end rather than to `flow-9`'s landing logic; the person decides
-  the next pipeline stage manually via the four questions in `pipeline.md` → Starting → An existing project.
+  the next pipeline stage manually via the four questions in `adopt.md`.
 - **A piece is classified `Evaluate` and gap-report or risk-map depends on
   its verdict** — risk-map and gap-report may proceed with an explicit
   `Evaluate — pending` marker rather than blocking entirely, but the
@@ -96,7 +96,7 @@ audit.
   progresses autonomously, at any phase, under any condition.
 - Findings are never discarded — every finding lands in one of the three
   `docs/rewrite/` files or is explicitly marked out of scope with a stated
-  reason (per the Rules section of `expansions.md` → Audit).
+  reason (per the Rules section of `audit.md`).
 - The Active Expansion field in `01-process.md` must reflect the current
   phase at all times during the audit — it is never left stale.
 - Aborting the audit never deletes approved phase output — see Undoing

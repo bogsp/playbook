@@ -34,6 +34,7 @@ const out = (...p) => join(assetsDir, ...p);
 const sources = [];
 
 for (const f of m.playbookRoot) sources.push({ from: pb(f), to: out("universal", "playbook", f) });
+for (const f of Object.keys(m.onDemand)) sources.push({ from: pb(f), to: out("universal", "playbook", f) });
 for (const f of m.kit) sources.push({ from: pb("kit", f), to: out("universal", "kit", f) });
 sources.push({ from: pb("templates", m.projectReadme), to: out("universal", "project-README.md") });
 for (const f of m.kitTests) sources.push({ from: pb("kit", "_tests", f), to: out("universal", "kit", "_tests", f) });

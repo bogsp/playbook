@@ -20,6 +20,8 @@ Restructure of the shipped pipeline. Existing projects are not upgraded automati
 - `kit/00-prompts.md` became `kit/00-guide.md`; prompts are shorter.
 - Two READMEs: the project's own root `README.md` (never overwritten if present) and `.playbook/README.md` (the Playbook entry for people).
 - Kit Charter: budgets and entry shapes per kit file; roll-over to `_archives/`.
+- Kit templates are lean: budgets and entry shapes in each file's frontmatter, no rules prose. Kit file rules moved to `kit/00-guide.md`; the QA sign-off checks moved to `maintenance.md`. Open questions and decisions are one line each, with detail in `_refs/questions/` and `_refs/decisions/`. `01-process` has no Session Notes; `Active Expansions:` names each expansion's phase, exclusive files and domain templates.
+- Adopt and audit are separate files, `adopt.md` and `audit.md`, copied only to adopt and audit projects. `pipeline.md` and `expansions.md` point to them.
 - `.playbook/.version` records the template version and a hash per file as scaffolded.
 - Example concerns (auth, error-handling, logging) are no longer copied into projects; concerns are created when a task needs one.
 - `04-progress.md` is scaffolded with one `Completed` line instead of an `In Progress` entry.

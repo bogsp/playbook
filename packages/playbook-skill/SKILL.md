@@ -35,7 +35,7 @@ Ask one question at a time unless the person has already stated their preference
    pipeline)
 
 If domain requires investigating an existing project first, run the six-phase audit
-(`assets/universal/playbook/expansions.md`, Audit) before scaffolding kit files with
+(`assets/universal/playbook/audit.md`) before scaffolding kit files with
 real content — inventory, audit, classify, risk-map, gap-report, handoff, each
 gated by human review.
 
@@ -53,14 +53,14 @@ Copy from `assets/` — generated from `playbook/.playbook/` and `playbook/docs/
 4. `assets/universal/playbook/maintenance.md` → `.playbook/maintenance.md`.
 5. `assets/universal/playbook/templates/*` → `.playbook/templates/*` (the 5 universal
    planning-doc shapes).
-6. `assets/universal/playbook/rules.md` → `.playbook/rules.md`, and `assets/universal/playbook/expansions.md` → `.playbook/expansions.md`.
+6. `assets/universal/playbook/rules.md` → `.playbook/rules.md`, and `assets/universal/playbook/expansions.md` → `.playbook/expansions.md`. Then, by project type (the lists are `onDemand` in `assets/manifest.json`): copy `adopt.md` for adopt and audit projects, and `audit.md` for audit projects only. New projects get neither.
 7. `assets/universal/kit/*` → `.playbook/kit/*`. Generate `01-process.md` and
    `04-progress.md` fresh (today's date, one `Completed` line noting the
    project type — starting from scratch / adopting / auditing) rather than copying
    the raw template verbatim; copy `00-guide.md`, `02-exploration.md`,
    `03-execution.md`, `05-kanban.md`, `06-qa.md`, and `_tests/test-case.md` as-is.
    Create empty `_archives/{exploration,progress,kanban}/` and
-   `_refs/{video-insights,templates,examples,snippets,research}/` folders.
+   `_refs/{decisions,questions,video-insights,templates,examples,snippets,research}/` folders.
 8. If `domain != none`: `assets/[domain]/vocabulary/_index.md` →
    `.playbook/vocabulary-[domain]/_index.md`, and
    `assets/[domain]/vocabulary/templates/*` →
