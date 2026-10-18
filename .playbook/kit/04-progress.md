@@ -27,3 +27,4 @@ Archived: _archives/progress/progress-pre-migration.md, progress-reconciliation-
 2026-10-18 | Completed | K2 installed: lean kit templates, kit file rules in 00-guide, QA checks in maintenance, adopt.md and audit.md; 12 scaffolds and drift pass | CHANGELOG.md
 2026-10-18 | Decided | Audit pass folds decision-record.md into _refs/decisions (one decision store, no second template) | K-57
 2026-10-18 | Completed | K3 step 1: 172 events of 04-progress condensed into 3 archives (63, 53, 56 records), coverage checked; original at git 1d32cfe | _archives/progress/
+2026-10-18 | Completed | K3 step 2: 05-kanban lean (49 lines); 37 Done tickets in 3 archives, 17 backlog tickets verbatim in _refs/kanban/; coverage checked, 2 phrases restored; original at git 117e11c | _archives/kanban/, _refs/kanban/

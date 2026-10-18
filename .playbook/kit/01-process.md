@@ -6,8 +6,8 @@ archive_rule: 'N/A'
 ---
 
 Phase: Planning
-Last: K3 step 1 done: 04-progress migrated (172 events to 3 archives; core 2.9 KB) → 04-progress
-Next: K3 steps 2-5: 05-kanban, 02-exploration, 03-execution, 01-process migrated to the lean shape, one at a time; then K4, K5.
+Last: K3 step 2 done: 05-kanban lean (3.5 KB, was 32 KB); Done to _archives/kanban/, backlog detail to _refs/kanban/ → 04-progress
+Next: K3 steps 3-5: 02-exploration, 03-execution, 01-process migrated to the lean shape, one at a time; then K4, K5.
 Open: code checks (biome, build) deferred until code work; K-50, K-32, K-19–K-26, `_to_delete/` → 05-kanban
 Active Modules: kanban
 Active Expansions: none
