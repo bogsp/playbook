@@ -20,9 +20,7 @@ Q-06 | Upgrade path for older projects: detect template changes, offer updates, 
 
 ## Decisions
 
-D-01 | 2026-08-11 | Four-field frontmatter for generated flow docs and shipped templates; software-only values made generic | -> _refs/decisions/D-01.md
-D-02 | 2026-08-11 | K-27 scope expanded: five user-journey flows beside the two build flows (K-50 open) | -> _refs/decisions/D-02.md
-D-03 | 2026-08-11 | Deleted unedited root duplicates flow.md and contract.md; kept root contracts/global.md as placeholder (Q-04) | -> _refs/decisions/D-03.md
+D-01..03 | 2026-08-11 | Four-field frontmatter standard; journey-flows scope (K-50 open); root duplicates deleted | -> _refs/decisions/D-01.md, D-02.md, D-03.md
 D-04 | 2026-08-12 | Frontmatter Tiering: Tier 1 planning docs add the deep-module header; Tier 2 keeps the four-field block | -> _refs/decisions/D-04.md
 D-05 | 2026-08-29 | Contract sections: Normal Flow, Failures, Edge Cases, Ordering, Constraints; concurrency folded into Ordering (K-05) | -> _refs/decisions/D-05.md
 D-06 | 2026-08-29 | One entry point: _index.md absorbs AI-INSTRUCTIONS.md and vocabulary pairs; README.md plain human readme (K-42) | -> _refs/decisions/D-06.md
@@ -38,3 +36,4 @@ D-15 | 2026-10-16 | Sessions disposable, state durable: C9, C10 safeguards; cost
 D-16 | 2026-10-16 | Before merging, replacing or condensing a doc: inventory, approval, then a line-by-line coverage check | -> _refs/decisions/D-16.md
 D-17 | 2026-10-17 | GitHub is the distribution source; a no-terminal scaffolder writes files then steps aside (K-55) | -> _refs/decisions/D-17.md
 D-18 | 2026-10-18 | K2: lean kit templates; adopt.md and audit.md split by project type; decision-record folded into _refs/decisions (K-57) | -> _refs/decisions/D-18.md
+D-19 | 2026-10-18 | No scripts or code until templates and structure are finished; checks and roll-over stay manual or AI-assisted | -> _refs/decisions/D-19.md
