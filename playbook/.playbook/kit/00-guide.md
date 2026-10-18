@@ -46,6 +46,7 @@ Each file carries its limits in its frontmatter (`max-bytes`, `max-lines`, `line
 - The top of a kanban column is next. A blocked ticket stays in its column and names its blocker.
 - Ticket types: `DDA` writes or syncs a planning document; `CODE` implements against an active planning document; `SYNC` corrects drift between the work and its document. Other domains may rename the types.
 - Every check in `06-qa` maps to one acceptance criterion or ticket. A criterion is done only when its check passes. A failure links to a ticket.
+- Agents run the checks they can; a human signs off on what needs judgment.
 - A check passes only after the planning documents match the work (rule C6).
 - `01-process` also names what is active beyond the kit: `Active Expansions:` lists each expansion with its phase, its exclusive files and the domain templates in use, so a new session loads only those.
 

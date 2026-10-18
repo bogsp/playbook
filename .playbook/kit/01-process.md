@@ -1,13 +1,20 @@
 ---
 file: '.playbook/kit/01-process.md'
-responsibility: 'Holds ONLY Current State, Active Expansions, and Immediate Next Step.'
-ai_instructions: 'Update at the end of every session. Read at the start of the next.'
-archive_rule: 'N/A'
+responsibility: 'Entry state: phase, last, next, open flags, active expansions.'
+ai_instructions: 'Read first, every session. Overwrite in place at session end. Keep each line within line-max; detail goes to a linked file.'
+archive_rule: 'N/A. Overwrite in place.'
+owner: project
+max-bytes: 2048
+max-lines: 20
+line-max: 200
+entry-shape: 'Last: <=160 chars -> refs'
 ---
 
-Phase: Planning
-Last: K3 step 2 done: 05-kanban lean (3.5 KB, was 32 KB); Done to _archives/kanban/, backlog detail to _refs/kanban/ → 04-progress
-Next: K3 steps 3-5: 02-exploration, 03-execution, 01-process migrated to the lean shape, one at a time; then K4, K5.
-Open: code checks (biome, build) deferred until code work; K-50, K-32, K-19–K-26, `_to_delete/` → 05-kanban
+# Process
+Phase: Planning (pipeline rewrite)
+Last: K3 steps 3-4 done: 02-exploration, 03-execution, 06-qa lean; 18 decisions indexed; design docs now in _refs/design/ -> 04-progress
+Next: finish K3 (01-process already lean), K4 budget checker and roll-over, K5, then K-57 audit pass, K-54, slice 1, K-56, K-55
+Open: Q-03, Q-05, Q-06 -> 02-exploration; code checks (biome, build) deferred until code work
+In flight: none
 Active Modules: kanban
 Active Expansions: none

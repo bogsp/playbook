@@ -1,70 +1,40 @@
 ---
 file: '.playbook/kit/02-exploration.md'
-responsibility: 'Holds ONLY Open Questions, Settled Architectural Decisions, and System Constraints.'
-ai_instructions: 'Active decisions only. Do not revisit closed decisions unless explicitly asked.'
-archive_rule: 'Closed decisions no longer gating any active task move to .playbook/kit/_archives/exploration/'
+responsibility: 'Index of open questions, closed decisions and constraints, with links to detail.'
+ai_instructions: 'One line per question or decision; detail and reasoning go in _refs/questions/ or _refs/decisions/. Do not reopen a closed decision without explicit human instruction.'
+archive_rule: 'Closed decisions that affect no active task move to _archives/exploration/; the index line stays.'
+owner: project
+max-bytes: 4096
+max-lines: 40
+line-max: 200
+entry-shape: 'Q-nn | question | -> link ; D-nn | date | <=160 chars | -> link'
 ---
 
-## Open Topics
+# Exploration
+Archived: _archives/exploration/decisions-pre-migration.md (13 decisions, 2026-05-06 to 2026-05-23)
+## Open Questions
 
-- [ ] **[Q-03]:** Frontmatter sweep beyond `guides/` — not a blocker for any current ticket, fix opportunistically when each file is next touched: `playbook/docs/flows/flow.md` and `playbook/docs/contracts/contract.md`/`global.md` are now resolved (see 2026-08-11 decision below) — remaining scope on `playbook/.playbook/templates.md` + `templates/*.md` (HCH block) is resolved by the 2026-08-12 Frontmatter Tiering Rule below; `playbook/.playbook/pipeline.md`, `playbook/.playbook/README.md`, and all four `vocabulary-*/{README,AI-INSTRUCTIONS,templates}.md` (still `# Title` / `# File:` style) remain open.
+Q-03 | Frontmatter sweep: recheck files still in the old header style (K-39 converted pipeline.md, vocabulary READMEs) | -> _refs/questions/Q-03.md
+Q-05 | Packets A-E prompt in kit/00-guide.md looks project-specific: keep, move to _refs/, or drop | -> _refs/questions/Q-05.md
+Q-06 | Upgrade path for older projects: detect template changes, offer updates, keep project edits | -> _refs/questions/Q-06.md
 
----
+## Decisions
 
-## Settled Decisions
-
-- **[2026-08-31] — create-playbook CLI updated for K-42 and given the two new settings**
-  - **Context:** `build.js` and `scaffold.js` still copied the retired `AI-INSTRUCTIONS.md` and per-domain `README.md`+`AI-INSTRUCTIONS.md` pairs (K-42 had merged these into a single `_index.md` each, but the CLI's own build/scaffold logic was explicitly deferred at the time). Separately, `review-gate` and `pipeline-mode` (K-45, K-46) had no way to be set during scaffolding — only by hand-editing frontmatter afterward.
-  - **Decision:** `build.js` now sources the single merged `_index.md` per domain instead of the retired pair; the universal `AI-INSTRUCTIONS.md` source entry is removed entirely. `scaffold.js` mirrors this on the write side, and `buildIndex()` now accepts `reviewGate`/`pipelineMode` and overwrites the template's placeholder frontmatter values with the person's actual answer. `index.js`'s `runInit()` asks both as new questions, same UI pattern as the domain question, with `balanced`/`kit-only` as the recommended defaults matching what the template itself ships with. Version bumped 3.0.0 → 3.1.0.
-  - **Ref:** `04-progress.md` 2026-08-31 entry; `05-kanban.md` K-49.
-
-- **[2026-08-31] — Playbook packaged as a Claude Skill, sharing the template source rather than duplicating it**
-  - **Context:** A Skill would let Claude scaffold Playbook projects directly in-session without the `create-playbook` CLI, but the person was explicit that a second hand-maintained copy of the template content was not acceptable.
-  - **Decision:** New package `packages/playbook-skill/` with its own `build.js` that reads from the same `playbook/.playbook/` and `playbook/docs/` source `create-playbook/build.js` reads from, producing `assets/` as a build output (never hand-edited, same discipline as `create-playbook/templates/`). `SKILL.md` carries the trigger conditions and scaffold instructions, mirroring `create-playbook init`'s setup questions (domain, project type, review-gate, pipeline-mode). The Skill and the CLI are treated as two equivalent, additive entry points into the same scaffold — neither is authoritative over the other; both derive from `playbook/.playbook/`.
-  - **Ref:** `04-progress.md` 2026-08-31 entry; `05-kanban.md` K-48.
-
-- **[2026-08-31] — Pipeline Mode introduced as a per-project setting (`kit-only` default)**
-  - **Context:** Progressive Disclosure was real at the document level (`flow.md`'s template already gates optional sections by scope/trigger) but not at the project level — every scaffolded project got the full six-kit-file-plus-flows-plus-contracts-plus-planning-docs apparatus regardless of size. `context-kit-standalone.md` already documented a lighter path, but it was a guide to remember, not a state the AI's own behavior adapted to.
-  - **Decision:** `_index.md`'s frontmatter now declares `pipeline-mode: kit-only | full`, same pattern as `review-gate`. `kit-only` (the new default for every scaffolded project) means no flow, contract, or planning-document requirement — work proceeds straight from kit files, matching `context-kit-standalone.md` exactly, but now as an enforced state rather than an alternative guide. `full` is current pipeline behavior, unchanged. Behavioral Rules 1, 2, 5, 6, 7, 9, and 12 (the ones governing flow/contract/planning-doc work) are explicitly scoped to apply only in `full` mode. Switching `kit-only` → `full` is always safe (nothing is lost); switching back down isn't recommended once flow/contract/planning docs already exist, since the mode change doesn't delete them. This repo's own root `.playbook/` declares `full` on itself, since its own work genuinely spans the whole pipeline.
-  - **Ref:** `04-progress.md` 2026-08-31 entry; `05-kanban.md` K-46.
-
-- **[2026-08-31] — Review Gate introduced as a per-project setting (three levels)**
-  - **Context:** The blanket "approve every artifact-producing step" rule (`docs/contracts/playbook-templates/global.md` §2) was written when AI context drift and hallucination were worse; it now over-serves the common case, and this repo's own recent work (K-05, K-37, K-42 batch of 11 files) had already been operating more efficiently than the rule states. Separately, Playbook is intended for publication to other people, who will have different risk tolerances and working styles — a single hardcoded gate weight doesn't fit a published tool the way it might fit one team's private process.
-  - **Decision:** Review gate weight is now a per-project setting declared in `_index.md`'s frontmatter (`review-gate: strict | balanced | lean`), not a fixed rule. Three levels: `strict` (approve every step, no exceptions — the old behavior), `balanced` (halt only for new architecture/content/decisions, dependencies, security/auth/persistence changes, and deletions; propagation of already-approved decisions, formatting fixes, and reference corrections proceed without a fresh approval) — this is the default for scaffolded projects — and `lean` (same halt list as `balanced`, plus similar approval-needing items get reviewed together as one batch instead of one at a time). Ambiguous work always halts and is flagged, at every level — the setting only changes how much *routine, already-decided* work needs a fresh stop each time. This repo's own meta-track declares `strict` deliberately, since it is the source every future project copies from; `docs/contracts/playbook-templates/global.md` §2 now states this explicitly rather than asserting an unexplained absolute rule. A future hook (not built yet) is for `create-playbook init` to ask which level a new project wants, the same way it already asks for domain — deferred to a CLI/library session.
-  - **Ref:** `04-progress.md` 2026-08-31 entry; `05-kanban.md` K-45.
-
-- **[2026-08-29] — README/AI-INSTRUCTIONS/_index.md consolidated into a single entry point**
-  - **Context:** Session-mechanics review surfaced that Playbook's own orientation content was split across three files (`README.md`, `AI-INSTRUCTIONS.md`, `_index.md`) with overlapping and sometimes disagreeing content — e.g. the two-message kit pattern (`context-kit.md`) grouped kit files differently than `AI-INSTRUCTIONS.md`'s own Session Load Order. Separately, the two-message session-start pattern itself was built around ChatGPT's upload limits; Claude, Gemini, and most current tools don't have that constraint, so forcing a fixed two-message split by default over-serves a shrinking problem.
-  - **Decision:** `.playbook/_index.md` is now the single entry point for both templates and scaffolded projects — it carries What This Project Is, Session Start, AI Behavioral Rules (absorbed from the retired `AI-INSTRUCTIONS.md`), How to Use This File, Structure, Project Planning Documents, and Detail. `README.md` is now a plain human-facing project readme with one pointer line back to `_index.md` — no Playbook mechanics. `AI-INSTRUCTIONS.md` no longer exists as a separate file at the project root. The same treatment applies to `vocabulary-[domain]/`: each domain's `README.md` + `AI-INSTRUCTIONS.md` merged into a single `vocabulary-[domain]/_index.md`, since those folders had no `_index.md` of their own before this change (per the general rule: AI-INSTRUCTIONS-style content merges into a directory's `_index.md` where one exists or is being introduced; it only stays a separate file where no `_index.md` scope applies). Session-start guidance in `context-kit.md`, `context-kit-standalone.md`, and `00-prompts.md` rewritten from "always two messages" to "one message by default; fall back to `_index.md` + `01-process.md` + `04-progress.md` first, only pulling in more if the task needs it, on tools with a hard limit."
-  - **Ref:** `04-progress.md` 2026-08-29 entry (second pipeline-review session); `05-kanban.md` K-42.
-
-- **[2026-08-29] — Contract section names finalized (K-05 resolved)**
-  - **Context:** Two versions of the five-section contract shape existed and disagreed — the original 2026-05-23 decision log (`Happy Path` / `Failure Modes` / `Edge Cases` / `Concurrency Rules` / `Constraints`) versus what actually shipped everywhere (`The Good Path` / `Ways It Can Fail` / `Edge Cases` / `Ordering Rules` / `Hard Constraints`, no dedicated concurrency section). Neither was acceptable as final: the shipped names use success-framed language ("Good"/"Happy") that assumes the path succeeds, and both versions carry jargon or redundant qualifiers ("Hard" Constraints — a constraint is non-negotiable by definition).
-  - **Decision:** Contract sections renamed to plain, neutral, non-jargon terms: **Normal Flow** (was "The Good Path"), **Failures** (was "Ways It Can Fail"), **Edge Cases** (unchanged), **Ordering** (was "Ordering Rules"), **Constraints** (was "Hard Constraints"). Concurrency is not a separate section — it is folded into **Ordering** ("what must happen before what, including anything that cannot happen at the same time"), since most projects using this pipeline have no true concurrency concerns and a dedicated section would sit empty in the common case. `N/A`/`TODO` markers are retained — they are functional status flags, not jargon. Applied to all contract documents carrying this five-section shape: `playbook/docs/contracts/contract.md` (template) and all 8 files under `docs/contracts/playbook-templates/` (flow-0 through flow-7). `docs/contracts/global.md` and `playbook/docs/contracts/global.md` are unaffected — they use a different section shape (numbered cross-cutting rules / named-topic blocks), not the five-part per-flow contract shape this decision governs.
-  - **Ref:** `04-progress.md` 2026-08-29 entry; `05-kanban.md` K-05.
-
-- **[2026-08-12] — Frontmatter Tiering Rule established**
-  - **Context:** Splitting `playbook/.playbook/templates.md` into per-type files (K-33) required deciding what frontmatter each file carries. The deep-module header (`MODULE_ID`, `SYSTEM_CONTEXT`, `UPSTREAM_DEPENDENCIES`, `DOWNSTREAM_IMPACT`, `CORE_SYSTEM_INVARIANTS`) was flagged as unresolved in the 2026-08-10 sync check (K-03) — present in templates/kit files, absent from `_concerns/`, never traced to a decision. Separately, prior drift between `02-exploration.md`/`03-execution.md`/`04-progress.md` (see archived 2026-05-23 decision) was only resolved by giving each kit file an explicit `responsibility`/`ai_instructions` boundary, establishing that the four-field purpose block is what prevents this class of drift.
-  - **Decision:** Progressive Disclosure applied to frontmatter itself, in two tiers. Tier 1 (DDA/planning docs — the five universal types and domain-specific counterparts like software's `sequencer`): deep-module header + four-field purpose block (`file`, `responsibility`, `ai_instructions`, `archive_rule`) + type-specific tracking fields (`id`, `type`, `status`, etc.). Tier 2 (kit files, flows, contracts, guides, READMEs, indexes): the four-field purpose block is mandatory and never dropped, since it prevents drift between documents with adjacent purposes — plus any already-established tracking fields for that doc type (flows/contracts keep `id`/`type`/`scope`/`trigger`/`status`/`calls`/`emits`/`called-by`). The deep-module header stays Tier-1-only — it exists to protect AI-generated code against upstream/downstream impact, a risk specific to docs that gate implementation.
-  - **Ref:** `04-progress.md` 2026-08-12 entry; `05-kanban.md` K-33, K-34.
-
-- **[2026-08-11] — Root-level stale doc duplicates resolved (Q-04)**
-  - **Context:** Root `docs/flows/flow.md`, `docs/contracts/contract.md`, and `docs/contracts/global.md` duplicated the canonical `playbook/docs/` template source but were never updated in the frontmatter standardization pass — still carried the old header style. `docs/contracts/global.md` held unrelated filled-in content (a DragonPay/Stripe/PHP financial platform's global contract), suggesting a stale artifact from a different project.
-  - **Decision:** Deleted `docs/flows/flow.md` and `docs/contracts/contract.md` — unedited duplicates, nothing lost. Retained `docs/contracts/global.md` — root `docs/` legitimately holds this repo's own tracked flows (create-playbook, playbook-templates tracks), so a root global contract has a real purpose; kept as a placeholder to be overwritten once contract-writing work (K-28+) reaches it.
-  - **Ref:** `04-progress.md` 2026-08-11 entry; `05-kanban.md`.
-
-- **[2026-08-11] — K-27 scope expanded to include pipeline user-journey flows**
-  - **Context:** Original K-27 scope (three-track plan) covered only internal template-maintenance mechanics — editing template source and the build/publish step.
-  - **Decision:** Scope expanded to also document how a person in a consuming project moves through the shipped pipeline — five additional flows (new project, adopt, audit, resume session, milestone handoff/resume), grouped separately from the two build-mechanic flows in `docs/flows/playbook-templates/_index.md`. These journey flows describe `playbook/.playbook/guides/*.md` as executable paths, not just prose.
-  - **Ref:** `04-progress.md` 2026-08-11 entry; `05-kanban.md` K-27.
-
-- **[2026-08-11] — Standardized frontmatter adopted for generated flow docs and shipped templates**
-  - **Context:** Flow and contract documents needed a consistent frontmatter shape. The shipped templates (`playbook/docs/flows/flow.md`, `playbook/docs/contracts/contract.md`, `playbook/docs/contracts/global.md`) also hardcoded `Type: software`, incorrect for a domain-agnostic template shipped to writing/production/manufacturing projects too.
-  - **Decision:** All newly generated flow documents use the four-field standard (`file`/`responsibility`/`ai_instructions`/`archive_rule`) as the primary block, with flow-tracking fields (`id`, `type`, `scope`, `trigger`, `status`, `calls`, `emits`, `called-by`) folded into the same YAML block. Shipped templates updated to match, and hardcoded software values replaced with generic `project-type: software | writing | production | manufacturing` and `domain-vocabulary: '.playbook/vocabulary-[domain]/'` placeholders.
-  - **Ref:** `04-progress.md` 2026-08-11 entry.
-
----
-
-## Constraints
-
-- **[C-01]:** [System requirement or technological constraint]
+D-01 | 2026-08-11 | Four-field frontmatter for generated flow docs and shipped templates; software-only values made generic | -> _refs/decisions/D-01.md
+D-02 | 2026-08-11 | K-27 scope expanded: five user-journey flows beside the two build flows (K-50 open) | -> _refs/decisions/D-02.md
+D-03 | 2026-08-11 | Deleted unedited root duplicates flow.md and contract.md; kept root contracts/global.md as placeholder (Q-04) | -> _refs/decisions/D-03.md
+D-04 | 2026-08-12 | Frontmatter Tiering: Tier 1 planning docs add the deep-module header; Tier 2 keeps the four-field block | -> _refs/decisions/D-04.md
+D-05 | 2026-08-29 | Contract sections: Normal Flow, Failures, Edge Cases, Ordering, Constraints; concurrency folded into Ordering (K-05) | -> _refs/decisions/D-05.md
+D-06 | 2026-08-29 | One entry point: _index.md absorbs AI-INSTRUCTIONS.md and vocabulary pairs; README.md plain human readme (K-42) | -> _refs/decisions/D-06.md
+D-07 | 2026-08-31 | review-gate per-project setting: strict, balanced (default) or lean; ambiguity always halts (K-45) | -> _refs/decisions/D-07.md
+D-08 | 2026-08-31 | pipeline-mode per-project setting: kit-only (default) or full; switching up is safe (K-46) | -> _refs/decisions/D-08.md
+D-09 | 2026-08-31 | Claude Skill built from the same template source as the CLI; no second hand-kept copy (K-48) | -> _refs/decisions/D-09.md
+D-10 | 2026-08-31 | create-playbook 3.1.0: merged domain _index.md; asks review-gate and pipeline-mode at init (K-49) | -> _refs/decisions/D-10.md
+D-11 | 2026-10-14 | Rules single-sourced by scope with stable IDs: Core C, Dependencies D, Pipeline P (full mode), Project X | -> _refs/decisions/D-11.md
+D-12 | 2026-10-15 | Context design: interface cards, sharded generated registry, routes.md, one domain per project (slice 1) | -> _refs/decisions/D-12.md
+D-13 | 2026-10-15 | Kit Charter: lean kit files, one-line events, rules outside the kit, detail to _archives/ and _refs/ (lossless roll-over) | -> _refs/decisions/D-13.md
+D-14 | 2026-10-16 | Guides dissolved into Playbook docs; rules.md split out; two READMEs; one self-adapting AI entry (Session Start) | -> _refs/decisions/D-14.md
+D-15 | 2026-10-16 | Sessions disposable, state durable: C9, C10 safeguards; cost is context load and rate limits, not bytes | -> _refs/decisions/D-15.md
+D-16 | 2026-10-16 | Before merging, replacing or condensing a doc: inventory, approval, then a line-by-line coverage check | -> _refs/decisions/D-16.md
+D-17 | 2026-10-17 | GitHub is the distribution source; a no-terminal scaffolder writes files then steps aside (K-55) | -> _refs/decisions/D-17.md
+D-18 | 2026-10-18 | K2: lean kit templates; adopt.md and audit.md split by project type; decision-record folded into _refs/decisions (K-57) | -> _refs/decisions/D-18.md

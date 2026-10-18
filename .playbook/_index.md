@@ -64,6 +64,11 @@ This repo runs `pipeline-mode: full` and `review-gate: strict`.
 - **X3** Never change `review-gate` or `pipeline-mode` unilaterally.
 - **X4** When a change could belong to either world, stop and flag it with the repo-specific category `template-vs-meta-ambiguity`, in addition to the categories in the template.
 - **X5** Before any work, confirm each Session Start file exists and is non-empty. If one is missing, stop and flag it.
+- **X6** Follow the closed decisions indexed in `kit/02-exploration.md`. Playbook docs use YAML frontmatter, `## What It Does`, `## Interface` and an optional `## Detail`.
+- **X7** File and folder names are kebab-case.
+- **X8** Code passes `biome check` and `biome format` before commit (applies once code work resumes).
+- **X9** A phase is complete only when the Phase Completion Checklist in `docs/code-standards.md` (§7) passes. QA tier: standard.
+- **X10** Docs are clear, concise and skimmable for humans, dense for AI. Progressive Disclosure + Tiering is the default for every structural decision.
 
 ### Review gate: strict
 

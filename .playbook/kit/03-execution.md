@@ -1,61 +1,38 @@
 ---
 file: '.playbook/kit/03-execution.md'
-responsibility: 'Holds ONLY Guidelines, Active Phase Plan, In-Flight Tasks, and Acceptance Criteria.'
-ai_instructions: 'Use this as the source of truth for guidelines and task checklists.'
-archive_rule: 'Completed tasks move to 04-progress.md and are pruned from here.'
+responsibility: 'The current phase: goal, checklist and known issues.'
+ai_instructions: 'Tick tasks as they finish. Hold the current phase only; a finished phase moves to _archives/execution/. A task has detail here or in 05-kanban, never both.'
+archive_rule: 'Finished phases move to _archives/execution/ once logged in 04-progress.'
+owner: project
+max-bytes: 4096
+max-lines: 45
+line-max: 200
+entry-shape: '- [ ] T-nn <=120 chars -> K-nn or doc'
 ---
 
-Guidelines
+# Execution
 
-Style & Voice:
+Archived: _archives/execution/restructure-phase.md (the directory-restructure phase: guidelines, plan, acceptance criteria)
+Phase: Pipeline rewrite. Fix the pipeline, then templates, then the shared core.
+Goal: Playbook runs lean in any domain and any AI tool; this repo adopts it last.
+Done when: R1-R6, K2-K5 and slice 1 installed; K-54 designed; this repo migrated; all 12 scaffolds pass.
+Later: Phase 2 templates and domain packs; Phase 3 distribution (K-55); Phase 4 shared core and platform prep (K-56)
 
-- Clear, concise, practical — no filler
-- Docs skimmable for humans, dense for AI
-- Progressive Disclosure + Tiering is the default for all structural decisions
+## Checklist
 
-Rules & Constraints:
+- [x] T-01 R1-R6: guides dissolved, rules.md, two READMEs, versioning -> _archives/progress/2026-10.md
+- [x] T-02 K1-K2: Kit Charter, lean kit templates, adopt.md and audit.md split -> _refs/design/kit-charter.md
+- [x] T-03 K3: migrate this repo's kit: 04, 05, 02 done -> 04-progress
+- [ ] T-04 K3: migrate 03-execution and 01-process (this file is the first) -> 04-progress
+- [ ] T-05 K4: budget checker and roll-over command -> _refs/design/kit-charter.md
+- [ ] T-06 K5: rebuild, scaffold the four domains, run the checker -> CHANGELOG.md
+- [ ] T-07 Audit pass: fold decision-record template into _refs/decisions -> K-57
+- [ ] T-08 Large-project partitioning, tested on the four examples -> K-54
+- [ ] T-09 Slice 1 S1-S7: cards, registry, routes, history -> _refs/design/slice-1-design.md
+- [ ] T-10 Adopt the new pipeline in this repo's own .playbook/ -> D-14
+- [ ] T-11 Shared core, then the no-terminal scaffolder -> K-56, K-55
+- [ ] T-12 Close old-restructure leftovers: root playbook/ clean, code-standards-c/rust archived, _index.md references checked -> _archives/execution/restructure-phase.md
 
-- Follow all conventions in closed decisions in 02-exploration.md
-- Playbook docs use YAML frontmatter + ## What It Does + ## Interface + optional ## Detail
-- File and folder naming strictly follows kebab-case conventions
-- Code must pass biome check and biome format before commit
+## Known Issues
 
-Quality Bar:
-
-- Phase not complete until Phase Completion Checklist in docs/code-standards.md (§7) fully passes
-- QA Tier: standard
-
-Plan
-
-Goals:
-
-- Execute the directory restructure to strictly separate the project's Playbook (`.playbook/`) from the template Playbook (`playbook/`).
-
-Outcomes:
-
-- The repository perfectly mirrors the newly defined dichotomy.
-- All unresolved blocked tickets (K-01 to K-06) are conclusively answered and closed.
-- `create-playbook` CLI successfully points to the new template paths.
-
-Acceptance Criteria:
-
-- [x] Root `.playbook/` contains ONLY the project's own meta-pipeline files.
-- [ ] Root `playbook/` contains ONLY the clean, domain-agnostic template source files.
-- [x] `packages/create-playbook/` pathing logic updated to pull from the newly mapped `playbook/` template directory. (Verified 2026-10-14: builds and scaffolds from `playbook/` via `packages/template-manifest.json`.)
-- [ ] `docs/code-standards-c.md` and `docs/code-standards-rust.md` are archived or deleted.
-- [ ] Sync check confirms no broken references in `_index.md`.
-
-Action
-
-Right Now: Topic C — drift guards (validator, session-start check, archive thresholds). Topics A and B closed; see 01-process.md.
-Tasks:
-
-- [x] Migrate current `.kit/` files to root `.playbook/kit/`.
-- [ ] Move template sources into `playbook/` template structure (`playbook/.playbook/kit/` and `playbook/templates/`).
-- [ ] Clean up root directory (remove old docs/ and standalone files not in the new structure).
-
-Known Issues
-
-| #   | Issue                                       | Type   | Severity | Blocked By | Resolution                                |
-| --- | ------------------------------------------- | ------ | -------- | ---------- | ----------------------------------------- |
-| 1   | Nested code blocks break markdown rendering | design | low      | —          | Delivered standard formatting containment |
+I-01 | Nested code blocks break markdown rendering | design | low | none | standard formatting containment delivered
