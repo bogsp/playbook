@@ -7,13 +7,13 @@ owner: project
 max-bytes: 2048
 max-lines: 20
 line-max: 200
-entry-shape: 'Last: K3 done; decided D-19: no scripts until templates and structure are finished -> 04-progress
+entry-shape: 'Last: K-54 design drafted with four example walk-throughs; awaiting decisions 1-5 -> _refs/design/large-project-partitioning.md
 ---
 
 # Process
 Phase: Planning (pipeline rewrite)
-Last: K3 done; decided D-19: no scripts until templates and structure are finished -> 04-progress
-Next: T-05 to T-09 in 03-execution: K-57, K-54 design, card schema and hand-kept registry, domain packs, freeze 2.0.0
+Last: K-54 design drafted with four example walk-throughs; awaiting decisions 1-5 -> _refs/design/large-project-partitioning.md
+Next: person decides K-54 questions; then T-07 card schema and templates, T-05 audit pass, T-08 domain packs, T-09 freeze
 Open: Q-03, Q-05, Q-06 -> 02-exploration; code checks (biome, build) deferred until code work
 In flight: none
 Active Modules: kanban

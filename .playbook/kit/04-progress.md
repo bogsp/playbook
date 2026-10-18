@@ -32,3 +32,4 @@ Archived: _archives/progress/progress-pre-migration.md, progress-reconciliation-
 2026-10-18 | Completed | K3 steps 4-5: 03-execution rewritten (old file verbatim in archive); 06-qa and 01-process lean; old guidelines now _index.md X6-X10 | _archives/execution/restructure-phase.md
 2026-10-18 | Completed | Design docs (kit charter, context architecture, slice-1 design, optimization list) moved from the outputs folder into the repo at _refs/design/ | _refs/design/
 2026-10-18 | Decided | No scripts or code until templates and structure are finished; K4 checker, registry generator and shared core wait for the code phase | D-19
+2026-10-19 | Completed | K-54 design drafted: five mechanisms (areas, area slice, shared, interface, snapshot), boundary rule D3, four examples tested at 17-34 KB per task; awaiting 5 decisions | _refs/design/large-project-partitioning.md
