@@ -120,6 +120,11 @@ Type: DDA
 Description: Raised 2026-10-17. Pure functions over a file map, no filesystem or terminal assumption; shells (CLI, web, skill) stay thin. Prepares the library and CLI for a platform and book publishing. Depends on the pipeline fix (R5–R6, K2–K5) and slice 1.
 Blocked by: none
 
+[K-57] Audit pass: fold docs/rewrite/decision-record.md template into _refs/decisions (one decision store)
+Type: DDA
+Description: Raised 2026-10-18. Audit projects ship a separate decision-record.md that overlaps with the kit's D-nn decision files. Remove the template and point the audit outputs at 02-exploration plus _refs/decisions/. Do when the audit pass reaches audit.md.
+Blocked by: none
+
 In Progress
 (none)
 
