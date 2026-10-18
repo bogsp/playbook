@@ -20,10 +20,9 @@ Q-06 | Upgrade path for older projects: detect template changes, offer updates, 
 
 ## Decisions
 
-D-01..03 | 2026-08-11 | Four-field frontmatter standard; journey-flows scope (K-50 open); root duplicates deleted | -> _refs/decisions/D-01.md, D-02.md, D-03.md
+D-01..03, D-06 | 2026-08 | Archived: frontmatter standard, journey flows, root duplicates, one entry point (D-06 superseded by D-14) | -> _archives/exploration/decisions-2026-08.md
 D-04 | 2026-08-12 | Frontmatter Tiering: Tier 1 planning docs add the deep-module header; Tier 2 keeps the four-field block | -> _refs/decisions/D-04.md
 D-05 | 2026-08-29 | Contract sections: Normal Flow, Failures, Edge Cases, Ordering, Constraints; concurrency folded into Ordering (K-05) | -> _refs/decisions/D-05.md
-D-06 | 2026-08-29 | One entry point: _index.md absorbs AI-INSTRUCTIONS.md and vocabulary pairs; README.md plain human readme (K-42) | -> _refs/decisions/D-06.md
 D-07 | 2026-08-31 | review-gate per-project setting: strict, balanced (default) or lean; ambiguity always halts (K-45) | -> _refs/decisions/D-07.md
 D-08 | 2026-08-31 | pipeline-mode per-project setting: kit-only (default) or full; switching up is safe (K-46) | -> _refs/decisions/D-08.md
 D-09 | 2026-08-31 | Claude Skill built from the same template source as the CLI; no second hand-kept copy (K-48) | -> _refs/decisions/D-09.md
@@ -37,3 +36,4 @@ D-16 | 2026-10-16 | Before merging, replacing or condensing a doc: inventory, ap
 D-17 | 2026-10-17 | GitHub is the distribution source; a no-terminal scaffolder writes files then steps aside (K-55) | -> _refs/decisions/D-17.md
 D-18 | 2026-10-18 | K2: lean kit templates; adopt.md and audit.md split by project type; decision-record folded into _refs/decisions (K-57) | -> _refs/decisions/D-18.md
 D-19 | 2026-10-18 | No scripts or code until templates and structure are finished; checks and roll-over stay manual or AI-assisted | -> _refs/decisions/D-19.md
+D-20 | 2026-10-19 | Large projects: areas, on-demand area slices, shared units, contracts as interfaces, milestone summaries; D3 boundary and C11 current-only rules (K-54) | -> _refs/decisions/D-20.md

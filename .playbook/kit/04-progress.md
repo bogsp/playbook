@@ -33,3 +33,5 @@ Archived: _archives/progress/progress-pre-migration.md, progress-reconciliation-
 2026-10-18 | Completed | Design docs (kit charter, context architecture, slice-1 design, optimization list) moved from the outputs folder into the repo at _refs/design/ | _refs/design/
 2026-10-18 | Decided | No scripts or code until templates and structure are finished; K4 checker, registry generator and shared core wait for the code phase | D-19
 2026-10-19 | Completed | K-54 design drafted: five mechanisms (areas, area slice, shared, interface, snapshot), boundary rule D3, four examples tested at 17-34 KB per task; awaiting 5 decisions | _refs/design/large-project-partitioning.md
+2026-10-19 | Decided | K-54 answers: area slice on demand, archive for every file kind (C11), add only what is needed (retired replaces deprecated), area templates deferred, D3 always on | D-20
+2026-10-19 | Completed | K-54 closed; D-01..03 and D-06 archived from 02-exploration (D-06 superseded by D-14); D-20 indexed | _archives/exploration/decisions-2026-08.md
