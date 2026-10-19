@@ -1,5 +1,13 @@
 # T-10 Flow
 
 ```text
-[Build / Scaffolding] --> [Budget Checker (K-55)] --> [Shared Core Validation (K-56)] --> [Result]
+[Source Templates] 
+       │
+       ▼
+[Shared Core Module (K-56)] ──> [File Processing & Copying]
+       │
+       ▼
+[Budget Checker Utility (K-55)] ──> {Size/Token Within Limit?}
+                                         ├── Yes ──> [Build Success]
+                                         └── No  ──> [Build Failure / Warning]
 ```
