@@ -1,0 +1,21 @@
+name: Test Suite
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Run E2E & Budget Tests
+        run: |
+          node --test packages/create-playbook/test/e2e.test.js
+          node packages/check-drift.mjs

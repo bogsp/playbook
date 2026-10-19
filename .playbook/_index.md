@@ -4,10 +4,10 @@ responsibility: 'The single entry point for this project — what it is, how a s
 ai_instructions: 'Read this file completely before doing anything else, every session, then follow Session Start. Keep What This Project Is and Structure current.'
 archive_rule: 'N/A — living document, kept current at all times.'
 owner: project
-id: [project-name]
+id: playbook
 type: structure
 scope: project
-status: draft
+status: active
 review-gate: balanced
 pipeline-mode: kit-only
 contains: []
@@ -19,7 +19,7 @@ integrations: []
 
 ## What This Project Is
 
-[One paragraph — plain language description of the project and what it produces.]
+Playbook is the premier framework for AI-assisted project management—transforming chaotic chats into self-governing, structured execution via lightweight markdown kits, strict execution rules, and domain-specific ZIP distributions hosted through a static GitHub Pages landing page.
 
 ---
 
@@ -67,18 +67,15 @@ _None yet._
 ## Structure
 
 The project's own modules and planning documents, kept current in the same session they change. The generic Playbook folder layout is in the Folder Map in [pipeline.md](pipeline.md).
-
 ```
-[Add this project's modules and folders here as they are created.]
+.playbook/          # Core framework kit and rules
+docs/               # Static landing page (GitHub Pages) and downloads
+packages/           # CLI scaffolding package (create-playbook) and libraries
 ```
-
 ## Project Planning Documents
 
-[Add links here as planning documents are created — top-down order]
-
 - [\_index.md](./_index.md) — this file
-- [Add structures, coordinators, components, concerns, integrations as they're authored]
 
 ## Detail
 
-[Additional architecture decisions, constraints, or known assumptions specific to this project. Remove this section if nothing fits.]
+Maintains a static GitHub Pages landing page (`docs/index.html`) offering direct ZIP downloads for Software, Writing, Production, Manufacturing, and Universal domain kits, alongside a CLI scaffolding tool (`create-playbook`).
