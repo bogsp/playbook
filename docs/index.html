@@ -3,72 +3,197 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Playbook Ecosystem — Production-Grade Monorepo Pipeline</title>
+    <title>Playbook Ecosystem — Turn Complex Work into Step-by-Step Clarity</title>
     <style>
-        :root { --bg: #0d1117; --card-bg: #161b22; --text: #c9d1d9; --text-muted: #8b949e; --accent: #58a6ff; --border: #30363d; --green: #2ea043; }
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); max-width: 1000px; margin: 0 auto; padding: 40px 20px; line-height: 1.6; }
-        header { text-align: center; margin-bottom: 50px; border-bottom: 1px solid var(--border); padding-bottom: 30px; }
-        h1 { font-size: 2.5rem; color: #fff; margin-bottom: 10px; }
-        .badge { display: inline-block; padding: 4px 10px; font-size: 14px; background: var(--green); color: #fff; border-radius: 20px; font-weight: 600; }
-        p.subtitle { font-size: 1.2rem; color: var(--text-muted); max-width: 700px; margin: 0 auto; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-bottom: 40px; }
-        .card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px; padding: 25px; transition: transform 0.2s, border-color 0.2s; }
-        .card:hover { border-color: var(--accent); transform: translateY(-3px); }
-        .card h3 { margin-top: 0; color: #fff; display: flex; align-items: center; justify-content: space-between; }
-        pre { background: #010409; padding: 15px; border-radius: 6px; overflow-x: auto; border: 1px solid var(--border); color: #e6edf3; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
-        ul { padding-left: 20px; }
-        li { margin-bottom: 8px; }
-        a { color: var(--accent); text-decoration: none; }
-        a:hover { text-decoration: underline; }
-        .tag-lite { background: #1f6feb; color: #fff; padding: 2px 8px; font-size: 11px; border-radius: 4px; }
-        .tag-full { background: #8957e5; color: #fff; padding: 2px 8px; font-size: 11px; border-radius: 4px; }
-        footer { text-align: center; margin-top: 60px; color: var(--text-muted); font-size: 0.9rem; border-top: 1px solid var(--border); padding-top: 20px; }
+        :root {
+            --bg: #0f172a;
+            --card-bg: #1e293b;
+            --accent: #38bdf8;
+            --accent-green: #22c55e;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border: #334155;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        /* HERO SECTION */
+        header {
+            text-align: center;
+            padding: 40px 0 30px;
+            border-bottom: 1px solid var(--border);
+        }
+        .badge {
+            background: #0369a1;
+            color: #e0f2fe;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 12px;
+        }
+        h1 {
+            font-size: 2.6rem;
+            margin: 0 0 16px;
+            letter-spacing: -0.02em;
+        }
+        p.subtitle {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 720px;
+            margin: 0 auto;
+        }
+        
+        /* SECTION CARDS */
+        .section-title {
+            font-size: 1.6rem;
+            margin: 40px 0 20px;
+            color: #fff;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 28px;
+            transition: border-color 0.2s, transform 0.2s;
+        }
+        .card:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+        .btn {
+            display: inline-block;
+            background: var(--accent);
+            color: #0f172a;
+            font-weight: 600;
+            padding: 12px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            margin-top: 16px;
+            text-align: center;
+        }
+        .btn:hover {
+            background: #7dd3fc;
+        }
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent);
+            border: 1px solid var(--accent);
+        }
+        .btn-secondary:hover {
+            background: rgba(56, 189, 248, 0.1);
+        }
+
+        /* TECHNICAL ACCORDION / LOWER ZONE */
+        .tech-zone {
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 1px solid var(--border);
+        }
+        pre {
+            background: #020617;
+            padding: 16px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            overflow-x: auto;
+            color: #e2e8f0;
+            font-family: monospace;
+        }
+        footer {
+            text-align: center;
+            margin-top: 80px;
+            padding: 20px 0;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border);
+        }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Playbook Ecosystem <span class="badge">v2.0.1</span></h1>
-        <p class="subtitle">A production-grade, self-validating monorepo pipeline featuring <strong>Progressive Disclosure</strong> for seamless developer experience and operational reliability.</p>
-    </header>
+    <div class="container">
+        <!-- HERO (No Jargon) -->
+        <header>
+            <span class="badge">Playbook v2.0</span>
+            <h1>Stop winging project execution.</h1>
+            <p class="subtitle">
+                Playbook is a plug-and-play execution framework. It breaks down complex tasks, decisions, and processes into simple, fillable templates so teams can build faster with zero friction.
+            </p>
+        </header>
 
-    <section>
-        <h2>🚀 Quick Start</h2>
-        <pre><code># Initialize with Lite Profile (Non-technical / Streamlined)
+        <!-- STEP 1: NON-TECHNICAL FILLABLE TEMPLATES -->
+        <section>
+            <h2 class="section-title">1. Choose How You Want to Start</h2>
+            <div class="grid">
+                <!-- LITE PROFILE -->
+                <div class="card">
+                    <span style="color: var(--accent-green); font-weight: 600; text-transform: uppercase; font-size: 0.8rem;">Ready-to-Use</span>
+                    <h3 style="margin: 8px 0 12px; font-size: 1.4rem;">Lite Mode (No Coding Required)</h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">
+                        Perfect for creators, managers, and solos. Download fillable Markdown or document templates to plan your tasks, manage context, and guide projects directly in your browser or editor.
+                    </p>
+                    <a href="https://github.com/bogsp/playbook/tree/main/packages/create-playbook/templates" class="btn" target="_blank">Access Fillable Templates →</a>
+                </div>
+
+                <!-- FULL PROFILE -->
+                <div class="card">
+                    <span style="color: var(--accent); font-weight: 600; text-transform: uppercase; font-size: 0.8rem;">Engineering Teams</span>
+                    <h3 style="margin: 8px 0 12px; font-size: 1.4rem;">Full Technical Pipeline</h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">
+                        Automated monorepo tools with budget checking, template drift validation, and built-in CI/CD pipelines.
+                    </p>
+                    <a href="#developers" class="btn btn-secondary">Explore CLI & Code Setup ↓</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- STEP 2: RESOURCES -->
+        <section style="margin-top: 40px;">
+            <h2 class="section-title">2. Guides & Reference Material</h2>
+            <div class="card">
+                <h3>📖 The Progressive Disclosure Guide</h3>
+                <p style="color: var(--text-muted);">
+                    Learn how Playbook seamlessly scales from single-person checklists to multi-package engineering pipelines without overwhelming your workflow.
+                </p>
+                <a href="https://github.com/bogsp/playbook/blob/main/PROGRESSIVE_DISCLOSURE.md" style="color: var(--accent); text-decoration: none;" target="_blank">Read the Complete Guide →</a>
+            </div>
+        </section>
+
+        <!-- LOWER ZONE: TECHNICAL & CLI USAGE -->
+        <section class="tech-zone" id="developers">
+            <h2 class="section-title">💻 Technical Quick Start & CLI Tools</h2>
+            <p style="color: var(--text-muted);">
+                For developers and engineering teams adopting Playbook into existing codebases:
+            </p>
+            <pre><code># Initialize new project with Lite or Full profile
 pnpm dlx create-playbook my-project --profile=lite
 
-# Initialize with Full Profile (Engineering Monorepo)
-pnpm dlx create-playbook my-project --profile=full</code></pre>
-    </section>
+# Adopt Playbook into an existing codebase
+pnpm dlx create-playbook adopt --profile=full</code></pre>
 
-    <section style="margin-top: 40px;">
-        <h2>📋 Fillable Templates & Profiles</h2>
-        <div class="grid">
-            <div class="card">
-                <h3>Lite Profile <span class="tag-lite">Non-Technical</span></h3>
-                <p>Designed for business owners and lightweight projects focusing on core task management and minimal configuration.</p>
-                <p><strong>Path:</strong> <code>packages/create-playbook/templates/lite</code></p>
-                <a href="https://github.com/bogsp/playbook/tree/main/packages/create-playbook/templates" target="_blank">View Templates on GitHub →</a>
+            <div style="margin-top: 20px;">
+                <a href="https://github.com/bogsp/playbook" style="color: var(--accent);" target="_blank">View Source Code on GitHub →</a>
             </div>
-            <div class="card">
-                <h3>Full Profile <span class="tag-full">Engineering</span></h3>
-                <p>Equipped with automated budget checks, drift validation, multi-package structures, and robust CI/CD pipelines.</p>
-                <p><strong>Path:</strong> <code>packages/create-playbook/templates/full</code></p>
-                <a href="https://github.com/bogsp/playbook/tree/main/packages/create-playbook/templates" target="_blank">View Templates on GitHub →</a>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <section style="margin-top: 40px;">
-        <h2>📚 Documentation & Resources</h2>
-        <ul>
-            <li><a href="https://github.com/bogsp/playbook/blob/main/PROGRESSIVE_DISCLOSURE.md" target="_blank">Progressive Disclosure Guide</a> — Deep dive into architecture and profiles.</li>
-            <li><a href="https://github.com/bogsp/playbook" target="_blank">GitHub Repository</a> — Source code, issues, and contributions.</li>
-            <li><a href="https://raket.ph" target="_blank">Raket.ph Guide (The Context Kit)</a> — Official published digital guide.</li>
-        </ul>
-    </section>
-
-    <footer>
-        <p>Built with automated CI/CD, E2E test suites, and strict drift guardrails. © 2026 Playbook Ecosystem.</p>
-    </footer>
+        <footer>
+            <p>Playbook Ecosystem • Simple Entry, Powerful Foundation</p>
+        </footer>
+    </div>
 </body>
 </html>
