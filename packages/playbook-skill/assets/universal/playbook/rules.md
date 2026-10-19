@@ -12,8 +12,8 @@ The rules your AI follows in every session, written once so the same rules apply
 
 | Group | Applies | What it covers |
 |---|---|---|
-| Core (C) | always | flagging unclear work, no placeholders, sync checks, keeping the project's identity current, delivering files, and marking changes in progress |
-| Dependencies (D) | always | declaring and justifying anything brought in from outside |
+| Core (C) | always | flagging unclear work, no placeholders, sync checks, keeping the project's identity current, delivering files, marking changes in progress, and keeping only current information |
+| Dependencies (D) | always | declaring and justifying anything brought in from outside, and how areas depend on each other |
 | Pipeline (P) | `pipeline-mode: full` | flows and contracts before planning documents, planning documents before work |
 | Project (X) | this project only | rules added for this project, kept in `_index.md` |
 
@@ -33,15 +33,17 @@ Every rule appears once, grouped by what it governs. IDs are stable — cite the
 - **C4** Flag a structural decision before making it.
 - **C5** Flag any missing connection as `TODO`.
 - **C6** Run a sync check before closing any task and before every milestone: do all touched documents reflect current work?
-- **C7** Frontmatter follows the Frontmatter Tiering Rule in `maintenance.md` — Tier 1 for planning documents, Tier 2 for everything else. Fix it in the same pass a file is otherwise touched.
+- **C7** Frontmatter follows `maintenance.md` (Frontmatter): the card for planning documents, the purpose block for everything else. Fix it in the same pass a file is otherwise touched.
 - **C8** Keep **What This Project Is** and the project's structure in `_index.md` current (see Keep Project Identity Current in `maintenance.md`).
 - **C9** A file is delivered only when it has been attached or written to the agreed location. Say what you delivered and where. Never describe a file you have not produced as done.
 - **C10** Before changing more than one file, write an `In flight:` line in `kit/01-process.md` naming the files and the step. Clear it when the change is finished and logged. If a session starts with an `In flight:` line, finish or revert that change before any new work.
+- **C11** Keep only current information in live files. When something is finished, replaced or unused, move it to `_archives/` and leave one pointer line. A retired planning document leaves the registry too (see Planning Documents in `maintenance.md`).
 
 ### Dependencies — always apply
 
 - **D1** Declare any outside dependency or component before adding it.
 - **D2** Prefer built-in solutions. An outside tool needs explicit justification before adoption.
+- **D3** Depend on another area only through its contract, its `_shared/` documents or its milestone summary. Needing another area's body means its interface is incomplete: fix its card, do not widen the read.
 
 ### Pipeline — apply only when `pipeline-mode: full`
 
@@ -85,7 +87,7 @@ Update these before the session ends or when context reaches 80% — do not wait
 2. `kit/04-progress.md` — one line per event: Completed, Decided, or Fixed, with references.
 3. Check each kit file against its budget (see `kit/00-guide.md`); roll over any file that is over.
 
-Then: run a sync check (C6), update the project's structure if components changed (C8), and confirm every touched file's frontmatter matches its tier (C7) — before logging progress, not after.
+Then: run a sync check (C6), update the project's structure if components changed (C8), and confirm every touched file's frontmatter matches its shape, card or purpose block (C7) — before logging progress, not after.
 
 ---
 

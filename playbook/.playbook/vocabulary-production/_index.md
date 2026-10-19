@@ -76,7 +76,7 @@ docs/
 5. Every external vendor or platform is declared as an integration — never introduce one without flagging it
 6. A blocked deliverable must be flagged immediately with what is blocking it and what cannot proceed until it is resolved
 7. Quality thresholds are defined in `_concerns/` — never interpret or relax them without explicit instruction
-8. Never mark a deliverable done without all definition-of-done criteria explicitly met
+8. Never mark a deliverable done without its `done-when` check explicitly met
 
 ## Production Anti-Patterns
 
@@ -104,5 +104,6 @@ docs/
 ## Frontmatter
 
 Frontmatter for every file in this domain — including `deliverable` planning docs —
-follows the Frontmatter Tiering Rule defined in `maintenance.md` (Tier 1 for
-planning docs, Tier 2 for everything else). Don't invent a different shape here.
+follows the frontmatter rules in `maintenance.md`: the card for planning
+documents, the purpose block for everything else. Don't invent a different
+shape here.

@@ -1,20 +1,16 @@
 ---
-File: .playbook/[publication]/[kebab-case].md
-
-MODULE_ID: PLAYBOOK-PIECE-XX-[NAME]
-SYSTEM_CONTEXT: [Macro System Block Context]
-UPSTREAM_DEPENDENCIES: []
-DOWNSTREAM_IMPACT: []
-CORE_SYSTEM_INVARIANTS:
-  - [Invariant 1]
-
-id: [kebab-case]
+file: .playbook/[publication]/[kebab-case].md
+responsibility: [One line, 160 characters or fewer: what this piece is]
+id: [publication]-[kebab-case]
 type: piece
 status: draft
-parent: [publication or series]
+parent: [publication or series id]
+needs: []
+provides: [One line: what the reader takes away from this piece]
+invariants: []
+done-when: [TODO — an observable check]
 angle: [TODO — the specific take or argument this piece makes]
 audience: [TODO — who this is written for]
-concerns: []
 ---
 
 # filename

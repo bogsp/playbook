@@ -44,7 +44,7 @@ Cleanup is part of finishing, not a separate chore. Before moving on, tidy what 
 | [02-exploration.md](kit/02-exploration.md) decisions | A settled decision no longer affects any active task (kit thresholds: [kit/00-guide.md](kit/00-guide.md)) |
 | [04-progress.md](kit/04-progress.md) entries | Entries are from a completed phase |
 | [05-kanban.md](kit/05-kanban.md) tickets | Done tickets are no longer referenced by anything active |
-| Planning documents | A component is retired or replaced |
+| Planning documents | A component is retired or replaced (`status: retired`) |
 | Flow and contract files | A path no longer exists in the project |
 
 ---
@@ -71,11 +71,12 @@ When you notice these, archive before the next session — not during it.
 
 ## Planning Documents
 
-A planning document stays active as long as the component it describes is active. When a component is retired:
+A planning document stays active as long as the thing it describes is active. When it is finished or replaced:
 
-1. Mark the document `status: archived`
-2. Move it to `_archives/` within its module folder
-3. Update the folder map in `_index.md`
+1. Set `status: retired`
+2. Move it to `_archives/units/` and add one line to `_archives/units/_index.md`: `id | date | what it was | replaced by | path`
+3. Re-point every `needs` that still names its id
+4. Update the project map and the registry; retired documents leave both
 
 ---
 
@@ -143,27 +144,15 @@ Core rules are never removed or reworded to fit a project. If a core rule seems 
 
 ---
 
-## Frontmatter Tiering
+## Frontmatter
 
-Every file in a Playbook project — kit files, flows, contracts, guides, this file itself, and planning documents — carries frontmatter. Which shape it carries depends on its tier. This is the canonical definition; `_index.md` points here rather than restating it.
+Every file in a Playbook project carries frontmatter, in one of two shapes. Never invent a third; if a file fits neither, flag it.
 
-**Tier 1 — DDA / planning documents** (`structure`, `coordinator`/`sequencer`, `component`, `concern`, `integration`, and any domain-specific counterpart such as manufacturing's `part`):
+**The card** is for planning documents (`structure`, `coordinator`, `component`, `concern`, `integration` and each domain's own types). It carries `file`, `responsibility`, `id`, `type`, `status`, `needs`, `provides`, `invariants` and `done-when`, plus `parent` and any type-specific fields. The full definition is in [templates/_index.md](templates/_index.md).
 
-- Deep-module header: `MODULE_ID`, `SYSTEM_CONTEXT`, `UPSTREAM_DEPENDENCIES`, `DOWNSTREAM_IMPACT`, `CORE_SYSTEM_INVARIANTS`
-- Four-field purpose block: `file`, `responsibility`, `ai_instructions`, `archive_rule`
-- Type-specific tracking fields: `id`, `type`, `status`, and whatever else that document type declares (`parent`, `connects`, `emits`, `concerns`, `used-by`, `config`, `docs`, etc.)
-
-The deep-module header is Tier-1-only. It exists to protect AI-generated code against unseen upstream/downstream impact — a risk specific to documents that gate implementation. Kit files, flows, and guides don't gate code the same way, so they don't carry it.
-
-**Tier 2 — everything else** (kit files, flow and contract documents, guides, `_index.md`, `README.md`, and other planning-adjacent docs):
-
-- Four-field purpose block: `file`, `responsibility`, `ai_instructions`, `archive_rule` — mandatory, never dropped
-- Plus any tracking fields already established for that specific doc type (flows/contracts keep `id`, `type`, `scope`, `trigger`, `status`, `calls`, `emits`, `called-by`; concerns/integrations keep `id`, `type`, `status`, `affects` or `used-by`, etc.)
-
-The four-field block is the floor for every file regardless of tier. It's what keeps documents with adjacent purposes — `02-exploration.md` vs `03-execution.md` vs `04-progress.md` — from drifting into each other's job.
+**The purpose block** is for everything else (kit files, flows, contracts, guides, `_index.md`, READMEs): `file`, `responsibility`, `ai_instructions`, `archive_rule`, plus any tracking fields already established for that kind of file (flows and contracts keep `id`, `type`, `scope`, `trigger`, `status`, `calls`, `emits`, `called-by`). It keeps files with adjacent jobs, such as `02-exploration` and `03-execution`, from drifting into each other's work. Kit files add their budgets (see [kit/00-guide.md](kit/00-guide.md)).
 
 **When to update frontmatter:**
 
 - Update a file's frontmatter in the same pass you touch that file for any other reason — don't defer it.
 - If a phase of work leaves some files untouched, bring their frontmatter into line together at the end of that phase, rather than one at a time later.
-- Never invent a third tier or a one-off frontmatter shape. If a file doesn't fit either tier cleanly, flag it — don't guess.

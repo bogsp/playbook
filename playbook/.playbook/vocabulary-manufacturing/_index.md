@@ -104,5 +104,6 @@ docs/
 ## Frontmatter
 
 Frontmatter for every file in this domain — including `part` planning docs —
-follows the Frontmatter Tiering Rule defined in `maintenance.md` (Tier 1 for
-planning docs, Tier 2 for everything else). Don't invent a different shape here.
+follows the frontmatter rules in `maintenance.md`: the card for planning
+documents, the purpose block for everything else. Don't invent a different
+shape here.

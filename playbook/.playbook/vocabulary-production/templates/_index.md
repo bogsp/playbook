@@ -12,7 +12,7 @@ Two of the five planning document types have production-specific shapes.
 | Type | File | Required fields |
 |---|---|---|
 | `coordinator` | [coordinator.md](coordinator.md) | — |
-| `deliverable` | [deliverable.md](deliverable.md) | `deadline`, `definition-of-done` |
+| `deliverable` | [deliverable.md](deliverable.md) | `deadline`, `done-when` |
 
 `concern` and `integration` do not vary by domain — use
 [../../templates/concern.md](../../templates/concern.md) and
@@ -25,7 +25,6 @@ platforms.
 
 ## Field Reference
 
-A `deliverable` is not marked done until every `definition-of-done`
-criterion is explicitly verified, per
-`vocabulary-production/AI-INSTRUCTIONS.md` rule 8. `deadline` is a hard
+A `deliverable` is not marked done until its `done-when` check is
+explicitly verified, per `vocabulary-production/_index.md` rule 8. `deadline` is a hard
 constraint — never treated as flexible without explicit instruction.

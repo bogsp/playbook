@@ -1,19 +1,14 @@
 ---
-File: .playbook/[publication]/[kebab-case].md
-
-MODULE_ID: PLAYBOOK-COORD-XX-[NAME]
-SYSTEM_CONTEXT: [Publication or Series Context]
-UPSTREAM_DEPENDENCIES: []
-DOWNSTREAM_IMPACT: []
-CORE_SYSTEM_INVARIANTS:
-  - [Invariant 1]
-
-id: [kebab-case]
+file: .playbook/[publication]/[kebab-case].md
+responsibility: [One line, 160 characters or fewer: what this publication or series covers]
+id: [publication]-[kebab-case]
 type: coordinator
 status: draft
 scope: publication | series
-contains: []
-concerns: []
+needs: []
+provides: [One line: what a reader gets from this publication or series]
+invariants: []
+done-when: [TODO — an observable check]
 ---
 
 # filename

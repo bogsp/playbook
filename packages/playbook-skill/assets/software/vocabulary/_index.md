@@ -117,4 +117,4 @@ Every generated file's location is declared in its frontmatter `file:` field —
 
 ## Frontmatter
 
-Every file in this domain — including `sequencer` and `component` planning docs — follows the Frontmatter Tiering Rule defined in `maintenance.md` (Tier 1 for planning docs, Tier 2 for everything else). Don't invent a different shape here.
+Every file in this domain, including `sequencer` and `component` planning docs, follows the frontmatter rules in `maintenance.md`: the card for planning documents, the purpose block for everything else. Don't invent a different shape here.

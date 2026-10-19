@@ -1,20 +1,15 @@
 ---
-File: .playbook/[product]/[kebab-case].md
-
-MODULE_ID: PLAYBOOK-PART-XX-[NAME]
-SYSTEM_CONTEXT: [Macro System Block Context]
-UPSTREAM_DEPENDENCIES: []
-DOWNSTREAM_IMPACT: []
-CORE_SYSTEM_INVARIANTS:
-  - [Invariant 1]
-
-id: [kebab-case]
+file: .playbook/[product]/[kebab-case].md
+responsibility: [One line, 160 characters or fewer: what this part is]
+id: [product]-[kebab-case]
 type: part
 status: draft
-parent: [product or production run]
+parent: [product or production run id]
+needs: []
+provides: [One line: what this part supplies to the assembly]
+invariants: []
+done-when: [TODO — an observable check]
 specification: [TODO — the exact spec this part must meet]
-definition-of-done: [TODO — explicit, verifiable criteria]
-concerns: []
 ---
 
 # filename
@@ -24,8 +19,8 @@ concerns: []
 ## What It Does
 
 Plain language — what this part or sub-assembly is and what it does within
-the larger product. Specification and definition of done are not
-optional; a part does not move past draft without both.
+the larger product. Specification and `done-when` are not optional; a part does
+not move past draft without both.
 
 ## Interface
 

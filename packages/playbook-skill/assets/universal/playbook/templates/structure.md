@@ -1,20 +1,15 @@
 ---
-File: .playbook/[module]/[kebab-case].md
-
-MODULE_ID: PLAYBOOK-CORE-XX-[NAME]
-SYSTEM_CONTEXT: [Project Name Context]
-UPSTREAM_DEPENDENCIES: []
-DOWNSTREAM_IMPACT: []
-CORE_SYSTEM_INVARIANTS:
-  - [Invariant 1]
-
-id: [kebab-case]
+file: .playbook/[module]/[kebab-case].md
+responsibility: [One line, 160 characters or fewer: what this app or module is]
+id: [module]-[kebab-case]
 type: structure
-scope: project | app | module
 status: draft
-contains: []
-concerns: []
-integrations: []
+scope: project | app | module
+parent: [enclosing structure id, if nested]
+needs: []
+provides: [One line: what this app or module offers the rest of the project]
+invariants: []
+done-when: [TODO — an observable check]
 ---
 
 # filename
