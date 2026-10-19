@@ -31,3 +31,8 @@ Your project has a `.playbook/` folder. Read `.playbook/README.md` once. It tell
 | [playbook/.playbook/](playbook/.playbook/README.md) | The templates and rules every project starts from |
 | [playbook/docs/](playbook/docs/) | Flows, contracts and code standards for Playbook itself |
 | [packages/](packages/) | The scaffolding tools |
+
+## Fillable Templates & Documentation
+- **Live Documentation & Guides:** [Playbook Pages](https://bogsp.github.io/playbook/)
+- **Core Templates:** Available inside `packages/create-playbook/templates/` supporting both lite and full profiles.
+- **Raket.ph Guide:** [The Context Kit](https://raket.ph)
