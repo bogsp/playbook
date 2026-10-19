@@ -9,10 +9,8 @@ To prevent context bloat, standards are architected around **progressive disclos
 
 ## Available Standards
 
-### Software Engineering
-- [C Standards](./c.md)
-- [Rust Standards](./rust.md)
-- [TypeScript Standards](./typescript.md)
+### Software Engineering & Workspace
+- [TypeScript, Node & Workspace Standards](./typescript.md)
 
 ### Operations & Non-Software Domains
 *(Expandable as pipeline project types require: e.g., Writing, Production, Manufacturing)*
