@@ -18,7 +18,7 @@ Pick the way that suits you. All of them write the same files into your project 
 |---|---|
 | Use a terminal | `npx create-playbook` in your project folder. See [packages/create-playbook](packages/create-playbook/README.md). |
 | Use Claude | Install the [Playbook skill](packages/playbook-skill/README.md) and ask Claude to set up Playbook. |
-| Want no terminal | A web page that builds the project as a download is planned. |
+| Want no terminal | Download domain-specific kits directly from [Playbook Pages](https://bogsp.github.io/playbook/). |
 
 ## After setup
 
