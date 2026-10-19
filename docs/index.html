@@ -3,27 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Playbook Ecosystem</title>
+    <title>Playbook Ecosystem — Production-Grade Monorepo Pipeline</title>
     <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; max-width: 800px; margin: 40px auto; padding: 0 20px; color: #333; line-height: 1.6; }
-        h1 { color: #0066cc; }
-        pre { background: #f4f4f4; padding: 15px; border-radius: 5px; overflow-x: auto; }
-        a { color: #0066cc; text-decoration: none; }
+        :root { --bg: #0d1117; --card-bg: #161b22; --text: #c9d1d9; --text-muted: #8b949e; --accent: #58a6ff; --border: #30363d; --green: #2ea043; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); max-width: 1000px; margin: 0 auto; padding: 40px 20px; line-height: 1.6; }
+        header { text-align: center; margin-bottom: 50px; border-bottom: 1px solid var(--border); padding-bottom: 30px; }
+        h1 { font-size: 2.5rem; color: #fff; margin-bottom: 10px; }
+        .badge { display: inline-block; padding: 4px 10px; font-size: 14px; background: var(--green); color: #fff; border-radius: 20px; font-weight: 600; }
+        p.subtitle { font-size: 1.2rem; color: var(--text-muted); max-width: 700px; margin: 0 auto; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-bottom: 40px; }
+        .card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px; padding: 25px; transition: transform 0.2s, border-color 0.2s; }
+        .card:hover { border-color: var(--accent); transform: translateY(-3px); }
+        .card h3 { margin-top: 0; color: #fff; display: flex; align-items: center; justify-content: space-between; }
+        pre { background: #010409; padding: 15px; border-radius: 6px; overflow-x: auto; border: 1px solid var(--border); color: #e6edf3; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+        ul { padding-left: 20px; }
+        li { margin-bottom: 8px; }
+        a { color: var(--accent); text-decoration: none; }
         a:hover { text-decoration: underline; }
-        .badge { display: inline-block; padding: 3px 8px; font-size: 12px; background: #28a745; color: #fff; border-radius: 3px; }
+        .tag-lite { background: #1f6feb; color: #fff; padding: 2px 8px; font-size: 11px; border-radius: 4px; }
+        .tag-full { background: #8957e5; color: #fff; padding: 2px 8px; font-size: 11px; border-radius: 4px; }
+        footer { text-align: center; margin-top: 60px; color: var(--text-muted); font-size: 0.9rem; border-top: 1px solid var(--border); padding-top: 20px; }
     </style>
 </head>
 <body>
-    <h1>Playbook Ecosystem <span class="badge">v2.0.1</span></h1>
-    <p>A production-grade, self-validating monorepo pipeline featuring <strong>Progressive Disclosure</strong> (Lite & Full profiles) for seamless developer experience and operational reliability.</p>
-    
-    <h2>Quick Start</h2>
-    <pre><code>pnpm dlx create-playbook my-project --profile=lite</code></pre>
+    <header>
+        <h1>Playbook Ecosystem <span class="badge">v2.0.1</span></h1>
+        <p class="subtitle">A production-grade, self-validating monorepo pipeline featuring <strong>Progressive Disclosure</strong> for seamless developer experience and operational reliability.</p>
+    </header>
 
-    <h2>Documentation & Resources</h2>
-    <ul>
-        <li><a href="https://github.com/bogsp/playbook">GitHub Repository</a></li>
-        <li><a href="https://github.com/bogsp/playbook/blob/main/PROGRESSIVE_DISCLOSURE.md">Progressive Disclosure Guide</a></li>
-    </ul>
+    <section>
+        <h2>🚀 Quick Start</h2>
+        <pre><code># Initialize with Lite Profile (Non-technical / Streamlined)
+pnpm dlx create-playbook my-project --profile=lite
+
+# Initialize with Full Profile (Engineering Monorepo)
+pnpm dlx create-playbook my-project --profile=full</code></pre>
+    </section>
+
+    <section style="margin-top: 40px;">
+        <h2>📋 Fillable Templates & Profiles</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Lite Profile <span class="tag-lite">Non-Technical</span></h3>
+                <p>Designed for business owners and lightweight projects focusing on core task management and minimal configuration.</p>
+                <p><strong>Path:</strong> <code>packages/create-playbook/templates/lite</code></p>
+                <a href="https://github.com/bogsp/playbook/tree/main/packages/create-playbook/templates" target="_blank">View Templates on GitHub →</a>
+            </div>
+            <div class="card">
+                <h3>Full Profile <span class="tag-full">Engineering</span></h3>
+                <p>Equipped with automated budget checks, drift validation, multi-package structures, and robust CI/CD pipelines.</p>
+                <p><strong>Path:</strong> <code>packages/create-playbook/templates/full</code></p>
+                <a href="https://github.com/bogsp/playbook/tree/main/packages/create-playbook/templates" target="_blank">View Templates on GitHub →</a>
+            </div>
+        </div>
+    </section>
+
+    <section style="margin-top: 40px;">
+        <h2>📚 Documentation & Resources</h2>
+        <ul>
+            <li><a href="https://github.com/bogsp/playbook/blob/main/PROGRESSIVE_DISCLOSURE.md" target="_blank">Progressive Disclosure Guide</a> — Deep dive into architecture and profiles.</li>
+            <li><a href="https://github.com/bogsp/playbook" target="_blank">GitHub Repository</a> — Source code, issues, and contributions.</li>
+            <li><a href="https://raket.ph" target="_blank">Raket.ph Guide (The Context Kit)</a> — Official published digital guide.</li>
+        </ul>
+    </section>
+
+    <footer>
+        <p>Built with automated CI/CD, E2E test suites, and strict drift guardrails. © 2026 Playbook Ecosystem.</p>
+    </footer>
 </body>
 </html>
