@@ -213,3 +213,13 @@ function countMessage(projectType, domain, libraryInstalled) {
   if (libraryInstalled) parts.push("library docs installed");
   return parts.join(" · ");
 }
+
+
+// Added adoption & profile handling
+import { adoptProject } from "./lib/adopt.js";
+
+const args = process.argv.slice(2);
+if (args[0] === "adopt") {
+  const profileFlag = args.find(arg => arg.startsWith("--profile="))?.split("=")[1] || "full";
+  adoptProject(process.cwd(), profileFlag).catch(console.error);
+}
