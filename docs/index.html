@@ -1,19 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Playbook Pipeline — Turn Chaotic AI Chats Into Structured Execution</title>
+    <title>Playbook — The Premier Framework for AI-Assisted Project Management</title>
     <style>
         :root {
             --bg: #0f172a;
             --card-bg: #1e293b;
             --accent: #38bdf8;
-            --accent-green: #22c55e;
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
             --border: #334155;
         }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             background-color: var(--bg);
@@ -22,149 +23,232 @@
             padding: 0;
             line-height: 1.6;
         }
+
         .container {
-            max-width: 880px;
+            max-width: 800px;
             margin: 0 auto;
             padding: 40px 20px;
         }
+
         header {
             text-align: center;
-            padding: 30px 0 20px;
+            padding: 20px 0 30px;
             border-bottom: 1px solid var(--border);
         }
+
         h1 {
-            font-size: 2.4rem;
-            margin: 0 0 12px;
+            font-size: 2.2rem;
+            margin: 0 0 10px;
             letter-spacing: -0.02em;
         }
+
         p.subtitle {
             font-size: 1.15rem;
             color: var(--text-muted);
-            max-width: 680px;
+            max-width: 650px;
             margin: 0 auto;
         }
-        .step-section {
-            margin-top: 40px;
+
+        section {
+            margin-top: 35px;
             padding-bottom: 30px;
             border-bottom: 1px solid var(--border);
         }
-        .step-header {
-            font-size: 1.25rem;
-            font-weight: 700;
+
+        h2 {
+            font-size: 1.3rem;
+            margin: 0 0 15px;
             color: var(--accent);
-            margin-bottom: 6px;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
         }
-        .step-nudge {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            margin-bottom: 20px;
-        }
-        .grid-choices {
+
+        .domain-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 12px;
         }
-        .choice-card {
+
+        .domain-card {
             background: var(--card-bg);
             border: 1px solid var(--border);
             border-radius: 8px;
             padding: 16px;
-            text-align: center;
             text-decoration: none;
-            color: #fff;
-            font-weight: 600;
+            color: var(--text-main);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
             transition: all 0.2s;
-            display: block;
         }
-        .choice-card:hover {
+
+        .domain-card:hover {
             border-color: var(--accent);
-            background: rgba(56, 189, 248, 0.05);
             transform: translateY(-2px);
         }
+
+        .domain-card strong {
+            font-size: 1.05rem;
+            color: var(--accent);
+            margin-bottom: 6px;
+        }
+
+        .domain-card p {
+            margin: 0 0 14px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .download-link {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-main);
+            background: rgba(56, 189, 248, 0.1);
+            padding: 6px 10px;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        .flow-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .flow-list li {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 14px 18px;
+            margin-bottom: 10px;
+        }
+
+        .flow-list strong {
+            color: var(--text-main);
+            display: inline-block;
+            margin-bottom: 4px;
+        }
+
+        .flow-list p {
+            margin: 0;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
         pre {
             background: #020617;
-            padding: 16px;
-            border-radius: 8px;
+            padding: 14px;
+            border-radius: 6px;
             border: 1px solid var(--border);
             overflow-x: auto;
             color: #e2e8f0;
             font-family: monospace;
             font-size: 0.9rem;
+            margin-top: 8px;
+            margin-bottom: 0;
         }
-        .btn {
-            display: inline-block;
-            background: var(--accent);
-            color: #0f172a;
-            font-weight: 600;
-            padding: 10px 18px;
-            border-radius: 6px;
-            text-decoration: none;
-            margin-top: 10px;
-        }
-        .btn:hover { background: #7dd3fc; }
+
         footer {
             text-align: center;
-            margin-top: 60px;
-            padding: 20px 0;
+            margin-top: 40px;
             color: var(--text-muted);
             font-size: 0.85rem;
         }
     </style>
 </head>
+
 <body>
     <div class="container">
-        <!-- STEP 1: Short Intro -->
+        <!-- 1. Hero -->
         <header>
             <h1>Stop fighting your AI.</h1>
-            <p class="subtitle">Playbook gives you a plug-and-play framework to turn messy chats into structured, self-governing execution.</p>
+            <p class="subtitle"><strong>Playbook</strong> is the premier framework for AI-assisted project
+                management—transforming chaotic chats into self-governing, structured execution.</p>
         </header>
 
-        <!-- STEP 2: Initial Question & Choices -->
-        <section class="step-section">
-            <div class="step-header">Step 1. What are we working on?</div>
-            <div class="step-nudge">Choose your track to access tailored project structures.</div>
-            <div class="grid-choices">
-                <a class="choice-card" href="https://github.com/bogsp/playbook/tree/main/packages/create-playbook/templates/software" target="_blank">💻 Software</a>
-                <a class="choice-card" href="https://github.com/bogsp/playbook/tree/main/packages/create-playbook/templates/writing" target="_blank">✍️ Writing</a>
-                <a class="choice-card" href="https://github.com/bogsp/playbook/tree/main/packages/create-playbook/templates/production" target="_blank">📦 Production</a>
-                <a class="choice-card" href="https://github.com/bogsp/playbook/tree/main/packages/create-playbook/templates/manufacturing" target="_blank">🏭 Manufacturing</a>
-                <a class="choice-card" href="https://github.com/bogsp/playbook/tree/main/packages/create-playbook/templates/universal" target="_blank">✨ Something else</a>
+        <!-- 2. What is Playbook -->
+        <section>
+            <h2>What is Playbook & How Does It Work?</h2>
+            <p style="color: var(--text-muted); margin-top: 0;">Traditional AI chats suffer from context drift, lost
+                decisions, and vague instructions. Playbook anchors your AI to a rigorous structural pipeline using
+                lightweight markdown kits, domain vocabularies, and strict rules that govern every output.</p>
+        </section>
+
+        <!-- 3. What are we working on? (Domain Kits) -->
+        <section>
+            <h2>What are we working on?</h2>
+            <p style="color: var(--text-muted); margin-top: 0; font-size: 0.95rem; margin-bottom: 15px;">Download your
+                tailored kit pre-packaged with domain vocabularies and execution structures:</p>
+
+            <div class="domain-grid">
+                <a href="./downloads/software-kit.zip" class="domain-card">
+                    <div>
+                        <strong>💻 Software</strong>
+                        <p>Components, sequencers, and technical structure templates.</p>
+                    </div>
+                    <div class="download-link">Download Software Kit ↓</div>
+                </a>
+                <a href="./downloads/writing-kit.zip" class="domain-card">
+                    <div>
+                        <strong>✍️ Writing</strong>
+                        <p>Writing pieces and editorial coordinators for docs & content.</p>
+                    </div>
+                    <div class="download-link">Download Writing Kit ↓</div>
+                </a>
+                <a href="./downloads/production-kit.zip" class="domain-card">
+                    <div>
+                        <strong>📦 Production</strong>
+                        <p>Deliverables and operational coordinators for media outputs.</p>
+                    </div>
+                    <div class="download-link">Download Production Kit ↓</div>
+                </a>
+                <a href="./downloads/manufacturing-kit.zip" class="domain-card">
+                    <div>
+                        <strong>🏭 Manufacturing</strong>
+                        <p>Physical parts and assembly pipeline coordinators.</p>
+                    </div>
+                    <div class="download-link">Download Manufacturing Kit ↓</div>
+                </a>
+                <a href="./downloads/universal-kit.zip" class="domain-card">
+                    <div>
+                        <strong>✨ Universal</strong>
+                        <p>Foundational kit files, logs, and contract validation structures.</p>
+                    </div>
+                    <div class="download-link">Download Universal Kit ↓</div>
+                </a>
             </div>
         </section>
 
-        <!-- STEP 3: Download Scaffold -->
-        <section class="step-section">
-            <div class="step-header">Step 2. Grab your project files</div>
-            <div class="step-nudge">Download the starter ZIP archive and unzip it anywhere on your computer.</div>
-            <a href="https://github.com/bogsp/playbook/archive/refs/heads/main.zip" class="btn" target="_blank">Download Starter ZIP (.zip) ↓</a>
+        <!-- 4. Start your AI session -->
+        <section>
+            <h2>Start your AI session</h2>
+            <ul class="flow-list">
+                <li>
+                    <strong>1. Extract and place</strong>
+                    <p>Unzip your downloaded kit directly into your project folder.</p>
+                </li>
+                <li>
+                    <strong>2. Connect with your AI</strong>
+                    <p>Have your AI app read the <code>_index.md</code> file located at <code>.playbook/</code>.</p>
+                </li>
+                <li>
+                    <strong>3. Starting prompt</strong>
+                    <p>Send this initial prompt to begin your session:</p>
+                    <pre><code>Start a Playbook session. Follow the Session Start in the attached _index.md.</code></pre>
+                </li>
+            </ul>
         </section>
 
-        <!-- STEP 4: Instructions and Prompt -->
-        <section class="step-section">
-            <div class="step-header">Step 3. Hand it to your AI</div>
-            <div class="step-nudge">Open your favorite AI app (ChatGPT, Claude, Gemini, etc.), drop in your folder, and send this exact message:</div>
-            <pre><code>Start a Playbook session. Follow the Session Start in the attached _index.md.</code></pre>
-        </section>
-
-        <!-- STEP 5: Expansion for Technical Users -->
-        <section class="step-section">
-            <div class="step-header">For Technical & Engineering Teams</div>
-            <div class="step-nudge">Looking for the full monorepo pipeline, CLI scaffolder, and automated drift checks?</div>
+        <!-- 5. Technical Expansion -->
+        <section>
+            <h2>For Technical & Engineering Teams</h2>
+            <p style="color: var(--text-muted); margin-top: 0; font-size: 0.95rem;">Looking to scaffold full pipelines
+                with automated drift validation via CLI?</p>
             <pre><code>pnpm dlx create-playbook my-project --profile=full</code></pre>
         </section>
 
-        <!-- STEP 6: Explore Playbook -->
-        <section style="margin-top: 30px;">
-            <div class="step-header">Explore Playbook</div>
-            <div class="step-nudge">Inspect architecture specs, domain vocabularies, and pipeline documentation.</div>
-            <a href="https://github.com/bogsp/playbook" style="color: var(--accent);" target="_blank">View Full Repository on GitHub →</a>
-        </section>
-
         <footer>
-            <p>Playbook Pipeline • Simple Entry, Strict Execution</p>
+            <p>Playbook Pipeline • The Premier AI-Assisted Project Management Framework</p>
         </footer>
     </div>
 </body>
+
 </html>
