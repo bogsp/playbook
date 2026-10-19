@@ -1,3 +1,4 @@
+import fs from "fs";
 
 // E2E Test for create-playbook & adopt command
 import test from "node:test";
