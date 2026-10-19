@@ -1,5 +1,4 @@
 # create-playbook
-# File: packages/create-playbook/README.md
 
 Initialize and manage Playbook projects from the command line.
 
@@ -25,30 +24,34 @@ yarn dlx create-playbook [project-name]
 Initialize a new Playbook project. Runs automatically when no command is given.
 
 ```bash
-pnpm dlx create-playbook my-project   # scaffold into a new folder
-pnpm dlx create-playbook .            # scaffold in the current directory
+pnpm dlx create-playbook my-project    # scaffold into a new folder
+pnpm dlx create-playbook .             # scaffold in the current directory
 ```
 
-The CLI asks a small number of questions and scaffolds the correct structure:
+The CLI guides you through interactive configuration:
 
 1. **Project name**
-2. **Domain** — software / writing / production / manufacturing / none
-3. **Do you have existing work?**
-   - No → Starting from scratch
-   - Yes → Is the existing work well understood or does it need investigating first?
-     - Well understood → Adopting existing project
-     - Needs investigating → Auditing existing project before adopting
+2. **Domain** — `software` / `writing` / `production` / `manufacturing` / `none`
+3. **Existing work?**
+   - No → Starting from scratch (`new`)
+   - Yes → Is it well-understood or does it need investigating first?
+     - Well understood → Adopting existing project (`adopt`)
+     - Needs investigating → Auditing existing project before adopting (`audit`)
 4. **Install library?** (software domain only — installs `@bogsp/playbook-software-library`)
-5. **Pipeline mode** — `kit-only` (default; just the six kit files, no flows/contracts/planning docs required) or `full` (the complete Discovery-through-Handoff pipeline)
+5. **Pipeline mode** — `kit-only` (default; just the six kit files, no flows/contracts/planning docs required) or `full` (complete Discovery-through-Handoff pipeline)
 6. **Review gate** — how much the AI stops for your approval: `balanced` (default), `strict` (every step), or `lean` (balanced + batched review)
 
-The scaffold is tailored to your answers:
-- Domain vocabulary folder included for the chosen domain
-- Kit files pre-populated with the correct phase and expansion state
-- Guides filtered to what is relevant — no unused files
-- `docs/rewrite/` scaffolded only for audit projects
-- Library docs copied into `.playbook/` for software projects that opt in
-- `.playbook/_index.md`'s frontmatter carries your chosen `pipeline-mode` and `review-gate` — edit it anytime to change either setting later
+---
+
+### `adopt`
+
+Bring Playbook into an existing codebase without disrupting current structures.
+
+```bash
+pnpm dlx create-playbook adopt [--profile=full|lean]
+```
+
+Scaffolds the `.playbook/` kit and integration files directly into an existing repository.
 
 ---
 
@@ -60,9 +63,7 @@ Update library docs in an existing software project.
 pnpm dlx create-playbook sync
 ```
 
-Checks the installed `@bogsp/playbook-software-library` version against the latest,
-lists which docs have changed, and guides you through updating. Must be run inside
-a Playbook project.
+Checks the installed `@bogsp/playbook-software-library` version against the latest, lists changed documentation, and guides you through the update process. Must be run inside a Playbook project.
 
 ---
 
@@ -82,7 +83,7 @@ pnpm dlx create-playbook g flow
 pnpm dlx create-playbook g contract
 ```
 
-Must be run inside a Playbook project (`.playbook/_index.md` must exist).
+Must be run inside an initialized Playbook project (`.playbook/_index.md` must exist).
 
 | Type | What it generates | Where it goes |
 |---|---|---|
@@ -92,38 +93,32 @@ Must be run inside a Playbook project (`.playbook/_index.md` must exist).
 | `concern` | A cross-cutting capability doc | `.playbook/_concerns/` |
 | `integration` | An external service or library doc | `.playbook/_integrations/` |
 
-Each generator asks for the required fields and drops a correctly structured file
-in the right location. Flow and contract generators update the relevant `_index.md`
-automatically.
-
 ---
 
 ## What Gets Scaffolded
 
-### All projects
+### Universal Files & Kit
 
 ```
 .playbook/
-  README.md                   — human-facing readme for this project
-  pipeline.md                 — how the pipeline works
-  maintenance.md              — keeping files lean and current
-  _index.md                   — single entry point: session rules, structure,
-                                 project map, review-gate and pipeline-mode
-  templates/                  — universal planning-doc shapes (entry: _index.md)
+  README.md
+  pipeline.md
+  maintenance.md
+  _index.md                — project manifest, pipeline-mode, and review-gate settings
+  templates/               — universal planning-doc shapes
   _concerns/
   _integrations/
   _shared/
   rules.md
   expansions.md
-  adopt.md                  — adopt and audit projects only
-  audit.md                  — audit projects only
-    [new-project | adopt | audit].md  — based on project type
+  adopt.md                 — adopt and audit projects only
+  audit.md                 — audit projects only
 .playbook/kit/
   00-guide.md
-  01-process.md               — pre-populated with correct phase and expansion
+  01-process.md
   02-exploration.md
   03-execution.md
-  04-progress.md               — pre-populated with project type entry
+  04-progress.md
   05-kanban.md
   06-qa.md
   _refs/
@@ -140,69 +135,25 @@ docs/
   rollout/
 ```
 
-### Software domain (additional)
-
-```
-.playbook/
-  vocabulary-software/
-    _index.md              — vocabulary, planning-doc shapes, and AI rules combined
-  _concerns/          — library concern docs (if library installed)
-  _integrations/      — library integration docs (if library installed)
-  _solutions/         — library solution docs (if library installed)
-```
-
-### Writing / Production / Manufacturing domains (additional)
+### Domain Vocabulary (Software, Writing, Production, Manufacturing)
 
 ```
 .playbook/
   vocabulary-[domain]/
-    _index.md              — vocabulary, planning-doc shapes, and AI rules combined
+    _index.md              — combined vocabulary, planning shapes, and AI rules
+  _concerns/               — library concern docs (if library installed)
+  _integrations/           — library integration docs (if library installed)
+  _solutions/              — library solution docs (if library installed)
 ```
-
-### Audit projects (additional)
-
-```
-docs/
-  rewrite/
-    system-map.md
-    risk-register.md
-```
-
-Classify verdicts are written as D-nn decisions in `.playbook/kit/02-exploration.md` and `_refs/decisions/`, not as a separate rewrite file.
-
----
-
-## After Scaffolding
-
-1. Read `.playbook/_index.md` — the entry point: session rules, structure, and where to start
-2. Read the start path for your project type:
-   - New project → `.playbook/pipeline.md` (Starting, A new project)
-   - Adopting → `.playbook/adopt.md`
-   - Auditing → `.playbook/audit.md`
-3. Open `.playbook/kit/00-guide.md` — copy your first session prompt
 
 ---
 
 ## Building
 
-Templates are copied from the Playbook source files at build time. To rebuild:
+Templates are copied from the monorepo root template manifest at build time. To rebuild:
 
 ```bash
 pnpm build
 ```
 
-This copies the files listed in [`../template-manifest.json`](../template-manifest.json)
-from `playbook/.playbook/` and `playbook/docs/` into `templates/`. That manifest is
-the only list of shipped files — add or remove a template there, nowhere else.
-
-`templates/` is gitignored build output: run `pnpm build` after cloning and
-before running the CLI locally. It is rebuilt automatically on publish.
-
----
-
-## Notes
-
-- `.playbook/` and `.playbook/kit/` are Playbook's world — never shipped with your project
-- `docs/flows/` and `docs/contracts/` belong to your project
-- `generate` commands require an initialized Playbook project
-- `sync` is only relevant for software domain projects using the library
+This reads `template-manifest.json` at the repository root and copies files from `playbook/.playbook/` and `playbook/docs/` into `templates/`.
