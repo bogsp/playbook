@@ -5,9 +5,7 @@ This directory serves as the canonical location for project-wide engineering, ar
 ## Standard Domains
 
 - **Engineering Standards (`docs/standards/`)**
-  - C11 Core Standards: `docs/standards/c.md`
-  - Rust Tokio Shell Standards: `docs/standards/rust.md`
-  - TypeScript/UI Standards: `docs/standards/typescript.md`
+  - Project Coding Standards: `docs/standards/[language].md`
 
 - **Architecture Standards**
   - Core System Architecture: `docs/architecture.md`
@@ -15,7 +13,6 @@ This directory serves as the canonical location for project-wide engineering, ar
 
 - **Contracts & Protocols**
   - Behavioral & Functional Contracts: `docs/contracts/`
-  - Secure Bootstrap Specification (SBS): `docs/contracts/sbs/README.md`
 
 ## Governance & Rules
 
