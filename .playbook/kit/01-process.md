@@ -7,15 +7,15 @@ owner: project
 max-bytes: 2048
 max-lines: 20
 line-max: 200
-entry-shape: 'Last: T-08 and T-09 completed: maintenance updated, handoff prompt extracted, 2.0.0 freeze verified -> 04-progress
+entry-shape: 'Last: <=160 chars -> refs'
 ---
 
 # Process
 
-Phase: Planning (pipeline rewrite)
-Last: T-07 findings decided (D-21); fixes for F1-F6 delivered; merge waits on build, drift check and a scaffold read -> 04-progress
-Next: T-10 code phase (K-55, K-56) or T-11 adopt pipeline in root
-Open: Q-03, Q-05, Q-06 -> 02-exploration; F7-F9 -> t07-review (K-58); code checks deferred until code work
-In flight:
-Active Modules: kanban
-Active Expansions: none
+Phase: [Audit | Discovery | Mapping | Rules | Planning | Work | Handoff]
+Last: [what finished, <=160 chars -> refs]
+Next: [up to 3, <=160 chars each -> refs]
+Open: [flags and open questions -> 02-exploration]
+In flight: none
+Active Modules: none
+Active Expansions: none  [or: name | phase | exclusive files | domain templates in use]

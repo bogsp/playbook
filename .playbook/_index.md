@@ -1,117 +1,84 @@
 ---
 file: '.playbook/_index.md'
-responsibility: 'The single entry point for sessions on THIS repo (the Playbook meta-repo) — project map, session rules, and structure.'
-ai_instructions: 'Read this file completely before doing anything else, every session. This is the repo-specific file. It is NOT the template; the template entry point is playbook/.playbook/_index.md. Update Structure whenever files or folders are added or removed.'
+responsibility: 'The single entry point for this project — what it is, how a session starts, the project rules, and where things are. Playbook rules live in rules.md. Read this file first, every session.'
+ai_instructions: 'Read this file completely before doing anything else, every session, then follow Session Start. Keep What This Project Is and Structure current.'
 archive_rule: 'N/A — living document, kept current at all times.'
-id: playbook-meta-repo
+owner: project
+id: [project-name]
 type: structure
 scope: project
-status: active
-review-gate: strict
-pipeline-mode: full
+status: draft
+review-gate: balanced
+pipeline-mode: kit-only
 contains: []
 concerns: []
 integrations: []
 ---
 
-# Playbook Meta-Repo — Project Map & Session Rules
-
-Rebuilt 2026-10-14 from kit records (K-44, K-45, K-46); the original K-44 file was not in the repo. Rules are single-sourced in the template; this file holds only repo-specific rules.
+# Playbook — Project Entry
 
 ## What This Project Is
 
-The source repo for Playbook: a domain-agnostic, AI-assisted planning pipeline. It contains the template source, two packages that distribute it, a published reference library, and this repo's own planning records.
-
-## Two Playbook Worlds
-
-Every file belongs to exactly one world. Never copy-paste between them; each is authored on its own terms.
-
-| World | Location | Governs |
-|---|---|---|
-| **Meta** (this repo's own process) | `.playbook/`, `docs/` | How we build Playbook: kit files, tracked flows and contracts, repo-specific rules |
-| **Template** (what ships to users) | `playbook/` | The `.playbook/` and `docs/` scaffold every new project receives |
-
-Generated copies (`packages/create-playbook/templates/`, `packages/playbook-skill/assets/`) are build output from `playbook/`. Never hand-edit them. Fix the source, then run `pnpm build`.
+[One paragraph — plain language description of the project and what it produces.]
 
 ---
 
 ## Session Start
 
-Attach this file plus the files below in one message, then confirm what you loaded and wait for instruction.
+Read this file first, every session. It is the only file you need to be given; it tells you what to load next.
 
-1. `playbook/.playbook/_index.md` — AI Behavioral Rules section only
-2. `docs/code-standards.md` (and `code-standards-ts.md` for TypeScript work)
-3. `kit/01-process.md` — where things are, what's next
-4. `kit/04-progress.md` — what has happened
-5. `kit/05-kanban.md` — active tickets
+1. **Check what you can do.** Can you open files by path (a linked repo, a folder, or file tools)?
+2. **If you can,** read `rules.md`, then `kit/01-process.md`, then whatever the task needs (see **Where to Go Next**). If `01-process.md` has an `In flight:` line, resolve it first (C10).
+3. **If you cannot,** do not guess and do not start work. Reply once with the base files you need — `rules.md` (the rules) and `kit/01-process.md` (where the project stands) — and ask what the person is working on. Pasted text works as well as attachments.
+4. **After the base files are loaded,** ask for any task-specific files in one batch, never one at a time.
+5. **If a file is missing,** say what is missing, flag any assumption, and do not continue on it as if you had it.
+6. **Confirm** what you actually loaded, the current phase, and the next step. Then wait for instruction.
 
-Load on demand: `kit/02-exploration.md` (open questions, decisions), `kit/03-execution.md` (guidelines, plan), `kit/06-qa.md` (sign-off), `pipeline.md` (stage reference), `maintenance.md` (archiving, frontmatter).
+Until `rules.md` is loaded: do no project work, flag anything unclear, and say what you have loaded.
 
-Rule X5 applies to every file above.
+**Starting fresh:** fill in **What This Project Is** above. If `pipeline-mode` is `kit-only` (the default), that is all you need — start working, tracked through the kit files. If it is `full`, work through [pipeline.md](pipeline.md) stage by stage.
 
 ---
 
-## Rules
+## Where to Go Next
 
-This repo runs `pipeline-mode: full` and `review-gate: strict`.
+Load only what the task needs.
 
-**Load the template's rules too.** Core (C), Dependencies (D) and Pipeline (P) rules are defined once, in the **AI Behavioral Rules** section of `playbook/.playbook/_index.md`. They apply here in full. They are not copied into this file, so they cannot drift. Project-specific rules for this repo are the **X** rules below.
+| If the task is... | Load |
+|---|---|
+| Resuming | `kit/01-process.md`, then `kit/04-progress.md` (recent entries) and `kit/05-kanban.md` if the project uses one |
+| An open question or decision | `kit/02-exploration.md` |
+| Active execution work | `kit/03-execution.md` |
+| Ticket detail or testing and sign-off | `kit/05-kanban.md`, `kit/06-qa.md` |
+| Adding a piece | its place in **Structure** below, then the template it needs: [templates/](templates/_index.md) (universal) or the domain pack's templates |
+| Domain vocabulary or domain rules | `vocabulary-[domain]/_index.md`, only when the work touches that domain |
+| A concern or integration | its planning document, only when the unit being worked on declares it |
 
-### Project — this repo only
+---
 
-- **X1** Template-affecting changes go to `playbook/`. Repo-affecting changes go to `.playbook/` or `docs/`. Author each on its own terms; never copy-paste between worlds.
-- **X2** Never hand-edit generated copies (`packages/create-playbook/templates/`, `packages/playbook-skill/assets/`). Fix the source in `playbook/`, then run `pnpm build`.
-- **X3** Never change `review-gate` or `pipeline-mode` unilaterally.
-- **X4** When a change could belong to either world, stop and flag it with the repo-specific category `template-vs-meta-ambiguity`, in addition to the categories in the template.
-- **X5** Before any work, confirm each Session Start file exists and is non-empty. If one is missing, stop and flag it.
-- **X6** Follow the closed decisions indexed in `kit/02-exploration.md`. Playbook docs use YAML frontmatter, `## What It Does`, `## Interface` and an optional `## Detail`.
-- **X7** File and folder names are kebab-case.
-- **X8** Code passes `biome check` and `biome format` before commit (applies once code work resumes).
-- **X9** A phase is complete only when the Phase Completion Checklist in `docs/code-standards.md` (§7) passes. QA tier: standard.
-- **X10** Docs are clear, concise and skimmable for humans, dense for AI. Progressive Disclosure + Tiering is the default for every structural decision.
+## Project Rules
 
-### Review gate: strict
+Rules specific to this project, appended as `X1`, `X2`, … and never edited into the Playbook rules in `rules.md`.
 
-Every artifact-producing step halts for approval. This repo stays `strict` because everything here is copied into every future project. Ambiguity halts at every level. The levels are defined in `playbook/.playbook/_index.md`.
-
-### When something breaks, and session end
-
-Both follow the template's sections of the same names, with one addition: log `Fixed` entries and session-end updates in this repo's own `kit/` files.
+_None yet._
 
 ---
 
 ## Structure
 
+The project's own modules and planning documents, kept current in the same session they change. The generic Playbook folder layout is in the Folder Map in [pipeline.md](pipeline.md).
+
 ```
-.playbook/                          — this repo's own process (meta world)
-  _index.md                         — this file
-  maintenance.md                    — archiving and Frontmatter Tiering for this repo
-  pipeline.md                       — pipeline stage reference
-  kit/                              — 00-prompts … 06-qa (this repo's kit predates 00-guide), _archives/, _refs/
-  _to_delete/                       — staged for human deletion (pending cleanup)
-
-docs/                               — this repo's own tracked flows and contracts
-  code-standards.md, code-standards-ts.md
-  flows/playbook-templates/         — flow-0 … flow-7 (+ global.md)
-  contracts/                        — global.md + playbook-templates/ per-flow contracts
-  rewrite/                          — audit outputs
-  rollout/                          — milestone snapshots
-
-playbook/                           — TEMPLATE SOURCE (template world)
-  .playbook/                        — _index.md, pipeline.md, maintenance.md, rules.md, expansions.md, kit/,
-                                      templates/, _concerns/, vocabulary-[domain]/
-  docs/                             — flow/contract templates, rewrite templates, code-standards variants
-
-packages/
-  create-playbook/                  — CLI; templates/ is build output
-  playbook-skill/                   — Claude Skill; assets/ is build output
-  playbook-software-library/        — published reference library (_concerns, _integrations, _solutions)
-
-journey.md                          — narrative guide to the process
-README.md                           — repo readme (points to playbook/.playbook/README.md)
+[Add this project's modules and folders here as they are created.]
 ```
 
-## Known Open Items
+## Project Planning Documents
 
-- Root `pipeline.md` is currently identical to the template copy; whether it should diverge is undecided (K-39 note).
-- Generated-copy drift between the two packages is tracked under Topic B of the pipeline optimization.
+[Add links here as planning documents are created — top-down order]
+
+- [\_index.md](./_index.md) — this file
+- [Add structures, coordinators, components, concerns, integrations as they're authored]
+
+## Detail
+
+[Additional architecture decisions, constraints, or known assumptions specific to this project. Remove this section if nothing fits.]
