@@ -12,15 +12,15 @@ entry-shape: '- [ ] T-nn <=120 chars -> K-nn or doc'
 
 # Execution
 
-Phase: [name]
-Goal: [<=160 chars]
-Done when: [<=160 chars]
-Later: [Phase 2 name; Phase 3 name]
+Phase: Work
+Goal: Implement static landing page and deploy domain ZIP distribution assets
+Done when: Landing page live at GitHub Pages with working direct downloads
+Later: Handoff
 
 ## Checklist
 
-- [ ] T-01 [task, <=120 chars] -> [K-nn or doc]
+- [x] T-01 Implement responsive landing page with domain cards -> docs/index.html
+- [x] T-02 Tag and push v2.0.7 release -> origin main
+- [ ] T-03 Generate domain-specific ZIP assets in docs/downloads/
 
 ## Known Issues
-
-I-01 | [issue, <=120 chars] | [bug | dependency | design] | [high | medium | low] | [blocked by] | -> link
