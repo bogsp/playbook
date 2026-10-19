@@ -93,7 +93,7 @@ on its own.
 
 **What it produces:**
 - `docs/rewrite/system-map.md` — what exists, where it lives, what depends on what
-- `docs/rewrite/decision-record.md` — a verdict on every major piece, with reasoning
+- Classify verdicts as D-nn decisions in `kit/02-exploration.md` and `_refs/decisions/` (no separate decision-record file)
 - `docs/rewrite/risk-register.md` — what breaks if X changes, and the safe order to change things
 
 When complete, findings feed directly into the session files so the rest of
@@ -101,7 +101,7 @@ the pipeline has accurate context to work from.
 
 Full process: [audit.md](https://github.com/bogsp/playbook/blob/main/playbook/.playbook/audit.md)
 
-**Close out:** findings are in `kit/02-exploration.md` and `kit/03-execution.md`; superseded inventory notes in `docs/rewrite/` are archived. The system map, decision record, and risk register stay active until the rewrite they describe is done.
+**Close out:** findings are in `kit/02-exploration.md` and `kit/03-execution.md`; superseded inventory notes in `docs/rewrite/` are archived. The system map and risk register stay active until the rewrite they describe is done; classify verdicts stay in the decision store.
 
 ---
 

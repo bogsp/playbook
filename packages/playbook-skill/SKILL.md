@@ -72,8 +72,9 @@ Copy from `assets/` — generated from `playbook/.playbook/` and `playbook/docs/
     `docs/contracts/contract-template.md`; write a fresh `docs/contracts/_index.md`
     listing only `global.md`.
 11. Create an empty `docs/rollout/` folder.
-12. If project type is audit: also copy `assets/universal/docs/system-map.md`,
-    `decision-record.md`, and `risk-register.md` into `docs/rewrite/`.
+12. If project type is audit: also copy `assets/universal/docs/system-map.md`
+    and `risk-register.md` into `docs/rewrite/`. Classify verdicts go to
+    `kit/02-exploration.md` and `_refs/decisions/` (already created in step 7).
 13. Last, write `.playbook/.version` as JSON: `templateVersion` (from `assets/manifest.json`), `scaffolded` (today's date), and `files` mapping every file under `.playbook/` (except `.gitkeep` and `.version`) to the first 16 characters of its sha256 (`sha256sum`). A later mismatch means the project edited that file; a newer template version means Playbook has updates to offer.
 
 Empty reserved folders (`.playbook/_concerns/`, `_integrations/`, `_shared/`) get a

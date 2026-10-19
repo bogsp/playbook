@@ -27,11 +27,17 @@ The audit runs in six phases, in order. Each phase requires your review before t
 
 ## What It Produces
 
-| File                              | What it holds                                                 |
-| --------------------------------- | ------------------------------------------------------------- |
-| `docs/rewrite/system-map.md`      | What exists, where it lives, what depends on what             |
-| `docs/rewrite/decision-record.md` | A verdict on every major piece with reasoning                 |
-| `docs/rewrite/risk-register.md`   | What breaks if X changes, and the safe order to change things |
+| File | What it holds |
+| --- | --- |
+| `docs/rewrite/system-map.md` | What exists, where it lives, what depends on what, and the gap report |
+| `docs/rewrite/risk-register.md` | What breaks if X changes, and the safe order to change things |
+| `kit/02-exploration.md` + `_refs/decisions/D-nn.md` | Classify verdicts — one decision per major piece, same store as every other project decision |
+
+There is no separate decision-record template. Classify writes the same D-nn shape used everywhere else: one index line in `02-exploration.md` and the reasoning in `_refs/decisions/D-nn.md`. If the index would exceed its budget, roll over per [kit/00-guide.md](kit/00-guide.md).
+
+Each classify detail file records: **Classification** (Keep / Align / Extract / Rewrite / Replace / Discard / Defer / Evaluate), what the piece does, why that verdict, what else is affected, and risk (low / medium / high / critical).
+
+_Keep — works as-is. Align — works but must conform to new architecture or standards. Extract — good logic in the wrong place. Rewrite — rebuild from scratch. Replace — same responsibility, different tool. Discard — remove. Defer — needs more information. Evaluate — needs investigation before classifying._
 
 ---
 
@@ -51,7 +57,7 @@ After handoff, the project continues from whichever pipeline stage the findings 
 
 - No planning documents are written during inventory, audit, or classify phases
 - No phase advances without human review
-- No findings are discarded — everything goes into the relevant output file or is explicitly marked out of scope with a reason
+- No findings are discarded — everything goes into the system map, the risk register, a D-nn decision, or is explicitly marked out of scope with a reason
 
 ---
 

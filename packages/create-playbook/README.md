@@ -165,9 +165,10 @@ docs/
 docs/
   rewrite/
     system-map.md
-    decision-record.md
     risk-register.md
 ```
+
+Classify verdicts are written as D-nn decisions in `.playbook/kit/02-exploration.md` and `_refs/decisions/`, not as a separate rewrite file.
 
 ---
 

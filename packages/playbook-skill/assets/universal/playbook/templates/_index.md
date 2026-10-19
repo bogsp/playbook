@@ -37,11 +37,13 @@ Every planning document begins with a card in its frontmatter. The card tells a 
 | `needs` | ids this document depends on: other documents, concerns, integrations, a milestone summary | every id exists |
 | `provides` | what neighbours get, in one line | |
 | `invariants` | up to three things that must stay true | the body may hold more |
-| `done-when` | an observable check | `TODO` until set; required before `approved` |
+| `done-when` | an observable check | unset until filled; required before `approved` |
 
-Type-specific fields follow the card: `scope` on `structure` and coordinators, `kind` and `docs` on `integration`, and the fields each domain adds (`layer`, `angle`, `audience`, `deadline`, `specification`).
+Type-specific fields follow the card: `scope` on the templates that have it (`structure` and the domain coordinators), `kind` and `docs` on `integration`, and the fields each domain adds (`layer`, `angle`, `audience`, `deadline`, `specification`).
 
-**Never written:** children, downstream impact and who uses a document. Find them by searching for its id in `needs` and `parent`.
+**Unfilled fields.** In a template, every field you still have to fill is a quoted value that starts with `[`, so one search finds them. Fill or delete each one before `status` leaves `draft`. The card carries no `ai_instructions` or `archive_rule`: the rules in [rules.md](../rules.md) apply to every planning document, and `status: retired` is the archive trigger.
+
+**Never written:** children, downstream impact and who uses a document. Find them by searching for its id in `needs` and `parent`, or read the coordinator's Structure section.
 
 **Where a dependency is declared**
 - A document lists its own `needs` once. The area's coordinator lists what applies to the whole area (a style guide, the code standards, a shared concern) and its documents do not repeat it.

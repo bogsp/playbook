@@ -24,11 +24,11 @@ Expansion is set to `audit: inventory`. Each of the six phases (inventory,
 audit, classify, risk-map, gap-report, handoff) runs in strict order, and
 each is approved by a human before the next begins — no phase is skipped,
 reordered, or run without review. Findings accumulate into
-`docs/rewrite/system-map.md`, `decision-record.md`, and `risk-register.md`
-as the phases produce them. On handoff, findings are written into
-`02-exploration.md`, `03-execution.md`, and `01-process.md`, the Active
-Expansion is cleared, and control returns to whichever context started the
-audit.
+`docs/rewrite/system-map.md`, `docs/rewrite/risk-register.md`, and D-nn
+classify decisions in `02-exploration.md` / `_refs/decisions/` as the
+phases produce them. On handoff, remaining findings are written into
+`03-execution.md` and `01-process.md`, the Active Expansion is cleared, and
+control returns to whichever context started the audit.
 
 ## Failures
 
@@ -86,7 +86,7 @@ audit.
   phase is re-approved.
 - No planning document (component, concern, integration, coordinator) may
   be written while Active Expansion is `audit: inventory`, `audit: audit`,
-  or `audit: classify` — this mirrors `AI-INSTRUCTIONS.md` rule 16 exactly
+  or `audit: classify` — this mirrors `rules.md` P7 exactly
   and is restated here because it is a hard ordering constraint on this
   specific flow, not just a general rule.
 
@@ -94,9 +94,9 @@ audit.
 
 - No phase advances without explicit human review — this flow never
   progresses autonomously, at any phase, under any condition.
-- Findings are never discarded — every finding lands in one of the three
-  `docs/rewrite/` files or is explicitly marked out of scope with a stated
-  reason (per the Rules section of `audit.md`).
+- Findings are never discarded — every finding lands in the system map, the
+  risk register, a D-nn decision, or is explicitly marked out of scope with
+  a stated reason (per the Rules section of `audit.md`).
 - The Active Expansion field in `01-process.md` must reflect the current
   phase at all times during the audit — it is never left stale.
 - Aborting the audit never deletes approved phase output — see Undoing

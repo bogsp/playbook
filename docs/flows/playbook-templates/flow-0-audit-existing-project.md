@@ -21,7 +21,8 @@ called-by: [flow-9-adopt-existing-project]
 
 Maps an existing, poorly understood project before anything about it
 changes. Six sequential phases, each gated by human review before the next
-begins. Produces the three `docs/rewrite/` files. Positioned as Stage 0 in
+begins. Produces `docs/rewrite/system-map.md`, `docs/rewrite/risk-register.md`,
+and classify verdicts as D-nn decisions in the kit. Positioned as Stage 0 in
 `pipeline.md` — it runs before Stage 1 (Thinking), not as part of the main
 Discovery→Handoff sequence.
 
@@ -39,9 +40,10 @@ before phase (a) begins.
 
 ## When It Finishes
 
-`docs/rewrite/system-map.md`, `decision-record.md`, and `risk-register.md`
-are complete. Findings have been fed into `02-exploration.md`,
-`03-execution.md`, and `01-process.md`. The Active Expansion is cleared.
+`docs/rewrite/system-map.md` and `risk-register.md` are complete, and
+classify verdicts are indexed in `02-exploration.md` with detail in
+`_refs/decisions/`. Findings have been fed into `03-execution.md` and
+`01-process.md`. The Active Expansion is cleared.
 Control returns to whichever context started the audit (`flow-9`'s landing
 logic, or the standalone caller).
 
@@ -67,7 +69,7 @@ flow), **EMIT** (fire an event, then proceed).
       → human requests revision           → HALT — revise, resubmit to b
       → gap found in inventory coverage   → HALT — RETURN to a
       → human aborts                      → HALT — see Undoing Steps, RETURN to caller
-   c. Phase: classify → decision-record.md
+   c. Phase: classify → D-nn in 02-exploration.md + _refs/decisions/
       → human approves                    → CONTINUE to d
       → human requests revision           → HALT — revise, resubmit to c
       → gap found in inventory or audit   → HALT — RETURN to a or b as applicable
@@ -96,9 +98,9 @@ already written and approved in earlier phases — approved phase output is
 treated as valid partial knowledge, not scratch work. What happens on abort:
 
 - Any phase currently in progress but not yet approved is discarded — its
-  draft content is never written to `docs/rewrite/`.
+  draft content is never written to `docs/rewrite/` or as a D-nn decision.
 - Already-approved phases (system-map.md sections from inventory/audit,
-  decision-record.md from classify, risk-register.md from risk-map) remain
+  D-nn classify verdicts, risk-register.md from risk-map) remain
   on disk as-is. They are marked incomplete by the absence of later phases,
   not deleted.
 - `.playbook/kit/01-process.md` Active Expansion is cleared regardless of
@@ -122,8 +124,9 @@ it, its quality. Requires (a) approved first; a gap found here in what (a)
 covered is not silently patched — it returns to (a).
 
 **c. Classify** — assign a verdict per piece (Keep / Align / Extract /
-Rewrite / Replace / Discard / Defer / Evaluate) into `decision-record.md`.
-Requires (a) and (b) approved.
+Rewrite / Replace / Discard / Defer / Evaluate) as a D-nn decision in
+`02-exploration.md` with detail in `_refs/decisions/`. Requires (a) and (b)
+approved.
 
 **d. Risk-map** — for each classified piece, determine what breaks if it
 changes and the safe order to change things, into `risk-register.md`.
@@ -142,9 +145,9 @@ human-requested revision — it is a data-integrity check, not a review gate.
 
 - No phase advances without human review — this is the one journey in this
   track where autonomous stage progression is explicitly disallowed at
-  every step, not just at the outer boundary (`AI-INSTRUCTIONS.md` rule 15).
+  every step, not just at the outer boundary (`rules.md` P8).
 - No planning documents are written during inventory, audit, or classify
-  (`AI-INSTRUCTIONS.md` rule 16) — only risk-map and gap-report start
+  (`rules.md` P7) — only risk-map and gap-report start
   shaping what Discovery, Mapping, and Planning will look like once the
   project resumes.
 - The "flag a gap in an earlier phase" branches (b→a, c→a/b) are an explicit

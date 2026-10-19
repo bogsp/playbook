@@ -133,7 +133,7 @@ In full mode the kit is not a stage; it runs beneath every stage from start to f
 
 | Pipeline stage | Kit touchpoint |
 |---|---|
-| Audit | Findings feed into `02-exploration.md` and `03-execution.md` on handoff |
+| Audit | Classify writes D-nn decisions during the phase; handoff also feeds `03-execution.md` |
 | Discovery | Goals and criteria live in `03-execution.md` |
 | Mapping | Flow decisions close in `02-exploration.md` with references |
 | Rules | Contract decisions close in `02-exploration.md` |

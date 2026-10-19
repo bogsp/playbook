@@ -50,7 +50,7 @@ on its own.
 
 **What it produces:**
 - `docs/rewrite/system-map.md` — what exists, where it lives, what depends on what
-- `docs/rewrite/decision-record.md` — a verdict on every major piece, with reasoning
+- Classify verdicts as D-nn decisions in `kit/02-exploration.md` and `_refs/decisions/` (no separate decision-record file)
 - `docs/rewrite/risk-register.md` — what breaks if X changes, and the safe order to change things
 
 When complete, findings feed directly into the session files so the rest of

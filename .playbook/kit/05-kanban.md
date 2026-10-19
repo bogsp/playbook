@@ -32,6 +32,7 @@ Archived: _archives/kanban/done-2026-08.md (32 tickets and the locked clerical t
 [K-55] Distribution: GitHub source, no-terminal scaffolder | DDA | K-56 | -> _refs/kanban/K-55.md
 [K-56] Extract a shared core for CLI, web, skill, platform | DDA | none | -> _refs/kanban/K-56.md
 [K-57] Audit pass: fold decision-record template into _refs/decisions | DDA | none | -> _refs/kanban/K-57.md
+[K-58] Sweep this repo's docs: unfilled template copies in docs/rewrite, stale AI-INSTRUCTIONS.md rule cites | SYNC | none | -> _refs/design/t07-review.md
 
 ## In Progress
 ## Blocked

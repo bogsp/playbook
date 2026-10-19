@@ -48,7 +48,7 @@ document has a TODO in a required section.
 
 - **Two components covering the same responsibility approved separately,
   discovered late** — per Undoing Steps, the newer one is retired
-  (`status: archived`, moved to `_archives/`, references repointed to the
+  (`status: retired`, moved to `_archives/units/`, `needs` repointed to the
   survivor) and logged as a Fixed entry in `04-progress.md` — never
   silently merged.
 - **A piece's correct type is ambiguous between `component` and

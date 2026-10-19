@@ -37,3 +37,4 @@ D-17 | 2026-10-17 | GitHub is the distribution source; a no-terminal scaffolder 
 D-18 | 2026-10-18 | K2: lean kit templates; adopt.md and audit.md split by project type; decision-record folded into _refs/decisions (K-57) | -> _refs/decisions/D-18.md
 D-19 | 2026-10-18 | No scripts or code until templates and structure are finished; checks and roll-over stay manual or AI-assisted | -> _refs/decisions/D-19.md
 D-20 | 2026-10-19 | Large projects: areas, on-demand area slices, shared units, contracts as interfaces, milestone summaries; D3 boundary and C11 current-only rules (K-54) | -> _refs/decisions/D-20.md
+D-21 | 2026-10-19 | T-07: cards drop ai_instructions and archive_rule; no hand-kept registry or routes.md yet; template placeholders quoted, bracket-prefixed | -> _refs/decisions/D-21.md

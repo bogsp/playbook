@@ -37,7 +37,7 @@ Every rule appears once, grouped by what it governs. IDs are stable — cite the
 - **C8** Keep **What This Project Is** and the project's structure in `_index.md` current (see Keep Project Identity Current in `maintenance.md`).
 - **C9** A file is delivered only when it has been attached or written to the agreed location. Say what you delivered and where. Never describe a file you have not produced as done.
 - **C10** Before changing more than one file, write an `In flight:` line in `kit/01-process.md` naming the files and the step. Clear it when the change is finished and logged. If a session starts with an `In flight:` line, finish or revert that change before any new work.
-- **C11** Keep only current information in live files. When something is finished, replaced or unused, move it to `_archives/` and leave one pointer line. A retired planning document leaves the registry too (see Planning Documents in `maintenance.md`).
+- **C11** Keep only current information in live files. When something is finished, replaced or unused, move it to `_archives/` and leave one pointer line. A retired planning document leaves the project map too (see Planning Documents in `maintenance.md`).
 
 ### Dependencies — always apply
 

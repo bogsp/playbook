@@ -26,8 +26,8 @@ Later: code phase: checker, generator, shared core (K-56), no-terminal scaffolde
 - [x] T-04 K3: migrate this repo's kit to the lean shape (all six files) -> 04-progress
 - [ ] T-05 Audit pass: fold decision-record template into _refs/decisions -> K-57
 - [x] T-06 Large-project partitioning: designed, tested on the four examples, approved -> D-20
-- [ ] T-07 (drafted on branch t07-cards, awaiting review) Card schema (status retired), hand-kept registry and routes; rules C11 and D3; update planning-doc and domain templates -> D-12, D-20
-- [ ] T-08 Review domain packs (writing for books); decide Q-05; replace Frontmatter Tiering in maintenance.md
+- [x] T-07 (fixes delivered, merge pending build and drift check) Card schema, C11 and D3, templates; registry and routes deferred -> D-21, t07-review
+- [ ] T-08 Review domain packs (writing for books); routes per pack; decide Q-05; replace Frontmatter Tiering in maintenance.md
 - [ ] T-09 Freeze the templates at 2.0.0: changelog, rebuild, scaffold test
 - [ ] T-10 Code phase: budget checker, registry generator, shared core, no-terminal scaffolder -> K-56, K-55, D-19
 - [ ] T-11 Adopt the new pipeline in this repo's own .playbook/ -> D-14

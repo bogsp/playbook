@@ -286,7 +286,6 @@ export async function scaffold({ projectName, domain, projectType, root, library
   // Audit projects get rewrite folder
   if (projectType === "audit") {
     await copyTemplate("universal/docs/rewrite/system-map.md", p("docs", "rewrite", "system-map.md"));
-    await copyTemplate("universal/docs/rewrite/decision-record.md", p("docs", "rewrite", "decision-record.md"));
     await copyTemplate("universal/docs/rewrite/risk-register.md", p("docs", "rewrite", "risk-register.md"));
   }
 

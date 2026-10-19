@@ -1,3 +1,12 @@
+---
+file: '.playbook/kit/_archives/templates/decision-record.md'
+responsibility: 'Retired audit classify template. Live classify verdicts are D-nn files in kit/_refs/decisions/.'
+ai_instructions: 'History only. Do not copy this into a project. K-57 / T-05.'
+archive_rule: 'N/A. Archive file.'
+owner: playbook
+source: 'playbook/docs/rewrite/decision-record.md (git mv 2026-10-19)'
+---
+
 # Decision Record
 
 # File: docs/rewrite/decision-record.md

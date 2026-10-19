@@ -84,10 +84,10 @@ current; no planning document has an unresolved TODO in a required section.
 
 If a duplicated piece is found late (two components covering the same
 responsibility, approved separately), the newer one is retired per
-`maintenance.md` — marked `status: archived`, moved to `_archives/`, never
-deleted — and every reference to it is repointed to the surviving
-component. This is logged as a Fixed entry in `04-progress.md`, not
-silently corrected.
+`maintenance.md` — set to `status: retired`, moved to `_archives/units/`
+with a line in `_archives/units/_index.md`, never deleted — and every
+`needs` that named it is repointed to the surviving component. This is
+logged as a Fixed entry in `04-progress.md`, not silently corrected.
 
 ## Detail
 

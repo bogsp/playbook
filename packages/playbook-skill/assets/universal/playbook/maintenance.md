@@ -74,15 +74,15 @@ When you notice these, archive before the next session — not during it.
 A planning document stays active as long as the thing it describes is active. When it is finished or replaced:
 
 1. Set `status: retired`
-2. Move it to `_archives/units/` and add one line to `_archives/units/_index.md`: `id | date | what it was | replaced by | path`
+2. Move it to `_archives/units/` and add one line to `_archives/units/_index.md` (create that file with the first retirement): `id | date | what it was | replaced by | path`
 3. Re-point every `needs` that still names its id
-4. Update the project map and the registry; retired documents leave both
+4. Update the project map; a retired document leaves it
 
 ---
 
 ## The Project Map
 
-The project map in `_index.md` (its **Structure** section, and the registry once it exists) must reflect the actual structure at all times. If a component is added, moved, or archived, update the map in the same session. A stale map is worse than no map.
+The project map must reflect the actual structure at all times. It is the **Structure** section of `_index.md` and, in a project with areas, the Structure section of each area's coordinator. If a component is added, moved, or archived, update the map in the same session. A stale map is worse than no map.
 
 ---
 
@@ -104,7 +104,7 @@ They ship generic. `_index.md` should not stay generic past Discovery. The root 
 | --- | --- |
 | Scaffold complete, Discovery starting | `_index.md` — fill in **What This Project Is** |
 | Discovery approved | `_index.md` — confirm scope matches the brief in `docs/[name].md`; root `README.md` — fill in Getting Started once there is something to run |
-| Any module, component, or concern added, moved, or archived | `_index.md` — **Structure** section (the registry, once it exists) |
+| Any module, component, or concern added, moved, or archived | `_index.md` — **Structure** section |
 | A project-specific rule is needed (a domain constraint, a non-negotiable) | `_index.md` — **Project Rules**, append `X1`, `X2`, …, never replace |
 | Project layout no longer matches the generic Folder Map | `_index.md` — **Structure** section |
 
@@ -148,7 +148,7 @@ Core rules are never removed or reworded to fit a project. If a core rule seems 
 
 Every file in a Playbook project carries frontmatter, in one of two shapes. Never invent a third; if a file fits neither, flag it.
 
-**The card** is for planning documents (`structure`, `coordinator`, `component`, `concern`, `integration` and each domain's own types). It carries `file`, `responsibility`, `id`, `type`, `status`, `needs`, `provides`, `invariants` and `done-when`, plus `parent` and any type-specific fields. The full definition is in [templates/_index.md](templates/_index.md).
+**The card** is for planning documents (`structure`, `coordinator`, `component`, `concern`, `integration` and each domain's own types). It carries `file`, `responsibility`, `id`, `type`, `status`, `needs`, `provides`, `invariants` and `done-when`, plus `parent` and any type-specific fields. It has no `ai_instructions` or `archive_rule`: the rules apply to every planning document, and `status: retired` is its archive trigger. The full definition is in [templates/_index.md](templates/_index.md).
 
 **The purpose block** is for everything else (kit files, flows, contracts, guides, `_index.md`, READMEs): `file`, `responsibility`, `ai_instructions`, `archive_rule`, plus any tracking fields already established for that kind of file (flows and contracts keep `id`, `type`, `scope`, `trigger`, `status`, `calls`, `emits`, `called-by`). It keeps files with adjacent jobs, such as `02-exploration` and `03-execution`, from drifting into each other's work. Kit files add their budgets (see [kit/00-guide.md](kit/00-guide.md)).
 

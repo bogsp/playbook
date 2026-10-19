@@ -27,3 +27,4 @@ Restructure of the shipped pipeline. Existing projects are not upgraded automati
 - `.playbook/.version` records the template version and a hash per file as scaffolded.
 - Example concerns (auth, error-handling, logging) are no longer copied into projects; concerns are created when a task needs one.
 - `04-progress.md` is scaffolded with one `Completed` line instead of an `In Progress` entry.
+- Audit classify verdicts are D-nn decisions in the kit (`02-exploration.md` + `_refs/decisions/`). The separate `docs/rewrite/decision-record.md` template is not shipped. Audit projects still get `system-map.md` and `risk-register.md`.

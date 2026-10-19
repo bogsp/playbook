@@ -19,7 +19,6 @@
     { "group": "contracts", "source": "contract.md", "name": "contract-template.md" },
     { "group": "contracts", "source": "global.md", "name": "global.md" },
     { "group": "rewrite", "source": "system-map.md", "name": "system-map.md" },
-    { "group": "rewrite", "source": "decision-record.md", "name": "decision-record.md" },
     { "group": "rewrite", "source": "risk-register.md", "name": "risk-register.md" }
   ],
   "universalTemplates": [

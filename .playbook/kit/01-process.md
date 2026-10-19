@@ -7,14 +7,15 @@ owner: project
 max-bytes: 2048
 max-lines: 20
 line-max: 200
-entry-shape: 'Last: T-07 drafted on branch t07-cards: card schema, ten templates, rules C11 and D3, Frontmatter section; 12 scaffolds and drift pass; awaiting review -> 04-progress
+entry-shape: 'Last: <=160 chars -> refs'
 ---
 
 # Process
+
 Phase: Planning (pipeline rewrite)
-Last: T-07 drafted on branch t07-cards: card schema, ten templates, rules C11 and D3, Frontmatter section; 12 scaffolds and drift pass; awaiting review -> 04-progress
-Next: person reviews T-07; merge to main; then T-05 audit pass, T-08 domain packs, T-09 freeze
-Open: Q-03, Q-05, Q-06 -> 02-exploration; code checks (biome, build) deferred until code work
-In flight: none
+Last: T-07 findings decided (D-21); fixes for F1-F6 delivered; merge waits on build, drift check and a scaffold read -> 04-progress
+Next: person applies the files on t07-cards; pnpm build and check:drift; merge to main; then area sessions and upgrade.md (Q-06)
+Open: Q-03, Q-05, Q-06 -> 02-exploration; F7-F9 -> t07-review (K-58); code checks deferred until code work
+In flight:
 Active Modules: kanban
 Active Expansions: none

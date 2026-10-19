@@ -1,3 +1,12 @@
+---
+file: '.playbook/kit/_archives/templates/decision-record-meta-copy.md'
+responsibility: 'Retired meta-repo copy of the audit classify template, identical to the shipped template at archive time.'
+ai_instructions: 'History only. Do not copy this into a project. K-57 / T-05.'
+archive_rule: 'N/A. Archive file.'
+owner: project
+source: 'docs/rewrite/decision-record.md (git mv 2026-10-19)'
+---
+
 # Decision Record
 
 # File: docs/rewrite/decision-record.md

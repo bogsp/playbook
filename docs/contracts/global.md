@@ -118,7 +118,7 @@ contract, it must check whether an equivalent already exists:
   before drafting a new one.
 - A duplicate found late is never silently merged — it is flagged, resolved
   by explicit decision, and the loser is retired per `maintenance.md`
-  (`status: archived`, moved to `_archives/`, never deleted).
+  (`status: retired`, moved to `_archives/units/`, never deleted).
 
 ---
 
