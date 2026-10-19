@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Playbook Ecosystem — Turn Complex Work into Step-by-Step Clarity</title>
+    <title>Playbook Pipeline — Turn Chaotic AI Chats Into Structured Execution</title>
     <style>
         :root {
             --bg: #0f172a;
@@ -23,88 +23,65 @@
             line-height: 1.6;
         }
         .container {
-            max-width: 960px;
+            max-width: 880px;
             margin: 0 auto;
             padding: 40px 20px;
         }
-        /* HERO SECTION */
         header {
             text-align: center;
-            padding: 40px 0 30px;
+            padding: 30px 0 20px;
             border-bottom: 1px solid var(--border);
         }
-        .badge {
-            background: #0369a1;
-            color: #e0f2fe;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            display: inline-block;
-            margin-bottom: 12px;
-        }
         h1 {
-            font-size: 2.6rem;
-            margin: 0 0 16px;
+            font-size: 2.4rem;
+            margin: 0 0 12px;
             letter-spacing: -0.02em;
         }
         p.subtitle {
-            font-size: 1.25rem;
+            font-size: 1.15rem;
             color: var(--text-muted);
-            max-width: 720px;
+            max-width: 680px;
             margin: 0 auto;
         }
-        
-        /* SECTION CARDS */
-        .section-title {
-            font-size: 1.6rem;
-            margin: 40px 0 20px;
-            color: #fff;
+        .step-section {
+            margin-top: 40px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid var(--border);
         }
-        .grid {
+        .step-header {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .step-nudge {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+        .grid-choices {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 24px;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 12px;
         }
-        .card {
+        .choice-card {
             background: var(--card-bg);
             border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 28px;
-            transition: border-color 0.2s, transform 0.2s;
-        }
-        .card:hover {
-            border-color: var(--accent);
-            transform: translateY(-2px);
-        }
-        .btn {
-            display: inline-block;
-            background: var(--accent);
-            color: #0f172a;
-            font-weight: 600;
-            padding: 12px 20px;
             border-radius: 8px;
-            text-decoration: none;
-            margin-top: 16px;
+            padding: 16px;
             text-align: center;
+            text-decoration: none;
+            color: #fff;
+            font-weight: 600;
+            transition: all 0.2s;
+            display: block;
         }
-        .btn:hover {
-            background: #7dd3fc;
-        }
-        .btn-secondary {
-            background: transparent;
-            color: var(--accent);
-            border: 1px solid var(--accent);
-        }
-        .btn-secondary:hover {
-            background: rgba(56, 189, 248, 0.1);
-        }
-
-        /* TECHNICAL ACCORDION / LOWER ZONE */
-        .tech-zone {
-            margin-top: 60px;
-            padding-top: 40px;
-            border-top: 1px solid var(--border);
+        .choice-card:hover {
+            border-color: var(--accent);
+            background: rgba(56, 189, 248, 0.05);
+            transform: translateY(-2px);
         }
         pre {
             background: #020617;
@@ -114,85 +91,79 @@
             overflow-x: auto;
             color: #e2e8f0;
             font-family: monospace;
+            font-size: 0.9rem;
         }
+        .btn {
+            display: inline-block;
+            background: var(--accent);
+            color: #0f172a;
+            font-weight: 600;
+            padding: 10px 18px;
+            border-radius: 6px;
+            text-decoration: none;
+            margin-top: 10px;
+        }
+        .btn:hover { background: #7dd3fc; }
         footer {
             text-align: center;
-            margin-top: 80px;
+            margin-top: 60px;
             padding: 20px 0;
             color: var(--text-muted);
-            font-size: 0.9rem;
-            border-top: 1px solid var(--border);
+            font-size: 0.85rem;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- HERO (No Jargon) -->
+        <!-- STEP 1: Short Intro -->
         <header>
-            <span class="badge">Playbook v2.0</span>
-            <h1>Stop winging project execution.</h1>
-            <p class="subtitle">
-                Playbook is a plug-and-play execution framework. It breaks down complex tasks, decisions, and processes into simple, fillable templates so teams can build faster with zero friction.
-            </p>
+            <h1>Stop fighting your AI.</h1>
+            <p class="subtitle">Playbook gives you a plug-and-play framework to turn messy chats into structured, self-governing execution.</p>
         </header>
 
-        <!-- STEP 1: NON-TECHNICAL FILLABLE TEMPLATES -->
-        <section>
-            <h2 class="section-title">1. Choose How You Want to Start</h2>
-            <div class="grid">
-                <!-- LITE PROFILE -->
-                <div class="card">
-                    <span style="color: var(--accent-green); font-weight: 600; text-transform: uppercase; font-size: 0.8rem;">Ready-to-Use</span>
-                    <h3 style="margin: 8px 0 12px; font-size: 1.4rem;">Lite Mode (No Coding Required)</h3>
-                    <p style="color: var(--text-muted); font-size: 0.95rem;">
-                        Perfect for creators, managers, and solos. Download fillable Markdown or document templates to plan your tasks, manage context, and guide projects directly in your browser or editor.
-                    </p>
-                    <a href="https://github.com/bogsp/playbook/tree/main/packages/create-playbook/templates" class="btn" target="_blank">Access Fillable Templates →</a>
-                </div>
-
-                <!-- FULL PROFILE -->
-                <div class="card">
-                    <span style="color: var(--accent); font-weight: 600; text-transform: uppercase; font-size: 0.8rem;">Engineering Teams</span>
-                    <h3 style="margin: 8px 0 12px; font-size: 1.4rem;">Full Technical Pipeline</h3>
-                    <p style="color: var(--text-muted); font-size: 0.95rem;">
-                        Automated monorepo tools with budget checking, template drift validation, and built-in CI/CD pipelines.
-                    </p>
-                    <a href="#developers" class="btn btn-secondary">Explore CLI & Code Setup ↓</a>
-                </div>
+        <!-- STEP 2: Initial Question & Choices -->
+        <section class="step-section">
+            <div class="step-header">Step 1. What are we working on?</div>
+            <div class="step-nudge">Choose your track to access tailored project structures.</div>
+            <div class="grid-choices">
+                <a class="choice-card" href="https://github.com/bogsp/playbook/tree/main/packages/create-playbook/templates/software" target="_blank">💻 Software</a>
+                <a class="choice-card" href="https://github.com/bogsp/playbook/tree/main/packages/create-playbook/templates/writing" target="_blank">✍️ Writing</a>
+                <a class="choice-card" href="https://github.com/bogsp/playbook/tree/main/packages/create-playbook/templates/production" target="_blank">📦 Production</a>
+                <a class="choice-card" href="https://github.com/bogsp/playbook/tree/main/packages/create-playbook/templates/manufacturing" target="_blank">🏭 Manufacturing</a>
+                <a class="choice-card" href="https://github.com/bogsp/playbook/tree/main/packages/create-playbook/templates/universal" target="_blank">✨ Something else</a>
             </div>
         </section>
 
-        <!-- STEP 2: RESOURCES -->
-        <section style="margin-top: 40px;">
-            <h2 class="section-title">2. Guides & Reference Material</h2>
-            <div class="card">
-                <h3>📖 The Progressive Disclosure Guide</h3>
-                <p style="color: var(--text-muted);">
-                    Learn how Playbook seamlessly scales from single-person checklists to multi-package engineering pipelines without overwhelming your workflow.
-                </p>
-                <a href="https://github.com/bogsp/playbook/blob/main/PROGRESSIVE_DISCLOSURE.md" style="color: var(--accent); text-decoration: none;" target="_blank">Read the Complete Guide →</a>
-            </div>
+        <!-- STEP 3: Download Scaffold -->
+        <section class="step-section">
+            <div class="step-header">Step 2. Grab your project files</div>
+            <div class="step-nudge">Download the starter ZIP archive and unzip it anywhere on your computer.</div>
+            <a href="https://github.com/bogsp/playbook/archive/refs/heads/main.zip" class="btn" target="_blank">Download Starter ZIP (.zip) ↓</a>
         </section>
 
-        <!-- LOWER ZONE: TECHNICAL & CLI USAGE -->
-        <section class="tech-zone" id="developers">
-            <h2 class="section-title">💻 Technical Quick Start & CLI Tools</h2>
-            <p style="color: var(--text-muted);">
-                For developers and engineering teams adopting Playbook into existing codebases:
-            </p>
-            <pre><code># Initialize new project with Lite or Full profile
-pnpm dlx create-playbook my-project --profile=lite
+        <!-- STEP 4: Instructions and Prompt -->
+        <section class="step-section">
+            <div class="step-header">Step 3. Hand it to your AI</div>
+            <div class="step-nudge">Open your favorite AI app (ChatGPT, Claude, Gemini, etc.), drop in your folder, and send this exact message:</div>
+            <pre><code>Start a Playbook session. Follow the Session Start in the attached _index.md.</code></pre>
+        </section>
 
-# Adopt Playbook into an existing codebase
-pnpm dlx create-playbook adopt --profile=full</code></pre>
+        <!-- STEP 5: Expansion for Technical Users -->
+        <section class="step-section">
+            <div class="step-header">For Technical & Engineering Teams</div>
+            <div class="step-nudge">Looking for the full monorepo pipeline, CLI scaffolder, and automated drift checks?</div>
+            <pre><code>pnpm dlx create-playbook my-project --profile=full</code></pre>
+        </section>
 
-            <div style="margin-top: 20px;">
-                <a href="https://github.com/bogsp/playbook" style="color: var(--accent);" target="_blank">View Source Code on GitHub →</a>
-            </div>
+        <!-- STEP 6: Explore Playbook -->
+        <section style="margin-top: 30px;">
+            <div class="step-header">Explore Playbook</div>
+            <div class="step-nudge">Inspect architecture specs, domain vocabularies, and pipeline documentation.</div>
+            <a href="https://github.com/bogsp/playbook" style="color: var(--accent);" target="_blank">View Full Repository on GitHub →</a>
         </section>
 
         <footer>
-            <p>Playbook Ecosystem • Simple Entry, Powerful Foundation</p>
+            <p>Playbook Pipeline • Simple Entry, Strict Execution</p>
         </footer>
     </div>
 </body>
