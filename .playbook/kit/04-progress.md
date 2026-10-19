@@ -38,3 +38,5 @@ Archived: \_archives/progress/progress-pre-migration.md, progress-reconciliation
 2026-10-19 | Completed | T-07 fixes delivered: 14 templates, templates/\_index, rules, maintenance, 3 meta docs (retired not archived); merge pending build, drift check and a scaffold read | \_refs/design/t07-review.md
 2026-10-19 | Fixed | 04-progress rolled over: five 2026-10-17 events moved verbatim to \_archives/progress/2026-10-17.md; the T-07 drafted line now says 14 templates, not ten | \_archives/progress/2026-10-17.md
 2026-10-19 | Completed | T-07 completed and merged to main: 14 templates, templates/\_index, rules, maintenance, 3 meta docs (retired not archived); build and drift check passed; scaffold read passed | \_refs/design/t07-review.md
+
+2026-10-19 | Completed | T-08 & T-09: prompt modularized, maintenance frontmatter updated, templates frozen at 2.0.0 | .playbook/maintenance.md
