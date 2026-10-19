@@ -1,0 +1,49 @@
+name: Release & Publish
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run Drift & Budget Checks
+        run: |
+          node packages/check-drift.mjs
+          node -e '
+          const { checkBudgets } = require("./packages/core-lib/budget-checker");
+          const result = checkBudgets([
+            "packages/create-playbook/templates",
+            "packages/playbook-skill/assets"
+          ]);
+          if (result.failed) {
+            console.error("Budget check failed during release!");
+            process.exit(1);
+          }
+          console.log("Release budget checks passed.");
+          '
+
+      - name: Publish Packages to npm
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          # Publish core-lib and create-playbook (adjust based on workspace setup if needed)
+          npm publish --workspace=packages/core-lib --access public || echo "core-lib publish skipped or already published"
+          npm publish --workspace=packages/create-playbook --access public || echo "create-playbook publish skipped or already published"
