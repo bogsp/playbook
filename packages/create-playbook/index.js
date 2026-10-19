@@ -22,7 +22,14 @@ import { generateFlow, generateContract, generatePlanningDoc } from "./lib/gener
 const args = process.argv.slice(2);
 const command = args[0];
 
-if (command === "sync") {
+import { adoptProject } from "./lib/adopt.js";
+
+if (command === "adopt") {
+  const profileFlag = args.find(arg => arg.startsWith("--profile="))?.split("=")[1] || "full";
+  await adoptProject(process.cwd(), profileFlag);
+  close();
+  process.exit(0);
+} else if (command === "sync") {
   await runSync();
 } else if (command === "generate" || command === "g") {
   await runGenerate(args[1]);
@@ -215,11 +222,5 @@ function countMessage(projectType, domain, libraryInstalled) {
 }
 
 
-// Added adoption & profile handling
-import { adoptProject } from "./lib/adopt.js";
 
-const args = process.argv.slice(2);
-if (args[0] === "adopt") {
-  const profileFlag = args.find(arg => arg.startsWith("--profile="))?.split("=")[1] || "full";
-  adoptProject(process.cwd(), profileFlag).catch(console.error);
-}
+
