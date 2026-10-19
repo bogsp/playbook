@@ -132,3 +132,7 @@ the project, since those documents don't disappear just because the mode
 changes.
 
 ---
+
+## Incremental Execution & Verification (Refinement)
+- C3 Clarification: An intentionally scoped task or Phase 1 MVP is valid if its scope and unhandled paths are explicitly declared in the task context. C3 strictly forbids accidental omissions, silent stubs, or fake implementations.
+- Verification Standards: Before marking work resolved, provide proportional proof of completion (e.g., test output, build/lint logs, or explicit behavioral snapshots).

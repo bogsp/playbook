@@ -77,3 +77,8 @@ When any of the following occur, AI must stop all work and flag before writing c
 - [ ] All touched components have up-to-date planning docs synced.
 - [ ] No new dependencies added without Playbook registry approval.
 - [ ] `.playbook/kit/01-process.md` and `.playbook/kit/04-progress.md` updated.
+
+## Verification Standards
+- Small Fixes / Routine Edits: Run linters, type checks, or target unit tests.
+- Multi-file Features: Require passing test suite logs or build output before closing tasks.
+- No-Test Environments: Provide a clear dry-run log or behavioral breakdown verifying correctness.

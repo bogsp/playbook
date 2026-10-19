@@ -1,0 +1,30 @@
+name: Playbook Feedback & Experience Report
+description: Share how Playbook performed in your project, report friction, or suggest rule tuning.
+title: "[Feedback]: "
+labels: ["feedback", "evaluation"]
+body:
+  - type: dropdown
+    id: model_used
+    attributes:
+      label: Which AI Model / Tool Did You Use?
+      options:
+        - Claude Code / Claude
+        - ChatGPT / OpenAI
+        - Gemini
+        - Local Model (Llama / DeepSeek)
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: experience
+    attributes:
+      label: Pipeline Performance & Experience
+      description: Describe any prompt resistance, rule friction, or unexpected LLM behaviors.
+      placeholder: e.g., The AI followed C10 properly but struggled with...
+    validations:
+      required: true
+  - type: textarea
+    id: suggestions
+    attributes:
+      label: Suggested Rule / Doc Improvements
+      description: What adjustments would make this smoother for real-world tasks?
