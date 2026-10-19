@@ -1,6 +1,6 @@
 {
   "name": "@bogsp/playbook-skill",
-  "version": "1.0.0",
+  "version": "3.1.0",
   "description": "Claude Skill packaging of Playbook — scaffold a Playbook project directly in a Claude session, no CLI required",
   "author": "Bogs",
   "license": "MIT",
