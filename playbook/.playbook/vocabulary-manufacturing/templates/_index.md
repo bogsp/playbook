@@ -13,7 +13,7 @@ shapes.
 | Type | File | Required fields |
 |---|---|---|
 | `coordinator` | [coordinator.md](coordinator.md) | — |
-| `part` | [part.md](part.md) | `specification`, `definition-of-done` |
+| `part` | [part.md](part.md) | `specification`, `done-when` |
 
 `concern` and `integration` do not vary by domain — use
 [../../templates/concern.md](../../templates/concern.md) and
@@ -25,6 +25,5 @@ safety standards; `integration` covers suppliers or external processes.
 
 ## Field Reference
 
-A `part` is not marked done until every `definition-of-done` criterion is
-explicitly verified, per `vocabulary-manufacturing/AI-INSTRUCTIONS.md`
-rule 8. `specification` is non-negotiable.
+A `part` is not marked done until its `done-when` check is explicitly
+verified, per `vocabulary-manufacturing/_index.md` rule 8. `specification` is non-negotiable.

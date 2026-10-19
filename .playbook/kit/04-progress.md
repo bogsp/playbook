@@ -35,3 +35,4 @@ Archived: _archives/progress/progress-pre-migration.md, progress-reconciliation-
 2026-10-19 | Completed | K-54 design drafted: five mechanisms (areas, area slice, shared, interface, snapshot), boundary rule D3, four examples tested at 17-34 KB per task; awaiting 5 decisions | _refs/design/large-project-partitioning.md
 2026-10-19 | Decided | K-54 answers: area slice on demand, archive for every file kind (C11), add only what is needed (retired replaces deprecated), area templates deferred, D3 always on | D-20
 2026-10-19 | Completed | K-54 closed; D-01..03 and D-06 archived from 02-exploration (D-06 superseded by D-14); D-20 indexed | _archives/exploration/decisions-2026-08.md
+2026-10-19 | Completed | T-07 drafted on branch t07-cards: card schema in templates/_index.md, ten templates on the card, rules C11 and D3, maintenance Frontmatter and Planning Documents, CHANGELOG field map; awaiting review | CHANGELOG.md

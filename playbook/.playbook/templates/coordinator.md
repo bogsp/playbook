@@ -1,19 +1,14 @@
 ---
-File: .playbook/[module]/[kebab-case].md
-
-MODULE_ID: PLAYBOOK-COORD-XX-[NAME]
-SYSTEM_CONTEXT: [Macro System Block Context]
-UPSTREAM_DEPENDENCIES: []
-DOWNSTREAM_IMPACT: []
-CORE_SYSTEM_INVARIANTS:
-  - [Invariant 1]
-
-id: [kebab-case]
+file: .playbook/[module]/[kebab-case].md
+responsibility: [One line, 160 characters or fewer: what this coordinator sequences]
+id: [module]-[kebab-case]
 type: coordinator
 status: draft
-parent: [module]
-sequence: []
-concerns: []
+parent: [structure id]
+needs: []
+provides: [One line: the outcome this coordinator delivers]
+invariants: []
+done-when: [TODO — an observable check]
 ---
 
 # filename

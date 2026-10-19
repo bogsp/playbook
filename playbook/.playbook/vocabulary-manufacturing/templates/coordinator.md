@@ -1,19 +1,14 @@
 ---
-File: .playbook/[product]/[kebab-case].md
-
-MODULE_ID: PLAYBOOK-COORD-XX-[NAME]
-SYSTEM_CONTEXT: [Product or Production Run Context]
-UPSTREAM_DEPENDENCIES: []
-DOWNSTREAM_IMPACT: []
-CORE_SYSTEM_INVARIANTS:
-  - [Invariant 1]
-
-id: [kebab-case]
+file: .playbook/[product]/[kebab-case].md
+responsibility: [One line, 160 characters or fewer: what this product or production run covers]
+id: [product]-[kebab-case]
 type: coordinator
 status: draft
 scope: product | production-run
-contains: []
-concerns: []
+needs: []
+provides: [One line: what this product or run delivers]
+invariants: []
+done-when: [TODO — an observable check]
 ---
 
 # filename

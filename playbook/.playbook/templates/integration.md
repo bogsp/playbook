@@ -1,19 +1,14 @@
 ---
-File: .playbook/[module]/[kebab-case].md
-
-MODULE_ID: PLAYBOOK-INTEGRATE-XX-[NAME]
-SYSTEM_CONTEXT: [Macro System Block Context]
-UPSTREAM_DEPENDENCIES: []
-DOWNSTREAM_IMPACT: []
-CORE_SYSTEM_INVARIANTS:
-  - [Invariant 1]
-
-id: [kebab-case]
+file: .playbook/[module]/[kebab-case].md
+responsibility: [One line, 160 characters or fewer: what this external or internal service or library is for]
+id: [module]-[kebab-case]
 type: integration
-kind: external-service | external-library | internal-service
 status: draft
-used-by: []
-config: []
+needs: []
+provides: [One line: what the project gets from this integration]
+invariants: []
+done-when: [TODO — an observable check]
+kind: external-service | external-library | internal-service
 docs: [url]
 ---
 

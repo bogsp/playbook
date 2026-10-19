@@ -1,19 +1,14 @@
 ---
-File: .playbook/[project]/[kebab-case].md
-
-MODULE_ID: PLAYBOOK-COORD-XX-[NAME]
-SYSTEM_CONTEXT: [Project or Campaign Context]
-UPSTREAM_DEPENDENCIES: []
-DOWNSTREAM_IMPACT: []
-CORE_SYSTEM_INVARIANTS:
-  - [Invariant 1]
-
-id: [kebab-case]
+file: .playbook/[project]/[kebab-case].md
+responsibility: [One line, 160 characters or fewer: what this project or campaign covers]
+id: [project]-[kebab-case]
 type: coordinator
 status: draft
 scope: project | campaign
-contains: []
-concerns: []
+needs: []
+provides: [One line: what this project or campaign delivers]
+invariants: []
+done-when: [TODO — an observable check]
 ---
 
 # filename

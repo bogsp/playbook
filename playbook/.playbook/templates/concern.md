@@ -1,18 +1,13 @@
 ---
-File: .playbook/[module]/[kebab-case].md
-
-MODULE_ID: PLAYBOOK-CONCERN-XX-[NAME]
-SYSTEM_CONTEXT: [Macro System Block Context]
-UPSTREAM_DEPENDENCIES: []
-DOWNSTREAM_IMPACT: []
-CORE_SYSTEM_INVARIANTS:
-  - [Invariant 1]
-
-id: [kebab-case]
+file: .playbook/[module]/[kebab-case].md
+responsibility: [One line, 160 characters or fewer: what this cross-cutting capability ensures]
+id: [module]-[kebab-case]
 type: concern
 status: draft
-affects: all | [module, module]
-provided-by: internal | external
+needs: []
+provides: [One line: what this concern guarantees wherever it applies]
+invariants: []
+done-when: [TODO — an observable check]
 ---
 
 # filename

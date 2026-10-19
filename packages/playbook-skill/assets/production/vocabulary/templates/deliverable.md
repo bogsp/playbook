@@ -1,20 +1,15 @@
 ---
-File: .playbook/[project]/[kebab-case].md
-
-MODULE_ID: PLAYBOOK-DELIV-XX-[NAME]
-SYSTEM_CONTEXT: [Macro System Block Context]
-UPSTREAM_DEPENDENCIES: []
-DOWNSTREAM_IMPACT: []
-CORE_SYSTEM_INVARIANTS:
-  - [Invariant 1]
-
-id: [kebab-case]
+file: .playbook/[project]/[kebab-case].md
+responsibility: [One line, 160 characters or fewer: what this deliverable is]
+id: [project]-[kebab-case]
 type: deliverable
 status: draft
-parent: [project or campaign]
+parent: [project or campaign id]
+needs: []
+provides: [One line: what the recipient gets]
+invariants: []
+done-when: [TODO — an observable check]
 deadline: [TODO — hard constraint, not a target]
-definition-of-done: [TODO — explicit, verifiable criteria]
-concerns: []
 ---
 
 # filename
@@ -24,8 +19,8 @@ concerns: []
 ## What It Does
 
 Plain language — what this deliverable is, who it's for, and what "done"
-looks like. Definition of done is not optional; a deliverable does not
-move past draft without it.
+looks like. `done-when` is not optional; a deliverable does not move past
+draft without it.
 
 ## Interface
 
