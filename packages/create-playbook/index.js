@@ -1,3 +1,4 @@
+import { handleUpdate } from "./lib/update.js";
 #!/usr/bin/env node
 // create-playbook v3.1.0
 // File: packages/create-playbook/index.js
@@ -24,7 +25,12 @@ const command = args[0];
 
 import { adoptProject } from "./lib/adopt.js";
 
-if (command === "adopt") {
+if (command === "update") {
+  const targetDir = args[1] && !args[1].startsWith("-") ? args[1] : process.cwd();
+  await handleUpdate(targetDir);
+  close();
+  process.exit(0);
+} else if (command === "adopt") {
   const profileFlag = args.find(arg => arg.startsWith("--profile="))?.split("=")[1] || "full";
   await adoptProject(process.cwd(), profileFlag);
   close();
