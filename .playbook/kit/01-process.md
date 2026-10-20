@@ -13,8 +13,8 @@ entry-shape: 'Last: <=160 chars -> refs'
 # Process
 
 Phase: Work
-Last: Identified dlx registry caching issue for create-playbook update command; tested local execution path -> .playbook/kit/01-process.md
-Next: Publish updated create-playbook package to npm or test locally
+Last: Successfully published create-playbook package to npm from packages/create-playbook -> packages/create-playbook/package.json
+Next: Test global pnpm dlx create-playbook update migration
 Open: none
 In flight: none
 Active Modules: none
