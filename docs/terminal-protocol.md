@@ -15,14 +15,11 @@ Playbook supports a high-efficiency **Terminal-Driven Execution Loop** where the
 * **Surgical Precision:** The AI requests exact command outputs (`git status`, test tracebacks, build stdout) only when needed.
 * **Human-in-the-Loop Safety:** Prevents runaway agentic mistakes by keeping human review between command proposal and execution.
 
-## The Standardized Loop
-1. **Command Proposal:** The AI prescribes a single, deterministic bash command along with expectations on what output to look for.
-2. **Execution:** The user runs the command locally in their terminal.
-3. **Feedback Ingestion:** The user pastes back the exact stdout/stderr payload.
-4. **Diagnosis & Iteration:** The AI parses the response and prescribes the next step or fix.
+## Updating Existing Playbooks
+To migrate an existing repository or update its core rules to the latest Playbook standard without losing project progress, execute the update command in your terminal. Core system files (`rules.md`, `kit/00-guide.md`) will be refreshed while preserving your process logs (`kit/01-process.md`), task history, and custom project settings.
 
 ## Cross-Platform Optimization & Token Economy
-Different LLM apps handle context differently. Use these strategies per platform:
+Different LLM apps handle context differently:
 * **Gemini:** Highly forgiving of long conversational threads and multi-file contexts. Well-suited for fluid back-and-forth terminal debugging.
 * **Claude:** Ideal for structured projects. Set up a permanent "Playbook Project" containing `rules.md` as project knowledge to minimize repeat prompts.
 * **ChatGPT / Grok:** Strict context limits. Rely heavily on concise terminal feedback loops rather than uploading entire codebases.

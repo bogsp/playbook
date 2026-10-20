@@ -13,8 +13,8 @@ entry-shape: 'Last: <=160 chars -> refs'
 # Process
 
 Phase: Work
-Last: Verified all terminal execution protocol updates, formatting fixes, and kit state synchronization -> .playbook/_index.md, .playbook/rules.md
-Next: Continue project execution and monitor user feedback
+Last: Implemented create-playbook update CLI subcommand and documented migration workflow -> packages/create-playbook/bin/cli.js, docs/terminal-protocol.md
+Next: Push changes to main
 Open: none
 In flight: none
 Active Modules: none

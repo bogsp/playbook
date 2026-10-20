@@ -23,3 +23,4 @@ entry-shape: 'date | Completed|Decided|Fixed | <=160 chars | refs'
 2026-10-20 | Completed | Added C12 terminal execution rule and created terminal protocol guide -> docs/terminal-protocol.md
 2026-10-20 | Completed | Fixed nested code block syntax inside project entry guide -> .playbook/_index.md
 2026-10-20 | Completed | Synchronized final kit state and process tracking -> .playbook/kit/01-process.md
+2026-10-20 | Completed | Implemented create-playbook update CLI command for automated migrations -> packages/create-playbook/bin/cli.js
