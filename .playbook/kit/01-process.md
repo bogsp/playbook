@@ -13,7 +13,7 @@ entry-shape: 'Last: <=160 chars -> refs'
 # Process
 
 Phase: Work
-Last: Expanded technical section on landing page with detailed CLI features and npm package link -> docs/index.html
+Last: Added GitHub Issues support link to footer to buffer communications without exposing personal email -> docs/index.html
 Next: Push changes to main
 Open: none
 In flight: none
