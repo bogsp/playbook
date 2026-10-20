@@ -13,8 +13,8 @@ entry-shape: 'Last: <=160 chars -> refs'
 # Process
 
 Phase: Work
-Last: Implemented create-playbook update CLI subcommand and documented migration workflow -> packages/create-playbook/bin/cli.js, docs/terminal-protocol.md
-Next: Push changes to main
+Last: Identified dlx registry caching issue for create-playbook update command; tested local execution path -> .playbook/kit/01-process.md
+Next: Publish updated create-playbook package to npm or test locally
 Open: none
 In flight: none
 Active Modules: none
