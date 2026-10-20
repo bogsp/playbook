@@ -12,10 +12,11 @@
     "lint": "biome check packages",
     "lint:fix": "biome check --write packages",
     "format": "biome format --write packages",
-    "build": "node packages/create-playbook/build.js && node packages/playbook-skill/build.js",
+    "build": "node packages/create-playbook/build.js && node packages/playbook-skill/build.js && node packages/create-playbook/generate-zips.js",
     "check:drift": "node packages/check-drift.mjs",
     "test": "node --test packages/create-playbook/test/e2e.test.js",
-    "budget": "node -e 'const { checkBudgets } = require(\"./packages/core-lib/budget-checker\"); const res = checkBudgets([\"packages/create-playbook/templates\", \"packages/playbook-skill/assets\"]); if (res.failed) process.exit(1); console.log(\"Budget check passed.\");'"
+    "budget": "node -e 'const { checkBudgets } = require(\"./packages/core-lib/budget-checker\"); const res = checkBudgets([\"packages/create-playbook/templates\", \"packages/playbook-skill/assets\"]); if (res.failed) process.exit(1); console.log(\"Budget check passed.\");'",
+    "build:zips": "node packages/create-playbook/generate-zips.js"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.4.4",
