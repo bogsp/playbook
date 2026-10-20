@@ -36,7 +36,7 @@ Read this file first, every session. It is the only file you need to be given; i
 
 Until `rules.md` is loaded: do no project work, flag anything unclear, and say what you have loaded.
 
-**Starting fresh:** fill in **What This Project Is** above. If `pipeline-mode` is `kit-only` (the default), that is all you need — start working, tracked through the kit files. If it is `full`, work through [pipeline.md](pipeline.md) stage by stage.
+**Starting fresh:** fill in **What This Project Is** above. If `pipeline-mode` is `kit-only` (the default), that is all you need — start working, tracked through the kit files. If it is `full`, work through pipeline.md stage by stage.
 
 ---
 
@@ -49,9 +49,10 @@ Load only what the task needs.
 | Resuming | `kit/01-process.md`, then `kit/04-progress.md` (recent entries) and `kit/05-kanban.md` if the project uses one |
 | An open question or decision | `kit/02-exploration.md` |
 | Active execution work | `kit/03-execution.md` |
+| CLI / Terminal-driven execution | `docs/terminal-protocol.md` |
 | Ticket detail or testing and sign-off | `kit/05-kanban.md`, `kit/06-qa.md` |
-| Adding a piece | its place in **Structure** below, then the template it needs: [templates/](templates/_index.md) (universal) or the domain pack's templates |
-| Domain vocabulary or domain rules | `vocabulary-[domain]/_index.md`, only when the work touches that domain |
+| Adding a piece | its place in Structure below, then the template it needs: templates/ (universal) or the domain pack's templates |
+| Domain vocabulary or domain rules | vocabulary-[domain]/_index.md, only when the work touches that domain |
 | A concern or integration | its planning document, only when the unit being worked on declares it |
 
 ---
@@ -66,16 +67,16 @@ _None yet._
 
 ## Structure
 
-The project's own modules and planning documents, kept current in the same session they change. The generic Playbook folder layout is in the Folder Map in [pipeline.md](pipeline.md).
-```
-.playbook/          # Core framework kit and rules
-docs/               # Static landing page (GitHub Pages) and downloads
-packages/           # CLI scaffolding package (create-playbook) and libraries
-```
+The project's own modules and planning documents, kept current in the same session they change. The generic Playbook folder layout is in the Folder Map in pipeline.md.
+
+- `.playbook/`          # Core framework kit and rules
+- `docs/`               # Static landing page (GitHub Pages), downloads, and protocol guides
+- `packages/`           # CLI scaffolding package (create-playbook) and libraries
+
 ## Project Planning Documents
 
-- [\_index.md](./_index.md) — this file
+- `_index.md` — this file
 
 ## Detail
 
-Maintains a static GitHub Pages landing page (`docs/index.html`) offering direct ZIP downloads for Software, Writing, Production, Manufacturing, and Universal domain kits, alongside a CLI scaffolding tool (`create-playbook`).
+Maintains a static GitHub Pages landing page (`docs/index.html`) offering direct ZIP downloads for Software, Writing, Production, Manufacturing, and Universal domain kits, alongside a CLI scaffolding tool (`create-playbook`) and terminal execution protocol guides (`docs/terminal-protocol.md`).

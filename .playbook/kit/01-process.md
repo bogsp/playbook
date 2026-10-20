@@ -13,7 +13,7 @@ entry-shape: 'Last: <=160 chars -> refs'
 # Process
 
 Phase: Work
-Last: Added C12 terminal execution rule in rules.md and created comprehensive terminal protocol guide -> docs/terminal-protocol.md
+Last: Fixed nested code block syntax in _index.md and updated process kit -> .playbook/_index.md
 Next: Push changes to main
 Open: none
 In flight: none
