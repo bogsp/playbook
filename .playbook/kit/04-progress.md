@@ -15,3 +15,4 @@ entry-shape: 'date | Completed|Decided|Fixed | <=160 chars | refs'
 2026-10-19 | Completed | Deployed v2.0.7 landing page with domain ZIP download links | docs/index.html
 2026-10-20 | Completed | Renamed standards README.md to _index.md to align with Playbook conventions | docs/standards/_index.md
 2026-10-20 | Completed | Cleaned up legacy individual code-standards-* files in canonical and template docs | docs/standards/_index.md
+2026-10-20 | Completed | Redesigned landing page with modern typography, trust banner, and clean interactive copy flow -> docs/index.html
