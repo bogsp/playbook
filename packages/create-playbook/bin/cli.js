@@ -9,12 +9,16 @@ if (args.includes('update') || args[0] === 'update') {
     ? args[updateIndex + 1] 
     : process.cwd();
   
-  handleUpdate(targetDir);
-  process.exit(0);
+  handleUpdate(targetDir)
+    .then(() => process.exit(0))
+    .catch(err => {
+      console.error(err);
+      process.exit(1);
+    });
+} else {
+  // Otherwise, proceed with normal scaffolding/init flow...
+  import('../lib/cli-main.js').catch(err => {
+    console.error(err);
+    process.exit(1);
+  });
 }
-
-// Otherwise, proceed with normal scaffolding/init flow...
-import('../lib/cli-main.js').catch(err => {
-  console.error(err);
-  process.exit(1);
-});
