@@ -12,15 +12,15 @@ entry-shape: '- [ ] T-nn <=120 chars -> K-nn or doc'
 
 # Execution
 
-Phase: Work
-Goal: Implement static landing page and deploy domain ZIP distribution assets
-Done when: Landing page live at GitHub Pages with working direct downloads
-Later: Handoff
+Phase: CLI Expansion & Governance
+Goal: Lock in expansion specs, maintenance flows, and strict governance stage gates
+Done when: All core kit files, templates, and governance rules are updated and pushed to origin/main
+Later: Implementation of playbook archive, audit, and expand commands
 
 ## Checklist
 
-- [x] T-01 Implement responsive landing page with domain cards -> docs/index.html
-- [x] T-02 Tag and push v2.0.7 release -> origin main
-- [ ] T-03 Generate domain-specific ZIP assets in docs/downloads/
+- [x] T-01 Refactor and fix create-playbook update execution & publish v3.1.11 -> packages/create-playbook/bin/cli.js
+- [x] T-02 Lock future CLI expansions and maintenance specs into template kit -> packages/create-playbook/templates/universal/playbook/
+- [x] T-03 Enforce strict stage gates and update rules.md & pipeline.md -> packages/create-playbook/templates/universal/playbook/
 
 ## Known Issues

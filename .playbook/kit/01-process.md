@@ -13,9 +13,9 @@ entry-shape: 'Last: <=160 chars -> refs'
 # Process
 
 Phase: Work
-Last: Successfully published create-playbook package to npm from packages/create-playbook -> packages/create-playbook/package.json
-Next: Test global pnpm dlx create-playbook update migration
+Last: Published create-playbook@3.1.11 and locked expansion specs & stage-gate governance -> packages/create-playbook/
+Next: Define DDA and implementation plan for future CLI expansion features -> .playbook/
 Open: none
 In flight: none
 Active Modules: none
-Active Expansions: none
+Active Expansions: CLI Expansion Roadmap & Stage-Gate Governance | Locked | rules.md, pipeline.md
