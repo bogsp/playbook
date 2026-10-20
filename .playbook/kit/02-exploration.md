@@ -14,12 +14,12 @@ entry-shape: 'Q-nn | question | -> link ; D-nn | date | <=160 chars | -> link'
 
 ## Open Questions
 
-Q-01 | [question on one line] | -> _refs/questions/Q-01.md
+Q-01 | How should `playbook archive`, `playbook audit`, and `playbook expand` be implemented? | -> _refs/questions/Q-01.md
 
 ## Decisions
 
-D-01 | [YYYY-MM-DD] | [the decision and its key detail, <=160 chars] | -> _refs/decisions/D-01.md
+D-01 | 2026-10-20 | Enforce strict stage gates separating planning/exploration docs from template kit updates | -> _refs/decisions/D-01.md
 
 ## Constraints
 
-CN-01 | [limit the project must respect, <=160 chars] | -> link
+CN-01 | Universal template files must never be modified directly during exploratory or planning phases | -> _refs/constraints/CN-01.md
