@@ -1,5 +1,5 @@
-import { handleUpdate } from "./lib/update.js";
 #!/usr/bin/env node
+import { handleUpdate } from "./lib/update.js";
 // create-playbook v3.1.0
 // File: packages/create-playbook/index.js
 //
