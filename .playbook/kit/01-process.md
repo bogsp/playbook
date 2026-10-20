@@ -13,7 +13,7 @@ entry-shape: 'Last: <=160 chars -> refs'
 # Process
 
 Phase: Work
-Last: Added GitHub Issues support link to footer to buffer communications without exposing personal email -> docs/index.html
+Last: Added C12 terminal execution rule in rules.md and created comprehensive terminal protocol guide -> docs/terminal-protocol.md
 Next: Push changes to main
 Open: none
 In flight: none

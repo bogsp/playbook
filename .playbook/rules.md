@@ -12,7 +12,7 @@ The rules your AI follows in every session, written once so the same rules apply
 
 | Group | Applies | What it covers |
 |---|---|---|
-| Core (C) | always | flagging unclear work, no placeholders, sync checks, keeping the project's identity current, delivering files, marking changes in progress, and keeping only current information |
+| Core (C) | always | flagging unclear work, no placeholders, sync checks, keeping the project's identity current, delivering files, marking changes in progress, keeping only current information, and terminal execution standards |
 | Dependencies (D) | always | declaring and justifying anything brought in from outside, and how areas depend on each other |
 | Pipeline (P) | `pipeline-mode: full` | flows and contracts before planning documents, planning documents before work |
 | Project (X) | this project only | rules added for this project, kept in `_index.md` |
@@ -35,9 +35,10 @@ Every rule appears once, grouped by what it governs. IDs are stable — cite the
 - **C6** Run a sync check before closing any task and before every milestone: do all touched documents reflect current work?
 - **C7** Frontmatter follows `maintenance.md` (Frontmatter): the card for planning documents, the purpose block for everything else. Fix it in the same pass a file is otherwise touched.
 - **C8** Keep **What This Project Is** and the project's structure in `_index.md` current (see Keep Project Identity Current in `maintenance.md`).
-- **C9** A file is delivered only when it has been attached or written to the agreed location. Say what you delivered and where. Never describe a file you have not produced as done.
+- **C9** A file is delivered only when it has been written or attached to the agreed location. Say what you delivered and where. Never describe a file you have not produced as done.
 - **C10** Before changing more than one file, write an `In flight:` line in `kit/01-process.md` naming the files and the step. Clear it when the change is finished and logged. If a session starts with an `In flight:` line, finish or revert that change before any new work.
-- **C11** Keep only current information in live files. When something is finished, replaced or unused, move it to `_archives/` and leave one pointer line. A retired planning document leaves the project map too (see Planning Documents in `maintenance.md`).
+- **C11** Keep only current information in live files. When something is finished, replaced or unused, move it to `_archives/` and leave one pointer line. A retired planning document leaves the project map too ( see Planning Documents in `maintenance.md`).
+- **C12** When executing terminal-driven workflows, adhere strictly to the Terminal Execution Protocol: issue precise, deterministic commands, require explicit stdout/stderr feedback from the user, and never guess error states.
 
 ### Dependencies — always apply
 
@@ -130,5 +131,3 @@ unchanged. Switching back down from `full` to `kit-only` isn't
 recommended once flow, contract, or planning documents already exist for
 the project, since those documents don't disappear just because the mode
 changes.
-
----
