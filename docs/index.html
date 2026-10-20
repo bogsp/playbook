@@ -293,7 +293,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
 
         .npm-link {
@@ -307,6 +307,33 @@
         .npm-link:hover {
             opacity: 0.8;
             text-decoration: underline;
+        }
+
+        .tech-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 14px;
+            margin-top: 16px;
+        }
+
+        .tech-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 16px;
+        }
+
+        .tech-card strong {
+            color: var(--text-main);
+            display: block;
+            font-size: 0.92rem;
+            margin-bottom: 4px;
+        }
+
+        .tech-card p {
+            margin: 0;
+            color: var(--text-muted);
+            font-size: 0.85rem;
         }
 
         footer {
@@ -430,12 +457,28 @@
         <!-- Technical Scaffold -->
         <section>
             <div class="tech-header">
-                <h2>For Technical Teams</h2>
-                <a href="https://www.npmjs.com/package/create-playbook" target="_blank" rel="noopener noreferrer" class="npm-link">View on npm →</a>
+                <h2>For Technical & Engineering Teams</h2>
+                <a href="https://www.npmjs.com/package/create-playbook" target="_blank" rel="noopener noreferrer" class="npm-link">create-playbook on npm →</a>
             </div>
-            <p style="color: var(--text-muted); margin-top: 0; font-size: 0.95rem; margin-bottom: 10px;">Scaffold full pipelines with automated drift validation via CLI:</p>
+            <p style="color: var(--text-muted); margin-top: 0; font-size: 0.95rem; margin-bottom: 12px;">The <code>create-playbook</code> CLI scaffolding tool lets you generate tailored Playbook pipelines directly inside existing repositories or new software projects.</p>
+
             <div class="code-container">
                 <pre><code>pnpm dlx create-playbook my-project --profile=full</code></pre>
+            </div>
+
+            <div class="tech-details">
+                <div class="tech-card">
+                    <strong>⚡ Instant CLI Scaffolding</strong>
+                    <p>Scaffolds full <code>.playbook/</code> directory trees, kit trackers, and domain rules in seconds without manual unzipping.</p>
+                </div>
+                <div class="tech-card">
+                    <strong>🎯 Tailored Pipeline Modes</strong>
+                    <p>Supports light <code>kit-only</code> tracking or <code>full</code> pipeline mode with automated architecture flows & contract validation.</p>
+                </div>
+                <div class="tech-card">
+                    <strong>🔍 Drift & Contract Validation</strong>
+                    <p>Enforces rule compliance, frontmatter structure validation, and file inventory sync checks before git commits.</p>
+                </div>
             </div>
         </section>
 

@@ -13,7 +13,7 @@ entry-shape: 'Last: <=160 chars -> refs'
 # Process
 
 Phase: Work
-Last: Added npm package link for create-playbook in technical section and footer -> docs/index.html
+Last: Expanded technical section on landing page with detailed CLI features and npm package link -> docs/index.html
 Next: Push changes to main
 Open: none
 In flight: none
