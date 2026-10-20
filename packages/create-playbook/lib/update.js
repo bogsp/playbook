@@ -18,30 +18,26 @@ export async function handleUpdate(targetDir = process.cwd()) {
     process.exit(1);
   }
 
-  console.log(`  Syncing latest Playbook kit files and documentation...`);
+  console.log(`  Checking Playbook project structure...`);
 
   // Path to packaged universal templates
   const templatesDir = resolve(__dirname, "..", "templates", "universal", "playbook");
 
   if (existsSync(templatesDir)) {
-    // 1. Refresh universal kit files (.playbook/kit/)
-    const sourceKit = join(templatesDir, "kit");
-    const targetKit = join(playbookDir, "kit");
-    if (existsSync(sourceKit)) {
-      await cp(sourceKit, targetKit, { recursive: true, force: true });
-      console.log(`  ✓ Refreshed .playbook/kit/`);
-    }
+    // NOTE: We intentionally DO NOT overwrite existing .playbook/kit/ files 
+    // because they contain active project state, progress logs, and milestones.
+    // Kit files are only written during initial scaffolding (`init` / `adopt`).
 
-    // 2. Refresh documentation if bundled
+    // Optional: Refresh non-stateful core docs or guidelines if needed safely
     const sourceDocs = join(templatesDir, "docs");
     const targetDocs = join(playbookDir, "docs");
-    if (existsSync(sourceDocs)) {
+    if (existsSync(sourceDocs) && !existsSync(targetDocs)) {
       await cp(sourceDocs, targetDocs, { recursive: true, force: true });
-      console.log(`  ✓ Refreshed .playbook/docs/`);
+      console.log(`  ✓ Initialized missing .playbook/docs/`);
     }
   }
 
-  // 3. Sync software library if installed in package.json
+  // Sync software library if installed in package.json
   const packageJsonPath = join(resolvedTarget, "package.json");
   if (existsSync(packageJsonPath)) {
     try {
@@ -59,5 +55,5 @@ export async function handleUpdate(targetDir = process.cwd()) {
     }
   }
 
-  console.log(`\n  ✓ Playbook update complete. Review changes with 'git status'.\n`);
+  console.log(`\n  ✓ Playbook update complete. Active project state preserved.\n`);
 }
