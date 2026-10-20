@@ -13,8 +13,8 @@ entry-shape: 'Last: <=160 chars -> refs'
 # Process
 
 Phase: Work
-Last: Revamped landing page UI with modern minimalist typography, 100% markdown reassurance trust banner, and fixed all linter diagnostics -> docs/index.html
-Next: Verify repository build and push changes
+Last: Moved trust banner below the download grid links -> docs/index.html
+Next: Push changes to main
 Open: none
 In flight: none
 Active Modules: none
