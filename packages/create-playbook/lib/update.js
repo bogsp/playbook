@@ -1,5 +1,5 @@
 import { existsSync } from "fs";
-import { readFile, cp } from "fs/promises";
+import { readFile, cp, readdir } from "fs/promises";
 import { join, resolve, dirname } from "path";
 import { fileURLToPath } from "url";
 import { syncLibrary } from "./install.js";
@@ -26,9 +26,26 @@ export async function handleUpdate(targetDir = process.cwd()) {
   if (existsSync(templatesDir)) {
     // NOTE: We intentionally DO NOT overwrite existing .playbook/kit/ files 
     // because they contain active project state, progress logs, and milestones.
-    // Kit files are only written during initial scaffolding (`init` / `adopt`).
 
-    // Optional: Refresh non-stateful core docs or guidelines if needed safely
+    // 1. Copy over missing core files (e.g., rules.md, etc.) if they don't exist
+    const entries = await readdir(templatesDir, { withFileTypes: true });
+    for (const entry of entries) {
+      const srcPath = join(templatesDir, entry.name);
+      const destPath = join(playbookDir, entry.name);
+
+      if (entry.isFile()) {
+        if (!existsSync(destPath)) {
+          await cp(srcPath, destPath);
+          console.log(`  ✓ Added missing core file: .playbook/${entry.name}`);
+        }
+      } else if (entry.isDirectory() && entry.name === "templates") {
+        // Safely sync immutable template definitions
+        await cp(srcPath, destPath, { recursive: true, force: true });
+        console.log(`  ✓ Refreshed .playbook/templates/`);
+      }
+    }
+
+    // Refresh non-stateful core docs if missing
     const sourceDocs = join(templatesDir, "docs");
     const targetDocs = join(playbookDir, "docs");
     if (existsSync(sourceDocs) && !existsSync(targetDocs)) {
