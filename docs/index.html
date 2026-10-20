@@ -289,6 +289,26 @@
             font-size: 0.88rem;
         }
 
+        .tech-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .npm-link {
+            font-size: 0.85rem;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.2s;
+        }
+
+        .npm-link:hover {
+            opacity: 0.8;
+            text-decoration: underline;
+        }
+
         footer {
             text-align: center;
             margin-top: 50px;
@@ -409,7 +429,10 @@
 
         <!-- Technical Scaffold -->
         <section>
-            <h2>For Technical Teams</h2>
+            <div class="tech-header">
+                <h2>For Technical Teams</h2>
+                <a href="https://www.npmjs.com/package/create-playbook" target="_blank" rel="noopener noreferrer" class="npm-link">View on npm →</a>
+            </div>
             <p style="color: var(--text-muted); margin-top: 0; font-size: 0.95rem; margin-bottom: 10px;">Scaffold full pipelines with automated drift validation via CLI:</p>
             <div class="code-container">
                 <pre><code>pnpm dlx create-playbook my-project --profile=full</code></pre>
@@ -438,6 +461,7 @@
         <footer>
             <div class="footer-links">
                 <a href="https://github.com/bogsp/playbook" target="_blank" rel="noopener noreferrer">GitHub Repository</a>
+                <a href="https://www.npmjs.com/package/create-playbook" target="_blank" rel="noopener noreferrer">npm Package</a>
                 <a href="./standards/_index.html">Standards & Guidelines</a>
             </div>
             <p>Playbook Framework • Open-Source AI Project Management System</p>

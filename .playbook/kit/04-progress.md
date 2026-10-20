@@ -17,3 +17,4 @@ entry-shape: 'date | Completed|Decided|Fixed | <=160 chars | refs'
 2026-10-20 | Completed | Cleaned up legacy individual code-standards-* files in canonical and template docs | docs/standards/_index.md
 2026-10-20 | Completed | Redesigned landing page with modern typography, trust banner, and clean interactive copy flow -> docs/index.html
 2026-10-20 | Completed | Moved trust banner below download links -> docs/index.html
+2026-10-20 | Completed | Added create-playbook npm package link under technical teams section -> docs/index.html

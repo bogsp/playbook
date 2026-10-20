@@ -13,7 +13,7 @@ entry-shape: 'Last: <=160 chars -> refs'
 # Process
 
 Phase: Work
-Last: Moved trust banner below the download grid links -> docs/index.html
+Last: Added npm package link for create-playbook in technical section and footer -> docs/index.html
 Next: Push changes to main
 Open: none
 In flight: none
