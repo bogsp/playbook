@@ -27,6 +27,7 @@ Raised 2026-10-24. Sage is a large adopter (about 300 planning files, 135 flows 
 Type: CODE
 Description: One command that checks frontmatter shape (card or purpose block), kit budgets and line-max, unique ids, `needs` resolve to ids, links and `_archives/` pointers resolve, indexes list every file in their folder, and citations resolve to a real file or heading. Seed: the Sage scripts for frontmatter audit, budget audit, link audit and index audit; `packages/check-drift.mjs` is the existing precedent. Output is a short list a session can fix, exit 1 on failure.
 Blocked by: Q-01 (CLI expansion plan)
+Note 2026-10-24: runs from the CLI; an adopter project gets no script, config or extra file for it (the adopter's rule: no scripts or clutter in the project). Prototypes, both withdrawn from Sage and kept only in its git history: Python `scripts/playbook-check.py` (bogsp/sage 5e25f55) and Node `.playbook/tools/check.mjs` with `.playbook/.version` (bogsp/sage e8e20b2, origin unknown). Reuse the checks, not the placement.
 
 [K-59] Ship a migration script with every template version
 Type: CODE
@@ -45,6 +46,7 @@ Blocked by: K-58
 
 [K-62] Protected files and the version stamp
 Type: DDA
+Note 2026-10-24: keep the protected list inside `.version` or the CLI, not in a separate config file.
 Description: Build on Q-06 (`.playbook/.version` with a hash per file). Add a protected list for project-owned files (standards, project rules in `_index.md`) so an update or a bulk move warns before overwriting them, and so the checker can tell which files are still as scaffolded and which are the adopter's. Sage lost `general.md` to an index stub in a standards move and found out days later.
 Blocked by: none
 
