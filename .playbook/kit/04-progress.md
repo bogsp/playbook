@@ -27,3 +27,4 @@ entry-shape: 'date | Completed|Decided|Fixed | <=160 chars | refs'
 2026-10-20 | Fixed | Identified npm registry caching for dlx vs local execution during create-playbook update test -> packages/create-playbook/bin/cli.js
 2026-10-20 | Completed | Published create-playbook update package to npm successfully -> packages/create-playbook/package.json
 2026-10-20 | Completed | Published create-playbook@3.1.11 and locked expansion roadmap and stage-gate governance | packages/create-playbook/package.json
+2026-10-24 | Decided | Recorded Project Sage field report: seven improvements queued as K-58 to K-64 (checker, migrator, one home per fact, executable done-when, protected files, anchors, lean mode) | _refs/kanban/sage-field-report-track.md
