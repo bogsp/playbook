@@ -28,3 +28,6 @@ entry-shape: 'date | Completed|Decided|Fixed | <=160 chars | refs'
 2026-10-20 | Completed | Published create-playbook update package to npm successfully -> packages/create-playbook/package.json
 2026-10-20 | Completed | Published create-playbook@3.1.11 and locked expansion roadmap and stage-gate governance | packages/create-playbook/package.json
 2026-10-24 | Decided | Recorded Project Sage field report: seven improvements queued as K-58 to K-64 (checker, migrator, one home per fact, executable done-when, protected files, anchors, lean mode) | _refs/kanban/sage-field-report-track.md
+2026-11-05 | Decided | Creator: no-workaround rule is shipped C12; the local terminal rule moves to project rule X1; own rules.md now mirrors the shipped file | playbook/.playbook/rules.md
+2026-11-05 | Completed | C12 added to source and skill assets, templateVersion 2.1.0, CHANGELOG entry; check:drift and e2e pass; not published | CHANGELOG.md
+2026-11-05 | Decided | Found create-playbook templates older than the sources (10-20 content only in templates); left untouched, K-65 raised, Creator to choose | _refs/design/template-drift-2026-11-05.md

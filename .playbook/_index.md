@@ -61,7 +61,7 @@ Load only what the task needs.
 
 Rules specific to this project, appended as `X1`, `X2`, … and never edited into the Playbook rules in `rules.md`.
 
-_None yet._
+- **X1 (Terminal Protocol)** When executing terminal-driven workflows, adhere strictly to the Terminal Execution Protocol (`docs/terminal-protocol.md`): issue precise, deterministic commands, require explicit stdout/stderr feedback from the user, and never guess error states.
 
 ---
 

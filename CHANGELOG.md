@@ -10,6 +10,12 @@ owner: playbook
 
 Template versions. The current version is `templateVersion` in `packages/template-manifest.json`. Each scaffolded project records the version it started from in `.playbook/.version`.
 
+## 2.1.0 — 2026-11-05
+
+- New core rule C12 in `.playbook/rules.md`: fix the source; never work around it. When a requirement, interface, rule, or limit does not fit the work, stop and flag it (C1); a dummy argument, stub, adapter, duplicate, silent exception, content bent to fit a limit, or patch that leaves the cause in place is a workaround. The human decides how the source is fixed. Applies to every project and is not weakened by project rules (X).
+- "When something breaks", step 3, now points to C12.
+- Existing projects are not upgraded automatically. To adopt C12, copy the new rule line and the step 3 change into `.playbook/rules.md`; rule IDs are unchanged, so nothing is renumbered.
+
 ## 2.0.0 — 2026-10-18
 
 Restructure of the shipped pipeline. Existing projects are not upgraded automatically; an upgrade path comes later.
