@@ -15,6 +15,10 @@ entry-shape: 'Q-nn | question | -> link ; D-nn | date | <=160 chars | -> link'
 ## Open Questions
 
 Q-01 | How should `playbook archive`, `playbook audit`, and `playbook expand` be implemented? | -> _refs/questions/Q-01.md
+Q-07 | Which Sage-proven checks (owns overlap, kit budgets, progress fragments) become CLI commands? | -> _refs/questions/Q-07.md
+Q-08 | Should Sage's parallel-lane protocol (D116, D117) become a Playbook feature? | -> _refs/questions/Q-08.md
+Q-09 | Should kit budgets be soft guides across Playbook (Sage custom rule 8)? | -> _refs/questions/Q-09.md
+Q-10 | What happens to the preserved 10-20 stub text, and did C12 meet the D-01 stage gate? | -> _refs/questions/Q-10.md
 
 ## Decisions
 

@@ -33,3 +33,4 @@ entry-shape: 'date | Completed|Decided|Fixed | <=160 chars | refs'
 2026-11-05 | Decided | Found create-playbook templates older than the sources (10-20 content only in templates); left untouched, K-65 raised, Creator to choose | _refs/design/template-drift-2026-11-05.md
 2026-11-05 | Fixed | Untracked the four stale create-playbook template files (build output); text kept in _refs; check-drift now fails on tracked build output; verified | _refs/design/cli-roadmap-and-governance-2026-10-20.md
 2026-11-05 | Corrected | Earlier drift note wrongly said 3.1.11 was built from the stale files; the published package holds the full 2.0.0 documents; note rewritten | _refs/design/template-drift-2026-11-05.md
+2026-11-05 | Decided | Creator: Playbook work parked; Sage focuses on Core Sage. Logged Q-07 to Q-10 and a Q-06 note for later discussion | 02-exploration.md

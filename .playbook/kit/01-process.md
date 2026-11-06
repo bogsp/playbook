@@ -15,7 +15,7 @@ entry-shape: 'Last: <=160 chars -> refs'
 Phase: Work
 Last: Untracked stale create-playbook template copies; drift check now guards the build-output folder -> _refs/design/template-drift-2026-11-05.md
 Next: Define DDA and implementation plan for future CLI expansion features -> .playbook/
-Open: 2.1.0 (rule C12) is not published; K-66 waits on the Creator -> CHANGELOG.md
+Open: 2.1.0 (rule C12) not published (K-66); questions Q-07 to Q-10 logged for discussion -> 02-exploration.md
 In flight: none
 Active Modules: none
 Active Expansions: CLI Expansion Roadmap & Stage-Gate Governance | Locked | rules.md, pipeline.md
