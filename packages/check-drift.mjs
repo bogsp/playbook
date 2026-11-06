@@ -5,7 +5,8 @@
 // Fails (exit 1) if committed generated output differs from a fresh build of
 // the template source in playbook/. Guards the one generated folder that is
 // committed: packages/playbook-skill/assets/. Also proves the CLI build
-// still succeeds (its templates/ folder is gitignored build output).
+// still succeeds, and that no file under its gitignored templates/ folder is
+// tracked (that folder is build output).
 //
 // Run: node packages/check-drift.mjs   (or: pnpm check:drift)
 // Fix a failure by running `pnpm build` and committing the result — never by
@@ -45,7 +46,21 @@ try {
     problems.push(`create-playbook build failed:\n${String(err.stderr || err.message)}`);
   }
 
-  // 2. Skill assets must equal a fresh build
+  // 2. The CLI templates/ folder is build output: nothing in it may be tracked.
+  //    A tracked copy is edited by hand, goes stale, and is discarded at publish.
+  try {
+    const tracked = execFileSync("git", ["ls-files", "--", "packages/create-playbook/templates"], {
+      cwd: join(__dirname, ".."),
+      encoding: "utf8",
+    })
+      .split("\n")
+      .filter(Boolean);
+    for (const f of tracked) problems.push(`tracked build output (gitignored folder): ${f}; untrack it with git rm --cached`);
+  } catch (err) {
+    problems.push(`could not list tracked files: ${String(err.message)}`);
+  }
+
+  // 3. Skill assets must equal a fresh build
   const fresh = join(tmp, "skill");
   const committed = join(__dirname, "playbook-skill", "assets");
   try {

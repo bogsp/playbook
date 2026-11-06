@@ -26,5 +26,8 @@ entry-shape: '[K-nn] title <=80 | type | blocked-by | -> link'
 
 ## Blocked
 
-[K-65] Resolve create-playbook template drift before publishing 2.1.0 (C12) | DDA | Creator decision | -> _refs/design/template-drift-2026-11-05.md
+[K-66] Publish create-playbook with C12 (templateVersion 2.1.0; package version bump) | SYNC | Creator go-ahead | -> CHANGELOG.md
+
 ## Done
+
+[K-65] Template drift: stale tracked build output untracked, stubs preserved, drift guard added | DDA | done 2026-11-05 | -> _refs/design/template-drift-2026-11-05.md
