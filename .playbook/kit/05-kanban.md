@@ -23,7 +23,6 @@ entry-shape: '[K-nn] title <=80 | type | blocked-by | -> link'
 [K-64] Lean mode for small projects | DDA | none | -> _refs/kanban/sage-field-report-track.md
 
 
-[K-68] Audit embedded AI directives across rules.md and kit templates (D-01) | DDA | none | -> _refs/questions/Q-11.md
 
 ## In Progress
 
@@ -32,6 +31,7 @@ entry-shape: '[K-nn] title <=80 | type | blocked-by | -> link'
 [K-66] Publish create-playbook with C12 (templateVersion 2.1.0; package version bump) | SYNC | Creator go-ahead | -> CHANGELOG.md
 
 ## Done
+[K-68] Audit embedded AI directives across rules.md and kit templates (D-01) | DDA | none | -> _refs/questions/Q-11.md
 [K-67] Shape proactive start, progressive-disclosure cues & agent brief standards | DDA | none | -> _refs/questions/Q-11.md
 
 [K-65] Template drift: stale tracked build output untracked, stubs preserved, drift guard added | DDA | done 2026-11-05 | -> _refs/design/template-drift-2026-11-05.md

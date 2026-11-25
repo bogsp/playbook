@@ -13,8 +13,8 @@ entry-shape: 'Last: <=160 chars -> refs'
 # Process
 
 Phase: Work
-Last: Consolidated .playbook/_index.md into strict AI Session Rules and separate Human Guide without duplicate sections -> _refs/questions/Q-11.md
-Next: Review .playbook/_index.md structure and decide when to promote to playbook/.playbook/_index.md (D-01) -> _refs/questions/Q-11.md
+Last: Audited rules.md and promoted AI Session Rules + Human Guide to playbook/.playbook/_index.md (K-68) -> _refs/questions/Q-11.md
+Next: Decide on remaining backlog items (K-58 to K-66) or start next Playbook task -> _refs/questions/Q-11.md
 Open: 2.1.0 (rule C12) not published (K-66); questions Q-07 to Q-10 logged for discussion -> 02-exploration.md
 In flight: none
 Active Modules: none
