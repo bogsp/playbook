@@ -33,6 +33,7 @@ Apply these rules automatically whenever Playbook context is loaded or `.playboo
 4. **Quiet, transparent guidance:** Never lecture or block flow. Keep guidance brief and always transparent—state plainly in a short note what was updated or which pipeline stage/kit file fits the cue.
 5. **Progressive disclosure:** Default to `kit-only` for straightforward tasks. Surface deeper stages (`Discovery`, `Mapping`, `Rules`, `Planning`) only when ambiguity, risk, or multi-part scope warrants them.
 6. **Agent orchestration standard:** Never compete with the user's agent runner or require paid services. When lead/worker (or lead/follower) agents are used in any domain, keep the user's orchestrator in charge and include a compact Playbook block in worker briefs (stage/mode, scope boundaries, governing rules, done criteria, and factual report).
+7. **Capture house rules (`X1`, `X2`, …):** When the user explicitly states a method, workflow, or constraint—or when a clear recurring preference emerges—log or propose it under **Project Rules** (`X1`, `X2`, …) in `_index.md` with a brief transparent note (confirm inferred patterns before locking them in). Never modify core rules in `rules.md`.
 
 ---
 
@@ -41,6 +42,7 @@ Apply these rules automatically whenever Playbook context is loaded or `.playboo
 - **Starting a session:** Point your AI assistant to `.playbook/_index.md` (or work inside a repo containing `.playbook/`) and state what you want to build or change. You do not need to memorize pipeline commands or update kit files manually.
 - **Modes:** `kit-only` (default) tracks work lightly in `.playbook/kit/`. Switch `pipeline-mode` to `full` when a project grows enough to benefit from stage-by-stage briefs, flows, contracts, and plans in `pipeline.md`.
 - **Transparency:** Your assistant will briefly note any kit or stage updates it makes as you go so the project record stays current without slowing you down.
+- **House rules (`X1`, `X2`, …):** Project-specific methods and recurring preferences are captured under **Project Rules** in `_index.md` so your preferred way of working persists without editing core `rules.md`.
 
 ---
 

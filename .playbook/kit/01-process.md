@@ -13,7 +13,7 @@ entry-shape: 'Last: <=160 chars -> refs'
 # Process
 
 Phase: Work
-Last: Audited rules.md and promoted AI Session Rules + Human Guide to playbook/.playbook/_index.md (K-68) -> _refs/questions/Q-11.md
+Last: Added house-rule capture (X1, X2...) for explicit methods & recurring preferences to _index.md, template _index.md & Q-11 -> _refs/questions/Q-11.md
 Next: Decide on remaining backlog items (K-58 to K-66) or start next Playbook task -> _refs/questions/Q-11.md
 Open: 2.1.0 (rule C12) not published (K-66); questions Q-07 to Q-10 logged for discussion -> 02-exploration.md
 In flight: none

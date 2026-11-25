@@ -40,3 +40,4 @@ entry-shape: 'date | Completed|Decided|Fixed | <=160 chars | refs'
 2026-11-26 | Completed | Embedded core AI directives for forgetful-user tracking and quiet transparency in _index.md, 00-guide.md, and Q-11.md | -> _refs/questions/Q-11.md
 2026-11-26 | Fixed | Replaced conflicting Session Start in .playbook/_index.md with separated AI Session Rules and Human Guide | -> _refs/questions/Q-11.md
 2026-11-26 | Completed | Audited rules.md and aligned playbook/.playbook/_index.md with AI Session Rules and Human Guide (K-68) | -> _refs/questions/Q-11.md
+2026-11-26 | Completed | Added automatic house-rule capture (X1, X2...) for explicit methods and recurring preferences to _index.md and template _index.md | -> _refs/questions/Q-11.md
