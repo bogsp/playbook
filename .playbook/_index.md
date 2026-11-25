@@ -68,6 +68,8 @@ Load only what the task needs.
 Rules specific to this project, appended as `X1`, `X2`, … and never edited into the Playbook rules in `rules.md`.
 
 - **X1 (Terminal Protocol)** When executing terminal-driven workflows, adhere strictly to the Terminal Execution Protocol (`docs/terminal-protocol.md`): issue precise, deterministic commands, require explicit stdout/stderr feedback from the user, and never guess error states.
+- **X2 (No Python / Clean Project)** Never introduce Python code or scripts into the project; keep the project clean by removing unneeded docs or files when pruning non-viable work.
+- **X3 (Bash Commands on No Repo Access)** When a session has no direct access to the repo, provide clear bash commands so results can be pasted directly into the chat.
 
 ---
 

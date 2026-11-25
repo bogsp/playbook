@@ -14,15 +14,11 @@ entry-shape: '[K-nn] title <=80 | type | blocked-by | -> link'
 
 ## Backlog
 
-[K-58] Ship a `playbook check` validator | CODE | Q-01 | -> _refs/kanban/sage-field-report-track.md
-[K-59] Per-version migration script (v1 to v2 first) | CODE | K-58 | -> _refs/kanban/sage-field-report-track.md
-[K-60] One home per fact; checker flags duplicates | DDA | K-58 | -> _refs/kanban/sage-field-report-track.md
-[K-61] Executable done-when; derive status | DDA | K-58 | -> _refs/kanban/sage-field-report-track.md
-[K-62] Protected files list with the version stamp (Q-06) | DDA | none | -> _refs/kanban/sage-field-report-track.md
-[K-63] Stable anchors for citations, not section numbers | DDA | K-58 | -> _refs/kanban/sage-field-report-track.md
-[K-64] Lean mode for small projects | DDA | none | -> _refs/kanban/sage-field-report-track.md
-
-
+[K-62] Protected files list with the version stamp (Q-06) | DDA | none | -> _refs/questions/Q-12.md
+[K-58] Ship a `playbook check` validator | CODE | none | -> _refs/questions/Q-01.md
+[K-60] One home per fact; checker flags duplicates | DDA | K-58 | -> _refs/questions/Q-12.md
+[K-63] Stable anchors for citations, not section numbers | DDA | K-58 | -> _refs/questions/Q-12.md
+[K-64] Lean mode for small projects | DDA | none | -> _refs/questions/Q-12.md
 
 ## In Progress
 
@@ -33,5 +29,4 @@ entry-shape: '[K-nn] title <=80 | type | blocked-by | -> link'
 ## Done
 [K-68] Audit embedded AI directives across rules.md and kit templates (D-01) | DDA | none | -> _refs/questions/Q-11.md
 [K-67] Shape proactive start, progressive-disclosure cues & agent brief standards | DDA | none | -> _refs/questions/Q-11.md
-
 [K-65] Template drift: stale tracked build output untracked, stubs preserved, drift guard added | DDA | done 2026-11-05 | -> _refs/design/template-drift-2026-11-05.md

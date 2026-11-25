@@ -13,8 +13,8 @@ entry-shape: 'Last: <=160 chars -> refs'
 # Process
 
 Phase: Work
-Last: Committed CLI --dry-run flag and synced .playbook/pipeline.md (Q-12) -> _refs/questions/Q-12.md
-Next: Plan merge/migration handling for _index.md & kit files (Q-12) -> _refs/questions/Q-12.md
+Last: Dropped K-59/K-61, ordered viable K-62..K-64, added house rules X2 & X3, cleaned unneeded ref -> 05-kanban.md
+Next: Start K-62 (protected files list & version stamp) in next session -> _refs/questions/Q-12.md
 Open: 2.1.0 (rule C12) not published (K-66); questions Q-07 to Q-10 logged for discussion -> 02-exploration.md
 In flight: none
 Active Modules: none
