@@ -20,6 +20,8 @@ Q-08 | Should Sage's parallel-lane protocol (D116, D117) become a Playbook featu
 Q-09 | Should kit budgets be soft guides across Playbook (Sage custom rule 8)? | -> _refs/questions/Q-09.md
 Q-10 | What happens to the preserved 10-20 stub text, and did C12 meet the D-01 stage gate? | -> _refs/questions/Q-10.md
 
+Q-11 | Shape proactive start, cue-driven progressive disclosure, and lead/worker Playbook standards | -> _refs/questions/Q-11.md
+
 ## Decisions
 
 D-01 | 2026-10-20 | Enforce strict stage gates separating planning/exploration docs from template kit updates | -> _refs/decisions/D-01.md

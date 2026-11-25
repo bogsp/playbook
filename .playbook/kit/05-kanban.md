@@ -22,6 +22,8 @@ entry-shape: '[K-nn] title <=80 | type | blocked-by | -> link'
 [K-63] Stable anchors for citations, not section numbers | DDA | K-58 | -> _refs/kanban/sage-field-report-track.md
 [K-64] Lean mode for small projects | DDA | none | -> _refs/kanban/sage-field-report-track.md
 
+[K-67] Shape proactive start, progressive-disclosure cues & agent brief standards | DDA | none | -> _refs/questions/Q-11.md
+
 ## In Progress
 
 ## Blocked
