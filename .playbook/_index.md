@@ -1,7 +1,7 @@
 ---
 file: '.playbook/_index.md'
-responsibility: 'The single entry point for this project — what it is, how a session starts, the project rules, and where things are. Playbook rules live in rules.md. Read this file first, every session.'
-ai_instructions: 'Read this file completely before doing anything else, every session, then follow Session Start. Keep What This Project Is and Structure current.'
+responsibility: 'The single entry point for this project — what it is, strict AI session rules, human guide, project rules, and structure. Playbook rules live in rules.md. Read this file first, every session.'
+ai_instructions: 'Read this file completely before doing anything else, every session, then follow AI Session Rules. Keep What This Project Is and Structure current.'
 archive_rule: 'N/A — living document, kept current at all times.'
 owner: project
 id: playbook
@@ -23,20 +23,24 @@ Playbook is the premier framework for AI-assisted project management—transform
 
 ---
 
-## Session Start
+## AI Session Rules (Strict)
 
-Read this file first, every session. It is the only file you need to be given; it tells you what to load next.
+Apply these rules automatically whenever Playbook context is loaded or `.playbook/` is present.
 
-1. **Check what you can do.** Can you open files by path (a linked repo, a folder, or file tools)?
-2. **If you can,** read `rules.md`, then `kit/01-process.md`, then whatever the task needs (see **Where to Go Next**). If `01-process.md` has an `In flight:` line, resolve it first (C10).
-3. **If you cannot,** do not guess and do not start work. Reply once with the base files you need — `rules.md` (the rules) and `kit/01-process.md` (where the project stands) — and ask what the person is working on. Pasted text works as well as attachments.
-4. **After the base files are loaded,** ask for any task-specific files in one batch, never one at a time.
-5. **If a file is missing,** say what is missing, flag any assumption, and do not continue on it as if you had it.
-6. **Confirm** what you actually loaded, the current phase, and the next step. Then wait for instruction.
+1. **Boot & state check:** Read `rules.md`, then `kit/01-process.md`, then only what the current task needs (see **Where to Go Next**). If `01-process.md` has an `In flight:` line, resolve it first (C10). If base files are unavailable in this environment, ask for `rules.md` and `kit/01-process.md` once—otherwise confirm loaded state briefly and proceed.
+2. **Get out of the way at start:** Do not stall the user with long checklists or rigid turn-1 gates. Let the user's prompt lead immediately.
+3. **Assume the user will forget:** Do not rely on the user remembering to update kit files, plans, flows, or contracts. Whenever work produces a decision, scope shift, new flow, or rule/contract change, carry or propose the matching Playbook update automatically.
+4. **Quiet, transparent guidance:** Never lecture or block flow. Keep guidance brief and always transparent—state plainly in a short note what was updated or which pipeline stage/kit file fits the cue.
+5. **Progressive disclosure:** Default to `kit-only` for straightforward tasks. Surface deeper stages (`Discovery`, `Mapping`, `Rules`, `Planning`) only when ambiguity, risk, or multi-part scope warrants them.
+6. **Agent orchestration standard:** Never compete with the user's agent runner or require paid services. When lead/worker (or lead/follower) agents are used in any domain, keep the user's orchestrator in charge and include a compact Playbook block in worker briefs (stage/mode, scope boundaries, governing rules, done criteria, and factual report).
 
-Until `rules.md` is loaded: do no project work, flag anything unclear, and say what you have loaded.
+---
 
-**Starting fresh:** fill in **What This Project Is** above. If `pipeline-mode` is `kit-only` (the default), that is all you need — start working, tracked through the kit files. If it is `full`, work through pipeline.md stage by stage.
+## Human Guide (Using Playbook)
+
+- **Starting a session:** Point your AI assistant to `.playbook/_index.md` (or work inside a repo containing `.playbook/`) and state what you want to build or change. You do not need to memorize pipeline commands or update kit files manually.
+- **Modes:** `kit-only` (default) tracks work lightly in `.playbook/kit/`. Switch `pipeline-mode` to `full` when a project grows enough to benefit from stage-by-stage briefs, flows, contracts, and plans in `pipeline.md`.
+- **Transparency:** Your assistant will briefly note any kit or stage updates it makes as you go so the project record stays current without slowing you down.
 
 ---
 
@@ -80,13 +84,3 @@ The project's own modules and planning documents, kept current in the same sessi
 ## Detail
 
 Maintains a static GitHub Pages landing page (`docs/index.html`) offering direct ZIP downloads for Software, Writing, Production, Manufacturing, and Universal domain kits, alongside a CLI scaffolding tool (`create-playbook`) and terminal execution protocol guides (`docs/terminal-protocol.md`).
-
-## Session Guidance (Proactive & Light-Touch)
-- **Get out of the way at session start:** Briefly confirm loaded files, mode, and any `In flight:` status, then let the user's prompt lead rather than blocking on a long checklist.
-- **Guide by conversational cues:** Watch the user's responses and surface the matching pipeline stage or kit file (`02-exploration.md`, `03-execution.md`, `Discovery`, `Mapping`, `Rules`, `Planning`) only when ambiguity, risk, or growing scope warrants it.
-- **Active context only:** Apply Playbook guidance only when Playbook context is loaded or `.playbook/` is present in the project.
-
-## Embedded AI Directives
-- **Assume the user will forget:** Do not wait for the user to remember updating kit files, plans, flows, or contracts. When work produces a clear decision, rule, flow, or task change, update or suggest the matching Playbook artifact directly.
-- **Quiet, transparent guidance:** Never be heavy-handed or preachy. Keep guidance brief and always visible—state plainly what was updated or why a stage/artifact is relevant.
-- **Always-on when active:** Treat these directives as core AI behavior whenever Playbook context is loaded or `.playbook/` is present.
