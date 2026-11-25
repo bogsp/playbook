@@ -13,8 +13,8 @@ entry-shape: 'Last: <=160 chars -> refs'
 # Process
 
 Phase: Work
-Last: Logged Q-12 on low-friction Playbook upgrade & migration workflows -> _refs/questions/Q-12.md
-Next: Choose upgrade approach for Q-12 (CLI command, guided AI upgrade, or manifest classification) -> _refs/questions/Q-12.md
+Last: Wired --dry-run in create-playbook/index.js and upgraded update.js tiered sync (Q-12) -> _refs/questions/Q-12.md
+Next: Review dry-run output and plan merge/migration handling for _index.md & kit files (Q-12) -> _refs/questions/Q-12.md
 Open: 2.1.0 (rule C12) not published (K-66); questions Q-07 to Q-10 logged for discussion -> 02-exploration.md
 In flight: none
 Active Modules: none
