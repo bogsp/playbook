@@ -23,6 +23,8 @@ entry-shape: '[K-nn] title <=80 | type | blocked-by | -> link'
 [K-64] Lean mode for small projects | DDA | none | -> _refs/kanban/sage-field-report-track.md
 
 
+[K-68] Audit embedded AI directives across rules.md and kit templates (D-01) | DDA | none | -> _refs/questions/Q-11.md
+
 ## In Progress
 
 ## Blocked

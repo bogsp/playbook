@@ -85,3 +85,8 @@ Maintains a static GitHub Pages landing page (`docs/index.html`) offering direct
 - **Get out of the way at session start:** Briefly confirm loaded files, mode, and any `In flight:` status, then let the user's prompt lead rather than blocking on a long checklist.
 - **Guide by conversational cues:** Watch the user's responses and surface the matching pipeline stage or kit file (`02-exploration.md`, `03-execution.md`, `Discovery`, `Mapping`, `Rules`, `Planning`) only when ambiguity, risk, or growing scope warrants it.
 - **Active context only:** Apply Playbook guidance only when Playbook context is loaded or `.playbook/` is present in the project.
+
+## Embedded AI Directives
+- **Assume the user will forget:** Do not wait for the user to remember updating kit files, plans, flows, or contracts. When work produces a clear decision, rule, flow, or task change, update or suggest the matching Playbook artifact directly.
+- **Quiet, transparent guidance:** Never be heavy-handed or preachy. Keep guidance brief and always visible—state plainly what was updated or why a stage/artifact is relevant.
+- **Always-on when active:** Treat these directives as core AI behavior whenever Playbook context is loaded or `.playbook/` is present.

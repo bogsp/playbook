@@ -37,3 +37,4 @@ entry-shape: 'date | Completed|Decided|Fixed | <=160 chars | refs'
 2026-11-26 | Decided | Keep orchestration opt-in/light; make AI proactively guide start with progressive disclosure | -> _refs/questions/Q-11.md
 2026-11-26 | Decided | Get out of the way at start, use cue-driven progressive disclosure, and embed Playbook standards into lead/worker briefs | -> _refs/questions/Q-11.md
 2026-11-26 | Completed | Applied Q-11 light-touch start, cue-driven progressive disclosure, and lead/worker brief standards to _index.md, 00-guide.md, and pipeline.md | -> _refs/questions/Q-11.md
+2026-11-26 | Completed | Embedded core AI directives for forgetful-user tracking and quiet transparency in _index.md, 00-guide.md, and Q-11.md | -> _refs/questions/Q-11.md

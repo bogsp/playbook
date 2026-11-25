@@ -34,3 +34,4 @@ This guide provides standard workflows for maintaining alignment and executing s
   - **Scope & Boundaries:** exact deliverable, in-scope paths/sources, and what not to touch
   - **Governing Rules:** constraints and ambiguity-flagging rules (no silent guessing)
   - **Done Criteria & Report:** completion check plus a factual summary of changes, assumptions, and open decisions
+- **Carry tracking when the user moves on:** Users routinely forget to log progress, update plans, or record flows/contracts. Keep updates lightweight, transparent, and non-intrusive so momentum stays on the project.

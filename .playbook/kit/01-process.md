@@ -13,8 +13,8 @@ entry-shape: 'Last: <=160 chars -> refs'
 # Process
 
 Phase: Work
-Last: Applied Q-11 light-touch onboarding, cue-driven disclosure & agent brief standards to _index.md, 00-guide.md & pipeline.md -> _refs/questions/Q-11.md
-Next: Review Q-11 doc wording and decide whether to promote into playbook/ templates (D-01) -> _refs/questions/Q-11.md
+Last: Embedded AI directives for forgetful-user tracking & quiet transparency in _index.md, 00-guide.md & Q-11.md -> _refs/questions/Q-11.md
+Next: Audit rules.md and template kit alignment for embedded AI directives (K-68 / D-01) -> _refs/questions/Q-11.md
 Open: 2.1.0 (rule C12) not published (K-66); questions Q-07 to Q-10 logged for discussion -> 02-exploration.md
 In flight: none
 Active Modules: none
