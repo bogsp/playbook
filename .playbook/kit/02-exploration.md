@@ -21,6 +21,7 @@ Q-09 | Should kit budgets be soft guides across Playbook (Sage custom rule 8)? |
 Q-10 | What happens to the preserved 10-20 stub text, and did C12 meet the D-01 stage gate? | -> _refs/questions/Q-10.md
 
 Q-11 | Shape proactive start, cue-driven progressive disclosure, and lead/worker Playbook standards | -> _refs/questions/Q-11.md
+Q-12 | How should existing projects upgrade to newer Playbook versions while preserving state and X rules? | -> _refs/questions/Q-12.md
 
 ## Decisions
 
