@@ -36,3 +36,4 @@ entry-shape: 'date | Completed|Decided|Fixed | <=160 chars | refs'
 2026-11-05 | Decided | Creator: Playbook work parked; Sage focuses on Core Sage. Logged Q-07 to Q-10 and a Q-06 note for later discussion | 02-exploration.md
 2026-11-26 | Decided | Keep orchestration opt-in/light; make AI proactively guide start with progressive disclosure | -> _refs/questions/Q-11.md
 2026-11-26 | Decided | Get out of the way at start, use cue-driven progressive disclosure, and embed Playbook standards into lead/worker briefs | -> _refs/questions/Q-11.md
+2026-11-26 | Completed | Applied Q-11 light-touch start, cue-driven progressive disclosure, and lead/worker brief standards to _index.md, 00-guide.md, and pipeline.md | -> _refs/questions/Q-11.md

@@ -80,3 +80,8 @@ The project's own modules and planning documents, kept current in the same sessi
 ## Detail
 
 Maintains a static GitHub Pages landing page (`docs/index.html`) offering direct ZIP downloads for Software, Writing, Production, Manufacturing, and Universal domain kits, alongside a CLI scaffolding tool (`create-playbook`) and terminal execution protocol guides (`docs/terminal-protocol.md`).
+
+## Session Guidance (Proactive & Light-Touch)
+- **Get out of the way at session start:** Briefly confirm loaded files, mode, and any `In flight:` status, then let the user's prompt lead rather than blocking on a long checklist.
+- **Guide by conversational cues:** Watch the user's responses and surface the matching pipeline stage or kit file (`02-exploration.md`, `03-execution.md`, `Discovery`, `Mapping`, `Rules`, `Planning`) only when ambiguity, risk, or growing scope warrants it.
+- **Active context only:** Apply Playbook guidance only when Playbook context is loaded or `.playbook/` is present in the project.

@@ -316,3 +316,7 @@ docs/
   rollout/
     [milestone].md                  J  generated milestone snapshots
 ```
+
+## Progressive Disclosure Across Stages
+- **Default to the lightest viable path:** Start in `kit-only` so users can work immediately without filling out unused stage documents.
+- **Step into stages on cues:** Surface `Thinking -> Discovery -> Mapping -> Rules -> Planning -> Work -> Handoff` (and `Audit` for existing projects) progressively when project size, risk, or cross-agent coordination calls for explicit briefs, flows, contracts, or plans.

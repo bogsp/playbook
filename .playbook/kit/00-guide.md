@@ -26,3 +26,11 @@ This guide provides standard workflows for maintaining alignment and executing s
 ## Prompts & Handoffs
 
 * **Milestone Handoff Packets (Packets A–E):** See `.playbook/kit/_refs/prompts/session-handoff-packets.md`
+
+## Cue-Driven Guidance & Lead/Worker Standards
+- **Start light, disclose progressively:** Default to `kit-only` for small or straightforward tasks. Introduce deeper stages (`Discovery`, `Mapping`, `Rules`, `Planning`) when goals are open, existing behavior is changing, or multi-part complexity appears.
+- **Integrate Playbook into existing orchestration:** Playbook does not manage external agent runners or require paid services. When using lead/worker (or lead/follower) agents in any domain, keep the user's runner in charge and include a compact Playbook block in each worker brief:
+  - **Stage & Mode:** active stage, `pipeline-mode`, and `review-gate`
+  - **Scope & Boundaries:** exact deliverable, in-scope paths/sources, and what not to touch
+  - **Governing Rules:** constraints and ambiguity-flagging rules (no silent guessing)
+  - **Done Criteria & Report:** completion check plus a factual summary of changes, assumptions, and open decisions
