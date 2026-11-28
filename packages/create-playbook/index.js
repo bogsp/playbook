@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 import { handleUpdate } from "./lib/update.js";
+import { handleCheck } from "./lib/check.js";
 // create-playbook v3.1.0
 // File: packages/create-playbook/index.js
 //
@@ -25,7 +26,12 @@ const command = args[0];
 
 import { adoptProject } from "./lib/adopt.js";
 
-if (command === "update") {
+if (command === "check") {
+  const targetDir = args[1] && !args[1].startsWith("-") ? args[1] : process.cwd();
+  await handleCheck(targetDir);
+  close();
+  process.exit(0);
+} else if (command === "update") {
   const targetDir = args[1] && !args[1].startsWith("-") ? args[1] : process.cwd();
   await handleUpdate(targetDir);
   close();
