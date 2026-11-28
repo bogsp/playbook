@@ -67,6 +67,8 @@ Cleanup is part of finishing, not a separate chore. Before moving on, tidy what 
 
 When you notice these, archive before the next session — not during it.
 
+
+- If a session resolved a repeatable multi-step workflow, record its trigger, step order, and easy-to-miss gotcha in `_index.md` (`X` rule), `_refs/snippets/`, or a skill before closing.
 ---
 
 ## Planning Documents

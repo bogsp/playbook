@@ -23,6 +23,18 @@ This guide provides standard workflows for maintaining alignment and executing s
 2. Update current phase and status in `kit/01-process.md`.
 3. Ensure open tickets in `kit/05-kanban.md` reflect current status.
 
+
+- **Distill repeatable workflows (when proven):** If a session just worked out a repeatable multi-step sequence, capture it as an `X` rule, snippet, or skill with: (1) **Trigger** (when to run), (2) **Steps & Gotcha** (order plus the easy-to-miss step), and (3) **Done Shape**.
+### Compact Task Brief (Open-Ended or Multi-Part Tasks)
+
+Use this 5-part brief for open-ended, creative, or 3+ step tasks without adding overhead to small edits:
+
+- **Outcome & Quality Bar:** exact goal, why it matters, and what done/good looks like
+- **Tools & References:** existing files/tools to use (and whether discovering extras is allowed)
+- **Boundaries & Freedom:** non-negotiables vs. where the agent may adjust the plan
+- **Self-Check Passes:** checks to run before handing back results
+- **Delivery Target:** exact file path, command output, or artifact location
+
 ## Prompts & Handoffs
 
 * **Milestone Handoff Packets (Packets A–E):** See `.playbook/kit/_refs/prompts/session-handoff-packets.md`

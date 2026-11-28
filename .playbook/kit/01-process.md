@@ -13,8 +13,8 @@ entry-shape: 'Last: <=160 chars -> refs'
 # Process
 
 Phase: Work
-Last: Extracted video insights and logged Q-13 / K-69 for workflow distillation & Task Brief -> _refs/questions/Q-13.md
-Next: Start K-62 (protected files list & version stamp) or approve Q-13 template updates -> _refs/questions/Q-12.md
+Last: Completed Q-13 / K-69 updates (Task Brief, workflow distillation, video-insights path) -> _refs/questions/Q-13.md
+Next: Implement K-62 (protected files list & version stamp) -> _refs/questions/Q-12.md
 Open: 2.1.0 (rule C12) not published (K-66); questions Q-07 to Q-10 logged for discussion -> 02-exploration.md
 In flight: none
 Active Modules: none
