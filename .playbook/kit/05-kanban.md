@@ -14,7 +14,6 @@ entry-shape: '[K-nn] title <=80 | type | blocked-by | -> link'
 
 ## Backlog
 
-[K-58] Ship a `playbook check` validator | CODE | none | -> _refs/questions/Q-01.md
 [K-60] One home per fact; checker flags duplicates | DDA | K-58 | -> _refs/questions/Q-12.md
 [K-63] Stable anchors for citations, not section numbers | DDA | K-58 | -> _refs/questions/Q-12.md
 [K-64] Lean mode for small projects | DDA | none | -> _refs/questions/Q-12.md
@@ -26,6 +25,7 @@ entry-shape: '[K-nn] title <=80 | type | blocked-by | -> link'
 [K-66] Publish create-playbook with C12 (templateVersion 2.1.0; package version bump) | SYNC | Creator go-ahead | -> CHANGELOG.md
 
 ## Done
+[K-58] Ship a `playbook check` validator | CODE | done 2026-11-29 | -> _refs/questions/Q-01.md
 [K-62] Protected files list with the version stamp (Q-06) | DDA | done 2026-11-29 | -> _refs/questions/Q-12.md
 [K-69] Add post-session workflow distillation, Task Brief shape & expansion path fix (Q-13) | DDA | done 2026-11-29 | -> _refs/questions/Q-13.md
 [K-68] Audit embedded AI directives across rules.md and kit templates (D-01) | DDA | none | -> _refs/questions/Q-11.md
