@@ -13,8 +13,8 @@ entry-shape: 'Last: <=160 chars -> refs'
 # Process
 
 Phase: Work
-Last: Completed Q-13 / K-69 updates (Task Brief, workflow distillation, video-insights path) -> _refs/questions/Q-13.md
-Next: Implement K-62 (protected files list & version stamp) -> _refs/questions/Q-12.md
+Last: Implemented K-62 protected files list & .version hash checks in update.js -> packages/create-playbook/lib/update.js
+Next: Verify K-62 behavior with dry-run/test or continue K-58 validator -> 05-kanban.md
 Open: 2.1.0 (rule C12) not published (K-66); questions Q-07 to Q-10 logged for discussion -> 02-exploration.md
 In flight: none
 Active Modules: none

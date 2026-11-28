@@ -47,3 +47,4 @@ entry-shape: 'date | Completed|Decided|Fixed | <=160 chars | refs'
 2026-11-26 | Completed | Dropped K-59/K-61, ordered viable K-62..K-64, added X2/X3 rules, cleaned ref | -> 05-kanban.md
 2026-11-28 | Completed | Extracted video insights and logged Q-13 / K-69 for workflow distillation & Task Brief | -> _refs/questions/Q-13.md
 2026-11-29 | Completed | Applied Q-13 / K-69 updates (Task Brief, workflow distillation, video-insights path) | -> _refs/questions/Q-13.md
+\n2026-11-29 | In Progress | Added protected file list, hash drift warnings & .version stamping to update.js | -> packages/create-playbook/lib/update.js\n
