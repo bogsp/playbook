@@ -19,6 +19,7 @@ entry-shape: '[K-nn] title <=80 | type | blocked-by | -> link'
 [K-60] One home per fact; checker flags duplicates | DDA | K-58 | -> _refs/questions/Q-12.md
 [K-63] Stable anchors for citations, not section numbers | DDA | K-58 | -> _refs/questions/Q-12.md
 [K-64] Lean mode for small projects | DDA | none | -> _refs/questions/Q-12.md
+[K-69] Add post-session workflow distillation, Task Brief shape & expansion path fix (Q-13) | DDA | Q-13 | -> _refs/questions/Q-13.md
 
 ## In Progress
 

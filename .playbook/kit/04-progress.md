@@ -45,3 +45,4 @@ entry-shape: 'date | Completed|Decided|Fixed | <=160 chars | refs'
 2026-11-26 | Completed | Upgraded create-playbook update with framework sync, preservation & --dry-run | -> _refs/questions/Q-12.md
 2026-11-26 | Completed | Committed CLI --dry-run flag and synced .playbook/pipeline.md cleanly | -> _refs/questions/Q-12.md
 2026-11-26 | Completed | Dropped K-59/K-61, ordered viable K-62..K-64, added X2/X3 rules, cleaned ref | -> 05-kanban.md
+2026-11-28 | Completed | Extracted video insights and logged Q-13 / K-69 for workflow distillation & Task Brief | -> _refs/questions/Q-13.md
