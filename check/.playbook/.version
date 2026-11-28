@@ -1,0 +1,26 @@
+{
+  "templateVersion": "2.1.0",
+  "scaffolded": "2026-11-28",
+  "files": {
+    "README.md": "adc21788c1187c8b",
+    "_index.md": "6cf61fb68ba665d1",
+    "expansions.md": "b6c8f29cef383623",
+    "kit/00-guide.md": "f13076ecbd931ee7",
+    "kit/01-process.md": "aa25f596d48c4ad8",
+    "kit/02-exploration.md": "b6649fe1dcc26121",
+    "kit/03-execution.md": "d26e0d2098f3baa4",
+    "kit/04-progress.md": "bfe520b20db461b2",
+    "kit/05-kanban.md": "4724cbea1bb6a08c",
+    "kit/06-qa.md": "1c89473cee733824",
+    "kit/_tests/test-case.md": "cf9c6652b809021d",
+    "maintenance.md": "51cc2ff223463e70",
+    "pipeline.md": "093abffa63f21f37",
+    "rules.md": "9458785babac2b87",
+    "templates/_index.md": "e45a58eb0d80c1a9",
+    "templates/component.md": "8d3339c96f971025",
+    "templates/concern.md": "6092ff7766287f09",
+    "templates/coordinator.md": "75aeb03da724ac29",
+    "templates/integration.md": "b672e470b1e25941",
+    "templates/structure.md": "f09099c593b2c29e"
+  }
+}

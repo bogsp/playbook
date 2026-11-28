@@ -1,0 +1,15 @@
+---
+file: '.playbook/kit/04-progress.md'
+responsibility: 'Append-only log of events: one line each.'
+ai_instructions: 'Add one line per event at the bottom, naming what happened, what was decided and why in brief, with refs to the files holding detail. Never edit or delete past lines.'
+archive_rule: 'Over budget, the oldest lines move verbatim to _archives/progress/YYYY-MM.md.'
+owner: project
+max-bytes: 6144
+max-lines: 40
+line-max: 240
+entry-shape: 'date | Completed|Decided|Fixed | <=160 chars | refs'
+---
+
+# Progress
+
+2026-11-28 | Completed | Playbook scaffold generated (starting from scratch) | .playbook/.version
