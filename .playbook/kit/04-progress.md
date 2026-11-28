@@ -48,3 +48,4 @@ entry-shape: 'date | Completed|Decided|Fixed | <=160 chars | refs'
 2026-11-28 | Completed | Extracted video insights and logged Q-13 / K-69 for workflow distillation & Task Brief | -> _refs/questions/Q-13.md
 2026-11-29 | Completed | Applied Q-13 / K-69 updates (Task Brief, workflow distillation, video-insights path) | -> _refs/questions/Q-13.md
 \n2026-11-29 | In Progress | Added protected file list, hash drift warnings & .version stamping to update.js | -> packages/create-playbook/lib/update.js\n
+2026-11-29 | Completed | Finished K-62 protected files list, .version checks & rebuilt templates/assets | -> packages/create-playbook/lib/update.js

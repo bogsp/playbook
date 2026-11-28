@@ -59,7 +59,7 @@ Use the **Video insights** prompt from [00-guide.md](kit/00-guide.md). Provide t
 Read the output. Correct anything that was misread or misrepresented. The insight file is only as good as the source material.
 
 **Step 4 — Integrate**
-Save the insight file to `.playbook/kit/_refs/[video-name].md`.
+Save the insight file to `.playbook/kit/_refs/video-insights/[video-name].md`.
 Link it from [02-exploration.md](kit/02-exploration.md) or [03-execution.md](kit/03-execution.md) wherever it informs a decision or task.
 
 **Step 5 — Close**
@@ -73,7 +73,7 @@ Each insight file follows the same structure:
 
 ```
 ---
-file: '.playbook/kit/_refs/[video-name].md'
+file: '.playbook/kit/_refs/video-insights/[video-name].md'
 responsibility: 'Structured insight extracted from [Video Title] — source material for project decisions.'
 ai_instructions: 'Reference only. Do not treat as a settled decision unless linked from a Closed Decision in 02-exploration.md.'
 archive_rule: 'Move to .playbook/kit/_archives/ once every decision it informed is settled and no longer active.'
